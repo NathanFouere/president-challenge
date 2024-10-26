@@ -25,7 +25,7 @@
       "Database/*": [
         "./database/*"
       ],
-      "@shared/*": ["../shared/dist/types/*"]
+      "@shared/types/*": ["../shared/dist/types/*"]
     },
     "types": [
       "@adonisjs/core",

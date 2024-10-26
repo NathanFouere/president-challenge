@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Test } from "@shared/test";
+
+import type {Test} from "@shared/test";
 
 const test: Test = {
   test: "test",
