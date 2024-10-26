@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "declaration": true,         // Génère les fichiers .d.ts
+    "emitDeclarationOnly": true, // N'émet que les déclarations
+    "outDir": "dist/types",      // Répertoire de sortie pour les types générés
+    "rootDir": "src",
+    "paths": {
+      "@shared/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "allende-challenge-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:backend": "pnpm --filter server run dev",
+    "dev:frontend": "pnpm --filter client run dev",
+    "build:backend": "pnpm --filter server run build",
+    "build:frontend": "pnpm --filter client run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@stylistic/eslint-plugin-ts": "^2.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
+    "eslint": "^9.13.0",
+    "eslint-plugin-vue": "^9.29.1",
+    "globals": "^15.11.0",
+    "typescript-eslint": "^8.11.0"
+  }
+}
