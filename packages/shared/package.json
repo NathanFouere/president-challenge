@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:types": "tsc --emitDeclarationOnly"
+    "build": "tsc --emitDeclarationOnly"
   },
   "keywords": [],
   "author": "",
