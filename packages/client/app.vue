@@ -8,7 +8,6 @@ const test: Test = {
 </script>
 <template>
   <div>
-    {{ test }}
     <NuxtRouteAnnouncer />
     <NuxtWelcome />
   </div>
