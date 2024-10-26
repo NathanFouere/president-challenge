@@ -25,4 +25,4 @@ jobs:
         run: npm install
 
       - name: Build packages
-        run: npx lerna run build
+        run: pnpm run buildfzfz
