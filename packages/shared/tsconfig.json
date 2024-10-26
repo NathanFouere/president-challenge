@@ -7,7 +7,7 @@
     "outDir": "dist/types",      // Répertoire de sortie pour les types générés
     "rootDir": "src",
     "paths": {
-      "@shared/*": ["src/*"]
+      "@shared/types/*": ["src/*"]
     }
   },
   "include": ["src/**/*"]
