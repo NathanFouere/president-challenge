@@ -3,7 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@shared/*": ["../shared/dist/types/*"]
+      "@shared/types*": ["../shared/dist/types/*"]
     }
   },
 }

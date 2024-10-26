@@ -1,10 +1,10 @@
 {
-  "name": "shared",
+  "name": "@shared/types",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:types": "tsc --emitDeclarationOnly"
+    "build": "tsc --emitDeclarationOnly"
   },
   "keywords": [],
   "author": "",

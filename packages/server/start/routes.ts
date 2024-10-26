@@ -19,7 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route';
-import { Test } from "@shared/test";
+import { Test } from "@shared/types/test";
 
 const test: Test = {
   test: 'test'

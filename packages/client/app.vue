@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Test } from "@shared/test";
+
+import type {Test} from "@shared/types/test";
 
 const test: Test = {
   test: "test",
@@ -8,7 +9,6 @@ const test: Test = {
 </script>
 <template>
   <div>
-    {{ test }}
     <NuxtRouteAnnouncer />
     <NuxtWelcome />
   </div>
