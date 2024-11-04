@@ -22,9 +22,9 @@ import Route from '@ioc:Adonis/Core/Route';
 import { Test } from "@shared/types/test";
 
 const test: Test = {
-  test: 'test'
+  test: 'Coucou'
 };
 
 Route.get('/', async () => {
-  return { test };
+  return test;
 });

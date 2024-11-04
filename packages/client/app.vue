@@ -1,15 +1,7 @@
 <script setup lang="ts">
-
-import type {Test} from "@shared/types/test";
-
-const test: Test = {
-  test: "test",
-};
+import Index from "./pages/index.vue";
 
 </script>
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <Index />
 </template>
