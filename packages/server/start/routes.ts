@@ -9,6 +9,7 @@
 
 import router from '@adonisjs/core/services/router';
 import {Test} from "@shared/types/test.js";
+import {middleware} from "#start/kernel";
 const SessionController = () => import('#controllers/session_controller');
 
 const test: Test = {
@@ -20,6 +21,21 @@ router.get('/test', async () => {
 
 router.on('/').render('pages/home');
 
-router.post('/login', [SessionController, 'store']);
+router.post('/register', [SessionController, 'store']);
 
-router.post('/register', [SessionController, 'register']);
+router.post('/login', [SessionController, 'register']);
+
+router
+  .get('dashboard', async ({ auth }) => {
+    const user = auth.getUserOrFail();
+     user.doSomething();
+  })
+  .use(middleware.auth());
+
+
+/*
+router.group(() => {
+  router.get('/register', [RegisterController, 'show']).as('register.show');
+  router.get('/register', [RegisterController, 'store']).as('register.store');
+});
+*/
