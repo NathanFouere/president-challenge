@@ -1,22 +1,32 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import * as path from 'path';
+import * as path from 'node:path';
 
-// eslint-disable-next-line no-undef
 export default defineNuxtConfig({
+
+  modules: [
+    '@nuxt/ui',
+    '@pinia/nuxt',
+  ],
+  plugins: [
+    '~/plugins/api.ts',
+  ],
   ssr: true,
-  compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   ui: {
-    global: true
+    global: true,
+  },
+  runtimeConfig: {
+    public: {
+      baseURLProxyServer: process.env.NUXT_PUBLIC_BASE_URL_PROXY_SERVER || 'http://localhost:3333',
+    },
   },
 
   alias: {
-    // eslint-disable-next-line no-undef
+
     '@shared': path.resolve(__dirname, '../shared/src'),
   },
   build: {
-    transpile: ['@nuxt/ui']
+    transpile: ['@nuxt/ui'],
   },
-
-  modules: ['@nuxt/ui']
+  compatibilityDate: '2024-04-03',
 });

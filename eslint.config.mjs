@@ -1,18 +1,35 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+// @ts-check
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat';
 
-
-export default [
-  {files: ["**/*.{js,mjs,cjs,ts}"]},
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-    {
-      rules: {
-        "no-undef": "error",
-        "no-unused-vars": "error",
-        "semi": ["error", "always"],
-      }
+export default createConfigForNuxt({
+  features: {
+    stylistic: {
+      semi: true,
+      indent: 2,
+      quotes: 'single',
     },
-];
+    tooling: true,
+  },
+  dirs: {
+    src: [
+      'playground',
+      'docs',
+    ],
+    componentsPrefixed: [
+      'playground/components-prefixed',
+    ],
+  },
+})
+  .append(
+    {
+      ignores: [
+        'packages-legacy/**',
+      ],
+    },
+    {
+      files: ['docs/**/*.vue'],
+      rules: {
+        'vue/no-v-html': 'off',
+      },
+    },
+  );

@@ -8,14 +8,15 @@
 */
 
 import router from '@adonisjs/core/services/router';
-import {Test} from "@shared/types/test.js";
-import {middleware} from "#start/kernel";
+import type { Test } from '@shared/types/test.js';
+import { middleware } from '#start/kernel';
+
 const SessionController = () => import('#controllers/session_controller');
 
 const test: Test = {
   test: 'test',
 };
-router.get('/test', async () => {
+router.get('/api/test', async () => {
   return test;
 });
 
@@ -28,10 +29,9 @@ router.post('/login', [SessionController, 'register']);
 router
   .get('dashboard', async ({ auth }) => {
     const user = auth.getUserOrFail();
-     user.doSomething();
+    user.doSomething();
   })
   .use(middleware.auth());
-
 
 /*
 router.group(() => {
