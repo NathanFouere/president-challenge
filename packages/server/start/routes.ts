@@ -20,8 +20,6 @@ router.get('/api/test', async () => {
   return test;
 });
 
-router.on('/').render('pages/home');
-
 router.post('/register', [SessionController, 'store']);
 
 router.post('/login', [SessionController, 'register']);
