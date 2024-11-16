@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "composite": true,
-    "declaration": true,         // Génère les fichiers .d.ts
-    "emitDeclarationOnly": true, // N'émet que les déclarations
-    "outDir": "dist/types",      // Répertoire de sortie pour les types générés
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist/types",
     "rootDir": "src",
     "paths": {
       "@shared/types/*": ["src/*"]

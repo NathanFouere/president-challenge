@@ -19,17 +19,28 @@ export default createConfigForNuxt({
       'playground/components-prefixed',
     ],
   },
-})
-  .append(
-    {
-      ignores: [
-        'packages-legacy/**',
+}).append(
+  {
+    ignores: [
+      'packages-legacy/**',
+    ],
+  },
+  {
+    files: ['docs/**/*.vue'],
+    rules: {
+      'vue/no-v-html': 'off',
+    },
+  },
+  {
+    files: ['**/*.ts', '**/*.js'], // Ajout pour TypeScript/JavaScript
+    rules: {
+      '@typescript-eslint/no-unused-expressions': [
+        'error',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+        },
       ],
     },
-    {
-      files: ['docs/**/*.vue'],
-      rules: {
-        'vue/no-v-html': 'off',
-      },
-    },
-  );
+  },
+);
