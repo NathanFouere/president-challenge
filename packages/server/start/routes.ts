@@ -1,30 +1,26 @@
 /*
 |--------------------------------------------------------------------------
-| Routes
+| Routes file
 |--------------------------------------------------------------------------
 |
-| This file is dedicated for defining HTTP routes. A single file is enough
-| for majority of projects, however you can define routes in different
-| files and just make sure to import them inside this file. For example
-|
-| Define routes in following two files
-| ├── start/routes/cart.ts
-| ├── start/routes/customer.ts
-|
-| and then import them inside `start/routes.ts` as follows
-|
-| import './routes/cart'
-| import './routes/customer'
+| The routes file is used for defining the HTTP routes.
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route';
-import { Test } from "@shared/types/test";
+import router from '@adonisjs/core/services/router';
+import { middleware } from '#start/kernel';
 
-const test: Test = {
-  test: 'test'
-};
+const LoginController = () => import('#controllers/auth/login_controller');
+const LogoutController = () => import('#controllers/auth/logout_controller');
+const MeController = () => import('#controllers/auth/me_controller');
+const RegisterController = () => import('#controllers/auth/register_controller');
 
-Route.get('/', async () => {
-  return { test };
+router.group(() => {
+  router.post('/api/register', [RegisterController, 'register']);
+
+  router.post('/api/login', [LoginController, 'login']);
+
+  router.get('/api/logout', [LogoutController, 'handle']).use(middleware.auth());
+
+  router.get('/api/me', [MeController, 'me']).use(middleware.auth());
 });

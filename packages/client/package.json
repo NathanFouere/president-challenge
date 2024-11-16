@@ -10,9 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/types": "^2.18.1",
+    "@nuxt/ui": "^2.19.2",
+    "@shared/types": "workspace:*",
     "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest",
-    "@shared/types": "workspace:*"
+    "zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "@pinia/nuxt": "^0.7.0",
+    "pinia": "^2.2.6"
   }
 }
