@@ -6,6 +6,8 @@ import { useUserStore } from '../store/user.store';
 
 const isRegisterMode = ref(true);
 
+const { $api } = useNuxtApp();
+
 const registerSchema = z.object({
   email: z.string().email('Invalid email'),
   fullName: z.string().min(2, 'Must be at least 2 characters'),
@@ -26,28 +28,16 @@ const state = reactive({
   password: undefined,
 });
 
+const store = useUserStore();
+
 // Fonction de soumission
 async function onSubmit(event: FormSubmitEvent<RegisterSchema | LoginSchema>) {
   try {
-    const endpoint = isRegisterMode.value ? 'register' : 'login';
-    console.log(endpoint);
-    const response = await $fetch(`http://localhost:3333/${endpoint}`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: event.data,
-    });
-
-    if (!isRegisterMode.value) {
-      const response = await $fetch('http://localhost:3333/dashboard', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    if (isRegisterMode.value) {
+      await store.registerUser(event.data.email, event.data.fullName, event.data.password);
+    }
+    else {
+      await store.fetchUser(event.data.email, event.data.password);
     }
   }
   catch (error) {
@@ -59,10 +49,6 @@ async function onSubmit(event: FormSubmitEvent<RegisterSchema | LoginSchema>) {
 function toggleMode() {
   isRegisterMode.value = !isRegisterMode.value;
 }
-
-const store = useUserStore();
-
-store.fetchUser();
 </script>
 
 <template>
