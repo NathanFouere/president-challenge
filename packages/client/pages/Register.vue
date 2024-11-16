@@ -6,8 +6,6 @@ import { useUserStore } from '../store/user.store';
 
 const isRegisterMode = ref(true);
 
-const { $api } = useNuxtApp();
-
 const registerSchema = z.object({
   email: z.string().email('Invalid email'),
   fullName: z.string().min(2, 'Must be at least 2 characters'),
