@@ -2,7 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http';
 import User from '#models/user';
 
 export default class RegisterController {
-  async register({ request, auth, response }: HttpContext) {
+  async signup({ request, auth, response }: HttpContext) {
     const { email, password, fullName } = request.only(['email', 'password', 'fullName']);
 
     try {

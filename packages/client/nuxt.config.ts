@@ -2,15 +2,17 @@
 import * as path from 'node:path';
 
 export default defineNuxtConfig({
-
+  extends: ['@nuxt/ui-pro'],
   modules: [
     '@nuxt/ui',
     '@pinia/nuxt',
   ],
   plugins: [
     '~/plugins/api.ts',
+    '~/plugins/check-auth.ts',
   ],
-  ssr: true,
+  ssr: false,
+
   devtools: { enabled: true },
   ui: {
     global: true,
@@ -22,7 +24,6 @@ export default defineNuxtConfig({
   },
 
   alias: {
-
     '@shared': path.resolve(__dirname, '../shared/src'),
   },
   build: {

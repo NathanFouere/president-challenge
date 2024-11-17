@@ -16,11 +16,11 @@ const MeController = () => import('#controllers/auth/me_controller');
 const RegisterController = () => import('#controllers/auth/register_controller');
 
 router.group(() => {
-  router.post('/api/register', [RegisterController, 'register']);
+  router.post('/api/signup', [RegisterController, 'signup']);
 
   router.post('/api/login', [LoginController, 'login']);
 
-  router.get('/api/logout', [LogoutController, 'handle']).use(middleware.auth());
+  router.get('/api/logout', [LogoutController, 'handle']);
 
   router.get('/api/me', [MeController, 'me']).use(middleware.auth());
 });

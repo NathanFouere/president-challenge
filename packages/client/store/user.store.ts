@@ -27,22 +27,10 @@ export const useUserStore = defineStore('userStore', {
       }
     },
 
-    async fetchMe() {
-      const { $api } = useNuxtApp();
-      try {
-        $api.auth.me().then((response: User) => {
-          this.setUser(response);
-        });
-      }
-      catch (error) {
-        console.log(error);
-      }
-    },
-
     async registerUser(email: string, fullName: string, password: string) {
       const { $api } = useNuxtApp();
       try {
-        $api.auth.register(email, fullName, password).then((response: User) => {
+        $api.auth.signup(email, fullName, password).then((response: User) => {
           this.setUser(response);
         });
       }
