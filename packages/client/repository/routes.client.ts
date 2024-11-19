@@ -8,6 +8,7 @@ const Routes = {
     Signup: () => `${prefix}/signup`,
     Login: () => `${prefix}/login`,
     Me: () => `${prefix}/me`,
+    Logout: () => `${prefix}/logout`,
   },
 };
 

@@ -6,11 +6,10 @@ export default defineNuxtPlugin(() => {
     const userStore = useUserStore();
     const { $api } = useNuxtApp();
 
-    if (!userStore.user) {
+    if (!userStore.connectedUser) {
       try {
-        // Appelle l'API pour récupérer les informations utilisateur
         const user: User = await $api.auth.me();
-        userStore.setUser(user); // Met à jour le store
+        userStore.setUser(user);
         return user;
       }
       catch (error) {
@@ -19,10 +18,9 @@ export default defineNuxtPlugin(() => {
       }
     }
 
-    return userStore.user; // Retourne l'utilisateur stocké s'il existe
+    return userStore.user;
   };
 
-  // Injecte la méthode `checkAuth` dans l'application Nuxt
   return {
     provide: {
       checkAuth,

@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import {useUserStore} from "../store/user.store";
+import {useUserSignupStore} from "../store/user-signup.store";
 
-definePageMeta({
-  layout: 'auth'
-});
-
-useSeoMeta({
-  title: 'Sign up'
-});
+const userStore = useUserStore();
+const signupStore = useUserSignupStore();
+const { $api } = useNuxtApp();
 
 const fields = [
   {
@@ -37,21 +34,23 @@ const validate = (state: any) => {
   if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
   return errors;
 };
-const store = useUserStore();
 
 async function onSubmit(data: any) {
+  signupStore.setIsRegistering()
   try {
-    await store.registerUser(data.email, data.fullName, data.password);
+    const user = await $api.auth.signup(data.email, data.fullName, data.password);
+    userStore.setUser(user);
   }
   catch (error) {
     console.error(error);
   }
+  signupStore.unsetIsRegistering();
 }
 </script>
 
 <template>
-  <p v-if="store.user">{{store.user}} logged</p>
-  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur" v-if="!store.user">
+  <p v-if="userStore.user">{{ userStore.user }} logged</p>
+  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
     <UAuthForm
         :fields="fields"
         :validate="validate"
@@ -59,6 +58,7 @@ async function onSubmit(data: any) {
         title="Create an account"
         :ui="{ base: 'text-center', footer: 'text-center' }"
         :submit-button="{ label: 'Create account' }"
+        :loading="signupStore.getIsRegistering"
         @submit="onSubmit"
     >
       <template #description>

@@ -40,6 +40,15 @@ class AuthModule extends FetchFactory {
       },
     );
   }
+
+  async logout() {
+    return this.call<User>(
+      {
+        method: 'GET',
+        url: `${this.RESOURCE.Logout()}`,
+      },
+    );
+  }
 }
 
 export default AuthModule;

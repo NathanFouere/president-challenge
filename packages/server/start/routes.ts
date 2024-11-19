@@ -20,7 +20,7 @@ router.group(() => {
 
   router.post('/api/login', [LoginController, 'login']);
 
-  router.get('/api/logout', [LogoutController, 'handle']);
+  router.get('/api/logout', [LogoutController, 'handle']).use(middleware.auth());
 
   router.get('/api/me', [MeController, 'me']).use(middleware.auth());
 });

@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import {useUserStore} from "../store/user.store";
+import {useUserLoginStore} from "../store/user-login.store";
 
-definePageMeta({
-  layout: 'auth'
-});
-
-useSeoMeta({
-  title: 'Login'
-});
+const userStore = useUserStore();
+const loginStore = useUserLoginStore();
+const { $api } = useNuxtApp();
 
 const fields = [
   {
@@ -31,11 +28,12 @@ const validate = (state: any) => {
   return errors;
 };
 
-const store = useUserStore();
-
 async function onSubmit(data: any) {
+  loginStore.setLogging()
   try {
-    await store.fetchUser(data.email, data.password);
+    const user = await $api.auth.login(data.email, data.password);
+    userStore.setUser(user);
+    loginStore.unsetLogging()
   }
   catch (error) {
     console.error(error);
@@ -44,14 +42,15 @@ async function onSubmit(data: any) {
 </script>
 
 <template>
-  <p v-if="store.user">{{store.user}} logged</p>
-  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur" v-if="!store.user">
+  <p v-if="userStore.connectedUser">{{ userStore.connectedUser }} logged</p>
+  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
     <UAuthForm
         :fields="fields"
         :validate="validate"
         align="top"
         title="Login"
         :ui="{ base: 'text-center', footer: 'text-center' }"
+        :loading="loginStore.getIsLogging"
         :submit-button="{ label: 'Login' }"
         @submit="onSubmit"
     >

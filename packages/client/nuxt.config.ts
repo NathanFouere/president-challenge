@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import * as path from 'node:path';
+import 'reflect-metadata';
 
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],

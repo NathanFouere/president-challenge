@@ -4,6 +4,8 @@
   "compilerOptions": {
     "paths": {
       "@shared/types*": ["../shared/dist/types/*"],
-    }
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
 }
