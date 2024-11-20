@@ -49,12 +49,10 @@ async function onSubmit(data: any) {
 </script>
 
 <template>
-  <p v-if="userStore.user">{{ userStore.user }} logged</p>
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
     <UAuthForm
         :fields="fields"
         :validate="validate"
-        align="top"
         title="Create an account"
         :ui="{ base: 'text-center', footer: 'text-center' }"
         :submit-button="{ label: 'Create account' }"

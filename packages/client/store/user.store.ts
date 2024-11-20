@@ -10,7 +10,7 @@ export const useUserStore = defineStore('userStore', {
       return this.user;
     },
     hasConnectedUser(): boolean {
-      return !!this.user;
+      return !this.user;
     },
   },
   actions: {

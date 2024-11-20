@@ -7,7 +7,7 @@ const userDropdownStore = userUserDropdownStore();
 const { $api }  = useNuxtApp()
 
 
-const test = async () => {
+const logout = async () => {
   userDropdownStore.setLoggingOut();
   try {
     await $api.auth.logout();
@@ -32,7 +32,7 @@ const items = computed(() => [
       label: 'Sign out',
       icon: 'i-heroicons-arrow-left-on-rectangle',
       iconClass: userDropdownStore.isLoggingOut ? 'animate-spin' : '',
-      click: test
+      click: logout
     },
   ]
 ])

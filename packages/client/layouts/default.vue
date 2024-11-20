@@ -14,12 +14,6 @@ const links = [
     icon: 'i-heroicons-home',
     to: '/',
     disabled: !userStore.hasConnectedUser
-  },
-  {
-    label: 'Gege',
-    icon: 'i-heroicons-home',
-    to: '/egeg',
-    disabled: !userStore.hasConnectedUser
   }
 ]
 
