@@ -9,3 +9,4 @@ DB_HOST=localhost
 DB_USER=allende_challenge_database
 DB_PASSWORD=n652>RK2V3*B%8XQ^;
 DB_PORT=5432
+DB_DATABASE=allende_challenge
