@@ -96,9 +96,6 @@ importers:
       '@adonisjs/static':
         specifier: ^1.1.1
         version: 1.1.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))
-      '@adonisjs/vite':
-        specifier: ^3.0.0
-        version: 3.0.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
       '@shared/types':
         specifier: workspace:*
         version: link:../shared
@@ -166,9 +163,6 @@ importers:
       typescript:
         specifier: ~5.6
         version: 5.6.3
-      vite:
-        specifier: ^5.4.8
-        version: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
 
   packages/shared:
     devDependencies:
@@ -400,20 +394,6 @@ packages:
 
   '@adonisjs/tsconfig@1.4.0':
     resolution: {integrity: sha512-go5KlxE8jJaeoIRzm51PcF2YJSK5i022douVk9OjAqvDiU1t2UepcDoEsSiEOgogUDojp9kbRQmFyf0y0YqvOg==}
-
-  '@adonisjs/vite@3.0.0':
-    resolution: {integrity: sha512-E09M0zjGwu5GgMYFTGcA00f0y3DblvqekXgtxccjpOE/zLf5ggOxTwI5iZXgD4lVETYirQ0QdS3azznCW2TYkQ==}
-    engines: {node: '>=20.6.0'}
-    peerDependencies:
-      '@adonisjs/core': ^6.3.0
-      '@adonisjs/shield': ^8.0.0
-      edge.js: ^6.0.1
-      vite: ^5.1.4
-    peerDependenciesMeta:
-      '@adonisjs/shield':
-        optional: true
-      edge.js:
-        optional: true
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -1789,9 +1769,6 @@ packages:
   '@types/node@16.18.119':
     resolution: {integrity: sha512-ia7V9a2FnhUFfetng4/sRPBMTwHZUkPFY736rb1cg9AgG7MZdR97q7/nLR9om+sq5f1la9C857E0l/nrI0RiFQ==}
 
-  '@types/node@18.19.64':
-    resolution: {integrity: sha512-955mDqvO2vFf/oL7V3WiUtiz+BugyX8uVbaT2H8oj3+8dRyH2FLiNdowe7eNqRM7IOIZvzDH76EoAT+gwm6aIQ==}
-
   '@types/node@22.9.0':
     resolution: {integrity: sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==}
 
@@ -1931,11 +1908,6 @@ packages:
     resolution: {integrity: sha512-AxsHHauZ+w0m2irwDHqkc3GdNChMLBtolk8CN3IAZM6vTwH0EbPXlFCFcIk4WwkH0opG+R2GlKTThr5H0HLm7g==}
     peerDependencies:
       vue: '>=2.7 || >=3'
-
-  '@vavite/multibuild@4.1.3':
-    resolution: {integrity: sha512-V+6mskWf4GMQVb53w2fdJ5aR+zVkzpuCE9q3lDDo0v8AHjQApOeXydj/5rTERIFkO46yNHmr3insg2I/tC0TtA==}
-    peerDependencies:
-      vite: ^2.8.1 || 3 || 4 || 5
 
   '@vercel/nft@0.27.6':
     resolution: {integrity: sha512-mwuyUxskdcV8dd7N7JnxBgvFEz1D9UOePI/WyLLzktv6HSCwgPNQGit/UJ2IykAWGlypKw4pBQjOKWvIbXITSg==}
@@ -5856,9 +5828,6 @@ packages:
   unctx@2.3.1:
     resolution: {integrity: sha512-PhKke8ZYauiqh3FEMVNm7ljvzQiph0Mt3GBRve03IJm7ukfaON2OBK795tLwhbyfzknuRRkW0+Ze+CQUmzOZ+A==}
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
@@ -6045,11 +6014,6 @@ packages:
     peerDependenciesMeta:
       '@nuxt/kit':
         optional: true
-
-  vite-plugin-restart@0.4.1:
-    resolution: {integrity: sha512-MYhDFaa2HMoSavr/2pShj6toKVFso+zqF6FAdWGC8JSIrsNig+4giy9EzoSySgGRJvsnbwZXKdjAvn8ag8rUkA==}
-    peerDependencies:
-      vite: ^2.9.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
 
   vite-plugin-vue-inspector@5.1.3:
     resolution: {integrity: sha512-pMrseXIDP1Gb38mOevY+BvtNGNqiqmqa2pKB99lnLsADQww9w9xMbAfT4GB6RUoaOkSPrtlXqpq2Fq+Dj2AgFg==}
@@ -6579,18 +6543,6 @@ snapshots:
       - supports-color
 
   '@adonisjs/tsconfig@1.4.0': {}
-
-  '@adonisjs/vite@3.0.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))':
-    dependencies:
-      '@adonisjs/core': 6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0)
-      '@poppinss/utils': 6.8.3
-      '@vavite/multibuild': 4.1.3(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
-      edge-error: 4.0.1
-      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
-      vite-plugin-restart: 0.4.1(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
-    optionalDependencies:
-      '@adonisjs/shield': 8.1.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0))(edge.js@6.2.0)
-      edge.js: 6.2.0
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -8206,10 +8158,6 @@ snapshots:
 
   '@types/node@16.18.119': {}
 
-  '@types/node@18.19.64':
-    dependencies:
-      undici-types: 5.26.5
-
   '@types/node@22.9.0':
     dependencies:
       undici-types: 6.19.8
@@ -8396,13 +8344,6 @@ snapshots:
       hookable: 5.5.3
       unhead: 1.11.11
       vue: 3.5.13(typescript@5.6.3)
-
-  '@vavite/multibuild@4.1.3(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))':
-    dependencies:
-      '@types/node': 18.19.64
-      cac: 6.7.14
-      picocolors: 1.1.1
-      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
 
   '@vercel/nft@0.27.6':
     dependencies:
@@ -12723,8 +12664,6 @@ snapshots:
       magic-string: 0.30.12
       unplugin: 1.16.0
 
-  undici-types@5.26.5: {}
-
   undici-types@6.19.8: {}
 
   unenv@1.10.0:
@@ -12929,11 +12868,6 @@ snapshots:
     transitivePeerDependencies:
       - rollup
       - supports-color
-
-  vite-plugin-restart@0.4.1(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0)):
-    dependencies:
-      micromatch: 4.0.8
-      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
 
   vite-plugin-vue-inspector@5.1.3(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0)):
     dependencies:

@@ -69,7 +69,3 @@ const items = computed(() => [
     </template>
   </UDropdown>
 </template>
-
-<style scoped>
-
-</style>
