@@ -32,7 +32,7 @@ export default createConfigForNuxt({
     },
   },
   {
-    files: ['**/*.ts', '**/*.js'], // Ajout pour TypeScript/JavaScript
+    files: ['**/*.ts', '**/*.js'],
     rules: {
       '@typescript-eslint/no-unused-expressions': [
         'error',

@@ -16,7 +16,7 @@ const MeController = () => import('#controllers/auth/me_controller');
 const RegisterController = () => import('#controllers/auth/register_controller');
 
 router.group(() => {
-  router.post('/api/register', [RegisterController, 'register']);
+  router.post('/api/signup', [RegisterController, 'signup']);
 
   router.post('/api/login', [LoginController, 'login']);
 

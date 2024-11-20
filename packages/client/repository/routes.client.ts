@@ -5,9 +5,10 @@ const prefix: string = 'api';
 
 const Routes = {
   User: {
-    Register: () => `${prefix}/register`,
+    Signup: () => `${prefix}/signup`,
     Login: () => `${prefix}/login`,
     Me: () => `${prefix}/me`,
+    Logout: () => `${prefix}/logout`,
   },
 };
 

@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import Register from './Register.vue';
-</script>
-
 <template>
-  <div>
-    <Register />
-  </div>
+  <p>test</p>
 </template>
+<script setup lang="ts">
+</script>

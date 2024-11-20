@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import type { DateTime } from 'luxon';
 import hash from '@adonisjs/core/services/hash';
 import { compose } from '@adonisjs/core/helpers';
@@ -28,8 +27,4 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
-
-  public doSomething(): void {
-    console.log('Doing something');
-  }
 }

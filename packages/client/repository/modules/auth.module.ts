@@ -4,11 +4,12 @@ import Routes from '../routes.client';
 
 class AuthModule extends FetchFactory {
   private readonly RESOURCE = Routes.User;
-  async register(email: string, fullName: string, password: string) {
+
+  async signup(email: string, fullName: string, password: string) {
     return this.call<User>(
       {
         method: 'POST',
-        url: `${this.RESOURCE.Register()}`,
+        url: `${this.RESOURCE.Signup()}`,
         body: {
           email,
           fullName,
@@ -36,6 +37,15 @@ class AuthModule extends FetchFactory {
       {
         method: 'GET',
         url: `${this.RESOURCE.Me()}`,
+      },
+    );
+  }
+
+  async logout() {
+    return this.call<User>(
+      {
+        method: 'GET',
+        url: `${this.RESOURCE.Logout()}`,
       },
     );
   }

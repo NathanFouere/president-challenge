@@ -47,8 +47,7 @@
     "pino-pretty": "^11.2.2",
     "prettier": "^3.3.3",
     "ts-node-maintained": "^10.9.4",
-    "typescript": "~5.6",
-    "vite": "^5.4.8"
+    "typescript": "~5.6"
   },
   "dependencies": {
     "@adonisjs/auth": "^9.2.3",
@@ -57,7 +56,6 @@
     "@adonisjs/session": "^7.5.0",
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
-    "@adonisjs/vite": "^3.0.0",
     "@adonisjs/cors": "^2.2.1",
     "@vinejs/vine": "^2.1.0",
     "edge.js": "^6.2.0",
