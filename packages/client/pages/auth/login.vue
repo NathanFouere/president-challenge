@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {useUserStore} from "../store/user.store";
-import {useUserLoginStore} from "../store/user-login.store";
+import container from "../../config/container";
+import type {AuthPresenter} from "../../presenters/auth.presenter";
+import {COMMON_DEPENDANCY_TYPES} from "../../config/common.types";
+import {ROUTES} from "../../config/routes";
 
-const userStore = useUserStore();
-const loginStore = useUserLoginStore();
-const { $api } = useNuxtApp();
+const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
 const fields = [
   {
@@ -29,15 +29,7 @@ const validate = (state: any) => {
 };
 
 async function onSubmit(data: any) {
-  loginStore.setLogging()
-  try {
-    const user = await $api.auth.login(data.email, data.password);
-    userStore.setUser(user);
-    loginStore.unsetLogging()
-  }
-  catch (error) {
-    console.error(error);
-  }
+  await authPresenter.login(data.email, data.password);
 }
 </script>
 
@@ -48,18 +40,17 @@ async function onSubmit(data: any) {
         :validate="validate"
         title="Login"
         :ui="{ base: 'text-center', footer: 'text-center' }"
-        :loading="loginStore.getIsLogging"
+        :loading="authPresenter.loginStore.getIsLogging"
         :submit-button="{ label: 'Login' }"
         @submit="onSubmit"
     >
       <template #description>
         Don't have an account?
-        <NuxtLink to="/signup" class="text-primary font-medium">Sign up</NuxtLink>.
+        <NuxtLink :to="ROUTES.signup" class="text-primary font-medium">Sign up</NuxtLink>.
       </template>
 
-      <template #footer>
-        By logging in, you agree to our
-        <NuxtLink to="/" class="text-primary font-medium">Terms of Service</NuxtLink>.
+      <template #validation v-if="authPresenter.loginStore.getError">
+        <UAlert color="red" icon="i-heroicons-information-circle-20-solid" :title="authPresenter.loginStore.getError" />
       </template>
     </UAuthForm>
   </UCard>

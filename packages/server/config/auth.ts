@@ -10,7 +10,7 @@ const authConfig = defineConfig({
       provider: sessionUserProvider({
         model: () => import('#models/user'),
       }),
-    })
+    }),
   },
 });
 

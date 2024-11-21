@@ -1,22 +1,12 @@
 <script setup lang="ts">
-import {useUserStore} from "../store/user.store";
-import {userUserDropdownStore} from "../store/user-dropdown.store";
+import container from "../config/container";
+import type {AuthPresenter} from "../presenters/auth.presenter";
+import {COMMON_DEPENDANCY_TYPES} from "../config/common.types";
 
-const userStore = useUserStore();
-const userDropdownStore = userUserDropdownStore();
-const { $api }  = useNuxtApp()
-
+const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
 const logout = async () => {
-  userDropdownStore.setLoggingOut();
-  try {
-    await $api.auth.logout();
-    userStore.unsetUser();
-  } catch (error) {
-    console.error("Error signing out:", error);
-  } finally {
-    userDropdownStore.unsetLoggingOut();
-  }
+  await authPresenter.logout();
 };
 
 const items = computed(() => [
@@ -31,7 +21,7 @@ const items = computed(() => [
     {
       label: 'Sign out',
       icon: 'i-heroicons-arrow-left-on-rectangle',
-      iconClass: userDropdownStore.isLoggingOut ? 'animate-spin' : '',
+      iconClass: authPresenter.logoutStore.isLoggingOut ? 'animate-spin' : '',
       click: logout
     },
   ]
@@ -52,7 +42,7 @@ const items = computed(() => [
           color="gray"
           variant="ghost"
           class="w-full"
-          :label="userStore.user!.fullName"
+          :label="authPresenter.userStore.user!.fullName"
           :class="[open && 'bg-gray-50 dark:bg-gray-800']"
       >
       </UButton>
@@ -60,10 +50,10 @@ const items = computed(() => [
     <template #account>
       <div class="text-left">
         <p>
-          Signed in as {{ userStore.user!.fullName }}
+          Signed in as {{ authPresenter.userStore.user!.fullName }}
         </p>
         <p class="truncate font-medium text-gray-900 dark:text-white">
-          {{ userStore.user!.email }}
+          {{ authPresenter.userStore.user!.email }}
         </p>
       </div>
     </template>

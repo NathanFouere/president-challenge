@@ -1,0 +1,16 @@
+{
+    "identifier": "paris-peace-accords",
+    "title": "Uncertain Peace: The Aftermath of the Paris Peace Accords in Vietnam",
+    "text": "The Paris Peace Accords, signed just last month on January 27, 1973, have brought a temporary halt to the long and devastating Vietnam War. These accords, negotiated between the United States, North Vietnam, South Vietnam, and the Provisional Revolutionary Government, outline the withdrawal of U.S. troops from Vietnam and the release of prisoners of war. The agreement represents a critical moment in ending direct American involvement in the conflict. However, while the U.S. is beginning to pull out its forces, there is still uncertainty about the future stability of South Vietnam and whether peace will truly hold. The North Vietnamese troops remain in the South, and many are skeptical about how long this ceasefire will last. For now, the focus is on how the region will respond in the coming months as both sides prepare for what might follow the American withdrawal.",
+    "imagesIdentifiers": [
+        "paris-peace-accord-one",
+        "paris-peace-accord-two"
+    ],
+    "turn": 28,
+    "isAvailable": true,
+    "needsToBeRead": false,
+    "isScripted": true,
+    "isHistorical": true,
+    "isInformational": false,
+    "isImportant": false
+}

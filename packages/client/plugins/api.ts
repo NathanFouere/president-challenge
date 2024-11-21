@@ -1,4 +1,5 @@
 import AuthModule from '../repository/modules/auth.module';
+import 'reflect-metadata';
 
 export interface IApiInstance {
   auth: AuthModule;

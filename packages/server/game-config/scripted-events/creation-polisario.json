@@ -1,0 +1,16 @@
+{
+    "identifier": "creation-polisario-front",
+    "title": "Creation of the Polisario Front",
+    "text": "In May 1973, the Polisario Front was formed by a group of Sahrawi nationalists aiming to liberate Western Sahara from Spanish colonial rule. Led by El-Ouali Mustapha Sayed, the movement adopted armed struggle to fight for the independence of the Sahrawi people. With growing discontent toward Spanish control, the Polisario quickly gained support and began organizing resistance efforts. This marks the beginning of a determined struggle for Sahrawi self-determination.",
+    "imagesIdentifiers": [
+        "creation-polisario-one",
+        "creation-polisario-two"
+    ],
+    "turn": 32,
+    "isAvailable": true,
+    "needsToBeRead": false,
+    "isScripted": true,
+    "isHistorical": true,
+    "isInformational": false,
+    "isImportant": false
+}

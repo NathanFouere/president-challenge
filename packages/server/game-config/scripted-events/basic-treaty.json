@@ -1,0 +1,17 @@
+{
+    "identifier": "basic-treaty",
+    "title": "Signature of the Basic Treaty",
+    "text": "The Basic Treaty, signed on December 21, 1972, between West Germany (FRG) and East Germany (GDR), marked a significant step in normalizing relations between the two German states without full legal recognition. The treaty, a product of Chancellor Willy Brandt's Ostpolitik, was part of broader East-West détente during the Cold War. While the treaty acknowledged the borders established after World War II and promoted peaceful coexistence, it maintained West Germany's long-term goal of reunification. The treaty facilitated cooperation in various areas while preserving legal distinctions, as the FRG did not view the GDR as a foreign state.",
+    "imagesIdentifiers": [
+        "basic-treaty-one",
+        "basic-treaty-two",
+        "basic-treaty-three"
+    ],
+    "turn": 27,
+    "isAvailable": true,
+    "needsToBeRead": false,
+    "isScripted": true,
+    "isHistorical": true,
+    "isInformational": false,
+    "isImportant": false
+}

@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import {useUserStore} from "../store/user.store";
+import {ROUTES} from "../config/routes";
 const userStore = useUserStore();
 
 const links = [
   {
     label: 'Login',
     icon: 'i-heroicons-user',
-    to: '/login',
+    to: ROUTES.login,
   },
   {
     label: 'Home',
     icon: 'i-heroicons-home',
-    to: '/',
+    to: ROUTES.home,
     disabled: !userStore.hasConnectedUser
   }
 ]

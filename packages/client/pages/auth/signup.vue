@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {useUserStore} from "../store/user.store";
-import {useUserSignupStore} from "../store/user-signup.store";
+import container from "../../config/container";
+import type {AuthPresenter} from "../../presenters/auth.presenter";
+import {COMMON_DEPENDANCY_TYPES} from "../../config/common.types";
+import {ROUTES} from "../../config/routes";
 
-const userStore = useUserStore();
-const signupStore = useUserSignupStore();
-const { $api } = useNuxtApp();
+const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
 const fields = [
   {
@@ -36,15 +36,7 @@ const validate = (state: any) => {
 };
 
 async function onSubmit(data: any) {
-  signupStore.setIsRegistering()
-  try {
-    const user = await $api.auth.signup(data.email, data.fullName, data.password);
-    userStore.setUser(user);
-  }
-  catch (error) {
-    console.error(error);
-  }
-  signupStore.unsetIsRegistering();
+  await authPresenter.signup(data.email, data.fullName, data.password);
 }
 </script>
 
@@ -56,17 +48,21 @@ async function onSubmit(data: any) {
         title="Create an account"
         :ui="{ base: 'text-center', footer: 'text-center' }"
         :submit-button="{ label: 'Create account' }"
-        :loading="signupStore.getIsRegistering"
+        :loading="authPresenter.signupStore.getIsRegistering"
         @submit="onSubmit"
     >
       <template #description>
         Already have an account?
-        <NuxtLink to="/login" class="text-primary font-medium">Login</NuxtLink>.
+        <NuxtLink :to="ROUTES.login" class="text-primary font-medium">Login</NuxtLink>.
+      </template>
+
+      <template #validation v-if="authPresenter.signupStore.getError">
+        <UAlert color="red" icon="i-heroicons-information-circle-20-solid" :title="authPresenter.signupStore.getError" />
       </template>
 
       <template #footer>
         By signing up, you agree to our
-        <NuxtLink to="/" class="text-primary font-medium">Terms of Service</NuxtLink>.
+        <NuxtLink to="/packages/client/public" class="text-primary font-medium">Terms of Service</NuxtLink>.
       </template>
     </UAuthForm>
   </UCard>
