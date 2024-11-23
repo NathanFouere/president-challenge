@@ -5,7 +5,7 @@ import Routes from '../routes.client';
 class AuthModule extends FetchFactory {
   private readonly RESOURCE = Routes.User;
 
-  async signup(email: string, fullName: string, password: string) {
+  public async signup(email: string, fullName: string, password: string): Promise<User> {
     return this.call<User>(
       {
         method: 'POST',
@@ -17,9 +17,9 @@ class AuthModule extends FetchFactory {
         },
       },
     );
-  }
+  };
 
-  async login(email: string, password: string) {
+  public async login(email: string, password: string): Promise<User> {
     return this.call<User>(
       {
         method: 'POST',
@@ -30,25 +30,25 @@ class AuthModule extends FetchFactory {
         },
       },
     );
-  }
+  };
 
-  async me() {
+  public async me(): Promise<User> {
     return this.call<User>(
       {
         method: 'GET',
         url: `${this.RESOURCE.Me()}`,
       },
     );
-  }
+  };
 
-  async logout() {
-    return this.call<User>(
+  public async logout(): Promise<void> {
+    return this.call(
       {
         method: 'GET',
         url: `${this.RESOURCE.Logout()}`,
       },
     );
-  }
+  };
 }
 
 export default AuthModule;

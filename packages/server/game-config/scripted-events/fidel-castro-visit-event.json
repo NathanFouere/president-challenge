@@ -1,0 +1,265 @@
+{
+  "identifier": "annoucement-fidel-castro-visit",
+  "title": "Announcement of Fidel Castro's Visit ",
+  "text" : "In a historic and highly anticipated move, Cuban leader Fidel Castro has arrived in Chile for an official visit. This visit marks a significant moment in the relationship between the two countries, highlighting the growing ties between Chile and Cuba, two nations united by a vision of socialism and social reform.\n\nFidel Castro's Cuba, following the 1959 revolution, has become a symbol of socialist aspirations and anti-imperialist struggle in Latin America. Under Castro's leadership, Cuba has implemented sweeping social reforms, including land redistribution, nationalization of industries, and the establishment of universal healthcare and education. These achievements, however, have come at the cost of strained relations with the United States and significant economic challenges, largely due to a longstanding U.S. embargo.\n\nThe visit has provoked a mixed response within Chile. On one hand, the Chilean Left, including supporters of the current government, view Castro's visit as a powerful endorsement of their own political agenda. They see it as an opportunity to strengthen international solidarity among socialist countries and to share experiences and strategies for implementing social reforms.\n\nOn the other hand, the Chilean Right is deeply angered by Castro's presence, perceiving it as a threat to Chile's political stability and an endorsement of a model they fear could lead to economic isolation and authoritarianism. Critics argue that embracing Cuba's path could alienate Chile from Western allies and lead to a deterioration of democratic institutions.\n\nAs Castro's visit unfolds, it is likely to further polarize the already divided Chilean society, with the potential to influence both domestic policies and international relations. The reactions to this visit will be a key indicator of the current political climate in Chile and the direction the country may take in the future.\n\nThe visit has provoked a mixed response within Chile. On one hand, the Chilean Left, including supporters of the current government, view Castro's visit as a powerful endorsement of their own political agenda. They see it as an opportunity to strengthen international solidarity among socialist countries and to share experiences and strategies for implementing social reforms.\\On the other hand, the Chilean Right is deeply angered by Castro's presence, perceiving it as a threat to Chile's political stability and an endorsement of a model they fear could lead to economic isolation and authoritarianism. Critics argue that embracing Cuba's path could alienate Chile from Western allies and lead to a deterioration of democratic institutions.\n\nAs Castro's visit unfolds, it is likely to further polarize the already divided Chilean society, with the potential to influence both domestic policies and international relations. The reactions to this visit will be a key indicator of the current political climate in Chile and the direction the country may take in the future.",
+  "imagesIdentifiers": [
+    "annoucement-fidel-castro-visit-one",
+    "annoucement-fidel-castro-visit-two",
+    "annoucement-fidel-castro-visit-three"
+  ],
+  "videoIdentifiers": [
+  ],
+  "turn": 6,
+  "isAvailable": true,
+  "needsToBeRead": true,
+  "isScripted": true,
+  "isHistorical": false,
+  "isInformational": false,
+  "isImportant": true,
+  "choices": [
+    {
+      "text": "Cancel Visit",
+      "choiceMalusAndBonusesForPoliticalParties": {
+        "valueFarLeft": -5,
+        "valueLeft": -5,
+        "valueCenterLeft": -2.5,
+        "valueCenterRight": 2.5,
+        "valueRight": 5,
+        "valueFarRight": 5
+      },
+      "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+        "valueFarLeft": -10,
+        "valueLeft": -10,
+        "valueCenterLeft": -5,
+        "valueCenterRight": 5,
+        "valueRight": 10,
+        "valueFarRight": 10,
+        "duration": 5
+      }
+    },
+    {
+      "text": "Maintain Fidel Castro visit",
+      "triggerEventIdentifier": "maintain_fidel_castro_visit",
+      "choiceMalusAndBonusesForPoliticalParties": {
+        "valueFarLeft": 5,
+        "valueLeft": 5,
+        "valueCenterLeft": 2.5,
+        "valueCenterRight": -2.5,
+        "valueRight": -5,
+        "valueFarRight": -5
+      },
+      "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+        "valueFarLeft": 10,
+        "valueLeft": 10,
+        "valueCenterLeft": 5,
+        "valueCenterRight": -5,
+        "valueRight": -10,
+        "valueFarRight": -10,
+        "duration": 5
+      }
+    }
+  ],
+  "childEvents": [
+    {
+      "identifier": "maintain_fidel_castro_visit",
+      "title": "Arrival of Castro and the Initial Reception",
+      "text": "Fidel Castro, the charismatic leader of Cuba, has arrived in Chile to a mixture of fervent cheers and sharp criticism. His visit, marked by a warm and enthusiastic welcome from Chilean President Salvador Allende and his supporters, has already sparked significant political reactions across the country.\n\nAs Castro disembarked from his plane, he was greeted by throngs of supporters waving Cuban flags and chanting slogans of solidarity. For the Chilean Left and the supporters of President Allende, Castro's visit is seen as a validation of their own socialist aspirations. They hope to learn from Cuba's experience in building a socialist society and to strengthen ties with a nation that has successfully resisted external pressures to maintain its ideological course.\n\nCastro's arrival was marked by a large public event in Santiago, where he addressed the crowd, speaking passionately about unity, social justice, and the importance of standing firm against imperialism. His presence and rhetoric have invigorated Allende's base, providing a morale boost at a time of economic challenges and political tension.\n\nHowever, not everyone in Chile shares this enthusiasm. The Right has reacted with alarm, viewing Castro's presence as a symbol of a dangerous turn towards authoritarian socialism. Many fear that Castro's influence could encourage more radical policies and further alienate Chile from its traditional Western allies. The opposition has voiced concerns about the implications of closer ties with Cuba, warning that such a path could lead to economic hardship and political repression similar to that experienced by the Cuban people.\n\nCastro's visit is likely to deepen the political divide in Chile, with potential implications for the country's future direction. As the Cuban leader embarks on a tour across Chile, visiting cities and engaging with various social groups, the response he receives will be a telling sign of the country's social and political landscape. The visit serves as a reminder of the broader ideological struggles at play in Latin America, as nations grapple with questions of social justice, economic development, and political sovereignty.",
+      "imagesIdentifiers": [
+        "arrival-castro-one",
+        "arrival-castro-two"
+      ],
+      "isAvailable": false,
+      "turn": 13,
+      "isScripted": true,
+      "needsToBeRead": true,
+      "isHistorical": false,
+      "isInformational": false,
+      "isImportant": true,
+      "choices": [
+        {
+          "text": "Public parade",
+          "triggerEventIdentifier": "castro_speeches_public",
+          "choiceMalusAndBonusesForPoliticalParties": {
+            "valueFarLeft": 5,
+            "valueLeft": 5,
+            "valueCenterLeft": 2.5,
+            "valueCenterRight": -2.5,
+            "valueRight": -5,
+            "valueFarRight": -5
+          },
+          "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+            "valueFarLeft": 10,
+            "valueLeft": 10,
+            "valueCenterLeft": 5,
+            "valueCenterRight": -5,
+            "valueRight": -10,
+            "valueFarRight": -10,
+            "duration": 5
+          }
+        },
+        {
+          "text": "Private meeting",
+          "triggerEventIdentifier": "castro_speeches_public",
+          "choiceMalusAndBonusesForPoliticalParties": {
+            "valueFarLeft": 2.5,
+            "valueLeft": 2.5,
+            "valueCenterLeft": 5,
+            "valueCenterRight": 2.5,
+            "valueRight": -2.5,
+            "valueFarRight": -2.5
+          },
+          "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+            "valueFarLeft": 5,
+            "valueLeft": 5,
+            "valueCenterLeft": 10,
+            "valueCenterRight": 5,
+            "valueRight": -5,
+            "valueFarRight": -5,
+            "duration": 5
+          }
+        }
+      ],
+      "childEvents": [
+        {
+          "identifier": "castro_speeches_public",
+          "title": "Castro's Speeches and Public Appearances",
+          "text": "During his visit to Chile, Cuban leader Fidel Castro delivered a fiery and radical speech that has ignited a national debate. Addressing a massive crowd in Santiago, Castro spoke passionately about revolution, anti-imperialism, and the need for Latin American countries to resist foreign influence and embrace socialism. His words resonated deeply with some, while others saw them as a dangerous provocation.\n\nFidel Castro's speeches are renowned for their fervent rhetoric and unyielding stance against imperialism, particularly that of the United States. In Cuba, his oratory has been a powerful tool for mobilizing support and justifying the revolutionary path taken by his government. Now, in Chile, Castro's message of resistance and solidarity with the oppressed aims to inspire a similar commitment to socialism and social change.\n\nStanding before a sea of supporters, Castro called for solidarity among Latin American nations to challenge economic exploitation and political domination by foreign powers. He praised Chile's steps towards socialism under President Salvador Allende, urging further reforms and warning against complacency. Castro also criticized the influence of the United States in the region, calling for an end to what he termed \"economic enslavement\" and the establishment of a truly independent Latin America.\n\nThe speech has sent shockwaves throughout Chilean society, polarizing public opinion even further. On the one hand, Castro's speech has electrified the Left, emboldening those who see him as a symbol of resistance and a beacon of hope for a socialist future. His words have been welcomed by those who believe in the necessity of radical change to achieve social justice and equality.\n\nOn the other hand, the Right is deeply alarmed by the speech's radical nature, viewing it as a direct incitement to revolution and a threat to Chile's democratic institutions. Critics argue that Castro's rhetoric could incite unrest and lead to increased polarization and violence within the country. Business leaders and moderates fear that such radical ideas could destabilize the economy and lead to international isolation.\n\nIn the wake of Castro's speech, President Allende and his government face a difficult decision. Allowing Castro to continue making radical speeches could further energize the Left and strengthen ties with Cuba, but it also risks alienating moderates, provoking the Right, and increasing the likelihood of unrest. Limiting his speeches or controlling their content could be seen as a betrayal by Allende's supporters and could weaken the government's standing among its base.\n\nThe most extreme option—expelling Castro from the country—would likely appease the Right and reassure those concerned about stability. However, this move could also be viewed as capitulating to pressure, damaging Allende's reputation among his own supporters and potentially souring relations with Cuba.\n\nThe choice regarding Fidel Castro's continued presence and freedom to speak in Chile is a critical one. It is a decision that will not only impact Chile's domestic politics but also its standing on the international stage. As tensions rise, the government's response will be closely watched by all sides, shaping the future of Chile's political landscape and its role in the broader struggle for power and ideology in Latin America.",
+          "imagesIdentifiers": [
+            "castro-speech-one",
+            "castro-speech-two"
+          ],
+          "isAvailable": false,
+          "turn": 13,
+          "isScripted": true,
+          "needsToBeRead": true,
+          "isHistorical": false,
+          "isInformational": false,
+          "isImportant": true,
+          "choices": [
+            {
+              "text": "Allow Unrestricted Speeches",
+              "triggerEventIdentifier": "departure_of_castro",
+              "choiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": 5,
+                "valueLeft": 5,
+                "valueCenterLeft": 2.5,
+                "valueCenterRight": -2.5,
+                "valueRight": -5,
+                "valueFarRight": -5
+              },
+              "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": 10,
+                "valueLeft": 10,
+                "valueCenterLeft": 5,
+                "valueCenterRight": -5,
+                "valueRight": -10,
+                "valueFarRight": -10,
+                "duration": 5
+              }
+            },
+            {
+              "text": "Limit Public Appearances",
+              "triggerEventIdentifier": "departure_of_castro",
+              "choiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": 2.5,
+                "valueLeft": 2.5,
+                "valueCenterLeft": 5,
+                "valueCenterRight": 2.5,
+                "valueRight": -2.5,
+                "valueFarRight": -2.5
+              },
+              "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": 5,
+                "valueLeft": 5,
+                "valueCenterLeft": 10,
+                "valueCenterRight": 5,
+                "valueRight": -5,
+                "valueFarRight": -5,
+                "duration": 5
+              }
+            },
+            {
+              "text": "Expulse Fidel Castro",
+              "choiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": -10,
+                "valueLeft": -10,
+                "valueCenterLeft": -5,
+                "valueCenterRight": 2.5,
+                "valueRight": 5,
+                "valueFarRight": 5
+              },
+              "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": -20,
+                "valueLeft": -20,
+                "valueCenterLeft": -10,
+                "valueCenterRight": 5,
+                "valueRight": 10,
+                "valueFarRight": 10,
+                "duration": 5
+              }
+            }
+          ],
+          "childEvents": [
+            {
+              "identifier": "departure_of_castro",
+              "title": "Departure of Castro",
+              "text": "After a month-long visit that has left an indelible mark on Chilean politics, Fidel Castro is set to depart from Chile. His stay has been a whirlwind of speeches, meetings, and public appearances, deeply influencing both supporters and critics alike. As his departure date approaches, the Chilean government faces a decision: should Castro leave quietly, or should there be a grand farewell to mark the end of this historic visit?\n\nFidel Castro's visit to Chile has been marked by a series of radical speeches advocating for socialist unity, anti-imperialism, and profound societal changes. While his presence has energized the Left, it has also provoked significant concern and opposition from the Right. His visit has brought international attention to Chile, highlighting the nation's shift towards socialist policies under President Salvador Allende.\n\nAs Fidel Castro prepares to leave Chile, the choice of how to mark his departure will be a defining moment for President Allende's administration. It will send a message to both domestic and international audiences about the future direction of Chile’s policies and its role in the broader ideological struggle in Latin America. Whatever the decision, Castro’s visit has already left a profound impact, and its repercussions will be felt for years to come.",
+              "imagesIdentifiers": [
+                "castro-departure-one"
+              ],
+              "isAvailable": false,
+              "turn": 13,
+              "isScripted": true,
+              "needsToBeRead": true,
+              "isHistorical": false,
+              "isInformational": false,
+              "isImportant": true,
+              "choices": [
+                {
+                  "text": "Grand Farewell",
+                  "choiceMalusAndBonusesForPoliticalParties": {
+                    "valueFarLeft": 5,
+                    "valueLeft": 5,
+                    "valueCenterLeft": -2.5,
+                    "valueCenterRight": -5,
+                    "valueRight": -5,
+                    "valueFarRight": -5
+                  },
+                  "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                    "valueFarLeft": 10,
+                    "valueLeft": 10,
+                    "valueCenterLeft": -5,
+                    "valueCenterRight": -10,
+                    "valueRight": -10,
+                    "valueFarRight": -10,
+                    "duration": 5
+                  }
+                },
+                {
+                  "text": "Quiet Departure",
+                  "choiceMalusAndBonusesForPoliticalParties": {
+                    "valueFarLeft": 2.5,
+                    "valueLeft": 2.5,
+                    "valueCenterLeft": 5,
+                    "valueCenterRight": -2.5,
+                    "valueRight": -2.5,
+                    "valueFarRight": -2.5
+                  },
+                  "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                    "valueFarLeft": 5,
+                    "valueLeft": 5,
+                    "valueCenterLeft": 10,
+                    "valueCenterRight": 5,
+                    "valueRight": -5,
+                    "valueFarRight": -5,
+                    "duration": 5
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

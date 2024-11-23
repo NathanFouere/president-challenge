@@ -1,0 +1,58 @@
+{
+    "identifier": "cnuced-conference",
+    "title": "CNUCED Conference",
+    "text": "At the third United Nations Conference on Trade and Development (UNCTAD), hosted in Santiago, President Salvador Allende is at a crossroads. In front of a global audience, he can either adopt a radical tone, condemning the exploitation of Third World nations by wealthy industrialized powers, or he can deliver a more diplomatic speech, advocating for reforms but seeking cooperation rather than confrontation.\n\nA radical speech would solidify Allende’s image as a revolutionary leader, standing up for the impoverished nations of the global south. This would inspire Chile's left-wing supporters but provoke powerful foreign actors like the United States and France, who might retaliate economically or diplomatically. Domestically, this would invigorate his base but also strengthen the opposition.\nAlternatively, a diplomatic speech would show that Chile is committed to international dialogue and reform, without directly antagonizing wealthy nations. This could keep international relations stable and provide breathing room for Chile, though it might disappoint the more radical elements of Allende’s supporters.\n\nThe stakes are high, as Allende’s choice will have lasting impacts both internationally and at home. How will he position Chile in this delicate global moment?",
+    "imagesIdentifiers": [
+        "unctad-one",
+        "unctad-two"
+    ],
+    "turn": 18,
+    "isAvailable": true,
+    "needsToBeRead": false,
+    "isScripted": true,
+    "isHistorical": false,
+    "isInformational": false,
+    "isImportant": true,
+    "choices": [
+        {
+            "text": "Radical Speech",
+            "choiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": 10,
+                "valueLeft": 10,
+                "valueCenterLeft": 5,
+                "valueCenterRight": -10,
+                "valueRight": -10,
+                "valueFarRight": -15
+            },
+            "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": 20,
+                "valueLeft": 20,
+                "valueCenterLeft": 10,
+                "valueCenterRight": -10,
+                "valueRight": -20,
+                "valueFarRight": -20,
+                "duration": 5
+            }
+        },
+        {
+            "text": "Diplomatic Speech",
+            "choiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": -5,
+                "valueLeft": -5,
+                "valueCenterLeft": 20,
+                "valueCenterRight": 25,
+                "valueRight": 10,
+                "valueFarRight": 10
+            },
+            "temporaryChoiceMalusAndBonusesForPoliticalParties": {
+                "valueFarLeft": -20,
+                "valueLeft": -20,
+                "valueCenterLeft": 40,
+                "valueCenterRight": 40,
+                "valueRight": 20,
+                "valueFarRight": 20,
+                "duration": 5
+            }
+        }
+    ]
+}

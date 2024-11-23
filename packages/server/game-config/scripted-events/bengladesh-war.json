@@ -1,0 +1,18 @@
+{
+    "identifier": "bengladesh-war",
+    "title": "India Enters the Conflict in Bengladesh",
+    "text": "In early December 1971, India officially entered the conflict between West Pakistan and East Pakistan, escalating into the Indo-Pakistani War. India's intervention was driven by the humanitarian crisis unfolding in East Pakistan, where millions of refugees were fleeing violence and persecution. Indian forces, alongside the Mukti Bahini freedom fighters, launched a series of coordinated military operations, quickly advancing and capturing key towns and strategic positions in East Pakistan. The war reached its climax on December 16, when Lieutenant General A. A. K. Niazi, commander of the Pakistani Eastern Command, surrendered to the joint Indian and Mukti Bahini forces in Dhaka, signaling the end of the conflict and paving the way for the creation of an independent Bangladesh. Meanwhile, in the United Nations, there were urgent calls for a ceasefire to halt the fighting between India and Pakistan, reflecting the international community’s concern over the escalating war.",
+    "imagesIdentifiers": [
+        "bengladesh-war-one",
+        "bengladesh-war-two",
+        "bengladesh-war-three",
+        "bengladesh-war-four"
+    ],
+    "turn": 15,
+    "isAvailable": true,
+    "needsToBeRead": false,
+    "isScripted": true,
+    "isHistorical": true,
+    "isInformational": false,
+    "isImportant": false
+}

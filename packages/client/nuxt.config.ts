@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/api.ts',
     '~/plugins/check-auth.ts',
+    '~/plugins/inversify.ts',
   ],
   ssr: false,
 
@@ -31,4 +32,13 @@ export default defineNuxtConfig({
     transpile: ['@nuxt/ui'],
   },
   compatibilityDate: '2024-04-03',
+  vite: {
+    esbuild: {
+      tsconfigRaw: {
+        compilerOptions: {
+          experimentalDecorators: true,
+        },
+      },
+    },
+  },
 });

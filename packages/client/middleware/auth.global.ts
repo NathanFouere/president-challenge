@@ -1,10 +1,11 @@
 import type { User } from '@shared/types/user/user';
 import { useUserStore } from '../store/user.store';
+import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
 
 export default defineNuxtRouteMiddleware(async (to) => {
   const { $checkAuth } = useNuxtApp();
 
-  if (to.name === 'login' || to.name === 'signup') {
+  if (to.fullPath === NUXT_ROUTES.login || to.fullPath === NUXT_ROUTES.signup) {
     return;
   }
 
@@ -20,7 +21,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   }
 
   if (!user) {
-    return navigateTo('/login');
+    return navigateTo(NUXT_ROUTES.login);
   }
   else {
     userStore.setUser(user);

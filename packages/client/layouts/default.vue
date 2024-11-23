@@ -1,35 +1,39 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import {useUserStore} from "../store/user.store";
-const userStore = useUserStore();
+import { useRoute } from 'vue-router';
+import { useUserStore } from '../store/user.store';
+import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
 
+const userStore = useUserStore();
+const hasUser = computed(() => userStore.hasConnectedUser);
 const links = [
   {
     label: 'Login',
     icon: 'i-heroicons-user',
-    to: '/login',
+    to: NUXT_ROUTES.login,
+    disabled: hasUser,
   },
   {
     label: 'Home',
     icon: 'i-heroicons-home',
-    to: '/',
-    disabled: !userStore.hasConnectedUser
-  }
-]
+    to: NUXT_ROUTES.home,
+    disabled: !hasUser.value,
+  },
+];
 
-const route = useRoute()
+const route = useRoute();
 
 const activeLink = computed(() => {
-  return links.find(link => link.to === route.path) || { label: 'Unknown' }
-})
+  const routeName = route.name as string;
+  return routeName.split('-').map((word, index) => index === 0 ? '' : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+});
 </script>
 
 <template>
   <UDashboardLayout>
     <UDashboardPanel
-        :width="250"
-        :resizable="{ min: 200, max: 300 }"
-        collapsible
+      :width="250"
+      :resizable="{ min: 200, max: 300 }"
+      collapsible
     >
       <UDashboardSidebar>
         <template #header>
@@ -37,14 +41,14 @@ const activeLink = computed(() => {
         </template>
         <UDivider class="sticky bottom-0" />
         <template #footer>
-          <UserDropdown v-if="userStore.connectedUser"/>
+          <UserDropdown v-if="userStore.connectedUser" />
         </template>
       </UDashboardSidebar>
     </UDashboardPanel>
 
     <UDashboardPage class="flex flex-1 w-full">
       <UDashboardPanel class="flex flex-1 w-full">
-        <UDashboardNavbar :title="activeLink.label" />
+        <UDashboardNavbar :title="activeLink" />
         <NuxtPage />
       </UDashboardPanel>
     </UDashboardPage>
