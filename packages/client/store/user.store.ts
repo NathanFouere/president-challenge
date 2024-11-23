@@ -6,11 +6,17 @@ export const useUserStore = defineStore('userStore', {
     user: null as User | null,
   }),
   getters: {
-    connectedUser(): User | null {
-      return this.user;
+    connectedUser(state): User | null {
+      return state.user;
     },
-    hasConnectedUser(): boolean {
-      return !this.user;
+    requireConnectedUser(state): User {
+      if (state.user == null) {
+        throw new Error('No connected user');
+      }
+      return state.user;
+    },
+    hasConnectedUser(state): boolean {
+      return state.user != null;
     },
   },
   actions: {

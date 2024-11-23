@@ -5,10 +5,10 @@ import { useUserLoginStore } from '../store/user-login.store';
 import type AuthModule from '../repository/modules/auth.module';
 import { useUserLogoutStore } from '../store/user-logout.store';
 import { useUserSignupStore } from '../store/user-signup.store';
-import { ROUTES } from '../config/routes';
+import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
 
 @injectable()
-export class AuthPresenter implements AuthPresenter {
+export class AuthPresenter {
   public readonly loginStore = useUserLoginStore();
   public readonly logoutStore = useUserLogoutStore();
   public readonly signupStore = useUserSignupStore();
@@ -22,6 +22,7 @@ export class AuthPresenter implements AuthPresenter {
       const user = await this.authModule.login(email, password);
       this.userStore.setUser(user);
       this.loginStore.unsetLogging();
+      this.router.push(NUXT_ROUTES.home);
     }
     catch (error) {
       this.loginStore.setError('Error occured while logging in');
@@ -31,10 +32,10 @@ export class AuthPresenter implements AuthPresenter {
   public async logout(): Promise<void> {
     this.logoutStore.setLoggingOut();
     try {
-      const user = await this.authModule.logout();
-      this.userStore.setUser(user);
+      await this.authModule.logout();
+      this.userStore.unsetUser();
       this.logoutStore.unsetLoggingOut();
-      this.router.push(ROUTES.login);
+      this.router.push(NUXT_ROUTES.login);
     }
     catch (error) {
       this.logoutStore.setError('Error occured while logging our');
@@ -47,6 +48,7 @@ export class AuthPresenter implements AuthPresenter {
       const user = await this.authModule.signup(email, fullname, password);
       this.userStore.setUser(user);
       this.signupStore.unsetIsRegistering();
+      this.router.push(NUXT_ROUTES.home);
     }
     catch (error) {
       this.signupStore.setError('Error occured while signing up');

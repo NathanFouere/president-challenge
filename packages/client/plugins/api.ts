@@ -1,8 +1,10 @@
 import AuthModule from '../repository/modules/auth.module';
+import GameModule from '../repository/modules/game.module';
 import 'reflect-metadata';
 
 export interface IApiInstance {
   auth: AuthModule;
+  game: GameModule;
 }
 
 export default defineNuxtPlugin(() => {
@@ -15,6 +17,7 @@ export default defineNuxtPlugin(() => {
 
   const modules: IApiInstance = {
     auth: new AuthModule(apiFetcher),
+    game: new GameModule(apiFetcher),
   };
 
   return {

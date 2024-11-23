@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import container from "../../config/container";
-import type {AuthPresenter} from "../../presenters/auth.presenter";
-import {COMMON_DEPENDANCY_TYPES} from "../../config/common.types";
-import {ROUTES} from "../../config/routes";
+import container from '../../config/container';
+import type { AuthPresenter } from '../../presenters/auth.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '../../config/common.types';
+import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
@@ -31,26 +31,52 @@ const validate = (state: any) => {
 async function onSubmit(data: any) {
   await authPresenter.login(data.email, data.password);
 }
+
+async function signOut() {
+  await authPresenter.logout();
+}
 </script>
 
 <template>
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+    <UCard v-if="authPresenter.userStore.connectedUser">
+      <p>
+        Already logged in as {{ authPresenter.userStore.connectedUser.email }} <UButton @click="signOut">
+          Sign out
+        </UButton>
+      </p>
+    </UCard>
+
     <UAuthForm
-        :fields="fields"
-        :validate="validate"
-        title="Login"
-        :ui="{ base: 'text-center', footer: 'text-center' }"
-        :loading="authPresenter.loginStore.getIsLogging"
-        :submit-button="{ label: 'Login' }"
-        @submit="onSubmit"
+      v-else
+      :fields="fields"
+      :validate="validate"
+      title="Login"
+      :ui="{ base: 'text-center', footer: 'text-center' }"
+      :loading="authPresenter.loginStore.getIsLogging"
+      :submit-button="{ label: 'Login' }"
+      @submit="onSubmit"
     >
       <template #description>
-        Don't have an account?
-        <NuxtLink :to="ROUTES.signup" class="text-primary font-medium">Sign up</NuxtLink>.
+        <p>
+          Don't have an account? <NuxtLink
+            :to="NUXT_ROUTES.signup"
+            class="text-primary font-medium"
+          >
+            Sign up
+          </NuxtLink>.
+        </p>
       </template>
 
-      <template #validation v-if="authPresenter.loginStore.getError">
-        <UAlert color="red" icon="i-heroicons-information-circle-20-solid" :title="authPresenter.loginStore.getError" />
+      <template
+        v-if="authPresenter.loginStore.getError"
+        #validation
+      >
+        <UAlert
+          color="red"
+          icon="i-heroicons-information-circle-20-solid"
+          :title="authPresenter.loginStore.getError"
+        />
       </template>
     </UAuthForm>
   </UCard>
