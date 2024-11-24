@@ -1,5 +1,5 @@
 import type { User } from '@shared/types/user/user';
-import { useUserStore } from '../store/user.store';
+import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
 
 export default defineNuxtRouteMiddleware(async (to) => {

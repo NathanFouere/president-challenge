@@ -1,4 +1,4 @@
-import { defineStore } from '../.nuxt/imports';
+import { defineStore } from '../../.nuxt/imports';
 
 export const useUserSignupStore = defineStore('userSignupStore', {
   state: () => ({

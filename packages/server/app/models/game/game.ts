@@ -4,7 +4,7 @@ import type { BelongsTo } from '@adonisjs/lucid/types/relations';
 import User from '#models/auth/user';
 
 export default class Game extends BaseModel {
-  @column({ isPrimary: true, serializeAs: null })
+  @column({ isPrimary: true })
   declare id: number;
 
   @column()

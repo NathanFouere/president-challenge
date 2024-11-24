@@ -5,11 +5,29 @@ import Routes from '../routes.client';
 class GameModule extends FetchFactory {
   private readonly RESOURCE = Routes.Game;
 
-  public async getUserGames(userId: number): Promise<Game[]> {
+  public async getUserGames(): Promise<Game[]> {
     return this.call<Game[]>(
       {
         method: 'GET',
-        url: `${this.RESOURCE.GetGames(userId)}`,
+        url: `${this.RESOURCE.GetGames()}`,
+      },
+    );
+  };
+
+  public async createGame(): Promise<void> {
+    return this.call(
+      {
+        method: 'POST',
+        url: `${this.RESOURCE.CreateGame()}`,
+      },
+    );
+  };
+
+  public async deleteGame(id: number): Promise<void> {
+    return this.call(
+      {
+        method: 'DELETE',
+        url: `${this.RESOURCE.DeleteGame(id)}`,
       },
     );
   }

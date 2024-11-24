@@ -1,5 +1,4 @@
 import type { User } from '@shared/typesuser/user';
-import { defineStore } from '../.nuxt/imports';
 
 export const useUserStore = defineStore('userStore', {
   state: () => ({

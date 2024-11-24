@@ -1,7 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http';
 import type User from '#models/auth/user';
 
-export default class UserGamesController {
+export default class SelectGamesController {
   async getUserGames({ auth, response }: HttpContext) {
     try {
       const user: User = auth.getUserOrFail();
