@@ -1,6 +1,9 @@
-import Game from '#models/game/game';
-import type User from '#models/auth/user';
+import { inject } from '@adonisjs/core';
+import type Game from '#models/game/game';
+import type User from '#models/user/user';
+import { aGame } from '#builders/game/game_builder';
 
+@inject()
 export default class CreateGameService {
   public readonly MAX_GAMES = 3;
 
@@ -18,10 +21,11 @@ export default class CreateGameService {
       );
     }
 
-    // TODO => move to builder
-    const game = new Game();
-    game.userId = user.id;
-    game.turnNumber = 0;
+    const game = aGame()
+      .withUserId(user.id)
+      .withTurnNumber(0)
+      .build();
+
     await game.save();
 
     return game;

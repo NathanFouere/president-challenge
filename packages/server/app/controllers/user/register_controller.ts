@@ -1,15 +1,16 @@
 import type { HttpContext } from '@adonisjs/core/http';
-import User from '#models/auth/user';
+import { aUser } from '#builders/user/user_builder';
 
 export default class RegisterController {
   async signup({ request, auth, response }: HttpContext) {
     const { email, password, fullName } = request.only(['email', 'password', 'fullName']);
 
     try {
-      const user = new User();
-      user.email = email;
-      user.password = password;
-      user.fullName = fullName;
+      const user = aUser()
+        .withEmail(email)
+        .withPassword(password)
+        .withFullName(fullName)
+        .build();
 
       await user.save();
 

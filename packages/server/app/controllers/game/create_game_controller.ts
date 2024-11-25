@@ -1,7 +1,7 @@
 import * as console from 'node:console';
 import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
-import type User from '#models/auth/user';
+import type User from '#models/user/user';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import CreateGameService from '#services/game/create_game_service';
 
