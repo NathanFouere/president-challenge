@@ -12,10 +12,10 @@ import { middleware } from '#start/kernel';
 
 /* AUTHENTICATION */
 
-const LoginController = () => import('#controllers/user/login_controller');
-const LogoutController = () => import('#controllers/user/logout_controller');
-const MeController = () => import('#controllers/user/me_controller');
-const RegisterController = () => import('#controllers/user/register_controller');
+const LoginController = () => import('#user/infrastructure/controllers/login_controller');
+const LogoutController = () => import('#user/infrastructure/controllers/logout_controller');
+const MeController = () => import('#user/infrastructure/controllers/me_controller');
+const RegisterController = () => import('#user/infrastructure/controllers/register_controller');
 
 router.group(() => {
   router.post('/signup', [RegisterController, 'signup']);
@@ -26,9 +26,9 @@ router.group(() => {
 
 /* GAME */
 
-const SelectGamesController = () => import('#controllers/game/select_games_controller');
-const CreateGameController = () => import('#controllers/game/create_game_controller');
-const DeleteGameController = () => import('#controllers/game/delete_game_controller');
+const SelectGamesController = () => import('../app/game/infrastructure/controllers/select_games_controller.js');
+const CreateGameController = () => import('../app/game/infrastructure/controllers/create_game_controller.js');
+const DeleteGameController = () => import('../app/game/infrastructure/controllers/delete_game_controller.js');
 
 router.group(() => {
   router.get('/', [SelectGamesController, 'getUserGames']).use(middleware.auth());
