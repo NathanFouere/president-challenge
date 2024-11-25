@@ -14,9 +14,15 @@
     "typecheck": "tsc --noEmit"
   },
   "imports": {
+    "#common/*": "./app/common/*.js",
+    "#user/*": "./app/user/*.js",
+    "#game/*": "./app/game/*.js",
+    "#event/*": "./app/event/*.js",
     "#controllers/*": "./app/controllers/*.js",
     "#exceptions/*": "./app/exceptions/*.js",
     "#models/*": "./app/models/*.js",
+    "#builders/*": "./app/builders/*.js",
+    "#queries/*": "./app/queries/*.js",
     "#mails/*": "./app/mails/*.js",
     "#services/*": "./app/services/*.js",
     "#listeners/*": "./app/listeners/*.js",

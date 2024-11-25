@@ -1,21 +1,15 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { useUserStore } from '../store/user.store';
+import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
 
 const userStore = useUserStore();
 const hasUser = computed(() => userStore.hasConnectedUser);
 const links = [
   {
-    label: 'Login',
-    icon: 'i-heroicons-user',
-    to: NUXT_ROUTES.login,
-    disabled: hasUser,
-  },
-  {
-    label: 'Home',
-    icon: 'i-heroicons-home',
-    to: NUXT_ROUTES.home,
+    label: 'Games',
+    icon: 'i-heroicons-archive-box',
+    to: NUXT_ROUTES.games,
     disabled: !hasUser.value,
   },
 ];
@@ -24,7 +18,13 @@ const route = useRoute();
 
 const activeLink = computed(() => {
   const routeName = route.name as string;
-  return routeName.split('-').map((word, index) => index === 0 ? '' : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+  return routeName.includes('-')
+    ? routeName
+      .split('-')
+      .slice(1) // Ignore le premier mot
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join('')
+    : routeName.charAt(0).toUpperCase() + routeName.slice(1).toLowerCase();
 });
 </script>
 
@@ -49,7 +49,11 @@ const activeLink = computed(() => {
     <UDashboardPage class="flex flex-1 w-full">
       <UDashboardPanel class="flex flex-1 w-full">
         <UDashboardNavbar :title="activeLink" />
-        <NuxtPage />
+        <UContainer class="pt-5 w-full">
+          <NuxtPage />
+
+          <UNotifications />
+        </UContainer>
       </UDashboardPanel>
     </UDashboardPage>
   </UDashboardLayout>

@@ -11,25 +11,27 @@ import router from '@adonisjs/core/services/router';
 import { middleware } from '#start/kernel';
 
 /* AUTHENTICATION */
-const LoginController = () => import('#controllers/auth/login_controller');
-const LogoutController = () => import('#controllers/auth/logout_controller');
-const MeController = () => import('#controllers/auth/me_controller');
-const RegisterController = () => import('#controllers/auth/register_controller');
+
+const LoginController = () => import('#user/infrastructure/controllers/login_controller');
+const LogoutController = () => import('#user/infrastructure/controllers/logout_controller');
+const MeController = () => import('#user/infrastructure/controllers/me_controller');
+const RegisterController = () => import('#user/infrastructure/controllers/register_controller');
 
 router.group(() => {
   router.post('/signup', [RegisterController, 'signup']);
-
   router.post('/login', [LoginController, 'login']);
-
   router.get('/logout', [LogoutController, 'handle']).use(middleware.auth());
-
   router.get('/me', [MeController, 'me']).use(middleware.auth());
 }).prefix('api/auth');
 
 /* GAME */
 
-const GetUserGamesController = () => import('#controllers/game/user_games');
+const SelectGamesController = () => import('../app/game/infrastructure/controllers/select_games_controller.js');
+const CreateGameController = () => import('../app/game/infrastructure/controllers/create_game_controller.js');
+const DeleteGameController = () => import('../app/game/infrastructure/controllers/delete_game_controller.js');
 
 router.group(() => {
-  router.get('/:playerId', [GetUserGamesController, 'getUserGames']).use(middleware.auth());
+  router.get('/', [SelectGamesController, 'getUserGames']).use(middleware.auth());
+  router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
+  router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
 }).prefix('api/games');

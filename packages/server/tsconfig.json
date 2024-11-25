@@ -14,7 +14,9 @@
     "sourceMap": true,
     "moduleResolution": "nodenext",
     "paths": {
-      "@shared/types/*": ["../shared/dist/types/*"]
+      "@shared/types/*": ["../shared/dist/types/*"],
+      "#services/*": ["./app/services/*.js"],
+      "#controllers/*": ["./app/controllers/*.js"]
     }
   }
 }

@@ -1,0 +1,1 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NathanFouere_allende-challenge-v2&metric=alert_status&token=da295f277cd5d131c11ab2d5705fb52c7f38c414)](https://sonarcloud.io/summary/new_code?id=NathanFouere_allende-challenge-v2)

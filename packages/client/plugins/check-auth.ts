@@ -1,5 +1,5 @@
 import type { User } from '@shared/typesuser/user';
-import { useUserStore } from '../store/user.store';
+import { useUserStore } from '../store/user/user.store';
 
 export default defineNuxtPlugin(() => {
   const checkAuth = async (): Promise<User | null> => {

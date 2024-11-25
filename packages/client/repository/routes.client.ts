@@ -13,7 +13,9 @@ const Routes = {
     Logout: () => `${authPrefix}/logout`,
   },
   Game: {
-    GetGames: (playerId: number) => `${gamePrefix}/${playerId}`,
+    GetGames: () => `${gamePrefix}/`,
+    CreateGame: () => `${gamePrefix}/create`,
+    DeleteGame: (id: number) => `${gamePrefix}/delete/${id}`,
   },
 };
 
