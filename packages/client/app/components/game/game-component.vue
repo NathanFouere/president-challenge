@@ -56,7 +56,3 @@ const handleSelect = () => {
     </template>
   </UCard>
 </template>
-
-<style scoped>
-
-</style>

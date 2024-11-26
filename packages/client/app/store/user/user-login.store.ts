@@ -1,5 +1,3 @@
-import { defineStore } from '../../../.nuxt/imports';
-
 export const useUserLoginStore = defineStore('userLoginStore', {
   state: () => ({
     isLogging: false,

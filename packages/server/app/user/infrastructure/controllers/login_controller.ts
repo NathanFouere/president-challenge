@@ -6,7 +6,7 @@ export default class LoginController {
     const { email, password } = request.only(['email', 'password']);
 
     try {
-      const user = await User.verifyCredentials(email, password);
+      const user: User | null = await User.verifyCredentials(email, password);
 
       await auth.use('web').login(user);
 

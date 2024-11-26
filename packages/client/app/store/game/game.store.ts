@@ -1,5 +1,4 @@
 import type { Game } from '@shared/typesgame/game';
-import { defineStore } from '../../../.nuxt/imports';
 
 export const useGameStore = defineStore('gameStore', {
   state: () => ({

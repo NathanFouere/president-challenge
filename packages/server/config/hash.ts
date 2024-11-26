@@ -20,4 +20,5 @@ export default hashConfig;
  * in your application.
  */
 declare module '@adonisjs/core/types' {
+  export interface HashersList extends InferHashers<typeof hashConfig> {}
 }

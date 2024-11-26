@@ -1,5 +1,3 @@
-import { defineStore } from '../../../.nuxt/imports';
-
 export const useUserLogoutStore = defineStore('userLogoutStore', {
   state: () => ({
     isLoggingOut: false,
