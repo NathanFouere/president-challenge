@@ -1,5 +1,5 @@
-import env from '#start/env';
 import { defineConfig, stores } from '@adonisjs/session';
+import env from '#start/env';
 
 const sessionConfig = defineConfig({
   enabled: true,

@@ -1,4 +1,4 @@
-import { defineConfig, drivers } from '@adonisjs/core/hash'
+import { defineConfig, drivers } from '@adonisjs/core/hash';
 
 const hashConfig = defineConfig({
   default: 'scrypt',
@@ -11,9 +11,9 @@ const hashConfig = defineConfig({
       maxMemory: 33554432,
     }),
   },
-})
+});
 
-export default hashConfig
+export default hashConfig;
 
 /**
  * Inferring types for the list of hashers you have configured

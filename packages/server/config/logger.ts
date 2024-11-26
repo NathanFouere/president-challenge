@@ -1,6 +1,6 @@
-import env from '#start/env'
-import app from '@adonisjs/core/services/app'
-import { defineConfig, targets } from '@adonisjs/core/logger'
+import app from '@adonisjs/core/services/app';
+import { defineConfig, targets } from '@adonisjs/core/logger';
+import env from '#start/env';
 
 const loggerConfig = defineConfig({
   default: 'app',
@@ -22,9 +22,9 @@ const loggerConfig = defineConfig({
       },
     },
   },
-})
+});
 
-export default loggerConfig
+export default loggerConfig;
 
 /**
  * Inferring types for the list of loggers you have configured
