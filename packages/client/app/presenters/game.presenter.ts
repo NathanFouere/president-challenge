@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import type { Game } from '@shared/typesgame/game';
-import type GameModule from '../repository/modules/game.module';
+import type GameModule from '../../server/repository/modules/game.module';
 import { useGameStore } from '../store/game/game.store';
 import { useCustomToast } from '../composables/useCustomToast';
 

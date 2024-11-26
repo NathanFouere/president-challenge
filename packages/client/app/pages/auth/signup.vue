@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import container from '../../config/container';
+import container from '../../../config/container';
 import type { AuthPresenter } from '../../presenters/auth.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../config/common.types';
-import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
+import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 

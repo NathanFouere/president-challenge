@@ -31,6 +31,21 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@nuxt/ui'],
   },
+  future: {
+    compatibilityVersion: 4,
+  },
+  experimental: {
+    sharedPrerenderData: false,
+    compileTemplate: true,
+    resetAsyncDataToUndefined: true,
+    templateUtils: true,
+    relativeWatchPaths: true,
+    defaults: {
+      useAsyncData: {
+        deep: true,
+      },
+    },
+  },
   compatibilityDate: '2024-04-03',
   vite: {
     esbuild: {

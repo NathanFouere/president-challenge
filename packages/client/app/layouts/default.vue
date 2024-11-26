@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { useUserStore } from '../store/user/user.store';
-import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
+import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 
 const userStore = useUserStore();
 const hasUser = computed(() => userStore.hasConnectedUser);

@@ -1,5 +1,5 @@
 export const NUXT_ROUTES = {
-  games: '/games',
+  games: '/',
   login: '/auth/login',
   signup: '/auth/signup',
 };

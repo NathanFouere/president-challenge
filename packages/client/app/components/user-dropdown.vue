@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import container from "../config/container";
-import type {AuthPresenter} from "../presenters/auth.presenter";
-import {COMMON_DEPENDANCY_TYPES} from "../config/common.types";
+import container from '../../config/container';
+import type { AuthPresenter } from '../presenters/auth.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '../../config/common.types';
 
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
@@ -14,38 +14,36 @@ const items = computed(() => [
     {
       slot: 'account',
       label: '',
-      disabled: true
-    }
+      disabled: true,
+    },
   ],
   [
     {
       label: 'Sign out',
       icon: 'i-heroicons-arrow-left-on-rectangle',
       iconClass: authPresenter.logoutStore.isLoggingOut ? 'animate-spin' : '',
-      click: logout
+      click: logout,
     },
-  ]
-])
-
+  ],
+]);
 </script>
 
 <template>
   <UDropdown
-      mode="hover"
-      :items="items"
-      :ui="{ width: 'w-full', item: { disabled: 'cursor-text select-text' } }"
-      :popper="{ strategy: 'absolute', placement: 'top' }"
-      class="w-full"
+    mode="hover"
+    :items="items"
+    :ui="{ width: 'w-full', item: { disabled: 'cursor-text select-text' } }"
+    :popper="{ strategy: 'absolute', placement: 'top' }"
+    class="w-full"
   >
     <template #default="{ open }">
       <UButton
-          color="gray"
-          variant="ghost"
-          class="w-full"
-          :label="authPresenter.userStore.user!.fullName"
-          :class="[open && 'bg-gray-50 dark:bg-gray-800']"
-      >
-      </UButton>
+        color="gray"
+        variant="ghost"
+        class="w-full"
+        :label="authPresenter.userStore.user!.fullName"
+        :class="[open && 'bg-gray-50 dark:bg-gray-800']"
+      />
     </template>
     <template #account>
       <div class="text-left">

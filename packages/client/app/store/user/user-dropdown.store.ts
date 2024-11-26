@@ -1,16 +1,12 @@
-import { defineStore } from '../../.nuxt/imports';
+import { defineStore } from '../../../.nuxt/imports';
 
-export const useUserLogoutStore = defineStore('userLogoutStore', {
+export const userUserDropdownStore = defineStore('userDropdownStore', {
   state: () => ({
     isLoggingOut: false,
-    error: '',
   }),
   getters: {
     getIsLoggingOut(state): boolean {
       return state.isLoggingOut;
-    },
-    getError(state): string {
-      return state.error;
     },
   },
   actions: {
@@ -19,9 +15,6 @@ export const useUserLogoutStore = defineStore('userLogoutStore', {
     },
     unsetLoggingOut() {
       this.isLoggingOut = false;
-    },
-    setError(error: string) {
-      this.error = error;
     },
   },
 });

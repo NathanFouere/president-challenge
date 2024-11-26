@@ -9,7 +9,8 @@
     "build:shared": "pnpm --filter @shared/types run build",
     "build:backend": "pnpm --filter server run build",
     "build:frontend": "pnpm --filter client run build",
-    "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend"
+    "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",
+    "lint": "pnpm --filter server run lint && pnpm --filter client run lint"
   },
   "keywords": [],
   "author": "",

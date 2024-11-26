@@ -1,5 +1,5 @@
-import AuthModule from '../repository/modules/auth.module';
-import GameModule from '../repository/modules/game.module';
+import AuthModule from '../../server/repository/modules/auth.module';
+import GameModule from '../../server/repository/modules/game.module';
 import 'reflect-metadata';
 
 export interface IApiInstance {

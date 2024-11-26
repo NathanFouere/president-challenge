@@ -2,10 +2,10 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import { useUserStore } from '../store/user/user.store';
 import { useUserLoginStore } from '../store/user/user-login.store';
-import type AuthModule from '../repository/modules/auth.module';
+import type AuthModule from '../../server/repository/modules/auth.module';
 import { useUserLogoutStore } from '../store/user/user-logout.store';
 import { useUserSignupStore } from '../store/user/user-signup.store';
-import { NUXT_ROUTES } from '../config/routes/nuxt-routes';
+import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 import { useCustomToast } from '../composables/useCustomToast';
 
 @injectable()

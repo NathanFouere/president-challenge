@@ -1,4 +1,4 @@
-import type { Game } from '@shared/typesgame/game';
+import type { Game } from '@shared/types/dist/types/game/game';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 

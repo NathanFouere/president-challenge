@@ -1,4 +1,4 @@
-import { defineConfig } from '@adonisjs/static'
+import { defineConfig } from '@adonisjs/static';
 
 /**
  * Configuration options to tweak the static files middleware.
@@ -12,6 +12,6 @@ const staticServerConfig = defineConfig({
   etag: true,
   lastModified: true,
   dotFiles: 'ignore',
-})
+});
 
-export default staticServerConfig
+export default staticServerConfig;

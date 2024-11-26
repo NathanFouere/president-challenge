@@ -1,4 +1,4 @@
-import container from '../config/container';
+import container from '../../config/container';
 
 export default defineNuxtPlugin(() => {
   return {
