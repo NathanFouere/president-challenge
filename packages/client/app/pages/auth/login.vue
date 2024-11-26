@@ -2,6 +2,7 @@
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
 import type { AuthPresenter } from '../../presenters/auth.presenter';
+import { NUXT_ROUTES } from '../../../config/routes/nuxt-routes';
 
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
