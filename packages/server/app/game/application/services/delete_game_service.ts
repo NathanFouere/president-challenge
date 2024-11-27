@@ -9,7 +9,7 @@ import GameRepository from '#game/infrastructure/repositories/game_repository';
 @inject()
 export default class DeleteGameService {
   constructor(
-    private getGameOfPlayerQueryHandler: GetGameOfPlayerQueryHandler,
+    private readonly getGameOfPlayerQueryHandler: GetGameOfPlayerQueryHandler,
     private readonly gameRepository: GameRepository,
   ) {
   }

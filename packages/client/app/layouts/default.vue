@@ -2,17 +2,27 @@
 import { useRoute } from 'vue-router';
 import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
+import { useGameStore } from '../store/game/game.store';
 
 const userStore = useUserStore();
+const gameStore = useGameStore();
 const hasUser = computed(() => userStore.hasConnectedUser);
-const links = [
+const hasSelectedGame = computed(() => gameStore.hasSelectedGame);
+
+const links = computed(() => [
   {
     label: 'Games',
     icon: 'i-heroicons-archive-box',
     to: NUXT_ROUTES.games,
     disabled: !hasUser.value,
   },
-];
+  {
+    label: 'Political Parties',
+    icon: 'i-heroicons-archive-box',
+    to: NUXT_ROUTES.politicalParties,
+    disabled: !hasSelectedGame.value,
+  },
+]);
 
 const route = useRoute();
 

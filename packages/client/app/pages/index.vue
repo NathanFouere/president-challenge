@@ -1,59 +1,6 @@
 <script setup lang="ts">
-import type { Game } from '@shared/typesgame/game';
-import type { GamePresenter } from '../presenters/game.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../config/common.types';
-import container from '../../config/container';
-
-const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GamePresenter);
-
-onMounted(async () => {
-  await gamePresenter.getUserGames();
-});
 </script>
 
 <template>
-  <template
-    v-if="gamePresenter.gameStore.isGettingGames"
-  >
-    <USkeleton
-      v-for="index in gamePresenter.gameStore.getExpectedNumberOfGames"
-      :key="index"
-      class="w-full h-28 mb-3"
-    />
-  </template>
-
-  <template
-    v-for="(game) in gamePresenter.gameStore.userGames"
-    v-else
-    :key="game.id"
-  >
-    <game-component
-      :game="game"
-      :is-selected="gamePresenter.gameStore.selectedGame?.id === game.id"
-      :pending-deletion="gamePresenter.gameStore.gamePendingDeletionId === game.id"
-      class="mb-3"
-      @select-game="(selectedGame: Game) => gamePresenter.gameStore.setSelectedGame(selectedGame)"
-      @delete-game="(deletedGameId) => gamePresenter.deleteGame(deletedGameId)"
-    />
-  </template>
-  <div
-    class="float-end"
-  >
-    <UTooltip
-      v-if="gamePresenter.hasMaxGames()"
-      text="Maximum number of games reached (3)"
-    >
-      <UButton
-        label="Create new Game"
-        disabled
-      />
-    </UTooltip>
-    <UButton
-      v-else
-      class="float-end"
-      :loading="gamePresenter.gameStore.isCreatingGame"
-      label="Create new Game"
-      @click="gamePresenter.createGame()"
-    />
-  </div>
+  <p>You shouldn't be here</p>
 </template>

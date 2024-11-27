@@ -4,6 +4,7 @@
 const prefix: string = 'api';
 const authPrefix: string = `${prefix}/auth`;
 const gamePrefix: string = `${prefix}/games`;
+const politicalPartyPrefix: string = `${prefix}/political-parties`;
 
 const Routes = {
   User: {
@@ -16,6 +17,9 @@ const Routes = {
     GetGames: () => `${gamePrefix}/`,
     CreateGame: () => `${gamePrefix}/create`,
     DeleteGame: (id: number) => `${gamePrefix}/delete/${id}`,
+  },
+  PoliticalParty: {
+    GetPoliticalParties: (gameId: number) => `${politicalPartyPrefix}/political-parties-of-game/${gameId}`,
   },
 };
 

@@ -35,3 +35,11 @@ router.group(() => {
   router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
   router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
 }).prefix('api/games');
+
+/* POLITICAL PARTY */
+
+const GetPoliticalPartiesController = () => import('../app/political-party/infrastructure/controllers/get_political_parties_of_game_controller.js');
+
+router.group(() => {
+  router.get('/political-parties-of-game/:gameId', [GetPoliticalPartiesController, 'getPoliticalPartiesOfGame']).use(middleware.auth());
+}).prefix('api/political-parties');

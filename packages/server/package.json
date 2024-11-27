@@ -16,6 +16,7 @@
   "imports": {
     "#common/*": "./app/common/*.js",
     "#user/*": "./app/user/*.js",
+    "#political-party/*": "./app/political-party/*.js",
     "#game/*": "./app/game/*.js",
     "#event/*": "./app/event/*.js",
     "#controllers/*": "./app/controllers/*.js",

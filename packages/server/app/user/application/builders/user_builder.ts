@@ -6,17 +6,17 @@ export class UserBuilder {
   public email: string | null = null;
   public password: string | null = null;
 
-  public withFullName(fullName: string): UserBuilder {
+  public withFullName(fullName: string): this {
     this.fullName = fullName;
     return this;
   }
 
-  public withEmail(email: string): UserBuilder {
+  public withEmail(email: string): this {
     this.email = email;
     return this;
   }
 
-  public withPassword(password: string): UserBuilder {
+  public withPassword(password: string): this {
     this.password = password;
     return this;
   }
