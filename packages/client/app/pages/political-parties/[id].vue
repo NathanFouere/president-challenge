@@ -19,7 +19,3 @@ onMounted(async () => {
     <h1>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty }}</h1>
   </div>
 </template>
-
-<style scoped>
-
-</style>
