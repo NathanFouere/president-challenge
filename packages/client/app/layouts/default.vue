@@ -1,31 +1,29 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
+import { useGameStore } from '../store/game/game.store';
+import { usePageTitle } from '../composables/usePageTitle';
 
 const userStore = useUserStore();
+const gameStore = useGameStore();
+const pageTitle = usePageTitle();
 const hasUser = computed(() => userStore.hasConnectedUser);
-const links = [
+const hasSelectedGame = computed(() => gameStore.hasSelectedGame);
+
+const links = computed(() => [
   {
     label: 'Games',
     icon: 'i-heroicons-archive-box',
     to: NUXT_ROUTES.games,
     disabled: !hasUser.value,
   },
-];
-
-const route = useRoute();
-
-const activeLink = computed(() => {
-  const routeName = route.name as string;
-  return routeName.includes('-')
-    ? routeName
-      .split('-')
-      .slice(1) // Ignore le premier mot
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join('')
-    : routeName.charAt(0).toUpperCase() + routeName.slice(1).toLowerCase();
-});
+  {
+    label: 'Political Parties',
+    icon: 'i-heroicons-archive-box',
+    to: NUXT_ROUTES.politicalParties,
+    disabled: !hasSelectedGame.value,
+  },
+]);
 </script>
 
 <template>
@@ -48,7 +46,7 @@ const activeLink = computed(() => {
 
     <UDashboardPage class="flex flex-1 w-full">
       <UDashboardPanel class="flex flex-1 w-full">
-        <UDashboardNavbar :title="activeLink" />
+        <UDashboardNavbar :title="pageTitle.title.value" />
         <UContainer class="pt-5 w-full">
           <NuxtPage />
 

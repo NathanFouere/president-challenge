@@ -1,28 +1,18 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
-const props = defineProps<{
-  modelValue: boolean;
+defineProps<{
   isPendingDeletion: boolean;
 }>();
 
 const emit = defineEmits<{
-  (event: 'update:modelValue', value: boolean): void;
   (event: 'confirmDeletion'): void;
 }>();
 
-const isOpen = ref(props.modelValue);
-
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    isOpen.value = newValue;
-  },
-);
+const isOpen = ref(false);
 
 const closeModal = () => {
   isOpen.value = false;
-  emit('update:modelValue', false);
 };
 
 const handleDelete = () => {
@@ -31,6 +21,12 @@ const handleDelete = () => {
 </script>
 
 <template>
+  <UButton
+    label="Delete"
+    :loading="isPendingDeletion"
+    @click="isOpen = true"
+  />
+
   <UModal v-model="isOpen">
     <UCard>
       <template #header>

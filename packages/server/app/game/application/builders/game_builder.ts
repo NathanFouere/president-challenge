@@ -5,12 +5,12 @@ export class GameBuilder {
   public turnNumber: number | null = null;
   public userId: number | null = null;
 
-  public withTurnNumber(turnNumber: number): GameBuilder {
+  public withTurnNumber(turnNumber: number): this {
     this.turnNumber = turnNumber;
     return this;
   }
 
-  public withUserId(userId: number): GameBuilder {
+  public withUserId(userId: number): this {
     this.userId = userId;
     return this;
   }

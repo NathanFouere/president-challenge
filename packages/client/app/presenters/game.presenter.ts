@@ -49,6 +49,11 @@ export class GamePresenter {
     }
   }
 
+  public async selectGame(game: Game): Promise<void> {
+    this.gameStore.setSelectedGame(game);
+    this.toast.showSuccess('Game selected');
+  }
+
   private async fetchUserGames(): Promise<Game[]> {
     this.gameStore.setGettingGames();
     try {

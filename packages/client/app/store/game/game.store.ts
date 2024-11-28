@@ -28,10 +28,16 @@ export const useGameStore = defineStore('gameStore', {
       return state.errorOnGettingGames;
     },
     hasSelectedGame(state): boolean {
-      return state.selectedGame !== null;
+      return state.selectedGame != null;
     },
     getSelectedGame(state): Game | null {
       return state.selectedGame;
+    },
+    getSelectedGameId(state): number {
+      if (!state.selectedGame) {
+        throw new Error('No game selected');
+      }
+      return state.selectedGame.id;
     },
     getGamePendingDeletionId(state): number | null {
       return state.gamePendingDeletionId;

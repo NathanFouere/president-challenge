@@ -8,7 +8,7 @@ import CreateGameService from '#game/application/services/create_game_service';
 @inject()
 export default class CreateGameController {
   constructor(
-    private createGameService: CreateGameService,
+    private readonly createGameService: CreateGameService,
   ) {
   }
 

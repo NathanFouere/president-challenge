@@ -3,6 +3,7 @@ import container from '../../../config/container';
 import type { AuthPresenter } from '../../presenters/auth.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 
+usePageTitle().setTitle('Signup');
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
 const fields = [
