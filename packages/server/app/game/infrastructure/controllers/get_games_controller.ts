@@ -7,7 +7,7 @@ import { SelectUserGamesQuery } from '#game/application/queries/select_user_game
 
 @inject()
 export default class GetGamesController {
-  constructor(private selectGamesQueryHandler: SelectGamesQueryHandler) {}
+  constructor(private readonly selectGamesQueryHandler: SelectGamesQueryHandler) {}
 
   async getUserGames({ auth, response }: HttpContext) {
     try {
