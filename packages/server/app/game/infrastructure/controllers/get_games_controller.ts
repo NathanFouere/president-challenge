@@ -6,8 +6,8 @@ import type User from '#user/domain/models/user';
 import { SelectUserGamesQuery } from '#game/application/queries/select_user_games_query';
 
 @inject()
-export default class SelectGamesController {
-  constructor(private selectGamesQueryHandler: SelectGamesQueryHandler) {}
+export default class GetGamesController {
+  constructor(private readonly selectGamesQueryHandler: SelectGamesQueryHandler) {}
 
   async getUserGames({ auth, response }: HttpContext) {
     try {

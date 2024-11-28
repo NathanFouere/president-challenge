@@ -26,12 +26,12 @@ router.group(() => {
 
 /* GAME */
 
-const SelectGamesController = () => import('../app/game/infrastructure/controllers/select_games_controller.js');
+const GetGamesController = () => import('#game/infrastructure/controllers/get_games_controller');
 const CreateGameController = () => import('../app/game/infrastructure/controllers/create_game_controller.js');
 const DeleteGameController = () => import('../app/game/infrastructure/controllers/delete_game_controller.js');
 
 router.group(() => {
-  router.get('/', [SelectGamesController, 'getUserGames']).use(middleware.auth());
+  router.get('/', [GetGamesController, 'getUserGames']).use(middleware.auth());
   router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
   router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
 }).prefix('api/games');

@@ -36,7 +36,3 @@ onMounted(async () => {
     </template>
   </div>
 </template>
-
-<style scoped>
-
-</style>

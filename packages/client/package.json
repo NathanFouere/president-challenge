@@ -25,6 +25,7 @@
   "devDependencies": {
     "@pinia/nuxt": "^0.7.0",
     "@types/inversify": "^2.0.33",
-    "pinia": "^2.2.6"
+    "pinia": "^2.2.6",
+    "pinia-plugin-persistedstate": "^4.1.3"
   }
 }

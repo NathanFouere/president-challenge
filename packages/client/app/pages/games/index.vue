@@ -6,6 +6,7 @@ import container from '../../../config/container';
 
 usePageTitle().setTitle('List of your games');
 const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GamePresenter);
+const counter = useCookie('game_id');
 
 onMounted(async () => {
   await gamePresenter.getUserGames();
@@ -13,6 +14,9 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div v-if="counter">
+    {{ counter.value }}
+  </div>
   <template
     v-if="gamePresenter.gameStore.isGettingGames"
   >
