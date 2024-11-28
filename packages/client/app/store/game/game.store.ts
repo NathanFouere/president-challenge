@@ -75,7 +75,6 @@ export const useGameStore = defineStore('gameStore', {
       this.errorOnCreatingGame = false;
     },
     setSelectedGame(game: Game) {
-      console.log('game selected');
       this.selectedGame = game;
     },
     unsetSelectedGame() {

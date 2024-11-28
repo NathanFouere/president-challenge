@@ -1,15 +1,31 @@
-import type { PoliticalParty } from '@shared/typestypes/political-party/political-party';
+import type { PoliticalPartyDTO } from '@shared/types/dist/types/political-party/political-party-dto';
 
 export const usePoliticalPartyStore = defineStore('politicalPartyStore', {
   state: () => ({
-    politicalParties: [] as PoliticalParty[],
+    politicalParty: null as PoliticalPartyDTO | null,
+    gettingPoliticalParty: false,
+    errorOnGetPoliticalParty: false,
   }),
   getters: {
-    getPoliticalParties: state => state.politicalParties,
+    getPoliticalParty: state => state.politicalParty,
+    isGettingPoliticalParty: state => state.gettingPoliticalParty,
+    hadErrorOnGetPoliticalParty: state => state.errorOnGetPoliticalParty,
   },
   actions: {
-    setPoliticalParties(politicalParties: PoliticalParty[]) {
-      this.politicalParties = politicalParties;
+    setPoliticalParty(politicalParty: PoliticalPartyDTO) {
+      this.politicalParty = politicalParty;
+    },
+    setIsGettingPoliticalParty() {
+      this.gettingPoliticalParty = true;
+    },
+    unsetIsGettingPoliticalParty() {
+      this.gettingPoliticalParty = false;
+    },
+    setErrorOnGetPoliticalParty() {
+      this.errorOnGetPoliticalParty = true;
+    },
+    unsetErrorOnGetPoliticalParty() {
+      this.errorOnGetPoliticalParty = false;
     },
   },
 });

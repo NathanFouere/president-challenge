@@ -4,6 +4,7 @@ import container from '../../../config/container';
 import type { AuthPresenter } from '../../presenters/auth.presenter';
 import { NUXT_ROUTES } from '../../../config/routes/nuxt-routes';
 
+usePageTitle().setTitle('Login');
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
 
 const fields = [

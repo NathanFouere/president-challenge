@@ -4,7 +4,7 @@ import { compose } from '@adonisjs/core/helpers';
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm';
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid';
 import type { HasMany } from '@adonisjs/lucid/types/relations';
-import Game from '../../../game/domain/models/game.js';
+import Game from '#game/domain/models/game';
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],

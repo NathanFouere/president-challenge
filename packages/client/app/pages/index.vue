@@ -1,6 +1,10 @@
 <script setup lang="ts">
+const router = useRouter();
+
+onMounted(() => {
+  router.push('/games');
+});
 </script>
 
 <template>
-  <p>You shouldn't be here</p>
 </template>
