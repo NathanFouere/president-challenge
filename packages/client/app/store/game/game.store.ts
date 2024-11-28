@@ -90,4 +90,5 @@ export const useGameStore = defineStore('gameStore', {
       this.expectedNumberOfGames = expectedNumberOfGames;
     },
   },
+  persist: true,
 });
