@@ -19,7 +19,7 @@ const links = computed(() => [
   },
   {
     label: 'Political Parties',
-    icon: 'i-heroicons-archive-box',
+    icon: 'i-heroicons-building-library',
     to: NUXT_ROUTES.politicalParties,
     disabled: !hasSelectedGame.value,
   },

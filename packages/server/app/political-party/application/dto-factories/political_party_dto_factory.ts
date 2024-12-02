@@ -7,7 +7,6 @@ export class PoliticalPartyDTOFactory {
       id: politicalParty.id,
       name: politicalParty.name,
       affiliation: politicalParty.affiliation,
-      test: 'test',
     };
   }
 }

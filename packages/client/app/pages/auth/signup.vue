@@ -2,6 +2,7 @@
 import container from '../../../config/container';
 import type { AuthPresenter } from '../../presenters/auth.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
+import { NUXT_ROUTES } from '../../../config/routes/nuxt-routes';
 
 usePageTitle().setTitle('Signup');
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
