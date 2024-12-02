@@ -7,6 +7,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
       table.string('name').notNullable();
+      table.text('description').notNullable();
+      table.string('color').notNullable();
       table.enum('affiliation', [
         'Far Left',
         'Left',

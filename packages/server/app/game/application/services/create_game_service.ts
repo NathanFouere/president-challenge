@@ -4,6 +4,8 @@ import { aGame } from '#game/application/builders/game_builder';
 import type Game from '#game/domain/models/game';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import GameRepository from '#game/infrastructure/repositories/game_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { StartupService } from '#common/services/startup_service';
 
 @inject()
 export default class CreateGameService {
@@ -11,6 +13,7 @@ export default class CreateGameService {
 
   constructor(
     private readonly gameRepository: GameRepository,
+    private readonly startupService: StartupService,
   ) {
   }
 
@@ -34,6 +37,8 @@ export default class CreateGameService {
       .build();
 
     await this.gameRepository.save(game);
+
+    await this.startupService.initialize(game.id);
 
     return game;
   }

@@ -11,7 +11,16 @@ export default class PoliticalParty extends BaseModel {
   declare name: string;
 
   @column()
+  declare description: string;
+
+  @column()
+  declare color: string;
+
+  @column()
   declare affiliation: PoliticalAffiliation;
+
+  @column({ serializeAs: null })
+  declare gameId: number;
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
