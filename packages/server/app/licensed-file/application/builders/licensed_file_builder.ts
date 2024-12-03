@@ -9,37 +9,37 @@ export class LicensedFileBuilder {
   public path: string | null = null;
   public isVideo: boolean | null = null;
 
-  withIdentifier(identifier: string): LicensedFileBuilder {
+  withIdentifier(identifier: string): this {
     this.identifier = identifier;
     return this;
   }
 
-  withAttribution(attribution: string): LicensedFileBuilder {
+  withAttribution(attribution: string): this {
     this.attribution = attribution;
     return this;
   }
 
-  withSource(source: string): LicensedFileBuilder {
+  withSource(source: string): this {
     this.source = source;
     return this;
   }
 
-  withLicense(license: string | null): LicensedFileBuilder {
+  withLicense(license: string | null): this {
     this.license = license;
     return this;
   }
 
-  withDate(date: string): LicensedFileBuilder {
+  withDate(date: string): this {
     this.date = date;
     return this;
   }
 
-  withPath(path: string): LicensedFileBuilder {
+  withPath(path: string): this {
     this.path = path;
     return this;
   }
 
-  withIsVideo(isVideo: boolean): LicensedFileBuilder {
+  withIsVideo(isVideo: boolean): this {
     this.isVideo = isVideo;
     return this;
   }

@@ -5,10 +5,10 @@ import type { CommandOptions } from '@adonisjs/core/types/ace';
 import { LicensedFileCreationService } from '#licensed-file/infrastructure/startup/licensed_file_creation_service';
 
 export default class GenerateLicensedFiles extends BaseCommand {
-  static commandName = 'generate:licensed-files';
-  static description = 'Generate licensed files (photos and videos) for the game';
+  static readonly commandName = 'generate:licensed-files';
+  static readonly description = 'Generate licensed files (photos and videos) for the game';
 
-  static options: CommandOptions = {
+  static readonly options: CommandOptions = {
     startApp: true,
   };
 
