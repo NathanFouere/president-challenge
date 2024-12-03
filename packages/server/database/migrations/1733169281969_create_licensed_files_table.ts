@@ -1,18 +1,17 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 
 export default class extends BaseSchema {
-  protected tableName = 'games';
+  protected tableName = 'licensed_files';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id');
-      table.integer('turn_number').notNullable();
-      table
-        .integer('user_id')
-        .unsigned()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE');
+      table.string('identifier').primary();
+      table.text('attribution').nullable();
+      table.text('source').nullable();
+      table.text('license').nullable();
+      table.string('date').nullable();
+      table.string('path').notNullable();
+      table.boolean('is_video').notNullable();
 
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();

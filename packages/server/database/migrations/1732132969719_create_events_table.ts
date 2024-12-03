@@ -9,6 +9,9 @@ export default class Events extends BaseSchema {
       table.string('title').notNullable();
       table.text('text').notNullable();
       table.integer('turn').notNullable();
+
+      table.timestamp('created_at').notNullable();
+      table.timestamp('updated_at').nullable();
     });
   }
 
