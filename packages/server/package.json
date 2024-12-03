@@ -17,6 +17,7 @@
     "#common/*": "./app/common/*.js",
     "#user/*": "./app/user/*.js",
     "#political-party/*": "./app/political-party/*.js",
+    "#licensed-file/*": "./app/licensed-file/*.js",
     "#game/*": "./app/game/*.js",
     "#event/*": "./app/event/*.js",
     "#controllers/*": "./app/controllers/*.js",
@@ -37,7 +38,8 @@
     "#database/*": "./database/*.js",
     "#tests/*": "./tests/*.js",
     "#start/*": "./start/*.js",
-    "#config/*": "./config/*.js"
+    "#config/*": "./config/*.js",
+    "#commands/*": "./commands/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.8.2",

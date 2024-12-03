@@ -6,6 +6,8 @@ import type Game from '#game/domain/models/game';
 import GameRepository from '#game/infrastructure/repositories/game_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StartupService } from '#common/services/startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { LicensedFileCreationService } from '#licensed-file/infrastructure/startup/licensed_file_creation_service';
 
 @inject()
 export default class CreateGameService {
@@ -14,6 +16,7 @@ export default class CreateGameService {
   constructor(
     private readonly gameRepository: GameRepository,
     private readonly startupService: StartupService,
+    private readonly licensedFileCreationService: LicensedFileCreationService,
   ) {
   }
 
@@ -39,6 +42,7 @@ export default class CreateGameService {
     await this.gameRepository.save(game);
 
     await this.startupService.initialize(game.id);
+    await this.licensedFileCreationService.initializeLicensedFiles();
 
     return game;
   }

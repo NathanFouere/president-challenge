@@ -17,7 +17,6 @@ export class GamePresenter {
   public async getUserGames(): Promise<Game[]> {
     try {
       const games = await this.fetchUserGames();
-      this.toast.showSuccess('Games fetched successfully');
       return games;
     }
     catch (error) {
@@ -51,7 +50,6 @@ export class GamePresenter {
 
   public async selectGame(game: Game): Promise<void> {
     this.gameStore.setSelectedGame(game);
-    this.toast.showSuccess('Game selected');
   }
 
   private async fetchUserGames(): Promise<Game[]> {
