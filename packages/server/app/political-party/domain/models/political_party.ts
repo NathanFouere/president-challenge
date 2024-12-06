@@ -1,6 +1,6 @@
 import { BaseModel, belongsTo, column, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations';
-import type { PoliticalAffiliation } from '@shared/types/political-party/political_affiliation.js';
+import type { PoliticalAffiliation } from '@shared/types/dist/types/political-party/political-affiliation.js';
 import Game from '#game/domain/models/game';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 
