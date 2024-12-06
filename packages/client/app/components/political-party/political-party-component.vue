@@ -1,20 +1,32 @@
 <script setup lang="ts">
-import type { PoliticalPartyMinimalDTO } from '../../../../shared/src/political-party/political-party-minimal-d-t-o';
+import type { PoliticalPartyMinimalDto } from '@shared/typespolitical-party/political-party-minimal-dto';
+import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{
-  minimalPoliticalParty: PoliticalPartyMinimalDTO;
+  minimalPoliticalParty: PoliticalPartyMinimalDto;
 }>();
 </script>
 
 <template>
   <UCard>
-    <template #header>
-      {{ minimalPoliticalParty.name }}
-      <br>
-      {{ minimalPoliticalParty.affiliation }}
+    <template
+      #header
+    >
+      <div class="text-center h-64">
+        {{ minimalPoliticalParty.name }}
+        <br>
+        <licensed-file-component
+          class="h-48"
+          :licensed-file="minimalPoliticalParty.licensedFile"
+        />
+        <br>
+        {{ minimalPoliticalParty.affiliation }}
+      </div>
     </template>
 
-    <template #footer>
+    <template
+      #footer
+    >
       <div class="flex justify-between items-center">
         <UButton
           label="Details"
@@ -24,7 +36,3 @@ defineProps<{
     </template>
   </UCard>
 </template>
-
-<style scoped>
-
-</style>

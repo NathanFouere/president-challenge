@@ -19,11 +19,21 @@ export class LicensedFileRepository {
     return licensedFile;
   }
 
-  public async removeAll(): Promise<void> {
+  public async truncate(): Promise<void> {
     await LicensedFile.truncate();
   }
 
-  public async saveAll(licensedFiles: LicensedFile[]): Promise<void> {
-    await LicensedFile.createMany(licensedFiles);
+  public async saveOrUpdateAll(licensedFiles: LicensedFile[]): Promise<void> {
+    for (const licensedFile of licensedFiles) {
+      const existingFile = await this.findByIdentifier(licensedFile.identifier);
+
+      if (existingFile) {
+        existingFile.merge(licensedFile.$attributes);
+        await existingFile.save();
+      }
+      else {
+        await licensedFile.save();
+      }
+    }
   }
 }

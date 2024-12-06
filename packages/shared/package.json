@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --emitDeclarationOnly"
+    "build": "tsc --emitDeclarationOnly",
+    "delete-dist": "rm -rf dist",
+    "delete-dist-build": "pnpm delete-dist && pnpm build"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,5 @@
-import type { PoliticalPartyMinimalDTO } from '@shared/types/political-party/political-party-minimal-d-t-o';
+import type { PoliticalPartyMinimalDto } from '@shared/types/political-party/political-party-minimal-dto';
 
-export interface PoliticalPartyDTO extends PoliticalPartyMinimalDTO {
+export interface PoliticalPartyDTO extends PoliticalPartyMinimalDto {
+  description: string;
 }

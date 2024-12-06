@@ -2,6 +2,7 @@
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
 import type { PoliticalPartyPresenter } from '../../presenters/political-party/political-party.presenter';
+import LicensedFileComponent from '../../components/common/licensed-file-component.vue';
 
 usePageTitle().setTitle('Political party ...');
 
@@ -11,11 +12,32 @@ const politicalPartyPresenter = container.get<PoliticalPartyPresenter>(COMMON_DE
 
 onMounted(async () => {
   await politicalPartyPresenter.getPoliticalParty(id);
+  if (politicalPartyPresenter.politicalPartyStore.getPoliticalParty) {
+    usePageTitle().setTitle(politicalPartyPresenter.politicalPartyStore.getPoliticalParty.name);
+  }
 });
 </script>
 
 <template>
-  <div>
-    <h1>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty }}</h1>
+  <USkeleton
+    v-if="politicalPartyPresenter.politicalPartyStore.isGettingPoliticalParty"
+    class="w-full h-1/2 mb-3"
+  />
+
+  <div
+    v-if="!politicalPartyPresenter.politicalPartyStore.isGettingPoliticalParty && null !== politicalPartyPresenter.politicalPartyStore.getPoliticalParty"
+    class="text-center"
+  >
+    <h1>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.name }}</h1>
+    <licensed-file-component
+      class="w-1/6"
+      :licensed-file="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.licensedFile"
+    />
+    <p>
+      Affiliation : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.affiliation }}
+    </p>
+    <p class="text-justify">
+      Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
+    </p>
   </div>
 </template>

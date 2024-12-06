@@ -8,12 +8,6 @@ export const useUserStore = defineStore('userStore', {
     connectedUser(state): User | null {
       return state.user;
     },
-    requireConnectedUser(state): User {
-      if (state.user == null) {
-        throw new Error('No connected user');
-      }
-      return state.user;
-    },
     hasConnectedUser(state): boolean {
       return state.user != null;
     },

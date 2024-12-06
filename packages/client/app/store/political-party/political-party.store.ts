@@ -7,7 +7,9 @@ export const usePoliticalPartyStore = defineStore('politicalPartyStore', {
     errorOnGetPoliticalParty: false,
   }),
   getters: {
-    getPoliticalParty: state => state.politicalParty,
+    getPoliticalParty(state): PoliticalPartyDTO | null {
+      return state.politicalParty;
+    },
     isGettingPoliticalParty: state => state.gettingPoliticalParty,
     hadErrorOnGetPoliticalParty: state => state.errorOnGetPoliticalParty,
   },
