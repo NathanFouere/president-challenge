@@ -36,7 +36,3 @@ defineProps<{
     </template>
   </UCard>
 </template>
-
-<style scoped>
-
-</style>

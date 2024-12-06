@@ -38,7 +38,3 @@ defineProps<{
     >
   </UTooltip>
 </template>
-
-<style scoped>
-
-</style>
