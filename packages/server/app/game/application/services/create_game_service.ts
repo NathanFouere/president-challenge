@@ -1,7 +1,6 @@
 import { inject } from '@adonisjs/core';
 import type User from '#user/domain/models/user';
 import { aGame } from '#game/application/builders/game_builder';
-import type Game from '#game/domain/models/game';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import GameRepository from '#game/infrastructure/repositories/game_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -26,7 +25,7 @@ export default class CreateGameService {
     return Number((numberOfGames)) < this.MAX_GAMES;
   }
 
-  public async createGame(user: User): Promise<Game> {
+  public async createGame(user: User): Promise<void> {
     const canCreateGame = await this.canCreateGame(user);
     if (!canCreateGame) {
       throw new Error(
@@ -39,11 +38,17 @@ export default class CreateGameService {
       .withTurnNumber(0)
       .build();
 
-    await this.gameRepository.save(game);
+    try {
+      await this.gameRepository.save(game);
 
-    await this.startupService.initialize(game.id);
-    await this.licensedFileCreationService.initializeLicensedFiles();
+      await this.startupService.initialize(game.id);
+      await this.licensedFileCreationService.initializeLicensedFiles();
 
-    return game;
+      await this.gameRepository.save(game);
+    }
+    catch (error) {
+      await this.gameRepository.delete(game);
+      throw new Error('Failed to create game');
+    }
   }
 }

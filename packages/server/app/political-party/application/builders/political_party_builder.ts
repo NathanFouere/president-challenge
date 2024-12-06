@@ -1,4 +1,4 @@
-import type { PoliticalAffiliation } from '@shared/types/political-party/political_affiliation.js';
+import type { PoliticalAffiliation } from '@shared/types/political-party/political-affiliation.js';
 import PoliticalParty from '#political-party/domain/models/political_party';
 
 export class PoliticalPartyBuilder {
@@ -8,6 +8,7 @@ export class PoliticalPartyBuilder {
   public description: string | null = null;
   public color: string | null = null;
   public gameId: number | null = null;
+  public licensedFileIdentifier: string | null = null;
 
   public withName(name: string): this {
     this.name = name;
@@ -31,6 +32,11 @@ export class PoliticalPartyBuilder {
 
   public withGameId(gameId: number): this {
     this.gameId = gameId;
+    return this;
+  }
+
+  public withLicensedFileIdentifier(licensedFileIdentifier: string): this {
+    this.licensedFileIdentifier = licensedFileIdentifier;
     return this;
   }
 
@@ -70,6 +76,13 @@ export class PoliticalPartyBuilder {
     }
     else {
       throw new Error('game is required');
+    }
+
+    if (this.licensedFileIdentifier !== null) {
+      politicalParty.licensedFileIdentifier = this.licensedFileIdentifier;
+    }
+    else {
+      throw new Error('licensedFileIdentifier is required');
     }
 
     return politicalParty;

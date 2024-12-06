@@ -2,6 +2,7 @@ import LicensedFile from '#licensed-file/domain/models/licensed_file';
 
 export class LicensedFileBuilder {
   public identifier: string | null = null;
+  public title: string | null = null;
   public attribution: string | null = null;
   public source: string | null = null;
   public license: string | null = null;
@@ -11,6 +12,11 @@ export class LicensedFileBuilder {
 
   withIdentifier(identifier: string): this {
     this.identifier = identifier;
+    return this;
+  }
+
+  withTitle(title: string): this {
+    this.title = title;
     return this;
   }
 
@@ -52,6 +58,13 @@ export class LicensedFileBuilder {
     }
     else {
       throw new Error('LicensedFile identifier is required');
+    }
+
+    if (this.title) {
+      licensedFile.title = this.title;
+    }
+    else {
+      throw new Error('LicensedFile title is required');
     }
 
     licensedFile.attribution = this.attribution;

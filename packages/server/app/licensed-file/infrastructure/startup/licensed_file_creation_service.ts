@@ -13,13 +13,12 @@ export class LicensedFileCreationService {
   }
 
   public async initializeLicensedFiles(): Promise<void> {
-    await this.licensedFileRepository.removeAll();
-
     const licensedFiles: LicensedFile[] = [];
 
     for (const licensedFileValues of licensedFileStartupConfig) {
       const licensedFile = aLicensedFile()
         .withIdentifier(licensedFileValues.identifier)
+        .withTitle(licensedFileValues.title)
         .withAttribution(licensedFileValues.attribution)
         .withSource(licensedFileValues.source)
         .withLicense(licensedFileValues.licence)
@@ -31,6 +30,6 @@ export class LicensedFileCreationService {
       licensedFiles.push(licensedFile);
     }
 
-    await this.licensedFileRepository.saveAll(licensedFiles);
+    await this.licensedFileRepository.saveOrUpdateAll(licensedFiles);
   }
 }

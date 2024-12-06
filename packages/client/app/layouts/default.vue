@@ -27,9 +27,8 @@ const links = computed(() => [
 </script>
 
 <template>
-  <UDashboardLayout>
+  <UDashboardLayout class="w-full">
     <UDashboardPanel
-      :width="250"
       :resizable="{ min: 200, max: 300 }"
       collapsible
     >
@@ -44,14 +43,12 @@ const links = computed(() => [
       </UDashboardSidebar>
     </UDashboardPanel>
 
-    <UDashboardPage class="flex flex-1 w-full">
-      <UDashboardPanel class="flex flex-1 w-full">
+    <UDashboardPage class="overflow-auto flex-1">
+      <UDashboardPanel class="flex flex-1 pl-5 pr-5">
         <UDashboardNavbar :title="pageTitle.title.value" />
-        <UContainer class="pt-5 w-full">
-          <NuxtPage />
+        <NuxtPage />
 
-          <UNotifications />
-        </UContainer>
+        <UNotifications />
       </UDashboardPanel>
     </UDashboardPage>
   </UDashboardLayout>

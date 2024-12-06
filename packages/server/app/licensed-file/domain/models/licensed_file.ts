@@ -6,6 +6,9 @@ export default class LicensedFile extends BaseModel {
   declare identifier: string;
 
   @column()
+  declare title: string;
+
+  @column()
   declare attribution: string | null;
 
   @column()

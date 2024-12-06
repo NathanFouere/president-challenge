@@ -6,7 +6,7 @@
     "source": "generic",
     "licence": null,
     "date": "generic",
-    "path": "articles/imgUrl.png",
+    "path": "/assets/articles/imgUrl.png",
     "isVideo": false
   },
   {
@@ -16,7 +16,7 @@
     "source": "https://www.loc.gov/pictures/item/2004666289/",
     "licence": null,
     "date": "1964 Sept. 5",
-    "path": "events/marchers_for_allende.png",
+    "path": "/assets/events/marchers_for_allende.png",
     "isVideo": false
   },
   {
@@ -26,7 +26,7 @@
     "source": "https://www.loc.gov/pictures/item/2004666289/",
     "licence": null,
     "date": "1958",
-    "path": "social-classes/peasant-two.jpg",
+    "path": "/assets/social-classes/peasant-two.jpg",
     "isVideo": false
   },
   {
@@ -36,7 +36,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-164596.html",
     "licence": null,
     "date": "1949",
-    "path": "social-classes/peasant-three.jpg",
+    "path": "/assets/social-classes/peasant-three.jpg",
     "isVideo": false
   },
   {
@@ -46,7 +46,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/visor/BND:156908",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/peasant-six.png",
+    "path": "/assets/social-classes/peasant-six.png",
     "isVideo": false
   },
   {
@@ -56,7 +56,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/visor/BND:156909",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/peasant-seven.png",
+    "path": "/assets/social-classes/peasant-seven.png",
     "isVideo": false
   },
   {
@@ -66,7 +66,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/visor/BND:156910",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/peasant-eight.png",
+    "path": "/assets/social-classes/peasant-eight.png",
     "isVideo": false
   },
   {
@@ -76,7 +76,7 @@
     "source": "https://www.patrimoniodechile.cl/688/w3-article-83398.html?_noredirect=1",
     "licence": null,
     "date": "",
-    "path": "social-classes/peasant-ten.jpg",
+    "path": "/assets/social-classes/peasant-ten.jpg",
     "isVideo": false
   },
   {
@@ -86,7 +86,7 @@
     "source": "https://www.patrimoniodechile.cl/688/w3-article-83398.html?_noredirect=1",
     "licence": null,
     "date": "",
-    "path": "social-classes/peasant-eleven.jpg",
+    "path": "/assets/social-classes/peasant-eleven.jpg",
     "isVideo": false
   },
   {
@@ -96,7 +96,7 @@
     "source": "https://www.patrimoniodechile.cl/688/w3-article-83398.html?_noredirect=1",
     "licence": null,
     "date": "",
-    "path": "social-classes/peasant-twelve.jpg",
+    "path": "/assets/social-classes/peasant-twelve.jpg",
     "isVideo": false
   },
   {
@@ -106,7 +106,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-330107.html",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/peasant-thirteen.jpg",
+    "path": "/assets/social-classes/peasant-thirteen.jpg",
     "isVideo": false
   },
   {
@@ -116,7 +116,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-156844.html",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/peasant-fourteen.jpg",
+    "path": "/assets/social-classes/peasant-fourteen.jpg",
     "isVideo": false
   },
   {
@@ -126,7 +126,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-156844.html",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/peasant-fifteen.jpg",
+    "path": "/assets/social-classes/peasant-fifteen.jpg",
     "isVideo": false
   },
   {
@@ -136,7 +136,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-165349.html",
     "licence": null,
     "date": "1955",
-    "path": "social-classes/worker-one.jpg",
+    "path": "/assets/social-classes/worker-one.jpg",
     "isVideo": false
   },
   {
@@ -146,7 +146,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-621684.html",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/worker-two.jpg",
+    "path": "/assets/social-classes/worker-two.jpg",
     "isVideo": false
   },
   {
@@ -156,7 +156,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-621658.html",
     "licence": null,
     "date": "1955",
-    "path": "social-classes/worker-three.jpg",
+    "path": "/assets/social-classes/worker-three.jpg",
     "isVideo": false
   },
   {
@@ -166,7 +166,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-45372.html",
     "licence": null,
     "date": "Unknown",
-    "path": "social-classes/worker-four.jpg",
+    "path": "/assets/social-classes/worker-four.jpg",
     "isVideo": false
   },
   {
@@ -176,7 +176,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-45375.html",
     "licence": null,
     "date": "1945",
-    "path": "social-classes/worker-five.jpg",
+    "path": "/assets/social-classes/worker-five.jpg",
     "isVideo": false
   },
   {
@@ -186,7 +186,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-80814.html",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/worker-six.jpg",
+    "path": "/assets/social-classes/worker-six.jpg",
     "isVideo": false
   },
   {
@@ -196,7 +196,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-76466.html",
     "licence": null,
     "date": "1967",
-    "path": "social-classes/worker-seven.jpg",
+    "path": "/assets/social-classes/worker-seven.jpg",
     "isVideo": false
   },
   {
@@ -206,7 +206,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-87346.html",
     "licence": null,
     "date": "1978",
-    "path": "social-classes/worker-eight.jpg",
+    "path": "/assets/social-classes/worker-eight.jpg",
     "isVideo": false
   },
   {
@@ -216,7 +216,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-90765.html",
     "licence": null,
     "date": "1974",
-    "path": "social-classes/worker-nine.jpg",
+    "path": "/assets/social-classes/worker-nine.jpg",
     "isVideo": false
   },
   {
@@ -226,7 +226,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-76468.html",
     "licence": null,
     "date": "1976",
-    "path": "social-classes/worker-ten.jpg",
+    "path": "/assets/social-classes/worker-ten.jpg",
     "isVideo": false
   },
   {
@@ -236,7 +236,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-124604.html",
     "licence": null,
     "date": "1954",
-    "path": "social-classes/worker-eleven.jpg",
+    "path": "/assets/social-classes/worker-eleven.jpg",
     "isVideo": false
   },
   {
@@ -246,7 +246,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-165353.html",
     "licence": null,
     "date": "1955",
-    "path": "social-classes/worker-twelve.jpg",
+    "path": "/assets/social-classes/worker-twelve.jpg",
     "isVideo": false
   },
   {
@@ -256,7 +256,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-91288.html",
     "licence": null,
     "date": "1963",
-    "path": "social-classes/factory-owner-one.jpg",
+    "path": "/assets/social-classes/factory-owner-one.jpg",
     "isVideo": false
   },
   {
@@ -266,7 +266,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-87443.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/factory-owner-two.jpg",
+    "path": "/assets/social-classes/factory-owner-two.jpg",
     "isVideo": false
   },
   {
@@ -276,7 +276,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-905.html",
     "licence": null,
     "date": "1972",
-    "path": "social-classes/factory-owner-three.jpg",
+    "path": "/assets/social-classes/factory-owner-three.jpg",
     "isVideo": false
   },
   {
@@ -286,7 +286,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-45385.html",
     "licence": null,
     "date": "1954",
-    "path": "social-classes/factory-owner-four.jpg",
+    "path": "/assets/social-classes/factory-owner-four.jpg",
     "isVideo": false
   },
   {
@@ -296,7 +296,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-650269.html",
     "licence": null,
     "date": "1987",
-    "path": "social-classes/factory-owner-five.jpg",
+    "path": "/assets/social-classes/factory-owner-five.jpg",
     "isVideo": false
   },
   {
@@ -306,7 +306,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-165416.html",
     "licence": null,
     "date": "1961",
-    "path": "social-classes/factory-owner-six.jpg",
+    "path": "/assets/social-classes/factory-owner-six.jpg",
     "isVideo": false
   },
   {
@@ -316,7 +316,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-908.html",
     "licence": null,
     "date": "1964",
-    "path": "social-classes/factory-owner-seven.jpg",
+    "path": "/assets/social-classes/factory-owner-seven.jpg",
     "isVideo": false
   },
   {
@@ -326,7 +326,7 @@
     "source": "",
     "licence": null,
     "date": "",
-    "path": "properties/mine.png",
+    "path": "/assets/properties/mine.png",
     "isVideo": false
   },
   {
@@ -336,7 +336,7 @@
     "source": "",
     "licence": null,
     "date": "",
-    "path": "properties/industry.png",
+    "path": "/assets/properties/industry.png",
     "isVideo": false
   },
   {
@@ -346,7 +346,7 @@
     "source": "",
     "licence": null,
     "date": "",
-    "path": "properties/farm.png",
+    "path": "/assets/properties/farm.png",
     "isVideo": false
   },
   {
@@ -356,7 +356,7 @@
     "source": "",
     "licence": null,
     "date": "",
-    "path": "properties/petite-property.png",
+    "path": "/assets/properties/petite-property.png",
     "isVideo": false
   },
   {
@@ -366,7 +366,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Nasser_addressing_Hama.jpg",
     "licence": null,
     "date": "17 October 1960",
-    "path": "events/death-nasser.jpg",
+    "path": "/assets/events/death-nasser.jpg",
     "isVideo": false
   },
   {
@@ -376,7 +376,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-165697.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/minor-one.jpg",
+    "path": "/assets/social-classes/minor-one.jpg",
     "isVideo": false
   },
   {
@@ -386,7 +386,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-164545.html",
     "licence": null,
     "date": "1950",
-    "path": "social-classes/minor-two.jpg",
+    "path": "/assets/social-classes/minor-two.jpg",
     "isVideo": false
   },
   {
@@ -396,7 +396,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-164508.html",
     "licence": null,
     "date": "1940",
-    "path": "social-classes/minor-three.jpg",
+    "path": "/assets/social-classes/minor-three.jpg",
     "isVideo": false
   },
   {
@@ -406,7 +406,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-164508.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/minor-four.jpg",
+    "path": "/assets/social-classes/minor-four.jpg",
     "isVideo": false
   },
   {
@@ -416,7 +416,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-52477.html",
     "licence": null,
     "date": "1964",
-    "path": "social-classes/minor-five.jpg",
+    "path": "/assets/social-classes/minor-five.jpg",
     "isVideo": false
   },
   {
@@ -426,7 +426,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-94458.html",
     "licence": null,
     "date": "1976",
-    "path": "social-classes/minor-six.jpg",
+    "path": "/assets/social-classes/minor-six.jpg",
     "isVideo": false
   },
   {
@@ -436,7 +436,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-76509.html",
     "licence": null,
     "date": "1950",
-    "path": "social-classes/minor-seven.jpg",
+    "path": "/assets/social-classes/minor-seven.jpg",
     "isVideo": false
   },
   {
@@ -446,7 +446,7 @@
     "source": "https://newsunrolled.com/world/15043.html",
     "licence": null,
     "date": "",
-    "path": "events/signature-of-the-seabed-denaculerasation-treaty.jpg",
+    "path": "/assets/events/signature-of-the-seabed-denaculerasation-treaty.jpg",
     "isVideo": false
   },
   {
@@ -456,7 +456,7 @@
     "source": "https://www.archivofortinmapocho.cl/wp-content/uploads/2015/02/b_04290_fuerzas_armadas-610x415.jpg",
     "licence": null,
     "date": "",
-    "path": "social-classes/military-one.jpg",
+    "path": "/assets/social-classes/military-one.jpg",
     "isVideo": false
   },
   {
@@ -466,7 +466,7 @@
     "source": "https://www.archivofortinmapocho.cl/wp-content/uploads/2015/02/b_04289_fuerzas_armadas-610x375.jpg",
     "licence": null,
     "date": "1971",
-    "path": "social-classes/military-two.jpg",
+    "path": "/assets/social-classes/military-two.jpg",
     "isVideo": false
   },
   {
@@ -476,7 +476,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-124651.html",
     "licence": null,
     "date": "1970",
-    "path": "social-classes/military-three.jpg",
+    "path": "/assets/social-classes/military-three.jpg",
     "isVideo": false
   },
   {
@@ -486,7 +486,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-70899.html",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/military-four.jpg",
+    "path": "/assets/social-classes/military-four.jpg",
     "isVideo": false
   },
   {
@@ -496,7 +496,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-51445.html",
     "licence": null,
     "date": "1966",
-    "path": "social-classes/military-five.jpg",
+    "path": "/assets/social-classes/military-five.jpg",
     "isVideo": false
   },
   {
@@ -506,7 +506,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-51445.html",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/military-six.jpg",
+    "path": "/assets/social-classes/military-six.jpg",
     "isVideo": false
   },
   {
@@ -516,7 +516,7 @@
     "source": "https://www.dhakalawreview.org/blog/2015/04/proclamation-of-independence-801",
     "licence": null,
     "date": "1971",
-    "path": "events/bangladesh-independance.jpg",
+    "path": "/assets/events/bangladesh-independance.jpg",
     "isVideo": false
   },
   {
@@ -526,7 +526,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-1872.html",
     "licence": null,
     "date": "1976",
-    "path": "social-classes/mine-owner-one.jpg",
+    "path": "/assets/social-classes/mine-owner-one.jpg",
     "isVideo": false
   },
   {
@@ -536,27 +536,27 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-72435.html",
     "licence": null,
     "date": "1971",
-    "path": "social-classes/mine-owner-two.jpg",
+    "path": "/assets/social-classes/mine-owner-two.jpg",
     "isVideo": false
   },
   {
     "identifier": "mine-owner-three",
-    "title": "",
+    "title": "Mine owner",
     "attribution": "",
     "source": "https://www.memoriasdelsigloxx.cl/601/articles-54907_imagen.jpg",
     "licence": null,
     "date": "",
-    "path": "social-classes/mine-owner-three.jpg",
+    "path": "/assets/social-classes/mine-owner-three.jpg",
     "isVideo": false
   },
   {
     "identifier": "mine-owner-four",
-    "title": "",
+    "title": "Mine owner",
     "attribution": "",
     "source": "https://www.memoriasdelsigloxx.cl/601/articles-122235_imagen.jpg",
     "licence": null,
     "date": "",
-    "path": "social-classes/mine-owner-four.jpg",
+    "path": "/assets/social-classes/mine-owner-four.jpg",
     "isVideo": false
   },
   {
@@ -566,7 +566,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-1928.html",
     "licence": null,
     "date": "1970",
-    "path": "social-classes/mine-owner-five.jpg",
+    "path": "/assets/social-classes/mine-owner-five.jpg",
     "isVideo": false
   },
   {
@@ -576,7 +576,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-81036.html",
     "licence": null,
     "date": "1974",
-    "path": "social-classes/mine-owner-six.jpg",
+    "path": "/assets/social-classes/mine-owner-six.jpg",
     "isVideo": false
   },
   {
@@ -586,7 +586,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-85474.html",
     "licence": null,
     "date": "1977",
-    "path": "social-classes/mine-owner-seven.jpg",
+    "path": "/assets/social-classes/mine-owner-seven.jpg",
     "isVideo": false
   },
   {
@@ -596,7 +596,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Sadat_Qaddafi_Assad_1971.jpg",
     "licence": null,
     "date": "18 April 1971",
-    "path": "events/united-arab-proclamation.jpg",
+    "path": "/assets/events/united-arab-proclamation.jpg",
     "isVideo": false
   },
   {
@@ -606,7 +606,7 @@
     "source": "https://www.elcorreoweb.es/andalucia/2020/05/25/medio-siglo-incorporacion-mujer-policia-104598749.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/policia-one.jpg",
+    "path": "/assets/social-classes/policia-one.jpg",
     "isVideo": false
   },
   {
@@ -616,7 +616,7 @@
     "source": "https://www.elcorreoweb.es/andalucia/2020/05/25/medio-siglo-incorporacion-mujer-policia-104598749.html",
     "licence": null,
     "date": "1970",
-    "path": "social-classes/policia-two.jpg",
+    "path": "/assets/social-classes/policia-two.jpg",
     "isVideo": false
   },
   {
@@ -626,7 +626,7 @@
     "source": "https://www.elcorreoweb.es/andalucia/2020/05/25/medio-siglo-incorporacion-mujer-policia-104598749.html",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/policia-three.jpg",
+    "path": "/assets/social-classes/policia-three.jpg",
     "isVideo": false
   },
   {
@@ -636,7 +636,7 @@
     "source": "https://cnpjefb.blogspot.com/2020/08/compania-de-honores-anos-60.html",
     "licence": null,
     "date": "1980",
-    "path": "social-classes/policia-four.jpg",
+    "path": "/assets/social-classes/policia-four.jpg",
     "isVideo": false
   },
   {
@@ -646,7 +646,7 @@
     "source": "https://www.facebook.com/FotosHistoricasDeChile/photos/carabinero-dirigiendo-el-tr%C3%A1nsito-en-el-centro-de-santiago-a%C3%B1o-1970/484165505070521/",
     "licence": null,
     "date": "1970",
-    "path": "social-classes/policia-five.jpg",
+    "path": "/assets/social-classes/policia-five.jpg",
     "isVideo": false
   },
   {
@@ -656,7 +656,7 @@
     "source": "https://interferencia.cl/articulos/se-agrava-la-violencia-en-los-meses-previos-la-eleccion-de-septiembre-de-1970",
     "licence": null,
     "date": "",
-    "path": "social-classes/policia-six.jpg",
+    "path": "/assets/social-classes/policia-six.jpg",
     "isVideo": false
   },
   {
@@ -666,7 +666,7 @@
     "source": "https://www.memoriachilena.gob.cl/602/w3-article-72652.html",
     "licence": null,
     "date": "1985",
-    "path": "social-classes/policia-seven.jpg",
+    "path": "/assets/social-classes/policia-seven.jpg",
     "isVideo": false
   },
   {
@@ -676,7 +676,7 @@
     "source": "https://www.zeitklicks.de/zeitstrahl/1971/honecker-wird-erster-sekretaer-des-zentralkomitees-der-sed",
     "licence": null,
     "date": "1971",
-    "path": "events/honecker-replace-ublricht.jpg",
+    "path": "/assets/events/honecker-replace-ublricht.jpg",
     "isVideo": false
   },
   {
@@ -686,7 +686,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-84734.html",
     "licence": null,
     "date": "1965",
-    "path": "social-classes/civil-servant-one.jpg",
+    "path": "/assets/social-classes/civil-servant-one.jpg",
     "isVideo": false
   },
   {
@@ -696,7 +696,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-84757.html",
     "licence": null,
     "date": "1967",
-    "path": "social-classes/civil-servant-two.jpg",
+    "path": "/assets/social-classes/civil-servant-two.jpg",
     "isVideo": false
   },
   {
@@ -706,7 +706,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-117719.html",
     "licence": null,
     "date": "1971",
-    "path": "social-classes/civil-servant-three.jpg",
+    "path": "/assets/social-classes/civil-servant-three.jpg",
     "isVideo": false
   },
   {
@@ -716,7 +716,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-121766.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/civil-servant-four.jpg",
+    "path": "/assets/social-classes/civil-servant-four.jpg",
     "isVideo": false
   },
   {
@@ -726,7 +726,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-51228.html",
     "licence": null,
     "date": "1976",
-    "path": "social-classes/civil-servant-five.jpg",
+    "path": "/assets/social-classes/civil-servant-five.jpg",
     "isVideo": false
   },
   {
@@ -736,7 +736,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Richard_Nixon_presidential_portrait_(1).jpg",
     "licence": null,
     "date": "1972",
-    "path": "events/nixon-announcment-trip-china.jpg",
+    "path": "/assets/events/nixon-announcment-trip-china.jpg",
     "isVideo": false
   },
   {
@@ -746,7 +746,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-3854.html",
     "licence": null,
     "date": "1970",
-    "path": "social-classes/small-bourgeoisie-one.jpg",
+    "path": "/assets/social-classes/small-bourgeoisie-one.jpg",
     "isVideo": false
   },
   {
@@ -756,7 +756,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-73440.html",
     "licence": null,
     "date": "1967",
-    "path": "social-classes/small-bourgeoisie-two.jpg",
+    "path": "/assets/social-classes/small-bourgeoisie-two.jpg",
     "isVideo": false
   },
   {
@@ -766,7 +766,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-52422.html",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/small-bourgeoisie-three.jpg",
+    "path": "/assets/social-classes/small-bourgeoisie-three.jpg",
     "isVideo": false
   },
   {
@@ -776,7 +776,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-121848.html",
     "licence": null,
     "date": "1980",
-    "path": "social-classes/small-bourgeoisie-four.jpg",
+    "path": "/assets/social-classes/small-bourgeoisie-four.jpg",
     "isVideo": false
   },
   {
@@ -786,7 +786,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-2171.html",
     "licence": null,
     "date": "1965",
-    "path": "social-classes/small-bourgeoisie-five.jpg",
+    "path": "/assets/social-classes/small-bourgeoisie-five.jpg",
     "isVideo": false
   },
   {
@@ -796,7 +796,7 @@
     "source": "https://uchile.cl/noticias/192994/victoria-tagle-centenario-de-la-primera-ingeniera-agronoma-de-chile",
     "licence": null,
     "date": "1960",
-    "path": "social-classes/land-owner-one.jpg",
+    "path": "/assets/social-classes/land-owner-one.jpg",
     "isVideo": false
   },
   {
@@ -806,27 +806,27 @@
     "source": "https://ingenieroarrue.wordpress.com/2021/01/29/mujeres-en-la-escuela-de-agronomos-las-pioneras/",
     "licence": null,
     "date": "1950",
-    "path": "social-classes/land-owner-two.png",
+    "path": "/assets/social-classes/land-owner-two.png",
     "isVideo": false
   },
   {
     "identifier": "land-owner-three",
-    "title": "",
+    "title": "Land owner",
     "attribution": "",
     "source": "http://www.notisanpedro.info/2013/08/pesar-por-el-fallecimiento-del.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/land-owner-three.jpg",
+    "path": "/assets/social-classes/land-owner-three.jpg",
     "isVideo": false
   },
   {
     "identifier": "land-owner-four",
-    "title": "",
+    "title": "Land owner",
     "attribution": "",
     "source": "",
     "licence": null,
     "date": "",
-    "path": "social-classes/land-owner-four.jpg",
+    "path": "/assets/social-classes/land-owner-four.jpg",
     "isVideo": false
   },
   {
@@ -836,7 +836,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Ing._Enrique_Klein_1969.jpg",
     "licence": null,
     "date": "",
-    "path": "social-classes/land-owner-five.jpg",
+    "path": "/assets/social-classes/land-owner-five.jpg",
     "isVideo": false
   },
   {
@@ -846,7 +846,7 @@
     "source": "https://rockfellows.hypotheses.org/1776",
     "licence": null,
     "date": "",
-    "path": "social-classes/land-owner-six.png",
+    "path": "/assets/social-classes/land-owner-six.png",
     "isVideo": false
   },
   {
@@ -856,7 +856,7 @@
     "source": "https://www.ucr.ac.cr/noticias/2021/7/02/estudiante-destacado-se-gradua-de-historia-a-sus-70-anos.html",
     "licence": null,
     "date": "",
-    "path": "social-classes/land-owner-seven.jpeg",
+    "path": "/assets/social-classes/land-owner-seven.jpeg",
     "isVideo": false
   },
   {
@@ -866,7 +866,7 @@
     "source": "https://www.ucr.ac.cr/acerca-u/historia-simbolos/historia.html",
     "licence": null,
     "date": "1946",
-    "path": "social-classes/land-owner-eight.jpg",
+    "path": "/assets/social-classes/land-owner-eight.jpg",
     "isVideo": false
   },
   {
@@ -876,17 +876,17 @@
     "source": "https://www.researchgate.net/figure/Cultivo-de-soja-variedad-Mammouth-sembrado-en-noviembre-de-1933-en-la-Estacion_fig1_320170391",
     "licence": null,
     "date": "1933",
-    "path": "social-classes/land-owner-nine.png",
+    "path": "/assets/social-classes/land-owner-nine.png",
     "isVideo": false
   },
   {
     "identifier": "land-owner-ten",
-    "title": "",
+    "title": "Land Owner",
     "attribution": "",
     "source": "https://s3.amazonaws.com/s3.timetoast.com/public/uploads/photo/12644945/image/f513260f6c8226d13bda8fd008150af1",
     "licence": null,
     "date": "",
-    "path": "social-classes/land-owner-ten.jpeg",
+    "path": "/assets/social-classes/land-owner-ten.jpeg",
     "isVideo": false
   },
   {
@@ -896,7 +896,7 @@
     "source": "https://www.willy-brandt-biography.com/historical-sources/significant-speeches/german-polish-treaty-warsaw-1970/",
     "licence": null,
     "date": "7 December 1970",
-    "path": "events/warsaw-treaty.jpg",
+    "path": "/assets/events/warsaw-treaty.jpg",
     "isVideo": false
   },
   {
@@ -906,7 +906,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Charles_de_Gaulle_et_Albert_Lebrun.jpg",
     "licence": null,
     "date": "4 July 1963",
-    "path": "events/de-gaulle-death-one.jpg",
+    "path": "/assets/events/de-gaulle-death-one.jpg",
     "isVideo": false
   },
   {
@@ -916,7 +916,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Charles_de_Gaulle_et_Albert_Lebrun.jpg",
     "licence": null,
     "date": "23 October 1939",
-    "path": "events/de-gaulle-death-two.jpg",
+    "path": "/assets/events/de-gaulle-death-two.jpg",
     "isVideo": false
   },
   {
@@ -926,7 +926,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:De_Gaulle-OWI_(cropped)-(c).jpg",
     "licence": null,
     "date": "1942",
-    "path": "events/de-gaulle-death-three.jpg",
+    "path": "/assets/events/de-gaulle-death-three.jpg",
     "isVideo": false
   },
   {
@@ -936,7 +936,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Anne_De_Gaulle.png",
     "licence": null,
     "date": "1 January 1933",
-    "path": "events/de-gaulle-death-four.png",
+    "path": "/assets/events/de-gaulle-death-four.png",
     "isVideo": false
   },
   {
@@ -946,7 +946,7 @@
     "source": "https://brittlepaper.com/2019/06/nigerian-writers-remember-the-biafran-war/",
     "licence": null,
     "date": "11th June 1968",
-    "path": "events/biafra-war-one.jpg",
+    "path": "/assets/events/biafra-war-one.jpg",
     "isVideo": false
   },
   {
@@ -956,7 +956,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Biafra_in_its_region.svg",
     "licence": null,
     "date": "30 October 2018",
-    "path": "events/biafra-war-two.png",
+    "path": "/assets/events/biafra-war-two.png",
     "isVideo": false
   },
   {
@@ -966,17 +966,17 @@
     "source": "https://www.bbc.com/afrique/region-51120852",
     "licence": null,
     "date": "",
-    "path": "events/biafra-war-three.jpg",
+    "path": "/assets/events/biafra-war-three.jpg",
     "isVideo": false
   },
   {
     "identifier": "soyuz-11-one",
-    "title": "",
+    "title": "Soyuz 11",
     "attribution": "",
     "source": "https://www.nasa.gov/wp-content/uploads/2021/06/soyuz_11_crew_6_soyuz_11_launch_ria_novosti.jpg",
     "licence": null,
     "date": "",
-    "path": "events/soyuz-one.jpg",
+    "path": "/assets/events/soyuz-one.jpg",
     "isVideo": false
   },
   {
@@ -986,7 +986,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Soyuz_11_crew.jpg",
     "licence": null,
     "date": "20 October 1971",
-    "path": "events/soyuz-two.jpg",
+    "path": "/assets/events/soyuz-two.jpg",
     "isVideo": false
   },
   {
@@ -996,7 +996,7 @@
     "source": "https://www.independent.co.uk/news/uk/home-news/northern-ireland-troubles-good-friday-agreement-b2314696.html",
     "licence": null,
     "date": "August 1969",
-    "path": "events/troubles-ireland-one.png",
+    "path": "/assets/events/troubles-ireland-one.png",
     "isVideo": false
   },
   {
@@ -1006,7 +1006,7 @@
     "source": "https://www.rte.ie/brainstorm/2020/0616/1147804-troubles-northern-ireland-colman-doyle-photo-woman-ira-belfast-1973/",
     "licence": null,
     "date": "1973",
-    "path": "events/troubles-ireland-two.jpg",
+    "path": "/assets/events/troubles-ireland-two.jpg",
     "isVideo": false
   },
   {
@@ -1016,7 +1016,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Map_of_Ireland%27s_capitals.png",
     "licence": null,
     "date": "",
-    "path": "events/troubles-ireland-three.png",
+    "path": "/assets/events/troubles-ireland-three.png",
     "isVideo": false
   },
   {
@@ -1026,7 +1026,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-L0603-406,_Berlin-Kontrollratsgeb%C3%A4ude,_Vierm%C3%A4chteabkommen.jpg",
     "licence": null,
     "date": "3 June 1972",
-    "path": "events/four-power-aggrement-on-berlin-one.jpg",
+    "path": "/assets/events/four-power-aggrement-on-berlin-one.jpg",
     "isVideo": false
   },
   {
@@ -1036,7 +1036,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Berlin_Alert_0400.jpg",
     "licence": null,
     "date": "1969-70",
-    "path": "events/four-power-aggrement-on-berlin-two.jpg",
+    "path": "/assets/events/four-power-aggrement-on-berlin-two.jpg",
     "isVideo": false
   },
   {
@@ -1046,7 +1046,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Germany_divided_BRD.png",
     "licence": null,
     "date": "24 March 2005 (original upload date)",
-    "path": "events/four-power-aggrement-on-berlin-three.png",
+    "path": "/assets/events/four-power-aggrement-on-berlin-three.png",
     "isVideo": false
   },
   {
@@ -1056,7 +1056,7 @@
     "source": "https://gript.ie/on-this-day-25-october-1971-un-admits-china-3/",
     "licence": null,
     "date": "1971",
-    "path": "events/china-join-un-one.jpeg",
+    "path": "/assets/events/china-join-un-one.jpeg",
     "isVideo": false
   },
   {
@@ -1066,7 +1066,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Voting_res_2758.svg/",
     "licence": null,
     "date": "12 September 2023",
-    "path": "events/china-join-un-two.png",
+    "path": "/assets/events/china-join-un-two.png",
     "isVideo": false
   },
   {
@@ -1076,7 +1076,7 @@
     "source": "https://www.flickr.com/photos/13476480@N07/24952117633",
     "licence": null,
     "date": "April 2, 1973",
-    "path": "events/vietnamization-one.png",
+    "path": "/assets/events/vietnamization-one.png",
     "isVideo": false
   },
   {
@@ -1086,7 +1086,7 @@
     "source": "https://fr.wikipedia.org/wiki/Vietnamisation#/media/Fichier:Richard_M._Nixon_shaking_hands_with_armed_forces_in_Vietnam_-_NARA_-_194650.tif",
     "licence": null,
     "date": "30 July 1969",
-    "path": "events/vietnamization-two.jpg",
+    "path": "/assets/events/vietnamization-two.jpg",
     "isVideo": false
   },
   {
@@ -1096,7 +1096,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:T4_Vietcong_Tet_Offensive.jpg",
     "licence": null,
     "date": "1967",
-    "path": "events/vietnamization-three.jpg",
+    "path": "/assets/events/vietnamization-three.jpg",
     "isVideo": false
   },
   {
@@ -1106,7 +1106,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Fidel_Castro_-_MATS_Terminal_Washington_1959.jpg",
     "licence": null,
     "date": "1959",
-    "path": "events/annoucement-fidel-castro-visit-one.jpg",
+    "path": "/assets/events/annoucement-fidel-castro-visit-one.jpg",
     "isVideo": false
   },
   {
@@ -1116,7 +1116,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Fidel_Castro_with_Augusto_Martinez_Sanchez_1960.jpg",
     "licence": null,
     "date": "06/07/1960",
-    "path": "events/annoucement-fidel-castro-visit-two.jpg",
+    "path": "/assets/events/annoucement-fidel-castro-visit-two.jpg",
     "isVideo": false
   },
   {
@@ -1126,7 +1126,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Fidel_Castro_and_his_men_in_the_Sierra_Maestra.jpg",
     "licence": null,
     "date": "2 December 1956",
-    "path": "events/annoucement-fidel-castro-visit-three.jpg",
+    "path": "/assets/events/annoucement-fidel-castro-visit-three.jpg",
     "isVideo": false
   },
   {
@@ -1136,7 +1136,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-330041.html",
     "licence": null,
     "date": "1971",
-    "path": "events/arrival-castro-one.jpg",
+    "path": "/assets/events/arrival-castro-one.jpg",
     "isVideo": false
   },
   {
@@ -1146,7 +1146,7 @@
     "source": "https://www.bibliotecanacionaldigital.gob.cl/bnd/629/w3-article-640606.html",
     "licence": null,
     "date": "1971",
-    "path": "events/arrival-castro-two.jpg",
+    "path": "/assets/events/arrival-castro-two.jpg",
     "isVideo": false
   },
   {
@@ -1156,7 +1156,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Carlos_Altamirano,_Fidel_Castro,_Salvador_Allende_y_Luis_Corval%C3%A1n.jpg",
     "licence": null,
     "date": "1971",
-    "path": "events/castro-speech-one.jpg",
+    "path": "/assets/events/castro-speech-one.jpg",
     "isVideo": false
   },
   {
@@ -1166,7 +1166,7 @@
     "source": "https://www.guioteca.com/fotografia/asi-fue-la-visita-de-25-dias-de-fidel-castro-a-chile-fotos-de-su-extensa-estadia-en-1971/",
     "licence": null,
     "date": "",
-    "path": "events/castro-speech-two.jpg",
+    "path": "/assets/events/castro-speech-two.jpg",
     "isVideo": false
   },
   {
@@ -1176,17 +1176,17 @@
     "source": "https://www.humanite.fr/histoire/chili/1971-fidel-castro-au-chili-la-revolution-ne-sachete-pas-727302/",
     "licence": null,
     "date": "1971",
-    "path": "events/castro-departure-one.png",
+    "path": "/assets/events/castro-departure-one.png",
     "isVideo": false
   },
   {
     "identifier": "bengladesh-war-one",
-    "title": "",
+    "title": "Bengladesh war",
     "attribution": "",
     "source": "https://ecdn.dhakatribune.net/contents/cache/images/1100x0x1/uploads/dten/2023/03/25/liberation-war---collected.jpeg",
     "licence": null,
     "date": "1971",
-    "path": "events/bengladesh-war-one.png",
+    "path": "/assets/events/bengladesh-war-one.png",
     "isVideo": false
   },
   {
@@ -1196,7 +1196,7 @@
     "source": "https://openthemagazine.com/essays/1971-india-pakistan-war-memory-as-peacemaker/",
     "licence": null,
     "date": "1971",
-    "path": "events/bengladesh-war-two.jpg",
+    "path": "/assets/events/bengladesh-war-two.jpg",
     "isVideo": false
   },
   {
@@ -1206,7 +1206,7 @@
     "source": "https://theprint.in/opinion/1971-bangladesh-war-facts-fairly/20171/",
     "licence": null,
     "date": "December 1971",
-    "path": "events/bengladesh-war-three.png",
+    "path": "/assets/events/bengladesh-war-three.png",
     "isVideo": false
   },
   {
@@ -1216,7 +1216,7 @@
     "source": "https://fr.m.wikipedia.org/wiki/Fichier:Flag_of_Bangladesh.svg",
     "licence": null,
     "date": "",
-    "path": "events/bengladesh-war-four.png",
+    "path": "/assets/events/bengladesh-war-four.png",
     "isVideo": false
   },
   {
@@ -1226,7 +1226,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Soviet_Union.svg",
     "licence": null,
     "date": "1955",
-    "path": "events/soviet-flag.png",
+    "path": "/assets/events/soviet-flag.png",
     "isVideo": false
   },
   {
@@ -1236,7 +1236,7 @@
     "source": "https://www.flickr.com/photos/leopoldovictorvargas/27209656883/in/photostream/",
     "licence": null,
     "date": "1972",
-    "path": "events/allende-in-ussr.png",
+    "path": "/assets/events/allende-in-ussr.png",
     "isVideo": false
   },
   {
@@ -1246,7 +1246,7 @@
     "source": "https://www.peoplesworld.org/article/chiles-1000-days-of-revolution-a-marxist-analysis-of-the-allende-years/",
     "licence": null,
     "date": "August 30, 1970",
-    "path": "events/allende-speech.jpeg",
+    "path": "/assets/events/allende-speech.jpeg",
     "isVideo": false
   },
   {
@@ -1256,7 +1256,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:President_Nixon_meets_with_China%27s_Communist_Party_Leader,_Mao_Tse-_Tung,_02-29-1972_-_NARA_-_194759.tif?page=1",
     "licence": null,
     "date": "29 February 1972",
-    "path": "events/visit-nixon-china-one.jpg",
+    "path": "/assets/events/visit-nixon-china-one.jpg",
     "isVideo": false
   },
   {
@@ -1266,7 +1266,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:President_Nixon_meets_with_China%27s_Communist_Party_Leader,_Mao_Tse-_Tung,_02-29-1972_-_NARA_-_194759.tif?page=1",
     "licence": null,
     "date": "22 February 1972",
-    "path": "events/visit-nixon-china-two.gif",
+    "path": "/assets/events/visit-nixon-china-two.gif",
     "isVideo": false
   },
   {
@@ -1276,7 +1276,7 @@
     "source": "https://penntoday.upenn.edu/news/nixons-china-visit-50-years-later",
     "licence": null,
     "date": "Feb. 28, 1972",
-    "path": "events/visit-nixon-china-three.jpg",
+    "path": "/assets/events/visit-nixon-china-three.jpg",
     "isVideo": false
   },
   {
@@ -1286,7 +1286,7 @@
     "source": "https://penntoday.upenn.edu/news/nixons-china-visit-50-years-later",
     "licence": null,
     "date": "25 February 1972",
-    "path": "events/visit-nixon-china-four.jpg",
+    "path": "/assets/events/visit-nixon-china-four.jpg",
     "isVideo": false
   },
   {
@@ -1296,7 +1296,7 @@
     "source": "https://www.history.com/news/the-troubles-northern-ireland",
     "licence": null,
     "date": "August 12, 1969",
-    "path": "events/bloody-sunday-one.png",
+    "path": "/assets/events/bloody-sunday-one.png",
     "isVideo": false
   },
   {
@@ -1306,7 +1306,7 @@
     "source": "https://fr.wikipedia.org/wiki/Bloody_Sunday_%281972%29",
     "licence": null,
     "date": "1970",
-    "path": "events/bloody-sunday-two.jpg",
+    "path": "/assets/events/bloody-sunday-two.jpg",
     "isVideo": false
   },
   {
@@ -1316,7 +1316,7 @@
     "source": "https://www.history.com/this-day-in-history/bloody-sunday-in-northern-ireland",
     "licence": null,
     "date": "1972",
-    "path": "events/bloody-sunday-three.png",
+    "path": "/assets/events/bloody-sunday-three.png",
     "isVideo": false
   },
   {
@@ -1326,7 +1326,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:LonNol.jpg",
     "licence": null,
     "date": "",
-    "path": "events/lon-nol-one.jpg",
+    "path": "/assets/events/lon-nol-one.jpg",
     "isVideo": false
   },
   {
@@ -1336,7 +1336,7 @@
     "source": "https://www.flickr.com/photos/13476480@N07/34618005520",
     "licence": null,
     "date": "1972",
-    "path": "events/khmer-prisonners.png",
+    "path": "/assets/events/khmer-prisonners.png",
     "isVideo": false
   },
   {
@@ -1346,7 +1346,7 @@
     "source": "https://microkhan.com/2009/12/03/bulletproof-cambodia-1972/",
     "licence": null,
     "date": "1972",
-    "path": "events/khmer-soldiers.jpg",
+    "path": "/assets/events/khmer-soldiers.jpg",
     "isVideo": false
   },
   {
@@ -1356,7 +1356,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:T-59_VC.jpg",
     "licence": null,
     "date": "",
-    "path": "events/easter-offensive-one.jpg",
+    "path": "/assets/events/easter-offensive-one.jpg",
     "isVideo": false
   },
   {
@@ -1366,7 +1366,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Vietnam_Veterans_Throw_Their_Medals_Away_April_23,_1971.jpg",
     "licence": null,
     "date": "23 April 1971",
-    "path": "events/easter-offensive-two.jpg",
+    "path": "/assets/events/easter-offensive-two.jpg",
     "isVideo": false
   },
   {
@@ -1376,7 +1376,7 @@
     "source": "https://www.thearmorylife.com/small-arms-of-the-viet-cong/",
     "licence": null,
     "date": "23 April 1971",
-    "path": "events/easter-offensive-three.png",
+    "path": "/assets/events/easter-offensive-three.png",
     "isVideo": false
   },
   {
@@ -1386,7 +1386,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:FNL_Flag.svg",
     "licence": null,
     "date": "",
-    "path": "events/easter-offensive-four.svg",
+    "path": "/assets/events/easter-offensive-four.svg",
     "isVideo": false
   },
   {
@@ -1396,7 +1396,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:UNCTAD_III,_Santiago_%281972%29-21220752416.jpg",
     "licence": null,
     "date": "",
-    "path": "events/UNCTAD-one.jpg",
+    "path": "/assets/events/UNCTAD-one.jpg",
     "isVideo": false
   },
   {
@@ -1406,7 +1406,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:UNCTAD_III,_Santiago_%281972%29-21059100898.jpg",
     "licence": null,
     "date": "",
-    "path": "events/unctad-two.jpg",
+    "path": "/assets/events/unctad-two.jpg",
     "isVideo": false
   },
   {
@@ -1416,7 +1416,7 @@
     "source": "https://www.theguardian.com/theguardian/2013/may/27/nuclear-arms-pact-russia-usa-1972",
     "licence": null,
     "date": "",
-    "path": "events/nixon-ussr-visit-one.png",
+    "path": "/assets/events/nixon-ussr-visit-one.png",
     "isVideo": false
   },
   {
@@ -1426,7 +1426,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Sempreatentos...aoperigo!.jpg",
     "licence": null,
     "date": "",
-    "path": "events/angolan-independance-war-one.jpg",
+    "path": "/assets/events/angolan-independance-war-one.jpg",
     "isVideo": false
   },
   {
@@ -1436,7 +1436,7 @@
     "source": "https://face2faceafrica.com/article/angolan-war",
     "licence": null,
     "date": "",
-    "path": "events/angolan-independance-war-four.jpg",
+    "path": "/assets/events/angolan-independance-war-four.jpg",
     "isVideo": false
   },
   {
@@ -1446,7 +1446,7 @@
     "source": "https://en.wikipedia.org/wiki/File:FNLA_recruits_Zaire3.jpg",
     "licence": null,
     "date": "1973",
-    "path": "events/angolan-independance-war-two.jpg",
+    "path": "/assets/events/angolan-independance-war-two.jpg",
     "isVideo": false
   },
   {
@@ -1456,7 +1456,7 @@
     "source": "https://en.wikipedia.org/wiki/File:F.N.L.A._in_Za%C3%AFre.jpg",
     "licence": null,
     "date": "1973",
-    "path": "events/angolan-independance-war-three.jpg",
+    "path": "/assets/events/angolan-independance-war-three.jpg",
     "isVideo": false
   },
   {
@@ -1466,7 +1466,7 @@
     "source": "https://www.monde-diplomatique.fr/local/cache-vignettes/L890xH618/image-1296-f7800.jpg?1678461329",
     "licence": null,
     "date": "1972",
-    "path": "events/sadat-expuls-soviet-advisor-one.jpg",
+    "path": "/assets/events/sadat-expuls-soviet-advisor-one.jpg",
     "isVideo": false
   },
   {
@@ -1476,7 +1476,7 @@
     "source": "https://muenchen1972-2022.de/en/program/the-1972-munich-olympic-games/",
     "licence": null,
     "date": "1972",
-    "path": "events/1972-summer-olympics-one.png",
+    "path": "/assets/events/1972-summer-olympics-one.png",
     "isVideo": false
   },
   {
@@ -1486,7 +1486,7 @@
     "source": "https://apnews.com/article/sports-israel-sports-middle-east-munich-2020-tokyo-olympics-8387c0cdbb280e9064eae2c3a1c9d191/local/cache-vignettes/L890xH618/image-1296-f7800.jpg?1678461329",
     "licence": null,
     "date": "1972",
-    "path": "events/1972-summer-olympics-two.png",
+    "path": "/assets/events/1972-summer-olympics-two.png",
     "isVideo": false
   },
   {
@@ -1496,7 +1496,7 @@
     "source": "https://www.chinadaily.com.cn/china/China-Japan-Relations/2013-09/25/content_16993227.htm",
     "licence": null,
     "date": "sept. 27, 1972",
-    "path": "events/japan-china-joint-communique-one.jpg",
+    "path": "/assets/events/japan-china-joint-communique-one.jpg",
     "isVideo": false
   },
   {
@@ -1506,7 +1506,7 @@
     "source": "https://japannews.yomiuri.co.jp/politics/politics-government/20220927-60799/",
     "licence": null,
     "date": "sept. 28, 1972",
-    "path": "events/japan-china-joint-communique-two.jpg",
+    "path": "/assets/events/japan-china-joint-communique-two.jpg",
     "isVideo": false
   },
   {
@@ -1516,7 +1516,7 @@
     "source": "https://www.monde-diplomatique.fr/local/cache-vignettes/L890xH606/image-1097-42bca.jpg?1659808276",
     "licence": null,
     "date": "october 1972",
-    "path": "events/fedayin-one.jpg",
+    "path": "/assets/events/fedayin-one.jpg",
     "isVideo": false
   },
   {
@@ -1526,7 +1526,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:FatehMilitia.jpg",
     "licence": null,
     "date": "1 January 1979",
-    "path": "events/fedayin-two.jpg",
+    "path": "/assets/events/fedayin-two.jpg",
     "isVideo": false
   },
   {
@@ -1536,7 +1536,7 @@
     "source": "https://www.politico.com/story/2018/11/07/this-day-in-politics-november-7-963516",
     "licence": null,
     "date": "November 7 1972",
-    "path": "events/nixon-reelected-one.jpeg",
+    "path": "/assets/events/nixon-reelected-one.jpeg",
     "isVideo": false
   },
   {
@@ -1546,7 +1546,7 @@
     "source": "https://www.posterazzi.com/nixon-1972-re-election-campaign-president-and-pat-nixon-arriving-at-portland-oregon-history-item-varevchisl032ec134/",
     "licence": null,
     "date": "1972",
-    "path": "events/nixon-reelected-two.jpg",
+    "path": "/assets/events/nixon-reelected-two.jpg",
     "isVideo": false
   },
   {
@@ -1556,7 +1556,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/1/11/Bundesarchiv_B_145_Bild-F031406-0017%2C_Erfurt%2C_Treffen_Willy_Brandt_mit_Willi_Stoph.jpg/",
     "licence": null,
     "date": "19 March 1970",
-    "path": "events/basic-treaty-one.jpg",
+    "path": "/assets/events/basic-treaty-one.jpg",
     "isVideo": false
   },
   {
@@ -1566,7 +1566,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-K0617-0001-163,_Berlin,_VIII._SED-Parteitag,_Breshnew,_Honecker.jpg",
     "licence": null,
     "date": "16 June 1971",
-    "path": "events/basic-treaty-two.jpg",
+    "path": "/assets/events/basic-treaty-two.jpg",
     "isVideo": false
   },
   {
@@ -1576,7 +1576,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-L1221-0020,_Berlin,_Grundlagenvertrag,_Pressekonferenz.jpg",
     "licence": null,
     "date": "16 June 1971",
-    "path": "events/basic-treaty-three.jpg",
+    "path": "/assets/events/basic-treaty-three.jpg",
     "isVideo": false
   },
   {
@@ -1586,7 +1586,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Vietnam_peace_agreement_signing.jpg",
     "licence": null,
     "date": "27 January 1973",
-    "path": "events/paris-peace-accord-one.jpg",
+    "path": "/assets/events/paris-peace-accord-one.jpg",
     "isVideo": false
   },
   {
@@ -1596,7 +1596,7 @@
     "source": "https://www.historynet.com/how-the-1972-north-vietnamese-easter-offensive-tested-nixons-war-strategy/",
     "licence": null,
     "date": "",
-    "path": "events/paris-peace-accord-two.jpg",
+    "path": "/assets/events/paris-peace-accord-two.jpg",
     "isVideo": false
   },
   {
@@ -1606,7 +1606,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Photograph_of_American_Indian_Protest_in_Seattle,_Washington_-_NARA_-_594285.jpg",
     "licence": null,
     "date": "1964 \u2013 1979",
-    "path": "events/occupation-wounded-knee-one.jpg",
+    "path": "/assets/events/occupation-wounded-knee-one.jpg",
     "isVideo": false
   },
   {
@@ -1616,7 +1616,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Bury_my_heart_at_Wounded_Knee_LCCN2016648074_cropped.tif?page=1",
     "licence": null,
     "date": "1973",
-    "path": "events/occupation-wounded-knee-two.png",
+    "path": "/assets/events/occupation-wounded-knee-two.png",
     "isVideo": false
   },
   {
@@ -1626,17 +1626,17 @@
     "source": "https://commons.wikimedia.org/wiki/File:Flag_of_the_American_Indian_Movement.svg?lang=fr",
     "licence": null,
     "date": "",
-    "path": "events/occupation-wounded-knee-three.svg",
+    "path": "/assets/events/occupation-wounded-knee-three.svg",
     "isVideo": false
   },
   {
     "identifier": "last-american-soldier-leave-vietnam-one",
-    "title": "",
+    "title": "Vietnam war",
     "attribution": "",
     "source": "https://guilfordvoyager.com/2021/04/01/the-last-u-s-troops-leave-vietnam/",
     "licence": null,
     "date": "",
-    "path": "events/last-american-soldier-leave-vietnam-one.jpg",
+    "path": "/assets/events/last-american-soldier-leave-vietnam-one.jpg",
     "isVideo": false
   },
   {
@@ -1646,7 +1646,7 @@
     "source": "https://www.independent.com/2024/03/25/when-the-last-u-s-soldier-left-vietnam/",
     "licence": null,
     "date": "",
-    "path": "events/last-american-soldier-leave-vietnam-two.png",
+    "path": "/assets/events/last-american-soldier-leave-vietnam-two.png",
     "isVideo": false
   },
   {
@@ -1656,7 +1656,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:CommandoOnboardMB.jpg",
     "licence": null,
     "date": "",
-    "path": "events/israeli-raide-in-lebanon-one.jpg",
+    "path": "/assets/events/israeli-raide-in-lebanon-one.jpg",
     "isVideo": false
   },
   {
@@ -1666,7 +1666,7 @@
     "source": "https://commons.wikimedia.org/https://apnews.com/article/lebanon-israel-plo-beirut-ehud-barak-a2816005d9f90dbaa0a6f9437322c90a",
     "licence": null,
     "date": "",
-    "path": "events/israeli-raide-in-lebanon-two.png",
+    "path": "/assets/events/israeli-raide-in-lebanon-two.png",
     "isVideo": false
   },
   {
@@ -1676,7 +1676,7 @@
     "source": "https://en.wikipedia.org/wiki/File:Seal_of_the_POLISARIO_Front.svg",
     "licence": null,
     "date": "",
-    "path": "events/creation-polisario-one.svg",
+    "path": "/assets/events/creation-polisario-one.svg",
     "isVideo": false
   },
   {
@@ -1686,7 +1686,7 @@
     "source": "https://fr.wikipedia.org/wiki/Front_Polisario#/media/Fichier:Soldaten_houden_de_wacht_bij_de_demonstranten,_Bestanddeelnr_928-1240.jpg",
     "licence": null,
     "date": "",
-    "path": "events/creation-polisario-two.jpg",
+    "path": "/assets/events/creation-polisario-two.jpg",
     "isVideo": false
   },
   {
@@ -1696,7 +1696,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Juan_Mar%C3%ADa_Bordaberry_y_Juan_Domingo_Per%C3%B3n,_1974.png",
     "licence": null,
     "date": "12/2/1974",
-    "path": "events/juan-peron-return-one.png",
+    "path": "/assets/events/juan-peron-return-one.png",
     "isVideo": false
   },
   {
@@ -1706,7 +1706,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Otto_Skorzeny_y_Peron.jpg",
     "licence": null,
     "date": " between 1946 and 1955",
-    "path": "events/juan-peron-return-two.jpg",
+    "path": "/assets/events/juan-peron-return-two.jpg",
     "isVideo": false
   },
   {
@@ -1716,7 +1716,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:MoD_General_Ghulam_Haider_Khan_Rasooli_performing_Attan_with_officers_on_27_July_1974.jpg",
     "licence": null,
     "date": "17 July 1974",
-    "path": "events/proclamation-afghan-republic-one.jpg",
+    "path": "/assets/events/proclamation-afghan-republic-one.jpg",
     "isVideo": false
   },
   {
@@ -1726,7 +1726,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Flag_of_Afghanistan_(1974%E2%80%931978).svg?uselang=fr",
     "licence": null,
     "date": "",
-    "path": "events/proclamation-afghan-republic-two.svg",
+    "path": "/assets/events/proclamation-afghan-republic-two.svg",
     "isVideo": false
   },
   {
@@ -1736,7 +1736,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Sardar_Mohammed_Daud.jpg",
     "licence": null,
     "date": "before 1978",
-    "path": "events/proclamation-afghan-republic-three.jpg",
+    "path": "/assets/events/proclamation-afghan-republic-three.jpg",
     "isVideo": false
   },
   {
@@ -1746,7 +1746,7 @@
     "source": "https://www.chinatoday.com/org/cpc/cpc_10th_congress_standing_polibureau.htm",
     "licence": null,
     "date": "",
-    "path": "events/tenth-national-congress-ccp-one.jpg",
+    "path": "/assets/events/tenth-national-congress-ccp-one.jpg",
     "isVideo": false
   },
   {
@@ -1756,7 +1756,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Lin_Biao.jpg",
     "licence": null,
     "date": "1955",
-    "path": "events/tenth-national-congress-ccp-two.jpg",
+    "path": "/assets/events/tenth-national-congress-ccp-two.jpg",
     "isVideo": false
   },
   {
@@ -1766,7 +1766,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Lin_Biao.jpg",
     "licence": null,
     "date": "1960",
-    "path": "events/tenth-national-congress-ccp-three.jpg",
+    "path": "/assets/events/tenth-national-congress-ccp-three.jpg",
     "isVideo": false
   },
   {
@@ -1776,7 +1776,7 @@
     "source": "https://www.memoriasdelsigloxx.cl/601/w3-article-48782.html",
     "licence": null,
     "date": "1971",
-    "path": "events/electiones-parlementaria-one.jpg",
+    "path": "/assets/events/electiones-parlementaria-one.jpg",
     "isVideo": false
   },
   {
@@ -1786,7 +1786,7 @@
     "source": "https://www.sudouest.fr/politique/le-11-septembre-1973-le-jour-ou-salvador-allende-est-renverse-par-un-coup-d-etat-militaire-au-chili-16602556.php?csnt=1921509c489",
     "licence": null,
     "date": "September 4, 1972",
-    "path": "events/electiones-parlementaria-two.jpg",
+    "path": "/assets/events/electiones-parlementaria-two.jpg",
     "isVideo": false
   },
   {
@@ -1796,7 +1796,7 @@
     "source": "https://es.m.wikipedia.org/wiki/Archivo:PC_Chile_-_Marzo_1973.jpg",
     "licence": null,
     "date": "1973",
-    "path": "events/electiones-parlementaria-three.jpg",
+    "path": "/assets/events/electiones-parlementaria-three.jpg",
     "isVideo": false
   },
   {
@@ -1806,7 +1806,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Altamirano_es_decision_revolucionaria.jpg",
     "licence": null,
     "date": "1973",
-    "path": "events/election-senatorial-one.jpg",
+    "path": "/assets/events/election-senatorial-one.jpg",
     "isVideo": false
   },
   {
@@ -1816,7 +1816,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:SalvadorAllende1973.jpg",
     "licence": null,
     "date": "",
-    "path": "events/election-senatorial-two.jpg",
+    "path": "/assets/events/election-senatorial-two.jpg",
     "isVideo": false
   },
   {
@@ -1826,7 +1826,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Manifestaci%C3%B3n_a_favor_del_Partido_Nacional.jpg",
     "licence": null,
     "date": "8 March 1973",
-    "path": "events/election-presidental-one.jpg",
+    "path": "/assets/events/election-presidental-one.jpg",
     "isVideo": false
   },
   {
@@ -1836,7 +1836,7 @@
     "source": "https://www.aljazeera.com/news/2023/6/20/a-divided-legacy-marks-50-years-since-perons-return-to-argentina",
     "licence": null,
     "date": "October 12, 1973",
-    "path": "events/election-of-peron-one.png",
+    "path": "/assets/events/election-of-peron-one.png",
     "isVideo": false
   },
   {
@@ -1846,7 +1846,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Operativo_Independencia,_provincia_de_Tucum%C3%A1n_07.jpg",
     "licence": null,
     "date": "1975",
-    "path": "events/election-of-peron-two.jpg",
+    "path": "/assets/events/election-of-peron-two.jpg",
     "isVideo": false
   },
   {
@@ -1856,7 +1856,67 @@
     "source": "https://www.abebooks.fr/photographies/Argentina-Buenos-Aires-Juan-Peron-Election/22870045246/bd#&gid=1&pid=1",
     "licence": null,
     "date": "1973",
-    "path": "events/election-of-peron-three.jpg",
+    "path": "/assets/events/election-of-peron-three.jpg",
+    "isVideo": false
+  },
+  {
+    "identifier": "christian-democratic-party-logo",
+    "title": "Logo of the Christian Democratic Party",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/political-parties/christian_democratic_party.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "communist-party-logo",
+    "title": "Logo of the Communist Party",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/political-parties/communist_party.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "national-party-logo",
+    "title": "Logo of the National Party",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/political-parties/national_party.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "radical-democracy-logo",
+    "title": "Logo of Radical Democracy",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/political-parties/radical_democracy.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "radical-party-logo",
+    "title": "Logo of Radical Party",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/political-parties/radical_party.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "socialist-party-logo",
+    "title": "Logo of the Socialist Party",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/political-parties/socialist_party.png",
     "isVideo": false
   }
 ]
