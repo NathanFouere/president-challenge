@@ -42,6 +42,7 @@ onMounted(async () => {
   >
     <UTooltip
       v-if="gamePresenter.hasMaxGames()"
+      class="float-end"
       text="Maximum number of games reached (3)"
     >
       <UButton

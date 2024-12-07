@@ -46,7 +46,7 @@ const links = computed(() => [
     <UDashboardPage class="overflow-auto flex-1">
       <UDashboardPanel class="flex flex-1 pl-5 pr-5">
         <UDashboardNavbar :title="pageTitle.title.value" />
-        <NuxtPage />
+        <NuxtPage class="pt-6" />
 
         <UNotifications />
       </UDashboardPanel>

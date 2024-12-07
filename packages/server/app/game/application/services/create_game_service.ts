@@ -5,8 +5,6 @@ import { aGame } from '#game/application/builders/game_builder';
 import GameRepository from '#game/infrastructure/repositories/game_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StartupService } from '#common/services/startup_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { LicensedFileCreationService } from '#licensed-file/infrastructure/startup/licensed_file_creation_service';
 
 @inject()
 export default class CreateGameService {
@@ -15,7 +13,6 @@ export default class CreateGameService {
   constructor(
     private readonly gameRepository: GameRepository,
     private readonly startupService: StartupService,
-    private readonly licensedFileCreationService: LicensedFileCreationService,
   ) {
   }
 
@@ -42,13 +39,12 @@ export default class CreateGameService {
       await this.gameRepository.save(game);
 
       await this.startupService.initialize(game.id);
-      await this.licensedFileCreationService.initializeLicensedFiles();
 
       await this.gameRepository.save(game);
     }
     catch (error) {
       await this.gameRepository.delete(game);
-      throw new Error('Failed to create game');
+      throw new Error('Failed to create game', error);
     }
   }
 }
