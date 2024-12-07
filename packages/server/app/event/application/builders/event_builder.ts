@@ -7,45 +7,34 @@ export class EventBuilder {
   private turn: number | null = null;
   private isAvailable: boolean | null = null;
   private gameId: number | null = null;
-  private licensedFilesIdentifiers: string[] = [];
 
-  public withIdentifier(identifier: string): EventBuilder {
+  public withIdentifier(identifier: string): this {
     this.identifier = identifier;
     return this;
   }
 
-  public withTitle(title: string): EventBuilder {
+  public withTitle(title: string): this {
     this.title = title;
     return this;
   }
 
-  public withGameId(gameId: number): EventBuilder {
+  public withGameId(gameId: number): this {
     this.gameId = gameId;
     return this;
   }
 
-  public withText(text: string): EventBuilder {
+  public withText(text: string): this {
     this.text = text;
     return this;
   }
 
-  public withTurn(turn: number): EventBuilder {
+  public withTurn(turn: number): this {
     this.turn = turn;
     return this;
   }
 
-  public withIsAvailable(isAvailable: boolean): EventBuilder {
+  public withIsAvailable(isAvailable: boolean): this {
     this.isAvailable = isAvailable;
-    return this;
-  }
-
-  public withLicensedFilesIdentifiers(licensedFilesIdentifiers: string[]): EventBuilder {
-    this.licensedFilesIdentifiers.push(...licensedFilesIdentifiers);
-    return this;
-  }
-
-  public withLicensedFilesIdentifier(licensedFilesIdentifier: string): EventBuilder {
-    this.licensedFilesIdentifiers.push(licensedFilesIdentifier);
     return this;
   }
 
