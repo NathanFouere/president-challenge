@@ -42,46 +42,48 @@ async function onSubmit(data: any) {
 </script>
 
 <template>
-  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
-    <UAuthForm
-      :fields="fields"
-      :validate="validate"
-      title="Create an account"
-      :ui="{ base: 'text-center', footer: 'text-center' }"
-      :submit-button="{ label: 'Create account' }"
-      :loading="authPresenter.signupStore.getIsRegistering"
-      @submit="onSubmit"
-    >
-      <template #description>
-        Already have an account?
-        <NuxtLink
-          :to="NUXT_ROUTES.login"
-          class="text-primary font-medium"
-        >
-          Login
-        </NuxtLink>.
-      </template>
-
-      <template
-        v-if="authPresenter.signupStore.getError"
-        #validation
+  <div class="flex items-center justify-center">
+    <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+      <UAuthForm
+        :fields="fields"
+        :validate="validate"
+        title="Create an account"
+        :ui="{ base: 'text-center', footer: 'text-center' }"
+        :submit-button="{ label: 'Create account' }"
+        :loading="authPresenter.signupStore.getIsRegistering"
+        @submit="onSubmit"
       >
-        <UAlert
-          color="red"
-          icon="i-heroicons-information-circle-20-solid"
-          :title="authPresenter.signupStore.getError"
-        />
-      </template>
+        <template #description>
+          Already have an account?
+          <NuxtLink
+            :to="NUXT_ROUTES.login"
+            class="text-primary font-medium"
+          >
+            Login
+          </NuxtLink>.
+        </template>
 
-      <template #footer>
-        By signing up, you agree to our
-        <NuxtLink
-          to="/packages/client/public"
-          class="text-primary font-medium"
+        <template
+          v-if="authPresenter.signupStore.getError"
+          #validation
         >
-          Terms of Service
-        </NuxtLink>.
-      </template>
-    </UAuthForm>
-  </UCard>
+          <UAlert
+            color="red"
+            icon="i-heroicons-information-circle-20-solid"
+            :title="authPresenter.signupStore.getError"
+          />
+        </template>
+
+        <template #footer>
+          By signing up, you agree to our
+          <NuxtLink
+            to="/packages/client/public"
+            class="text-primary font-medium"
+          >
+            Terms of Service
+          </NuxtLink>.
+        </template>
+      </UAuthForm>
+    </UCard>
+  </div>
 </template>

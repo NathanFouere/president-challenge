@@ -3,6 +3,7 @@ import type { DateTime } from 'luxon';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import User from '#user/domain/models/user';
 import PoliticalParty from '#political-party/domain/models/political_party';
+import Event from '#event/domain/models/event';
 
 export default class Game extends BaseModel {
   @column({ isPrimary: true })
@@ -19,6 +20,9 @@ export default class Game extends BaseModel {
 
   @hasMany(() => PoliticalParty)
   declare politicalParties: HasMany<typeof PoliticalParty>;
+
+  @hasMany(() => Event)
+  declare events: HasMany<typeof Event>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

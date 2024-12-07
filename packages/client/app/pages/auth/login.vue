@@ -39,46 +39,48 @@ async function signOut() {
 </script>
 
 <template>
-  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
-    <UCard v-if="authPresenter.userStore.connectedUser">
-      <p>
-        Already logged in as {{ authPresenter.userStore.connectedUser.email }} <UButton @click="signOut">
-          Sign out
-        </UButton>
-      </p>
-    </UCard>
-
-    <UAuthForm
-      v-else
-      :fields="fields"
-      :validate="validate"
-      title="Login"
-      :ui="{ base: 'text-center', footer: 'text-center' }"
-      :loading="authPresenter.loginStore.getIsLogging"
-      :submit-button="{ label: 'Login' }"
-      @submit="onSubmit"
-    >
-      <template #description>
+  <div class="flex items-center justify-center">
+    <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+      <UCard v-if="authPresenter.userStore.connectedUser">
         <p>
-          Don't have an account? <NuxtLink
-            :to="NUXT_ROUTES.signup"
-            class="text-primary font-medium"
-          >
-            Sign up
-          </NuxtLink>.
+          Already logged in as {{ authPresenter.userStore.connectedUser.email }} <UButton @click="signOut">
+            Sign out
+          </UButton>
         </p>
-      </template>
+      </UCard>
 
-      <template
-        v-if="authPresenter.loginStore.getError"
-        #validation
+      <UAuthForm
+        v-else
+        :fields="fields"
+        :validate="validate"
+        title="Login"
+        :ui="{ base: 'text-center', footer: 'text-center' }"
+        :loading="authPresenter.loginStore.getIsLogging"
+        :submit-button="{ label: 'Login' }"
+        @submit="onSubmit"
       >
-        <UAlert
-          color="red"
-          icon="i-heroicons-information-circle-20-solid"
-          :title="authPresenter.loginStore.getError"
-        />
-      </template>
-    </UAuthForm>
-  </UCard>
+        <template #description>
+          <p>
+            Don't have an account? <NuxtLink
+              :to="NUXT_ROUTES.signup"
+              class="text-primary font-medium"
+            >
+              Sign up
+            </NuxtLink>.
+          </p>
+        </template>
+
+        <template
+          v-if="authPresenter.loginStore.getError"
+          #validation
+        >
+          <UAlert
+            color="red"
+            icon="i-heroicons-information-circle-20-solid"
+            :title="authPresenter.loginStore.getError"
+          />
+        </template>
+      </UAuthForm>
+    </UCard>
+  </div>
 </template>

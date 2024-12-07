@@ -1,5 +1,7 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm';
+import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm';
+import type { ManyToMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
+import Event from '#event/domain/models/event';
 
 export default class LicensedFile extends BaseModel {
   @column({ isPrimary: true })
@@ -25,6 +27,15 @@ export default class LicensedFile extends BaseModel {
 
   @column()
   declare isVideo: boolean;
+
+  @manyToMany(() => Event, {
+    pivotTable: 'event_licensed_file',
+    pivotForeignKey: 'licensed_file_identifier',
+    pivotRelatedForeignKey: 'event_id',
+    localKey: 'identifier',
+    relatedKey: 'id',
+  })
+  declare events: ManyToMany<typeof Event>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;
