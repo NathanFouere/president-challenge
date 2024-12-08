@@ -7,6 +7,7 @@ export class EventBuilder {
   private turn: number | null = null;
   private isAvailable: boolean | null = null;
   private gameId: number | null = null;
+  private beenRead: boolean | null = null;
 
   public withIdentifier(identifier: string): this {
     this.identifier = identifier;
@@ -35,6 +36,11 @@ export class EventBuilder {
 
   public withIsAvailable(isAvailable: boolean): this {
     this.isAvailable = isAvailable;
+    return this;
+  }
+
+  public withBeenRead(beenRead: boolean): this {
+    this.beenRead = beenRead;
     return this;
   }
 
@@ -75,6 +81,12 @@ export class EventBuilder {
     }
     else {
       throw new Error('title is required');
+    }
+    if (this.beenRead !== null) {
+      event.beenRead = this.beenRead;
+    }
+    else {
+      throw new Error('beenRead is required');
     }
     return event;
   }

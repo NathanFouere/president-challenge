@@ -5,7 +5,7 @@ import Game from '#game/domain/models/game';
 
 export default class Event extends BaseModel {
   @column({ isPrimary: true, serializeAs: null })
-  declare id: string;
+  declare id: number;
 
   @column()
   declare identifier: string;
@@ -21,6 +21,9 @@ export default class Event extends BaseModel {
 
   @column()
   declare isAvailable: boolean;
+
+  @column()
+  declare beenRead: boolean;
 
   @manyToMany(() => LicensedFile, {
     pivotTable: 'event_licensed_file',

@@ -39,6 +39,12 @@ export const useGameStore = defineStore('gameStore', {
       }
       return state.selectedGame.id;
     },
+    getSelectedGameTurn(state): number {
+      if (!state.selectedGame) {
+        throw new Error('No game selected');
+      }
+      return state.selectedGame.turnNumber;
+    },
     getGamePendingDeletionId(state): number | null {
       return state.gamePendingDeletionId;
     },
