@@ -9,17 +9,8 @@ const props = defineProps<{
   isSelected: boolean;
 }>();
 const eventPresenter = container.get<EventPresenter>(COMMON_DEPENDANCY_TYPES.EventPresenter);
+
 const isOpen = ref(false);
-
-const emit = defineEmits<{
-  selected: () => void;
-}>();
-
-const hasBeenSelected = () => {
-  isOpen.value = true;
-  emit('selected');
-};
-
 watch(
   () => isOpen.value,
   async (newVal) => {
@@ -34,7 +25,7 @@ watch(
   <UButton
     label="Details"
     :loading="eventPresenter.eventStore.isGettingEvent && isOpen"
-    @click="hasBeenSelected()"
+    @click="isOpen = true"
   />
 
   <UModal v-model="isOpen">

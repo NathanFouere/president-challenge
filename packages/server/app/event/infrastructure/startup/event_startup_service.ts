@@ -104,7 +104,7 @@ export class EventStartupService {
         .withTurn(eventConfigValue.turn - 1) // TODO => edit json files to start at 0
         .withIsAvailable(eventConfigValue.isAvailable)
         .withBeenRead(false)
-        .exists();
+        .build();
 
       await this.eventRepository.saveWithLicensedFiles(event, eventConfigValue.licensedFilesIdentifiers);
     }

@@ -6,7 +6,7 @@ import { useEventsStore } from '../../store/events/events.store';
 import { useGlobalLoader } from '../../composables/useGlobalLoader';
 
 @injectable()
-export class TurnInformationsPresenter {
+export class EventsPresenter {
   public readonly router = useRouter();
   public readonly toast = useCustomToast();
   public readonly eventModule: EventModule = useNuxtApp().$api.event;

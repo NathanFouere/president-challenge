@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
-import type { TurnInformationsPresenter } from '../../presenters/turn-informations/turn-informations.presenter';
+import type { EventsPresenter } from '../../presenters/turn-informations/events.presenter';
 
-const turnInfoPresenter = container.get<TurnInformationsPresenter>(COMMON_DEPENDANCY_TYPES.TurnInformationsPresenter);
+const turnInfoPresenter = container.get<EventsPresenter>(COMMON_DEPENDANCY_TYPES.EventsPresenter);
 
 usePageTitle().setTitle('Informations for ' + getDateFromTurnNumber(turnInfoPresenter.gameStore.getSelectedGameTurn));
 
-const getEventsOfTurn = async () => {
-  await turnInfoPresenter.getEventsOfTurn();
-};
 onMounted(async () => {
-  await getEventsOfTurn();
+  await turnInfoPresenter.getEventsOfTurn();
 });
 </script>
 
@@ -19,15 +16,12 @@ onMounted(async () => {
   <div
     class="grid grid-cols-6 gap-4"
   >
-    <template
-      v-for="(event) in turnInfoPresenter.eventsStore.getEvents"
+    <event-component
+      v-for="(event) in turnInfoPresenter.eventsStore.events"
       :key="event.id"
-    >
-      <event-component
-        :event="event"
-        class="mb-3"
-        @selected="getEventsOfTurn()"
-      />
-    </template>
+      :is-selected="false"
+      :event="event"
+      class="mb-3"
+    />
   </div>
 </template>

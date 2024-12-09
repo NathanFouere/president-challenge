@@ -19,7 +19,7 @@ export const useEventsStore = defineStore('eventsStore', {
   },
   actions: {
     setEvents(events: MinimalEventDto[]) {
-      this.events = events;
+      this.events = [...events];
     },
     setGettingEvents() {
       this.gettingEvents = true;

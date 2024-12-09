@@ -3,6 +3,6 @@ export const COMMON_DEPENDANCY_TYPES = {
   GamePresenter: Symbol.for('GamePresenter'),
   PoliticalPartyPresenter: Symbol.for('PoliticalPartyPresenter'),
   PoliticalPartiesPresenter: Symbol.for('PoliticalPartiesPresenter'),
-  TurnInformationsPresenter: Symbol.for('TurnInformationsPresenter'),
+  EventsPresenter: Symbol.for('EventsPresenter'),
   EventPresenter: Symbol.for('EventPresenter'),
 };

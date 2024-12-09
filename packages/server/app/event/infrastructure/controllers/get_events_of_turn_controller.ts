@@ -3,7 +3,6 @@ import type { HttpContext } from '@adonisjs/core/http';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { GetEventsOfTurnQueryHandler } from '#event/application/queries/get_events_of_turn_query_handler';
 import { GetEventsOfTurnQuery } from '#event/application/queries/get_events_of_turn_query';
-import type User from '#user/domain/models/user';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { MinimalEventDtoFactory } from '#event/application/dto-factory/minimal_event_dto_factory';
 

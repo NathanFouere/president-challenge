@@ -6,14 +6,6 @@ defineProps<{
   event: MinimalEventDto;
   isSelected: boolean;
 }>();
-
-const emit = defineEmits<{
-  selected: () => void;
-}>();
-
-const hasBeenSelected = () => {
-  emit('selected');
-};
 </script>
 
 <template>
@@ -31,8 +23,7 @@ const hasBeenSelected = () => {
       <div class="flex justify-end items-center">
         <event-modal
           :event-id="event.id"
-          :is-selected="event.isSelected"
-          @selected="hasBeenSelected()"
+          :is-selected="false"
         />
       </div>
     </template>
