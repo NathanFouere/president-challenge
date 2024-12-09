@@ -26,6 +26,7 @@ const Routes = {
   Events: {
     GetEventsOfTurn: (gameId: number, turn: number) => `${eventPrefix}/events-of-turn/${gameId}/turn/${turn}`,
     GetEvent: (eventId: number, gameId: number) => `${eventPrefix}/${gameId}/${eventId}`,
+    ChooseChoice: (eventId: number, choiceId: number) => `${eventPrefix}/choose-choice/${eventId}/${choiceId}`,
   },
 };
 

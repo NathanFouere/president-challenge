@@ -1,7 +1,8 @@
-import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm';
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations';
+import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
+import Choice from '#event/domain/models/choice';
 
 export default class Event extends BaseModel {
   @column({ isPrimary: true, serializeAs: null })
@@ -39,4 +40,7 @@ export default class Event extends BaseModel {
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
+
+  @hasMany(() => Choice)
+  declare choices: HasMany<typeof Choice>;
 }

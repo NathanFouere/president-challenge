@@ -50,8 +50,10 @@ router.group(() => {
 
 const GetEventsOfTurnController = () => import('#event/infrastructure/controllers/get_events_of_turn_controller');
 const GetEventController = () => import('#event/infrastructure/controllers/get_event_controller');
+const ChooseChoiceController = () => import('#event/infrastructure/controllers/choose_choice_controller');
 
 router.group(() => {
   router.get('/events-of-turn/:gameId/turn/:turn', [GetEventsOfTurnController, 'getEventsOfTurn']).use(middleware.auth());
   router.get('/:gameId/:eventId', [GetEventController, 'getEvent']).use(middleware.auth());
+  router.post('/choose-choice/:eventId/:choiceId', [ChooseChoiceController, 'chooseChoice']).use(middleware.auth());
 }).prefix('api/events');

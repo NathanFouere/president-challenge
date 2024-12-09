@@ -1,6 +1,8 @@
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventRepository } from '#event/infrastructure/repositories/event_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ChoiceRepository } from '#event/infrastructure/repositories/choice_repository';
 import summer_olympics from '#game-config/event/historical-events/1972-summer-olympics.json' assert { type: 'json' };
 import basic_treaty from '#game-config/event/historical-events/basic-treaty.json' assert { type: 'json' };
 import bangladesh_independance from '#game-config/event/historical-events/bengladesh-independance.json' assert { type: 'json' };
@@ -41,11 +43,13 @@ import united_arab_proclamation from '#game-config/event/historical-events/unite
 import vietnamization from '#game-config/event/historical-events/vietnamization.json' assert { type: 'json' };
 import warsaw_treaty from '#game-config/event/historical-events/warsaw-treaty.json' assert { type: 'json' };
 import { anEvent } from '#event/application/builders/event_builder';
+import { aChoice } from '#event/application/builders/choice_builder';
 
 @inject()
 export class EventStartupService {
   constructor(
     private readonly eventRepository: EventRepository,
+    private readonly choiceRepository: ChoiceRepository,
   ) {}
 
   private readonly eventsConfigValues = [
@@ -107,6 +111,17 @@ export class EventStartupService {
         .build();
 
       await this.eventRepository.saveWithLicensedFiles(event, eventConfigValue.licensedFilesIdentifiers);
+
+      if (eventConfigValue?.choices) {
+        for (const choiceConfigValue of eventConfigValue.choices) {
+          const choice = await aChoice()
+            .withText(choiceConfigValue.text)
+            .withEventId(event.id)
+            .build();
+
+          await this.choiceRepository.save(choice);
+        }
+      }
     }
   }
 }

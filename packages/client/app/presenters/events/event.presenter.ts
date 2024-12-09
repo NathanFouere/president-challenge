@@ -33,4 +33,16 @@ export class EventPresenter {
       this.eventStore.setErrorOnGettingEvent();
     }
   }
+
+  public async chooseChoice(eventId: number, choiceId: number): Promise<void> {
+    this.eventStore.setLoadingChoiceId(choiceId);
+    try {
+      await this.eventModule.chooseChoice(eventId, choiceId);
+      await this.getEvent(eventId);
+    }
+    catch (error) {
+      this.toast.showError('Failed to choose choice');
+    }
+    this.eventStore.unsetLoadingChoiceId();
+  }
 }

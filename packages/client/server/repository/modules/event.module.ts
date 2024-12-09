@@ -23,6 +23,15 @@ class EventModule extends FetchFactory {
       },
     );
   }
+
+  public async chooseChoice(eventId: number, choiceId: number): Promise<void> {
+    return this.call(
+      {
+        method: 'POST',
+        url: `${this.RESOURCE.ChooseChoice(eventId, choiceId)}`,
+      },
+    );
+  }
 }
 
 export default EventModule;

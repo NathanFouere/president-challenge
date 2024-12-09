@@ -28,20 +28,36 @@ watch(
     @click="isOpen = true"
   />
 
-  <UModal v-model="isOpen">
+  <UModal
+    v-model="isOpen"
+  >
     <UCard v-if="eventPresenter.eventStore.hasCurrentEvent">
       <template #header>
-        <p> {{ eventPresenter.eventStore.currentEvent.title }}</p>
+        <div
+          class="flex justify-between items-center"
+        >
+          <p> {{ eventPresenter.eventStore.requireCurrentEvent.title }}</p>
+          <UIcon
+            name="i-heroicons-x-mark"
+            @click="isOpen = false"
+          />
+        </div>
       </template>
 
-      <licensed-files-component :licensed-files="eventPresenter.eventStore.currentEvent.licensedFiles" />
-      <p> {{ eventPresenter.eventStore.currentEvent.text }}</p>
+      <licensed-files-component :licensed-files="eventPresenter.eventStore.requireCurrentEvent.licensedFiles" />
+      <p> {{ eventPresenter.eventStore.requireCurrentEvent.text }}</p>
 
-      <template #footer>
+      <template
+        v-if="eventPresenter.eventStore.requireCurrentEvent.choices.length > 0"
+        #footer
+      >
         <div class="flex justify-between items-center">
           <UButton
-            label="Close"
-            @click="isOpen = false"
+            v-for="choice in eventPresenter.eventStore.requireCurrentEvent.choices"
+            :key="choice.id"
+            :label="choice.text"
+            :loading="eventPresenter.eventStore.getLoadingChoice === choice.id"
+            @click="eventPresenter.chooseChoice(eventId, choice.id)"
           />
         </div>
       </template>
