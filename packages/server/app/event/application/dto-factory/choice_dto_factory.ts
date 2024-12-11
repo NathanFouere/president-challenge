@@ -6,6 +6,7 @@ export class ChoiceDtoFactory {
     return {
       id: choice.id,
       text: choice.text,
+      status: choice.status,
     };
   }
 

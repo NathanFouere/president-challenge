@@ -7,6 +7,8 @@
         "occupation-wounded-knee-two",
         "occupation-wounded-knee-three"
     ],
-    "turn": 29,
-    "isAvailable": true
+    "turn": 28,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

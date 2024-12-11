@@ -1,5 +1,6 @@
 import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
+import type { EventType } from '@shared/types/event/event-type.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
 import Choice from '#event/domain/models/choice';
@@ -22,6 +23,12 @@ export default class Event extends BaseModel {
 
   @column()
   declare isAvailable: boolean;
+
+  @column()
+  declare isDisplayable: boolean;
+
+  @column()
+  declare type: EventType;
 
   @column()
   declare beenRead: boolean;

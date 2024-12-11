@@ -17,7 +17,30 @@ onMounted(async () => {
     class="grid grid-cols-6 gap-4"
   >
     <event-component
-      v-for="(event) in turnInfoPresenter.eventsStore.events"
+      v-for="(event) in turnInfoPresenter.eventsStore.getSuperEvents"
+      :key="event.id"
+      :is-selected="false"
+      :event="event"
+      modal-opened-by-default
+      class="mb-3"
+    />
+  </div>
+  <div
+    class="grid grid-cols-6 gap-4"
+  >
+    <event-component
+      v-for="(event) in turnInfoPresenter.eventsStore.getChoiceEvents"
+      :key="event.id"
+      :is-selected="false"
+      :event="event"
+      class="mb-3"
+    />
+  </div>
+  <div
+    class="grid grid-cols-6 gap-4"
+  >
+    <event-component
+      v-for="(event) in turnInfoPresenter.eventsStore.getHistoricalEvents"
       :key="event.id"
       :is-selected="false"
       :event="event"

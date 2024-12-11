@@ -6,6 +6,8 @@
         "juan-peron-return-one",
         "juan-peron-return-two"
     ],
-    "turn": 33,
-    "isAvailable": true
+    "turn": 32,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

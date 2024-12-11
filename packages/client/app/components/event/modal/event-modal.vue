@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ChoiceDto } from '@shared/typesevent/choice-dto';
 import container from '../../../../config/container';
 import type { EventPresenter } from '../../../presenters/events/event.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '../../../../config/common.types';
@@ -7,22 +8,34 @@ import LicensedFilesComponent from '../../common/licensed-files-component.vue';
 const props = defineProps<{
   eventId: number;
   isSelected: boolean;
+  openedByDefault?: boolean;
 }>();
+
 const eventPresenter = container.get<EventPresenter>(COMMON_DEPENDANCY_TYPES.EventPresenter);
 
-const isOpen = ref(false);
+const isOpen = ref(props.openedByDefault ?? false);
 watch(
   () => isOpen.value,
-  async (newVal) => {
-    if (newVal) {
-      await eventPresenter.getEvent(props.eventId);
-    }
+  async () => {
+    await eventPresenter.getEvent(props.eventId);
   },
 );
+
+const getChoiceIcon = (choice: ChoiceDto) => {
+  switch (choice.status) {
+    case 'chosen':
+      return 'i-heroicons-check';
+    case 'unavailable':
+      return 'i-heroicons-x-mark';
+    default:
+      return '';
+  }
+};
 </script>
 
 <template>
   <UButton
+    v-if="!props.openedByDefault"
     label="Details"
     :loading="eventPresenter.eventStore.isGettingEvent && isOpen"
     @click="isOpen = true"
@@ -55,6 +68,8 @@ watch(
           <UButton
             v-for="choice in eventPresenter.eventStore.requireCurrentEvent.choices"
             :key="choice.id"
+            :icon="getChoiceIcon(choice)"
+            :disabled="choice.status != 'available'"
             :label="choice.text"
             :loading="eventPresenter.eventStore.getLoadingChoice === choice.id"
             @click="eventPresenter.chooseChoice(eventId, choice.id)"

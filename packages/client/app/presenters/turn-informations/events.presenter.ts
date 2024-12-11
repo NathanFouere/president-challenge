@@ -16,16 +16,15 @@ export class EventsPresenter {
 
   public async getEventsOfTurn(): Promise<void> {
     this.globalLoader.startLoading();
-    this.eventsStore.setGettingEvents();
     try {
-      const events = await this.eventModule.getEventsOfTurn(this.gameStore.getSelectedGameId, this.gameStore.getSelectedGameTurn);
-      this.eventsStore.setEvents(events);
+      const eventList = await this.eventModule.getEventsOfTurn(this.gameStore.getSelectedGameId, this.gameStore.getSelectedGameTurn);
+      this.eventsStore.setChoiceEvents(eventList.choiceEvents);
+      this.eventsStore.setHistoricalEvents(eventList.historicalEvents);
+      this.eventsStore.setSuperEvents(eventList.superEvents);
     }
     catch (error) {
-      this.eventsStore.setErrorOnGettingEvents();
       this.toast.showError('Error while getting events');
     }
     this.globalLoader.stopLoading();
-    this.eventsStore.unsetGettingEvents();
   }
 }

@@ -3,6 +3,10 @@ import { inject } from '@adonisjs/core';
 import { EventRepository } from '#event/infrastructure/repositories/event_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ChoiceRepository } from '#event/infrastructure/repositories/choice_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  GetEventByIdentifierAndGameQueryHandler,
+} from '#event/application/queries/get_event_by_identifier_and_game_query_handler';
 import summer_olympics from '#game-config/event/historical-events/1972-summer-olympics.json' assert { type: 'json' };
 import basic_treaty from '#game-config/event/historical-events/basic-treaty.json' assert { type: 'json' };
 import bangladesh_independance from '#game-config/event/historical-events/bengladesh-independance.json' assert { type: 'json' };
@@ -42,14 +46,19 @@ import troubles_ireland from '#game-config/event/historical-events/troubles-irel
 import united_arab_proclamation from '#game-config/event/historical-events/united-arab-proclamation.json' assert { type: 'json' };
 import vietnamization from '#game-config/event/historical-events/vietnamization.json' assert { type: 'json' };
 import warsaw_treaty from '#game-config/event/historical-events/warsaw-treaty.json' assert { type: 'json' };
+import super_event from '#game-config/event/historical-events/super-event-test.json' assert { type: 'json' };
 import { anEvent } from '#event/application/builders/event_builder';
 import { aChoice } from '#event/application/builders/choice_builder';
+import { GetEventByIdentifierAndGameQuery } from '#event/application/queries/get_event_by_identifier_and_game_query';
+import type Event from '#event/domain/models/event';
+import type Choice from '#event/domain/models/choice';
 
 @inject()
 export class EventStartupService {
   constructor(
     private readonly eventRepository: EventRepository,
     private readonly choiceRepository: ChoiceRepository,
+    private readonly getEventByIdentifierAndGameQueryHandler: GetEventByIdentifierAndGameQueryHandler,
   ) {}
 
   private readonly eventsConfigValues = [
@@ -92,6 +101,7 @@ export class EventStartupService {
     united_arab_proclamation,
     vietnamization,
     warsaw_treaty,
+    super_event,
   ];
 
   public async initialize(gameId: number): Promise<void> {
@@ -100,28 +110,59 @@ export class EventStartupService {
 
   public async initializeEvents(gameId: number): Promise<void> {
     for (const eventConfigValue of this.eventsConfigValues) {
-      const event = await anEvent()
-        .withIdentifier(eventConfigValue.identifier)
-        .withGameId(gameId)
-        .withText(eventConfigValue.text)
-        .withTitle(eventConfigValue.title)
-        .withTurn(eventConfigValue.turn - 1) // TODO => edit json files to start at 0
-        .withIsAvailable(eventConfigValue.isAvailable)
-        .withBeenRead(false)
-        .build();
+      await this.createEvent(eventConfigValue, gameId);
+    }
+  }
 
-      await this.eventRepository.saveWithLicensedFiles(event, eventConfigValue.licensedFilesIdentifiers);
+  private async createEvent(eventConfigValue, gameId: number): Promise<void> {
+    const event = await anEvent()
+      .withIdentifier(eventConfigValue.identifier)
+      .withGameId(gameId)
+      .withText(eventConfigValue.text)
+      .withTitle(eventConfigValue.title)
+      .withType(eventConfigValue.type)
+      .withDisplayable(eventConfigValue.isDisplayable)
+      .withTurn(eventConfigValue.turn)
+      .withIsAvailable(eventConfigValue.isAvailable)
+      .withBeenRead(false)
+      .build();
 
-      if (eventConfigValue?.choices) {
-        for (const choiceConfigValue of eventConfigValue.choices) {
-          const choice = await aChoice()
-            .withText(choiceConfigValue.text)
-            .withEventId(event.id)
-            .build();
+    await this.eventRepository.saveWithLicensedFiles(event, eventConfigValue.licensedFilesIdentifiers);
 
-          await this.choiceRepository.save(choice);
-        }
+    if (eventConfigValue?.childEvents) {
+      for (const childEventConfigValue of eventConfigValue.childEvents) {
+        await this.createEvent(childEventConfigValue, gameId);
       }
     }
+
+    if (eventConfigValue?.choices) {
+      for (const choiceConfigValue of eventConfigValue.choices) {
+        await this.createChoice(choiceConfigValue, event.id, gameId);
+      }
+    }
+  }
+
+  private async createChoice(choiceConfigValue, eventId: number, gameId: number): Promise<void> {
+    let triggerEvent: Event | null = null;
+    let choice: Choice;
+    if (choiceConfigValue.triggerEventIdentifier) {
+      triggerEvent = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventByIdentifierAndGameQuery(
+        choiceConfigValue.triggerEventIdentifier,
+        gameId,
+      ));
+      choice = await aChoice()
+        .withText(choiceConfigValue.text)
+        .withEventId(eventId)
+        .withTriggerEventId(triggerEvent.id)
+        .build();
+    }
+    else {
+      choice = await aChoice()
+        .withText(choiceConfigValue.text)
+        .withEventId(eventId)
+        .build();
+    }
+
+    await this.choiceRepository.save(choice);
   }
 }

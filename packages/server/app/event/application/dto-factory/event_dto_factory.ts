@@ -20,7 +20,6 @@ export class EventDtoFactory {
       identifier: event.identifier,
       title: event.title,
       text: event.text,
-      turn: event.turn,
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(event.licensedFiles),

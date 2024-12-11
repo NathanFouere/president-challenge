@@ -9,12 +9,15 @@ export class ChoiceRepository {
     return Choice.find(choiceId);
   }
 
-  public async getById(choiceId: number): Promise<Choice> {
-    const choice = await Choice.findOneOrFail(choiceId);
-    return choice;
-  }
-
   public async delete(choice: Choice): Promise<void> {
     await choice.delete();
+  }
+
+  public async saveMany(choices: Choice[]): Promise<void> {
+    const savePromises = [];
+    for (const choice of choices) {
+      savePromises.push(choice.save());
+    }
+    await Promise.all(savePromises);
   }
 }

@@ -7,6 +7,8 @@
         "troubles-ireland-two",
         "troubles-ireland-three"
     ],
-    "turn": 11,
-    "isAvailable": true
+    "turn": 10,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

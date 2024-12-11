@@ -8,6 +8,8 @@
     "de-gaulle-death-three",
     "de-gaulle-death-four"
   ],
-  "turn": 2,
-  "isAvailable": true
+  "turn": 1,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

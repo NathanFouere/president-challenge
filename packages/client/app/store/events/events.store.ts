@@ -2,33 +2,30 @@ import type { MinimalEventDto } from '../../../../shared/src/event/minimal-event
 
 export const useEventsStore = defineStore('eventsStore', {
   state: () => ({
-    events: [] as MinimalEventDto[],
-    gettingEvents: false,
-    errorOnGettingEvents: false,
+    choiceEvents: [] as MinimalEventDto[],
+    historicalEvents: [] as MinimalEventDto[],
+    superEvents: [] as MinimalEventDto[],
   }),
   getters: {
-    getEvents(state): MinimalEventDto[] {
-      return state.events;
+    getChoiceEvents(state): MinimalEventDto[] {
+      return state.choiceEvents;
     },
-    isGettingEvents(state): boolean {
-      return state.gettingEvents;
+    getHistoricalEvents(state): MinimalEventDto[] {
+      return state.historicalEvents;
     },
-    hasErrorOnGettingEvents(state): boolean {
-      return state.errorOnGettingEvents;
+    getSuperEvents(state): MinimalEventDto[] {
+      return state.superEvents;
     },
   },
   actions: {
-    setEvents(events: MinimalEventDto[]) {
-      this.events = [...events];
+    setChoiceEvents(events: MinimalEventDto[]) {
+      this.choiceEvents = [...events];
     },
-    setGettingEvents() {
-      this.gettingEvents = true;
+    setHistoricalEvents(events: MinimalEventDto[]) {
+      this.historicalEvents = [...events];
     },
-    unsetGettingEvents() {
-      this.gettingEvents = false;
-    },
-    setErrorOnGettingEvents() {
-      this.errorOnGettingEvents = true;
+    setSuperEvents(events: MinimalEventDto[]) {
+      this.superEvents = [...events];
     },
   },
 });

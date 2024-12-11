@@ -15,10 +15,11 @@ defineProps<{
     <template #text>
       <div>
         <p> {{ licensedFile.title }}</p>
-        <a
+        <p
           v-if="licensedFile.source"
-          :href="licensedFile.source"
-        >Source</a>
+        >
+          {{ licensedFile.source }}
+        </p>
         <p
           v-if="licensedFile.attribution"
         >

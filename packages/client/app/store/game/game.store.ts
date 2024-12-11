@@ -9,7 +9,6 @@ export const useGameStore = defineStore('gameStore', {
     gettingGames: false,
     errorOnGettingGames: false,
     gamePendingDeletionId: null as number | null,
-    expectedNumberOfGames: 0,
   }),
   getters: {
     userGames(state): Game[] {
@@ -47,9 +46,6 @@ export const useGameStore = defineStore('gameStore', {
     },
     getGamePendingDeletionId(state): number | null {
       return state.gamePendingDeletionId;
-    },
-    getExpectedNumberOfGames(state): number {
-      return state.expectedNumberOfGames;
     },
   },
   actions: {
@@ -91,9 +87,6 @@ export const useGameStore = defineStore('gameStore', {
     },
     unsetGamePendingDeletionId() {
       this.gamePendingDeletionId = null;
-    },
-    setExpectedNumberOfGames(expectedNumberOfGames: number) {
-      this.expectedNumberOfGames = expectedNumberOfGames;
     },
   },
   persist: true,

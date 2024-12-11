@@ -3,14 +3,20 @@ import Choice from '#event/domain/models/choice';
 export class ChoiceBuilder {
   private text: string | null = null;
   private eventId: number | null = null;
+  private triggerEventId: number | null = null;
 
   public withText(text: string): this {
     this.text = text;
     return this;
   }
 
-  public withEventId(eventId: number): this {
+  public withEventId(eventId: number | null): this {
     this.eventId = eventId;
+    return this;
+  }
+
+  public withTriggerEventId(triggerEventId: number | null): this {
+    this.triggerEventId = triggerEventId;
     return this;
   }
 
@@ -27,6 +33,9 @@ export class ChoiceBuilder {
     }
     else {
       throw new Error('eventId is required');
+    }
+    if (this.triggerEventId !== null) {
+      choice.triggerEventId = this.triggerEventId;
     }
     return choice;
   }

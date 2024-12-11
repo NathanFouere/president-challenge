@@ -5,6 +5,8 @@
   "licensedFilesIdentifiers": [
     "sadat-expuls-soviet-advisor-one"
   ],
-  "turn": 22,
-  "isAvailable": true
+  "turn": 21,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

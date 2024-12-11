@@ -8,7 +8,9 @@ export default class GetEventByIdAndGameQueryHandler {
       .where('id', query.eventId)
       .where('game_id', query.gameId)
       .preload('licensedFiles')
-      .preload('choices')
+      .preload('choices', (query) => {
+        query.orderBy('id', 'asc');
+      })
       .firstOrFail();
 
     if (null === event) {

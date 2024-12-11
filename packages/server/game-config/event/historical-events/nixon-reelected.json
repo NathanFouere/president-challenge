@@ -6,6 +6,8 @@
         "nixon-reelected-one",
         "nixon-reelected-two"
     ],
-    "turn": 26,
-    "isAvailable": true
+    "turn": 25,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

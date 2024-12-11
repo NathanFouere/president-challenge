@@ -6,6 +6,8 @@
         "paris-peace-accord-one",
         "paris-peace-accord-two"
     ],
-    "turn": 28,
-    "isAvailable": true
+    "turn": 27,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }
