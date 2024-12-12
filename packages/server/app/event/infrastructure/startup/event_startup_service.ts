@@ -52,6 +52,8 @@ import { aChoice } from '#event/application/builders/choice_builder';
 import { GetEventByIdentifierAndGameQuery } from '#event/application/queries/get_event_by_identifier_and_game_query';
 import type Event from '#event/domain/models/event';
 import type Choice from '#event/domain/models/choice';
+import type { EventStartupInterface } from '#event/infrastructure/startup/event_startup_interface';
+import type { ChoiceStartupInterface } from '#event/infrastructure/startup/choice_startup_interface';
 
 @inject()
 export class EventStartupService {
@@ -61,7 +63,7 @@ export class EventStartupService {
     private readonly getEventByIdentifierAndGameQueryHandler: GetEventByIdentifierAndGameQueryHandler,
   ) {}
 
-  private readonly eventsConfigValues = [
+  private readonly eventsConfigValues: EventStartupInterface[] = [
     summer_olympics,
     basic_treaty,
     bangladesh_independance,
@@ -102,7 +104,7 @@ export class EventStartupService {
     vietnamization,
     warsaw_treaty,
     super_event,
-  ];
+  ] as unknown as EventStartupInterface[];
 
   public async initialize(gameId: number): Promise<void> {
     await this.initializeEvents(gameId);
@@ -114,7 +116,7 @@ export class EventStartupService {
     }
   }
 
-  private async createEvent(eventConfigValue, gameId: number): Promise<void> {
+  private async createEvent(eventConfigValue: EventStartupInterface, gameId: number): Promise<void> {
     const event = await anEvent()
       .withIdentifier(eventConfigValue.identifier)
       .withGameId(gameId)
@@ -142,7 +144,7 @@ export class EventStartupService {
     }
   }
 
-  private async createChoice(choiceConfigValue, eventId: number, gameId: number): Promise<void> {
+  private async createChoice(choiceConfigValue: ChoiceStartupInterface, eventId: number, gameId: number): Promise<void> {
     let triggerEvent: Event | null = null;
     let choice: Choice;
     if (choiceConfigValue.triggerEventIdentifier) {

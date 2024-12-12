@@ -21,6 +21,12 @@ watch(
   },
 );
 
+onMounted(async () => {
+  if (props.openedByDefault) {
+    await eventPresenter.getEvent(props.eventId);
+  }
+});
+
 const getChoiceIcon = (choice: ChoiceDto) => {
   switch (choice.status) {
     case 'chosen':

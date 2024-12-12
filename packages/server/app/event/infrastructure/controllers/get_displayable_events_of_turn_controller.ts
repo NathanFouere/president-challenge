@@ -4,15 +4,12 @@ import type { HttpContext } from '@adonisjs/core/http';
 import { GetDisplayableEventsOfTurnQueryHandler } from '#event/application/queries/get_displayable_events_of_turn_query_handler';
 import { GetDisplayableEventsOfTurnQuery } from '#event/application/queries/get_displayable_events_of_turn_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { MinimalEventDtoFactory } from '#event/application/dto-factory/minimal_event_dto_factory';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventListDtoFactory } from '#event/application/dto-factory/event_list_dto_factory';
 
 @inject()
 export default class GetDisplayableEventsOfTurnController {
   constructor(
     private readonly getEventsOfTurnQueryHandler: GetDisplayableEventsOfTurnQueryHandler,
-    private readonly minimalEventDtoFactory: MinimalEventDtoFactory,
     private readonly eventListDtoFactory: EventListDtoFactory,
   ) {}
 

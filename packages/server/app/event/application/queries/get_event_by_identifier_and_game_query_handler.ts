@@ -3,12 +3,12 @@ import Event from '#event/domain/models/event';
 
 export class GetEventByIdentifierAndGameQueryHandler {
   public async handle(query: GetEventByIdentifierAndGameQuery): Promise<Event> {
-    const event = Event.query()
+    const event = await Event.query()
       .where('identifier', query.eventIdentifier)
       .where('game_id', query.gameId)
       .first();
 
-    if (null == event) {
+    if (null === event) {
       throw new Error('Event not found');
     }
 

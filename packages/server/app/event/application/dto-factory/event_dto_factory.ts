@@ -5,6 +5,7 @@ import type Event from '#event/domain/models/event';
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ChoiceDtoFactory } from '#event/application/dto-factory/choice_dto_factory';
+import type Choice from '#event/domain/models/choice';
 
 @inject()
 export class EventDtoFactory {
@@ -22,6 +23,7 @@ export class EventDtoFactory {
       text: event.text,
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
+      needsAction: !event?.choices.map((choice: Choice) => choice.status).includes('chosen'),
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(event.licensedFiles),
       choices: this.choiceDtoFactory.createFromChoices(event.choices),
     };
