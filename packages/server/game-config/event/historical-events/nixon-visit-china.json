@@ -8,6 +8,8 @@
     "visit-nixon-china-four",
     "visit-nixon-china-three"
   ],
-  "turn": 17,
-  "isAvailable": true
+  "turn": 16,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

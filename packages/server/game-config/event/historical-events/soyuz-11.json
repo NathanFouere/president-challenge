@@ -6,6 +6,8 @@
         "soyuz-11-one",
         "soyuz-11-two"
     ],
-    "turn": 9,
-    "isAvailable": true
+    "turn": 8,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

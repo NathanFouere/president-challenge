@@ -6,6 +6,8 @@
     "1972-summer-olympics-one",
     "1972-summer-olympics-two"
   ],
-  "turn": 23,
-  "isAvailable": true
+  "turn": 22,
+  "isAvailable": true,
+  "isDisplayable": true,
+  "type": "historical"
 }

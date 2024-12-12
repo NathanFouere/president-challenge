@@ -6,6 +6,8 @@
     "fedayin-one",
     "fedayin-two"
   ],
-  "turn": 25,
-  "isAvailable": true
+  "turn": 24,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

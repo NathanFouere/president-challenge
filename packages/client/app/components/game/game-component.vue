@@ -41,7 +41,7 @@ const handleSelect = () => {
 
         <UButton
           label="Select"
-          :disabled="isSelected"
+          :disabled="isSelected || pendingDeletion"
           @click="handleSelect"
         />
       </div>

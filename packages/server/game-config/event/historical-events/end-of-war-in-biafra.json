@@ -7,6 +7,8 @@
         "biafra-war-two",
         "biafra-war-three"
     ],
-    "turn": 4,
-    "isAvailable": true
+    "turn": 3,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

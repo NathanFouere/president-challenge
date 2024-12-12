@@ -14,4 +14,8 @@ export class LicensedFileDTOFactory {
       isVideo: licensedFile.isVideo,
     };
   }
+
+  public createFromLicensedFiles(licensedFiles: LicensedFile[]): LicensedFileDTO[] {
+    return licensedFiles.map(licensedFile => this.createFromLicensedFile(licensedFile));
+  }
 }

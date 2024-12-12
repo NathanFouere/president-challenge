@@ -5,6 +5,8 @@
     "licensedFilesIdentifiers": [
         "honecker-replace-ublricht"
     ],
-    "turn": 8,
-    "isAvailable": true
+    "turn": 7,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

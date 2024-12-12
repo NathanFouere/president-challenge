@@ -6,6 +6,8 @@
     "last-american-soldier-leave-vietnam-one",
     "last-american-soldier-leave-vietnam-two"
   ],
-  "turn": 30,
-  "isAvailable": true
+  "turn": 29,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

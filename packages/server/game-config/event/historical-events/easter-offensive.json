@@ -8,6 +8,8 @@
         "easter-offensive-three",
         "easter-offensive-four"
     ],
-    "turn": 19,
-    "isAvailable": true
+    "turn": 18,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

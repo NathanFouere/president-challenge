@@ -7,6 +7,8 @@
     "tenth-national-congress-ccp-two",
     "tenth-national-congress-ccp-three"
   ],
-  "turn": 35,
-  "isAvailable": true
+  "turn": 34,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

@@ -8,6 +8,8 @@
     "angolan-independance-war-three",
     "angolan-independance-war-four"
   ],
-  "turn": 21,
-  "isAvailable": true
+  "turn": 20,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

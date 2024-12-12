@@ -1,3 +1,4 @@
+import type { EventType } from '@shared/types/event/event-type.js';
 import Event from '#event/domain/models/event';
 
 export class EventBuilder {
@@ -7,9 +8,22 @@ export class EventBuilder {
   private turn: number | null = null;
   private isAvailable: boolean | null = null;
   private gameId: number | null = null;
+  private beenRead: boolean | null = null;
+  private displayable: boolean | null = null;
+  private type: EventType | null = null;
 
   public withIdentifier(identifier: string): this {
     this.identifier = identifier;
+    return this;
+  }
+
+  public withType(type: EventType): this {
+    this.type = type;
+    return this;
+  }
+
+  public withDisplayable(displayable: boolean): this {
+    this.displayable = displayable;
     return this;
   }
 
@@ -38,7 +52,12 @@ export class EventBuilder {
     return this;
   }
 
-  public async exists(): Promise<Event> {
+  public withBeenRead(beenRead: boolean): this {
+    this.beenRead = beenRead;
+    return this;
+  }
+
+  public async build(): Promise<Event> {
     const event = new Event();
     if (this.identifier !== null) {
       event.identifier = this.identifier;
@@ -75,6 +94,24 @@ export class EventBuilder {
     }
     else {
       throw new Error('title is required');
+    }
+    if (this.beenRead !== null) {
+      event.beenRead = this.beenRead;
+    }
+    else {
+      throw new Error('beenRead is required');
+    }
+    if (this.displayable !== null) {
+      event.isDisplayable = this.displayable;
+    }
+    else {
+      throw new Error('displayable is required');
+    }
+    if (this.type !== null) {
+      event.type = this.type;
+    }
+    else {
+      throw new Error('type is required');
     }
     return event;
   }

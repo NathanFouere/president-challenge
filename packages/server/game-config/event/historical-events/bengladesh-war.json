@@ -8,6 +8,8 @@
         "bengladesh-war-three",
         "bengladesh-war-four"
     ],
-    "turn": 15,
-    "isAvailable": true
+    "turn": 14,
+    "isAvailable": true,
+  "isDisplayable": true,
+  "type": "historical"
 }

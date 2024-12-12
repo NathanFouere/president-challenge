@@ -1,0 +1,21 @@
+{
+    "identifier": "super-event-test",
+    "title": "CNUCED Conference",
+    "text": "At the third United Nations Conference on Trade and Development (UNCTAD), hosted in Santiago, President Salvador Allende is at a crossroads. In front of a global audience, he can either adopt a radical tone, condemning the exploitation of Third World nations by wealthy industrialized powers, or he can deliver a more diplomatic speech, advocating for reforms but seeking cooperation rather than confrontation.\n\nA radical speech would solidify Allende’s image as a revolutionary leader, standing up for the impoverished nations of the global south. This would inspire Chile's left-wing supporters but provoke powerful foreign actors like the United States and France, who might retaliate economically or diplomatically. Domestically, this would invigorate his base but also strengthen the opposition.\nAlternatively, a diplomatic speech would show that Chile is committed to international dialogue and reform, without directly antagonizing wealthy nations. This could keep international relations stable and provide breathing room for Chile, though it might disappoint the more radical elements of Allende’s supporters.\n\nThe stakes are high, as Allende’s choice will have lasting impacts both internationally and at home. How will he position Chile in this delicate global moment?",
+    "licensedFilesIdentifiers": [
+        "unctad-one",
+        "unctad-two"
+    ],
+    "turn": 0,
+    "choices": [
+        {
+            "text": "Radical Speech"
+        },
+        {
+            "text": "Diplomatic Speech"
+        }
+    ],
+    "isAvailable": true,
+    "isDisplayable": true,
+    "type": "super-event"
+}

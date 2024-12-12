@@ -5,6 +5,8 @@
   "licensedFilesIdentifiers": [
     "warsaw-treaty"
   ],
-  "turn": 3,
-  "isAvailable": true
+  "turn": 2,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

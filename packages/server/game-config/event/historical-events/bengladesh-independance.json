@@ -5,6 +5,8 @@
     "licensedFilesIdentifiers": [
         "bangladesh-independance"
     ],
-    "turn": 6,
-    "isAvailable": true
+    "turn": 5,
+    "isAvailable": true,
+  "isDisplayable": true,
+  "type": "historical"
 }

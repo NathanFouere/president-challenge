@@ -1,12 +1,13 @@
 import AuthModule from '../../server/repository/modules/auth.module';
 import GameModule from '../../server/repository/modules/game.module';
 import PoliticalPartyModule from '../../server/repository/modules/political-party.module';
-import 'reflect-metadata';
+import EventModule from '../../server/repository/modules/event.module';
 
 export interface IApiInstance {
   auth: AuthModule;
   game: GameModule;
   politicalParty: PoliticalPartyModule;
+  event: EventModule;
 }
 
 export default defineNuxtPlugin(() => {
@@ -21,6 +22,7 @@ export default defineNuxtPlugin(() => {
     auth: new AuthModule(apiFetcher),
     game: new GameModule(apiFetcher),
     politicalParty: new PoliticalPartyModule(apiFetcher),
+    event: new EventModule(apiFetcher),
   };
 
   return {

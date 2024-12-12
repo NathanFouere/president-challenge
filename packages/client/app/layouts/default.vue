@@ -3,10 +3,12 @@ import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 import { useGameStore } from '../store/game/game.store';
 import { usePageTitle } from '../composables/usePageTitle';
+import { useGlobalLoader } from '../composables/useGlobalLoader';
 
 const userStore = useUserStore();
 const gameStore = useGameStore();
 const pageTitle = usePageTitle();
+const globalLoader = useGlobalLoader();
 const hasUser = computed(() => userStore.hasConnectedUser);
 const hasSelectedGame = computed(() => gameStore.hasSelectedGame);
 
@@ -18,10 +20,16 @@ const links = computed(() => [
     disabled: !hasUser.value,
   },
   {
+    label: 'Turn Informations',
+    icon: 'i-heroicons-calendar',
+    to: NUXT_ROUTES.turnInformations,
+    disabled: !hasUser.value || !hasSelectedGame.value,
+  },
+  {
     label: 'Political Parties',
     icon: 'i-heroicons-building-library',
     to: NUXT_ROUTES.politicalParties,
-    disabled: !hasSelectedGame.value,
+    disabled: !hasUser.value || !hasSelectedGame.value,
   },
 ]);
 </script>
@@ -46,6 +54,7 @@ const links = computed(() => [
     <UDashboardPage class="overflow-auto flex-1">
       <UDashboardPanel class="flex flex-1 pl-5 pr-5">
         <UDashboardNavbar :title="pageTitle.title.value" />
+        <UProgress :class="{ 'opacity-0': !globalLoader.loading.value }" />
         <NuxtPage class="pt-6" />
 
         <UNotifications />

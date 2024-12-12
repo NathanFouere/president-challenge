@@ -5,6 +5,8 @@
   "licensedFilesIdentifiers": [
     "nixon-announcment-trip-china"
   ],
-  "turn": 10,
-  "isAvailable": true
+  "turn": 9,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

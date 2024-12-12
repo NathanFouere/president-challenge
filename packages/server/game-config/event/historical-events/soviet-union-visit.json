@@ -5,8 +5,10 @@
     "licensedFilesIdentifiers": [
         "soviet-flag"
     ],
-    "turn": 26,
+    "turn": 25,
     "isAvailable": true,
+"isDisplayable": true,
+  "type": "choice",
     "choices": [
         {
             "text": "Maintain the trip",
@@ -16,9 +18,6 @@
             "text": "Cancel the trip"
         }
     ],
-    "isHistorical": false,
-    "isInformational": false,
-    "isImportant": true,
     "childEvents": [
         {
             "identifier": "meeting_with_soviet_officials",
@@ -28,7 +27,9 @@
                 "allende-in-ussr"
             ],
             "isAvailable": false,
-            "turn": 26,
+          "isDisplayable": false,
+          "type": "choice",
+            "turn": 25,
             "choices": [
                 {
                     "text": "Announce a future alliance",
@@ -48,7 +49,9 @@
                         "allende-speech"
                     ],
                     "isAvailable": false,
-                    "turn": 26,
+                  "isDisplayable": false,
+                  "type": "choice",
+                    "turn": 25,
                     "choices": [
                         {
                             "text": "Support the USSR's Position Publicly"

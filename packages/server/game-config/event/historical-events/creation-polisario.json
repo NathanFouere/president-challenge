@@ -6,6 +6,8 @@
         "creation-polisario-one",
         "creation-polisario-two"
     ],
-    "turn": 32,
-    "isAvailable": true
+    "turn": 31,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

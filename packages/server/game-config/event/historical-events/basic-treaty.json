@@ -7,6 +7,8 @@
         "basic-treaty-two",
         "basic-treaty-three"
     ],
-    "turn": 27,
-    "isAvailable": true
+    "turn": 26,
+    "isAvailable": true,
+    "isDisplayable": true,
+  "type": "historical"
 }

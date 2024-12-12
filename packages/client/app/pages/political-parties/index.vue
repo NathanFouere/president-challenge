@@ -13,17 +13,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <template
-    v-if="politicalPartiesPresenter.politicalPartiesStore.isGettingPoliticalParties"
-  >
-    <USkeleton
-      class="w-full h-28 mb-3"
-    />
-  </template>
-
   <div
-    v-else
-    class="flex justify-items-stretch flex-wrap gap-4"
+    class="grid grid-cols-6 gap-4"
   >
     <template
       v-for="(politicalParty) in politicalPartiesPresenter.politicalPartiesStore.getPoliticalParties"
@@ -31,7 +22,7 @@ onMounted(async () => {
     >
       <political-party-component
         :minimal-political-party="politicalParty"
-        class="mb-3 w-[15%]"
+        class="mb-3"
       />
     </template>
   </div>

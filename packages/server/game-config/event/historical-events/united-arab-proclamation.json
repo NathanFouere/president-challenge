@@ -5,6 +5,8 @@
     "licensedFilesIdentifiers": [
         "united-arab-proclamation"
     ],
-    "turn": 7,
-    "isAvailable": true
+    "turn": 6,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

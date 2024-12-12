@@ -6,6 +6,8 @@
         "china-join-un-one",
         "china-join-un-two"
     ],
-    "turn": 13,
-    "isAvailable": true
+    "turn": 12,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

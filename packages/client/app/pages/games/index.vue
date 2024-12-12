@@ -14,18 +14,7 @@ onMounted(async () => {
 
 <template>
   <template
-    v-if="gamePresenter.gameStore.isGettingGames"
-  >
-    <USkeleton
-      v-for="index in gamePresenter.gameStore.getExpectedNumberOfGames"
-      :key="index"
-      class="w-full h-28 mb-3"
-    />
-  </template>
-
-  <template
     v-for="(game) in gamePresenter.gameStore.userGames"
-    v-else
     :key="game.id"
   >
     <game-component

@@ -33,7 +33,7 @@ const handleDelete = () => {
         <p>Confirm Deletion</p>
       </template>
 
-      <p>Are you sure you want to delete this game?</p>
+      <p>Are you sure you want to delete</p>
 
       <template #footer>
         <div class="flex justify-between items-center">

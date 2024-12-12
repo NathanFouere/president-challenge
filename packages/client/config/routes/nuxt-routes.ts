@@ -3,4 +3,5 @@ export const NUXT_ROUTES = {
   login: '/auth/login',
   signup: '/auth/signup',
   politicalParties: '/political-parties',
+  turnInformations: '/turn-informations',
 };

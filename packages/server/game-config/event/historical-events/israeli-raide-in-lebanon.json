@@ -6,6 +6,8 @@
         "israeli-raide-in-lebanon-one",
         "israeli-raide-in-lebanon-two"
     ],
-    "turn": 31,
-    "isAvailable": true
+    "turn": 30,
+    "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }

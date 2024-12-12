@@ -6,7 +6,7 @@
         "unctad-one",
         "unctad-two"
     ],
-    "turn": 18,
+    "turn": 9,
     "choices": [
         {
             "text": "Radical Speech"
@@ -15,5 +15,7 @@
             "text": "Diplomatic Speech"
         }
     ],
-    "isAvailable": true
+    "isAvailable": true,
+    "isDisplayable": true,
+  "type": "choice"
 }

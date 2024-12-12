@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-const title = ref(''); // État partagé unique
+const title = ref('');
 
 export const usePageTitle = () => {
   const setTitle = (newTitle: string) => {

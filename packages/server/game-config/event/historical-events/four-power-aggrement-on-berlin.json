@@ -7,6 +7,8 @@
         "four-power-aggrement-on-berlin-two",
         "four-power-aggrement-on-berlin-three"
     ],
-    "turn": 12,
-    "isAvailable": false
+    "turn": 11,
+    "isAvailable": true,
+  "isDisplayable": false,
+  "type": "historical"
 }

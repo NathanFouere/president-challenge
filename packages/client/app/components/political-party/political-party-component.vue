@@ -8,26 +8,28 @@ defineProps<{
 </script>
 
 <template>
-  <UCard>
-    <template
-      #header
-    >
-      <div class="text-center h-64">
+  <UCard
+    class="h-full"
+  >
+    <template #header>
+      <div class="flex items-center justify-center h-24 text-center overflow-hidden text-ellipsis">
         {{ minimalPoliticalParty.name }}
-        <br>
-        <licensed-file-component
-          class="h-48"
-          :licensed-file="minimalPoliticalParty.licensedFile"
-        />
-        <br>
-        {{ minimalPoliticalParty.affiliation }}
+        ({{ minimalPoliticalParty.affiliation }})
       </div>
     </template>
 
+    <div
+      class="relative flex flex-col items-center justify-between h-64"
+    >
+      <licensed-file-component
+        :licensed-file="minimalPoliticalParty.licensedFile"
+        class="w-full h-full object-cover"
+      />
+    </div>
     <template
       #footer
     >
-      <div class="flex justify-between items-center">
+      <div class="flex justify-end items-center">
         <UButton
           label="Details"
           @click="() => navigateTo(`/political-parties/${minimalPoliticalParty.id}`)"

@@ -11,6 +11,13 @@ export default class extends BaseSchema {
       table.text('text').notNullable();
       table.integer('turn').notNullable();
       table.boolean('is_available').notNullable();
+      table.boolean('been_read').notNullable();
+      table.boolean('is_displayable').notNullable();
+      table.enum('type', [
+        'historical',
+        'choice',
+        'super-event',
+      ]).notNullable();
       table
         .integer('game_id')
         .unsigned()

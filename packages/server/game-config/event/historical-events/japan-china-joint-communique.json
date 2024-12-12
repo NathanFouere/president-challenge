@@ -6,6 +6,8 @@
     "japan-china-joint-communique-one",
     "japan-china-joint-communique-two"
   ],
-  "turn": 24,
-  "isAvailable": true
+  "turn": 23,
+  "isAvailable": true,
+"isDisplayable": true,
+  "type": "historical"
 }
