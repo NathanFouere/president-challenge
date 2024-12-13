@@ -35,6 +35,5 @@ export default class ChangeTurnController {
         error: e,
       });
     }
-    return response.ok({ message: 'Turn changed successfully' });
   }
 }
