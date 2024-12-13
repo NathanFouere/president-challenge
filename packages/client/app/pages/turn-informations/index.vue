@@ -7,6 +7,12 @@ const turnInformationsPresenter = container.get<TurnInformationsPresenter>(COMMO
 
 usePageTitle().setTitle('Informations for ' + getDateFromTurnNumber(turnInformationsPresenter.gameStore.getSelectedGameTurn));
 
+// TODO => really hacky, need to find a better way to do this
+const selectedTurn = computed(() => turnInformationsPresenter.gameStore.getSelectedGameTurn);
+watch(selectedTurn, async () => {
+  usePageTitle().setTitle('Informations for ' + getDateFromTurnNumber(selectedTurn.value));
+});
+
 onMounted(async () => {
   await turnInformationsPresenter.getEventsOfTurn();
 });
@@ -14,7 +20,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="grid grid-cols-6 gap-4"
+    class="grid grid-cols-4 gap-4"
   >
     <event-component
       v-for="(event) in turnInformationsPresenter.eventsStore.getSuperEvents"
@@ -26,7 +32,7 @@ onMounted(async () => {
     />
   </div>
   <div
-    class="grid grid-cols-6 gap-4"
+    class="grid grid-cols-4 gap-4"
   >
     <event-component
       v-for="(event) in turnInformationsPresenter.eventsStore.getChoiceEvents"
@@ -37,7 +43,7 @@ onMounted(async () => {
     />
   </div>
   <div
-    class="grid grid-cols-6 gap-4"
+    class="grid grid-cols-4 gap-4"
   >
     <event-component
       v-for="(event) in turnInformationsPresenter.eventsStore.getHistoricalEvents"

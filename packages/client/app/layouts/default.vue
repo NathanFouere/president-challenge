@@ -11,6 +11,7 @@ const pageTitle = usePageTitle();
 const globalLoader = useGlobalLoader();
 const hasUser = computed(() => userStore.hasConnectedUser);
 const hasSelectedGame = computed(() => gameStore.hasSelectedGame);
+const router = useRouter();
 
 const links = computed(() => [
   {
@@ -53,7 +54,20 @@ const links = computed(() => [
 
     <UDashboardPage class="overflow-auto flex-1">
       <UDashboardPanel class="flex flex-1 pl-5 pr-5">
-        <UDashboardNavbar :title="pageTitle.title.value" />
+        <div class="flex">
+          <UDashboardNavbar>
+            <template #left>
+              {{ pageTitle.title.value }}
+            </template>
+            <template #right>
+              <UIcon
+                class="h-5 w-5 mt-0.5"
+                name="i-heroicons-arrow-turn-down-left"
+                @click="() => router.go(-1)"
+              />
+            </template>
+          </UDashboardNavbar>
+        </div>
         <UProgress :class="{ 'opacity-0': !globalLoader.loading.value }" />
         <NuxtPage class="pt-6" />
 

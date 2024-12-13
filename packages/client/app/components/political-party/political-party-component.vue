@@ -12,14 +12,14 @@ defineProps<{
     class="h-full"
   >
     <template #header>
-      <div class="flex items-center justify-center h-24 text-center overflow-hidden text-ellipsis">
+      <div class="justify-center">
         {{ minimalPoliticalParty.name }}
         ({{ minimalPoliticalParty.affiliation }})
       </div>
     </template>
 
     <div
-      class="relative flex flex-col items-center justify-between h-64"
+      class="justify-between"
     >
       <licensed-file-component
         :licensed-file="minimalPoliticalParty.licensedFile"

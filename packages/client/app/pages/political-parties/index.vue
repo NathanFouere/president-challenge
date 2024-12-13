@@ -16,14 +16,10 @@ onMounted(async () => {
   <div
     class="grid grid-cols-6 gap-4"
   >
-    <template
+    <political-party-component
       v-for="(politicalParty) in politicalPartiesPresenter.politicalPartiesStore.getPoliticalParties"
       :key="politicalParty.id"
-    >
-      <political-party-component
-        :minimal-political-party="politicalParty"
-        class="mb-3"
-      />
-    </template>
+      :minimal-political-party="politicalParty"
+    />
   </div>
 </template>
