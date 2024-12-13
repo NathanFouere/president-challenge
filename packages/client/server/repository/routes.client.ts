@@ -18,6 +18,7 @@ const Routes = {
     GetGames: () => `${gamePrefix}/`,
     CreateGame: () => `${gamePrefix}/create`,
     DeleteGame: (id: number) => `${gamePrefix}/delete/${id}`,
+    ChangeTurn: (gameId: number) => `${gamePrefix}/change-turn/${gameId}`,
   },
   PoliticalParty: {
     GetPoliticalParties: (gameId: number) => `${politicalPartyPrefix}/political-parties-of-game/${gameId}`,

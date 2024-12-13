@@ -29,4 +29,8 @@ export default class Game extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
+
+  public changeTurn() {
+    this.turnNumber += 1;
+  }
 }

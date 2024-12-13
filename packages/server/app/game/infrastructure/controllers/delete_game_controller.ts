@@ -8,7 +8,7 @@ import type User from '#user/domain/models/user';
 export default class DeleteGameController {
   constructor(private deleteGameService: DeleteGameService) {}
 
-  async deleteGame({ auth, params, response }: HttpContext) {
+  public async deleteGame({ auth, params, response }: HttpContext) {
     try {
       const user: User = auth.getUserOrFail();
       const gameId = Number(params.id);

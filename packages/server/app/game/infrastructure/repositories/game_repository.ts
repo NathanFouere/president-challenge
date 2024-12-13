@@ -12,4 +12,8 @@ export default class GameRepository {
   public async findById(id: number): Promise<Game | null> {
     return Game.find(id);
   }
+
+  public async getById(id: number): Promise<Game> {
+    return Game.findOrFail(id);
+  }
 }
