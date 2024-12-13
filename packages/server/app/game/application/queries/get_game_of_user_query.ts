@@ -1,6 +1,6 @@
 import type User from '#user/domain/models/user';
 
-export class GetGameOfPlayerQuery {
+export class GetGameOfUserQuery {
   public readonly user: User;
   public readonly gameId: number;
 

@@ -9,6 +9,7 @@ export const useGameStore = defineStore('gameStore', {
     gettingGames: false,
     errorOnGettingGames: false,
     gamePendingDeletionId: null as number | null,
+    changingTurn: false,
   }),
   getters: {
     userGames(state): Game[] {
@@ -19,6 +20,9 @@ export const useGameStore = defineStore('gameStore', {
     },
     isGettingGames(state): boolean {
       return state.gettingGames;
+    },
+    isChangingTurn(state): boolean {
+      return state.changingTurn;
     },
     hasErrorOnCreatingGame(state): boolean {
       return state.errorOnCreatingGame;
@@ -52,6 +56,12 @@ export const useGameStore = defineStore('gameStore', {
     setGames(games: Game[]) {
       this.games = games;
     },
+    setChangingTurn() {
+      this.changingTurn = true;
+    },
+    unsetChangingTurn() {
+      this.changingTurn = false;
+    },
     setCreatingGame() {
       this.creatingGame = true;
     },
@@ -77,6 +87,9 @@ export const useGameStore = defineStore('gameStore', {
       this.errorOnCreatingGame = false;
     },
     setSelectedGame(game: Game) {
+      this.selectedGame = game;
+    },
+    updateSelectedGame(game: Game) {
       this.selectedGame = game;
     },
     unsetSelectedGame() {

@@ -29,11 +29,13 @@ router.group(() => {
 const GetGamesController = () => import('#game/infrastructure/controllers/get_games_controller');
 const CreateGameController = () => import('../app/game/infrastructure/controllers/create_game_controller.js');
 const DeleteGameController = () => import('../app/game/infrastructure/controllers/delete_game_controller.js');
+const ChangeTurnController = () => import('../app/game/infrastructure/controllers/change_turn_controller.js');
 
 router.group(() => {
   router.get('/', [GetGamesController, 'getUserGames']).use(middleware.auth());
   router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
   router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
+  router.post('/change-turn/:gameId', [ChangeTurnController, 'changeTurn']).use(middleware.auth());
 }).prefix('api/games');
 
 /* POLITICAL PARTY */

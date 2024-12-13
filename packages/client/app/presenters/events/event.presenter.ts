@@ -4,13 +4,13 @@ import type EventModule from '../../../server/repository/modules/event.module';
 import { useGameStore } from '../../store/game/game.store';
 import { useEventStore } from '../../store/events/event.store';
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
-import type { EventsPresenter } from '../turn-informations/events.presenter';
+import type { TurnInformationsPresenter } from '../turn-informations/turn-informations.presenter';
 
 @injectable()
 export class EventPresenter {
   constructor(
-      @inject(COMMON_DEPENDANCY_TYPES.EventsPresenter)
-      private readonly eventsPresenter: EventsPresenter,
+      @inject(COMMON_DEPENDANCY_TYPES.TurnInformationsPresenter)
+      private readonly turnInformationsPresenter: TurnInformationsPresenter,
   ) {
   }
 
@@ -24,7 +24,7 @@ export class EventPresenter {
     try {
       const event = await this.eventModule.getEvent(eventId, this.gameStore.getSelectedGameId);
       this.eventStore.setEvent(event);
-      await this.eventsPresenter.getEventsOfTurn();
+      await this.turnInformationsPresenter.getEventsOfTurn();
       this.eventStore.unsetGettingEvent();
       this.eventStore.unsetErrorOnGettingEvent();
     }
