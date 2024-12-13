@@ -19,10 +19,13 @@ defineProps<{
       <br>
       <i>{{ event.needsAction ? 'Needs action' : 'Doesnt need action' }}</i>
     </template>
-    <licensed-file-component
-      class="h-48"
-      :licensed-file="event.licensedFile!"
-    />
+    <div
+      class="justify-between"
+    >
+      <licensed-file-component
+        :licensed-file="event.licensedFile!"
+      />
+    </div>
     <template #footer>
       <div class="flex justify-end items-center">
         <event-modal

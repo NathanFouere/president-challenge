@@ -9,6 +9,6 @@
     ],
     "turn": 11,
     "isAvailable": true,
-  "isDisplayable": false,
+  "isDisplayable": true,
   "type": "historical"
 }

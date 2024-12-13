@@ -90,7 +90,7 @@ export const useGameStore = defineStore('gameStore', {
       this.selectedGame = game;
     },
     updateSelectedGame(game: Game) {
-      this.selectedGame = game;
+      this.selectedGame = { ...game };
     },
     unsetSelectedGame() {
       this.selectedGame = null;

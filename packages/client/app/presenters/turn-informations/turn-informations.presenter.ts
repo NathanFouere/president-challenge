@@ -5,6 +5,7 @@ import { useGameStore } from '../../store/game/game.store';
 import type GameModule from '../../../server/repository/modules/game.module';
 import { useEventsStore } from '../../store/events/events.store';
 import type EventModule from '../../../server/repository/modules/event.module';
+import { usePageTitle } from '../../composables/usePageTitle';
 
 @injectable()
 export class TurnInformationsPresenter {
@@ -15,12 +16,14 @@ export class TurnInformationsPresenter {
   private readonly globalLoader = useGlobalLoader();
   public readonly gameStore = useGameStore();
   public readonly eventsStore = useEventsStore();
+  public readonly pageTitle = usePageTitle();
 
   public async changeTurn(): Promise<void> {
     this.globalLoader.startLoading();
     try {
       const updatedGame = await this.gameModule.changeTurn(this.gameStore.getSelectedGameId);
-      this.gameStore.updateSelectedGame(updatedGame);
+      this.gameStore.setSelectedGame(updatedGame);
+      console.log(updatedGame);
       await this.getEventsOfTurn();
     }
     catch (error) {
