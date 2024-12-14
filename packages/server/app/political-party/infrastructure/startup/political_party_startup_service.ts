@@ -5,20 +5,15 @@ import { PoliticalPartyRepository } from '#political-party/infrastructure/reposi
 import politicalPartyStartupConfig from '#game-config/political-party/political-party-startup-config.json' assert { type: 'json' };
 import type PoliticalParty from '#political-party/domain/models/political_party';
 import { aPoliticalParty } from '#political-party/application/builders/political_party_builder';
-import type { StartupInterface } from '#common/interfaces/startup_interface';
 
 @inject()
-export class PoliticalPartyStartupService implements StartupInterface {
+export class PoliticalPartyStartupService {
   constructor(
     private readonly politicalPartyRepository: PoliticalPartyRepository,
   ) {
   }
 
-  public async initialize(gameId: number): Promise<void> {
-    await this.initializePoliticalParties(gameId);
-  }
-
-  private async initializePoliticalParties(gameId: number): Promise<void> {
+  public async initialize(gameId: number): Promise<PoliticalParty[]> {
     const politicalParties: PoliticalParty[] = [];
 
     for (const politicalPartyValues of politicalPartyStartupConfig) {
@@ -34,6 +29,8 @@ export class PoliticalPartyStartupService implements StartupInterface {
       politicalParties.push(politicalParty);
     }
 
-    await this.politicalPartyRepository.saveAll(politicalParties);
+    await this.politicalPartyRepository.createMany(politicalParties);
+
+    return politicalParties;
   }
 }

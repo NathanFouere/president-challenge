@@ -8,6 +8,6 @@
   ],
   "turn": 23,
   "isAvailable": true,
-"isDisplayable": true,
+  "isDisplayable": true,
   "type": "historical"
 }

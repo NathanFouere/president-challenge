@@ -1,7 +1,8 @@
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
-import type { BelongsTo } from '@adonisjs/lucid/types/relations';
+import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
+import ParliamentPartySeats from '#legislature/domain/models/political_party_seats_parliament';
 
 export class Parliament extends BaseModel {
   @column({ isPrimary: true })
@@ -18,4 +19,7 @@ export class Parliament extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
+
+  @hasMany(() => ParliamentPartySeats)
+  declare partySeats: HasMany<typeof ParliamentPartySeats>;
 }

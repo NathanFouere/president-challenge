@@ -1,11 +1,10 @@
-import type Game from '#game/domain/models/game';
 import Senate from '#legislature/domain/models/senate';
 
 export class SenateBuilder {
   public gameId: number | null = null;
 
-  public withGameId(game: Game): this {
-    this.gameId = game;
+  public withGameId(gameId: number): this {
+    this.gameId = gameId;
     return this;
   }
 

@@ -13,7 +13,7 @@ export class PoliticalPartyRepository {
     await politicalParty.delete();
   }
 
-  public async saveAll(politicalParties: PoliticalParty[]): Promise<void> {
+  public async createMany(politicalParties: PoliticalParty[]): Promise<void> {
     await PoliticalParty.createMany(politicalParties);
   }
 }

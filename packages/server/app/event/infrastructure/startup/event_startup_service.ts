@@ -53,10 +53,9 @@ import type Event from '#event/domain/models/event';
 import type Choice from '#event/domain/models/choice';
 import type { EventStartupInterface } from '#event/infrastructure/startup/event_startup_interface';
 import type { ChoiceStartupInterface } from '#event/infrastructure/startup/choice_startup_interface';
-import type { StartupInterface } from '#common/interfaces/startup_interface';
 
 @inject()
-export class EventStartupService implements StartupInterface {
+export class EventStartupService {
   constructor(
     private readonly eventRepository: EventRepository,
     private readonly choiceRepository: ChoiceRepository,
