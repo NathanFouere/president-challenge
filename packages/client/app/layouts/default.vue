@@ -54,23 +54,22 @@ const links = computed(() => [
 
     <UDashboardPage class="overflow-auto flex-1">
       <UDashboardPanel class="flex flex-1">
-        <div class="w-full">
-          <UDashboardNavbar>
-            <template #left>
-              {{ pageTitle.title.value }}
-            </template>
-            <template #right>
-              <UIcon
-                class="h-5 w-5 mt-0.5 "
-                name="i-heroicons-arrow-turn-down-left"
-                @click="() => router.go(-1)"
-              />
-            </template>
-          </UDashboardNavbar>
-        </div>
+        <UDashboardNavbar>
+          <template #left>
+            {{ pageTitle.title.value }}
+          </template>
+          <template #right>
+            <UIcon
+              class="h-5 w-5 mt-0.5 "
+              name="i-heroicons-arrow-turn-down-left"
+              @click="() => router.go(-1)"
+            />
+          </template>
+        </UDashboardNavbar>
         <UProgress :class="{ 'opacity-0': !globalLoader.loading.value }" />
-        <NuxtPage class="pt-6" />
-
+        <div class="p-2.5">
+          <NuxtPage />
+        </div>
         <UNotifications />
       </UDashboardPanel>
     </UDashboardPage>

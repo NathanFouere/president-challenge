@@ -1,9 +1,10 @@
-import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
+import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import User from '#user/domain/models/user';
 import PoliticalParty from '#political-party/domain/models/political_party';
 import Event from '#event/domain/models/event';
+import Senate from '#legislature/domain/models/senate';
 
 export default class Game extends BaseModel {
   @column({ isPrimary: true })
@@ -23,6 +24,9 @@ export default class Game extends BaseModel {
 
   @hasMany(() => Event)
   declare events: HasMany<typeof Event>;
+
+  @hasOne(() => Senate)
+  declare senate: HasOne<typeof Senate>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

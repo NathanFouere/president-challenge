@@ -5,9 +5,10 @@ import { PoliticalPartyRepository } from '#political-party/infrastructure/reposi
 import politicalPartyStartupConfig from '#game-config/political-party/political-party-startup-config.json' assert { type: 'json' };
 import type PoliticalParty from '#political-party/domain/models/political_party';
 import { aPoliticalParty } from '#political-party/application/builders/political_party_builder';
+import type { StartupInterface } from '#common/interfaces/startup_interface';
 
 @inject()
-export class PoliticalPartyStartupService {
+export class PoliticalPartyStartupService implements StartupInterface {
   constructor(
     private readonly politicalPartyRepository: PoliticalPartyRepository,
   ) {

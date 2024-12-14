@@ -1,7 +1,6 @@
 import Game from '#game/domain/models/game';
 
 export class GameBuilder {
-  public id: number | null = null;
   public turnNumber: number | null = null;
   public userId: number | null = null;
 

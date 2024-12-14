@@ -9,8 +9,6 @@ export default class EventLicensedFiles extends BaseSchema {
       table.string('licensed_file_identifier').references('identifier').inTable('licensed_files').notNullable();
 
       table.primary(['event_id', 'licensed_file_identifier']);
-
-      table.timestamp('created_at', { useTz: true }).defaultTo(this.now());
     });
   }
 
