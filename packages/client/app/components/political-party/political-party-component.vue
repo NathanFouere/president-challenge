@@ -29,7 +29,7 @@ defineProps<{
     <template
       #footer
     >
-      <div class="flex justify-end items-center">
+      <div class="flex justify-center items-center">
         <UButton
           label="Details"
           @click="() => navigateTo(`/political-parties/${minimalPoliticalParty.id}`)"

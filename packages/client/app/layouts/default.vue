@@ -53,15 +53,15 @@ const links = computed(() => [
     </UDashboardPanel>
 
     <UDashboardPage class="overflow-auto flex-1">
-      <UDashboardPanel class="flex flex-1 pl-5 pr-5">
-        <div class="flex">
+      <UDashboardPanel class="flex flex-1">
+        <div class="w-full">
           <UDashboardNavbar>
             <template #left>
               {{ pageTitle.title.value }}
             </template>
             <template #right>
               <UIcon
-                class="h-5 w-5 mt-0.5"
+                class="h-5 w-5 mt-0.5 "
                 name="i-heroicons-arrow-turn-down-left"
                 @click="() => router.go(-1)"
               />

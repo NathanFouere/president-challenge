@@ -27,7 +27,7 @@ defineProps<{
       />
     </div>
     <template #footer>
-      <div class="flex justify-end items-center">
+      <div class="flex justify-center items-center">
         <event-modal
           :event-id="event.id"
           :is-selected="false"
