@@ -1,51 +1,11 @@
 <script setup lang="ts">
-import container from '../../../config/container';
-import type { PoliticalPartiesPresenter } from '../../presenters/legislation/political-parties.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
-import SenateComponent from '../../components/legislation/senate-component.vue';
 import ParliamentComponent from '../../components/legislation/parliament-component.vue';
-
-usePageTitle().setTitle('Legislation');
-
-const politicalPartiesPresenter = container.get<PoliticalPartiesPresenter>(COMMON_DEPENDANCY_TYPES.PoliticalPartiesPresenter);
-
-onMounted(async () => {
-  await politicalPartiesPresenter.getPoliticalParties();
-});
+import SenateComponent from '../../components/legislation/senate-component.vue';
 </script>
 
 <template>
-  <div>
-    <h1 class="text-center">
-      Legislature
-    </h1>
-    <br>
-    <div class="flex flex-1 items-center ">
-      <senate-component class="w-1/2 p-1" />
-      <parliament-component class="w-1/2 p-1" />
-    </div>
-  </div>
-  <br>
-  <UDivider class="sticky" />
-  <div>
-    <br>
-    <h1 class="text-center">
-      Political Parties
-    </h1>
-    <br>
-    <USkeleton
-      v-if="politicalPartiesPresenter.politicalPartiesStore.isGettingPoliticalParties"
-      class="w-full h-64 "
-    />
-    <div
-      v-else
-      class="grid grid-cols-6 gap-4"
-    >
-      <political-party-component
-        v-for="(politicalParty) in politicalPartiesPresenter.politicalPartiesStore.getPoliticalParties"
-        :key="politicalParty.id"
-        :minimal-political-party="politicalParty"
-      />
-    </div>
+  <div class="flex flex-1 items-center ">
+    <senate-component class="w-1/2 p-1" />
+    <parliament-component class="w-1/2 p-1" />
   </div>
 </template>

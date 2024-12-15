@@ -17,8 +17,12 @@ onMounted(async () => {
       <template #header>
         Parliament
       </template>
+      <USkeleton
+        v-if="parliamentPresenter.parliamentStore.isGettingParliament"
+        class="w-full h-64 "
+      />
       <div
-        v-if="parliamentPresenter.parliamentStore.hasParliament"
+        v-else-if="parliamentPresenter.parliamentStore.hasParliament"
         class="flex flex-col items-center"
       >
         <half-circle

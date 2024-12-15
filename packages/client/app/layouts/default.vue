@@ -25,6 +25,12 @@ const links = computed(() => [
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
   {
+    label: 'Politics',
+    icon: 'i-heroicons-building-library',
+    to: NUXT_ROUTES.politics,
+    disabled: !hasUser.value || !hasSelectedGame.value,
+  },
+  {
     label: 'Legislature',
     icon: 'i-heroicons-building-library',
     to: NUXT_ROUTES.legislature,

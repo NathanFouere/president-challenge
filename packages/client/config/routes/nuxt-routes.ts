@@ -2,7 +2,8 @@ export const NUXT_ROUTES = {
   games: '/games',
   login: '/auth/login',
   signup: '/auth/signup',
-  legislature: '/legislature',
+  politics: '/politics',
   politicalParties: '/political-parties',
   turnInformations: '/turn-informations',
+  legislature: '/legislature',
 };
