@@ -24,8 +24,9 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('games')
         .onDelete('CASCADE');
-      table.timestamp('created_at', { useTz: true }).defaultTo(this.now());
-      table.timestamp('updated_at', { useTz: true }).defaultTo(this.now());
+
+      table.timestamp('created_at').notNullable();
+      table.timestamp('updated_at').nullable();
     });
   }
 

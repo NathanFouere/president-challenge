@@ -1,0 +1,32 @@
+[
+  {
+    "affiliation": "Far Left",
+    "seatsInSenate": 15,
+    "seatsInParliament": 15
+  },
+  {
+    "affiliation": "Left",
+    "seatsInSenate": 15,
+    "seatsInParliament": 15
+  },
+  {
+    "affiliation": "Center Left",
+    "seatsInSenate": 15,
+    "seatsInParliament": 15
+  },
+  {
+    "affiliation": "Center Right",
+    "seatsInSenate": 15,
+    "seatsInParliament": 15
+  },
+  {
+    "affiliation": "Right",
+    "seatsInSenate": 15,
+    "seatsInParliament": 15
+  },
+  {
+    "affiliation": "Far Right",
+    "seatsInSenate": 15,
+    "seatsInParliament": 15
+  }
+]

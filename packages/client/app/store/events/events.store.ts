@@ -5,6 +5,7 @@ export const useEventsStore = defineStore('eventsStore', {
     choiceEvents: [] as MinimalEventDto[],
     historicalEvents: [] as MinimalEventDto[],
     superEvents: [] as MinimalEventDto[],
+    gettingEvents: false,
   }),
   getters: {
     getChoiceEvents(state): MinimalEventDto[] {
@@ -16,6 +17,9 @@ export const useEventsStore = defineStore('eventsStore', {
     getSuperEvents(state): MinimalEventDto[] {
       return state.superEvents;
     },
+    isGettingEvents(state): boolean {
+      return state.gettingEvents;
+    },
   },
   actions: {
     setChoiceEvents(events: MinimalEventDto[]) {
@@ -26,6 +30,12 @@ export const useEventsStore = defineStore('eventsStore', {
     },
     setSuperEvents(events: MinimalEventDto[]) {
       this.superEvents = [...events];
+    },
+    setGettingEvents() {
+      this.gettingEvents = true;
+    },
+    unsetGettingEvents() {
+      this.gettingEvents = false;
     },
   },
 });

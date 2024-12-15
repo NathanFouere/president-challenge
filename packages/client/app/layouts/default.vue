@@ -3,12 +3,10 @@ import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 import { useGameStore } from '../store/game/game.store';
 import { usePageTitle } from '../composables/usePageTitle';
-import { useGlobalLoader } from '../composables/useGlobalLoader';
 
 const userStore = useUserStore();
 const gameStore = useGameStore();
 const pageTitle = usePageTitle();
-const globalLoader = useGlobalLoader();
 const hasUser = computed(() => userStore.hasConnectedUser);
 const hasSelectedGame = computed(() => gameStore.hasSelectedGame);
 const router = useRouter();
@@ -27,9 +25,15 @@ const links = computed(() => [
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
   {
-    label: 'Political Parties',
+    label: 'Politics',
     icon: 'i-heroicons-building-library',
-    to: NUXT_ROUTES.politicalParties,
+    to: NUXT_ROUTES.politics,
+    disabled: !hasUser.value || !hasSelectedGame.value,
+  },
+  {
+    label: 'Legislature',
+    icon: 'i-heroicons-building-library',
+    to: NUXT_ROUTES.legislature,
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
 ]);
@@ -53,24 +57,22 @@ const links = computed(() => [
     </UDashboardPanel>
 
     <UDashboardPage class="overflow-auto flex-1">
-      <UDashboardPanel class="flex flex-1 pl-5 pr-5">
-        <div class="flex">
-          <UDashboardNavbar>
-            <template #left>
-              {{ pageTitle.title.value }}
-            </template>
-            <template #right>
-              <UIcon
-                class="h-5 w-5 mt-0.5"
-                name="i-heroicons-arrow-turn-down-left"
-                @click="() => router.go(-1)"
-              />
-            </template>
-          </UDashboardNavbar>
+      <UDashboardPanel class="flex flex-1">
+        <UDashboardNavbar>
+          <template #left>
+            {{ pageTitle.title.value }}
+          </template>
+          <template #right>
+            <UIcon
+              class="h-5 w-5 mt-0.5 "
+              name="i-heroicons-arrow-turn-down-left"
+              @click="() => router.go(-1)"
+            />
+          </template>
+        </UDashboardNavbar>
+        <div class="p-2.5">
+          <NuxtPage />
         </div>
-        <UProgress :class="{ 'opacity-0': !globalLoader.loading.value }" />
-        <NuxtPage class="pt-6" />
-
         <UNotifications />
       </UDashboardPanel>
     </UDashboardPage>

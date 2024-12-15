@@ -14,10 +14,6 @@ export class PoliticalPartyStartupService {
   }
 
   public async initialize(gameId: number): Promise<void> {
-    await this.initializePoliticalParties(gameId);
-  }
-
-  private async initializePoliticalParties(gameId: number): Promise<void> {
     const politicalParties: PoliticalParty[] = [];
 
     for (const politicalPartyValues of politicalPartyStartupConfig) {
@@ -33,6 +29,6 @@ export class PoliticalPartyStartupService {
       politicalParties.push(politicalParty);
     }
 
-    await this.politicalPartyRepository.saveAll(politicalParties);
+    await this.politicalPartyRepository.createMany(politicalParties);
   }
 }

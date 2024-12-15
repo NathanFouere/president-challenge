@@ -31,8 +31,8 @@ export default class extends BaseSchema {
         .inTable('events')
         .onDelete('SET NULL');
 
-      table.timestamp('created_at');
-      table.timestamp('updated_at');
+      table.timestamp('created_at').notNullable();
+      table.timestamp('updated_at').nullable();
     });
   }
 

@@ -46,7 +46,6 @@ import troubles_ireland from '#game-config/event/historical-events/troubles-irel
 import united_arab_proclamation from '#game-config/event/historical-events/united-arab-proclamation.json' assert { type: 'json' };
 import vietnamization from '#game-config/event/historical-events/vietnamization.json' assert { type: 'json' };
 import warsaw_treaty from '#game-config/event/historical-events/warsaw-treaty.json' assert { type: 'json' };
-import super_event from '#game-config/event/historical-events/super-event-test.json' assert { type: 'json' };
 import { anEvent } from '#event/application/builders/event_builder';
 import { aChoice } from '#event/application/builders/choice_builder';
 import { GetEventByIdentifierAndGameQuery } from '#event/application/queries/get_event_by_identifier_and_game_query';
@@ -103,7 +102,6 @@ export class EventStartupService {
     united_arab_proclamation,
     vietnamization,
     warsaw_treaty,
-    super_event,
   ] as unknown as EventStartupInterface[];
 
   public async initialize(gameId: number): Promise<void> {
