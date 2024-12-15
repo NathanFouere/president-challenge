@@ -24,10 +24,10 @@ export class StartupService {
   public async initialize(gameId: number): Promise<void> {
     try {
       await this.eventStartupService.initialize(gameId);
-      const parliament = await this.parliamentStartupService.initialize(gameId);
-      const senate = await this.senateStartupService.initialize(gameId);
-      const politicalParties = await this.politicalPartyStartupService.initialize(gameId);
-      await this.politicalPartySeatsStartupService.initialize(politicalParties, senate.id, parliament.id);
+      await this.parliamentStartupService.initialize(gameId);
+      await this.senateStartupService.initialize(gameId);
+      await this.politicalPartyStartupService.initialize(gameId);
+      await this.politicalPartySeatsStartupService.initialize(gameId);
     }
     catch (error) {
       console.error(error);

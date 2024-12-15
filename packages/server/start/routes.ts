@@ -59,3 +59,13 @@ router.group(() => {
   router.get('/:gameId/:eventId', [GetEventController, 'getEvent']).use(middleware.auth());
   router.post('/choose-choice/:eventId/:choiceId', [ChooseChoiceController, 'chooseChoice']).use(middleware.auth());
 }).prefix('api/events');
+
+/* LEGISLATURE */
+
+const GetSenateController = () => import('#legislature/infrastructure/controllers/get_senate_controller');
+const GetParliamentController = () => import('#legislature/infrastructure/controllers/get_parliament_controller');
+
+router.group(() => {
+  router.get('/senate/:gameId', [GetSenateController, 'getSenate']).use(middleware.auth());
+  router.get('/parliament/:gameId', [GetParliamentController, 'getParliament']).use(middleware.auth());
+}).prefix('api/legislature');

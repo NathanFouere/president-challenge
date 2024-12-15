@@ -19,49 +19,58 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
-    class="grid grid-cols-4 gap-4"
-  >
-    <event-component
-      v-for="(event) in turnInformationsPresenter.eventsStore.getSuperEvents"
-      :key="event.id"
-      :is-selected="false"
-      :event="event"
-      modal-opened-by-default
-      class="mb-3"
+  <div>
+    <USkeleton
+      v-if="turnInformationsPresenter.gameStore.isChangingTurn || turnInformationsPresenter.eventsStore.gettingEvents"
+      class="w-full h-64"
     />
-  </div>
-  <div
-    class="grid grid-cols-4 gap-4"
-  >
-    <event-component
-      v-for="(event) in turnInformationsPresenter.eventsStore.getChoiceEvents"
-      :key="event.id"
-      :is-selected="false"
-      :event="event"
-      class="mb-3"
-    />
-  </div>
-  <div
-    class="grid grid-cols-4 gap-4"
-  >
-    <event-component
-      v-for="(event) in turnInformationsPresenter.eventsStore.getHistoricalEvents"
-      :key="event.id"
-      :is-selected="false"
-      :event="event"
-      class="mb-3"
-    />
-  </div>
-
-  <div
-    class="text-center"
-  >
-    <UButton
-      :loading="turnInformationsPresenter.gameStore.isChangingTurn"
-      @click="turnInformationsPresenter.changeTurn()"
+    <div
+      v-else
     >
-      Change turn
-    </UButton>
+      <div
+        class="grid grid-cols-4 gap-4"
+      >
+        <event-component
+          v-for="(event) in turnInformationsPresenter.eventsStore.getSuperEvents"
+          :key="event.id"
+          :is-selected="false"
+          :event="event"
+          modal-opened-by-default
+          class="mb-3"
+        />
+      </div>
+      <div
+        class="grid grid-cols-4 gap-4"
+      >
+        <event-component
+          v-for="(event) in turnInformationsPresenter.eventsStore.getChoiceEvents"
+          :key="event.id"
+          :is-selected="false"
+          :event="event"
+          class="mb-3"
+        />
+      </div>
+      <div
+        class="grid grid-cols-4 gap-4"
+      >
+        <event-component
+          v-for="(event) in turnInformationsPresenter.eventsStore.getHistoricalEvents"
+          :key="event.id"
+          :is-selected="false"
+          :event="event"
+          class="mb-3"
+        />
+      </div>
+    </div>
+    <div
+      class="text-center"
+    >
+      <UButton
+        :loading="turnInformationsPresenter.gameStore.isChangingTurn"
+        @click="turnInformationsPresenter.changeTurn()"
+      >
+        Change turn
+      </UButton>
+    </div>
   </div>
 </template>

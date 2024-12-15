@@ -3,12 +3,10 @@ import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 import { useGameStore } from '../store/game/game.store';
 import { usePageTitle } from '../composables/usePageTitle';
-import { useGlobalLoader } from '../composables/useGlobalLoader';
 
 const userStore = useUserStore();
 const gameStore = useGameStore();
 const pageTitle = usePageTitle();
-const globalLoader = useGlobalLoader();
 const hasUser = computed(() => userStore.hasConnectedUser);
 const hasSelectedGame = computed(() => gameStore.hasSelectedGame);
 const router = useRouter();
@@ -27,9 +25,9 @@ const links = computed(() => [
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
   {
-    label: 'Political Parties',
+    label: 'Legislature',
     icon: 'i-heroicons-building-library',
-    to: NUXT_ROUTES.politicalParties,
+    to: NUXT_ROUTES.legislature,
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
 ]);
@@ -66,7 +64,6 @@ const links = computed(() => [
             />
           </template>
         </UDashboardNavbar>
-        <UProgress :class="{ 'opacity-0': !globalLoader.loading.value }" />
         <div class="p-2.5">
           <NuxtPage />
         </div>

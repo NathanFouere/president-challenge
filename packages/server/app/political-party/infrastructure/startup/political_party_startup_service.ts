@@ -13,7 +13,7 @@ export class PoliticalPartyStartupService {
   ) {
   }
 
-  public async initialize(gameId: number): Promise<PoliticalParty[]> {
+  public async initialize(gameId: number): Promise<void> {
     const politicalParties: PoliticalParty[] = [];
 
     for (const politicalPartyValues of politicalPartyStartupConfig) {
@@ -30,7 +30,5 @@ export class PoliticalPartyStartupService {
     }
 
     await this.politicalPartyRepository.createMany(politicalParties);
-
-    return politicalParties;
   }
 }

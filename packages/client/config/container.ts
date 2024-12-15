@@ -1,10 +1,12 @@
 import { Container } from 'inversify';
 import { AuthPresenter } from '../app/presenters/auth.presenter';
 import { GamePresenter } from '../app/presenters/game.presenter';
-import { PoliticalPartiesPresenter } from '../app/presenters/political-party/political-parties.presenter';
-import { PoliticalPartyPresenter } from '../app/presenters/political-party/political-party.presenter';
+import { PoliticalPartiesPresenter } from '../app/presenters/legislation/political-parties.presenter';
+import { PoliticalPartyPresenter } from '../app/presenters/legislation/political-party.presenter';
 import { EventPresenter } from '../app/presenters/events/event.presenter';
 import { TurnInformationsPresenter } from '../app/presenters/turn-informations/turn-informations.presenter';
+import { ParliamentPresenter } from '../app/presenters/legislation/parliament.presenter';
+import { SenatePresenter } from '../app/presenters/legislation/senate.presenter';
 import { COMMON_DEPENDANCY_TYPES } from './common.types';
 
 const container = new Container();
@@ -15,5 +17,7 @@ container.bind<PoliticalPartiesPresenter>(COMMON_DEPENDANCY_TYPES.PoliticalParti
 container.bind<PoliticalPartyPresenter>(COMMON_DEPENDANCY_TYPES.PoliticalPartyPresenter).to(PoliticalPartyPresenter);
 container.bind<EventPresenter>(COMMON_DEPENDANCY_TYPES.EventPresenter).to(EventPresenter);
 container.bind<TurnInformationsPresenter>(COMMON_DEPENDANCY_TYPES.TurnInformationsPresenter).to(TurnInformationsPresenter);
+container.bind<SenatePresenter>(COMMON_DEPENDANCY_TYPES.SenatePresenter).to(SenatePresenter);
+container.bind<ParliamentPresenter>(COMMON_DEPENDANCY_TYPES.ParliamentPresenter).to(ParliamentPresenter);
 
 export default container;

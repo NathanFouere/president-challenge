@@ -5,6 +5,10 @@ export class ParliamentRepository {
     parliament.save();
   }
 
+  public async getByGameId(gameId: number): Promise<Parliament> {
+    return await Parliament.query().where('game_id', gameId).firstOrFail();
+  }
+
   public async findById(id: number): Promise<Parliament | null> {
     return await Parliament.find(id);
   }

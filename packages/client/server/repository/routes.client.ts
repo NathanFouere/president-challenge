@@ -6,6 +6,7 @@ const authPrefix: string = `${prefix}/auth`;
 const gamePrefix: string = `${prefix}/games`;
 const politicalPartyPrefix: string = `${prefix}/political-party`;
 const eventPrefix: string = `${prefix}/events`;
+const legislaturePrefix: string = `${prefix}/legislature`;
 
 const Routes = {
   User: {
@@ -28,6 +29,10 @@ const Routes = {
     GetEventsOfTurn: (gameId: number, turn: number) => `${eventPrefix}/events-of-turn/${gameId}/turn/${turn}`,
     GetEvent: (eventId: number, gameId: number) => `${eventPrefix}/${gameId}/${eventId}`,
     ChooseChoice: (eventId: number, choiceId: number) => `${eventPrefix}/choose-choice/${eventId}/${choiceId}`,
+  },
+  Legislature: {
+    GetSenate: (gameId: number) => `${legislaturePrefix}/senate/${gameId}`,
+    GetParliament: (gameId: number) => `${legislaturePrefix}/parliament/${gameId}`,
   },
 };
 

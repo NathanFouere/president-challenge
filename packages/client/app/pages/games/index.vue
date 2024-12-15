@@ -13,8 +13,13 @@ onMounted(async () => {
 </script>
 
 <template>
+  <USkeleton
+    v-if="gamePresenter.gameStore.isGettingGames"
+    class="w-full h-64"
+  />
   <template
     v-for="(game) in gamePresenter.gameStore.userGames"
+    v-else
     :key="game.id"
   >
     <game-component

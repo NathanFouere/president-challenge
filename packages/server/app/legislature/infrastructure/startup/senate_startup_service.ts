@@ -2,7 +2,6 @@ import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SenateRepository } from '#legislature/infrastructure/repositories/senate_repository';
 import { aSenate } from '#legislature/application/builders/senate_builder';
-import type Senate from '#legislature/domain/models/senate';
 
 @inject()
 export class SenateStartupService {
@@ -11,13 +10,11 @@ export class SenateStartupService {
   ) {
   }
 
-  public async initialize(gameId: number): Promise<Senate> {
+  public async initialize(gameId: number): Promise<void> {
     const senate = aSenate()
       .withGameId(gameId)
       .build();
 
     await this.senateRepository.save(senate);
-
-    return senate;
   }
 }

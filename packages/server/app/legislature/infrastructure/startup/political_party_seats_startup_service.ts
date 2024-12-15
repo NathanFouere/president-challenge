@@ -1,5 +1,4 @@
 import { inject } from '@adonisjs/core';
-import type PoliticalParty from '#political-party/domain/models/political_party';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   PoliticalPartySeatsSenateRepository,
@@ -12,33 +11,46 @@ import { aPoliticalPartySeatsSenate } from '#legislature/application/builders/po
 import {
   aPoliticalPartySeatsParliament,
 } from '#legislature/application/builders/political_party_seats_parliament_builder';
+import political_party_seats_config from '#game-config/political-party/political-party-seats-config.json' assert { type: 'json' };
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { PoliticalPartyRepository } from '#political-party/infrastructure/repositories/political_party_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { SenateRepository } from '#legislature/infrastructure/repositories/senate_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ParliamentRepository } from '#legislature/infrastructure/repositories/parliament_repository';
 
 @inject()
 export class PoliticalPartySeatsStartupService {
   constructor(
+    private readonly politicalPartyRepository: PoliticalPartyRepository,
     private readonly politicalPartySeatsParliamentRepository: PoliticalPartySeatsParliamentRepository,
     private readonly politicalPartySeatsSenateRepository: PoliticalPartySeatsSenateRepository,
+    private readonly senateRepository: SenateRepository,
+    private readonly parliamentRepository: ParliamentRepository,
   ) {
   }
 
-  public async initialize(politicalParties: PoliticalParty[], senateId: number, parliamentId: number): Promise<void> {
+  public async initialize(gameId: number): Promise<void> {
     const seatsInSenates = [];
     const seatsInParliaments = [];
+    const senate = await this.senateRepository.getByGameId(gameId);
+    const parliament = await this.parliamentRepository.getByGameId(gameId);
 
-    for (const politicalParty of politicalParties) {
+    for (const politicalPartySeatsConfig of political_party_seats_config) {
+      const politicalParty = await this.politicalPartyRepository.getByAffiliationAndGameId(politicalPartySeatsConfig.affiliation, gameId);
       seatsInSenates.push(
         aPoliticalPartySeatsSenate()
           .withPoliticalPartyId(politicalParty.id)
-          .withSenateId(senateId)
-          .withNumberOfSeats(0)
+          .withSenateId(senate.id)
+          .withNumberOfSeats(politicalPartySeatsConfig.seatsInSenate)
           .build(),
       );
 
       seatsInParliaments.push(
         aPoliticalPartySeatsParliament()
           .withPoliticalPartyId(politicalParty.id)
-          .withParliamentId(parliamentId)
-          .withNumberOfSeats(0)
+          .withParliamentId(parliament.id)
+          .withNumberOfSeats(politicalPartySeatsConfig.seatsInParliament)
           .build(),
       );
     }
