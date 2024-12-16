@@ -19,6 +19,7 @@ export class SocialClassStartupService {
         .withSocialClassType(socialClassValues.type as SocialClassTypes)
         .withGameId(gameId)
         .withColor(socialClassValues.color)
+        .withHappinessLevel(socialClassValues.happinessLevel)
         .withDescription(socialClassValues.description)
         .withName(socialClassValues.name)
         .withWealthLevel(socialClassValues.wealthLevel)

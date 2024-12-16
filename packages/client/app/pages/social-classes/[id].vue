@@ -35,5 +35,7 @@ onMounted(async () => {
     <p>Description : {{ socialClassPresenter.socialClassStore.requireSocialClass.description }}</p>
     <br>
     <p>Wealth Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.wealthLevel }}</p>
+    <br>
+    <p>Happiness Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.happinessLevel }}</p>
   </div>
 </template>

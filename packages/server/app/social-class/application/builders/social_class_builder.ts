@@ -8,6 +8,7 @@ export class SocialClassBuilder {
   private wealthLevel: number | null = null;
   private socialClassType: SocialClassTypes | null = null;
   private gameId: number | null = null;
+  private happinessLevel: number | null = null;
 
   withName(name: string): SocialClassBuilder {
     this.name = name;
@@ -39,6 +40,11 @@ export class SocialClassBuilder {
     return this;
   }
 
+  withHappinessLevel(happinessLevel: number): SocialClassBuilder {
+    this.happinessLevel = happinessLevel;
+    return this;
+  }
+
   build(): SocialClass {
     const socialClass = new SocialClass();
     if (this.name) socialClass.name = this.name;
@@ -50,10 +56,12 @@ export class SocialClassBuilder {
     if (!this.wealthLevel) throw new Error('Wealth level is required');
     else if (this.wealthLevel < 0 || this.wealthLevel > 10) throw new Error('invalid wealth level');
     else socialClass.wealthLevel = this.wealthLevel;
-    if (this.socialClassType) socialClass.socialClassType = this.socialClassType;
+    if (this.socialClassType) socialClass.type = this.socialClassType;
     else throw new Error('Social class type is required');
     if (this.gameId) socialClass.gameId = this.gameId;
     else throw new Error('Game ID is required');
+    if (this.happinessLevel) socialClass.happinessLevel = this.happinessLevel;
+    else throw new Error('Happiness level is required');
     return socialClass;
   }
 }

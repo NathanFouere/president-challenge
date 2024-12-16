@@ -7,6 +7,7 @@ export interface SocialClassDto {
   description: string;
   color: string;
   wealthLevel: string;
+  happinessLevel: string;
   socialClassType: SocialClassTypes;
   licensedFiles: LicensedFileDTO[];
 }

@@ -2,6 +2,8 @@ import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import type { SocialClassTypes } from '@shared/types/dist/types/social-class/social-class-types.js';
+import type { HappinessLevels } from '@shared/types/dist/types/common/happiness-levels.js';
+import type { WealthLevels } from '@shared/types/dist/types/social-class/wealth-levels.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
 
@@ -19,10 +21,13 @@ export default class SocialClass extends BaseModel {
   declare color: string;
 
   @column()
-  declare wealthLevel: number;
+  declare wealthLevel: WealthLevels;
 
   @column()
-  declare socialClassType: SocialClassTypes;
+  declare type: SocialClassTypes;
+
+  @column()
+  declare happinessLevel: HappinessLevels;
 
   @column({ serializeAs: null })
   declare gameId: number;
