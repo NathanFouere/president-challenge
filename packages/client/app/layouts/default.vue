@@ -36,6 +36,12 @@ const links = computed(() => [
     to: NUXT_ROUTES.legislature,
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
+  {
+    label: 'Social Classes',
+    icon: 'i-heroicons-user-group',
+    to: NUXT_ROUTES.socialClasses,
+    disabled: !hasUser.value || !hasSelectedGame.value,
+  },
 ]);
 </script>
 

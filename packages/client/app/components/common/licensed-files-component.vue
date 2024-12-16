@@ -15,7 +15,7 @@ defineProps<{
     arrows
   >
     <UTooltip
-      class="w-full"
+      class="flex justify-center items-center"
       :ui="{
         base: 'h-full',
       }"
@@ -42,7 +42,6 @@ defineProps<{
       </template>
 
       <img
-        class="w-full"
         draggable="false"
         :src="item.path"
         :alt="item.title"

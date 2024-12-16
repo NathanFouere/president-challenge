@@ -2,6 +2,7 @@ import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm';
 import type { ManyToMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import Event from '#event/domain/models/event';
+import SocialClass from '#social-class/domain/models/social_class';
 
 export default class LicensedFile extends BaseModel {
   @column({ isPrimary: true })
@@ -36,6 +37,15 @@ export default class LicensedFile extends BaseModel {
     relatedKey: 'id',
   })
   declare events: ManyToMany<typeof Event>;
+
+  @manyToMany(() => SocialClass, {
+    pivotTable: 'social_class_licensed_files',
+    pivotForeignKey: 'licensed_file_identifier',
+    pivotRelatedForeignKey: 'social_clas_id',
+    localKey: 'identifier',
+    relatedKey: 'id',
+  })
+  declare socialClasses: ManyToMany<typeof SocialClass>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

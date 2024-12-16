@@ -115,7 +115,7 @@ export class EventStartupService {
   }
 
   private async createEvent(eventConfigValue: EventStartupInterface, gameId: number): Promise<void> {
-    const event = await anEvent()
+    const event = anEvent()
       .withIdentifier(eventConfigValue.identifier)
       .withGameId(gameId)
       .withText(eventConfigValue.text)
