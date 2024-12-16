@@ -20,7 +20,7 @@ export default class extends BaseSchema {
         .notNullable();
       table.enum('happiness_level',
         [
-          'Very unhappy',
+          'Very Unhappy',
           'Unhappy',
           'Indifferent',
           'Happy',

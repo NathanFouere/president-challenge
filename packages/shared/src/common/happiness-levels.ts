@@ -1,1 +1,1 @@
-export type HappinessLevels = 'Very unhappy' | 'Unhappy' | 'Indifferent' | 'Happy' | 'Very Happy';
+export type HappinessLevels = 'Very Unhappy' | 'Unhappy' | 'Indifferent' | 'Happy' | 'Very Happy';

@@ -39,5 +39,6 @@ onMounted(async () => {
     <p class="text-justify">
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
     </p>
+    <p>Happiness : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessLevel }}</p>
   </div>
 </template>

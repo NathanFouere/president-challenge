@@ -17,6 +17,15 @@ export default class extends BaseSchema {
         'Right',
         'Far Right',
       ]).notNullable();
+      table.enum('happiness_level',
+        [
+          'Very Unhappy',
+          'Unhappy',
+          'Indifferent',
+          'Happy',
+          'Very Happy',
+        ])
+        .notNullable();
       table
         .integer('game_id')
         .unsigned()
