@@ -4,7 +4,7 @@ import type { HttpContext } from '@adonisjs/core/http';
 import { GetParliamentByGameQueryHandler } from '#legislature/application/query/get_parliament_by_game_query_handler';
 import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_by_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ParliamentDtoFactory } from '#legislature/application/factory/parliament_dto_factory';
+import { ParliamentDtoFactory } from '#legislature/application/dto-factories/parliament_dto_factory';
 
 @inject()
 export default class GetParliamentController {

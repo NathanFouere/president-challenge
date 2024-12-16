@@ -1,12 +1,10 @@
-/*
-* Prefix /api for api server
-*/
 const prefix: string = 'api';
 const authPrefix: string = `${prefix}/auth`;
 const gamePrefix: string = `${prefix}/games`;
 const politicalPartyPrefix: string = `${prefix}/political-party`;
 const eventPrefix: string = `${prefix}/events`;
 const legislaturePrefix: string = `${prefix}/legislature`;
+const socialClassPrefix: string = `${prefix}/social-class`;
 
 const Routes = {
   User: {
@@ -33,6 +31,10 @@ const Routes = {
   Legislature: {
     GetSenate: (gameId: number) => `${legislaturePrefix}/senate/${gameId}`,
     GetParliament: (gameId: number) => `${legislaturePrefix}/parliament/${gameId}`,
+  },
+  SocialClass: {
+    GetSocialClasses: (gameId: number) => `${socialClassPrefix}/${gameId}`,
+    GetSocialClass: (socialClassId: number, gameId: number) => `${socialClassPrefix}/${gameId}/${socialClassId}`,
   },
 };
 

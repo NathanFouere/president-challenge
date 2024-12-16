@@ -6,4 +6,5 @@ export const NUXT_ROUTES = {
   politicalParties: '/political-parties',
   turnInformations: '/turn-informations',
   legislature: '/legislature',
+  socialClasses: '/social-classes',
 };

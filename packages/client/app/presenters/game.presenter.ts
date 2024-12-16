@@ -17,6 +17,7 @@ export class GamePresenter {
   public async getUserGames(): Promise<void> {
     this.gameStore.setGettingGames();
     try {
+      await this.fetchUserGames();
       this.gameStore.unsetGettingGames();
     }
     catch (error) {

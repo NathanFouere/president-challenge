@@ -16,6 +16,7 @@
   "imports": {
     "#common/*": "./app/common/*.js",
     "#user/*": "./app/user/*.js",
+    "#social-class/*": "./app/social-class/*.js",
     "#political-party/*": "./app/political-party/*.js",
     "#legislature/*": "./app/legislature/*.js",
     "#licensed-file/*": "./app/licensed-file/*.js",

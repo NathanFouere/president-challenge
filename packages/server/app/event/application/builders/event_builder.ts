@@ -57,7 +57,7 @@ export class EventBuilder {
     return this;
   }
 
-  public async build(): Promise<Event> {
+  public build(): Event {
     const event = new Event();
     if (this.identifier !== null) {
       event.identifier = this.identifier;

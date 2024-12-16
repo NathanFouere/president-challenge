@@ -1,8 +1,1 @@
-export enum PoliticalAffiliation {
-  FAR_LEFT = 'Far Left',
-  LEFT = 'Left',
-  CENTER_LEFT = 'Center Left',
-  CENTER_RIGHT = 'Center Right',
-  RIGHT = 'Right',
-  FAR_RIGHT = 'Far Right',
-}
+export type PoliticalAffiliation = 'Far Left' | 'Left' | 'Center Left' | 'Center Right' | 'Right' | 'Far Right';

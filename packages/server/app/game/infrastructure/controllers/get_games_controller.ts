@@ -9,7 +9,7 @@ import { SelectUserGamesQuery } from '#game/application/queries/select_user_game
 export default class GetGamesController {
   constructor(private readonly selectGamesQueryHandler: SelectGamesQueryHandler) {}
 
-  async getUserGames({ auth, response }: HttpContext) {
+  public async getUserGames({ auth, response }: HttpContext) {
     try {
       const user: User = auth.getUserOrFail();
       const games = await this.selectGamesQueryHandler.getUserGames(
