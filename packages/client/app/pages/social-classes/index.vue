@@ -3,6 +3,8 @@ import container from '../../../config/container';
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import type { SocialClassesPresenter } from '../../presenters/social-class/social-classes.presenter';
 
+usePageTitle().setTitle('Social Classes');
+
 const socialClassesPresenter = container.get<SocialClassesPresenter>(COMMON_DEPENDANCY_TYPES.SocialClassesPresenter);
 
 onMounted(async () => {

@@ -3,7 +3,7 @@ import type { GetEventByIdAndGameQuery } from '#event/application/queries/get_ev
 
 export default class GetEventByIdAndGameQueryHandler {
   public async handle(query: GetEventByIdAndGameQuery): Promise<Event> {
-    const event = Event
+    return Event
       .query()
       .where('id', query.eventId)
       .where('game_id', query.gameId)
@@ -12,11 +12,5 @@ export default class GetEventByIdAndGameQueryHandler {
         query.orderBy('id', 'asc');
       })
       .firstOrFail();
-
-    if (null === event) {
-      throw new Error('Event not found');
-    }
-
-    return event;
   }
 }

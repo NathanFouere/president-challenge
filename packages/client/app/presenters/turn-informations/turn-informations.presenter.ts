@@ -18,7 +18,6 @@ export class TurnInformationsPresenter {
     try {
       const updatedGame = await this.gameModule.changeTurn(this.gameStore.getSelectedGameId);
       this.gameStore.setSelectedGame(updatedGame);
-      console.log(updatedGame);
       await this.getEventsOfTurn();
     }
     catch (error) {

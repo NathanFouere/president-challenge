@@ -32,7 +32,7 @@ const links = computed(() => [
   },
   {
     label: 'Legislature',
-    icon: 'i-heroicons-building-library',
+    icon: 'i-heroicons-megaphone',
     to: NUXT_ROUTES.legislature,
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
@@ -40,6 +40,12 @@ const links = computed(() => [
     label: 'Social Classes',
     icon: 'i-heroicons-user-group',
     to: NUXT_ROUTES.socialClasses,
+    disabled: !hasUser.value || !hasSelectedGame.value,
+  },
+  {
+    label: 'Products',
+    icon: 'i-heroicons-building-storefront',
+    to: NUXT_ROUTES.products,
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
 ]);

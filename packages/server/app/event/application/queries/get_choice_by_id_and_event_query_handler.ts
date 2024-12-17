@@ -10,11 +10,7 @@ export default class GetChoiceByIdAndEventQueryHandler {
       .preload('event', (eventQuery) => {
         eventQuery.preload('choices');
       })
-      .first();
-
-    if (null === choice) {
-      throw new Error('Choice not found');
-    }
+      .firstOrFail();
 
     if (choice.triggerEventId) {
       await choice.load('triggerEvent');

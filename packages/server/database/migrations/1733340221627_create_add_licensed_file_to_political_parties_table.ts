@@ -19,7 +19,7 @@ export default class AddLicensedFileIdentifierToPoliticalParties extends BaseSch
         .integer('political_party_id')
         .unsigned()
         .references('id')
-        .inTable('political_parties')
+        .inTable(this.tableName)
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
         .nullable();

@@ -1,5 +1,7 @@
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ProductStartupService } from '#product/infrastructure/startup/product_startup_service.js';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartyStartupService } from '#political-party/infrastructure/startup/political_party_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventStartupService } from '#event/infrastructure/startup/event_startup_service';
@@ -21,6 +23,7 @@ export class StartupService {
     private readonly senateStartupService: SenateStartupService,
     private readonly politicalPartySeatsStartupService: PoliticalPartySeatsStartupService,
     private readonly socialClassStartupService: SocialClassStartupService,
+    private readonly productStartupService: ProductStartupService,
   ) {
   }
 
@@ -32,6 +35,7 @@ export class StartupService {
       await this.politicalPartyStartupService.initialize(gameId);
       await this.politicalPartySeatsStartupService.initialize(gameId);
       await this.socialClassStartupService.initialize(gameId);
+      await this.productStartupService.initialize(gameId);
     }
     catch (error) {
       console.error(error);
