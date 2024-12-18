@@ -8,32 +8,32 @@ export default class ProductBuilder {
   private costOfProduction: number | null = null;
   private gameId: number | null = null;
 
-  public withName(name: string): ProductBuilder {
+  public withName(name: string): this {
     this.name = name;
     return this;
   }
 
-  public withDescription(description: string): ProductBuilder {
+  public withDescription(description: string): this {
     this.description = description;
     return this;
   }
 
-  public withLicensedFileIdentifier(licensedFileIdentifier: string): ProductBuilder {
+  public withLicensedFileIdentifier(licensedFileIdentifier: string): this {
     this.licensedFileIdentifier = licensedFileIdentifier;
     return this;
   }
 
-  public withPrice(price: number): ProductBuilder {
+  public withPrice(price: number): this {
     this.price = price;
     return this;
   }
 
-  public withCostOfProduction(costOfProduction: number): ProductBuilder {
+  public withCostOfProduction(costOfProduction: number): this {
     this.costOfProduction = costOfProduction;
     return this;
   }
 
-  public withGameId(gameId: number): ProductBuilder {
+  public withGameId(gameId: number): this {
     this.gameId = gameId;
     return this;
   }

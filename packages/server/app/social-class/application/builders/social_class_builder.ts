@@ -12,37 +12,37 @@ export class SocialClassBuilder {
   private gameId: number | null = null;
   private happinessLevel: HappinessLevels | null = null;
 
-  withName(name: string): SocialClassBuilder {
+  withName(name: string): this {
     this.name = name;
     return this;
   }
 
-  withDescription(description: string): SocialClassBuilder {
+  withDescription(description: string): this {
     this.description = description;
     return this;
   }
 
-  withColor(color: string): SocialClassBuilder {
+  withColor(color: string): this {
     this.color = color;
     return this;
   }
 
-  withWealthLevel(wealthLevel: WealthLevels): SocialClassBuilder {
+  withWealthLevel(wealthLevel: WealthLevels): this {
     this.wealthLevel = wealthLevel;
     return this;
   }
 
-  withSocialClassType(socialClassType: SocialClassTypes): SocialClassBuilder {
+  withSocialClassType(socialClassType: SocialClassTypes): this {
     this.socialClassType = socialClassType;
     return this;
   }
 
-  withGameId(gameId: number): SocialClassBuilder {
+  withGameId(gameId: number): this {
     this.gameId = gameId;
     return this;
   }
 
-  withHappinessLevel(happinessLevel: HappinessLevels): SocialClassBuilder {
+  withHappinessLevel(happinessLevel: HappinessLevels): this {
     this.happinessLevel = happinessLevel;
     return this;
   }
