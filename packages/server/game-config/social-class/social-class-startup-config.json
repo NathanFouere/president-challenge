@@ -14,7 +14,8 @@
       "factory-owner-five",
       "factory-owner-six",
       "factory-owner-seven"
-    ]
+    ],
+    "sectorType": "Industrial"
   },
   {
     "type": "Proletariat",
@@ -36,7 +37,8 @@
       "worker-ten",
       "worker-eleven",
       "worker-twelve"
-    ]
+    ],
+    "sectorType": "Industrial"
   },
   {
     "type": "Middle Class",
@@ -51,7 +53,8 @@
       "small-bourgeoisie-three",
       "small-bourgeoisie-four",
       "small-bourgeoisie-five"
-    ]
+    ],
+    "sectorType": "Service"
   },
   {
     "type": "Peasantry",
@@ -72,22 +75,7 @@
       "peasant-thirteen",
       "peasant-fourteen",
       "peasant-fifteen"
-    ]
-  },
-  {
-    "type": "Military",
-    "name": "Military",
-    "color": "#0000FF",
-    "description": "The army is a military organization that is responsible for the defense of a country. The army is a military organization that is responsible for the defense of a country. The army is a military organization that is responsible for the defense of a country.",
-    "wealthLevel": "Very low",
-    "happinessLevel": "Very Unhappy",
-    "licensedFilesIdentifiers": [
-      "military-one",
-      "military-two",
-      "military-three",
-      "military-four",
-      "military-five",
-      "military-six"
-    ]
+    ],
+    "sectorType": "Agricultural"
   }
 ]

@@ -11,6 +11,7 @@ export class SocialClassBuilder {
   private socialClassType: SocialClassTypes | null = null;
   private gameId: number | null = null;
   private happinessLevel: HappinessLevels | null = null;
+  private sectorId: number | null = null;
 
   withName(name: string): this {
     this.name = name;
@@ -47,6 +48,11 @@ export class SocialClassBuilder {
     return this;
   }
 
+  withSectorId(sectorId: number): this {
+    this.sectorId = sectorId;
+    return this;
+  }
+
   build(): SocialClass {
     const socialClass = new SocialClass();
     if (this.name) socialClass.name = this.name;
@@ -63,6 +69,8 @@ export class SocialClassBuilder {
     else throw new Error('Game ID is required');
     if (this.happinessLevel) socialClass.happinessLevel = this.happinessLevel;
     else throw new Error('Happiness level is required');
+    if (this.sectorId) socialClass.sectorId = this.sectorId;
+    else throw new Error('Sector ID is required');
     return socialClass;
   }
 }

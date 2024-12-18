@@ -4,34 +4,39 @@
     "description": "Bread is a staple food prepared from a dough of flour and water, usually by baking. Throughout recorded history, it has been a prominent food in large parts of the world.",
     "price": 1,
     "costOfProduction": 0.5,
-    "licensedFileIdentifier": "bread"
+    "licensedFileIdentifier": "bread",
+    "sectorType": "Agricultural"
   },
   {
     "name": "Car",
     "description": "A car is a wheeled motor vehicle used for transportation. Most definitions of cars say that they run primarily on roads, seat one to eight people, have four tires, and mainly transport people rather than goods.",
     "price": 1,
     "costOfProduction": 0.5,
-    "licensedFileIdentifier": "car"
+    "licensedFileIdentifier": "car",
+    "sectorType": "Industrial"
   },
   {
     "name": "Coal",
     "description": "Coal is a combustible black or brownish-black sedimentary rock, formed as rock strata called coal seams. Coal is mostly carbon with variable amounts of other elements, chiefly hydrogen, sulfur, oxygen, and nitrogen.",
     "price": 1,
     "costOfProduction": 0.5,
-    "licensedFileIdentifier": "coal"
+    "licensedFileIdentifier": "coal",
+    "sectorType": "Mine"
   },
   {
     "name": "Copper",
     "description": "Copper is a chemical element with the symbol Cu and atomic number 29. It is a soft, malleable, and ductile metal with very high thermal and electrical conductivity.",
     "price": 1,
     "costOfProduction": 0.5,
-    "licensedFileIdentifier": "copper"
+    "licensedFileIdentifier": "copper",
+    "sectorType": "Mine"
   },
   {
     "name": "Grain",
     "description": "Grains are small, hard, dry seeds, with or without attached hulls or fruit layers, harvested for human or animal consumption. Agronomists also call the plants producing such seeds 'grain crops'.",
     "price": 1,
     "costOfProduction": 0.5,
-    "licensedFileIdentifier": "grain"
+    "licensedFileIdentifier": "grain",
+    "sectorType": "Agricultural"
   }
 ]

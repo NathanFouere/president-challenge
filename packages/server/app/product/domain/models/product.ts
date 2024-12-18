@@ -3,6 +3,7 @@ import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
+import Sector from '#sector/domain/model/sector';
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -34,6 +35,12 @@ export default class Product extends BaseModel {
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
+
+  @column()
+  declare sectorId: number;
+
+  @belongsTo(() => Sector)
+  declare sector: BelongsTo<typeof Sector>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

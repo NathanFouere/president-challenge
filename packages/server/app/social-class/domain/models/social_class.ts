@@ -6,6 +6,7 @@ import type { HappinessLevels } from '@shared/types/dist/types/common/happiness-
 import type { WealthLevels } from '@shared/types/dist/types/social-class/wealth-levels.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
+import Sector from '#sector/domain/model/sector';
 
 export default class SocialClass extends BaseModel {
   @column({ isPrimary: true })
@@ -43,6 +44,12 @@ export default class SocialClass extends BaseModel {
     relatedKey: 'identifier',
   })
   declare licensedFiles: ManyToMany<typeof LicensedFile>;
+
+  @column()
+  declare sectorId: number;
+
+  @belongsTo(() => Sector)
+  declare sector: BelongsTo<typeof Sector>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;
