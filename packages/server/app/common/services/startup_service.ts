@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductStartupService } from '#product/infrastructure/startup/product_startup_service.js';
+import { ProductStartupService } from '#product/infrastructure/startup/product_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartyStartupService } from '#political-party/infrastructure/startup/political_party_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
