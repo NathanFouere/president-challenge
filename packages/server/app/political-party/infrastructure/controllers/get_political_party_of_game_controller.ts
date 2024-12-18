@@ -17,11 +17,21 @@ export default class GetPoliticalPartyController {
     private readonly politicalPartyFactory: PoliticalPartyDTOFactory,
   ) {}
 
-  public async getPoliticalPartyOfGame({ params }: HttpContext) {
-    const politicalPartyId = params.politicalPartyId;
-    const gameId = params.gameId;
+  public async getPoliticalPartyOfGame({ auth, params }: HttpContext) {
+    try {
+      auth.getUserOrFail();
+      const politicalPartyId = params.politicalPartyId;
+      const gameId = params.gameId;
 
-    const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handle(new GetPoliticalPartiesOfGameQuery(gameId, politicalPartyId));
-    return this.politicalPartyFactory.createPoliticalPartyDTO(politicalParty);
+      const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handle(new GetPoliticalPartiesOfGameQuery(gameId, politicalPartyId));
+      return this.politicalPartyFactory.createPoliticalPartyDTO(politicalParty);
+    }
+    catch (error) {
+      console.error(error);
+      return response.internalServerError({
+        message: 'Something went wrong',
+        error,
+      });
+    }
   }
 }
