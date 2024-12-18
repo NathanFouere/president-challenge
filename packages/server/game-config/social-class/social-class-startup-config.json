@@ -4,7 +4,8 @@
     "name": "Bourgeoisie",
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
-    "wealthLevel": 3,
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "factory-owner-one",
       "factory-owner-two",
@@ -20,7 +21,8 @@
     "name": "Proletariat",
     "color": "#00FF00",
     "description": "The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work). The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work). The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work).",
-    "wealthLevel": 1,
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "worker-one",
       "worker-two",
@@ -41,7 +43,8 @@
     "name": "Middle Class",
     "color": "#0000FF",
     "description": "The middle class is a class of people in the middle of a social hierarchy. The middle class is a class of people in the middle of a social hierarchy. The middle class is a class of people in the middle of a social hierarchy.",
-    "wealthLevel": 2,
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "small-bourgeoisie-one",
       "small-bourgeoisie-two",
@@ -55,7 +58,8 @@
     "name": "Peasantry",
     "color": "#0000FF",
     "description": "The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism. The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism. The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism.",
-    "wealthLevel": 2,
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "peasant-two",
       "peasant-four",
@@ -75,7 +79,8 @@
     "name": "Military",
     "color": "#0000FF",
     "description": "The army is a military organization that is responsible for the defense of a country. The army is a military organization that is responsible for the defense of a country. The army is a military organization that is responsible for the defense of a country.",
-    "wealthLevel": 2,
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "military-one",
       "military-two",

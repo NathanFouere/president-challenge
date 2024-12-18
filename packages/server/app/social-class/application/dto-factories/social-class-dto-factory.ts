@@ -17,17 +17,10 @@ export class SocialClassDtoFactory {
       name: socialClass.name,
       description: socialClass.description,
       color: socialClass.color,
-      wealthLevel: this.getCorrespondingWealthLevel(socialClass.wealthLevel),
-      socialClassType: socialClass.socialClassType,
+      wealthLevel: socialClass.wealthLevel,
+      happinessLevel: socialClass.happinessLevel,
+      socialClassType: socialClass.type,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
     };
-  }
-
-  private getCorrespondingWealthLevel(wealthLevel: number): string {
-    const wealthLevels = ['Very low', 'Low', 'Medium', 'High', 'Very High'];
-    if (wealthLevel < 0 || wealthLevel >= wealthLevels.length) {
-      throw new Error('Invalid wealth level');
-    }
-    return wealthLevels[wealthLevel];
   }
 }

@@ -5,6 +5,7 @@ const politicalPartyPrefix: string = `${prefix}/political-party`;
 const eventPrefix: string = `${prefix}/events`;
 const legislaturePrefix: string = `${prefix}/legislature`;
 const socialClassPrefix: string = `${prefix}/social-class`;
+const productPrefix: string = `${prefix}/products`;
 
 const Routes = {
   User: {
@@ -35,6 +36,10 @@ const Routes = {
   SocialClass: {
     GetSocialClasses: (gameId: number) => `${socialClassPrefix}/${gameId}`,
     GetSocialClass: (socialClassId: number, gameId: number) => `${socialClassPrefix}/${gameId}/${socialClassId}`,
+  },
+  Product: {
+    GetProducts: (gameId: number) => `${productPrefix}/${gameId}`,
+    GetProduct: (productId: number, gameId: number) => `${productPrefix}/${gameId}/${productId}`,
   },
 };
 

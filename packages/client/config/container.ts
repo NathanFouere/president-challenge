@@ -9,6 +9,8 @@ import { ParliamentPresenter } from '../app/presenters/legislation/parliament.pr
 import { SenatePresenter } from '../app/presenters/legislation/senate.presenter';
 import { SocialClassesPresenter } from '../app/presenters/social-class/social-classes.presenter';
 import { SocialClassPresenter } from '../app/presenters/social-class/social-class.presenter';
+import { ProductPresenter } from '../app/presenters/product/product.presenter';
+import { ProductsPresenter } from '../app/presenters/product/products.presenter';
 import { COMMON_DEPENDANCY_TYPES } from './common.types';
 
 const container = new Container();
@@ -23,5 +25,7 @@ container.bind<SenatePresenter>(COMMON_DEPENDANCY_TYPES.SenatePresenter).to(Sena
 container.bind<ParliamentPresenter>(COMMON_DEPENDANCY_TYPES.ParliamentPresenter).to(ParliamentPresenter);
 container.bind<SocialClassPresenter>(COMMON_DEPENDANCY_TYPES.SocialClassPresenter).to(SocialClassPresenter);
 container.bind<SocialClassesPresenter>(COMMON_DEPENDANCY_TYPES.SocialClassesPresenter).to(SocialClassesPresenter);
+container.bind<ProductPresenter>(COMMON_DEPENDANCY_TYPES.ProductPresenter).to(ProductPresenter);
+container.bind<ProductsPresenter>(COMMON_DEPENDANCY_TYPES.ProductsPresenter).to(ProductsPresenter);
 
 export default container;

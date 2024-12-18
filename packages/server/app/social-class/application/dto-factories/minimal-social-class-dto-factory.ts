@@ -11,7 +11,7 @@ export class MinimalSocialClassDtoFactory {
       description: socialClass.description,
       color: socialClass.color,
       wealthLevel: socialClass.wealthLevel,
-      socialClassType: socialClass.socialClassType,
+      socialClassType: socialClass.type,
       licensedFile: socialClass.licensedFiles[0],
     };
   }

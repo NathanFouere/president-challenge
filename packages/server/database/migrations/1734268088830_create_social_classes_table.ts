@@ -9,9 +9,25 @@ export default class extends BaseSchema {
       table.string('name').notNullable();
       table.text('description').notNullable();
       table.string('color').notNullable();
-      table.integer('wealth_level')
+      table.enum('wealth_level',
+        [
+          'Very low',
+          'Low',
+          'Medium',
+          'High',
+          'Very High',
+        ])
         .notNullable();
-      table.enum('social_class_type',
+      table.enum('happiness_level',
+        [
+          'Very Unhappy',
+          'Unhappy',
+          'Indifferent',
+          'Happy',
+          'Very Happy',
+        ])
+        .notNullable();
+      table.enum('type',
         [
           'Bourgeoisie',
           'Proletariat',

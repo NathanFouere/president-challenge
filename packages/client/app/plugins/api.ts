@@ -4,6 +4,7 @@ import PoliticalPartyModule from '../../server/repository/modules/political-part
 import EventModule from '../../server/repository/modules/event.module';
 import LegislatureModule from '../../server/repository/modules/legislature.module';
 import SocialClassModule from '../../server/repository/modules/social-class.module';
+import ProductModule from '../../server/repository/modules/product.module';
 
 export interface IApiInstance {
   auth: AuthModule;
@@ -12,6 +13,7 @@ export interface IApiInstance {
   event: EventModule;
   legislature: LegislatureModule;
   socialClass: SocialClassModule;
+  product: ProductModule;
 }
 
 export default defineNuxtPlugin(() => {
@@ -29,6 +31,7 @@ export default defineNuxtPlugin(() => {
     event: new EventModule(apiFetcher),
     legislature: new LegislatureModule(apiFetcher),
     socialClass: new SocialClassModule(apiFetcher),
+    product: new ProductModule(apiFetcher),
   };
 
   return {

@@ -1918,5 +1918,55 @@
     "date": "",
     "path": "/assets/political-parties/socialist_party.png",
     "isVideo": false
+  },
+  {
+    "identifier": "coal",
+    "title": "Coal",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/product/coal.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "bread",
+    "title": "Bread",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/product/bread.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "car",
+    "title": "Car",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/product/car.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "copper",
+    "title": "Copper",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/product/copper.png",
+    "isVideo": false
+  },
+  {
+    "identifier": "grain",
+    "title": "Grain",
+    "attribution": "",
+    "source": "",
+    "licence": null,
+    "date": "",
+    "path": "/assets/product/grain.png",
+    "isVideo": false
   }
 ]

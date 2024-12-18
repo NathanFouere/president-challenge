@@ -18,6 +18,7 @@ export class PoliticalPartyDTOFactory {
       affiliation: politicalParty.affiliation,
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.licensedFile),
       description: politicalParty.description,
+      happinessLevel: politicalParty.happinessLevel,
     };
   }
 }

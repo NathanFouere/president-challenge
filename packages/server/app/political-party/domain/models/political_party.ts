@@ -2,6 +2,7 @@ import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/o
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import type { PoliticalAffiliation } from '@shared/types/dist/types/political-party/political-affiliation.js';
 import type { DateTime } from 'luxon';
+import type { HappinessLevels } from '@shared/types/dist/types/common/happiness-levels.js';
 import Game from '#game/domain/models/game';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import PoliticalPartySeatsParliament from '#legislature/domain/models/political_party_seats_parliament';
@@ -22,6 +23,9 @@ export default class PoliticalParty extends BaseModel {
 
   @column()
   declare affiliation: PoliticalAffiliation;
+
+  @column()
+  declare happinessLevel: HappinessLevels;
 
   @column({ serializeAs: null })
   declare gameId: number;
