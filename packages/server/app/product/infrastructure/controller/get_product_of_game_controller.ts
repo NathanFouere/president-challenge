@@ -1,10 +1,12 @@
+import * as console from 'node:console';
 import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductDtoFactory } from '#product/application/factory/product_dto_factory.js';
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { GetProductOfGameQueryHandler } from '#product/application/query/get_product_of_game_query_handler';
 import { GetProductOfGameQuery } from '#product/application/query/get_product_of_game_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ProductDtoFactory } from '#product/application/factory/product_dto_factory';
 
 @inject()
 export default class GetProductOfGameController {

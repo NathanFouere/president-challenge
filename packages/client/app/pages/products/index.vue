@@ -1,17 +1,30 @@
 <script setup lang="ts">
 import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
-import type { ProductPresenter } from '../../presenters/product/product.presenter';
+import type { ProductsPresenter } from '../../presenters/product/products.presenter';
 
 usePageTitle().setTitle('Products');
 
-const productPresenter = container.get<ProductPresenter>(COMMON_DEPENDANCY_TYPES.ProductPresenter);
+const productsPresenter = container.get<ProductsPresenter>(COMMON_DEPENDANCY_TYPES.ProductsPresenter);
 
 onMounted(async () => {
-  await productPresenter.getProducts();
+  await productsPresenter.getProducts();
 });
 </script>
 
 <template>
-  {{ productPresenter.productStore.getProducts }}
+  <div
+    class="grid grid-cols-5 gap-4"
+  >
+    <USkeleton
+      v-if="productsPresenter.productStore.isGettingProducts"
+      class="w-full h-64 "
+    />
+    <product-component
+      v-for="(product) in productsPresenter.productStore.getProducts"
+      v-else
+      :key="product.id"
+      :product="product"
+    />
+  </div>
 </template>

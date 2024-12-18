@@ -2,30 +2,31 @@ import type { ProductDto } from '@shared/typesproduct/product-dto';
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({
-    products: [] as ProductDto[],
-    gettingProducts: false,
-    errorOnGetProducts: false,
+    product: null as ProductDto | null,
+    gettingProduct: false,
+    errorOnGetProduct: false,
   }),
   getters: {
-    getProducts: state => state.products,
-    isGettingProducts: state => state.gettingProducts,
-    hadErrorOnGetProducts: state => state.errorOnGetProducts,
+    getProduct: state => state.product,
+    hasProduct: state => state.product !== null,
+    isGettingProduct: state => state.gettingProduct,
+    hadErrorOnGetProduct: state => state.errorOnGetProduct,
   },
   actions: {
-    setProducts(products: ProductDto[]) {
-      this.products = products;
+    setProduct(product: ProductDto) {
+      this.product = product;
     },
-    setIsGettingProducts() {
-      this.gettingProducts = true;
+    setIsGettingProduct() {
+      this.gettingProduct = true;
     },
-    unsetIsGettingProducts() {
-      this.gettingProducts = false;
+    unsetIsGettingProduct() {
+      this.gettingProduct = false;
     },
-    setErrorOnGetProducts() {
-      this.errorOnGetProducts = true;
+    setErrorOnGetProduct() {
+      this.errorOnGetProduct = true;
     },
-    unsetErrorOnGetProducts() {
-      this.errorOnGetProducts = false;
+    unsetErrorOnGetProduct() {
+      this.errorOnGetProduct = false;
     },
   },
 });

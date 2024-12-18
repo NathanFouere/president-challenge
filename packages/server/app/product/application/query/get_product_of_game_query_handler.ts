@@ -6,6 +6,7 @@ export class GetProductOfGameQueryHandler {
     return await Product
       .query()
       .where('game_id', query.gameId)
+      .where('id', query.productId)
       .preload('licensedFile')
       .firstOrFail()
     ;
