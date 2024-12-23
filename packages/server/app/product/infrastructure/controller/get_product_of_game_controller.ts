@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
 

@@ -21,7 +21,7 @@ onMounted(async () => {
 <template>
   <div>
     <div
-      class="grid grid-cols-4 gap-4"
+      class="flex flex-wrap justify-center gap-4"
     >
       <event-component
         v-for="(event) in turnInformationsPresenter.eventsStore.getSuperEvents"
@@ -29,29 +29,29 @@ onMounted(async () => {
         :is-selected="false"
         :event="event"
         modal-opened-by-default
-        class="mb-3"
+        class="mb-3 flex-1"
       />
     </div>
     <div
-      class="grid grid-cols-4 gap-4"
+      class="flex flex-wrap justify-center gap-4"
     >
       <event-component
         v-for="(event) in turnInformationsPresenter.eventsStore.getChoiceEvents"
         :key="event.id"
         :is-selected="false"
         :event="event"
-        class="mb-3"
+        class="mb-3 flex-1"
       />
     </div>
     <div
-      class="grid grid-cols-4 gap-4"
+      class="flex flex-wrap justify-center gap-4"
     >
       <event-component
         v-for="(event) in turnInformationsPresenter.eventsStore.getHistoricalEvents"
         :key="event.id"
         :is-selected="false"
         :event="event"
-        class="mb-3"
+        class="mb-3 flex-1"
       />
     </div>
   </div>

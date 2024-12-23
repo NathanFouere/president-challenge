@@ -1,7 +1,10 @@
 export type SocialClassTypes =
-  'Bourgeoisie'
+  'Industrial Owners'
+  | 'Mine Owners'
+  | 'Land Owners'
   | 'Proletariat'
   | 'Middle Class'
   | 'Peasantry'
   | 'Military'
+  | 'Minors'
   ;

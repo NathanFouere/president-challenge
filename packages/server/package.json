@@ -18,6 +18,7 @@
     "#user/*": "./app/user/*.js",
     "#social-class/*": "./app/social-class/*.js",
     "#product/*": "./app/product/*.js",
+    "#sector/*": "./app/sector/*.js",
     "#political-party/*": "./app/political-party/*.js",
     "#legislature/*": "./app/legislature/*.js",
     "#licensed-file/*": "./app/licensed-file/*.js",

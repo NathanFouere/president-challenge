@@ -18,11 +18,21 @@ export default class GetPoliticalPartiesOfGameController {
     private readonly politicalPartyMinimalDTOFactory: PoliticalPartyMinimalDTOFactory,
   ) {}
 
-  public async getPoliticalPartiesOfGame({ params }: HttpContext) {
-    const gameId = params.gameId;
+  public async getPoliticalPartiesOfGame({ auth, response, params }: HttpContext) {
+    try {
+      auth.getUserOrFail();
+      const gameId = params.gameId;
 
-    const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handle(new GetPoliticalPartiesOfGameQuery(gameId));
+      const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handle(new GetPoliticalPartiesOfGameQuery(gameId));
 
-    return this.politicalPartyMinimalDTOFactory.createPoliticalPartyMinimalDTOList(politicalParties);
+      return this.politicalPartyMinimalDTOFactory.createPoliticalPartyMinimalDTOList(politicalParties);
+    }
+    catch (error) {
+      console.error(error);
+      return response.internalServerError({
+        message: 'Something went wrong',
+        error,
+      });
+    }
   }
 }

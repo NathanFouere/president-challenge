@@ -12,7 +12,7 @@ defineProps<{
       base: 'h-full',
     }"
 
-    class="max-w-full max-h-full object-contain w-full h-auto"
+    class="max-h-full object-contain flex justify-center items-center h-full w-full"
   >
     <template #text>
       <div>

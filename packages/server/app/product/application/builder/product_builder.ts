@@ -7,6 +7,7 @@ export default class ProductBuilder {
   private price: number | null = null;
   private costOfProduction: number | null = null;
   private gameId: number | null = null;
+  private sectorId: number | null = null;
 
   public withName(name: string): this {
     this.name = name;
@@ -38,6 +39,11 @@ export default class ProductBuilder {
     return this;
   }
 
+  public withSectorId(sectorId: number): this {
+    this.sectorId = sectorId;
+    return this;
+  }
+
   public build(): Product {
     const product = new Product();
 
@@ -53,6 +59,8 @@ export default class ProductBuilder {
     else throw new Error('Cost of production is required');
     if (this.gameId) product.gameId = this.gameId;
     else throw new Error('Game ID is required');
+    if (this.sectorId) product.sectorId = this.sectorId;
+    else throw new Error('Sector ID is required');
 
     return product;
   }

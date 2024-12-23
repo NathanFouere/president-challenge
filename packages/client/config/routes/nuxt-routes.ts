@@ -8,4 +8,5 @@ export const NUXT_ROUTES = {
   legislature: '/legislature',
   socialClasses: '/social-classes',
   products: '/products',
+  sectors: '/sectors',
 };

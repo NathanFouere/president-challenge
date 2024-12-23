@@ -1,7 +1,7 @@
 [
   {
-    "type": "Bourgeoisie",
-    "name": "Bourgeoisie",
+    "type": "Industrial Owners",
+    "name": "Industrial Owners",
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
     "wealthLevel": "Very low",
@@ -14,7 +14,47 @@
       "factory-owner-five",
       "factory-owner-six",
       "factory-owner-seven"
-    ]
+    ],
+    "sectorType": "Industrial"
+  },
+  {
+    "type": "Mine Owners",
+    "name": "Mine Owners",
+    "color": "#FF0000",
+    "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
+    "licensedFilesIdentifiers": [
+      "mine-owner-one",
+      "mine-owner-two",
+      "mine-owner-three",
+      "mine-owner-four",
+      "mine-owner-five",
+      "mine-owner-six",
+      "mine-owner-seven"
+    ],
+    "sectorType": "Mine"
+  },
+  {
+    "type": "Land Owners",
+    "name": "Land Owners",
+    "color": "#FF0000",
+    "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
+    "licensedFilesIdentifiers": [
+      "land-owner-one",
+      "land-owner-two",
+      "land-owner-three",
+      "land-owner-four",
+      "land-owner-five",
+      "land-owner-six",
+      "land-owner-seven",
+      "land-owner-eight",
+      "land-owner-nine",
+      "land-owner-ten"
+    ],
+    "sectorType": "Agricultural"
   },
   {
     "type": "Proletariat",
@@ -36,7 +76,26 @@
       "worker-ten",
       "worker-eleven",
       "worker-twelve"
-    ]
+    ],
+    "sectorType": "Industrial"
+  },
+  {
+    "type": "Minors",
+    "name": "Minors",
+    "color": "#00FF00",
+    "description": "Minors work in the mines and are paid very little. Minors work in the mines and are paid very little. Minors work in the mines and are paid very little.",
+    "wealthLevel": "Very low",
+    "happinessLevel": "Very Unhappy",
+    "licensedFilesIdentifiers": [
+      "minor-one",
+      "minor-two",
+      "minor-three",
+      "minor-four",
+      "minor-five",
+      "minor-six",
+      "minor-seven"
+    ],
+    "sectorType": "Mine"
   },
   {
     "type": "Middle Class",
@@ -51,7 +110,8 @@
       "small-bourgeoisie-three",
       "small-bourgeoisie-four",
       "small-bourgeoisie-five"
-    ]
+    ],
+    "sectorType": "Service"
   },
   {
     "type": "Peasantry",
@@ -72,22 +132,7 @@
       "peasant-thirteen",
       "peasant-fourteen",
       "peasant-fifteen"
-    ]
-  },
-  {
-    "type": "Military",
-    "name": "Military",
-    "color": "#0000FF",
-    "description": "The army is a military organization that is responsible for the defense of a country. The army is a military organization that is responsible for the defense of a country. The army is a military organization that is responsible for the defense of a country.",
-    "wealthLevel": "Very low",
-    "happinessLevel": "Very Unhappy",
-    "licensedFilesIdentifiers": [
-      "military-one",
-      "military-two",
-      "military-three",
-      "military-four",
-      "military-five",
-      "military-six"
-    ]
+    ],
+    "sectorType": "Agricultural"
   }
 ]
