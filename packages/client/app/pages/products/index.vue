@@ -14,7 +14,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="grid grid-cols-5 gap-4"
+    class="flex flex-nowrap justify-center gap-4"
   >
     <USkeleton
       v-if="productsPresenter.productStore.isGettingProducts"
@@ -24,6 +24,7 @@ onMounted(async () => {
       v-for="(product) in productsPresenter.productStore.getProducts"
       v-else
       :key="product.id"
+      class="flex-1"
       :product="product"
     />
   </div>

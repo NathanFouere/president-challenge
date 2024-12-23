@@ -12,7 +12,7 @@ defineProps<{
     <template #header>
       {{ product.name }}
     </template>
-    <LicensedFileComponent
+    <licensed-file-component
       :licensed-file="product.licensedFile"
     />
     <template #footer>

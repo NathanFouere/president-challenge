@@ -14,7 +14,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="grid grid-cols-5 gap-4"
+    class="flex flex-wrap justify-center gap-4"
   >
     <USkeleton
       v-if="socialClassesPresenter.socialClassesStore.isGettingSocialClasses"
@@ -24,6 +24,7 @@ onMounted(async () => {
       v-for="(socialClass) in socialClassesPresenter.socialClassesStore.getSocialClasses"
       v-else
       :key="socialClass.id"
+      class="flex-1"
       :social-class="socialClass"
     />
   </div>

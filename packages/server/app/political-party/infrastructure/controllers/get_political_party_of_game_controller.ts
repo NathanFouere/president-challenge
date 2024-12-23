@@ -17,7 +17,7 @@ export default class GetPoliticalPartyController {
     private readonly politicalPartyFactory: PoliticalPartyDTOFactory,
   ) {}
 
-  public async getPoliticalPartyOfGame({ auth, params }: HttpContext) {
+  public async getPoliticalPartyOfGame({ auth, params, response }: HttpContext) {
     try {
       auth.getUserOrFail();
       const politicalPartyId = params.politicalPartyId;

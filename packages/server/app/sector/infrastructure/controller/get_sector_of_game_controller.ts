@@ -1,4 +1,7 @@
 import { inject } from '@adonisjs/core';
+
+import type { HttpContext } from '@adonisjs/core/http';
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { GetSectorByGameAndIdQueryHandler } from '#sector/application/query/get_sector_by_game_and_id_query_handler';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -6,7 +9,7 @@ import { SectorDtoFactory } from '#sector/application/dto-factory/sector_dto_fac
 import { GetSectorByGameAndIdQuery } from '#sector/application/query/get_sector_by_game_and_id_query';
 
 @inject()
-export class GetSectorOfGameController {
+export default class GetSectorOfGameController {
   constructor(
     private readonly getSectorByGameAndIdQueryHandler: GetSectorByGameAndIdQueryHandler,
     private readonly sectorDtoFactory: SectorDtoFactory,
@@ -18,6 +21,8 @@ export class GetSectorOfGameController {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
       const sectorId = request.param('sectorId');
+      console.log('gameId', gameId);
+      console.log('sectorId', sectorId);
       const sector = await this.getSectorByGameAndIdQueryHandler.handle(
         new GetSectorByGameAndIdQuery(gameId, sectorId),
       );

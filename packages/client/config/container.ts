@@ -11,6 +11,8 @@ import { SocialClassesPresenter } from '../app/presenters/social-class/social-cl
 import { SocialClassPresenter } from '../app/presenters/social-class/social-class.presenter';
 import { ProductPresenter } from '../app/presenters/product/product.presenter';
 import { ProductsPresenter } from '../app/presenters/product/products.presenter';
+import { SectorsPresenter } from '../app/presenters/sector/sectors.presenter';
+import { SectorPresenter } from '../app/presenters/sector/sector.presenter';
 import { COMMON_DEPENDANCY_TYPES } from './common.types';
 
 const container = new Container();
@@ -27,5 +29,7 @@ container.bind<SocialClassPresenter>(COMMON_DEPENDANCY_TYPES.SocialClassPresente
 container.bind<SocialClassesPresenter>(COMMON_DEPENDANCY_TYPES.SocialClassesPresenter).to(SocialClassesPresenter);
 container.bind<ProductPresenter>(COMMON_DEPENDANCY_TYPES.ProductPresenter).to(ProductPresenter);
 container.bind<ProductsPresenter>(COMMON_DEPENDANCY_TYPES.ProductsPresenter).to(ProductsPresenter);
+container.bind<SectorsPresenter>(COMMON_DEPENDANCY_TYPES.SectorsPresenter).to(SectorsPresenter);
+container.bind<SectorPresenter>(COMMON_DEPENDANCY_TYPES.SectorPresenter).to(SectorPresenter);
 
 export default container;

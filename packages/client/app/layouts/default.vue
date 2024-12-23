@@ -48,6 +48,12 @@ const links = computed(() => [
     to: NUXT_ROUTES.products,
     disabled: !hasUser.value || !hasSelectedGame.value,
   },
+  {
+    label: 'Sectors',
+    icon: 'i-heroicons-currency-dollar',
+    to: NUXT_ROUTES.sectors,
+    disabled: !hasUser.value || !hasSelectedGame.value,
+  },
 ]);
 </script>
 

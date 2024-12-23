@@ -29,7 +29,10 @@ export default class extends BaseSchema {
         .notNullable();
       table.enum('type',
         [
-          'Bourgeoisie',
+          'Industrial Owners',
+          'Mine Owners',
+          'Land Owners',
+          'Minors',
           'Proletariat',
           'Middle Class',
           'Peasantry',

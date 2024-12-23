@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import ParliamentComponent from '../../components/legislation/parliament-component.vue';
 import SenateComponent from '../../components/legislation/senate-component.vue';
+
+usePageTitle().setTitle('Legislature');
 </script>
 
 <template>

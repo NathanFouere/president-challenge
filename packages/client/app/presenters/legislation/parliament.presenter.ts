@@ -6,8 +6,8 @@ import { useGameStore } from '../../store/game/game.store';
 
 @injectable()
 export class ParliamentPresenter {
-  public readonly legislationModule: LegislatureModule = useNuxtApp().$api.legislature;
-  public readonly toast = useCustomToast();
+  private readonly legislationModule: LegislatureModule = useNuxtApp().$api.legislature;
+  private readonly toast = useCustomToast();
   public readonly parliamentStore = useParliamentStore();
   private readonly gameStore = useGameStore();
 

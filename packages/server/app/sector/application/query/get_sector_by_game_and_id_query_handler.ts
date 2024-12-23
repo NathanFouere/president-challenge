@@ -5,11 +5,15 @@ export class GetSectorByGameAndIdQueryHandler {
   public async handle(query: GetSectorByGameAndIdQuery): Promise<Sector> {
     return await Sector
       .query()
-      .where('gameId', query.gameId)
+      .where('game_id', query.gameId)
       .where('id', query.sectorId)
       .preload('licensedFile')
-      .preload('products')
-      .preload('socialClasses')
+      .preload('products', (productQuery) => {
+        productQuery.preload('licensedFile');
+      })
+      .preload('socialClasses', (socialClassQuery) => {
+        socialClassQuery.preload('licensedFiles');
+      })
       .firstOrFail();
   }
 }
