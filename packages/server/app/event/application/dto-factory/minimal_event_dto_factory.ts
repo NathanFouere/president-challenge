@@ -1,6 +1,8 @@
 import { inject } from '@adonisjs/core';
 
 import type { MinimalEventDto } from '@shared/types/event/minimal-event-dto.js';
+
+import { ChoiceStatus } from '@shared/types/event/choice-status.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 import type Event from '#event/domain/models/event';
@@ -21,7 +23,7 @@ export class MinimalEventDtoFactory {
       text: event.text,
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
-      needsAction: !event?.choices.map((choice: Choice) => choice.status).includes('chosen'),
+      needsAction: !event?.choices.map((choice: Choice) => choice.status).includes(ChoiceStatus.Chosen),
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(event.licensedFiles[0]),
     };
   }

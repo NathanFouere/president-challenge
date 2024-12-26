@@ -1,1 +1,5 @@
-export type EventType = 'historical' | 'choice' | 'super-event';
+export enum EventType {
+  Historical = 'historical',
+  Choice = 'choice',
+  SuperEvent = 'super-event',
+}
