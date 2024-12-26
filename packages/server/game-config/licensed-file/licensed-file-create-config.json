@@ -1968,5 +1968,15 @@
     "date": "",
     "path": "/assets/product/grain.png",
     "isVideo": false
+  },
+  {
+    "identifier": "flag-chile",
+    "title": "Flag of Chile",
+    "attribution": "",
+    "source": "https://fr.m.wikipedia.org/wiki/Fichier:Flag_of_Chile.svg",
+    "licence": null,
+    "date": "",
+    "path": "/assets/state/flag-of-chile.png",
+    "isVideo": false
   }
 ]

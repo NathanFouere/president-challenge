@@ -13,6 +13,7 @@ import { ProductPresenter } from '../app/presenters/product/product.presenter';
 import { ProductsPresenter } from '../app/presenters/product/products.presenter';
 import { SectorsPresenter } from '../app/presenters/sector/sectors.presenter';
 import { SectorPresenter } from '../app/presenters/sector/sector.presenter';
+import { StatePresenter } from '../app/presenters/state/state.presenter';
 import { COMMON_DEPENDANCY_TYPES } from './common.types';
 
 const container = new Container();
@@ -31,5 +32,6 @@ container.bind<ProductPresenter>(COMMON_DEPENDANCY_TYPES.ProductPresenter).to(Pr
 container.bind<ProductsPresenter>(COMMON_DEPENDANCY_TYPES.ProductsPresenter).to(ProductsPresenter);
 container.bind<SectorsPresenter>(COMMON_DEPENDANCY_TYPES.SectorsPresenter).to(SectorsPresenter);
 container.bind<SectorPresenter>(COMMON_DEPENDANCY_TYPES.SectorPresenter).to(SectorPresenter);
+container.bind<StatePresenter>(COMMON_DEPENDANCY_TYPES.StatePresenter).to(StatePresenter);
 
 export default container;

@@ -15,6 +15,8 @@ import { PoliticalPartySeatsStartupService } from '#legislature/infrastructure/s
 import { SocialClassStartupService } from '#social-class/infrastructure/startup/social_class_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SectorStartupService } from '#sector/infrastructure/startup/sector_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
 
 @inject()
 export class StartupService {
@@ -27,6 +29,7 @@ export class StartupService {
     private readonly socialClassStartupService: SocialClassStartupService,
     private readonly productStartupService: ProductStartupService,
     private readonly sectorStartupService: SectorStartupService,
+    private readonly stateStartupService: StateStartupService,
   ) {
   }
 
@@ -40,6 +43,7 @@ export class StartupService {
       await this.sectorStartupService.initialize(gameId);
       await this.socialClassStartupService.initialize(gameId);
       await this.productStartupService.initialize(gameId);
+      await this.stateStartupService.initialize(gameId);
     }
     catch (error) {
       console.error(error);

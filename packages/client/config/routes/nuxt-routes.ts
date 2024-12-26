@@ -9,4 +9,5 @@ export const NUXT_ROUTES = {
   socialClasses: '/social-classes',
   products: '/products',
   sectors: '/sectors',
+  state: '/state',
 };
