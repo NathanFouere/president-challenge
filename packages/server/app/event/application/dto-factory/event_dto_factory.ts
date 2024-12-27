@@ -1,6 +1,6 @@
-import type { EventDto } from '@shared/types/event/event-dto.js';
+import type { EventDto } from '@shared/dist/event/event-dto.js';
 import { inject } from '@adonisjs/core';
-import { ChoiceStatus } from '@shared/types/event/choice-status.js';
+import { ChoiceStatus } from '@shared/dist/event/choice-status.js';
 import type Event from '#event/domain/models/event';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';

@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { EventListDto } from '@shared/types/event/event-list-dto.js';
+import type { EventListDto } from '@shared/dist/event/event-list-dto.js';
 import type Event from '#event/domain/models/event';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { MinimalEventDtoFactory } from '#event/application/dto-factory/minimal_event_dto_factory';

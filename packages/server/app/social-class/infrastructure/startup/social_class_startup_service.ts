@@ -1,9 +1,9 @@
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { SocialClassTypes } from '@shared/types/social-class/social-class-types.js';
-import type { HappinessLevels } from '@shared/types/common/happiness-levels.js';
-import type { WealthLevels } from '@shared/types/social-class/wealth-levels.js';
-import type { SectorTypes } from '@shared/types/sector/sector-types.js';
+import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
+import type { WealthLevels } from '@shared/dist/social-class/wealth-levels.js';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SocialClassRepository } from '#social-class/infrastructure/repositories/social_class_repository';
 import { aSocialClass } from '#social-class/application/builders/social_class_builder';

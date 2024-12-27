@@ -1,4 +1,4 @@
-import type { PoliticalPartyDTO } from '@shared/types/dist/types/political-party/political-party-dto';
+import type { PoliticalPartyDTO } from '@shared/dist//types/political-party/political-party-dto';
 
 export const usePoliticalPartyStore = defineStore('politicalPartyStore', {
   state: () => ({

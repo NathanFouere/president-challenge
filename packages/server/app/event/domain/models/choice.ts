@@ -1,6 +1,6 @@
 import { BaseModel, belongsTo, column, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations';
-import type { ChoiceStatus } from '@shared/types/event/choice-status.js';
+import type { ChoiceStatus } from '@shared/dist/event/choice-status.js';
 import type { DateTime } from 'luxon';
 import Event from '#event/domain/models/event';
 

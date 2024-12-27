@@ -1,4 +1,4 @@
-import type { ChoiceDto } from '@shared/types/event/choice-dto.js';
+import type { ChoiceDto } from '@shared/dist/event/choice-dto.js';
 import type Choice from '#event/domain/models/choice';
 
 export class ChoiceDtoFactory {

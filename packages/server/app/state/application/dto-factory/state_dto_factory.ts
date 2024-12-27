@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { StateDto } from '@shared/types/state/state-dto.js';
+import type { StateDto } from '@shared/dist/state/state-dto.js';
 import type State from '#state/domain/model/state';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';

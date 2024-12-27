@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
 
-import { ChoiceStatus } from '@shared/types/dist/types/event/choice-status.js';
+import { ChoiceStatus } from '@shared/dist//types/event/choice-status.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventRepository } from '#event/infrastructure/repositories/event_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

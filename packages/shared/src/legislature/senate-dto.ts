@@ -1,4 +1,4 @@
-import type { ChartDataDTO } from '@shared/types/chart/ChartDataDTO';
+import type { ChartDataDTO } from '@shared/chart/ChartDataDTO';
 
 export interface SenateDto {
   chartData: ChartDataDTO;

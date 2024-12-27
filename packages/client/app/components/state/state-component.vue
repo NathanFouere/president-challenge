@@ -4,6 +4,8 @@ import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{
   state: StateDto | null;
+  isLoading: boolean;
+  hadError: boolean;
 }>();
 </script>
 
@@ -13,7 +15,7 @@ defineProps<{
   >
     <template #header>
       <div
-        v-if="!state"
+        v-if="isLoading || hadError"
         class="justify-center"
       >
         <USkeleton class="h-24 w-full" />
@@ -22,7 +24,7 @@ defineProps<{
         v-else
         class="justify-center"
       >
-        {{ state.name }}
+        {{ state?.name }}
       </div>
     </template>
 
@@ -30,22 +32,22 @@ defineProps<{
       class="justify-between"
     >
       <USkeleton
-        v-if="!state"
+        v-if="isLoading || hadError || !state"
         class="h-64 w-full"
       />
       <licensed-file-component
         v-else
-        :licensed-file="state.flag"
+        :licensed-file="state?.flag"
         class="w-full h-full object-cover"
       />
     </div>
     <template #footer>
       <USkeleton
-        v-if="!state"
+        v-if="isLoading || hadError"
         class="h-64 w-full"
       />
       <p v-else>
-        {{ state.description }}
+        {{ state?.description }}
       </p>
     </template>
   </UCard>

@@ -1,4 +1,4 @@
-import type { EventType } from '@shared/types/event/event-type.js';
+import type { EventType } from '@shared/dist/event/event-type.js';
 import Event from '#event/domain/models/event';
 
 export class EventBuilder {

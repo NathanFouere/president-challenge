@@ -1,4 +1,4 @@
-import type { User } from '@shared/types/user/user';
+import type { User } from '@shared/dist/user/user';
 import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 

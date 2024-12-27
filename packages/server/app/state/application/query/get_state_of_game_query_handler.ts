@@ -7,6 +7,7 @@ export class GetStateOfGameQueryHandler {
       .query()
       .where('game_id', query.gameId)
       .preload('flag')
+      .preload('stateRevenuePerMonth')
       .firstOrFail();
   }
 }

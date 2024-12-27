@@ -6,7 +6,7 @@
   "scripts": {
     "dev:backend": "pnpm --filter server run dev",
     "dev:frontend": "pnpm --filter client run dev",
-    "build:shared": "pnpm --filter @shared/types run build",
+    "build:shared": "pnpm --filter @shared run build",
     "build:backend": "pnpm --filter server run build",
     "build:frontend": "pnpm --filter client run build",
     "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",

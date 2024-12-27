@@ -2,7 +2,7 @@ import State from '#state/domain/model/state';
 
 export class StateRepository {
   public async save(state: State): Promise<void> {
-    state.save();
+    await state.save();
   }
 
   public async saveMany(states: State[]): Promise<void> {

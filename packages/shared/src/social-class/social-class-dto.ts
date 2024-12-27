@@ -1,7 +1,7 @@
-import type { SocialClassTypes } from '@shared/types/social-class/social-class-types';
-import type { LicensedFileDTO } from '@shared/types/licensed-file/licensed-file-dto';
-import type { WealthLevels } from '@shared/types/social-class/wealth-levels';
-import type { HappinessLevels } from '@shared/types/common/happiness-levels';
+import type { SocialClassTypes } from '@shared/social-class/social-class-types';
+import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto';
+import type { WealthLevels } from '@shared/social-class/wealth-levels';
+import type { HappinessLevels } from '@shared/common/happiness-levels';
 
 export interface SocialClassDto {
   id: number;

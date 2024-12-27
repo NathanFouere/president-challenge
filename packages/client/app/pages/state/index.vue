@@ -16,6 +16,8 @@ onMounted(async () => {
   <div>
     <state-component
       :state="statePresenter.stateStore.getState"
+      :is-loading="statePresenter.stateStore.isGettingState"
+      :had-error="statePresenter.stateStore.hasErrorOnGetState"
     />
   </div>
 </template>
