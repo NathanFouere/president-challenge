@@ -5,6 +5,7 @@ import User from '#user/domain/models/user';
 import PoliticalParty from '#political-party/domain/models/political_party';
 import Event from '#event/domain/models/event';
 import Senate from '#legislature/domain/models/senate';
+import State from '#state/domain/model/state';
 
 export default class Game extends BaseModel {
   @column({ isPrimary: true })
@@ -27,6 +28,9 @@ export default class Game extends BaseModel {
 
   @hasOne(() => Senate)
   declare senate: HasOne<typeof Senate>;
+
+  @hasOne(() => State)
+  declare state: HasOne<typeof State>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

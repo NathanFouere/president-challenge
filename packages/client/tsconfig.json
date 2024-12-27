@@ -3,7 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@shared/types*": ["../shared/dist/types/*"],
+      "@shared*": ["../shared/dist/types/*"],
     },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductDto } from '@shared/types/dist/types/product/product-dto';
+import type { ProductDto } from '@shared/dist/product/product-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{

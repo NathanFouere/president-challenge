@@ -1,4 +1,4 @@
-import type { PoliticalPartyDTO } from '@shared/types/political-party/political-party-dto.js';
+import type { PoliticalPartyDTO } from '@shared/dist/political-party/political-party-dto.js';
 import { inject } from '@adonisjs/core';
 import type PoliticalParty from '#political-party/domain/models/political_party';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

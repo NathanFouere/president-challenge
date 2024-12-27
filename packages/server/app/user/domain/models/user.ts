@@ -21,15 +21,15 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare email: string;
 
-  @column({ serializeAs: null })
+  @column()
   declare password: string;
 
   @hasMany(() => Game)
   declare games: HasMany<typeof Game>;
 
-  @column.dateTime({ autoCreate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
 }

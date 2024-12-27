@@ -1,5 +1,5 @@
-import type { SenateDto } from '@shared/types/legislature/senate-dto.js';
-import type { ChartDataDTO } from '@shared/types/chart/ChartDataDTO.js';
+import type { SenateDto } from '@shared/dist/legislature/senate-dto.js';
+import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
 import type Senate from '#legislature/domain/models/senate';
 
 export class SenateDtoFactory {

@@ -1,4 +1,4 @@
-import type { SectorTypes } from '@shared/types/sector/sector-types.js';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 
 export class GetSectorByGameAndTypeQuery {
   constructor(

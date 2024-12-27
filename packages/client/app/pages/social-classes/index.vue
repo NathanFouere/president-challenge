@@ -24,7 +24,7 @@ onMounted(async () => {
       v-for="(socialClass) in socialClassesPresenter.socialClassesStore.getSocialClasses"
       v-else
       :key="socialClass.id"
-      class="flex-1"
+      class="w-1/4"
       :social-class="socialClass"
     />
   </div>

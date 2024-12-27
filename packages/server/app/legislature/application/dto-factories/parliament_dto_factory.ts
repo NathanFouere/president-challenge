@@ -1,5 +1,5 @@
-import type { ChartDataDTO } from '@shared/types/dist/types/chart/ChartDataDTO.js';
-import type { ParliamentDto } from '@shared/types/legislature/parliament-dto.js';
+import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
+import type { ParliamentDto } from '@shared/dist/legislature/parliament-dto.js';
 import type { Parliament } from '#legislature/domain/models/parliament';
 
 export class ParliamentDtoFactory {

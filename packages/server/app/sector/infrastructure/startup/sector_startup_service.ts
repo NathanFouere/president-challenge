@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { SectorTypes } from '@shared/types/sector/sector-types.js';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SectorRepository } from '#sector/infrastructure/repository/sector_repository';
 import type Sector from '#sector/domain/model/sector';

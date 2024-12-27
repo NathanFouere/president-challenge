@@ -1,6 +1,6 @@
 import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import type { EventType } from '@shared/types/event/event-type.js';
+import type { EventType } from '@shared/dist/event/event-type.js';
 import type { DateTime } from 'luxon';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';

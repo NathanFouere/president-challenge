@@ -19,6 +19,7 @@
     "#social-class/*": "./app/social-class/*.js",
     "#product/*": "./app/product/*.js",
     "#sector/*": "./app/sector/*.js",
+    "#state/*": "./app/state/*.js",
     "#political-party/*": "./app/political-party/*.js",
     "#legislature/*": "./app/legislature/*.js",
     "#licensed-file/*": "./app/licensed-file/*.js",
@@ -76,7 +77,7 @@
     "luxon": "^3.5.0",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
-    "@shared/types": "workspace:*"
+    "@shared": "workspace:*"
   },
   "hotHook": {
     "boundaries": [

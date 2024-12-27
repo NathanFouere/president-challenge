@@ -1,5 +1,5 @@
-import type { PoliticalAffiliation } from '@shared/types/political-party/political-affiliation.js';
-import type { HappinessLevels } from '@shared/types/dist/types/common/happiness-levels.js';
+import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import PoliticalParty from '#political-party/domain/models/political_party';
 
 export class PoliticalPartyBuilder {

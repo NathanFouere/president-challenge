@@ -1,12 +1,18 @@
 {
-  "name": "@shared/types",
+  "name": "@shared",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "tsc --emitDeclarationOnly",
+    "build": "tsc --build --force",
     "delete-dist": "rm -rf dist",
     "delete-dist-build": "pnpm delete-dist && pnpm build"
+  },
+  "exports": {
+    "./*": {
+      "import": "./dist/*.js",
+      "require": "./dist/*.js"
+    }
   },
   "keywords": [],
   "author": "",

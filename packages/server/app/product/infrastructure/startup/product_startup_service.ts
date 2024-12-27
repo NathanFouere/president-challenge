@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
 
-import type { SectorTypes } from '@shared/types/dist/types/sector/sector-types.js';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ProductRepository } from '#product/infrastructure/repository/product_repository';
 import productStartupConfig from '#game-config/product/product-startup-config.json' assert { type: 'json' };

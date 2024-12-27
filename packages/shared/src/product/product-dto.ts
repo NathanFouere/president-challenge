@@ -1,4 +1,4 @@
-import type { LicensedFileDTO } from '@shared/types/licensed-file/licensed-file-dto';
+import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
 
 export interface ProductDto {
   id: number;

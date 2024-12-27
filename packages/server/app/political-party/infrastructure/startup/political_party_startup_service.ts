@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
-import type { PoliticalAffiliation } from '@shared/types/dist/types/political-party/political-affiliation.js';
-import type { HappinessLevels } from '@shared/types/common/happiness-levels.js';
+import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartyRepository } from '#political-party/infrastructure/repositories/political_party_repository';
 import politicalPartyStartupConfig from '#game-config/political-party/political-party-startup-config.json' assert { type: 'json' };

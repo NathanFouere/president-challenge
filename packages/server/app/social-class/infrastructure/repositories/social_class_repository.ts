@@ -1,4 +1,4 @@
-import type { SocialClassTypes } from '@shared/types/social-class/social-class-types.js';
+import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import SocialClass from '#social-class/domain/models/social_class';
 
 export class SocialClassRepository {

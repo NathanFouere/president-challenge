@@ -13,4 +13,5 @@ export const COMMON_DEPENDANCY_TYPES = {
   ProductsPresenter: Symbol.for('ProductsPresenter'),
   SectorsPresenter: Symbol.for('SectorsPresenter'),
   SectorPresenter: Symbol.for('SectorPresenter'),
+  StatePresenter: Symbol.for('StatePresenter'),
 };

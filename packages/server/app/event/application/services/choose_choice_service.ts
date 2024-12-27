@@ -1,5 +1,6 @@
 import { inject } from '@adonisjs/core';
 
+import { ChoiceStatus } from '@shared/dist/event/choice-status.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventRepository } from '#event/infrastructure/repositories/event_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -27,10 +28,10 @@ export class ChooseChoiceService {
     const choiceEvent = choice.event;
     for (const eventChoice of choiceEvent.choices) {
       if (eventChoice.id == choice.id) {
-        choice.status = 'chosen';
+        choice.status = ChoiceStatus.Chosen;
         continue;
       }
-      eventChoice.status = 'unavailable';
+      eventChoice.status = ChoiceStatus.Unavailable;
     }
     await this.choiceRepository.save(choice);
     await this.choiceRepository.saveMany(choice.event.choices);

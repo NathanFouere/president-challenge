@@ -99,3 +99,11 @@ router.group(() => {
   router.get('/:gameId', [GetSectorsOfGameController, 'getSectorsOfGame']).use(middleware.auth());
   router.get('/:gameId/:sectorId', [GetSectorOfGameController, 'getSectorOfGame']).use(middleware.auth());
 }).prefix('api/sectors');
+
+/* STATE */
+
+const GetStateOfGameController = () => import('#state/infrastructure/controller/get_state_of_game_controller');
+
+router.group(() => {
+  router.get('/:gameId', [GetStateOfGameController, 'getStateOfGame']).use(middleware.auth());
+}).prefix('api/state');

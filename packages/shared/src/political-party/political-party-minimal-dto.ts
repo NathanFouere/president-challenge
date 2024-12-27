@@ -1,5 +1,5 @@
-import type { PoliticalAffiliation } from '@shared/types/political-party/political-affiliation';
-import type { LicensedFileDTO } from '@shared/types/licensed-file/licensed-file-dto';
+import type { PoliticalAffiliation } from '@shared/political-party/political-affiliation.js';
+import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
 
 export interface PoliticalPartyMinimalDto {
   id: number;

@@ -7,6 +7,7 @@ const legislaturePrefix: string = `${prefix}/legislature`;
 const socialClassPrefix: string = `${prefix}/social-class`;
 const productPrefix: string = `${prefix}/products`;
 const sectorPrefix: string = `${prefix}/sectors`;
+const statePrefix: string = `${prefix}/state`;
 
 const Routes = {
   User: {
@@ -45,6 +46,9 @@ const Routes = {
   Sector: {
     GetSectors: (gameId: number) => `${sectorPrefix}/${gameId}`,
     GetSector: (gameId: number, sectorId: number) => `${sectorPrefix}/${gameId}/${sectorId}`,
+  },
+  State: {
+    GetState: (gameId: number) => `${statePrefix}/${gameId}`,
   },
 };
 

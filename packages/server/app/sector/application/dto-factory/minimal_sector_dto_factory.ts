@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { MinimalSectorDto } from '@shared/types/dist/types/sector/minimal-sector-dto.js';
+import type { MinimalSectorDto } from '@shared/dist/sector/minimal-sector-dto.js';
 import type Sector from '#sector/domain/model/sector';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';

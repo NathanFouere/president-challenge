@@ -1,4 +1,4 @@
-import type { SocialClassDto } from '@shared/types/social-class/social-class-dto.js';
+import type { SocialClassDto } from '@shared/dist/social-class/social-class-dto.js';
 import { inject } from '@adonisjs/core';
 import type SocialClass from '#social-class/domain/models/social_class';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
