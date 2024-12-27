@@ -1,7 +1,7 @@
-import type { SocialClassTypes } from '@shared/social-class/social-class-types';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto';
-import type { WealthLevels } from '@shared/social-class/wealth-levels';
-import type { HappinessLevels } from '@shared/common/happiness-levels';
+import type { SocialClassTypes } from '@shared/social-class/social-class-types.js';
+import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
+import type { WealthLevels } from '@shared/social-class/wealth-levels.js';
+import type { HappinessLevels } from '@shared/common/happiness-levels.js';
 
 export interface SocialClassDto {
   id: number;

@@ -1,5 +1,5 @@
-import type { ChoiceDto } from '@shared/event/choice-dto';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto';
+import type { ChoiceDto } from '@shared/event/choice-dto.js';
+import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
 
 export interface EventDto {
   id: number;

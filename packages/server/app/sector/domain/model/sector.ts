@@ -1,7 +1,7 @@
 import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import type { SectorTypes } from '@shared/dist//types/sector/sector-types.js';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import Product from '#product/domain/models/product';
 import SocialClass from '#social-class/domain/models/social_class';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';

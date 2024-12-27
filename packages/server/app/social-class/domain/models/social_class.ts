@@ -1,9 +1,9 @@
 import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import type { SocialClassTypes } from '@shared/dist//types/social-class/social-class-types.js';
-import type { HappinessLevels } from '@shared/dist//types/common/happiness-levels.js';
-import type { WealthLevels } from '@shared/dist//types/social-class/wealth-levels.js';
+import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
+import type { WealthLevels } from '@shared/dist/social-class/wealth-levels.js';
+import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';

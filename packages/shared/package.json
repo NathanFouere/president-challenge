@@ -4,7 +4,7 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build --force",
     "delete-dist": "rm -rf dist",
     "delete-dist-build": "pnpm delete-dist && pnpm build"
   },

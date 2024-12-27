@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { PoliticalAffiliation } from '@shared/dist//types/political-party/political-affiliation.js';
+import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartyRepository } from '#political-party/infrastructure/repositories/political_party_repository';

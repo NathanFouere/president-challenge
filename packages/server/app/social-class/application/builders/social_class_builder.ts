@@ -1,4 +1,4 @@
-import type { SocialClassTypes } from '@shared/dist//types/social-class/social-class-types.js';
+import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import type { WealthLevels } from '@shared/dist/social-class/wealth-levels.js';
 import SocialClass from '#social-class/domain/models/social_class';

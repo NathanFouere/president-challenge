@@ -6,6 +6,7 @@
     "outDir": "dist",
     "declarationDir": "dist",
     "rootDir": "src",
+    "noEmit": false,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "paths": {
