@@ -20,6 +20,7 @@ export class SectorStartupService {
       const sector: Sector = aSector()
         .withName(sectorValues.name)
         .withType(sectorValues.type as SectorTypes)
+        .withEconomicalSituation(sectorValues.economicalSituation)
         .withDescription(sectorValues.description)
         .withGameId(gameId)
         .withLicensedFileIdentifier(sectorValues.licensedFileIdentifier)

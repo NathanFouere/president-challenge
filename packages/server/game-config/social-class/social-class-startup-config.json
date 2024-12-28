@@ -4,7 +4,7 @@
     "name": "Industrial Owners",
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "factory-owner-one",
@@ -22,7 +22,7 @@
     "name": "Mine Owners",
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "mine-owner-one",
@@ -40,7 +40,7 @@
     "name": "Land Owners",
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "land-owner-one",
@@ -61,7 +61,7 @@
     "name": "Proletariat",
     "color": "#00FF00",
     "description": "The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work). The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work). The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work).",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "worker-one",
@@ -84,7 +84,7 @@
     "name": "Minors",
     "color": "#00FF00",
     "description": "Minors work in the mines and are paid very little. Minors work in the mines and are paid very little. Minors work in the mines and are paid very little.",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "minor-one",
@@ -102,7 +102,7 @@
     "name": "Middle Class",
     "color": "#0000FF",
     "description": "The middle class is a class of people in the middle of a social hierarchy. The middle class is a class of people in the middle of a social hierarchy. The middle class is a class of people in the middle of a social hierarchy.",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "small-bourgeoisie-one",
@@ -118,7 +118,7 @@
     "name": "Peasantry",
     "color": "#0000FF",
     "description": "The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism. The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism. The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism.",
-    "wealthLevel": "Very low",
+    "economicalSituation": 3,
     "happinessLevel": "Very Unhappy",
     "licensedFilesIdentifiers": [
       "peasant-two",

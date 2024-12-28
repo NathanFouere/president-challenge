@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
-import type { SectorPresenter } from '../../presenters/sector/sector.presenter';
 import LicensedFileComponent from '../../components/common/licensed-file-component.vue';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { SectorPresenter } from '~/presenters/sector/sector.presenter';
+import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
 
 const route = useRoute();
 const id = Number(route.params.id);
@@ -49,6 +50,12 @@ onMounted(async () => {
         :product="product"
       />
     </div>
+    <br>
+    <UDivider />
+    <br>
+    <LineChartComponent
+      :data="sectorPresenter.sectorStore.requireSector.economicalSituationPerMonthChartData"
+    />
     <br>
     <UDivider />
     <br>

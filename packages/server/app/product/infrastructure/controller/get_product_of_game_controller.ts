@@ -20,7 +20,7 @@ export default class GetProductOfGameController {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
       const productId = request.param('productId');
-      const product = await this.getProductOfGameQueryHandler.handle(
+      const product = await this.getProductOfGameQueryHandler.handleForDisplay(
         new GetProductOfGameQuery(gameId, productId),
       );
 

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { SocialClassPresenter } from '../../presenters/social-class/social-class.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
 import LicensedFilesComponent from '../../components/common/licensed-files-component.vue';
+import type { SocialClassPresenter } from '~/presenters/social-class/social-class.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
 
 const route = useRoute();
 const id = Number(route.params.id);
@@ -34,8 +35,10 @@ onMounted(async () => {
     <br>
     <p>Description : {{ socialClassPresenter.socialClassStore.requireSocialClass.description }}</p>
     <br>
-    <p>Wealth Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.wealthLevel }}</p>
+    <p>Wealth Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.economicalSituation }}</p>
     <br>
     <p>Happiness Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.happinessLevel }}</p>
+    <br>
+    <line-chart-component :data="socialClassPresenter.socialClassStore.requireSocialClass.economicalSituationPerMonthChartData" />
   </div>
 </template>

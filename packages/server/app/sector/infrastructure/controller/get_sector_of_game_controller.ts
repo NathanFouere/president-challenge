@@ -21,9 +21,7 @@ export default class GetSectorOfGameController {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
       const sectorId = request.param('sectorId');
-      console.log('gameId', gameId);
-      console.log('sectorId', sectorId);
-      const sector = await this.getSectorByGameAndIdQueryHandler.handle(
+      const sector = await this.getSectorByGameAndIdQueryHandler.handleForDisplay(
         new GetSectorByGameAndIdQuery(gameId, sectorId),
       );
 

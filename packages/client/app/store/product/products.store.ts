@@ -1,8 +1,8 @@
-import type { ProductDto } from '@shared/typesproduct/product-dto';
+import type { MinimalProductDto } from '@shared/product/minimal-product-dto';
 
 export const useProductsStore = defineStore('productsStore', {
   state: () => ({
-    products: [] as ProductDto[],
+    products: [] as MinimalProductDto[],
     gettingProducts: false,
     errorOnGetProducts: false,
   }),
@@ -12,7 +12,7 @@ export const useProductsStore = defineStore('productsStore', {
     hadErrorOnGetProducts: state => state.errorOnGetProducts,
   },
   actions: {
-    setProducts(products: ProductDto[]) {
+    setProducts(products: MinimalProductDto[]) {
       this.products = products;
     },
     setIsGettingProducts() {

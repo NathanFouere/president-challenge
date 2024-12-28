@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.increments('id');
       table.string('name').notNullable();
       table.text('description').notNullable();
+      table.integer('economical_situation').notNullable();
       table.enum('type',
         [
           'Agricultural',
