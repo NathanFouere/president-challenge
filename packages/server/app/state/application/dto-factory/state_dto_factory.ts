@@ -31,8 +31,8 @@ export class StateDtoFactory {
 
     for (const monthEconomicalSituation of state.economicalSituationPerTurn) {
       data.push(monthEconomicalSituation.amount);
-      /*      backgroundColor.push(politicalParty.color);
-      borderColor.push(politicalParty.color); */
+      backgroundColor.push(monthEconomicalSituation.color);
+      borderColor.push(monthEconomicalSituation.color);
       labels.push(getDateFromTurnNumber(monthEconomicalSituation.turn));
     }
 

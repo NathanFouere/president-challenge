@@ -11,4 +11,9 @@ export default class StateEconomicalSituationPerTurn extends SaveAmountForTurn {
 
   @belongsTo(() => State)
   declare state: BelongsTo<typeof State>;
+
+  constructor() {
+    super();
+    this.color = 'blue';
+  }
 }

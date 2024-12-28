@@ -11,6 +11,10 @@ export default class extends BaseSchema {
       table.integer('turn').notNullable();
 
       table
+        .string('color')
+        .notNullable();
+
+      table
         .integer('state_id')
         .unsigned()
         .references('id')

@@ -15,7 +15,7 @@ defineProps<{
   >
     <template #header>
       <div
-        v-if="isLoading || hadError"
+        v-if="isLoading || hadError || !state"
         class="justify-center"
       >
         <USkeleton class="h-24 w-full" />
