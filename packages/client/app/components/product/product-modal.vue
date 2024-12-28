@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
-import type { ProductPresenter } from '../../presenters/product/product.presenter';
 import container from '../../../config/container';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { ProductPresenter } from '~/presenters/product/product.presenter';
+import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
 
 const props = defineProps<{
   productId: number;
@@ -70,6 +71,10 @@ watch(
             <p>
               Cost of production: {{ productPresenter.productStore.getProduct!.costOfProduction }}
             </p>
+            <br>
+            <LineChartComponent
+              :data="productPresenter.productStore.getProduct!.pricePerMonthChartData"
+            />
           </div>
         </div>
       </template>

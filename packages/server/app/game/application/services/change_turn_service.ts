@@ -14,6 +14,13 @@ import {
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { GetSectorsByGameQueryHandler } from '#sector/application/query/get_sectors_by_game_query_handler';
 import { GetSectorsByGameQuery } from '#sector/application/query/get_sectors_by_game_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { GetProductsOfGameQueryHandler } from '#product/application/query/get_products_of_game_query_handler';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ProductPricePerTurnSaveService } from '#product/application/service/product_price_per_turn_save_service';
+import { GetProductsOfGameQuery } from '#product/application/query/get_products_of_game_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ProductPriceRandomizerService } from '#product/application/service/product_price_randomizer_service';
 
 @inject()
 export default class ChangeTurnService {
@@ -23,6 +30,9 @@ export default class ChangeTurnService {
     private readonly stateRevenuePerTurnSaveService: StateRevenuePerTurnSaveService,
     private readonly sectorEconomicalSituationPerTurnSaveService: SectorEconomicalSituationPerTurnSaveService,
     private readonly getSectorsOfGameQueryHandler: GetSectorsByGameQueryHandler,
+    private readonly getProductsOfGameQueryHandler: GetProductsOfGameQueryHandler,
+    private readonly productPricePerTurnSaveService: ProductPricePerTurnSaveService,
+    private readonly productChangePriceTurnService: ProductPriceRandomizerService,
   ) {
   }
 
@@ -36,8 +46,13 @@ export default class ChangeTurnService {
       const sectors = await this.getSectorsOfGameQueryHandler.handle(new GetSectorsByGameQuery(
         game.id,
       ));
+      const products = await this.getProductsOfGameQueryHandler.handle(new GetProductsOfGameQuery(
+        game.id,
+      ));
       await this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForMonth(state, newTurn);
       await this.sectorEconomicalSituationPerTurnSaveService.saveSectorsEconomicalSituationForTurn(sectors, newTurn);
+      await this.productChangePriceTurnService.changeProductsPricesRandomly(products);
+      await this.productPricePerTurnSaveService.saveProductsPricesPerTurn(products, newTurn);
       await this.gameRepository.save(game);
     }
     catch (e) {

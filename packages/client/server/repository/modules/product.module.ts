@@ -1,11 +1,12 @@
 import type { ProductDto } from '@shared/product/product-dto';
+import type { MinimalProductDto } from '@shared/product/minimal-product-dto';
 import FetchFactory from '../factory';
 import Routes from '~~/server/repository/routes.client';
 
 class ProductModule extends FetchFactory {
   private readonly RESOURCE = Routes.Product;
 
-  public async getProducts(gameId: number): Promise<ProductDto[]> {
+  public async getProducts(gameId: number): Promise<MinimalProductDto[]> {
     return this.call<ProductDto[]>(
       {
         method: 'GET',

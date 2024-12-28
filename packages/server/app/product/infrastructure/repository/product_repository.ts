@@ -6,11 +6,11 @@ export class ProductRepository {
   }
 
   public async findById(id: number): Promise<Product | null> {
-    return Product.find(id);
+    return await Product.find(id);
   }
 
   public async findAll(): Promise<Product[]> {
-    return Product.all();
+    return await Product.all();
   }
 
   public async delete(product: Product): Promise<void> {

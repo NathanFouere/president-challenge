@@ -8,14 +8,14 @@ import { MinimalSocialClassDtoFactory } from '#social-class/application/dto-fact
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductDtoFactory } from '#product/application/factory/product_dto_factory';
+import { MinimalProductDtoFactory } from '#product/application/factory/minimal_product_dto_factory';
 
 @inject()
 export class SectorDtoFactory {
   constructor(
     private readonly minimalSocialClassDtoFactory: MinimalSocialClassDtoFactory,
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
-    private readonly productDtoFactory: ProductDtoFactory,
+    private readonly minimalProductDtoFactory: MinimalProductDtoFactory,
   ) {
   }
 
@@ -27,7 +27,7 @@ export class SectorDtoFactory {
       description: sector.description,
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.licensedFile),
       socialClasses: this.minimalSocialClassDtoFactory.createFromSocialClasses(sector.socialClasses),
-      products: this.productDtoFactory.createFromProducts(sector.products),
+      products: this.minimalProductDtoFactory.createFromProducts(sector.products),
       economicalSituationPerMonthChartData: this.createEconomicalSituationPerMonthChartData(sector),
     };
   }

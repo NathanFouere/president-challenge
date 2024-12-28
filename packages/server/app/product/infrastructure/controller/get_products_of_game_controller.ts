@@ -3,15 +3,15 @@ import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { GetProductsOfGameQueryHandler } from '#product/application/query/get_products_of_game_query_handler';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductDtoFactory } from '#product/application/factory/product_dto_factory';
 import { GetProductsOfGameQuery } from '#product/application/query/get_products_of_game_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { MinimalProductDtoFactory } from '#product/application/factory/minimal_product_dto_factory';
 
 @inject()
 export default class GetProductsOfGameController {
   constructor(
     private readonly getProductsOfGameQueryHandler: GetProductsOfGameQueryHandler,
-    private readonly productDtoFactory: ProductDtoFactory,
+    private readonly minimalProductDtoFactory: MinimalProductDtoFactory,
   ) {
   }
 
@@ -19,11 +19,10 @@ export default class GetProductsOfGameController {
     try {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
-      const products = await this.getProductsOfGameQueryHandler.handle(
+      const products = await this.getProductsOfGameQueryHandler.handleForDisplay(
         new GetProductsOfGameQuery(gameId),
       );
-
-      const productsDtos = this.productDtoFactory.createFromProducts(products);
+      const productsDtos = this.minimalProductDtoFactory.createFromProducts(products);
       return productsDtos;
     }
     catch (error) {

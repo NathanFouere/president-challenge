@@ -3,7 +3,6 @@ import { defineProps } from 'vue';
 import { Line } from 'vue-chartjs';
 import type { ChartDataDTO } from '@shared/chart/ChartDataDTO';
 
-// Props pour les données
 const props = defineProps<{
   data: ChartDataDTO;
 }>();

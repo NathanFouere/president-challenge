@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LicensedFileDTO } from '@shared/typeslicensed-file/licensed-file-dto';
+import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto';
 
 defineProps<{
   licensedFile: LicensedFileDTO;
