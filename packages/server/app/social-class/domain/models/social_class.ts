@@ -1,12 +1,13 @@
-import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm';
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations';
+import { BaseModel, belongsTo, column, manyToMany, hasMany } from '@adonisjs/lucid/orm';
+import type { BelongsTo, ManyToMany, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
-import type { WealthLevels } from '@shared/dist/social-class/wealth-levels.js';
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';
+import SocialClassEconomicalSituationPerTurn
+  from '#social-class/domain/models/social_class_economical_situation_per_turn';
 
 export default class SocialClass extends BaseModel {
   @column({ isPrimary: true })
@@ -22,7 +23,7 @@ export default class SocialClass extends BaseModel {
   declare color: string;
 
   @column()
-  declare wealthLevel: WealthLevels;
+  declare economicalSituation: number;
 
   @column()
   declare type: SocialClassTypes;
@@ -30,7 +31,7 @@ export default class SocialClass extends BaseModel {
   @column()
   declare happinessLevel: HappinessLevels;
 
-  @column({ serializeAs: null })
+  @column()
   declare gameId: number;
 
   @belongsTo(() => Game)
@@ -45,15 +46,18 @@ export default class SocialClass extends BaseModel {
   })
   declare licensedFiles: ManyToMany<typeof LicensedFile>;
 
+  @hasMany(() => SocialClassEconomicalSituationPerTurn)
+  declare economicalSituationPerTurn: HasMany<typeof SocialClassEconomicalSituationPerTurn>;
+
   @column()
   declare sectorId: number;
 
   @belongsTo(() => Sector)
   declare sector: BelongsTo<typeof Sector>;
 
-  @column.dateTime({ autoCreate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
 }

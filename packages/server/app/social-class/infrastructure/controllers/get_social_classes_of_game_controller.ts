@@ -18,7 +18,7 @@ export default class GetSocialClassesOfGameController {
     try {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
-      const socialClasses = await this.getSocialClassesOfGameQueryHandler.handle(new GetSocialClassesOfGameQuery(
+      const socialClasses = await this.getSocialClassesOfGameQueryHandler.handleForDisplay(new GetSocialClassesOfGameQuery(
         gameId,
       ));
       return this.minimalSocialClassDtoFactory.createFromSocialClasses(socialClasses);

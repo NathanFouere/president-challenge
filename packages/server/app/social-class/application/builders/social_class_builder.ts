@@ -1,13 +1,12 @@
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
-import type { WealthLevels } from '@shared/dist/social-class/wealth-levels.js';
 import SocialClass from '#social-class/domain/models/social_class';
 
 export class SocialClassBuilder {
   private name: string | null = null;
   private description: string | null = null;
   private color: string | null = null;
-  private wealthLevel: WealthLevels | null = null;
+  private economicalSituation: number | null = null;
   private socialClassType: SocialClassTypes | null = null;
   private gameId: number | null = null;
   private happinessLevel: HappinessLevels | null = null;
@@ -28,8 +27,8 @@ export class SocialClassBuilder {
     return this;
   }
 
-  withWealthLevel(wealthLevel: WealthLevels): this {
-    this.wealthLevel = wealthLevel;
+  withEconomicalSituation(economicalSituation: number): this {
+    this.economicalSituation = economicalSituation;
     return this;
   }
 
@@ -61,8 +60,8 @@ export class SocialClassBuilder {
     else throw new Error('Description is required');
     if (this.color) socialClass.color = this.color;
     else throw new Error('Color is required');
-    if (!this.wealthLevel) throw new Error('Wealth level is required');
-    else socialClass.wealthLevel = this.wealthLevel;
+    if (!this.economicalSituation) throw new Error('economical Situation is required');
+    else socialClass.economicalSituation = this.economicalSituation;
     if (this.socialClassType) socialClass.type = this.socialClassType;
     else throw new Error('Social class type is required');
     if (this.gameId) socialClass.gameId = this.gameId;

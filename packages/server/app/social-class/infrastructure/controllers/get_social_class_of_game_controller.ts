@@ -20,7 +20,7 @@ export default class GetSocialClassOfGameController {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
       const socialClassId = request.param('socialClassId');
-      const socialClass = await this.getSocialClassOfGameQueryHandler.handle(new GetSocialClassOfGameQuery(
+      const socialClass = await this.getSocialClassOfGameQueryHandler.handleForDisplay(new GetSocialClassOfGameQuery(
         gameId,
         socialClassId,
       ));
