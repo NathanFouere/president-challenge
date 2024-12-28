@@ -6,10 +6,16 @@ export class SectorBuilder {
   private type: SectorTypes | null = null;
   private description: string | null = null;
   private licensedFileIdentifier: string | null = null;
+  private economicalSituation: number | null = null;
   private gameId: number | null = null;
 
   public withName(name: string): this {
     this.name = name;
+    return this;
+  }
+
+  public withEconomicalSituation(economicalSituation: number): this {
+    this.economicalSituation = economicalSituation;
     return this;
   }
 
@@ -66,6 +72,16 @@ export class SectorBuilder {
 
     if (this.gameId !== null) {
       sector.gameId = this.gameId;
+    }
+    else {
+      throw new Error('gameId is required');
+    }
+
+    if (this.economicalSituation !== null) {
+      sector.economicalSituation = this.economicalSituation;
+    }
+    else {
+      throw new Error('economicalSituation is required');
     }
 
     return sector;

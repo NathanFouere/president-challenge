@@ -3,24 +3,28 @@
     "name": "Agricultural",
     "type": "Agricultural",
     "description": "Sector 1",
-    "licensedFileIdentifier": "farm"
+    "licensedFileIdentifier": "farm",
+    "economicalSituation": 5
   },
   {
     "name": "Mine",
     "type": "Mine",
     "description": "Sector 1",
-    "licensedFileIdentifier": "mine"
+    "licensedFileIdentifier": "mine",
+    "economicalSituation": 5
   },
   {
     "name": "Industrial",
     "type": "Industrial",
     "description": "Sector 1",
-    "licensedFileIdentifier": "industry"
+    "licensedFileIdentifier": "industry",
+    "economicalSituation": 5
   },
   {
     "name": "Service",
     "type": "Service",
     "description": "Sector 1",
-    "licensedFileIdentifier": "petite-property"
+    "licensedFileIdentifier": "petite-property",
+    "economicalSituation": 5
   }
 ]

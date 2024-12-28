@@ -20,7 +20,7 @@ export default class GetSectorsOfGameController {
     try {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
-      const sectors = await this.getSectorsByGameQueryHandler.handle(new GetSectorsByGameQuery(
+      const sectors = await this.getSectorsByGameQueryHandler.handleForDisplay(new GetSectorsByGameQuery(
         gameId,
       ));
 

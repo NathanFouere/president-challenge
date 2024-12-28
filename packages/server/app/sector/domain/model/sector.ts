@@ -6,6 +6,7 @@ import Product from '#product/domain/models/product';
 import SocialClass from '#social-class/domain/models/social_class';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
+import SectorEconomicalSituationPerTurn from '#sector/domain/model/sector_economical_situation_per_turn';
 
 export default class Sector extends BaseModel {
   @column({ isPrimary: true })
@@ -24,6 +25,9 @@ export default class Sector extends BaseModel {
   declare licensedFileIdentifier: string;
 
   @column()
+  declare economicalSituation: number;
+
+  @column()
   declare gameId: number;
 
   @belongsTo(() => Game)
@@ -40,6 +44,9 @@ export default class Sector extends BaseModel {
 
   @hasMany(() => SocialClass)
   declare socialClasses: HasMany<typeof SocialClass>;
+
+  @hasMany(() => SectorEconomicalSituationPerTurn)
+  declare economicalSituationPerTurn: HasMany<typeof SectorEconomicalSituationPerTurn>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

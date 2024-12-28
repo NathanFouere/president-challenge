@@ -18,7 +18,7 @@ export default class GetStateOfGameController {
     try {
       auth.getUserOrFail();
       const gameId = request.param('gameId');
-      const state = await this.getStateOfGameQueryHandler.handle(new GetStateOfGameQuery(
+      const state = await this.getStateOfGameQueryHandler.handleForDisplay(new GetStateOfGameQuery(
         gameId,
       ));
       return this.stateDtoFactory.createFromState(state);
