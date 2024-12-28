@@ -22,7 +22,7 @@ export class MinimalEventDtoFactory {
       text: event.text,
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
-      needsAction: !event?.choices.map((choice: Choice) => choice.status).includes(ChoiceStatus.Chosen),
+      needsAction: event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available),
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(event.licensedFiles[0]),
     };
   }

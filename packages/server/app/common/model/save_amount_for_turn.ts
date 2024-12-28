@@ -11,6 +11,9 @@ export abstract class SaveAmountForTurn extends BaseModel {
   @column()
   declare turn: number;
 
+  @column()
+  declare color: string;
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;
 

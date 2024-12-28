@@ -32,7 +32,7 @@ export default class CreateGameService {
 
     const game = aGame()
       .withUserId(user.id)
-      .withTurnNumber(0)
+      .withTurn(0)
       .build();
 
     try {

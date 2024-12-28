@@ -5,11 +5,11 @@ import type { Parliament } from '#legislature/domain/models/parliament';
 export class ParliamentDtoFactory {
   public createFromParliament(parliament: Parliament): ParliamentDto {
     return {
-      chartData: this.createChart(parliament),
+      parliamentCompositionChartData: this.createParliamentCompositionChartData(parliament),
     };
   }
 
-  private createChart(senate: Parliament): ChartDataDTO {
+  private createParliamentCompositionChartData(senate: Parliament): ChartDataDTO {
     const labels: string[] = [];
     const backgroundColor: string[] = [];
     const borderColor: string[] = [];

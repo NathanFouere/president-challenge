@@ -1,7 +1,7 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 
 export default class extends BaseSchema {
-  protected tableName = 'state_revenue_per_months';
+  protected tableName = 'state_economical_situation_per_turns';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -9,6 +9,10 @@ export default class extends BaseSchema {
 
       table.integer('amount').notNullable();
       table.integer('turn').notNullable();
+
+      table
+        .string('color')
+        .notNullable();
 
       table
         .integer('state_id')

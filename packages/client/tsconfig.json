@@ -2,9 +2,6 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "paths": {
-      "@shared*": ["../shared/dist/types/*"],
-    },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
   },

@@ -7,7 +7,7 @@ import { GetStateOfGameQueryHandler } from '#state/application/query/get_state_o
 import { StateDtoFactory } from '#state/application/dto-factory/state_dto_factory';
 
 @inject()
-export default class Get_state_of_game_controller {
+export default class GetStateOfGameController {
   constructor(
     private readonly getStateOfGameQueryHandler: GetStateOfGameQueryHandler,
     private readonly stateDtoFactory: StateDtoFactory,
