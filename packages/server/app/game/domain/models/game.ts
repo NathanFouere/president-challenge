@@ -12,7 +12,7 @@ export default class Game extends BaseModel {
   declare id: number;
 
   @column()
-  declare turnNumber: number;
+  declare turn: number;
 
   @column({ serializeAs: null })
   declare userId: number;
@@ -39,6 +39,6 @@ export default class Game extends BaseModel {
   declare updatedAt: DateTime | null;
 
   public changeTurn() {
-    this.turnNumber += 1;
+    this.turn += 1;
   }
 }

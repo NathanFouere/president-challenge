@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import container from '../../../config/container';
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
-import type { ParliamentPresenter } from '../../presenters/legislation/parliament.presenter';
 import HalfCircle from '../common/charts/half-circle.vue';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { ParliamentPresenter } from '~/presenters/legislation/parliament.presenter';
 
 const parliamentPresenter = container.get<ParliamentPresenter>(COMMON_DEPENDANCY_TYPES.ParliamentPresenter);
 
@@ -26,7 +26,7 @@ onMounted(async () => {
         class="flex flex-col items-center"
       >
         <half-circle
-          :data="parliamentPresenter.parliamentStore.getParliament!.chartData"
+          :data="parliamentPresenter.parliamentStore.getParliament!.parliamentCompositionChartData"
         />
       </div>
     </UCard>

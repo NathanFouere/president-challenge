@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { StateDto } from '@shared/typesstate/state-dto';
+import type { MinimalStateDto } from '@shared/state/minimal-state-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{
-  state: StateDto | null;
+  state: MinimalStateDto | null;
   isLoading: boolean;
   hadError: boolean;
 }>();
@@ -24,7 +24,7 @@ defineProps<{
         v-else
         class="justify-center"
       >
-        {{ state?.name }}
+        {{ state.name }}
       </div>
     </template>
 
@@ -35,11 +35,14 @@ defineProps<{
         v-if="isLoading || hadError || !state"
         class="h-64 w-full"
       />
-      <licensed-file-component
+      <div
         v-else
-        :licensed-file="state?.flag"
-        class="w-full h-full object-cover"
-      />
+      >
+        <licensed-file-component
+          :licensed-file="state?.flag"
+          class="w-full h-full object-cover"
+        />
+      </div>
     </div>
     <template #footer>
       <USkeleton

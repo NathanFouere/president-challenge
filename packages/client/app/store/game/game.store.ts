@@ -1,4 +1,4 @@
-import type { Game } from '@shared/typesgame/game';
+import type { Game } from '@shared/game/game';
 
 export const useGameStore = defineStore('gameStore', {
   state: () => ({
@@ -46,7 +46,7 @@ export const useGameStore = defineStore('gameStore', {
       if (!state.selectedGame) {
         throw new Error('No game selected');
       }
-      return state.selectedGame.turnNumber;
+      return state.selectedGame.turn;
     },
     getGamePendingDeletionId(state): number | null {
       return state.gamePendingDeletionId;

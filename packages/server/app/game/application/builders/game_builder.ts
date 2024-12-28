@@ -1,11 +1,11 @@
 import Game from '#game/domain/models/game';
 
 export class GameBuilder {
-  public turnNumber: number | null = null;
+  public turn: number | null = null;
   public userId: number | null = null;
 
-  public withTurnNumber(turnNumber: number): this {
-    this.turnNumber = turnNumber;
+  public withTurn(turn: number): this {
+    this.turn = turn;
     return this;
   }
 
@@ -16,11 +16,11 @@ export class GameBuilder {
 
   public build(): Game {
     const game = new Game();
-    if (this.turnNumber !== null) {
-      game.turnNumber = this.turnNumber;
+    if (this.turn !== null) {
+      game.turn = this.turn;
     }
     else {
-      throw new Error('turnNumber is required');
+      throw new Error('turn is required');
     }
     if (this.userId !== null) {
       game.userId = this.userId;

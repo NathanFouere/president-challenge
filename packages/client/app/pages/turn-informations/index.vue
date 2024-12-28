@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
+import { getDateFromTurnNumber } from '@shared/utils/date-converter';
 import container from '../../../config/container';
-import type { TurnInformationsPresenter } from '../../presenters/turn-informations/turn-informations.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { TurnInformationsPresenter } from '~/presenters/turn-informations/turn-informations.presenter';
 
 const turnInformationsPresenter = container.get<TurnInformationsPresenter>(COMMON_DEPENDANCY_TYPES.TurnInformationsPresenter);
 

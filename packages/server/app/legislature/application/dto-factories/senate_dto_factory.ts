@@ -5,11 +5,11 @@ import type Senate from '#legislature/domain/models/senate';
 export class SenateDtoFactory {
   public createFromSenate(senate: Senate): SenateDto {
     return {
-      chartData: this.createChart(senate),
+      senateCompositionChartData: this.createSenateCompositionChartData(senate),
     };
   }
 
-  private createChart(senate: Senate): ChartDataDTO {
+  private createSenateCompositionChartData(senate: Senate): ChartDataDTO {
     const labels: string[] = [];
     const backgroundColor: string[] = [];
     const borderColor: string[] = [];
