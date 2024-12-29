@@ -6,14 +6,13 @@ import type { HttpContext } from '@adonisjs/core/http';
 import { PoliticalPartyDTOFactory } from '#political-party/application/dto-factories/political_party_dto_factory';
 import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries/get_political_party_of_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import {
-  GetPoliticalPartyOfGameQueryHandler,
-} from '#political-party/application/queries/get_political_party_of_game_query_handler';
+import IGetPoliticalPartyOfGameQueryHandler
+  from '#political-party/application/queries/i_get_political_party_of_game_query_handler';
 
 @inject()
 export default class GetPoliticalPartyController {
   constructor(
-    private readonly getPoliticalPartyOfGameQueryHandler: GetPoliticalPartyOfGameQueryHandler,
+    private readonly getPoliticalPartyOfGameQueryHandler: IGetPoliticalPartyOfGameQueryHandler,
     private readonly politicalPartyFactory: PoliticalPartyDTOFactory,
   ) {}
 

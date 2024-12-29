@@ -1,6 +1,8 @@
 import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
+import type IStateEconomicalSituationPerTurnRepository
+  from '#state/domain/repository/i_state_economical_situation_per_turn_repository';
 
-export class StateEconomicalSituationPerTurnRepository {
+export default class StateEconomicalSituationPerTurnRepository implements IStateEconomicalSituationPerTurnRepository {
   public async save(state: StateEconomicalSituationPerTurn): Promise<void> {
     state.save();
   }

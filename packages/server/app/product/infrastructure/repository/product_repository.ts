@@ -1,6 +1,7 @@
 import Product from '#product/domain/models/product';
+import type IProductRepository from '#product/domain/repository/i_product_repository';
 
-export class ProductRepository {
+export default class ProductRepository implements IProductRepository {
   public async save(product: Product): Promise<void> {
     await product.save();
   }

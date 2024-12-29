@@ -1,6 +1,7 @@
 import Game from '#game/domain/models/game';
+import type IGameRepository from '#game/domain/repository/i_game_repository';
 
-export default class GameRepository {
+export default class GameRepository implements IGameRepository {
   public async save(game: Game): Promise<void> {
     await game.save();
   }

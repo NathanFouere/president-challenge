@@ -1,6 +1,7 @@
 import Event from '#event/domain/models/event';
+import type IEventRepository from '#event/domain/repository/i_event_repository';
 
-export class EventRepository {
+export default class EventRepository implements IEventRepository {
   public async save(event: Event): Promise<void> {
     await event.save();
   }

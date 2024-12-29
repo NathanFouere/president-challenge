@@ -1,6 +1,7 @@
 import State from '#state/domain/model/state';
+import type IStateRepository from '#state/domain/repository/i_state_repository';
 
-export class StateRepository {
+export default class StateRepository implements IStateRepository {
   public async save(state: State): Promise<void> {
     await state.save();
   }

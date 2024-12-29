@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseURLProxyServer: process.env.NUXT_PUBLIC_BASE_URL_PROXY_SERVER || 'http://localhost:3333',
+      baseURLProxyServer: process.env.NUXT_PUBLIC_BASE_URL_PROXY_SERVER,
     },
   },
 

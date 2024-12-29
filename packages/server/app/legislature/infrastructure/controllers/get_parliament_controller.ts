@@ -1,15 +1,17 @@
+import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { GetParliamentByGameQueryHandler } from '#legislature/application/query/get_parliament_by_game_query_handler';
-import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_by_game_query';
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ParliamentDtoFactory } from '#legislature/application/dto-factories/parliament_dto_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_get_parliament_by_game_query_handler';
+import { GetParliamentByGameQuery } from '#legislature/application/query/get_parliament_by_game_query';
 
 @inject()
 export default class GetParliamentController {
   constructor(
-    private readonly getParliamentQueryHandler: GetParliamentByGameQueryHandler,
+    private readonly getParliamentQueryHandler: IGetParliamentByGameQueryHandler,
     private readonly parliamentDtoFactory: ParliamentDtoFactory,
   ) {
   }
@@ -18,8 +20,7 @@ export default class GetParliamentController {
     try {
       auth.getUserOrFail();
       const gameId: number = params.gameId;
-
-      const parliament = await this.getParliamentQueryHandler.handle(new GetSenateByGameQuery(
+      const parliament = await this.getParliamentQueryHandler.handle(new GetParliamentByGameQuery(
         gameId,
       ));
 

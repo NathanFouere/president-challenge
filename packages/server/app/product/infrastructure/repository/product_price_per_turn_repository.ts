@@ -1,6 +1,7 @@
 import ProductPricePerTurn from '#product/domain/models/product_price_per_turn';
+import type IProductPricePerTurnRepository from '#product/domain/repository/i_product_price_per_turn_repository';
 
-export class ProductPricePerTurnRepository {
+export default class ProductPricePerTurnRepository implements IProductPricePerTurnRepository {
   public async save(productPricePerTurn: ProductPricePerTurn): Promise<void> {
     await productPricePerTurn.save();
   }

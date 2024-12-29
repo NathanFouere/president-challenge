@@ -1,6 +1,7 @@
 import Sector from '#sector/domain/model/sector';
+import type ISectorRepository from '#sector/domain/repository/i_sector_repository';
 
-export class SectorRepository {
+export default class SectorRepository implements ISectorRepository {
   public async save(sector: Sector): Promise<void> {
     await sector.save();
   }

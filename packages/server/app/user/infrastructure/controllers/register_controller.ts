@@ -2,12 +2,12 @@ import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
 import { aUser } from '#user/application/builders/user_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { UserRepository } from '#user/infrastructure/repositories/user_repository';
+import IUserRepository from '#user/domain/repository/i_user_repository';
 
 @inject()
 export default class RegisterController {
   constructor(
-    private readonly userRepository: UserRepository,
+    private readonly userRepository: IUserRepository,
   ) {
   }
 

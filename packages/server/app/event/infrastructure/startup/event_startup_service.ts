@@ -1,12 +1,6 @@
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { EventRepository } from '#event/infrastructure/repositories/event_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ChoiceRepository } from '#event/infrastructure/repositories/choice_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import {
-  GetEventByIdentifierAndGameQueryHandler,
-} from '#event/application/queries/get_event_by_identifier_and_game_query_handler';
+import GetEventByIdentifierAndGameQueryHandler from '#event/infrastructure/queries/get_event_by_identifier_and_game_query_handler';
 import summer_olympics from '#game-config/event/historical-events/1972-summer-olympics.json' assert { type: 'json' };
 import basic_treaty from '#game-config/event/historical-events/basic-treaty.json' assert { type: 'json' };
 import bangladesh_independance from '#game-config/event/historical-events/bengladesh-independance.json' assert { type: 'json' };
@@ -53,12 +47,16 @@ import type Event from '#event/domain/models/event';
 import type Choice from '#event/domain/models/choice';
 import type { EventStartupInterface } from '#event/infrastructure/startup/event_startup_interface';
 import type { ChoiceStartupInterface } from '#event/infrastructure/startup/choice_startup_interface';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IEventRepository from '#event/domain/repository/i_event_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IChoiceRepository from '#event/domain/repository/i_choice_repository';
 
 @inject()
 export class EventStartupService {
   constructor(
-    private readonly eventRepository: EventRepository,
-    private readonly choiceRepository: ChoiceRepository,
+    private readonly eventRepository: IEventRepository,
+    private readonly choiceRepository: IChoiceRepository,
     private readonly getEventByIdentifierAndGameQueryHandler: GetEventByIdentifierAndGameQueryHandler,
   ) {}
 
