@@ -1,18 +1,18 @@
 import { inject } from '@adonisjs/core';
 
 import { ChoiceStatus } from '@shared/dist/event/choice-status.js';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { EventRepository } from '#event/infrastructure/repositories/event_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ChoiceRepository } from '#event/infrastructure/repositories/choice_repository';
 import type Choice from '#event/domain/models/choice';
 import type Event from '#event/domain/models/event';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IChoiceRepository from '#event/domain/repository/i_choice_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IEventRepository from '#event/domain/repository/i_event_repository';
 
 @inject()
 export class ChooseChoiceService {
   constructor(
-    private readonly eventRepository: EventRepository,
-    private readonly choiceRepository: ChoiceRepository,
+    private readonly eventRepository: IEventRepository,
+    private readonly choiceRepository: IChoiceRepository,
   ) {}
 
   public async chooseChoice(choice: Choice): Promise<void> {
