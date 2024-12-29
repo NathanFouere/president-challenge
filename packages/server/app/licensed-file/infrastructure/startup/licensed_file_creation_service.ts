@@ -1,14 +1,15 @@
 import { inject } from '@adonisjs/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { LicensedFileRepository } from '#licensed-file/infrastructure/repositories/licensed_file_repository';
+
 import type LicensedFile from '#licensed-file/domain/models/licensed_file';
 import licensedFileStartupConfig from '#game-config/licensed-file/licensed-file-create-config.json' assert { type: 'json' };
 import { aLicensedFile } from '#licensed-file/application/builders/licensed_file_builder';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ILicensedFileRepository from '#licensed-file/domain/repository/i_licensed_file_repository';
 
 @inject()
 export class LicensedFileCreationService {
   constructor(
-    private readonly licensedFileRepository: LicensedFileRepository,
+    private readonly licensedFileRepository: ILicensedFileRepository,
   ) {
   }
 

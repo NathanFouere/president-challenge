@@ -1,20 +1,22 @@
 import { inject } from '@adonisjs/core';
 
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductRepository } from '#product/infrastructure/repository/product_repository';
+
 import productStartupConfig from '#game-config/product/product-startup-config.json' assert { type: 'json' };
 import type Product from '#product/domain/models/product';
 import { aProduct } from '#product/application/builder/product_builder';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { GetSectorByGameAndTypeQueryHandler } from '#sector/application/query/get_sector_by_game_and_type_query_handler';
+
 import { GetSectorByGameAndTypeQuery } from '#sector/application/query/get_sector_by_game_and_type_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IProductRepository from '#product/domain/repository/i_product_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetSectorByGameAndTypeQueryHandler from '#sector/application/query/i_get_sector_by_game_and_type_query_handler';
 
 @inject()
 export class ProductStartupService {
   constructor(
-    private readonly productRepository: ProductRepository,
-    private readonly getSectorByGameAndTypeQueryHandler: GetSectorByGameAndTypeQueryHandler,
+    private readonly productRepository: IProductRepository,
+    private readonly getSectorByGameAndTypeQueryHandler: IGetSectorByGameAndTypeQueryHandler,
   ) {
   }
 

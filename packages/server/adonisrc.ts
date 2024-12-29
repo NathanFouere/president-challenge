@@ -36,6 +36,16 @@ export default defineConfig({
     () => import('@adonisjs/lucid/database_provider'),
     () => import('@adonisjs/auth/auth_provider'),
     () => import('@adonisjs/cors/cors_provider'),
+    () => import('#event/event_provider'),
+    () => import('#game/game_provider'),
+    () => import('#legislature/legislature_provider'),
+    () => import('#licensed-file/licensed_file_provider'),
+    () => import('#political-party/political_party_provider'),
+    () => import('#product/product_provider'),
+    () => import('#sector/sector_provider'),
+    () => import('#social-class/social_class_provider'),
+    () => import('#state/state_provider'),
+    () => import('#user/user_provider'),
   ],
 
   /*

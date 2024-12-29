@@ -1,12 +1,12 @@
 import { inject } from '@adonisjs/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { SenateRepository } from '#legislature/infrastructure/repositories/senate_repository';
 import { aSenate } from '#legislature/application/builders/senate_builder';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ISenateRepository from '#legislature/domain/repository/i_senate_repository';
 
 @inject()
 export class SenateStartupService {
   constructor(
-    private readonly senateRepository: SenateRepository,
+    private readonly senateRepository: ISenateRepository,
   ) {
   }
 

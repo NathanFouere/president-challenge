@@ -2,16 +2,19 @@ import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ChooseChoiceService } from '#event/application/services/choose_choice_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import GetChoiceByIdAndEventQueryHandler from '#event/application/queries/get_choice_by_id_and_event_query_handler';
+import { ChooseChoiceService } from '#event/domain/services/choose_choice_service';
+
 import { GetChoiceByIdAndEventQuery } from '#event/application/queries/get_choice_by_id_and_event_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  IGetChoiceByIdAndEventQueryHandler,
+} from '#event/application/queries/i_get_choice_by_id_and_event_query_handler';
 
 @inject()
 export default class ChooseChoiceController {
   constructor(
     private readonly chooseChoiceService: ChooseChoiceService,
-    private readonly getChoiceByIdAndEventQueryHandler: GetChoiceByIdAndEventQueryHandler,
+    private readonly getChoiceByIdAndEventQueryHandler: IGetChoiceByIdAndEventQueryHandler,
   ) {
   }
 

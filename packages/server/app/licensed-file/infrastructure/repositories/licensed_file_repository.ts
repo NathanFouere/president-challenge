@@ -1,6 +1,7 @@
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
+import type ILicensedFileRepository from '#licensed-file/domain/repository/i_licensed_file_repository';
 
-export class LicensedFileRepository {
+export default class LicensedFileRepository implements ILicensedFileRepository {
   public async save(licensedFile: LicensedFile): Promise<void> {
     await licensedFile.save();
   }

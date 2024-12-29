@@ -1,16 +1,17 @@
 import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { GetSenateByGameQueryHandler } from '#legislature/application/query/get_senate_by_game_query_handler';
+
 import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_by_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SenateDtoFactory } from '#legislature/application/dto-factories/senate_dto_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetSenateByGameQueryHandler from '#legislature/application/query/i_get_senate_by_game_query_handler';
 
 @inject()
 export default class GetSenateController {
   constructor(
-    private readonly getSenateByGameQueryHandler: GetSenateByGameQueryHandler,
+    private readonly getSenateByGameQueryHandler: IGetSenateByGameQueryHandler,
     private readonly senateDtoFactory: SenateDtoFactory,
   ) {
   }

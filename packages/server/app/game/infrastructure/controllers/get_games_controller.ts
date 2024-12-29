@@ -1,19 +1,19 @@
 import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SelectGamesQueryHandler from '#game/application/queries/select_user_games_query_handler';
 import type User from '#user/domain/models/user';
-import { SelectUserGamesQuery } from '#game/application/queries/select_user_games_query';
+import { GetUserGamesQuery } from '#game/application/queries/get_user_games_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetUserGamesQueryHandler from '#game/application/queries/i_get_user_games_query_handler';
 
 @inject()
 export default class GetGamesController {
-  constructor(private readonly selectGamesQueryHandler: SelectGamesQueryHandler) {}
+  constructor(private readonly selectGamesQueryHandler: IGetUserGamesQueryHandler) {}
 
   public async getUserGames({ auth, response }: HttpContext) {
     try {
       const user: User = auth.getUserOrFail();
       const games = await this.selectGamesQueryHandler.getUserGames(
-        new SelectUserGamesQuery(user),
+        new GetUserGamesQuery(user),
       );
       return games;
     }

@@ -1,6 +1,8 @@
 import SectorEconomicalSituationPerTurn from '#sector/domain/model/sector_economical_situation_per_turn';
+import type ISectorEconomicalSituationPerTurnRepository
+  from '#sector/domain/repository/i_sector_economical_situation_per_turn_repository';
 
-export class SectorEconomicalSituationPerTurnRepository {
+export default class SectorEconomicalSituationPerTurnRepository implements ISectorEconomicalSituationPerTurnRepository {
   public async save(sector: SectorEconomicalSituationPerTurn): Promise<void> {
     await sector.save();
   }

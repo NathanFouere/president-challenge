@@ -1,16 +1,16 @@
 import type { HttpContext } from '@adonisjs/core/http';
 import { inject } from '@adonisjs/core';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { GetProductOfGameQueryHandler } from '#product/application/query/get_product_of_game_query_handler';
 import { GetProductOfGameQuery } from '#product/application/query/get_product_of_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ProductDtoFactory } from '#product/application/factory/product_dto_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetProductOfGameQueryHandler from '#product/application/query/i_get_product_of_game_query_handler';
 
 @inject()
 export default class GetProductOfGameController {
   constructor(
-    private readonly getProductOfGameQueryHandler: GetProductOfGameQueryHandler,
+    private readonly getProductOfGameQueryHandler: IGetProductOfGameQueryHandler,
     private readonly productDtoFactory: ProductDtoFactory,
   ) {
   }

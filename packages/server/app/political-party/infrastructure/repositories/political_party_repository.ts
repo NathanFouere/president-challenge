@@ -1,10 +1,7 @@
 import PoliticalParty from '#political-party/domain/models/political_party';
+import type IPoliticalPartyRepository from '#political-party/domain/repository/i_political_party_repository';
 
-export class PoliticalPartyRepository {
-  public async getPoliticalPartyOfGameIdById(id: number, gameId: number): Promise<PoliticalParty> {
-    return PoliticalParty.query().where('id', id).where('game_id', gameId).firstOrFail();
-  }
-
+export default class PoliticalPartyRepository implements IPoliticalPartyRepository {
   public async save(politicalParty: PoliticalParty): Promise<void> {
     await politicalParty.save();
   }

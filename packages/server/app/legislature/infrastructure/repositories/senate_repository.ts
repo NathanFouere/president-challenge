@@ -1,33 +1,12 @@
 import Senate from '#legislature/domain/models/senate';
+import type ISenateRepository from '#legislature/domain/repository/i_senate_repository';
 
-export class SenateRepository {
-  public async save(senate: Senate): Promise<void> {
-    senate.save();
-  }
-
-  public async getByGameId(gameId: number): Promise<Senate> {
-    return await Senate.query().where('game_id', gameId).firstOrFail();
-  }
-
+export default class SenateRepository implements ISenateRepository {
   public async findById(id: number): Promise<Senate | null> {
     return await Senate.find(id);
   }
 
-  public async getById(id: number): Promise<Senate> {
-    const senate = await this.findById(id);
-
-    if (senate === null) {
-      throw new Error(`Senate with id ${id} not found`);
-    }
-
-    return senate;
-  }
-
-  public async getAll(): Promise<Senate[]> {
-    return await Senate.all();
-  }
-
-  public async remove(senate: Senate): Promise<void> {
-    await senate.delete();
+  public async save(senate: Senate): Promise<void> {
+    await senate.save();
   }
 }

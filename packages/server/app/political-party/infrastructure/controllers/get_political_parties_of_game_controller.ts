@@ -1,20 +1,19 @@
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import {
-  GetPoliticalPartiesOfGameQueryHandler,
-} from '#political-party/application/queries/get_political_parties_of_game_query_handler';
 import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries/get_political_parties_of_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   PoliticalPartyMinimalDTOFactory,
 } from '#political-party/application/dto-factories/political_party_minimal_dto_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetPoliticalPartiesOfGameQueryHandler
+  from '#political-party/application/queries/i_get_political_parties_of_game_query_handler';
 
 @inject()
 export default class GetPoliticalPartiesOfGameController {
   constructor(
-    private readonly getPoliticalPartiesOfGameQueryHandler: GetPoliticalPartiesOfGameQueryHandler,
+    private readonly getPoliticalPartiesOfGameQueryHandler: IGetPoliticalPartiesOfGameQueryHandler,
     private readonly politicalPartyMinimalDTOFactory: PoliticalPartyMinimalDTOFactory,
   ) {}
 

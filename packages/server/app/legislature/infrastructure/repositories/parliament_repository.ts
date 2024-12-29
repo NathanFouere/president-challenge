@@ -1,6 +1,7 @@
 import { Parliament } from '#legislature/domain/models/parliament';
+import type IParliamentRepository from '#legislature/domain/repository/i_parliament_repository';
 
-export class ParliamentRepository {
+export default class ParliamentRepository implements IParliamentRepository {
   public async save(parliament: Parliament): Promise<void> {
     parliament.save();
   }

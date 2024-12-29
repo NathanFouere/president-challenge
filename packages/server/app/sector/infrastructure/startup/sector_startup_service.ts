@@ -1,15 +1,15 @@
 import { inject } from '@adonisjs/core';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { SectorRepository } from '#sector/infrastructure/repository/sector_repository';
 import type Sector from '#sector/domain/model/sector';
 import { aSector } from '#sector/application/builder/sector_builder';
 import sectorStartupConfig from '#game-config/sector/sector-startup-config.json' assert { type: 'json' };
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ISectorRepository from '#sector/domain/repository/i_sector_repository';
 
 @inject()
 export class SectorStartupService {
   constructor(
-    private readonly sectorRepository: SectorRepository,
+    private readonly sectorRepository: ISectorRepository,
   ) {
   }
 

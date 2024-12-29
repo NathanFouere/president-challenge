@@ -1,6 +1,7 @@
 import Choice from '#event/domain/models/choice';
+import type IChoiceRepository from '#event/domain/repository/i_choice_repository';
 
-export class ChoiceRepository {
+export default class ChoiceRepository implements IChoiceRepository {
   public async save(choice: Choice): Promise<void> {
     await choice.save();
   }

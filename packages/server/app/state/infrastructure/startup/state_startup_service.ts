@@ -1,13 +1,13 @@
 import { inject } from '@adonisjs/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { StateRepository } from '#state/infrastructure/repository/state_repository';
 import stateStartupConfig from '#game-config/state/state-startup-config.json' assert { type: 'json' };
 import { aState } from '#state/application/builder/state_builder';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IStateRepository from '#state/domain/repository/i_state_repository';
 
 @inject()
 export class StateStartupService {
   constructor(
-    private readonly stateRepository: StateRepository,
+    private readonly stateRepository: IStateRepository,
   ) {
   }
 
