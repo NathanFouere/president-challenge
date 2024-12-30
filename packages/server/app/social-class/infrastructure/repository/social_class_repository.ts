@@ -1,10 +1,15 @@
-import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import type { SocialClassSubtypes } from '../../../../../shared/src/social-class/social-class-subtypes.js';
 import SocialClass from '#social-class/domain/models/social_class';
 import type ISocialClassRepository from '#social-class/domain/repository/i_social_class_repository';
 
 export default class SocialClassRepository implements ISocialClassRepository {
   public async save(socialClass: SocialClass): Promise<void> {
     await socialClass.save();
+  }
+
+  public async saveMany(socialClasses: SocialClass[]): Promise<void> {
+    const promises = socialClasses.map(socialClass => socialClass.save());
+    await Promise.all(promises);
   }
 
   public async delete(socialClass: SocialClass): Promise<void> {
@@ -20,7 +25,7 @@ export default class SocialClassRepository implements ISocialClassRepository {
     socialClass.related('licensedFiles').attach(licensedFilesIdentifiers);
   }
 
-  public async getByTypeAndGameId(type: SocialClassTypes, gameId: number): Promise<SocialClass> {
+  public async getByTypeAndGameId(type: SocialClassSubtypes, gameId: number): Promise<SocialClass> {
     return SocialClass.query().where('type', type).where('game_id', gameId).firstOrFail();
   }
 }

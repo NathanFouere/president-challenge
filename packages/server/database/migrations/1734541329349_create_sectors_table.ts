@@ -18,6 +18,9 @@ export default class extends BaseSchema {
         ])
         .notNullable();
 
+      // TODO => changer en enum
+      table.string('ownership_type').notNullable();
+
       table
         .integer('game_id')
         .unsigned()

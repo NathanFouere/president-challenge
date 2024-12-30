@@ -1,5 +1,6 @@
 import { inject } from '@adonisjs/core';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
+import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import type Sector from '#sector/domain/model/sector';
 import { aSector } from '#sector/application/builder/sector_builder';
 import sectorStartupConfig from '#game-config/sector/sector-startup-config.json' assert { type: 'json' };
@@ -23,6 +24,7 @@ export class SectorStartupService {
         .withEconomicalSituation(sectorValues.economicalSituation)
         .withDescription(sectorValues.description)
         .withGameId(gameId)
+        .withOwnershipType(sectorValues.ownershipType as SectorOwnershipType)
         .withLicensedFileIdentifier(sectorValues.licensedFileIdentifier)
         .build();
 

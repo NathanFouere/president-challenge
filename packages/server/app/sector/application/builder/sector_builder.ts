@@ -1,4 +1,5 @@
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
+import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import Sector from '#sector/domain/model/sector';
 
 export class SectorBuilder {
@@ -7,6 +8,7 @@ export class SectorBuilder {
   private description: string | null = null;
   private licensedFileIdentifier: string | null = null;
   private economicalSituation: number | null = null;
+  private ownershipType: SectorOwnershipType | null = null;
   private gameId: number | null = null;
 
   public withName(name: string): this {
@@ -36,6 +38,11 @@ export class SectorBuilder {
 
   public withGameId(gameId: number): this {
     this.gameId = gameId;
+    return this;
+  }
+
+  public withOwnershipType(ownershipType: SectorOwnershipType): this {
+    this.ownershipType = ownershipType;
     return this;
   }
 
@@ -82,6 +89,13 @@ export class SectorBuilder {
     }
     else {
       throw new Error('economicalSituation is required');
+    }
+
+    if (this.ownershipType !== null) {
+      sector.ownershipType = this.ownershipType;
+    }
+    else {
+      throw new Error('ownershipType is required');
     }
 
     return sector;

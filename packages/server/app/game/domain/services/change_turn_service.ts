@@ -34,6 +34,9 @@ import IGetProductsOfGameQueryHandler from '#product/application/query/i_get_pro
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetSocialClassesOfGameQueryHandler
   from '#social-class/application/queries/i_get_social_classes_of_game_query_handler';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SectorEconomicalSituationCalculatorService
+  from '#sector/domain/service/sector_economical_situation_calculator_service';
 
 @inject()
 export default class ChangeTurnService {
@@ -48,6 +51,7 @@ export default class ChangeTurnService {
     private readonly productChangePriceTurnService: ProductPriceRandomizerService,
     private readonly getSocialClassesOfGameQueryHandler: IGetSocialClassesOfGameQueryHandler,
     private readonly socialClassEconomicalSituationPerTurnSaveService: SocialClassEconomicalSituationPerTurnSaveService,
+    private readonly sectorEconomicalSituationCalculatorService: SectorEconomicalSituationCalculatorService,
   ) {
   }
 
@@ -58,7 +62,7 @@ export default class ChangeTurnService {
       const state = await this.getStateOfGameQueryHandler.handle(new GetStateOfGameQuery(
         game.id,
       ));
-      const sectors = await this.getSectorsOfGameQueryHandler.handle(new GetSectorsByGameQuery(
+      const sectors = await this.getSectorsOfGameQueryHandler.handleForSwitchTurn(new GetSectorsByGameQuery(
         game.id,
       ));
       const products = await this.getProductsOfGameQueryHandler.handle(new GetProductsOfGameQuery(
@@ -68,6 +72,7 @@ export default class ChangeTurnService {
         game.id,
       ));
       await this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForMonth(state, newTurn);
+      await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(sectors, state);
       await this.sectorEconomicalSituationPerTurnSaveService.saveSectorsEconomicalSituationForTurn(sectors, newTurn);
       await this.productChangePriceTurnService.changeProductsPricesRandomly(products);
       await this.productPricePerTurnSaveService.saveProductsPricesPerTurn(products, newTurn);
