@@ -1,4 +1,4 @@
-export enum SocialClassTypes {
+export enum SocialClassSubtypes {
   IndustrialOwners = 'Industrial Owners',
   MineOwners = 'Mine Owners',
   LandOwners = 'Land Owners',

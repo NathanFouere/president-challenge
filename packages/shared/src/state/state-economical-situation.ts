@@ -1,4 +1,4 @@
-export enum SectorEconomicalSituation {
+export enum StateEconomicalSituation {
   VeryLow = 0,
   Low = 1,
   Medium = 2,
