@@ -6,6 +6,11 @@ export default class PoliticalPartyRepository implements IPoliticalPartyReposito
     await politicalParty.save();
   }
 
+  public async saveMany(politicalParties: PoliticalParty[]): Promise<void> {
+    const promises = politicalParties.map(politicalParty => this.save(politicalParty));
+    await Promise.all(promises);
+  }
+
   public async delete(politicalParty: PoliticalParty): Promise<void> {
     await politicalParty.delete();
   }

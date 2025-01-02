@@ -6,6 +6,11 @@ export default class ProductRepository implements IProductRepository {
     await product.save();
   }
 
+  public async saveMany(products: Product[]): Promise<void> {
+    const promises = products.map(product => this.save(product));
+    await Promise.all(promises);
+  }
+
   public async findById(id: number): Promise<Product | null> {
     return await Product.find(id);
   }

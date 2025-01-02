@@ -6,6 +6,11 @@ export default class SectorRepository implements ISectorRepository {
     await sector.save();
   }
 
+  public async saveMany(sectors: Sector[]): Promise<void> {
+    const promises = sectors.map(sector => this.save(sector));
+    await Promise.all(promises);
+  }
+
   public async findById(id: number): Promise<Sector | null> {
     return Sector.find(id);
   }

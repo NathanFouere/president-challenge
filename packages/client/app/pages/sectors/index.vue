@@ -4,6 +4,7 @@ import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import type { SectorsPresenter } from '../../presenters/sector/sectors.presenter';
 
 const sectorsPresenter = container.get<SectorsPresenter>(COMMON_DEPENDANCY_TYPES.SectorsPresenter);
+usePageTitle().setTitle('Sectors');
 
 onMounted(async () => {
   await sectorsPresenter.getSectors();

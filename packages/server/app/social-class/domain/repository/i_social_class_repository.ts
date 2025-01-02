@@ -1,4 +1,4 @@
-import type { SocialClassSubtypes } from '../../../../../shared/src/social-class/social-class-subtypes.js';
+import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import type SocialClass from '#social-class/domain/models/social_class';
 
 export default abstract class ISocialClassRepository {

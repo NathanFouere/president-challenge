@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
-import type { ProductsPresenter } from '../../presenters/product/products.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { ProductsPresenter } from '~/presenters/product/products.presenter';
 
 usePageTitle().setTitle('Products');
 

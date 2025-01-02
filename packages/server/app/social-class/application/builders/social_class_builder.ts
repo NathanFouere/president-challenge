@@ -1,6 +1,6 @@
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import type { SocialClassSubtypes } from '../../../../../shared/src/social-class/social-class-subtypes.js';
+import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import SocialClass from '#social-class/domain/models/social_class';
 
 export class SocialClassBuilder {

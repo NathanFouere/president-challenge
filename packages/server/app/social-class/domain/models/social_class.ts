@@ -4,7 +4,7 @@ import type { DateTime } from 'luxon';
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import type { SocialClassEconomicalSituation } from '@shared/dist/social-class/social-class-economical-situation.js';
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import type { SocialClassSubtypes } from '../../../../../shared/src/social-class/social-class-subtypes.js';
+import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';

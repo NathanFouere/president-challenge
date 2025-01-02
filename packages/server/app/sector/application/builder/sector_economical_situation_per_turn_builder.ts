@@ -12,7 +12,7 @@ export default class SectorEconomicalSituationPerTurnBuilder extends SaveAmountF
   public build(): SectorEconomicalSituationPerTurn {
     const sectorEconomicalSituationPerTurn = new SectorEconomicalSituationPerTurn();
 
-    if (this.amount) sectorEconomicalSituationPerTurn.amount = this.amount;
+    if (this.amount !== null) sectorEconomicalSituationPerTurn.amount = this.amount;
     else throw new Error('Amount is required');
     if (this.turn) sectorEconomicalSituationPerTurn.turn = this.turn;
     else throw new Error('Turn is required');

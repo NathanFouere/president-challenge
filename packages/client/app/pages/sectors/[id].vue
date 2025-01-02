@@ -9,9 +9,11 @@ const route = useRoute();
 const id = Number(route.params.id);
 
 const sectorPresenter = container.get<SectorPresenter>(COMMON_DEPENDANCY_TYPES.SectorPresenter);
+usePageTitle().setTitle('Sector : ...');
 
 onMounted(async () => {
   await sectorPresenter.getSector(id);
+  usePageTitle().setTitle('Sector : ' + sectorPresenter.sectorStore.requireSector.name);
 });
 </script>
 

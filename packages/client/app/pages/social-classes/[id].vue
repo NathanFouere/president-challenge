@@ -9,9 +9,11 @@ const route = useRoute();
 const id = Number(route.params.id);
 
 const socialClassPresenter = container.get<SocialClassPresenter>(COMMON_DEPENDANCY_TYPES.SocialClassPresenter);
+usePageTitle().setTitle('Social Class : ...');
 
 onMounted(async () => {
   await socialClassPresenter.getSocialClass(id);
+  usePageTitle().setTitle('Sector : ' + socialClassPresenter.socialClassStore.requireSocialClass.name);
 });
 </script>
 
