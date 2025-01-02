@@ -17,7 +17,9 @@ export default class GetProductOfGameQueryHandler implements IGetProductOfGameQu
     }
 
     if (preloadOptions.pricePerTurn) {
-      queryBuilder.preload('pricePerTurn');
+      queryBuilder.preload('pricePerTurn', (query) => {
+        query.orderBy('turn', 'asc');
+      });
     }
 
     return queryBuilder.firstOrFail();

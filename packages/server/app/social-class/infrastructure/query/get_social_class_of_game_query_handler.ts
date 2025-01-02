@@ -14,7 +14,9 @@ export default class GetSocialClassOfGameQueryHandler implements IGetSocialClass
       .where('id', query.socialClassId);
 
     if (preloadOptions.economicalSituationPerTurn) {
-      queryBuilder.preload('economicalSituationPerTurn');
+      queryBuilder.preload('economicalSituationPerTurn', (query) => {
+        query.orderBy('turn', 'asc');
+      });
     }
 
     if (preloadOptions.licensedFiles) {
