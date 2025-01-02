@@ -10,7 +10,7 @@ export class MinimalSocialClassDtoFactory {
       name: socialClass.name,
       description: socialClass.description,
       color: socialClass.color,
-      socialClassType: socialClass.type,
+      socialClassType: socialClass.subType,
       licensedFile: socialClass.licensedFiles[0],
     };
   }

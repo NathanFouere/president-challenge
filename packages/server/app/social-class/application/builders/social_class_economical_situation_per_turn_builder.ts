@@ -13,7 +13,7 @@ export default class SocialClassEconomicalSituationPerTurnBuilder extends SaveAm
   public build(): SocialClassEconomicalSituationPerTurn {
     const socialClassEconomicalSituationPerTurn = new SocialClassEconomicalSituationPerTurn();
 
-    if (this.amount) socialClassEconomicalSituationPerTurn.amount = this.amount;
+    if (this.amount != null) socialClassEconomicalSituationPerTurn.amount = this.amount;
     else throw new Error('Amount is required');
     if (this.turn) socialClassEconomicalSituationPerTurn.turn = this.turn;
     else throw new Error('Turn is required');

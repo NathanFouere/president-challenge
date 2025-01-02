@@ -1,5 +1,6 @@
-import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
+import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import SocialClass from '#social-class/domain/models/social_class';
 
 export class SocialClassBuilder {
@@ -7,7 +8,8 @@ export class SocialClassBuilder {
   private description: string | null = null;
   private color: string | null = null;
   private economicalSituation: number | null = null;
-  private socialClassType: SocialClassTypes | null = null;
+  private subtype: SocialClassSubtypes | null = null;
+  private type: SocialClassTypes | null = null;
   private gameId: number | null = null;
   private happinessLevel: HappinessLevels | null = null;
   private sectorId: number | null = null;
@@ -32,8 +34,13 @@ export class SocialClassBuilder {
     return this;
   }
 
-  withSocialClassType(socialClassType: SocialClassTypes): this {
-    this.socialClassType = socialClassType;
+  withType(socialClassType: SocialClassTypes): this {
+    this.type = socialClassType;
+    return this;
+  }
+
+  withSubtype(socialClassSubtypes: SocialClassSubtypes): this {
+    this.subtype = socialClassSubtypes;
     return this;
   }
 
@@ -62,7 +69,7 @@ export class SocialClassBuilder {
     else throw new Error('Color is required');
     if (!this.economicalSituation) throw new Error('economical Situation is required');
     else socialClass.economicalSituation = this.economicalSituation;
-    if (this.socialClassType) socialClass.type = this.socialClassType;
+    if (this.subtype) socialClass.subType = this.subtype;
     else throw new Error('Social class type is required');
     if (this.gameId) socialClass.gameId = this.gameId;
     else throw new Error('Game ID is required');
@@ -70,6 +77,8 @@ export class SocialClassBuilder {
     else throw new Error('Happiness level is required');
     if (this.sectorId) socialClass.sectorId = this.sectorId;
     else throw new Error('Sector ID is required');
+    if (this.type) socialClass.type = this.type;
+    else throw new Error('Type is required');
     return socialClass;
   }
 }

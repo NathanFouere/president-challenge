@@ -1,9 +1,10 @@
 import { inject } from '@adonisjs/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 
 import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
+import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
+import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import { aSocialClass } from '#social-class/application/builders/social_class_builder';
 import socialClassStartupConfigValues from '#game-config/social-class/social-class-startup-config.json' assert { type: 'json' };
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -28,7 +29,8 @@ export class SocialClassStartupService {
       ));
 
       const socialClass = aSocialClass()
-        .withSocialClassType(socialClassValues.type as SocialClassTypes)
+        .withType(socialClassValues.type as SocialClassTypes)
+        .withSubtype(socialClassValues.subtype as SocialClassSubtypes)
         .withGameId(gameId)
         .withColor(socialClassValues.color)
         .withHappinessLevel(socialClassValues.happinessLevel as HappinessLevels)

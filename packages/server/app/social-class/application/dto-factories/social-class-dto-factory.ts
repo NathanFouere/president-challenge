@@ -1,6 +1,5 @@
 import type { SocialClassDto } from '@shared/dist/social-class/social-class-dto.js';
 import { inject } from '@adonisjs/core';
-import { wealthLevels } from '@shared/dist/social-class/wealth-levels.js';
 import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
 import { getDateFromTurnNumber } from '@shared/dist/utils/date-converter.js';
 import type SocialClass from '#social-class/domain/models/social_class';
@@ -20,9 +19,9 @@ export class SocialClassDtoFactory {
       name: socialClass.name,
       description: socialClass.description,
       color: socialClass.color,
-      economicalSituation: wealthLevels[socialClass.economicalSituation],
+      economicalSituation: 'todo',
       happinessLevel: socialClass.happinessLevel,
-      socialClassType: socialClass.type,
+      socialClassType: socialClass.subType,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
       economicalSituationPerMonthChartData: this.createEconomicalSituationChartData(socialClass),
     };

@@ -1,4 +1,4 @@
-import type { SocialClassTypes } from '@shared/social-class/social-class-types.js';
+import type { SocialClassSubtypes } from '@shared/social-class/social-class-subtypes.js';
 import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
 
 export interface MinimalSocialClassDto {
@@ -6,6 +6,6 @@ export interface MinimalSocialClassDto {
   name: string;
   description: string;
   color: string;
-  socialClassType: SocialClassTypes;
+  socialClassType: SocialClassSubtypes;
   licensedFile: LicensedFileDTO;
 }

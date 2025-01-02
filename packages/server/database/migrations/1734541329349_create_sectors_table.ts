@@ -18,6 +18,12 @@ export default class extends BaseSchema {
         ])
         .notNullable();
 
+      table.enum('ownership_type', [
+        'PRIVATE',
+        'MIXED',
+        'PUBLIC',
+      ]).notNullable();
+
       table
         .integer('game_id')
         .unsigned()

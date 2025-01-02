@@ -4,6 +4,7 @@
     "type": "Agricultural",
     "description": "Sector 1",
     "licensedFileIdentifier": "farm",
+    "ownershipType": "PRIVATE",
     "economicalSituation": 5
   },
   {
@@ -11,6 +12,7 @@
     "type": "Mine",
     "description": "Sector 1",
     "licensedFileIdentifier": "mine",
+    "ownershipType": "PRIVATE",
     "economicalSituation": 5
   },
   {
@@ -18,6 +20,7 @@
     "type": "Industrial",
     "description": "Sector 1",
     "licensedFileIdentifier": "industry",
+    "ownershipType": "PRIVATE",
     "economicalSituation": 5
   },
   {
@@ -25,6 +28,7 @@
     "type": "Service",
     "description": "Sector 1",
     "licensedFileIdentifier": "petite-property",
+    "ownershipType": "PRIVATE",
     "economicalSituation": 5
   }
 ]

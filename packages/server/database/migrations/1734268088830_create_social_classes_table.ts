@@ -10,27 +10,15 @@ export default class extends BaseSchema {
       table.text('description').notNullable();
       table.string('color').notNullable();
       table.integer('economical_situation').notNullable();
-      table.enum('happiness_level',
-        [
-          'Very Unhappy',
-          'Unhappy',
-          'Indifferent',
-          'Happy',
-          'Very Happy',
-        ])
-        .notNullable();
+      table.integer('happiness_level').notNullable();
       table.enum('type',
         [
-          'Industrial Owners',
-          'Mine Owners',
-          'Land Owners',
-          'Minors',
+          'Capitalist',
+          'Petit Bourgeois',
           'Proletariat',
-          'Middle Class',
-          'Peasantry',
-          'Military',
         ])
         .notNullable();
+      table.string('sub_type').notNullable();
       table.integer('game_id')
         .unsigned()
         .references('id')

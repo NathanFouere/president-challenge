@@ -9,7 +9,12 @@ export class ProductPriceRandomizerService {
   }
 
   public async changeProductPriceRandomly(product: Product): Promise<void> {
-    const newPrice = Math.floor(Math.random() * 100) + 1;
+    const costOfProduction = product.costOfProduction;
+    const maxInterval = 25;
+    const minPrice = Math.max(costOfProduction - maxInterval, 1);
+    const maxPrice = costOfProduction + maxInterval;
+
+    const newPrice = Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
     product.price = newPrice;
   }
 }

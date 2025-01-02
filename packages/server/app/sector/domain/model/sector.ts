@@ -2,6 +2,8 @@ import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/o
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
+import type { SectorEconomicalSituation } from '@shared/dist/sector/sector-economical-situation.js';
+import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import Product from '#product/domain/models/product';
 import SocialClass from '#social-class/domain/models/social_class';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
@@ -25,7 +27,10 @@ export default class Sector extends BaseModel {
   declare licensedFileIdentifier: string;
 
   @column()
-  declare economicalSituation: number;
+  declare economicalSituation: SectorEconomicalSituation;
+
+  @column()
+  declare ownershipType: SectorOwnershipType;
 
   @column()
   declare gameId: number;
