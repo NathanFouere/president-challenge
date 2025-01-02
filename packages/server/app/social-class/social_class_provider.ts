@@ -6,6 +6,8 @@ import ISocialClassEconomicalSituationPerTurnRepository
   from '#social-class/domain/repository/i_social_class_economical_situation_per_turn_repository';
 import IGetSocialClassOfGameQueryHandler
   from '#social-class/application/queries/i_get_social_class_of_game_query_handler';
+import ISocialClassHappinessPerTurnRepository
+  from '#social-class/domain/repository/i_social_class_happiness_per_turn_repository';
 
 export default class SocialClassProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -20,6 +22,9 @@ export default class SocialClassProvider extends AppProvider {
     );
     const { default: GetSocialClassesOfGameQueryHandler } = await import(
       '#social-class/infrastructure/query/get_social_classes_of_game_query_handler'
+    );
+    const { default: SocialClassHappinessPerTurnRepository } = await import(
+      '#social-class/infrastructure/repository/social_class_happiness_per_turn_repository'
     );
 
     this.app.container.bind(ISocialClassRepository, () => {
@@ -36,6 +41,9 @@ export default class SocialClassProvider extends AppProvider {
 
     this.app.container.bind(IGetSocialClassesOfGameQueryHandler, () => {
       return new GetSocialClassesOfGameQueryHandler();
+    });
+    this.app.container.bind(ISocialClassHappinessPerTurnRepository, () => {
+      return new SocialClassHappinessPerTurnRepository();
     });
   }
 }

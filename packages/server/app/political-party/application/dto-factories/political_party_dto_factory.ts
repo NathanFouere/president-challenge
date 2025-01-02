@@ -3,6 +3,7 @@ import { inject } from '@adonisjs/core';
 import type PoliticalParty from '#political-party/domain/models/political_party';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
+import { createChartDataFromAmountPerTurn } from '#common/utils';
 
 @inject()
 export class PoliticalPartyDTOFactory {
@@ -19,6 +20,7 @@ export class PoliticalPartyDTOFactory {
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.licensedFile),
       description: politicalParty.description,
       happinessLevel: politicalParty.happinessLevel,
+      happinessPerMonthChartData: createChartDataFromAmountPerTurn(politicalParty.happinessPerTurn, 'Happiness Level'),
     };
   }
 }

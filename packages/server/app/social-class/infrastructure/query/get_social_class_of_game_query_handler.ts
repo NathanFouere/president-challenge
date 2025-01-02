@@ -6,7 +6,7 @@ import type IGetSocialClassOfGameQueryHandler
 export default class GetSocialClassOfGameQueryHandler implements IGetSocialClassOfGameQueryHandler {
   private async getSocialClassOfGame(
     query: GetSocialClassOfGameQuery,
-    preloadOptions: { licensedFiles?: boolean; economicalSituationPerTurn?: boolean } = {},
+    preloadOptions: { licensedFiles?: boolean; economicalSituationPerTurn?: boolean; happinessPerTurn?: boolean } = {},
   ): Promise<SocialClass> {
     const queryBuilder = SocialClass
       .query()
@@ -15,6 +15,12 @@ export default class GetSocialClassOfGameQueryHandler implements IGetSocialClass
 
     if (preloadOptions.economicalSituationPerTurn) {
       queryBuilder.preload('economicalSituationPerTurn', (query) => {
+        query.orderBy('turn', 'asc');
+      });
+    }
+
+    if (preloadOptions.happinessPerTurn) {
+      queryBuilder.preload('happinessPerTurn', (query) => {
         query.orderBy('turn', 'asc');
       });
     }
@@ -36,6 +42,7 @@ export default class GetSocialClassOfGameQueryHandler implements IGetSocialClass
     return await this.getSocialClassOfGame(query, {
       licensedFiles: true,
       economicalSituationPerTurn: true,
+      happinessPerTurn: true,
     });
   }
 }

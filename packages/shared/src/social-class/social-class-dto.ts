@@ -13,4 +13,5 @@ export interface SocialClassDto {
   socialClassType: SocialClassSubtypes;
   licensedFiles: LicensedFileDTO[];
   economicalSituationPerMonthChartData: ChartDataDTO;
+  happinessPerMonthChartData: ChartDataDTO;
 }

@@ -42,5 +42,9 @@ onMounted(async () => {
     <p>Happiness Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.happinessLevel }}</p>
     <br>
     <line-chart-component :data="socialClassPresenter.socialClassStore.requireSocialClass.economicalSituationPerMonthChartData" />
+    <br>
+    <line-chart-component
+      :data="socialClassPresenter.socialClassStore.requireSocialClass.happinessPerMonthChartData"
+    />
   </div>
 </template>
