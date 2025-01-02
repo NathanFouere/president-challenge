@@ -14,7 +14,9 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
     }
 
     if (preloadOptions.economicalSituationPerTurn) {
-      queryBuilder.preload('economicalSituationPerTurn');
+      queryBuilder.preload('economicalSituationPerTurn', (query) => {
+        query.orderBy('turn', 'asc');
+      });
     }
 
     return queryBuilder.firstOrFail();

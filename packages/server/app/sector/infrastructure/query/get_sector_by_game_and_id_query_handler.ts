@@ -22,7 +22,9 @@ export default class GetSectorByGameAndIdQueryHandler implements IGetSectorByGam
     }
 
     if (preloadOptions.economicalSituationPerTurn) {
-      queryBuilder.preload('economicalSituationPerTurn');
+      queryBuilder.preload('economicalSituationPerTurn', (query) => {
+        query.orderBy('turn', 'asc');
+      });
     }
 
     if (preloadOptions.products) {

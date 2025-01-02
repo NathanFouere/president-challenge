@@ -7,6 +7,7 @@ import Game from '#game/domain/models/game';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import PoliticalPartySeatsParliament from '#legislature/domain/models/political_party_seats_parliament';
 import PoliticalPartySeatsSenate from '#legislature/domain/models/political_party_seats_senate';
+import PoliticalPartyHappinessPerTurn from '#political-party/domain/models/political_party_happiness_per_turn';
 
 export default class PoliticalParty extends BaseModel {
   @column({ isPrimary: true })
@@ -47,6 +48,9 @@ export default class PoliticalParty extends BaseModel {
 
   @hasMany(() => PoliticalPartySeatsParliament)
   declare parliamentSeats: HasMany<typeof PoliticalPartySeatsParliament>;
+
+  @hasMany(() => PoliticalPartyHappinessPerTurn)
+  declare happinessPerTurn: HasMany<typeof PoliticalPartyHappinessPerTurn>;
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;

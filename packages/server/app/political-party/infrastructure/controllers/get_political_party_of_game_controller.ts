@@ -22,7 +22,7 @@ export default class GetPoliticalPartyController {
       const politicalPartyId = params.politicalPartyId;
       const gameId = params.gameId;
 
-      const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handle(new GetPoliticalPartyOfGameQuery(gameId, politicalPartyId));
+      const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handleForDisplay(new GetPoliticalPartyOfGameQuery(gameId, politicalPartyId));
       return this.politicalPartyFactory.createPoliticalPartyDTO(politicalParty);
     }
     catch (error) {

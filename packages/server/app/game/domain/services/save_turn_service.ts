@@ -29,6 +29,14 @@ import {
 } from '#sector/domain/service/sector_economical_situation_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import StateRepository from '#state/infrastructure/repository/state_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  SocialClassHappinessPerTurnSaveService,
+} from '#social-class/domain/service/social_class_happiness_per_turn_save_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  PoliticalPartyHappinessPerTurnSaveService,
+} from '#political-party/domain/service/political_party_happiness_per_turn_save_service';
 
 @inject()
 export default class SaveTurnService {
@@ -42,6 +50,8 @@ export default class SaveTurnService {
     private readonly productPricePerTurnSaveService: ProductPricePerTurnSaveService,
     private readonly socialClassEconomicalSituationPerTurnSaveService: SocialClassEconomicalSituationPerTurnSaveService,
     private readonly sectorEconomicalSituationPerTurnSaveService: SectorEconomicalSituationPerTurnSaveService,
+    private readonly socialClassHappinessPerTurnSaveService: SocialClassHappinessPerTurnSaveService,
+    private readonly politicalPartyHappinessPerTurnSaveService: PoliticalPartyHappinessPerTurnSaveService,
     private readonly stateRepository: StateRepository,
   ) {
 
@@ -49,7 +59,7 @@ export default class SaveTurnService {
 
   public async saveForTurn(game: Game, socialClasses: SocialClass[], politicalParties: PoliticalParty[], products: Product[], sectors: Sector[], state: State, turn: number): Promise<void> {
     await this.saveGlobalDatas(game, state, socialClasses, politicalParties, products, sectors);
-    await this.saveHistoricalDatas(state, socialClasses, products, sectors, turn);
+    await this.saveHistoricalDatas(state, socialClasses, politicalParties, products, sectors, turn);
   }
 
   private async saveGlobalDatas(game: Game, state: State, socialClasses: SocialClass[], politicalParties: PoliticalParty[], products: Product[], sectors: Sector[]): Promise<void> {
@@ -63,12 +73,17 @@ export default class SaveTurnService {
     ]);
   }
 
-  private async saveHistoricalDatas(state: State, socialClasses: SocialClass[], products: Product[], sectors: Sector[], turn: number): Promise<void> {
+  private async saveHistoricalDatas(state: State, socialClasses: SocialClass[], politicalParties: PoliticalParty[], products: Product[], sectors: Sector[], turn: number): Promise<void> {
     await Promise.all([
       this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForMonth(state, turn),
       this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(socialClasses, turn),
+      this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(socialClasses, turn),
       this.productPricePerTurnSaveService.saveProductsPricesPerTurn(products, turn),
       this.sectorEconomicalSituationPerTurnSaveService.saveSectorsEconomicalSituationForTurn(sectors, turn),
+      this.politicalPartyHappinessPerTurnSaveService.savePoliticalPartiesHappinessForTurn(
+        politicalParties,
+        turn,
+      ),
     ]);
   }
 }

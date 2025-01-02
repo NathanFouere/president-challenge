@@ -3,4 +3,5 @@ import type GetPoliticalPartyOfGameQuery from '#political-party/application/quer
 
 export default abstract class IGetPoliticalPartyOfGameQueryHandler {
   public abstract handle(query: GetPoliticalPartyOfGameQuery): Promise<PoliticalParty>;
+  public abstract handleForDisplay(query: GetPoliticalPartyOfGameQuery): Promise<PoliticalParty>;
 }

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
-import type { PoliticalPartyPresenter } from '../../presenters/legislation/political-party.presenter';
 import LicensedFileComponent from '../../components/common/licensed-file-component.vue';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { PoliticalPartyPresenter } from '~/presenters/legislation/political-party.presenter';
+import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
 
 usePageTitle().setTitle('Political party ...');
 
@@ -40,5 +41,9 @@ onMounted(async () => {
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
     </p>
     <p>Happiness : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessLevel }}</p>
+    <br>
+    <line-chart-component
+      :data="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessPerMonthChartData"
+    />
   </div>
 </template>
