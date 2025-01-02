@@ -21,6 +21,7 @@ const Routes = {
     CreateGame: () => `${gamePrefix}/create`,
     DeleteGame: (id: number) => `${gamePrefix}/delete/${id}`,
     ChangeTurn: (gameId: number) => `${gamePrefix}/change-turn/${gameId}`,
+    GetTurnInformations: (gameId: number, turn: number) => `${gamePrefix}/turn-informations/${gameId}/${turn}`,
   },
   PoliticalParty: {
     GetPoliticalParties: (gameId: number) => `${politicalPartyPrefix}/political-parties-of-game/${gameId}`,
