@@ -30,12 +30,14 @@ const GetGamesController = () => import('#game/infrastructure/controllers/get_ga
 const CreateGameController = () => import('../app/game/infrastructure/controllers/create_game_controller.js');
 const DeleteGameController = () => import('../app/game/infrastructure/controllers/delete_game_controller.js');
 const ChangeTurnController = () => import('../app/game/infrastructure/controllers/change_turn_controller.js');
+const GetTurnInformationsController = () => import('../app/game/infrastructure/controllers/get_turn_informations_controller.js');
 
 router.group(() => {
   router.get('/', [GetGamesController, 'getUserGames']).use(middleware.auth());
   router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
   router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
   router.post('/change-turn/:gameId', [ChangeTurnController, 'changeTurn']).use(middleware.auth());
+  router.get('/turn-informations/:gameId/:turn', [GetTurnInformationsController, 'getTurnInformations']).use(middleware.auth());
 }).prefix('api/games');
 
 /* POLITICAL PARTY */
@@ -50,12 +52,10 @@ router.group(() => {
 
 /* EVENTS */
 
-const GetDisplayableEventsOfTurnController = () => import('#event/infrastructure/controllers/get_displayable_events_of_turn_controller');
 const GetEventController = () => import('#event/infrastructure/controllers/get_event_controller');
 const ChooseChoiceController = () => import('#event/infrastructure/controllers/choose_choice_controller');
 
 router.group(() => {
-  router.get('/events-of-turn/:gameId/turn/:turn', [GetDisplayableEventsOfTurnController, 'getDisplayableEventsOfTurn']).use(middleware.auth());
   router.get('/:gameId/:eventId', [GetEventController, 'getEvent']).use(middleware.auth());
   router.post('/choose-choice/:eventId/:choiceId', [ChooseChoiceController, 'chooseChoice']).use(middleware.auth());
 }).prefix('api/events');

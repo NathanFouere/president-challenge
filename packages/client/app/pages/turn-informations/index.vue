@@ -61,6 +61,7 @@ onMounted(async () => {
   >
     <UButton
       :loading="turnInformationsPresenter.gameStore.isChangingTurn"
+      :disabled="turnInformationsPresenter.turnInformationsStore.isAllowingChangeTurn"
       @click="turnInformationsPresenter.changeTurn()"
     >
       Change turn
