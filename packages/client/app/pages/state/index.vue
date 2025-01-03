@@ -51,6 +51,8 @@ onMounted(async () => {
       />
       <p v-else>
         {{ statePresenter.stateStore.getState?.description }}
+        <br>
+        {{ statePresenter.stateStore.getState?.economicalSituation }}
       </p>
     </div>
 

@@ -4,7 +4,7 @@ import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
 export interface StateDto {
   name: string;
   description: string;
-  economicalSituation: number;
+  economicalSituation: string;
   flag: LicensedFileDTO;
   economicalSituationPerMonthChartData: LineChartDataDTO;
 }

@@ -9,6 +9,7 @@ export interface SectorDto {
   name: string;
   type: SectorTypes;
   description: string;
+  economicalSituation: string;
   licensedFile: LicensedFileDTO;
   socialClasses: MinimalSocialClassDto[];
   products: MinimalProductDto[];
