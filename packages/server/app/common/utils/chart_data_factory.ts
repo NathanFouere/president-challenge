@@ -1,7 +1,7 @@
-import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
 import { getDateFromTurnNumber } from '@shared/dist/utils/date-converter.js';
 import { inject } from '@adonisjs/core';
 import type { YLabels } from '@shared/dist/chart/YLabels.js';
+import type { LineChartDataDTO } from '@shared/dist/chart/LineChartDataDTO.js';
 import type { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import type { Range } from '#common/utils/range';
 
@@ -13,7 +13,7 @@ export default class ChartDataFactory {
     minY: number,
     maxY: number,
     ranges: Range[] | null = null,
-  ): ChartDataDTO {
+  ): LineChartDataDTO {
     const labels: string[] = [];
     const backgroundColor: string[] = [];
     const borderColor: string[] = [];
