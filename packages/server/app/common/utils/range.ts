@@ -1,0 +1,5 @@
+export interface Range {
+  min: number;
+  max: number;
+  value: string;
+}

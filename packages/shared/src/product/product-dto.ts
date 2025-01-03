@@ -1,5 +1,5 @@
 import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO.js';
+import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
 
 export interface ProductDto {
   id: number;
@@ -8,5 +8,5 @@ export interface ProductDto {
   licensedFile: LicensedFileDTO;
   price: number;
   costOfProduction: number;
-  pricePerMonthChartData: ChartDataDTO;
+  pricePerMonthChartData: LineChartDataDTO;
 }

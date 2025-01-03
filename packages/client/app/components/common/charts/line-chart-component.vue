@@ -10,6 +10,20 @@ const props = defineProps<{
 const options = {
   responsive: true,
   maintainAspectRatio: true,
+  scales: {
+    y: {
+      min: props.data.minY - 0.25,
+      max: props.data.maxY + 0.25,
+      beginAtZero: true,
+      ticks: props.data.yLabels
+        ? {
+            callback: function (value: number) {
+              return props.data.yLabels![value] || (Math.floor(value) === value ? value : '');
+            },
+          }
+        : {},
+    },
+  },
   plugins: {
     legend: {
       display: false,
