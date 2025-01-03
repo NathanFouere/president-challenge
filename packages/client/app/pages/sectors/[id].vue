@@ -31,6 +31,9 @@ onMounted(async () => {
     <h2 class="text-center">
       {{ sectorPresenter.sectorStore.requireSector.description }}
     </h2>
+    <h2 class="text-center">
+      Wealth : {{ sectorPresenter.sectorStore.requireSector.economicalSituation }}
+    </h2>
     <div class="flex-1 flex justify-center">
       <licensed-file-component
         class="w-3/12"

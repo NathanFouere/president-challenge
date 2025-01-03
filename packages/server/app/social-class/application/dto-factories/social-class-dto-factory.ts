@@ -5,12 +5,19 @@ import type SocialClass from '#social-class/domain/models/social_class';
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ChartDataFactory from '#common/utils/chart_data_factory';
+import { socialClassHappinessRangeLevels } from '#social-class/domain/range-levels/social_class_happiness_range_levels';
+import {
+  socialClassEconomicalSituationRangeLevels,
+} from '#social-class/domain/range-levels/social_class_economical_situation_range_levels';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import RangeLevelMatch from '#common/utils/range_level_match';
 
 @inject()
 export class SocialClassDtoFactory {
   constructor(
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
     private readonly chartDataFactory: ChartDataFactory,
+    private readonly rangeLevelMatch: RangeLevelMatch,
   ) {
   }
 
@@ -20,8 +27,8 @@ export class SocialClassDtoFactory {
       name: socialClass.name,
       description: socialClass.description,
       color: socialClass.color,
-      economicalSituation: 'todo',
-      happinessLevel: socialClass.happinessLevel,
+      economicalSituation: this.rangeLevelMatch.createFromAmountPerTurn(socialClass.economicalSituation, socialClassEconomicalSituationRangeLevels),
+      happinessLevel: this.rangeLevelMatch.createFromAmountPerTurn(socialClass.happinessLevel, socialClassHappinessRangeLevels),
       socialClassType: socialClass.subType,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
       happinessPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
@@ -29,26 +36,14 @@ export class SocialClassDtoFactory {
         'Happiness Level',
         0,
         4,
-        [
-          { min: 0, max: 0, value: 'Very-Low' },
-          { min: 1, max: 1, value: 'Low' },
-          { min: 2, max: 2, value: 'Medium' },
-          { min: 3, max: 3, value: 'High' },
-          { min: 4, max: 4, value: 'Very-High' },
-        ],
+        socialClassHappinessRangeLevels,
       ),
       economicalSituationPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
         socialClass.economicalSituationPerTurn,
         'Economical Situation',
         0,
         4,
-        [
-          { min: 0, max: 0, value: 'Very-Low' },
-          { min: 1, max: 1, value: 'Low' },
-          { min: 2, max: 2, value: 'Medium' },
-          { min: 3, max: 3, value: 'High' },
-          { min: 4, max: 4, value: 'Very-High' },
-        ]),
+        socialClassEconomicalSituationRangeLevels),
     };
   }
 }

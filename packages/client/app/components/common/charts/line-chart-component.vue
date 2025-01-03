@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { Line } from 'vue-chartjs';
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO';
+import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO';
 
 const props = defineProps<{
-  data: ChartDataDTO;
+  data: LineChartDataDTO;
 }>();
 
 const options = {
@@ -12,8 +12,8 @@ const options = {
   maintainAspectRatio: true,
   scales: {
     y: {
-      min: props.data.minY - 0.25,
-      max: props.data.maxY + 0.25,
+      min: props.data.minY - 0.75,
+      max: props.data.maxY + 0.75,
       beginAtZero: true,
       ticks: props.data.yLabels
         ? {

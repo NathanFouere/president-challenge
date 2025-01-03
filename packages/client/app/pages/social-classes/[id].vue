@@ -13,7 +13,7 @@ usePageTitle().setTitle('Social Class : ...');
 
 onMounted(async () => {
   await socialClassPresenter.getSocialClass(id);
-  usePageTitle().setTitle('Sector : ' + socialClassPresenter.socialClassStore.requireSocialClass.name);
+  usePageTitle().setTitle('Social Class : ' + socialClassPresenter.socialClassStore.requireSocialClass.name);
 });
 </script>
 

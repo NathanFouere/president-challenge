@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalSectorDto } from '@shared/typessector/minimal-sector-dto';
+import type { MinimalSectorDto } from '@shared/sector/minimal-sector-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{

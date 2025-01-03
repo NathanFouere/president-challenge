@@ -1,6 +1,5 @@
 import type { SocialClassSubtypes } from '@shared/social-class/social-class-subtypes.js';
 import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
-import type { HappinessLevels } from '@shared/common/happiness-levels.js';
 import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
 
 export interface SocialClassDto {
@@ -9,7 +8,7 @@ export interface SocialClassDto {
   description: string;
   color: string;
   economicalSituation: string;
-  happinessLevel: HappinessLevels;
+  happinessLevel: string;
   socialClassType: SocialClassSubtypes;
   licensedFiles: LicensedFileDTO[];
   economicalSituationPerMonthChartData: LineChartDataDTO;
