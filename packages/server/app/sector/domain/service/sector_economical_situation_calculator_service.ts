@@ -72,5 +72,11 @@ export default class SectorEconomicalSituationCalculatorService {
   private propagateEconomicalSituationToState(sector: Sector, state: State): void {
     const defaultStateEconomicalSituation = state.economicalSituation;
     state.economicalSituation = defaultStateEconomicalSituation + sectorEconomicalSituaitonMatchConfig[sector.ownershipType][sector.economicalSituation].state;
+    if (state.economicalSituation > 20) {
+      state.economicalSituation = 20;
+    }
+    else if (state.economicalSituation < 0) {
+      state.economicalSituation = 0;
+    }
   }
 }

@@ -3,12 +3,14 @@ import { inject } from '@adonisjs/core';
 import type SocialClass from '#social-class/domain/models/social_class';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
-import { createChartDataFromAmountPerTurn } from '#common/utils';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ChartDataFactory from '#common/utils/chart_data_factory';
 
 @inject()
 export class SocialClassDtoFactory {
   constructor(
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
+    private readonly chartDataFactory: ChartDataFactory,
   ) {
   }
 
@@ -22,8 +24,31 @@ export class SocialClassDtoFactory {
       happinessLevel: socialClass.happinessLevel,
       socialClassType: socialClass.subType,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
-      happinessPerMonthChartData: createChartDataFromAmountPerTurn(socialClass.happinessPerTurn, 'Happiness Level'),
-      economicalSituationPerMonthChartData: createChartDataFromAmountPerTurn(socialClass.economicalSituationPerTurn, 'Economical Situation'),
+      happinessPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+        socialClass.happinessPerTurn,
+        'Happiness Level',
+        0,
+        4,
+        [
+          { min: 0, max: 0, value: 'Very-Low' },
+          { min: 1, max: 1, value: 'Low' },
+          { min: 2, max: 2, value: 'Medium' },
+          { min: 3, max: 3, value: 'High' },
+          { min: 4, max: 4, value: 'Very-High' },
+        ],
+      ),
+      economicalSituationPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+        socialClass.economicalSituationPerTurn,
+        'Economical Situation',
+        0,
+        4,
+        [
+          { min: 0, max: 0, value: 'Very-Low' },
+          { min: 1, max: 1, value: 'Low' },
+          { min: 2, max: 2, value: 'Medium' },
+          { min: 3, max: 3, value: 'High' },
+          { min: 4, max: 4, value: 'Very-High' },
+        ]),
     };
   }
 }
