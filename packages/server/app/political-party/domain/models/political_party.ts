@@ -1,4 +1,4 @@
-import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
+import { BaseModel, beforeSave, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
 import type { DateTime } from 'luxon';
@@ -57,4 +57,11 @@ export default class PoliticalParty extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
+
+  @beforeSave()
+  public static async validateHappinessLevel(politicalParty: PoliticalParty) {
+    if (politicalParty.happinessLevel < 0 || politicalParty.happinessLevel > 4) {
+      throw new Error('Invalid happiness level');
+    }
+  }
 }
