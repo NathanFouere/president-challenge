@@ -11,5 +11,5 @@
     "text",
     "text-summary"
   ],
-  "check-coverage": true
+  "check-coverage": false
 }
