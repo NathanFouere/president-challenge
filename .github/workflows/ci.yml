@@ -32,6 +32,11 @@ jobs:
         env:
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
 
-      - name: Run tests
-        run: pnpm run test
+      - name: Run tests and coverage
+        run: pnpm run coverage
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 

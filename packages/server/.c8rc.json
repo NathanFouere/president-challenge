@@ -1,0 +1,15 @@
+{
+  "all": true,
+  "include": [
+    "app/**"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ],
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ],
+  "check-coverage": false
+}
