@@ -49,4 +49,8 @@ test.group('CalculateAverageMarginOfSocialClassesService', () => {
 
     assert.equal(result, expectedResult);
   });
+
+  test('fail test', async ({ assert }) => {
+    assert.equal(1, 2);
+  });
 });
