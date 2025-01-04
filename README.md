@@ -36,12 +36,14 @@ The project is designed following **Domain-Driven Design (DDD)** principles, emp
 - **GitHub Actions**: Automates the CI/CD pipeline for building and deploying the application.
 
 ## Learning Objectives
-
 This project serves as a personal learning journey, allowing me to deepen my understanding of:
 - **Node.js**: Mastering backend development with modern frameworks.
 - **Domain-Driven Design**: Structuring applications with a focus on the domain logic.
 - **Docker**: Creating portable and reproducible development environments.
 - **Deployment**: Setting up production-ready systems and pipelines.
+
+## Roadmap
+You can track the progress and upcoming features of this project on the [Trello Board](https://trello.com/b/yeDvZUYI/allende-challenge-v2) (In French)
 
 ## How to Run the Project
 TODO
