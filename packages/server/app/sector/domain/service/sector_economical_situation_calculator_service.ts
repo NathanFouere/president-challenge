@@ -1,5 +1,4 @@
 import { inject } from '@adonisjs/core';
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type Sector from '#sector/domain/model/sector';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -11,13 +10,19 @@ import {
 } from '#social-class/domain/service/calculate_average_happiness_of_social_classes_service';
 import type State from '#state/domain/model/state';
 
-import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-economical-situation-match-config.json' assert { type: 'json' };
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SocialClassEconomicalSituationEvolutionService
+  from '#social-class/domain/service/social_class_economic_situation_evolution_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import StateEconomicalSituationEvolutionService from '#state/domain/service/state_economic_situation_evolution_service';
 
 @inject()
 export default class SectorEconomicalSituationCalculatorService {
   constructor(
     private readonly calculateAverageMarginOfProductsService: CalculateAverageMarginOfProductsService,
     private readonly calculateAverageHappinessOfSocialClassesService: CalculateAverageMarginOfSocialClassesService,
+    private readonly socialClassEconomicalSituationEvolutionService: SocialClassEconomicalSituationEvolutionService,
+    private readonly stateEconomicalSituationEvolutionService: StateEconomicalSituationEvolutionService,
   ) {
   }
 
@@ -28,8 +33,8 @@ export default class SectorEconomicalSituationCalculatorService {
 
   public async setSectorEconomicalSituation(sector: Sector, state: State): Promise<void> {
     sector.economicalSituation = this.calculateSectorEconomicalSituation(sector);
-    this.propagateEconomicalSituationToSocialClasses(sector);
-    this.propagateEconomicalSituationToState(sector, state);
+    this.socialClassEconomicalSituationEvolutionService.propagateSectorEconomicalSituationToSocialClasses(sector);
+    this.stateEconomicalSituationEvolutionService.propagateEconomicalSituationToState(sector, state);
   }
 
   private calculateSectorEconomicalSituation(sector: Sector): number {
@@ -44,39 +49,5 @@ export default class SectorEconomicalSituationCalculatorService {
       result = 0;
     }
     return result;
-  }
-
-  private propagateEconomicalSituationToSocialClasses(sector: Sector): void {
-    for (const socialClass of sector.socialClasses) {
-      const defaultSocialClassEconomicalSituation = socialClass.economicalSituation;
-      switch (socialClass.type) {
-        case SocialClassTypes.CAPITALIST:
-          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
-          break;
-        case SocialClassTypes.PETIT_BOURGEOIS:
-          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
-          break;
-        case SocialClassTypes.PROLETARIAT:
-          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
-          break;
-      }
-      if (socialClass.economicalSituation > 4) {
-        socialClass.economicalSituation = 4;
-      }
-      else if (socialClass.economicalSituation < 0) {
-        socialClass.economicalSituation = 0;
-      }
-    }
-  }
-
-  private propagateEconomicalSituationToState(sector: Sector, state: State): void {
-    const defaultStateEconomicalSituation = state.economicalSituation;
-    state.economicalSituation = defaultStateEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
-    if (state.economicalSituation > 20) {
-      state.economicalSituation = 20;
-    }
-    else if (state.economicalSituation < 0) {
-      state.economicalSituation = 0;
-    }
   }
 }

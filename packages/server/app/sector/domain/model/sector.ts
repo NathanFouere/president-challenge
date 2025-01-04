@@ -1,4 +1,4 @@
-import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
+import { BaseModel, beforeSave, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
@@ -58,4 +58,11 @@ export default class Sector extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
+
+  @beforeSave()
+  public static async validateEconomicalSituationLevel(sector: Sector) {
+    if (sector.economicalSituation < 0 || sector.economicalSituation > 4) {
+      throw new Error('Invalid economicalSituation level');
+    }
+  }
 }

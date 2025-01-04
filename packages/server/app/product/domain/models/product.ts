@@ -1,4 +1,4 @@
-import { BaseModel, belongsTo, column, hasOne, hasMany } from '@adonisjs/lucid/orm';
+import { BaseModel, belongsTo, column, hasOne, hasMany, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasOne, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
@@ -54,5 +54,19 @@ export default class Product extends BaseModel {
 
   public getMargin(): number {
     return this.price - this.costOfProduction;
+  }
+
+  @beforeSave()
+  public static async validatePrice(product: Product) {
+    if (product.price < 0 || product.price > 100) {
+      throw new Error('Invalid product price level');
+    }
+  }
+
+  @beforeSave()
+  public static async validateCostOfProduction(product: Product) {
+    if (product.costOfProduction < 0 || product.costOfProduction > 100) {
+      throw new Error('Invalid costOfProduction level');
+    }
   }
 }
