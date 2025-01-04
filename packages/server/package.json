@@ -55,6 +55,7 @@
     "@japa/plugin-adonisjs": "^3.0.1",
     "@japa/runner": "^3.1.4",
     "@swc/core": "1.7.26",
+    "@testcontainers/postgresql": "^10.16.0",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.7.5",
     "eslint": "^9.12.0",
@@ -67,17 +68,17 @@
   "dependencies": {
     "@adonisjs/auth": "^9.2.3",
     "@adonisjs/core": "^6.14.1",
+    "@adonisjs/cors": "^2.2.1",
     "@adonisjs/lucid": "^21.3.0",
     "@adonisjs/session": "^7.5.0",
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
-    "@adonisjs/cors": "^2.2.1",
+    "@shared": "workspace:*",
     "@vinejs/vine": "^2.1.0",
     "edge.js": "^6.2.0",
     "luxon": "^3.5.0",
     "pg": "^8.13.1",
-    "reflect-metadata": "^0.2.2",
-    "@shared": "workspace:*"
+    "reflect-metadata": "^0.2.2"
   },
   "hotHook": {
     "boundaries": [

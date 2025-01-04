@@ -11,6 +11,7 @@
     "build:frontend": "pnpm --filter client run build",
     "build:frontend:local": "pnpm --filter client run build:local",
     "build:local": "pnpm build:shared && pnpm build:backend && pnpm build:frontend:local",
+    "test": "pnpm --filter server run test",
     "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",
     "lint": "pnpm --filter server run lint && pnpm --filter client run lint"
   },
