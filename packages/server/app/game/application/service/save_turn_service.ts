@@ -15,28 +15,28 @@ import type Product from '#product/domain/models/product';
 import SectorRepository from '#sector/infrastructure/repository/sector_repository';
 import type Sector from '#sector/domain/model/sector';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { StateRevenuePerTurnSaveService } from '#state/domain/service/state_economical_situation_per_turn_save_service';
+import { StateRevenuePerTurnSaveService } from '#state/application/service/state_economical_situation_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductPricePerTurnSaveService } from '#product/domain/service/product_price_per_turn_save_service';
+import { ProductPricePerTurnSaveService } from '#product/application/service/product_price_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   SocialClassEconomicalSituationPerTurnSaveService,
-} from '#social-class/domain/service/social_class_economical_situation_per_turn_save_service';
+} from '#social-class/application/service/social_class_economical_situation_per_turn_save_service';
 import type State from '#state/domain/model/state';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   SectorEconomicalSituationPerTurnSaveService,
-} from '#sector/domain/service/sector_economical_situation_per_turn_save_service';
+} from '#sector/application/service/sector_economical_situation_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import StateRepository from '#state/infrastructure/repository/state_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   SocialClassHappinessPerTurnSaveService,
-} from '#social-class/domain/service/social_class_happiness_per_turn_save_service';
+} from '#social-class/application/service/social_class_happiness_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   PoliticalPartyHappinessPerTurnSaveService,
-} from '#political-party/domain/service/political_party_happiness_per_turn_save_service';
+} from '#political-party/application/service/political_party_happiness_per_turn_save_service';
 
 @inject()
 export default class SaveTurnService {

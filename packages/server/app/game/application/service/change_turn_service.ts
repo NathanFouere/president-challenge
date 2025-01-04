@@ -8,9 +8,9 @@ import { ProductPriceRandomizerService } from '#product/domain/service/product_p
 import SectorEconomicalSituationCalculatorService
   from '#sector/domain/service/sector_economical_situation_calculator_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SaveTurnService from '#game/domain/services/save_turn_service';
+import SaveTurnService from '#game/application/service/save_turn_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { LoadTurnService } from '#game/domain/services/load_turn_service';
+import { LoadTurnService } from '#game/application/service/load_turn_service';
 
 @inject()
 export default class ChangeTurnService {

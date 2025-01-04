@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import ChangeTurnService from '#game/domain/services/change_turn_service';
+import ChangeTurnService from '#game/application/service/change_turn_service';
 import type User from '#user/domain/models/user';
 import { GetGameOfUserQuery } from '#game/application/queries/get_game_of_user_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
