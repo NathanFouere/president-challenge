@@ -35,3 +35,8 @@ jobs:
       - name: Run tests
         run: pnpm run test
 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+
