@@ -51,4 +51,8 @@ export default class Product extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
+
+  public getMargin(): number {
+    return this.price - this.costOfProduction;
+  }
 }

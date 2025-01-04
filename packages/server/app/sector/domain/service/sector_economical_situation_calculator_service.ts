@@ -11,7 +11,7 @@ import {
 } from '#social-class/domain/service/calculate_average_happiness_of_social_classes_service';
 import type State from '#state/domain/model/state';
 
-import sectorEconomicalSituaitonMatchConfig from '#game-config/sector/sector-economical-situation-match-config.json' assert { type: 'json' };
+import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-economical-situation-match-config.json' assert { type: 'json' };
 
 @inject()
 export default class SectorEconomicalSituationCalculatorService {
@@ -51,13 +51,13 @@ export default class SectorEconomicalSituationCalculatorService {
       const defaultSocialClassEconomicalSituation = socialClass.economicalSituation;
       switch (socialClass.type) {
         case SocialClassTypes.CAPITALIST:
-          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituaitonMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
           break;
         case SocialClassTypes.PETIT_BOURGEOIS:
-          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituaitonMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
           break;
         case SocialClassTypes.PROLETARIAT:
-          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituaitonMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
+          socialClass.economicalSituation = defaultSocialClassEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
           break;
       }
       if (socialClass.economicalSituation > 4) {
@@ -71,7 +71,7 @@ export default class SectorEconomicalSituationCalculatorService {
 
   private propagateEconomicalSituationToState(sector: Sector, state: State): void {
     const defaultStateEconomicalSituation = state.economicalSituation;
-    state.economicalSituation = defaultStateEconomicalSituation + sectorEconomicalSituaitonMatchConfig[sector.ownershipType][sector.economicalSituation].state;
+    state.economicalSituation = defaultStateEconomicalSituation + sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
     if (state.economicalSituation > 20) {
       state.economicalSituation = 20;
     }
