@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.string('color').notNullable();
       table.enum('type', ['permanent', 'temporary']).notNullable();
       table.integer('duration').nullable();
+      table.integer('amount').notNullable();
 
       table
         .integer('political_party_id')

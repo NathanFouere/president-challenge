@@ -20,6 +20,9 @@ export default abstract class HappinessModifier extends BaseModel {
   @column()
   declare duration: number | null;
 
+  @column()
+  declare amount: number;
+
   public reduceDuration(): void {
     if (this.type == HappinessModifierType.TEMPORARY && this.duration !== null) {
       this.duration--;

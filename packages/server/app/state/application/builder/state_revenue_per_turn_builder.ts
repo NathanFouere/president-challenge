@@ -12,7 +12,7 @@ export default class StateRevenuePerTurnBuilder extends SaveAmountForTurnBuilder
   public build(): StateEconomicalSituationPerTurn {
     const stateEconomicalSituationPerTurn = new StateEconomicalSituationPerTurn();
 
-    if (this.amount) stateEconomicalSituationPerTurn.amount = this.amount;
+    if (this.amount !== null) stateEconomicalSituationPerTurn.amount = this.amount;
     else throw new Error('Amount is required');
     if (this.turn) stateEconomicalSituationPerTurn.turn = this.turn;
     else throw new Error('Turn is required');

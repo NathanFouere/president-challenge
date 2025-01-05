@@ -2,7 +2,6 @@ import { inject } from '@adonisjs/core';
 
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 
-import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import { aSocialClass } from '#social-class/application/builders/social_class_builder';
@@ -33,7 +32,6 @@ export class SocialClassStartupService {
         .withSubtype(socialClassValues.subtype as SocialClassSubtypes)
         .withGameId(gameId)
         .withColor(socialClassValues.color)
-        .withHappinessLevel(socialClassValues.happinessLevel as HappinessLevels)
         .withDescription(socialClassValues.description)
         .withName(socialClassValues.name)
         .withEconomicalSituation(socialClassValues.economicalSituation)

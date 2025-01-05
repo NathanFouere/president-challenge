@@ -29,13 +29,13 @@ export default class PoliticalParty extends BaseModel {
   @column()
   declare happinessLevel: HappinessLevels;
 
-  @column({ serializeAs: null })
+  @column()
   declare gameId: number;
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
 
-  @column({ serializeAs: null })
+  @column()
   declare licensedFileIdentifier: string;
 
   @hasOne(() => LicensedFile, {

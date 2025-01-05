@@ -13,6 +13,8 @@ import SaveTurnService from '#game/application/service/save_turn_service';
 import { LoadTurnService } from '#game/application/service/load_turn_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import HappinessModifierTurnGestionService from '#happiness-modifier/application/service/happiness_modifier_turn_gestion_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SocialClassHappinessService from '#social-class/domain/service/social_class_happiness_service';
 
 @inject()
 export default class ChangeTurnService {
@@ -22,6 +24,7 @@ export default class ChangeTurnService {
     private readonly saveTurnService: SaveTurnService,
     private readonly loadTurnService: LoadTurnService,
     private readonly happinessModifierTurnGestionService: HappinessModifierTurnGestionService,
+    private readonly socialClassHappinessService: SocialClassHappinessService,
   ) {
   }
 
@@ -33,6 +36,7 @@ export default class ChangeTurnService {
       await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(loadTurnData.sectors, loadTurnData.state);
       await this.productChangePriceTurnService.changeProductsPricesRandomly(loadTurnData.products);
       await this.happinessModifierTurnGestionService.processHappinessModifiersOfGame(game.id);
+      this.socialClassHappinessService.updateSocialClassesHappiness(loadTurnData.socialClasses);
       await this.saveTurnService.saveForTurn(
         game,
         loadTurnData.socialClasses,

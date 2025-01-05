@@ -1,12 +1,8 @@
 import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 import type Sector from '#sector/domain/model/sector';
 import sectorEconomicalSituationMatchConfig
   from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
 import type SocialClass from '#social-class/domain/models/social_class';
-import {
-  aSocialClassHappinessModifier,
-} from '#social-class/application/builders/social_class_happiness_modifier_builder';
 
 export default class SocialClassEconomicalSituationEvolutionService {
   public propagateSectorEconomicalSituationToSocialClasses(sector: Sector): void {
@@ -34,28 +30,6 @@ export default class SocialClassEconomicalSituationEvolutionService {
       newEconomicalSituation = 0;
     }
 
-    if (newEconomicalSituation !== defaultSocialClassEconomicalSituation) {
-      this.changeHappinessLevelThroughtEconomicalSituationEvolution(socialClass, newEconomicalSituation);
-      socialClass.economicalSituation = newEconomicalSituation;
-    }
-  }
-
-  private changeHappinessLevelThroughtEconomicalSituationEvolution(socialClass: SocialClass, newEconomicalSituation: number): void {
-    socialClass.happinessModifiers.push(
-      aSocialClassHappinessModifier()
-        .withName('Economical Situation Evolution')
-        .withDescription('Economical Situation Evolution')
-        .withColor('blue')
-        .withType(HappinessModifierType.TEMPORARY)
-        .withDuration(1)
-        .withSocialClassId(socialClass.id)
-        .build(),
-    );
-    if (newEconomicalSituation > socialClass.economicalSituation) {
-      socialClass.increaseHappinessLevel();
-    }
-    else {
-      socialClass.decreaseHappinessLevel();
-    }
+    socialClass.economicalSituation = newEconomicalSituation;
   }
 }

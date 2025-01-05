@@ -2,10 +2,6 @@ import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGameRepository from '#game/domain/repository/i_game_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SocialClassRepository from '#social-class/infrastructure/repository/social_class_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import PoliticalPartyRepository from '#political-party/infrastructure/repositories/political_party_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ProductRepository from '#product/infrastructure/repository/product_repository';
 import type Game from '#game/domain/models/game';
 import type SocialClass from '#social-class/domain/models/social_class';
@@ -37,13 +33,16 @@ import {
 import {
   PoliticalPartyHappinessPerTurnSaveService,
 } from '#political-party/application/service/political_party_happiness_per_turn_save_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SocialClassSaveForTurnService from '#social-class/infrastructure/service/social_class_save_for_turn_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import PoliticalPartySaveForTurnService
+  from '#political-party/infrastructure/service/political_party_save_for_turn_service';
 
 @inject()
 export default class SaveTurnService {
   constructor(
     private readonly gameRepository: IGameRepository,
-    private readonly socialClassRepository: SocialClassRepository,
-    private readonly politicalPartyRepository: PoliticalPartyRepository,
     private readonly productRepository: ProductRepository,
     private readonly sectorRepository: SectorRepository,
     private readonly stateRevenuePerTurnSaveService: StateRevenuePerTurnSaveService,
@@ -53,6 +52,8 @@ export default class SaveTurnService {
     private readonly socialClassHappinessPerTurnSaveService: SocialClassHappinessPerTurnSaveService,
     private readonly politicalPartyHappinessPerTurnSaveService: PoliticalPartyHappinessPerTurnSaveService,
     private readonly stateRepository: StateRepository,
+    private readonly socialClassService: SocialClassSaveForTurnService,
+    private readonly politicalPartySaveForTurnService: PoliticalPartySaveForTurnService,
   ) {
 
   }
@@ -66,8 +67,8 @@ export default class SaveTurnService {
     await Promise.all([
       this.gameRepository.save(game),
       this.stateRepository.save(state),
-      this.socialClassRepository.saveMany(socialClasses),
-      this.politicalPartyRepository.saveMany(politicalParties),
+      this.socialClassService.saveSocialClassesForTurn(socialClasses),
+      this.politicalPartySaveForTurnService.savePoliticalPartiesForTurn(politicalParties),
       this.productRepository.saveMany(products),
       this.sectorRepository.saveMany(sectors),
     ]);

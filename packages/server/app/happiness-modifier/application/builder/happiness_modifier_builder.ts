@@ -6,6 +6,7 @@ export abstract class HappinessModifierBuilder {
   protected color: string | null = null;
   protected type: HappinessModifierType | null = null;
   protected duration: number | null = null;
+  protected amount: number | null = null;
 
   public withName(name: string): this {
     this.name = name;
@@ -29,6 +30,11 @@ export abstract class HappinessModifierBuilder {
 
   public withDuration(duration: number): this {
     this.duration = duration;
+    return this;
+  }
+
+  public withAmount(amount: number): this {
+    this.amount = amount;
     return this;
   }
 }

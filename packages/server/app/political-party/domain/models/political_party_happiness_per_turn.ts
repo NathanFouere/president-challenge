@@ -4,7 +4,7 @@ import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import PoliticalParty from '#political-party/domain/models/political_party';
 
 export default class PoliticalPartyHappinessPerTurn extends SaveAmountForTurn {
-  public static readonly table = 'social_class_happiness_per_turns';
+  public static readonly table = 'political_party_happiness_per_turns';
 
   @column()
   declare politicalPartyId: number;
