@@ -21,7 +21,7 @@ export class SocialClassHappinessPerTurnSaveService {
   public async saveSocialClassHappinessForTurn(socialClass: SocialClass, turn: number): Promise<void> {
     const socialClassHappinessPerTurn = aSocialClassHappinessPerTurn()
       .withSocialClassId(socialClass.id)
-      .withAmount(socialClass.happinessLevel)
+      .withAmount(socialClass.getHappinessLevel())
       .withTurn(turn)
       .build();
 

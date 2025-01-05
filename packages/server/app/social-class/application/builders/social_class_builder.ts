@@ -1,4 +1,3 @@
-import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import SocialClass from '#social-class/domain/models/social_class';
@@ -11,7 +10,6 @@ export class SocialClassBuilder {
   private subtype: SocialClassSubtypes | null = null;
   private type: SocialClassTypes | null = null;
   private gameId: number | null = null;
-  private happinessLevel: HappinessLevels | null = null;
   private sectorId: number | null = null;
 
   withName(name: string): this {
@@ -49,11 +47,6 @@ export class SocialClassBuilder {
     return this;
   }
 
-  withHappinessLevel(happinessLevel: HappinessLevels): this {
-    this.happinessLevel = happinessLevel;
-    return this;
-  }
-
   withSectorId(sectorId: number): this {
     this.sectorId = sectorId;
     return this;
@@ -73,8 +66,6 @@ export class SocialClassBuilder {
     else throw new Error('Social class type is required');
     if (this.gameId) socialClass.gameId = this.gameId;
     else throw new Error('Game ID is required');
-    if (this.happinessLevel) socialClass.happinessLevel = this.happinessLevel;
-    else throw new Error('Happiness level is required');
     if (this.sectorId) socialClass.sectorId = this.sectorId;
     else throw new Error('Sector ID is required');
     if (this.type) socialClass.type = this.type;

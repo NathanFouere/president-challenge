@@ -10,7 +10,6 @@ export default class extends BaseSchema {
       table.text('description').notNullable();
       table.string('color').notNullable();
       table.integer('economical_situation').notNullable();
-      table.integer('happiness_level').notNullable();
       table.enum('type',
         [
           'Capitalist',

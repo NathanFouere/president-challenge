@@ -4,7 +4,7 @@ import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import Product from '#product/domain/models/product';
 
 export default class ProductPricePerTurn extends SaveAmountForTurn {
-  public static readonly tableName = 'product_price_per_turns';
+  public static readonly table = 'product_price_per_turns';
 
   @column()
   declare productId: number;

@@ -5,12 +5,15 @@ import type PoliticalParty from '#political-party/domain/models/political_party'
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ChartDataFactory from '#common/utils/chart_data_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import HappinessDtoFactory from '#happiness-modifier/application/dto-factory/happiness_dto_factory';
 
 @inject()
 export class PoliticalPartyDTOFactory {
   constructor(
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
     private readonly chartDataFactory: ChartDataFactory,
+    private readonly happinessModifierDtoFactory: HappinessDtoFactory,
   ) {
   }
 
@@ -35,6 +38,7 @@ export class PoliticalPartyDTOFactory {
           { min: 4, max: 4, value: 'Very-High' },
         ],
       ),
+      happinessModifiers: this.happinessModifierDtoFactory.createFromHappinesssModifiers(politicalParty.happinessModifiers),
     };
   }
 }

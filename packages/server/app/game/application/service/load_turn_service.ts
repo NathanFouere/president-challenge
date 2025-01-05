@@ -33,7 +33,7 @@ export class LoadTurnService {
     ));
     const products = sectors.map(sector => sector.products).flat();
     const socialClasses = sectors.map(sector => sector.socialClasses).flat();
-    const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handle(new GetPoliticalPartiesOfGameQuery(
+    const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handleForSwitchTurn(new GetPoliticalPartiesOfGameQuery(
       gameId,
     ));
 

@@ -19,6 +19,7 @@
     "#user/*": "./app/user/*.js",
     "#social-class/*": "./app/social-class/*.js",
     "#product/*": "./app/product/*.js",
+    "#happiness-modifier/*": "./app/happiness-modifier/*.js",
     "#sector/*": "./app/sector/*.js",
     "#state/*": "./app/state/*.js",
     "#political-party/*": "./app/political-party/*.js",
