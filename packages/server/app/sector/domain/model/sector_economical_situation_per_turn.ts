@@ -4,7 +4,7 @@ import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import Sector from '#sector/domain/model/sector';
 
 export default class SectorEconomicalSituationPerTurn extends SaveAmountForTurn {
-  public static readonly tableName = 'sector_economical_situation_per_turns';
+  public static readonly table = 'sector_economical_situation_per_turns';
 
   @column()
   declare sectorId: number;

@@ -4,7 +4,7 @@ import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import State from '#state/domain/model/state';
 
 export default class StateEconomicalSituationPerTurn extends SaveAmountForTurn {
-  public static readonly tableName = 'state_economical_situation_per_turns';
+  public static readonly table = 'state_economical_situation_per_turns';
 
   @column()
   declare stateId: number;

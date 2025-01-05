@@ -4,7 +4,7 @@ import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import SocialClass from '#social-class/domain/models/social_class';
 
 export default class SocialClassHappinessPerTurn extends SaveAmountForTurn {
-  public static readonly tableName = 'social_class_happiness_per_turns';
+  public static readonly table = 'social_class_happiness_per_turns';
 
   @column()
   declare socialClassId: number;

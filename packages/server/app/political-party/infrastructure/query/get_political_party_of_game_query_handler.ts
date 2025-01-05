@@ -6,7 +6,7 @@ import PoliticalParty from '#political-party/domain/models/political_party';
 export default class GetPoliticalPartyOfGameQueryHandler implements IGetPoliticalPartyOfGameQueryHandler {
   private async getPoliticalPartyOfGame(
     query: GetPoliticalPartyOfGameQuery,
-    preloadOptions: { licensedFile?: boolean; happinessPerTurn?: boolean } = {},
+    preloadOptions: { licensedFile?: boolean; happinessPerTurn?: boolean; happinessModifiers?: boolean } = {},
   ): Promise<PoliticalParty> {
     const queryBuilder = PoliticalParty
       .query()
@@ -15,6 +15,10 @@ export default class GetPoliticalPartyOfGameQueryHandler implements IGetPolitica
 
     if (preloadOptions.licensedFile) {
       queryBuilder.preload('licensedFile');
+    }
+
+    if (preloadOptions.happinessModifiers) {
+      queryBuilder.preload('happinessModifiers');
     }
 
     if (preloadOptions.happinessPerTurn) {
@@ -31,6 +35,10 @@ export default class GetPoliticalPartyOfGameQueryHandler implements IGetPolitica
   }
 
   public async handleForDisplay(query: GetPoliticalPartyOfGameQuery): Promise<PoliticalParty> {
-    return await this.getPoliticalPartyOfGame(query, { licensedFile: true, happinessPerTurn: true });
+    return await this.getPoliticalPartyOfGame(query, {
+      licensedFile: true,
+      happinessPerTurn: true,
+      happinessModifiers: true,
+    });
   }
 }

@@ -18,7 +18,10 @@ export default class GetSectorsByGameQueryHandler implements IGetSectorsByGameQu
     }
 
     if (preloadOptions.socialClasses) {
-      queryBuilder.preload('socialClasses');
+      // load social classes with their happiness modifiers
+      queryBuilder.preload('socialClasses', (eventQuery) => {
+        eventQuery.preload('happinessModifiers');
+      });
     }
 
     if (preloadOptions.products) {

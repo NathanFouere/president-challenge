@@ -12,6 +12,7 @@ import Sector from '#sector/domain/model/sector';
 import SocialClassEconomicalSituationPerTurn
   from '#social-class/domain/models/social_class_economical_situation_per_turn';
 import SocialClassHappinessPerTurn from '#social-class/domain/models/social_class_happiness_per_turn';
+import SocialClassHappinessModifier from '#social-class/domain/models/social_class_happiness_modifier';
 
 export default class SocialClass extends BaseModel {
   @column({ isPrimary: true })
@@ -58,6 +59,9 @@ export default class SocialClass extends BaseModel {
 
   @hasMany(() => SocialClassHappinessPerTurn)
   declare happinessPerTurn: HasMany<typeof SocialClassHappinessPerTurn>;
+
+  @hasMany(() => SocialClassHappinessModifier)
+  declare happinessModifiers: HasMany<typeof SocialClassHappinessModifier>;
 
   @column()
   declare sectorId: number;

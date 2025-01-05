@@ -6,6 +6,8 @@ import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licen
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ChartDataFactory from '#common/utils/chart_data_factory';
 import type RangeLevelMatch from '#common/utils/range_level_match';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import HappinessDtoFactory from '#happiness-modifier/application/dto-factory/happiness_dto_factory';
 
 @inject()
 export class SocialClassDtoFactory {
@@ -13,6 +15,7 @@ export class SocialClassDtoFactory {
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
     private readonly chartDataFactory: ChartDataFactory,
     private readonly rangeLevelMatch: RangeLevelMatch,
+    private readonly happinessModifierDtoFactory: HappinessDtoFactory,
   ) {
   }
 
@@ -54,7 +57,9 @@ export class SocialClassDtoFactory {
         'Economical Situation',
         0,
         4,
-        this.socialClassEconomicalSituationRangeLevels),
+        this.socialClassEconomicalSituationRangeLevels,
+      ),
+      happinessModifiers: this.happinessModifierDtoFactory.createFromHappinesssModifiers(socialClass.happinessModifiers),
     };
   }
 }
