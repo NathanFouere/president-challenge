@@ -10,6 +10,7 @@ export default class HappinessDtoFactory {
       color: happinessModifier.color,
       type: happinessModifier.type,
       duration: happinessModifier.duration,
+      amount: happinessModifier.amount,
     };
   }
 

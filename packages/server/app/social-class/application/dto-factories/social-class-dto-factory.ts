@@ -5,7 +5,8 @@ import type SocialClass from '#social-class/domain/models/social_class';
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ChartDataFactory from '#common/utils/chart_data_factory';
-import type RangeLevelMatch from '#common/utils/range_level_match';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import RangeLevelMatch from '#common/utils/range_level_match';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import HappinessDtoFactory from '#happiness-modifier/application/dto-factory/happiness_dto_factory';
 
@@ -41,8 +42,8 @@ export class SocialClassDtoFactory {
       name: socialClass.name,
       description: socialClass.description,
       color: socialClass.color,
-      economicalSituation: this.rangeLevelMatch.createFromAmountPerTurn(socialClass.economicalSituation, this.socialClassEconomicalSituationRangeLevels),
-      happinessLevel: this.rangeLevelMatch.createFromAmountPerTurn(socialClass.getHappinessLevel(), this.socialClassHappinessRangeLevels),
+      economicalSituation: this.rangeLevelMatch.createFromAmount(socialClass.economicalSituation, this.socialClassEconomicalSituationRangeLevels),
+      happinessLevel: this.rangeLevelMatch.createFromAmount(socialClass.getHappinessLevel(), this.socialClassHappinessRangeLevels),
       socialClassType: socialClass.subType,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
       happinessPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(

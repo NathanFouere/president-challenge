@@ -29,7 +29,7 @@ export class StateDtoFactory {
     return {
       name: state.name,
       description: state.description,
-      economicalSituation: this.rangeLevelMatch.createFromAmountPerTurn(
+      economicalSituation: this.rangeLevelMatch.createFromAmount(
         state.economicalSituation,
         this.stateHappinessRangeLevels,
       ),

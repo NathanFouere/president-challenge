@@ -57,7 +57,7 @@ export class SectorDtoFactory {
       name: sector.name,
       type: sector.type,
       description: sector.description,
-      economicalSituation: this.rangeLevelMatch.createFromAmountPerTurn(sector.economicalSituation, this.sectorEconomicalSituationRangeLevels),
+      economicalSituation: this.rangeLevelMatch.createFromAmount(sector.economicalSituation, this.sectorEconomicalSituationRangeLevels),
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.licensedFile),
       socialClasses: this.minimalSocialClassDtoFactory.createFromSocialClasses(sector.socialClasses),
       products: this.minimalProductDtoFactory.createFromProducts(sector.products),

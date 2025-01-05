@@ -37,11 +37,20 @@ onMounted(async () => {
     <br>
     <p>Description : {{ socialClassPresenter.socialClassStore.requireSocialClass.description }}</p>
     <br>
+    <UDivider />
+    <br>
+    <h1>Economical situation</h1>
     <p>Wealth Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.economicalSituation }}</p>
     <br>
-    <p>Happiness Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.happinessLevel }}</p>
-    <br>
     <line-chart-component :data="socialClassPresenter.socialClassStore.requireSocialClass.economicalSituationPerMonthChartData" />
+    <br>
+    <UDivider />
+    <br>
+    <h1>Happiness </h1>
+    <p>Happiness Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.happinessLevel }}</p>
+    <happiness-modifier-component
+      :happiness-modifiers="socialClassPresenter.socialClassStore.requireSocialClass.happinessModifiers"
+    />
     <br>
     <line-chart-component
       :data="socialClassPresenter.socialClassStore.requireSocialClass.happinessPerMonthChartData"

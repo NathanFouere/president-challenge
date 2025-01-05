@@ -1,7 +1,7 @@
 import type { Range } from '#common/utils/range';
 
 export default class RangeLevelMatch {
-  public createFromAmountPerTurn(
+  public createFromAmount(
     level: number,
     ranges: Range[],
   ): string {
