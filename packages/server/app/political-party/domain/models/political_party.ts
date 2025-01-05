@@ -1,8 +1,7 @@
-import { BaseModel, beforeSave, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
+import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
 import type { DateTime } from 'luxon';
-import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import Game from '#game/domain/models/game';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import PoliticalPartySeatsParliament from '#legislature/domain/models/political_party_seats_parliament';
@@ -25,9 +24,6 @@ export default class PoliticalParty extends BaseModel {
 
   @column()
   declare affiliation: PoliticalAffiliation;
-
-  @column()
-  declare happinessLevel: HappinessLevels;
 
   @column()
   declare gameId: number;
@@ -62,10 +58,7 @@ export default class PoliticalParty extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime | null;
 
-  @beforeSave()
-  public static async validateHappinessLevel(politicalParty: PoliticalParty) {
-    if (politicalParty.happinessLevel < 0 || politicalParty.happinessLevel > 4) {
-      throw new Error('Invalid happiness level');
-    }
+  public getHappinessLevel(): number {
+    return this.happinessModifiers.reduce((acc, happinessModifier) => acc + happinessModifier.amount, 0);
   }
 }

@@ -40,7 +40,14 @@ onMounted(async () => {
     <p class="text-justify">
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
     </p>
-    <p>Happiness : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessLevel }}</p>
+    <br>
+    <UDivider />
+    <br>
+    <h1>Happiness</h1>
+    <p>Happiness level : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessLevel }}</p>
+    <happiness-modifier-component
+      :happiness-modifiers="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessModifiers"
+    />
     <br>
     <line-chart-component
       :data="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessPerMonthChartData"

@@ -1,5 +1,4 @@
 import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
-import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import PoliticalParty from '#political-party/domain/models/political_party';
 
 export class PoliticalPartyBuilder {
@@ -9,7 +8,6 @@ export class PoliticalPartyBuilder {
   private color: string | null = null;
   private gameId: number | null = null;
   private licensedFileIdentifier: string | null = null;
-  private happinessLevel: HappinessLevels | null = null;
 
   public withName(name: string): this {
     this.name = name;
@@ -38,11 +36,6 @@ export class PoliticalPartyBuilder {
 
   public withLicensedFileIdentifier(licensedFileIdentifier: string): this {
     this.licensedFileIdentifier = licensedFileIdentifier;
-    return this;
-  }
-
-  public withHappinessLevel(happinessLevel: HappinessLevels): this {
-    this.happinessLevel = happinessLevel;
     return this;
   }
 
@@ -90,9 +83,6 @@ export class PoliticalPartyBuilder {
     else {
       throw new Error('licensedFileIdentifier is required');
     }
-
-    if (this.happinessLevel) politicalParty.happinessLevel = this.happinessLevel;
-    else throw new Error('Happiness level is required');
 
     return politicalParty;
   }

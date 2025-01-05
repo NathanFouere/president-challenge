@@ -1,6 +1,5 @@
 import { inject } from '@adonisjs/core';
 import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
-import type { HappinessLevels } from '@shared/dist/common/happiness-levels.js';
 import politicalPartyStartupConfig from '#game-config/political-party/political-party-startup-config.json' assert { type: 'json' };
 import type PoliticalParty from '#political-party/domain/models/political_party';
 import { aPoliticalParty } from '#political-party/application/builders/political_party_builder';
@@ -25,7 +24,6 @@ export class PoliticalPartyStartupService {
         .withName(politicalPartyValues.name)
         .withGameId(gameId)
         .withLicensedFileIdentifier(politicalPartyValues.licensedFileIdentifier)
-        .withHappinessLevel(politicalPartyValues.happinessLevel as HappinessLevels)
         .build();
 
       politicalParties.push(politicalParty);

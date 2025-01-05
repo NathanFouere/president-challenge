@@ -5,6 +5,7 @@ export default interface HappinessModifierDto {
   name: string;
   description: string;
   color: string;
+  amount: number;
   type: HappinessModifierType;
   duration: number | null;
 }

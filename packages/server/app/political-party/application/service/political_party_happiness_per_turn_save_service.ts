@@ -22,7 +22,7 @@ export class PoliticalPartyHappinessPerTurnSaveService {
   public async savePoliticalPartyHappinessForTurn(politicalParty: PoliticalParty, turn: number): Promise<void> {
     const socialClassHappinessPerTurn = aPoliticalPartyHappinessPerTurn()
       .withPoliticalPartyId(politicalParty.id)
-      .withAmount(politicalParty.happinessLevel)
+      .withAmount(politicalParty.getHappinessLevel())
       .withTurn(turn)
       .build();
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalSocialClassDto } from '@shared/typessocial-class/minimal-social-class-dto';
+import type { MinimalSocialClassDto } from '@shared/social-class/minimal-social-class-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 const props = defineProps<{

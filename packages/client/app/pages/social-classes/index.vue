@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import container from '../../../config/container';
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
-import type { SocialClassesPresenter } from '../../presenters/social-class/social-classes.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { SocialClassesPresenter } from '~/presenters/social-class/social-classes.presenter';
 
 usePageTitle().setTitle('Social Classes');
 

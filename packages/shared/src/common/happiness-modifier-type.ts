@@ -1,4 +1,4 @@
 export enum HappinessModifierType {
-  PERMANENT = 'permanent',
-  TEMPORARY = 'temporary',
+  PERMANENT = 'Permanent',
+  TEMPORARY = 'Temporary',
 }
