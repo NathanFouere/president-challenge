@@ -27,7 +27,6 @@ test.group('CalculateAverageMarginOfSocialClassesService', () => {
       .withSubtype(SocialClassSubtypes.IndustrialOwners)
       .withType(SocialClassTypes.CAPITALIST)
       .withGameId(1)
-      .withHappinessLevel(socialClassOneHappinessLevel)
       .withSectorId(100)
       .build();
 
@@ -40,7 +39,6 @@ test.group('CalculateAverageMarginOfSocialClassesService', () => {
       .withSubtype(SocialClassSubtypes.IndustrialOwners)
       .withType(SocialClassTypes.CAPITALIST)
       .withGameId(1)
-      .withHappinessLevel(socialClassTwoHappinessLevel)
       .withSectorId(200)
       .build();
 
