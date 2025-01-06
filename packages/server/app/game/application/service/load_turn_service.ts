@@ -1,4 +1,6 @@
 import { inject } from '@adonisjs/core';
+
+import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetPoliticalPartiesOfGameQueryHandler
   from '#political-party/application/queries/i_get_political_parties_of_game_query_handler';
@@ -37,12 +39,19 @@ export class LoadTurnService {
       gameId,
     ));
 
+    const socialClassesPerType = {
+      capitalist: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.CAPITALIST),
+      proletariat: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.PETIT_BOURGEOIS),
+      petiteBourgeoisie: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.PROLETARIAT),
+    };
+
     return {
       state,
       sectors,
       products,
       socialClasses,
       politicalParties,
+      socialClassesPerType,
     };
   }
 }
@@ -53,4 +62,11 @@ export interface LoadTurnData {
   products: Product[];
   socialClasses: SocialClass[];
   politicalParties: PoliticalParty[];
+  socialClassesPerType: SocialClassesPerType;
+}
+
+export interface SocialClassesPerType {
+  capitalist: SocialClass[];
+  proletariat: SocialClass[];
+  petiteBourgeoisie: SocialClass[];
 }
