@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { ChoiceDto } from '@shared/typesevent/choice-dto';
+import type { ChoiceDto } from '@shared/event/choice-dto';
 import container from '../../../../config/container';
-import type { EventPresenter } from '../../../presenters/events/event.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../../../config/common.types';
 import LicensedFilesComponent from '../../common/licensed-files-component.vue';
+import type { EventPresenter } from '~/presenters/events/event.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 
 const props = defineProps<{
   eventId: number;
@@ -50,12 +50,17 @@ const getChoiceIcon = (choice: ChoiceDto) => {
   <UModal
     v-model="isOpen"
   >
-    <UCard v-if="eventPresenter.eventStore.hasCurrentEvent">
+    <UCard>
       <template #header>
-        <div
-          class="flex justify-between items-center"
-        >
-          <p> {{ eventPresenter.eventStore.requireCurrentEvent.title }}</p>
+        <div class="flex justify-between items-center">
+          <p v-if="!eventPresenter.eventStore.isGettingEvent">
+            {{ eventPresenter.eventStore.requireCurrentEvent.title }}
+          </p>
+          <USkeleton
+            v-else
+            width="150px"
+            height="24px"
+          />
           <UIcon
             name="i-heroicons-x-mark"
             @click="isOpen = false"
@@ -63,11 +68,18 @@ const getChoiceIcon = (choice: ChoiceDto) => {
         </div>
       </template>
 
-      <licensed-files-component :licensed-files="eventPresenter.eventStore.requireCurrentEvent.licensedFiles" />
-      <p> {{ eventPresenter.eventStore.requireCurrentEvent.text }}</p>
+      <template v-if="eventPresenter.eventStore.isGettingEvent">
+        <USkeleton class="h-64 w-full mb-4" />
+        <USkeleton class="h-64 w-full mb-4" />
+        <USkeleton class="h-24 w-full mb-4" />
+      </template>
+      <template v-else>
+        <licensed-files-component :licensed-files="eventPresenter.eventStore.requireCurrentEvent.licensedFiles" />
+        <p>{{ eventPresenter.eventStore.requireCurrentEvent.text }}</p>
+      </template>
 
       <template
-        v-if="eventPresenter.eventStore.requireCurrentEvent.choices.length > 0"
+        v-if="!eventPresenter.eventStore.isGettingEvent && eventPresenter.eventStore.requireCurrentEvent.choices.length > 0"
         #footer
       >
         <div class="flex justify-between items-center">

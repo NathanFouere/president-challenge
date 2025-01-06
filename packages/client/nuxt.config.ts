@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
+    '@nuxt/fonts',
   ],
   plugins: [
     '~/plugins/api.ts',
@@ -15,7 +16,6 @@ export default defineNuxtConfig({
     '~/plugins/inversify.ts',
   ],
   ssr: false,
-
   devtools: { enabled: true },
   ui: {
     global: true,

@@ -1,9 +1,11 @@
-<script setup lang="ts">
-import 'reflect-metadata';
-</script>
-
 <template>
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 </template>
+
+<style>
+  body {
+    font-family: 'Libre Baskerville', sans-serif;
+  }
+</style>
