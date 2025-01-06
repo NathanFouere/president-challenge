@@ -21,11 +21,11 @@ export class PoliticalPartyDTOFactory {
   }
 
   readonly politicalPartyHappinessRangeLevels = [
-    { min: 0, max: 0, value: 'Very-Low' },
-    { min: 1, max: 1, value: 'Low' },
-    { min: 2, max: 2, value: 'Medium' },
-    { min: 3, max: 3, value: 'High' },
-    { min: 4, max: 4, value: 'Very-High' },
+    { min: 0, max: 1, value: 'Very-Low' },
+    { min: 1, max: 2, value: 'Low' },
+    { min: 2, max: 3, value: 'Medium' },
+    { min: 3, max: 4, value: 'High' },
+    { min: 4, max: 5, value: 'Very-High' },
   ];
 
   public createPoliticalPartyDTO(politicalParty: PoliticalParty): PoliticalPartyDTO {

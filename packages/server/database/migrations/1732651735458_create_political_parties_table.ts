@@ -17,8 +17,6 @@ export default class extends BaseSchema {
         'Right',
         'Far Right',
       ]).notNullable();
-      table.integer('happiness_level')
-        .notNullable();
       table
         .integer('game_id')
         .unsigned()
