@@ -3,7 +3,13 @@ import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-eco
 import type State from '#state/domain/model/state';
 
 export default class StateEconomicalSituationEvolutionService {
-  public propagateEconomicalSituationToState(sector: Sector, state: State): void {
+  public propagateEconomicalSituationToState(sectors: Sector[], state: State): void {
+    for (const sector of sectors) {
+      this.propagateSectorEconomicalSituationToState(sector, state);
+    }
+  }
+
+  private propagateSectorEconomicalSituationToState(sector: Sector, state: State): void {
     const added = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
     state.addToEconomicalSituation(added);
   }

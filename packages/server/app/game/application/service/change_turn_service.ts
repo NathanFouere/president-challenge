@@ -3,31 +3,21 @@ import { inject } from '@adonisjs/core';
 import type Game from '#game/domain/models/game';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductPriceRandomizerService } from '#product/domain/service/product_price_randomizer_service';
+import SaveTurnService from '#game/application/service/turn-service/save_turn_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SectorEconomicalSituationCalculatorService
-  from '#sector/domain/service/sector_economical_situation_calculator_service';
+import { LoadTurnService } from '#game/application/service/turn-service/load_turn_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SaveTurnService from '#game/application/service/save_turn_service';
+import TurnEconomicalService from '#game/application/service/turn-service/turn_economical_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { LoadTurnService } from '#game/application/service/load_turn_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import HappinessModifierTurnGestionService from '#happiness-modifier/application/service/happiness_modifier_turn_gestion_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SocialClassHappinessService from '#social-class/domain/service/social_class_happiness_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import PoliticalPartyHappinessService from '#political-party/domain/service/political_party_happiness_service';
+import TurnHappinessService from '#game/application/service/turn-service/turn_happiness_service';
 
 @inject()
 export default class ChangeTurnService {
   constructor(
-    private readonly sectorEconomicalSituationCalculatorService: SectorEconomicalSituationCalculatorService,
-    private readonly productChangePriceTurnService: ProductPriceRandomizerService,
     private readonly saveTurnService: SaveTurnService,
     private readonly loadTurnService: LoadTurnService,
-    private readonly happinessModifierTurnGestionService: HappinessModifierTurnGestionService,
-    private readonly socialClassHappinessService: SocialClassHappinessService,
-    private readonly politicalPartyHappinessService: PoliticalPartyHappinessService,
+    private readonly turnEconomicalService: TurnEconomicalService,
+    private readonly turnHappinessService: TurnHappinessService,
   ) {
   }
 
@@ -35,12 +25,9 @@ export default class ChangeTurnService {
     try {
       game.changeTurn();
       const newTurn = game.turn;
-      const loadTurnData = await this.loadTurnService.loadTurn(game.id);
-      await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(loadTurnData.sectors, loadTurnData.state);
-      await this.productChangePriceTurnService.changeProductsPricesRandomly(loadTurnData.products);
-      await this.happinessModifierTurnGestionService.processHappinessModifiersOfGame(game.id);
-      this.socialClassHappinessService.updateSocialClassesHappiness(loadTurnData.socialClasses);
-      this.politicalPartyHappinessService.updatePoliticalPartiesHappiness(loadTurnData.politicalParties, loadTurnData.socialClassesPerType);
+      const loadTurnData = await this.loadTurnService.loadTurn(game);
+      await this.turnEconomicalService.passTurn(loadTurnData);
+      await this.turnHappinessService.passTurn(loadTurnData);
       await this.saveTurnService.saveForTurn(
         game,
         loadTurnData.socialClasses,

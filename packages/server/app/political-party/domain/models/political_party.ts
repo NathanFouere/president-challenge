@@ -59,6 +59,13 @@ export default class PoliticalParty extends BaseModel {
   declare updatedAt: DateTime | null;
 
   public getHappinessLevel(): number {
-    return this.happinessModifiers.reduce((acc, happinessModifier) => acc + happinessModifier.amount, 0);
+    const happinessLevel = this.happinessModifiers.reduce((acc, happinessModifier) => acc + happinessModifier.amount, 0);
+    if (happinessLevel < 0) {
+      return 0;
+    }
+    if (happinessLevel > 5) {
+      return 5;
+    }
+    return happinessLevel;
   }
 }
