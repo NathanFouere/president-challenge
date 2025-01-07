@@ -6,7 +6,6 @@
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "factory-owner-one",
       "factory-owner-two",
@@ -25,7 +24,6 @@
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "mine-owner-one",
       "mine-owner-two",
@@ -44,7 +42,6 @@
     "color": "#FF0000",
     "description": "The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture. The bourgeoisie is a social class that is characterized by their ownership of capital and their related culture.",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "land-owner-one",
       "land-owner-two",
@@ -66,7 +63,6 @@
     "color": "#00FF00",
     "description": "The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work). The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work). The proletariat is the class of wage-earners in an economic society whose only possession of significant material value is their labour-power (their ability to work).",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "worker-one",
       "worker-two",
@@ -90,7 +86,6 @@
     "color": "#00FF00",
     "description": "Minors work in the mines and are paid very little. Minors work in the mines and are paid very little. Minors work in the mines and are paid very little.",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "minor-one",
       "minor-two",
@@ -109,7 +104,6 @@
     "color": "#0000FF",
     "description": "The middle class is a class of people in the middle of a social hierarchy. The middle class is a class of people in the middle of a social hierarchy. The middle class is a class of people in the middle of a social hierarchy.",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "small-bourgeoisie-one",
       "small-bourgeoisie-two",
@@ -126,7 +120,6 @@
     "color": "#0000FF",
     "description": "The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism. The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism. The peasantry is a traditional class of farmers, either laborers or owners of small farms, especially in the Middle Ages under feudalism.",
     "economicalSituation": 3,
-    "happinessLevel": 1,
     "licensedFilesIdentifiers": [
       "peasant-two",
       "peasant-four",

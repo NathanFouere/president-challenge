@@ -71,7 +71,14 @@ export default class SocialClass extends BaseModel {
   declare updatedAt: DateTime | null;
 
   public getHappinessLevel(): number {
-    return this.happinessModifiers.reduce((acc, modifier) => acc + modifier.amount, 0);
+    const happinessLevel = this.happinessModifiers.reduce((acc, modifier) => acc + modifier.amount, 0);
+    if (happinessLevel < 0) {
+      return 0;
+    }
+    if (happinessLevel > 5) {
+      return 5;
+    }
+    return happinessLevel;
   }
 
   @beforeSave()

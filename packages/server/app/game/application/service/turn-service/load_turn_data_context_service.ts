@@ -16,9 +16,10 @@ import type SocialClass from '#social-class/domain/models/social_class';
 import { GetStateOfGameQuery } from '#state/application/query/get_state_of_game_query';
 import { GetSectorsByGameQuery } from '#sector/application/query/get_sectors_by_game_query';
 import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries/get_political_parties_of_game_query';
+import type Game from '#game/domain/models/game';
 
 @inject()
-export class LoadTurnService {
+export class LoadTurnDataContextService {
   constructor(
     private readonly getStateOfGameQueryHandler: IGetStateOfGameQueryHandler,
     private readonly getSectorsOfGameQueryHandler: IGetSectorsByGameQueryHandler,
@@ -26,26 +27,23 @@ export class LoadTurnService {
   ) {
   }
 
-  public async loadTurn(gameId: number): Promise<LoadTurnData> {
+  public async load(game: Game): Promise<TurnDataContext> {
     const state = await this.getStateOfGameQueryHandler.handle(new GetStateOfGameQuery(
-      gameId,
+      game.id,
     ));
     const sectors = await this.getSectorsOfGameQueryHandler.handleForSwitchTurn(new GetSectorsByGameQuery(
-      gameId,
+      game.id,
     ));
-    const products = sectors.map(sector => sector.products).flat();
-    const socialClasses = sectors.map(sector => sector.socialClasses).flat();
+    const socialClasses = this.loadSocialClassesFromSectors(sectors);
+    const products = this.loadProductsFromSectors(sectors);
     const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handleForSwitchTurn(new GetPoliticalPartiesOfGameQuery(
-      gameId,
+      game.id,
     ));
 
-    const socialClassesPerType = {
-      capitalist: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.CAPITALIST),
-      proletariat: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.PETIT_BOURGEOIS),
-      petiteBourgeoisie: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.PROLETARIAT),
-    };
+    const socialClassesPerType = this.loadSocialClassesPerType(socialClasses);
 
     return {
+      game,
       state,
       sectors,
       products,
@@ -54,9 +52,26 @@ export class LoadTurnService {
       socialClassesPerType,
     };
   }
+
+  private loadSocialClassesFromSectors(sectors: Sector[]): SocialClass[] {
+    return sectors.map(sector => sector.socialClasses).flat();
+  }
+
+  private loadSocialClassesPerType(socialClasses: SocialClass[]): SocialClassesPerType {
+    return {
+      capitalist: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.CAPITALIST),
+      proletariat: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.PROLETARIAT),
+      petiteBourgeoisie: socialClasses.filter(socialClass => socialClass.type === SocialClassTypes.PETIT_BOURGEOIS),
+    };
+  }
+
+  private loadProductsFromSectors(sectors: Sector[]): Product[] {
+    return sectors.map(sector => sector.products).flat();
+  }
 }
 
-export interface LoadTurnData {
+export interface TurnDataContext {
+  game: Game;
   state: State;
   sectors: Sector[];
   products: Product[];
