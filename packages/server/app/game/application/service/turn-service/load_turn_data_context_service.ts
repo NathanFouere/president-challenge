@@ -54,14 +54,7 @@ export class LoadTurnDataContextService {
   }
 
   private loadSocialClassesFromSectors(sectors: Sector[]): SocialClass[] {
-    const socialClasses = [];
-    for (const sector of sectors) {
-      for (const socialClass of sector.socialClasses) {
-        socialClass.sector = sector;
-        socialClasses.push(socialClass);
-      }
-    }
-    return socialClasses;
+    return sectors.map(sector => sector.socialClasses).flat();
   }
 
   private loadSocialClassesPerType(socialClasses: SocialClass[]): SocialClassesPerType {
