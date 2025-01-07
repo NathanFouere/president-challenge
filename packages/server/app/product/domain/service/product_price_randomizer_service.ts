@@ -4,7 +4,7 @@ import type Product from '#product/domain/models/product';
 @inject()
 export class ProductPriceRandomizerService {
   public changeProductsPricesRandomly(products: Product[]): void {
-    products.map(product => this.changeProductPriceRandomly(product));
+    products.forEach(product => this.changeProductPriceRandomly(product));
   }
 
   public changeProductPriceRandomly(product: Product): void {
