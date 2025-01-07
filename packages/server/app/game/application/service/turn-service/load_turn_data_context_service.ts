@@ -19,7 +19,7 @@ import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries
 import type Game from '#game/domain/models/game';
 
 @inject()
-export class LoadTurnService {
+export class LoadTurnDataContextService {
   constructor(
     private readonly getStateOfGameQueryHandler: IGetStateOfGameQueryHandler,
     private readonly getSectorsOfGameQueryHandler: IGetSectorsByGameQueryHandler,
@@ -27,7 +27,7 @@ export class LoadTurnService {
   ) {
   }
 
-  public async loadTurn(game: Game): Promise<TurnDataCache> {
+  public async load(game: Game): Promise<TurnDataContext> {
     const state = await this.getStateOfGameQueryHandler.handle(new GetStateOfGameQuery(
       game.id,
     ));
@@ -77,7 +77,7 @@ export class LoadTurnService {
   }
 }
 
-export interface TurnDataCache {
+export interface TurnDataContext {
   game: Game;
   state: State;
   sectors: Sector[];

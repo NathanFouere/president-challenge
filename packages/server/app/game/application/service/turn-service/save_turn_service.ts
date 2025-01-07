@@ -3,13 +3,8 @@ import { inject } from '@adonisjs/core';
 import IGameRepository from '#game/domain/repository/i_game_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ProductRepository from '#product/infrastructure/repository/product_repository';
-import type Game from '#game/domain/models/game';
-import type SocialClass from '#social-class/domain/models/social_class';
-import type PoliticalParty from '#political-party/domain/models/political_party';
-import type Product from '#product/domain/models/product';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SectorRepository from '#sector/infrastructure/repository/sector_repository';
-import type Sector from '#sector/domain/model/sector';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateRevenuePerTurnSaveService } from '#state/application/service/state_economical_situation_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -18,7 +13,6 @@ import { ProductPricePerTurnSaveService } from '#product/application/service/pro
 import {
   SocialClassEconomicalSituationPerTurnSaveService,
 } from '#social-class/application/service/social_class_economical_situation_per_turn_save_service';
-import type State from '#state/domain/model/state';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   SectorEconomicalSituationPerTurnSaveService,
@@ -38,9 +32,11 @@ import SocialClassSaveForTurnService from '#social-class/infrastructure/service/
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import PoliticalPartySaveForTurnService
   from '#political-party/infrastructure/service/political_party_save_for_turn_service';
+import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
+import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 
 @inject()
-export default class SaveTurnService {
+export default class SaveTurnService implements TurnProcessorStep {
   constructor(
     private readonly gameRepository: IGameRepository,
     private readonly productRepository: ProductRepository,
@@ -58,32 +54,32 @@ export default class SaveTurnService {
 
   }
 
-  public async saveForTurn(game: Game, socialClasses: SocialClass[], politicalParties: PoliticalParty[], products: Product[], sectors: Sector[], state: State, turn: number): Promise<void> {
-    await this.saveGlobalDatas(game, state, socialClasses, politicalParties, products, sectors);
-    await this.saveHistoricalDatas(state, socialClasses, politicalParties, products, sectors, turn);
+  public async execute(turnDataCache: TurnDataContext): Promise<void> {
+    await this.saveGlobalDatas(turnDataCache);
+    await this.saveHistoricalDatas(turnDataCache);
   }
 
-  private async saveGlobalDatas(game: Game, state: State, socialClasses: SocialClass[], politicalParties: PoliticalParty[], products: Product[], sectors: Sector[]): Promise<void> {
+  private async saveGlobalDatas(turnDataCache: TurnDataContext): Promise<void> {
     await Promise.all([
-      this.gameRepository.save(game),
-      this.stateRepository.save(state),
-      this.socialClassService.saveSocialClassesForTurn(socialClasses),
-      this.politicalPartySaveForTurnService.savePoliticalPartiesForTurn(politicalParties),
-      this.productRepository.saveMany(products),
-      this.sectorRepository.saveMany(sectors),
+      this.gameRepository.save(turnDataCache.game),
+      this.stateRepository.save(turnDataCache.state),
+      this.socialClassService.saveSocialClassesForTurn(turnDataCache.socialClasses),
+      this.politicalPartySaveForTurnService.savePoliticalPartiesForTurn(turnDataCache.politicalParties),
+      this.productRepository.saveMany(turnDataCache.products),
+      this.sectorRepository.saveMany(turnDataCache.sectors),
     ]);
   }
 
-  private async saveHistoricalDatas(state: State, socialClasses: SocialClass[], politicalParties: PoliticalParty[], products: Product[], sectors: Sector[], turn: number): Promise<void> {
+  private async saveHistoricalDatas(turnDataCache: TurnDataContext): Promise<void> {
     await Promise.all([
-      this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForMonth(state, turn),
-      this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(socialClasses, turn),
-      this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(socialClasses, turn),
-      this.productPricePerTurnSaveService.saveProductsPricesPerTurn(products, turn),
-      this.sectorEconomicalSituationPerTurnSaveService.saveSectorsEconomicalSituationForTurn(sectors, turn),
+      this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForMonth(turnDataCache.state, turnDataCache.game.turn),
+      this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(turnDataCache.socialClasses, turnDataCache.game.turn),
+      this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(turnDataCache.socialClasses, turnDataCache.game.turn),
+      this.productPricePerTurnSaveService.saveProductsPricesPerTurn(turnDataCache.products, turnDataCache.game.turn),
+      this.sectorEconomicalSituationPerTurnSaveService.saveSectorsEconomicalSituationForTurn(turnDataCache.sectors, turnDataCache.game.turn),
       this.politicalPartyHappinessPerTurnSaveService.savePoliticalPartiesHappinessForTurn(
-        politicalParties,
-        turn,
+        turnDataCache.politicalParties,
+        turnDataCache.game.turn,
       ),
     ]);
   }
