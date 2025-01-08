@@ -5,17 +5,17 @@ export class PoliticalPartySeatsSenateBuilder {
   public politicalPartyId: number | null = null;
   public senateId: number | null = null;
 
-  public withNumberOfSeats(numberOfSeats: number): PoliticalPartySeatsSenateBuilder {
+  public withNumberOfSeats(numberOfSeats: number): this {
     this.numberOfSeats = numberOfSeats;
     return this;
   }
 
-  public withPoliticalPartyId(politicalPartyId: number): PoliticalPartySeatsSenateBuilder {
+  public withPoliticalPartyId(politicalPartyId: number): this {
     this.politicalPartyId = politicalPartyId;
     return this;
   }
 
-  public withSenateId(senateId: number): PoliticalPartySeatsSenateBuilder {
+  public withSenateId(senateId: number): this {
     this.senateId = senateId;
     return this;
   }

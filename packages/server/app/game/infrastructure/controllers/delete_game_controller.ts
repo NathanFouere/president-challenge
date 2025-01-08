@@ -6,7 +6,7 @@ import type User from '#user/domain/models/user';
 
 @inject()
 export default class DeleteGameController {
-  constructor(private deleteGameService: DeleteGameService) {}
+  constructor(private readonly deleteGameService: DeleteGameService) {}
 
   public async deleteGame({ auth, params, response }: HttpContext) {
     try {
