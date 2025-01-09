@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 
@@ -27,7 +26,6 @@ export default class GetParliamentController {
       return this.parliamentDtoFactory.createFromParliament(parliament);
     }
     catch (e) {
-      console.error(e);
       return response.internalServerError({
         message: 'Something went wrong',
         error: e,

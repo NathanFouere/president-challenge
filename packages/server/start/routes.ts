@@ -64,10 +64,12 @@ router.group(() => {
 
 const GetSenateController = () => import('#legislature/infrastructure/controllers/get_senate_controller');
 const GetParliamentController = () => import('#legislature/infrastructure/controllers/get_parliament_controller');
+const GetLawGroupsController = () => import('#legislature/infrastructure/controllers/get_law_groups_controller');
 
 router.group(() => {
   router.get('/senate/:gameId', [GetSenateController, 'getSenate']).use(middleware.auth());
   router.get('/parliament/:gameId', [GetParliamentController, 'getParliament']).use(middleware.auth());
+  router.get('/law-groups/:gameId', [GetLawGroupsController, 'getLawGroups']).use(middleware.auth());
 }).prefix('api/legislature');
 
 /* SOCIAL CLASS */

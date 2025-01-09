@@ -17,6 +17,8 @@ import { SocialClassStartupService } from '#social-class/infrastructure/startup/
 import { SectorStartupService } from '#sector/infrastructure/startup/sector_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import LawGroupStartupService from '#legislature/infrastructure/startup/law_group_startup_service';
 
 @inject()
 export class StartupService {
@@ -30,6 +32,7 @@ export class StartupService {
     private readonly productStartupService: ProductStartupService,
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
+    private readonly lawGroupStartupService: LawGroupStartupService,
   ) {
   }
 
@@ -44,6 +47,7 @@ export class StartupService {
       await this.socialClassStartupService.initialize(gameId);
       await this.productStartupService.initialize(gameId);
       await this.stateStartupService.initialize(gameId);
+      await this.lawGroupStartupService.initialize(gameId);
     }
     catch (error) {
       console.error(error);

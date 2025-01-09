@@ -28,7 +28,6 @@ export class PoliticalPartySeatsStartupService {
     private readonly politicalPartyRepository: IPoliticalPartyRepository,
     private readonly politicalPartySeatsParliamentRepository: IPoliticalPartySeatsParliamentRepository,
     private readonly politicalPartySeatsSenateRepository: IPoliticalPartySeatsSenateRepository,
-
     private readonly getSenateByGameQueryHandler: IGetSenateByGameQueryHandler,
     private readonly getParliamentByGameQueryHandler: IGetParliamentByGameQueryHandler,
   ) {

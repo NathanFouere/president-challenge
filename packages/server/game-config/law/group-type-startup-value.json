@@ -1,0 +1,18 @@
+[
+  {
+    "type": "test",
+    "name": "Test Group",
+    "description": "This is a test group for demonstration purposes.",
+    "propertyLaws": [
+      {
+        "name": "test",
+        "description": "test",
+        "voted": false,
+        "order": 1,
+        "sectorType": "Agricultural",
+        "sectorOwnershipTypeFrom": "PRIVATE",
+        "sectorOwnershipTypeTo": "PUBLIC"
+      }
+    ]
+  }
+]

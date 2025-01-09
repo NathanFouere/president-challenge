@@ -1,0 +1,11 @@
+[
+  {
+    "name": "test",
+    "description": "test",
+    "voted": false,
+    "order": 1,
+    "sectorType": "Agricultural",
+    "sectorOwnershipTypeFrom": "PRIVATE",
+    "sectorOwnershipTypeTo": "PUBLIC"
+  }
+]

@@ -7,6 +7,9 @@ import IPoliticalPartySeatsSenateRepository
 import IPoliticalPartySeatsParliamentRepository
   from '#legislature/domain/repository/i_political_party_seats_parliament_repository';
 import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_get_parliament_by_game_query_handler';
+import IPropertyLawRepository from '#legislature/domain/repository/i_property_law_repository';
+import ILawGroupRepository from '#legislature/domain/repository/i_law_group_repository';
+import IGetLawGroupsByGameQueryHandler from '#legislature/application/query/i_get_law_groups_by_game_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot() {
@@ -28,6 +31,15 @@ export default class LegislatureProvider extends AppProvider {
     const { default: PoliticalPartySeatsSenateRepository } = await import(
       '#legislature/infrastructure/repositories/political_party_seats_senate_repository'
     );
+    const { default: PropertyLawRepository } = await import(
+      '#legislature/infrastructure/repositories/property_law_repository'
+    );
+    const { default: LawGroupRepository } = await import(
+      '#legislature/infrastructure/repositories/law_group_repository'
+    );
+    const { default: GetLawGroupsByGameQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_law_groups_by_game_query_handler'
+    );
 
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
@@ -46,6 +58,15 @@ export default class LegislatureProvider extends AppProvider {
     });
     this.app.container.bind(IPoliticalPartySeatsSenateRepository, () => {
       return new PoliticalPartySeatsSenateRepository();
+    });
+    this.app.container.bind(IPropertyLawRepository, () => {
+      return new PropertyLawRepository();
+    });
+    this.app.container.bind(ILawGroupRepository, () => {
+      return new LawGroupRepository();
+    });
+    this.app.container.bind(IGetLawGroupsByGameQueryHandler, () => {
+      return new GetLawGroupsByGameQueryHandler();
     });
   }
 }
