@@ -35,6 +35,7 @@ const Routes = {
   Legislature: {
     GetSenate: (gameId: number) => `${legislaturePrefix}/senate/${gameId}`,
     GetParliament: (gameId: number) => `${legislaturePrefix}/parliament/${gameId}`,
+    GetLawCategories: (gameId: number) => `${legislaturePrefix}/law-categories/${gameId}`,
   },
   SocialClass: {
     GetSocialClasses: (gameId: number) => `${socialClassPrefix}/${gameId}`,

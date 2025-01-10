@@ -7,6 +7,5 @@ export interface PropertyLawStartupInterface {
   voted: boolean;
   order: number;
   sectorType: SectorTypes;
-  sectorOwnershipTypeFrom: SectorOwnershipType;
   sectorOwnershipTypeTo: SectorOwnershipType;
 }

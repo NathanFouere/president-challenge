@@ -26,12 +26,6 @@ export default class extends BaseSchema {
         'Mine',
       ]).notNullable();
 
-      table.enum('sector_ownership_type_from', [
-        'PRIVATE',
-        'MIXED',
-        'PUBLIC',
-      ]).notNullable();
-
       table.enum('sector_ownership_type_to', [
         'PRIVATE',
         'MIXED',

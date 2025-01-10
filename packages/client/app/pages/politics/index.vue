@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import container from '../../../config/container';
-import type { PoliticalPartiesPresenter } from '../../presenters/legislation/political-parties.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
+import type { PoliticalPartiesPresenter } from '../../presenters/political-party/political-parties.presenter';
 import SenateComponent from '../../components/legislation/senate-component.vue';
 import ParliamentComponent from '../../components/legislation/parliament-component.vue';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import { NUXT_ROUTES } from '~~/config/routes/nuxt-routes';
+
+const router = useRouter();
 
 usePageTitle().setTitle('Legislation');
 
@@ -39,7 +42,7 @@ onMounted(async () => {
   <br>
   <UDivider class="sticky" />
   <br>
-  <div>
+  <div class="text-center">
     <h1 class="text-center">
       Legislature
     </h1>
@@ -48,5 +51,11 @@ onMounted(async () => {
       <senate-component class="w-1/2 p-1" />
       <parliament-component class="w-1/2 p-1" />
     </div>
+    <br>
+    <UButton
+      @click="() => router.push(NUXT_ROUTES.laws)"
+    >
+      Laws
+    </UButton>
   </div>
 </template>

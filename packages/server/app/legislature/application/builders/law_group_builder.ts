@@ -4,10 +4,10 @@ export class LawGroupBuilder {
   private name: string | null = null;
   private description: string | null = null;
   private type: string | null = null;
-  private gameId: number | null = null;
+  private lawCategoryId: number | null = null;
 
-  public inGame(gameId: number): this {
-    this.gameId = gameId;
+  public inCategory(lawCategoryId: number): this {
+    this.lawCategoryId = lawCategoryId;
     return this;
   }
 
@@ -35,8 +35,8 @@ export class LawGroupBuilder {
     else throw new Error('Description is required');
     if (this.type !== null) lawGroup.type = this.type;
     else throw new Error('Group type is required');
-    if (this.gameId !== null) lawGroup.gameId = this.gameId;
-    else throw new Error('Game ID is required');
+    if (this.lawCategoryId !== null) lawGroup.lawCategoryId = this.lawCategoryId;
+    else throw new Error('Law category ID is required');
 
     return lawGroup;
   }

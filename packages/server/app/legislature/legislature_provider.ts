@@ -10,6 +10,9 @@ import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_g
 import IPropertyLawRepository from '#legislature/domain/repository/i_property_law_repository';
 import ILawGroupRepository from '#legislature/domain/repository/i_law_group_repository';
 import IGetLawGroupsByGameQueryHandler from '#legislature/application/query/i_get_law_groups_by_game_query_handler';
+import ILawCategoryRepository from '#legislature/domain/repository/i_law_category_repository';
+import IGetLawCategoriesByGameQueryHandler
+  from '#legislature/application/query/i_get_law_categories_by_game_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot() {
@@ -40,6 +43,12 @@ export default class LegislatureProvider extends AppProvider {
     const { default: GetLawGroupsByGameQueryHandler } = await import(
       '#legislature/infrastructure/query/get_law_groups_by_game_query_handler'
     );
+    const { default: LawCategoryRepository } = await import(
+      '#legislature/infrastructure/repositories/law_category_repository'
+    );
+    const { default: GetLawCategoriesByGameQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_law_categories_by_game_query_handler'
+    );
 
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
@@ -67,6 +76,12 @@ export default class LegislatureProvider extends AppProvider {
     });
     this.app.container.bind(IGetLawGroupsByGameQueryHandler, () => {
       return new GetLawGroupsByGameQueryHandler();
+    });
+    this.app.container.bind(ILawCategoryRepository, () => {
+      return new LawCategoryRepository();
+    });
+    this.app.container.bind(IGetLawCategoriesByGameQueryHandler, () => {
+      return new GetLawCategoriesByGameQueryHandler();
     });
   }
 }

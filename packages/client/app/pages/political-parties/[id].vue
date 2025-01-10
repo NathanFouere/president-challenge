@@ -2,7 +2,7 @@
 import container from '../../../config/container';
 import LicensedFileComponent from '../../components/common/licensed-file-component.vue';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
-import type { PoliticalPartyPresenter } from '~/presenters/legislation/political-party.presenter';
+import type { PoliticalPartyPresenter } from '~/presenters/political-party/political-party.presenter';
 import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
 
 usePageTitle().setTitle('Political party ...');

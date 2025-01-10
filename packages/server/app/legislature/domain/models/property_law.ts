@@ -10,8 +10,5 @@ export default class PropertyLaw extends Law {
   declare sectorType: SectorTypes;
 
   @column()
-  declare sectorOwnershipTypeFrom: SectorOwnershipType;
-
-  @column()
   declare sectorOwnershipTypeTo: SectorOwnershipType;
 }

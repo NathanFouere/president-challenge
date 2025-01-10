@@ -51,9 +51,10 @@ import type { ChoiceStartupInterface } from '#event/infrastructure/startup/choic
 import IEventRepository from '#event/domain/repository/i_event_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IChoiceRepository from '#event/domain/repository/i_choice_repository';
+import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 
 @inject()
-export class EventStartupService {
+export class EventStartupService implements StartupProcessorStep {
   constructor(
     private readonly eventRepository: IEventRepository,
     private readonly choiceRepository: IChoiceRepository,
@@ -102,7 +103,7 @@ export class EventStartupService {
     warsaw_treaty,
   ] as unknown as EventStartupInterface[];
 
-  public async initialize(gameId: number): Promise<void> {
+  public async execute(gameId: number): Promise<void> {
     await this.initializeEvents(gameId);
   }
 

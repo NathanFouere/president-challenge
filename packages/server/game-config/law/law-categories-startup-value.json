@@ -1,0 +1,74 @@
+[
+  {
+    "name": "test",
+    "description": "test",
+    "lawGroups": [
+      {
+        "type": "test",
+        "name": "Test Group",
+        "description": "This is a test group for demonstration purposes.",
+        "propertyLaws": [
+          {
+            "name": "test",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "sectorType": "Agricultural",
+            "sectorOwnershipTypeTo": "PUBLIC"
+          }
+        ]
+      },
+      {
+        "type": "test_other",
+        "name": "Another Test Group",
+        "description": "This is another test group for demonstration purposes.",
+        "propertyLaws": [
+          {
+            "name": "test",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "PUBLIC"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "test2",
+    "description": "2",
+    "lawGroups": [
+      {
+        "type": "test",
+        "name": "Test Group",
+        "description": "This is a test group for demonstration purposes.",
+        "propertyLaws": [
+          {
+            "name": "test",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "sectorType": "Agricultural",
+            "sectorOwnershipTypeTo": "PUBLIC"
+          }
+        ]
+      },
+      {
+        "type": "test_other",
+        "name": "Another Test Group",
+        "description": "This is another test group for demonstration purposes.",
+        "propertyLaws": [
+          {
+            "name": "test",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "PUBLIC"
+          }
+        ]
+      }
+    ]
+  }
+]

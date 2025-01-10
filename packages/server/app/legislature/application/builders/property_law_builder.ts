@@ -5,16 +5,10 @@ import { LawBuilder } from '#legislature/application/builders/law_builder';
 
 export default class PropertyLawBuilder extends LawBuilder {
   private sectorType: SectorTypes | null = null;
-  private sectorOwnershipTypeFrom: SectorOwnershipType | null = null;
   private sectorOwnershipTypeTo: SectorOwnershipType | null = null;
 
   public withSectorType(sectorType: SectorTypes): this {
     this.sectorType = sectorType;
-    return this;
-  }
-
-  public withSectorOwnershipTypeFrom(sectorOwnershipTypeFrom: SectorOwnershipType): this {
-    this.sectorOwnershipTypeFrom = sectorOwnershipTypeFrom;
     return this;
   }
 
@@ -38,8 +32,6 @@ export default class PropertyLawBuilder extends LawBuilder {
     else throw new Error('Order is required');
     if (this.sectorType !== null) propertyLaw.sectorType = this.sectorType;
     else throw new Error('Sector type is required');
-    if (this.sectorOwnershipTypeFrom !== null) propertyLaw.sectorOwnershipTypeFrom = this.sectorOwnershipTypeFrom;
-    else throw new Error('Sector ownership type from is required');
     if (this.sectorOwnershipTypeTo !== null) propertyLaw.sectorOwnershipTypeTo = this.sectorOwnershipTypeTo;
     else throw new Error('Sector ownership type to is required');
 

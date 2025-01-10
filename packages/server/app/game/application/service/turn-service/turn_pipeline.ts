@@ -8,7 +8,7 @@ export class TurnPipeline {
   ) {
   }
 
-  public async executeWithTurnContext(): Promise<void> {
+  public async execute(): Promise<void> {
     for (const step of this.steps) {
       await step.execute(this.turnContext);
     }

@@ -7,7 +7,6 @@ export default class LawDtoFactory {
       name: property.name,
       description: property.description,
       voted: property.voted,
-      order: property.order,
     };
   }
 }

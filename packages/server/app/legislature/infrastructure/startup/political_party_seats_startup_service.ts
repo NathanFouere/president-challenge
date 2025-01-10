@@ -21,9 +21,10 @@ import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_g
 import { GetParliamentByGameQuery } from '#legislature/application/query/get_parliament_by_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IPoliticalPartyRepository from '#political-party/domain/repository/i_political_party_repository';
+import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 
 @inject()
-export class PoliticalPartySeatsStartupService {
+export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
   constructor(
     private readonly politicalPartyRepository: IPoliticalPartyRepository,
     private readonly politicalPartySeatsParliamentRepository: IPoliticalPartySeatsParliamentRepository,
@@ -33,7 +34,7 @@ export class PoliticalPartySeatsStartupService {
   ) {
   }
 
-  public async initialize(gameId: number): Promise<void> {
+  public async execute(gameId: number): Promise<void> {
     const seatsInSenates = [];
     const seatsInParliaments = [];
     const senate = await this.getSenateByGameQueryHandler.handle(new GetSenateByGameQuery(gameId));
