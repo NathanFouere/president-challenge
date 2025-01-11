@@ -53,14 +53,14 @@ const getChoiceIcon = (choice: ChoiceDto) => {
     <UCard>
       <template #header>
         <div class="flex justify-between items-center">
-          <p v-if="!eventPresenter.eventStore.isGettingEvent">
-            {{ eventPresenter.eventStore.requireCurrentEvent.title }}
-          </p>
           <USkeleton
-            v-else
+            v-if="eventPresenter.eventStore.isGettingEvent"
             width="150px"
             height="24px"
           />
+          <p v-else>
+            {{ eventPresenter.eventStore.requireCurrentEvent.title }}
+          </p>
           <UIcon
             name="i-heroicons-x-mark"
             @click="isOpen = false"

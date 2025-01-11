@@ -1,13 +1,15 @@
 import { inject } from '@adonisjs/core';
 import type { LawGroupDto } from '@shared/dist/legislature/law-group-dto.js';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import MinimalPropertyLawDtoFactory from '#legislature/application/dto-factories/minimal_property_law_dto_factory';
+
+import { LawType } from '@shared/dist/legislature/law-type.js';
 import type LawGroup from '#legislature/domain/models/law_group';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import MinimalLawDtoFactory from '#legislature/application/dto-factories/minimal_law_dto_factory';
 
 @inject()
 export default class LawGroupDtoFactory {
   constructor(
-    private readonly propertyLawDtoFactory: MinimalPropertyLawDtoFactory,
+    private readonly minimalLawDtoFactory: MinimalLawDtoFactory,
   ) {
   }
 
@@ -19,9 +21,8 @@ export default class LawGroupDtoFactory {
     return {
       id: lawGroup.id,
       name: lawGroup.name,
-      type: lawGroup.type,
       description: lawGroup.description,
-      propertyLaws: this.propertyLawDtoFactory.createFromPropertyLaws(lawGroup.propertyLaws),
+      propertyLaws: this.minimalLawDtoFactory.createFromLaws(lawGroup.propertyLaws, LawType.PROPERTY),
     };
   }
 }

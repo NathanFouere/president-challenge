@@ -13,9 +13,27 @@ onMounted(async () => {
 </script>
 
 <template>
-  {{ lawCategoriesPresenter.lawCategoriesStore.lawCategories }}
-  <u-accordion
-    v-for="lawGroup in lawCategoriesPresenter.lawCategoriesStore.lawCategories"
-    :key="lawGroup.id"
+  <USkeleton
+    v-if="lawCategoriesPresenter.lawCategoriesStore.isGettingLawCategories"
+    class="h-64 w-full mb-4"
   />
+  <div
+    v-else
+  >
+    <div
+      v-for="lawCategory in lawCategoriesPresenter.lawCategoriesStore.lawCategories"
+      :key="lawCategory.id"
+    >
+      <h1 class="text-center">
+        {{ lawCategory.name }}
+      </h1>
+      <br>
+      <law-group-accordion-component
+        :law-category="lawCategory"
+      />
+      <br>
+      <UDivider class="sticky bottom-0" />
+      <br>
+    </div>
+  </div>
 </template>

@@ -3,16 +3,10 @@ import LawGroup from '#legislature/domain/models/law_group';
 export class LawGroupBuilder {
   private name: string | null = null;
   private description: string | null = null;
-  private type: string | null = null;
   private lawCategoryId: number | null = null;
 
   public inCategory(lawCategoryId: number): this {
     this.lawCategoryId = lawCategoryId;
-    return this;
-  }
-
-  public ofType(groupType: string): this {
-    this.type = groupType;
     return this;
   }
 
@@ -33,8 +27,6 @@ export class LawGroupBuilder {
     else throw new Error('Name is required');
     if (this.description !== null) lawGroup.description = this.description;
     else throw new Error('Description is required');
-    if (this.type !== null) lawGroup.type = this.type;
-    else throw new Error('Group type is required');
     if (this.lawCategoryId !== null) lawGroup.lawCategoryId = this.lawCategoryId;
     else throw new Error('Law category ID is required');
 

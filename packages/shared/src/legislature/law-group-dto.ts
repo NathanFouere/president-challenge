@@ -1,9 +1,8 @@
-import type { MinimalPropertyLawDto } from '@shared/legislature/minimal-property-law-dto.js';
+import type { MinimalLawDto } from '@shared/legislature/minimal-law-dto.js';
 
 export interface LawGroupDto {
   id: number;
-  type: string;
   name: string;
   description: string;
-  propertyLaws: MinimalPropertyLawDto[];
+  propertyLaws: MinimalLawDto[];
 }

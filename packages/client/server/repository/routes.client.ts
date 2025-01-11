@@ -1,3 +1,5 @@
+import type { LawType } from '@shared/legislature/law-type';
+
 const prefix: string = 'api';
 const authPrefix: string = `${prefix}/auth`;
 const gamePrefix: string = `${prefix}/games`;
@@ -36,6 +38,7 @@ const Routes = {
     GetSenate: (gameId: number) => `${legislaturePrefix}/senate/${gameId}`,
     GetParliament: (gameId: number) => `${legislaturePrefix}/parliament/${gameId}`,
     GetLawCategories: (gameId: number) => `${legislaturePrefix}/law-categories/${gameId}`,
+    GetLaw: (gameId: number, lawId: number, type: LawType) => `${legislaturePrefix}/law/${gameId}/${lawId}/${type}`,
   },
   SocialClass: {
     GetSocialClasses: (gameId: number) => `${socialClassPrefix}/${gameId}`,

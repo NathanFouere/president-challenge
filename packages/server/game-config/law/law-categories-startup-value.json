@@ -1,35 +1,125 @@
 [
   {
-    "name": "test",
-    "description": "test",
+    "name": "Economy",
+    "description": "Laws related to the economy of the country.",
     "lawGroups": [
       {
-        "type": "test",
-        "name": "Test Group",
-        "description": "This is a test group for demonstration purposes.",
+        "name": "Agriculture property laws",
+        "description": "Agriculture property laws",
         "propertyLaws": [
           {
-            "name": "test",
+            "name": "Nationalize agriculture",
             "description": "test",
             "voted": false,
             "order": 1,
             "sectorType": "Agricultural",
             "sectorOwnershipTypeTo": "PUBLIC"
+          },
+          {
+            "name": "Privatize agriculture",
+            "description": "test",
+            "voted": true,
+            "order": 2,
+            "sectorType": "Agricultural",
+            "sectorOwnershipTypeTo": "PRIVATE"
+          },
+          {
+            "name": "Mixed agriculture",
+            "description": "test",
+            "voted": false,
+            "order": 3,
+            "sectorType": "Agricultural",
+            "sectorOwnershipTypeTo": "MIXED"
           }
         ]
       },
       {
-        "type": "test_other",
-        "name": "Another Test Group",
-        "description": "This is another test group for demonstration purposes.",
+        "name": "Mine property laws",
+        "description": "Mine property laws",
         "propertyLaws": [
           {
-            "name": "test",
+            "name": "Nationalize mines",
             "description": "test",
             "voted": false,
             "order": 1,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PUBLIC"
+            "sectorOwnershipTypeTo": "MIXED"
+          },
+          {
+            "name": "Privatize mines",
+            "description": "Privatize mines",
+            "voted": true,
+            "order": 2,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "PRIVATE"
+          },
+          {
+            "name": "Mixed mines",
+            "description": "Mixed mines",
+            "voted": false,
+            "order": 3,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "MIXED"
+          }
+        ]
+      },
+      {
+        "name": "Service property laws",
+        "description": "Service property laws",
+        "propertyLaws": [
+          {
+            "name": "Nationalize services",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "MIXED"
+          },
+          {
+            "name": "Privatize services",
+            "description": "test",
+            "voted": true,
+            "order": 2,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "PRIVATE"
+          },
+          {
+            "name": "Mixed services",
+            "description": "test",
+            "voted": false,
+            "order": 3,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "MIXED"
+          }
+        ]
+      },
+      {
+        "name": "Industrial property laws",
+        "description": "Industrial property laws",
+        "propertyLaws": [
+          {
+            "name": "Nationalize industry",
+            "description": "Nationalize industry",
+            "voted": false,
+            "order": 1,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "MIXED"
+          },
+          {
+            "name": "Privatize industry",
+            "description": "Privatize industry",
+            "voted": true,
+            "order": 2,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "PRIVATE"
+          },
+          {
+            "name": "Mixed industry",
+            "description": "Mixed industry",
+            "voted": false,
+            "order": 3,
+            "sectorType": "Mine",
+            "sectorOwnershipTypeTo": "MIXED"
           }
         ]
       }
@@ -40,7 +130,6 @@
     "description": "2",
     "lawGroups": [
       {
-        "type": "test",
         "name": "Test Group",
         "description": "This is a test group for demonstration purposes.",
         "propertyLaws": [
@@ -51,11 +140,18 @@
             "order": 1,
             "sectorType": "Agricultural",
             "sectorOwnershipTypeTo": "PUBLIC"
+          },
+          {
+            "name": "test voted",
+            "description": "test",
+            "voted": true,
+            "order": 2,
+            "sectorType": "Agricultural",
+            "sectorOwnershipTypeTo": "PRIVATE"
           }
         ]
       },
       {
-        "type": "test_other",
         "name": "Another Test Group",
         "description": "This is another test group for demonstration purposes.",
         "propertyLaws": [

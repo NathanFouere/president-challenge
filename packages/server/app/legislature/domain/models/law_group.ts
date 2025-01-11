@@ -10,9 +10,6 @@ export default class LawGroup extends BaseModel {
   declare id: number;
 
   @column()
-  declare type: string;
-
-  @column()
   declare name: string;
 
   @column()

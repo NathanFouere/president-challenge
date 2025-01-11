@@ -9,7 +9,6 @@ export default class extends BaseSchema {
 
       table.string('name');
       table.text('description');
-      table.string('type');
 
       table.integer('law_category_id')
         .unsigned()

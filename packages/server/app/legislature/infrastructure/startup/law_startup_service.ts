@@ -23,7 +23,7 @@ import type LawCategoryStartupInterface
   from '#legislature/infrastructure/startup/startup-interface/law_category_startup_interface';
 
 @inject()
-export default class LawGroupStartupService implements StartupProcessorStep {
+export default class LawStartupService implements StartupProcessorStep {
   constructor(
     private readonly lawGroupRepository: ILawGroupRepository,
     private readonly propertyLawRepository: IPropertyLawRepository,
@@ -55,7 +55,6 @@ export default class LawGroupStartupService implements StartupProcessorStep {
     for (const lawGroupStartupValue of lawGroupStartupValues) {
       const lawGroup = aLawGroup()
         .named(lawGroupStartupValue.name)
-        .ofType(lawGroupStartupValue.type)
         .withDescription(lawGroupStartupValue.description)
         .inCategory(lawCategoryId)
         .build();
@@ -77,7 +76,7 @@ export default class LawGroupStartupService implements StartupProcessorStep {
         .withSectorOwnershipTypeTo(propertyLawConfig.sectorOwnershipTypeTo as SectorOwnershipType)
         .withOrder(propertyLawConfig.order)
         .withLawGroupId(lawGroupId)
-        .withVote(false)
+        .withVoted(propertyLawConfig.voted)
         .build();
 
       propertyLaws.push(propertyLaw);

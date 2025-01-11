@@ -26,7 +26,7 @@ export class LawBuilder {
     return this;
   }
 
-  public withVote(voted: boolean): this {
+  public withVoted(voted: boolean): this {
     this.voted = voted;
     return this;
   }

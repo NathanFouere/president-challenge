@@ -18,7 +18,7 @@ import { SectorStartupService } from '#sector/infrastructure/startup/sector_star
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import LawGroupStartupService from '#legislature/infrastructure/startup/law_group_startup_service';
+import LawStartupService from '#legislature/infrastructure/startup/law_startup_service';
 import { StartupPipeline } from '#common/startup/startup_pipeline';
 
 @inject()
@@ -33,7 +33,7 @@ export default class StartupPipelineFactory {
     private readonly productStartupService: ProductStartupService,
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
-    private readonly lawGroupStartupService: LawGroupStartupService,
+    private readonly lawGroupStartupService: LawStartupService,
   ) {
   }
 

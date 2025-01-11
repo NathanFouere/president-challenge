@@ -1,6 +1,8 @@
 import type { SenateDto } from '@shared/legislature/senate-dto';
-import type { LawGroupDto } from '@shared/legislature/law-group-dto';
 import type { LawCategoryDto } from '@shared/legislature/law-category-dto';
+import type { MinimalLawDto } from '@shared/legislature/minimal-law-dto';
+import type { ParliamentDto } from '@shared/legislature/parliament-dto';
+import type { LawType } from '@shared/legislature/law-type';
 import FetchFactory from '~~/server/repository/factory';
 import Routes from '~~/server/repository/routes.client';
 
@@ -16,8 +18,8 @@ class LegislatureModule extends FetchFactory {
     );
   }
 
-  public async getParliament(gameId: number): Promise<LawGroupDto> {
-    return this.call<LawGroupDto>(
+  public async getParliament(gameId: number): Promise<ParliamentDto> {
+    return this.call<ParliamentDto>(
       {
         method: 'GET',
         url: `${this.RESOURCE.GetParliament(gameId)}`,
@@ -30,6 +32,15 @@ class LegislatureModule extends FetchFactory {
       {
         method: 'GET',
         url: `${this.RESOURCE.GetLawCategories(gameId)}`,
+      },
+    );
+  }
+
+  public async getLaw(gameId: number, lawId: number, type: LawType): Promise<MinimalLawDto> {
+    return this.call<MinimalLawDto>(
+      {
+        method: 'GET',
+        url: `${this.RESOURCE.GetLaw(gameId, lawId, type)}`,
       },
     );
   }

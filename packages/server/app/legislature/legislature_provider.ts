@@ -13,6 +13,7 @@ import IGetLawGroupsByGameQueryHandler from '#legislature/application/query/i_ge
 import ILawCategoryRepository from '#legislature/domain/repository/i_law_category_repository';
 import IGetLawCategoriesByGameQueryHandler
   from '#legislature/application/query/i_get_law_categories_by_game_query_handler';
+import IGetPropertyLawByIdAndGameQueryHandler from '#legislature/application/query/i_get_property_law_by_id_and_game_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot() {
@@ -49,6 +50,9 @@ export default class LegislatureProvider extends AppProvider {
     const { default: GetLawCategoriesByGameQueryHandler } = await import(
       '#legislature/infrastructure/query/get_law_categories_by_game_query_handler'
     );
+    const { default: GetPropertyLawByIdAndGameQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_property_law_by_id_and_game_query_handler'
+    );
 
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
@@ -82,6 +86,9 @@ export default class LegislatureProvider extends AppProvider {
     });
     this.app.container.bind(IGetLawCategoriesByGameQueryHandler, () => {
       return new GetLawCategoriesByGameQueryHandler();
+    });
+    this.app.container.bind(IGetPropertyLawByIdAndGameQueryHandler, () => {
+      return new GetPropertyLawByIdAndGameQueryHandler();
     });
   }
 }
