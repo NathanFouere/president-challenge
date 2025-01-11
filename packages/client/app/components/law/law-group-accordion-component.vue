@@ -7,6 +7,7 @@ const props = defineProps<{
   lawCategory: LawCategoryDto;
 }>();
 
+// TODO => ugly, but actually forced to do this because of the way the data is structured
 interface LawGroupAccordionItem {
   label: string;
   content: string;
