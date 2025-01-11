@@ -1,1 +1,5 @@
-export type SectorOwnershipType = 'PRIVATE' | 'MIXED' | 'PUBLIC'; // TODO => change to enum
+export enum SectorOwnershipType {
+  PRIVATE = 'PRIVATE',
+  PUBLIC = 'PUBLIC',
+  MIXED = 'MIXED',
+}

@@ -1,7 +1,5 @@
 import { inject } from '@adonisjs/core';
 
-import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
-import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawGroupRepository from '#legislature/domain/repository/i_law_group_repository';
 import lawCategoriesStartupValue from '#game-config/law/law-categories-startup-value.json' assert { type: 'json' };
@@ -45,7 +43,7 @@ export default class LawStartupService implements StartupProcessorStep {
         .build();
 
       await this.lawCategoryRepository.save(lawCategory);
-      createLawCategoriesPromises.push(this.createLawGroups(gameId, lawCategory.id, lawCategoryStartupValue.lawGroups as LawGroupStartupInterface[]));
+      createLawCategoriesPromises.push(this.createLawGroups(gameId, lawCategory.id, lawCategoryStartupValue.lawGroups));
     }
     await Promise.all(createLawCategoriesPromises);
   }
@@ -60,7 +58,7 @@ export default class LawStartupService implements StartupProcessorStep {
         .build();
 
       await this.lawGroupRepository.save(lawGroup);
-      createPropertyLawsPromises.push(this.createPropertyLaws(gameId, lawGroup.id, lawGroupStartupValue.propertyLaws as PropertyLawStartupInterface[]));
+      createPropertyLawsPromises.push(this.createPropertyLaws(gameId, lawGroup.id, lawGroupStartupValue.propertyLaws));
     }
     await Promise.all(createPropertyLawsPromises);
   }
@@ -72,8 +70,8 @@ export default class LawStartupService implements StartupProcessorStep {
         .forGame(gameId)
         .withName(propertyLawConfig.name)
         .withDescription(propertyLawConfig.description)
-        .withSectorType(propertyLawConfig.sectorType as SectorTypes)
-        .withSectorOwnershipTypeTo(propertyLawConfig.sectorOwnershipTypeTo as SectorOwnershipType)
+        .withSectorType(propertyLawConfig.sectorType)
+        .withSectorOwnershipTypeTo(propertyLawConfig.sectorOwnershipTypeTo)
         .withOrder(propertyLawConfig.order)
         .withLawGroupId(lawGroupId)
         .withVoted(propertyLawConfig.voted)

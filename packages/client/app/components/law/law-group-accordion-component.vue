@@ -7,13 +7,13 @@ const props = defineProps<{
   lawCategory: LawCategoryDto;
 }>();
 
-interface item {
+interface LawGroupAccordionItem {
   label: string;
   content: string;
   propertyLaws: MinimalLawDto[];
 }
 
-const items: item[] = props.lawCategory.lawGroups.map((lawGroup: LawGroupDto) => {
+const items: LawGroupAccordionItem[] = props.lawCategory.lawGroups.map((lawGroup: LawGroupDto) => {
   return {
     label: lawGroup.name,
     content: lawGroup.description,
