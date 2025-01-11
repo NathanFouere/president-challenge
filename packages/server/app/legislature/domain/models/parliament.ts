@@ -8,18 +8,18 @@ export class Parliament extends BaseModel {
   @column({ isPrimary: true })
   declare id: number;
 
-  @column({ serializeAs: null })
+  @column({})
   declare gameId: number;
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
 
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
-
   @hasMany(() => ParliamentPartySeats)
   declare partySeats: HasMany<typeof ParliamentPartySeats>;
+
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime;
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null;
 }

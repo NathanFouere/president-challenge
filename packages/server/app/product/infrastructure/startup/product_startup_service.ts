@@ -11,16 +11,17 @@ import { GetSectorByGameAndTypeQuery } from '#sector/application/query/get_secto
 import IProductRepository from '#product/domain/repository/i_product_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetSectorByGameAndTypeQueryHandler from '#sector/application/query/i_get_sector_by_game_and_type_query_handler';
+import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 
 @inject()
-export class ProductStartupService {
+export class ProductStartupService implements StartupProcessorStep {
   constructor(
     private readonly productRepository: IProductRepository,
     private readonly getSectorByGameAndTypeQueryHandler: IGetSectorByGameAndTypeQueryHandler,
   ) {
   }
 
-  public async initialize(gameId: number): Promise<void> {
+  public async execute(gameId: number): Promise<void> {
     const products: Product[] = [];
 
     for (const productValues of productStartupConfig) {

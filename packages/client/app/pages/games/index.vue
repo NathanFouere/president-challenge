@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Game } from '@shared/dist/game/game';
-import type { GamePresenter } from '../../presenters/game.presenter';
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
+import type { GamePresenter } from '~/presenters/game.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 
 usePageTitle().setTitle('List of your games');
 const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GamePresenter);

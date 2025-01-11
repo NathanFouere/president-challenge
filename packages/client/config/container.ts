@@ -1,20 +1,22 @@
 import { Container } from 'inversify';
-import { AuthPresenter } from '../app/presenters/auth.presenter';
-import { GamePresenter } from '../app/presenters/game.presenter';
-import { PoliticalPartiesPresenter } from '../app/presenters/legislation/political-parties.presenter';
-import { PoliticalPartyPresenter } from '../app/presenters/legislation/political-party.presenter';
-import { EventPresenter } from '../app/presenters/events/event.presenter';
-import { TurnInformationsPresenter } from '../app/presenters/turn-informations/turn-informations.presenter';
-import { ParliamentPresenter } from '../app/presenters/legislation/parliament.presenter';
-import { SenatePresenter } from '../app/presenters/legislation/senate.presenter';
-import { SocialClassesPresenter } from '../app/presenters/social-class/social-classes.presenter';
-import { SocialClassPresenter } from '../app/presenters/social-class/social-class.presenter';
-import { ProductPresenter } from '../app/presenters/product/product.presenter';
-import { ProductsPresenter } from '../app/presenters/product/products.presenter';
-import { SectorsPresenter } from '../app/presenters/sector/sectors.presenter';
-import { SectorPresenter } from '../app/presenters/sector/sector.presenter';
-import { StatePresenter } from '../app/presenters/state/state.presenter';
 import { COMMON_DEPENDANCY_TYPES } from './common.types';
+import { AuthPresenter } from '~/presenters/auth.presenter';
+import { GamePresenter } from '~/presenters/game.presenter';
+import { EventPresenter } from '~/presenters/events/event.presenter';
+import { TurnInformationsPresenter } from '~/presenters/turn-informations/turn-informations.presenter';
+import { ParliamentPresenter } from '~/presenters/legislation/parliament.presenter';
+import { SenatePresenter } from '~/presenters/legislation/senate.presenter';
+import { SocialClassesPresenter } from '~/presenters/social-class/social-classes.presenter';
+import { SocialClassPresenter } from '~/presenters/social-class/social-class.presenter';
+import { ProductPresenter } from '~/presenters/product/product.presenter';
+import { ProductsPresenter } from '~/presenters/product/products.presenter';
+import { SectorsPresenter } from '~/presenters/sector/sectors.presenter';
+import { SectorPresenter } from '~/presenters/sector/sector.presenter';
+import { StatePresenter } from '~/presenters/state/state.presenter';
+import { PoliticalPartyPresenter } from '~/presenters/political-party/political-party.presenter';
+import { PoliticalPartiesPresenter } from '~/presenters/political-party/political-parties.presenter';
+import { LawCategoriesPresenter } from '~/presenters/legislation/law-categories.presenter';
+import { LawPresenter } from '~/presenters/legislation/law.presenter';
 
 const container = new Container();
 
@@ -33,5 +35,7 @@ container.bind<ProductsPresenter>(COMMON_DEPENDANCY_TYPES.ProductsPresenter).to(
 container.bind<SectorsPresenter>(COMMON_DEPENDANCY_TYPES.SectorsPresenter).to(SectorsPresenter);
 container.bind<SectorPresenter>(COMMON_DEPENDANCY_TYPES.SectorPresenter).to(SectorPresenter);
 container.bind<StatePresenter>(COMMON_DEPENDANCY_TYPES.StatePresenter).to(StatePresenter);
+container.bind<LawCategoriesPresenter>(COMMON_DEPENDANCY_TYPES.LawCategoriesPresenter).to(LawCategoriesPresenter);
+container.bind<LawPresenter>(COMMON_DEPENDANCY_TYPES.LawPresenter).to(LawPresenter);
 
 export default container;

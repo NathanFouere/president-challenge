@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 import type LegislatureModule from '../../../server/repository/modules/legislature.module';
-import { useCustomToast } from '../../composables/useCustomToast';
-import { useParliamentStore } from '../../store/legislature/parliament.store';
-import { useGameStore } from '../../store/game/game.store';
+import { useCustomToast } from '~/composables/useCustomToast';
+import { useParliamentStore } from '~/store/legislature/parliament.store';
+import { useGameStore } from '~/store/game/game.store';
 
 @injectable()
 export class ParliamentPresenter {

@@ -20,7 +20,7 @@ export default class ChangeTurnService {
       game.changeTurn();
       const turnDataCache = await this.turnCacheService.load(game);
       const turnPipeline = this.turnPipelineFactory.createPipeline(turnDataCache);
-      await turnPipeline.executeWithTurnContext();
+      await turnPipeline.execute();
     }
     catch (e) {
       console.error(e);

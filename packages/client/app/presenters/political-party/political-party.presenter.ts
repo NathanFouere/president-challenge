@@ -1,14 +1,14 @@
 import { injectable } from 'inversify';
-import { useGameStore } from '../../store/game/game.store';
-import { useCustomToast } from '../../composables/useCustomToast';
 import type PoliticalPartyModule from '../../../server/repository/modules/political-party.module';
-import { usePoliticalPartyStore } from '../../store/political-party/political-party.store';
+import { useGameStore } from '~/store/game/game.store';
+import { useCustomToast } from '~/composables/useCustomToast';
+import { usePoliticalPartyStore } from '~/store/political-party/political-party.store';
 
 @injectable()
 export class PoliticalPartyPresenter {
-  public readonly politicalPartyModule: PoliticalPartyModule = useNuxtApp().$api.politicalParty;
-  public readonly gameStore = useGameStore();
-  public readonly toast = useCustomToast();
+  private readonly politicalPartyModule: PoliticalPartyModule = useNuxtApp().$api.politicalParty;
+  private readonly gameStore = useGameStore();
+  private readonly toast = useCustomToast();
   public readonly politicalPartyStore = usePoliticalPartyStore();
 
   public async getPoliticalParty(politicalPartyId: number): Promise<void> {

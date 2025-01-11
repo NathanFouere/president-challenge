@@ -11,16 +11,17 @@ import IGetSectorByGameAndTypeQueryHandler from '#sector/application/query/i_get
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISocialClassRepository from '#social-class/domain/repository/i_social_class_repository';
 import { GetSectorByGameAndTypeQuery } from '#sector/application/query/get_sector_by_game_and_type_query';
+import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 
 @inject()
-export class SocialClassStartupService {
+export class SocialClassStartupService implements StartupProcessorStep {
   constructor(
     private readonly socialClassRepository: ISocialClassRepository,
     private readonly getSectorByGameAndTypeQueryHandler: IGetSectorByGameAndTypeQueryHandler,
   ) {
   }
 
-  public async initialize(gameId: number): Promise<void> {
+  public async execute(gameId: number): Promise<void> {
     for (const socialClassValues of socialClassStartupConfigValues) {
       const socialClassSector = await this.getSectorByGameAndTypeQueryHandler.handle(new GetSectorByGameAndTypeQuery(
         gameId,

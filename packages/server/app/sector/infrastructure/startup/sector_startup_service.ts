@@ -6,15 +6,16 @@ import { aSector } from '#sector/application/builder/sector_builder';
 import sectorStartupConfig from '#game-config/sector/sector-startup-config.json' assert { type: 'json' };
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISectorRepository from '#sector/domain/repository/i_sector_repository';
+import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 
 @inject()
-export class SectorStartupService {
+export class SectorStartupService implements StartupProcessorStep {
   constructor(
     private readonly sectorRepository: ISectorRepository,
   ) {
   }
 
-  public async initialize(gameId: number): Promise<void> {
+  public async execute(gameId: number): Promise<void> {
     const sectors: Sector[] = [];
 
     for (const sectorValues of sectorStartupConfig) {
