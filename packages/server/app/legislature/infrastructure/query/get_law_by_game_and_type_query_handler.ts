@@ -1,29 +1,25 @@
 import { inject } from '@adonisjs/core';
-import { LawType } from '@shared/dist/legislature/law-type.js';
-import type Law from '#legislature/domain/models/law';
+import Law from '#legislature/domain/models/law';
 import type GetLawByGameAndTypeQuery from '#legislature/application/query/get_law_by_game_and_type_query';
 import type {
   IGetLawByGameAndTypeQueryHandler,
 } from '#legislature/application/query/i_get_law_by_game_and_type_query_handler';
-import PropertyLaw from '#legislature/domain/models/property_law';
 
 @inject()
 export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAndTypeQueryHandler {
   private async getLawByGameAndType(
     query: GetLawByGameAndTypeQuery,
-    preloadOptions: {} = {},
+    preloadOptions: { percentagesOfVotesForPoliticalParty?: boolean } = {},
   ): Promise<Law> {
-    let law: PropertyLaw;
-    let queryBuilder;
-    switch (query.lawType) {
-      case LawType.PROPERTY:
-        queryBuilder = PropertyLaw.query().where('id', query.lawId).where('game_id', query.gameId);
+    const queryBuilder = Law.query()
+      .where('game_id', query.gameId)
+      .where('id', query.lawId);
 
-        law = await queryBuilder.firstOrFail();
-        break;
-      default:
-        throw new Error('Invalid law type');
+    if (preloadOptions.percentagesOfVotesForPoliticalParty) {
+      queryBuilder.preload('percentagesOfVotesForPoliticalParty');
     }
+
+    const law = await queryBuilder.firstOrFail();
 
     return law;
   }
@@ -33,6 +29,6 @@ export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAnd
   }
 
   public async handleForVote(query: GetLawByGameAndTypeQuery): Promise<Law> {
-    return await this.getLawByGameAndType(query, { votesPerPoliticalParty: true });
+    return await this.getLawByGameAndType(query, { percentagesOfVotesForPoliticalParty: true });
   }
 }

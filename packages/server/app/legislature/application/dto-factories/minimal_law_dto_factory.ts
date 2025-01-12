@@ -3,13 +3,12 @@ import type { LawType } from '@shared/dist/legislature/law-type.js';
 import type Law from '#legislature/domain/models/law';
 
 export default class MinimalLawDtoFactory {
-  public createFromLaw(property: Law, lawType: LawType): MinimalLawDto {
+  public createFromLaw(property: Law): MinimalLawDto {
     return {
       id: property.id,
       name: property.name,
       description: property.description,
       voted: property.voted,
-      type: lawType,
     };
   }
 

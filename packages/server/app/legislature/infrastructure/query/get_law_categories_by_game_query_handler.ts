@@ -9,7 +9,7 @@ export default class GetLawCategoriesByGameQueryHandler extends IGetLawCategorie
       .query()
       .where('game_id', query.gameId)
       .preload('lawGroups', (eventQuery) => {
-        eventQuery.preload('propertyLaws');
+        eventQuery.preload('laws');
       })
       .exec();
   }

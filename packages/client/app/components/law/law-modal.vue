@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { LawType } from '@shared/legislature/law-type';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import type { LawPresenter } from '~/presenters/legislation/law.presenter';
 import container from '~~/config/container';
 
 const props = defineProps<{
   lawId: number;
-  type: LawType;
   alreadyVoted: boolean;
 }>();
 
@@ -18,7 +16,7 @@ watch(
   () => isOpen.value,
   async () => {
     if (isOpen.value) {
-      await lawPresenter.getLaw(props.lawId, props.type);
+      await lawPresenter.getLaw(props.lawId);
     }
   },
 );
@@ -58,7 +56,7 @@ watch(
         <UButton
           :label="alreadyVoted ? 'Already voted' : 'Vote for'"
           :disabled="alreadyVoted"
-          @click="lawPresenter.voteLaw(props.lawId, props.type)"
+          @click="lawPresenter.voteLaw(props.lawId)"
         />
       </template>
     </UCard>

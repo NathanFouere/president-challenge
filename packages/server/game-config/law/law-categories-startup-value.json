@@ -6,14 +6,12 @@
       {
         "name": "Agriculture property laws",
         "description": "Agriculture property laws",
-        "propertyLaws": [
+        "laws": [
           {
             "name": "Nationalize agriculture",
             "description": "test",
             "voted": false,
             "order": 1,
-            "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PUBLIC",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -46,8 +44,6 @@
             "description": "test",
             "voted": true,
             "order": 2,
-            "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PRIVATE",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -80,8 +76,6 @@
             "description": "test",
             "voted": false,
             "order": 3,
-            "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "MIXED",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -114,14 +108,12 @@
       {
         "name": "Mine property laws",
         "description": "Mine property laws",
-        "propertyLaws": [
+        "laws": [
           {
             "name": "Nationalize mines",
             "description": "test",
             "voted": false,
             "order": 1,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PUBLIC",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -154,8 +146,6 @@
             "description": "Privatize mines",
             "voted": true,
             "order": 2,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PRIVATE",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -188,8 +178,6 @@
             "description": "Mixed mines",
             "voted": false,
             "order": 3,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -222,14 +210,12 @@
       {
         "name": "Service property laws",
         "description": "Service property laws",
-        "propertyLaws": [
+        "laws": [
           {
             "name": "Nationalize services",
             "description": "test",
             "voted": false,
             "order": 1,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PUBLIC",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -262,8 +248,6 @@
             "description": "test",
             "voted": true,
             "order": 2,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PRIVATE",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -296,8 +280,6 @@
             "description": "test",
             "voted": false,
             "order": 3,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -330,14 +312,12 @@
       {
         "name": "Industrial property laws",
         "description": "Industrial property laws",
-        "propertyLaws": [
+        "laws": [
           {
             "name": "Nationalize industry",
             "description": "Nationalize industry",
             "voted": false,
             "order": 1,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PUBLIC",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -370,8 +350,6 @@
             "description": "Privatize industry",
             "voted": true,
             "order": 2,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PRIVATE",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -404,8 +382,6 @@
             "description": "Mixed industry",
             "voted": false,
             "order": 3,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -444,14 +420,12 @@
       {
         "name": "Test Group",
         "description": "This is a test group for demonstration purposes.",
-        "propertyLaws": [
+        "laws": [
           {
             "name": "test",
             "description": "test",
             "voted": false,
             "order": 1,
-            "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PUBLIC",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -484,8 +458,6 @@
             "description": "test",
             "voted": true,
             "order": 2,
-            "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PRIVATE",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -518,14 +490,12 @@
       {
         "name": "Another Test Group",
         "description": "This is another test group for demonstration purposes.",
-        "propertyLaws": [
+        "laws": [
           {
             "name": "test",
             "description": "test",
             "voted": false,
             "order": 1,
-            "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PUBLIC",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",

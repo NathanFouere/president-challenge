@@ -8,6 +8,7 @@ import PoliticalPartySeatsParliament from '#legislature/domain/models/political_
 import PoliticalPartySeatsSenate from '#legislature/domain/models/political_party_seats_senate';
 import PoliticalPartyHappinessPerTurn from '#political-party/domain/models/political_party_happiness_per_turn';
 import PoliticalPartyHappinessModifier from '#political-party/domain/models/political_party_happiness_modifier';
+import LawVotesPercentagePerPoliticalParty from '#legislature/domain/models/law_votes_percentage_per_political_party';
 
 export default class PoliticalParty extends BaseModel {
   @column({ isPrimary: true })
@@ -48,6 +49,9 @@ export default class PoliticalParty extends BaseModel {
 
   @hasMany(() => PoliticalPartyHappinessPerTurn)
   declare happinessPerTurn: HasMany<typeof PoliticalPartyHappinessPerTurn>;
+
+  @hasMany(() => LawVotesPercentagePerPoliticalParty)
+  declare percentageOfVotesForLaw: HasMany<typeof LawVotesPercentagePerPoliticalParty>;
 
   @hasMany(() => PoliticalPartyHappinessModifier)
   declare happinessModifiers: HasMany<typeof PoliticalPartyHappinessModifier>;

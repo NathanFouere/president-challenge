@@ -1,3 +1,5 @@
+import Law from '#legislature/domain/models/law';
+
 export class LawBuilder {
   protected gameId: number | null = null;
   protected voted: boolean | null = null;
@@ -35,4 +37,24 @@ export class LawBuilder {
     this.order = order;
     return this;
   }
+
+  public build(): Law {
+    const law = new Law();
+    if (this.name !== null) law.name = this.name;
+    else throw new Error('Name is required');
+    if (this.description !== null) law.description = this.description;
+    else throw new Error('Description is required');
+    if (this.lawGroupId !== null) law.lawGroupId = this.lawGroupId;
+    if (this.gameId) law.gameId = this.gameId;
+    else throw new Error('Game ID is required');
+    if (this.voted !== null) law.voted = this.voted;
+    else throw new Error('Voted status is required');
+    if (this.order !== null) law.order = this.order;
+
+    return law;
+  }
+}
+
+export function aLaw(): LawBuilder {
+  return new LawBuilder();
 }

@@ -23,12 +23,12 @@ export default class VoteLawService {
   * doit voter la loi
   * doit renvoyer un format avec les charts de vote
   */
-  public async voteLaw(law: Law): void {
+  public async voteLaw(law: Law): Promise<void> {
     await this.getPoliticalPartiesVotes(law);
   }
 
   private async getPoliticalPartiesVotes(law: Law): Promise<void> {
-    for (const votePercentagePerPoliticalParty of law.votesPercentagePerPoliticalParties) {
+    for (const votePercentagePerPoliticalParty of law.percentagesOfVotesForPoliticalParty) {
       const votes = await this.getVotesForPoliticalParty(law.gameId, votePercentagePerPoliticalParty);
       console.log(votes);
     }
@@ -39,6 +39,6 @@ export default class VoteLawService {
       new GetPoliticalPartyOfGameQuery(gameId, lawVotesPercentagePerPoliticalParty.politicalPartyId),
     );
     console.log(politicalParty.senateSeats);
-    return politicalParty.senateSeats.numberOfSeats * lawVotesPercentagePerPoliticalParty.percentageVoteFor;
+    return politicalParty.senateSeats.numberOfSeats * lawVotesPercentagePerPoliticalParty.percentage;
   }
 }

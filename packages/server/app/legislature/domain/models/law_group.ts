@@ -2,8 +2,8 @@ import { BaseModel, column, hasMany, belongsTo } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
 import type { HasMany, BelongsTo } from '@adonisjs/lucid/types/relations';
 import Game from '#game/domain/models/game';
-import PropertyLaw from '#legislature/domain/models/property_law';
 import LawCategory from '#legislature/domain/models/law_category';
+import Law from '#legislature/domain/models/law';
 
 export default class LawGroup extends BaseModel {
   @column({ isPrimary: true })
@@ -21,8 +21,8 @@ export default class LawGroup extends BaseModel {
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
 
-  @hasMany(() => PropertyLaw)
-  declare propertyLaws: HasMany<typeof PropertyLaw>;
+  @hasMany(() => Law)
+  declare laws: HasMany<typeof Law>;
 
   @column()
   declare lawCategoryId: number;

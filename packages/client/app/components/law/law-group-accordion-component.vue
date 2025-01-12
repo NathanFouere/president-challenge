@@ -11,14 +11,14 @@ const props = defineProps<{
 interface LawGroupAccordionItem {
   label: string;
   content: string;
-  propertyLaws: MinimalLawDto[];
+  laws: MinimalLawDto[];
 }
 
 const items: LawGroupAccordionItem[] = props.lawCategory.lawGroups.map((lawGroup: LawGroupDto) => {
   return {
     label: lawGroup.name,
     content: lawGroup.description,
-    propertyLaws: lawGroup.propertyLaws,
+    laws: lawGroup.laws,
   };
 });
 </script>
@@ -29,7 +29,7 @@ const items: LawGroupAccordionItem[] = props.lawCategory.lawGroups.map((lawGroup
     :items="items"
   >
     <template #item="{ item }">
-      <law-accordion-item-component :rows="item.propertyLaws" />
+      <law-accordion-item-component :rows="item.laws" />
     </template>
   </UAccordion>
 </template>

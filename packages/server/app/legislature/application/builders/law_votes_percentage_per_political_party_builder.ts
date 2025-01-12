@@ -1,35 +1,36 @@
 import LawVotesPercentagePerPoliticalParty from '#legislature/domain/models/law_votes_percentage_per_political_party';
 
 export default class LawVotesPerPoliticalPartyBuilder {
-  private politicalPartyId: number;
-  private percentageVoteFor: number;
+  private lawId: number | null = null;
+  private politicalPartyId: number | null = null;
+  private percentage: number | null = null;
 
-  public withPoliticalPartyId(politicalPartyId: number): LawVotesPerPoliticalPartyBuilder {
-    this.politicalPartyId = politicalPartyId;
+  public withLawId(lawId: number): LawVotesPerPoliticalPartyBuilder {
+    this.lawId = lawId;
     return this;
   }
 
-  public withPercentageVoteFor(percentageVoteFor: number): LawVotesPerPoliticalPartyBuilder {
-    this.percentageVoteFor = percentageVoteFor;
+  public withPoliticalPartyId(politicalPartyId: number): LawVotesPerPoliticalPartyBuilder {
+    this.politicalPartyId = politicalPartyId;
+
+    return this;
+  }
+
+  public withPercentage(percentage: number): LawVotesPerPoliticalPartyBuilder {
+    this.percentage = percentage;
+
     return this;
   }
 
   public build(): LawVotesPercentagePerPoliticalParty {
     const lawVotesPerPoliticalParty = new LawVotesPercentagePerPoliticalParty();
 
-    if (this.politicalPartyId) {
-      lawVotesPerPoliticalParty.politicalPartyId = this.politicalPartyId;
-    }
-    else {
-      throw new Error('politicalPartyId is required');
-    }
-
-    if (this.percentageVoteFor !== null) {
-      lawVotesPerPoliticalParty.percentageVoteFor = this.percentageVoteFor;
-    }
-    else {
-      throw new Error('percentageVoteFor is required');
-    }
+    if (this.lawId !== null) lawVotesPerPoliticalParty.lawId = this.lawId;
+    else throw new Error('LawVotesPerPoliticalPartyBuilder: lawId is required');
+    if (this.politicalPartyId !== null) lawVotesPerPoliticalParty.politicalPartyId = this.politicalPartyId;
+    else throw new Error('LawVotesPerPoliticalPartyBuilder: politicalPartyId is required');
+    if (this.percentage !== null) lawVotesPerPoliticalParty.percentage = this.percentage;
+    else throw new Error('LawVotesPerPoliticalPartyBuilder: percentage is required');
 
     return lawVotesPerPoliticalParty;
   }

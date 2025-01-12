@@ -72,8 +72,8 @@ router.group(() => {
   router.get('/senate/:gameId', [GetSenateController, 'getSenate']).use(middleware.auth());
   router.get('/parliament/:gameId', [GetParliamentController, 'getParliament']).use(middleware.auth());
   router.get('/law-categories/:gameId', [GetLawCategoriesController, 'getLawCategories']).use(middleware.auth());
-  router.get('/law/:gameId/:lawId/:lawType', [GetLawController, 'getLaw']).use(middleware.auth());
-  router.post('/vote-law/:gameId/:lawId/:lawType', [VoteLawController, 'voteLaw']).use(middleware.auth());
+  router.get('/law/:gameId/:lawId', [GetLawController, 'getLaw']).use(middleware.auth());
+  router.post('/vote-law/:gameId/:lawId', [VoteLawController, 'voteLaw']).use(middleware.auth());
 }).prefix('api/legislature');
 
 /* SOCIAL CLASS */

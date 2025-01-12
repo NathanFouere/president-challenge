@@ -4,6 +4,6 @@ import LawGroup from '#legislature/domain/models/law_group';
 
 export default class GetLawGroupsByGameQueryHandler implements IGetLawGroupsByGameQueryHandler {
   async handle(query: GetLawGroupsByGameQuery): Promise<LawGroup[]> {
-    return await LawGroup.query().where('game_id', query.gameId).preload('propertyLaws').exec();
+    return await LawGroup.query().where('game_id', query.gameId).preload('laws').exec();
   }
 }

@@ -2,8 +2,6 @@ import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 
-import type { LawType } from '@shared/dist/legislature/law-type.js';
-
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import LawDtoFactory from '#legislature/application/dto-factories/law_dto_factory';
 import GetLawByGameAndTypeQuery from '#legislature/application/query/get_law_by_game_and_type_query';
@@ -25,15 +23,13 @@ export default class GetLawController {
       auth.getUserOrFail();
       const gameId: number = params.gameId;
       const lawId: number = params.lawId;
-      const lawType: string = params.lawType as LawType;
 
       const law = await this.getLawByGameAndTypeQueryHandler.handle(new GetLawByGameAndTypeQuery(
         lawId,
         gameId,
-        lawType,
       ));
 
-      return this.lawDtoFactory.createFromLaw(law, lawType);
+      return this.lawDtoFactory.createFromLaw(law);
     }
     catch (e) {
       console.error(e);

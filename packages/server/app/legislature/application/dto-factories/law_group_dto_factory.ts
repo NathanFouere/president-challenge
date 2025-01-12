@@ -22,7 +22,7 @@ export default class LawGroupDtoFactory {
       id: lawGroup.id,
       name: lawGroup.name,
       description: lawGroup.description,
-      propertyLaws: this.minimalLawDtoFactory.createFromLaws(lawGroup.propertyLaws, LawType.PROPERTY),
+      laws: this.minimalLawDtoFactory.createFromLaws(lawGroup.laws, LawType.PROPERTY),
     };
   }
 }
