@@ -58,6 +58,7 @@ watch(
         <UButton
           :label="alreadyVoted ? 'Already voted' : 'Vote for'"
           :disabled="alreadyVoted"
+          @click="lawPresenter.voteLaw(props.lawId, props.type)"
         />
       </template>
     </UCard>

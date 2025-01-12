@@ -39,6 +39,7 @@ const Routes = {
     GetParliament: (gameId: number) => `${legislaturePrefix}/parliament/${gameId}`,
     GetLawCategories: (gameId: number) => `${legislaturePrefix}/law-categories/${gameId}`,
     GetLaw: (gameId: number, lawId: number, type: LawType) => `${legislaturePrefix}/law/${gameId}/${lawId}/${type}`,
+    VoteLaw: (gameId: number, lawId: number, type: LawType) => `${legislaturePrefix}/vote-law/${gameId}/${lawId}/${type}`,
   },
   SocialClass: {
     GetSocialClasses: (gameId: number) => `${socialClassPrefix}/${gameId}`,

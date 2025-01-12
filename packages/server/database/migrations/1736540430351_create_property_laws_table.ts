@@ -31,7 +31,7 @@ export default class extends BaseSchema {
         'MIXED',
         'PUBLIC',
       ]).notNullable();
-
+      table.json('votes_percentage_per_political_parties').notNullable();
       table.integer('law_group_id')
         .unsigned()
         .references('id')

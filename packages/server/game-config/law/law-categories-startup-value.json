@@ -13,7 +13,33 @@
             "voted": false,
             "order": 1,
             "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PUBLIC"
+            "sectorOwnershipTypeTo": "PUBLIC",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Privatize agriculture",
@@ -21,7 +47,33 @@
             "voted": true,
             "order": 2,
             "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PRIVATE"
+            "sectorOwnershipTypeTo": "PRIVATE",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Mixed agriculture",
@@ -29,7 +81,33 @@
             "voted": false,
             "order": 3,
             "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "MIXED",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           }
         ]
       },
@@ -43,7 +121,33 @@
             "voted": false,
             "order": 1,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "PUBLIC",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Privatize mines",
@@ -51,7 +155,33 @@
             "voted": true,
             "order": 2,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PRIVATE"
+            "sectorOwnershipTypeTo": "PRIVATE",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Mixed mines",
@@ -59,7 +189,33 @@
             "voted": false,
             "order": 3,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "MIXED",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           }
         ]
       },
@@ -73,7 +229,33 @@
             "voted": false,
             "order": 1,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "PUBLIC",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Privatize services",
@@ -81,7 +263,33 @@
             "voted": true,
             "order": 2,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PRIVATE"
+            "sectorOwnershipTypeTo": "PRIVATE",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Mixed services",
@@ -89,7 +297,33 @@
             "voted": false,
             "order": 3,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "MIXED",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           }
         ]
       },
@@ -103,7 +337,33 @@
             "voted": false,
             "order": 1,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "PUBLIC",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Privatize industry",
@@ -111,7 +371,33 @@
             "voted": true,
             "order": 2,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PRIVATE"
+            "sectorOwnershipTypeTo": "PRIVATE",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "Mixed industry",
@@ -119,7 +405,33 @@
             "voted": false,
             "order": 3,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "MIXED"
+            "sectorOwnershipTypeTo": "MIXED",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           }
         ]
       }
@@ -139,7 +451,33 @@
             "voted": false,
             "order": 1,
             "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PUBLIC"
+            "sectorOwnershipTypeTo": "PUBLIC",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           },
           {
             "name": "test voted",
@@ -147,7 +485,33 @@
             "voted": true,
             "order": 2,
             "sectorType": "Agricultural",
-            "sectorOwnershipTypeTo": "PRIVATE"
+            "sectorOwnershipTypeTo": "PRIVATE",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           }
         ]
       },
@@ -161,7 +525,33 @@
             "voted": false,
             "order": 1,
             "sectorType": "Mine",
-            "sectorOwnershipTypeTo": "PUBLIC"
+            "sectorOwnershipTypeTo": "PUBLIC",
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
           }
         ]
       }

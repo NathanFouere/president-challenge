@@ -44,6 +44,15 @@ class LegislatureModule extends FetchFactory {
       },
     );
   }
+
+  public async voteLaw(gameId: number, lawId: number, type: LawType): Promise<void> {
+    return this.call(
+      {
+        method: 'POST',
+        url: `${this.RESOURCE.VoteLaw(gameId, lawId, type)}`,
+      },
+    );
+  }
 }
 
 export default LegislatureModule;

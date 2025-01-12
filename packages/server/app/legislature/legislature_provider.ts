@@ -14,6 +14,12 @@ import ILawCategoryRepository from '#legislature/domain/repository/i_law_categor
 import IGetLawCategoriesByGameQueryHandler
   from '#legislature/application/query/i_get_law_categories_by_game_query_handler';
 import IGetPropertyLawByIdAndGameQueryHandler from '#legislature/application/query/i_get_property_law_by_id_and_game_query_handler';
+import {
+  IGetLawByGameAndTypeQueryHandler,
+} from '#legislature/application/query/i_get_law_by_game_and_type_query_handler';
+import {
+  IGetPoliticalPartyPerAffiliationInGameQueryHandler,
+} from '#political-party/application/queries/i_get_political_party_per_affiliation_in_game_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot() {
@@ -53,6 +59,12 @@ export default class LegislatureProvider extends AppProvider {
     const { default: GetPropertyLawByIdAndGameQueryHandler } = await import(
       '#legislature/infrastructure/query/get_property_law_by_id_and_game_query_handler'
     );
+    const { default: GetLawByGameAndTypeQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_law_by_game_and_type_query_handler'
+    );
+    const { default: GetPoliticalPartyPerAffiliationInGameQueryHandler } = await import(
+      '#political-party/infrastructure/query/get_political_party_per_affiliation_in_game_query_handler'
+    );
 
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
@@ -89,6 +101,12 @@ export default class LegislatureProvider extends AppProvider {
     });
     this.app.container.bind(IGetPropertyLawByIdAndGameQueryHandler, () => {
       return new GetPropertyLawByIdAndGameQueryHandler();
+    });
+    this.app.container.bind(IGetLawByGameAndTypeQueryHandler, () => {
+      return new GetLawByGameAndTypeQueryHandler();
+    });
+    this.app.container.bind(IGetPoliticalPartyPerAffiliationInGameQueryHandler, () => {
+      return new GetPoliticalPartyPerAffiliationInGameQueryHandler();
     });
   }
 }

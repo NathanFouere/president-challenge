@@ -23,4 +23,17 @@ export class LawPresenter {
     }
     this.lawStore.unsetIsGettingLaw();
   }
+
+  public async voteLaw(lawId: number, type: LawType): Promise<void> {
+    this.lawStore.setIsVotingLaw();
+    try {
+      await this.legislationModule.voteLaw(this.gameStore.getSelectedGameId, lawId, type);
+      this.toast.showSuccess('Voted successfully.');
+    }
+    catch (error) {
+      console.error(error);
+      this.toast.showError('Failed to vote.');
+    }
+    this.lawStore.unsetIsVotingLaw();
+  }
 }

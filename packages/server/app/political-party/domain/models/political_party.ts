@@ -40,11 +40,11 @@ export default class PoliticalParty extends BaseModel {
   })
   declare licensedFile: HasOne<typeof LicensedFile>;
 
-  @hasMany(() => PoliticalPartySeatsSenate)
-  declare senateSeats: HasMany<typeof PoliticalPartySeatsSenate>;
+  @hasOne(() => PoliticalPartySeatsSenate)
+  declare senateSeats: HasOne<typeof PoliticalPartySeatsSenate>;
 
-  @hasMany(() => PoliticalPartySeatsParliament)
-  declare parliamentSeats: HasMany<typeof PoliticalPartySeatsParliament>;
+  @hasOne(() => PoliticalPartySeatsParliament)
+  declare parliamentSeats: HasOne<typeof PoliticalPartySeatsParliament>;
 
   @hasMany(() => PoliticalPartyHappinessPerTurn)
   declare happinessPerTurn: HasMany<typeof PoliticalPartyHappinessPerTurn>;
