@@ -492,7 +492,7 @@
         "description": "This is another test group for demonstration purposes.",
         "laws": [
           {
-            "name": "test",
+            "name": "always passes test",
             "description": "test",
             "voted": false,
             "order": 1,
@@ -503,23 +503,23 @@
               },
               {
                 "affiliation": "Left",
-                "percentageVoteFor": 80
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Center Left",
-                "percentageVoteFor": 40
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Center Right",
-                "percentageVoteFor": 20
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Right",
-                "percentageVoteFor": 0
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Far Right",
-                "percentageVoteFor": 0
+                "percentageVoteFor": 100
               }
             ]
           }

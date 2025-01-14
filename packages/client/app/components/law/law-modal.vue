@@ -56,6 +56,7 @@ watch(
         <UButton
           :label="alreadyVoted ? 'Already voted' : 'Vote for'"
           :disabled="alreadyVoted"
+          :loading="lawPresenter.lawStore.isVotingLaw"
           @click="lawPresenter.voteLaw(props.lawId)"
         />
       </template>

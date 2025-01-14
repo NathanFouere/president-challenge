@@ -22,6 +22,13 @@ import {
 import {
   ILawVotesPercentagePerPoliticalPartyRepository,
 } from '#legislature/domain/repository/i_law_votes_percentage_per_political_party_repository';
+import { ILawVoteResultsRepository } from '#legislature/domain/repository/i_law_vote_results_repository';
+import {
+  IPoliticalPartyVoteForLawRepository,
+} from '#legislature/domain/repository/i_political_party_vote_for_law_repository';
+import {
+  IGetLegislatureVoteResultOfLawForElectionQueryHandler,
+} from '#legislature/application/query/i_get_law_vote_result_of_law_for_election_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot() {
@@ -67,6 +74,15 @@ export default class LegislatureProvider extends AppProvider {
     const { default: LawVotesPercentagePerPoliticalPartyRepository } = await import(
       '#legislature/infrastructure/repositories/law_votes_percentage_per_political_party_repository'
     );
+    const { default: PoliticalPartyVoteForLawRepository } = await import(
+      '#legislature/infrastructure/repositories/political_party_vote_for_law_repository'
+    );
+    const { default: LawVoteResultsRepository } = await import(
+      '#legislature/infrastructure/repositories/law_vote_results_repository'
+    );
+    const { default: GetLegislatureVoteResultOfLawForElectionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_law_vote_result_of_law_for_election_query_handler'
+    );
 
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
@@ -109,6 +125,15 @@ export default class LegislatureProvider extends AppProvider {
     });
     this.app.container.bind(ILawVotesPercentagePerPoliticalPartyRepository, () => {
       return new LawVotesPercentagePerPoliticalPartyRepository();
+    });
+    this.app.container.bind(IPoliticalPartyVoteForLawRepository, () => {
+      return new PoliticalPartyVoteForLawRepository();
+    });
+    this.app.container.bind(ILawVoteResultsRepository, () => {
+      return new LawVoteResultsRepository();
+    });
+    this.app.container.bind(IGetLegislatureVoteResultOfLawForElectionQueryHandler, () => {
+      return new GetLegislatureVoteResultOfLawForElectionQueryHandler();
     });
   }
 }

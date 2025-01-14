@@ -1,44 +1,47 @@
-import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type Law from '#legislature/domain/models/law';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IPoliticalPartyRepository from '#political-party/domain/repository/i_political_party_repository';
-import GetPoliticalPartyOfGameQuery from '#political-party/application/queries/get_political_party_of_game_query';
-
+import ILawRepository from '#legislature/domain/repository/i_law_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import GetPoliticalPartyOfGameQueryHandler
-  from '#political-party/infrastructure/query/get_political_party_of_game_query_handler';
-import type LawVotesPercentagePerPoliticalParty
-  from '#legislature/domain/models/law_votes_percentage_per_political_party';
+import GenerateVoteResultsService from '#legislature/application/service/generate_vote_results_service';
+import { LegislatureType } from '#legislature/domain/models/legislature_type';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  IGetLegislatureVoteResultOfLawForElectionQueryHandler,
+} from '#legislature/application/query/i_get_law_vote_result_of_law_for_election_query_handler';
+import GetLawVoteResultOfLawForElectionQuery
+  from '#legislature/application/query/get_law_vote_result_of_law_for_turn_query';
 
 @inject()
 export default class VoteLawService {
   constructor(
-    private readonly politicalPartyRepository: IPoliticalPartyRepository,
-    private readonly getPoliticalPartyOfGameQueryHandler: GetPoliticalPartyOfGameQueryHandler,
+    private readonly lawRepository: ILawRepository,
+    private readonly generateVoteResultsService: GenerateVoteResultsService,
+    private readonly getLegislatureVoteResultOfLawForElectionQueryHandler: IGetLegislatureVoteResultOfLawForElectionQueryHandler,
   ) {
   }
 
-  /*
-  * doit voter la loi
-  * doit renvoyer un format avec les charts de vote
-  */
-  public async voteLaw(law: Law): Promise<void> {
-    await this.getPoliticalPartiesVotes(law);
-  }
-
-  private async getPoliticalPartiesVotes(law: Law): Promise<void> {
-    for (const votePercentagePerPoliticalParty of law.percentagesOfVotesForPoliticalParty) {
-      const votes = await this.getVotesForPoliticalParty(law.gameId, votePercentagePerPoliticalParty);
-      console.log(votes);
+  public async voteLaw(law: Law, turn: number): Promise<void> {
+    if (law.voted) {
+      throw new Error('Law already voted');
     }
-  }
 
-  private async getVotesForPoliticalParty(gameId: number, lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty): Promise<number> {
-    const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handleForVote(
-      new GetPoliticalPartyOfGameQuery(gameId, lawVotesPercentagePerPoliticalParty.politicalPartyId),
-    );
-    console.log(politicalParty.senateSeats);
-    return politicalParty.senateSeats.numberOfSeats * lawVotesPercentagePerPoliticalParty.percentage;
+    await this.generateVoteResultsService.generateVoteResults(law, turn, LegislatureType.SENATE);
+    await this.generateVoteResultsService.generateVoteResults(law, turn, LegislatureType.PARLIAMENT);
+
+    const lawVoteResultsSenate = await this.getLegislatureVoteResultOfLawForElectionQueryHandler.handle(new GetLawVoteResultOfLawForElectionQuery(
+      law.id,
+      turn,
+      LegislatureType.SENATE,
+    ));
+    const lawVoteResultsParliament = await this.getLegislatureVoteResultOfLawForElectionQueryHandler.handle(new GetLawVoteResultOfLawForElectionQuery(
+      law.id,
+      turn,
+      LegislatureType.PARLIAMENT,
+    ));
+
+    law.voted = lawVoteResultsSenate.votePasses() && lawVoteResultsParliament.votePasses();
+
+    await this.lawRepository.save(law);
   }
 }

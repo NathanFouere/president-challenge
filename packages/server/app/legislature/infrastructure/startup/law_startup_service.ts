@@ -2,7 +2,7 @@ import { inject } from '@adonisjs/core';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawGroupRepository from '#legislature/domain/repository/i_law_group_repository';
-import lawCategoriesStartupValue from '#game-config/law/law-categories-startup-value.json' assert { type: 'json' };
+import lawCategoriesStartupValue from '#game-config/law/laws-startup-value.json' assert { type: 'json' };
 import { aLawGroup } from '#legislature/application/builders/law_group_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawRepository from '#legislature/domain/repository/i_law_repository';
