@@ -5,18 +5,18 @@ export default class LawVotesPerPoliticalPartyBuilder {
   private politicalPartyId: number | null = null;
   private percentage: number | null = null;
 
-  public withLawId(lawId: number): LawVotesPerPoliticalPartyBuilder {
+  public withLawId(lawId: number): this {
     this.lawId = lawId;
     return this;
   }
 
-  public withPoliticalPartyId(politicalPartyId: number): LawVotesPerPoliticalPartyBuilder {
+  public withPoliticalPartyId(politicalPartyId: number): this {
     this.politicalPartyId = politicalPartyId;
 
     return this;
   }
 
-  public withPercentage(percentage: number): LawVotesPerPoliticalPartyBuilder {
+  public withPercentage(percentage: number): this {
     this.percentage = percentage;
 
     return this;
