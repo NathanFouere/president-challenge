@@ -11,6 +11,7 @@ import {
 } from '#legislature/application/query/i_get_law_vote_result_of_law_for_election_query_handler';
 import GetLawVoteResultOfLawForElectionQuery
   from '#legislature/application/query/get_law_vote_result_of_law_for_turn_query';
+import type LawGroup from '#legislature/domain/models/law_group';
 
 @inject()
 export default class VoteLawService {
@@ -40,8 +41,21 @@ export default class VoteLawService {
       LegislatureType.PARLIAMENT,
     ));
 
-    law.voted = lawVoteResultsSenate.votePasses() && lawVoteResultsParliament.votePasses();
+    const lawPassed = lawVoteResultsSenate.votePasses() && lawVoteResultsParliament.votePasses();
+    if (lawPassed) {
+      law.voted = true;
+      await this.unvoteIncompatibleLaws(law.lawGroup);
+    }
 
     await this.lawRepository.save(law);
+  }
+
+  public async unvoteIncompatibleLaws(lawGroup: LawGroup): Promise<void> {
+    for (const law of lawGroup.laws) {
+      if (law.voted) {
+        law.voted = false;
+      }
+    }
+    await this.lawRepository.saveMany(lawGroup.laws);
   }
 }

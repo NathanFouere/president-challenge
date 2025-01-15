@@ -72,4 +72,12 @@ export default class PoliticalParty extends BaseModel {
     }
     return happinessLevel;
   }
+
+  public getVotesInFavorOfLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty): number {
+    return this.senateSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
+  }
+
+  public getVotesAgainstLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty): number {
+    return this.senateSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
+  }
 }
