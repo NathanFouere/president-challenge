@@ -8,6 +8,9 @@ import IPoliticalPartyHappinessPerTurnRepository
   from '#political-party/domain/repository/i_political_party_happiness_per_turn_repository';
 import IPoliticalPartyHappinessModifierRepository
   from '#political-party/domain/repository/i_political_party_happiness_modifier_repository';
+import {
+  IGetPoliticalPartyPerAffiliationInGameQueryHandler,
+} from '#political-party/application/queries/i_get_political_party_per_affiliation_in_game_query_handler';
 
 export default class PoliticalPartyProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -23,9 +26,11 @@ export default class PoliticalPartyProvider extends AppProvider {
     const { default: PoliticalPartyHappinessPerTurnRepository } = await import(
       '#political-party/infrastructure/repositories/political_party_happiness_per_turn_repository'
     );
-
     const { default: PoliticalPartyHappinessModifierRepository } = await import(
       '#political-party/infrastructure/repositories/political_party_happiness_modifier_repository'
+    );
+    const { default: GetPoliticalPartyPerAffiliationInGameQueryHandler } = await import(
+      '#political-party/infrastructure/query/get_political_party_per_affiliation_in_game_query_handler'
     );
 
     this.app.container.bind(IPoliticalPartyRepository, () => {
@@ -42,6 +47,9 @@ export default class PoliticalPartyProvider extends AppProvider {
     });
     this.app.container.bind(IPoliticalPartyHappinessModifierRepository, () => {
       return new PoliticalPartyHappinessModifierRepository();
+    });
+    this.app.container.bind(IGetPoliticalPartyPerAffiliationInGameQueryHandler, () => {
+      return new GetPoliticalPartyPerAffiliationInGameQueryHandler();
     });
   }
 }

@@ -1,7 +1,7 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 
 export default class extends BaseSchema {
-  protected tableName = 'property_laws';
+  protected tableName = 'laws';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -18,19 +18,6 @@ export default class extends BaseSchema {
       table.integer('order').notNullable();
       table.string('name').notNullable();
       table.text('description').notNullable();
-
-      table.enum('sector_type', [
-        'Agricultural',
-        'Industrial',
-        'Service',
-        'Mine',
-      ]).notNullable();
-
-      table.enum('sector_ownership_type_to', [
-        'PRIVATE',
-        'MIXED',
-        'PUBLIC',
-      ]).notNullable();
 
       table.integer('law_group_id')
         .unsigned()

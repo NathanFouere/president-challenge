@@ -1,0 +1,530 @@
+[
+  {
+    "name": "Economy",
+    "description": "Laws related to the economy of the country.",
+    "lawGroups": [
+      {
+        "name": "Agriculture property laws",
+        "description": "Agriculture property laws",
+        "laws": [
+          {
+            "name": "Nationalize agriculture",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Privatize agriculture",
+            "description": "test",
+            "voted": true,
+            "order": 2,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Mixed agriculture",
+            "description": "test",
+            "voted": false,
+            "order": 3,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Mine property laws",
+        "description": "Mine property laws",
+        "laws": [
+          {
+            "name": "Nationalize mines",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Privatize mines",
+            "description": "Privatize mines",
+            "voted": true,
+            "order": 2,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Mixed mines",
+            "description": "Mixed mines",
+            "voted": false,
+            "order": 3,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Service property laws",
+        "description": "Service property laws",
+        "laws": [
+          {
+            "name": "Nationalize services",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Privatize services",
+            "description": "test",
+            "voted": true,
+            "order": 2,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Mixed services",
+            "description": "test",
+            "voted": false,
+            "order": 3,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Industrial property laws",
+        "description": "Industrial property laws",
+        "laws": [
+          {
+            "name": "Nationalize industry",
+            "description": "Nationalize industry",
+            "voted": false,
+            "order": 1,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Privatize industry",
+            "description": "Privatize industry",
+            "voted": true,
+            "order": 2,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Mixed industry",
+            "description": "Mixed industry",
+            "voted": false,
+            "order": 3,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "test2",
+    "description": "2",
+    "lawGroups": [
+      {
+        "name": "Test Group",
+        "description": "This is a test group for demonstration purposes.",
+        "laws": [
+          {
+            "name": "test",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "test voted",
+            "description": "test",
+            "voted": true,
+            "order": 2,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Another Test Group",
+        "description": "This is another test group for demonstration purposes.",
+        "laws": [
+          {
+            "name": "always passes test",
+            "description": "test",
+            "voted": false,
+            "order": 1,
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

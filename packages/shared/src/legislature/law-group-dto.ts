@@ -4,5 +4,5 @@ export interface LawGroupDto {
   id: number;
   name: string;
   description: string;
-  propertyLaws: MinimalLawDto[];
+  laws: MinimalLawDto[];
 }
