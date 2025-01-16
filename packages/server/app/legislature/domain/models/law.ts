@@ -38,7 +38,7 @@ export default class Law extends BaseModel {
   declare percentagesOfVotesForPoliticalParty: HasMany<typeof LawVotesPercentagePerPoliticalParty>;
 
   @hasMany(() => LawVoteResults)
-  declare lawVoteResults: HasMany<typeof LawVoteResults>;
+  declare voteResults: HasMany<typeof LawVoteResults>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;

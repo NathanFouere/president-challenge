@@ -28,8 +28,10 @@ watch(
     @click="isOpen = true"
   />
 
-  <UModal v-model="isOpen">
-    <UCard>
+  <UModal
+    v-model="isOpen"
+  >
+    <UCard class="inline-block">
       <USkeleton
         v-if="lawPresenter.lawStore.isGettingLaw || !lawPresenter.lawStore.hasLaw"
         class="w-full h-64 "
@@ -50,10 +52,20 @@ watch(
       />
       <div v-else>
         <p>{{ lawPresenter.lawStore.requireLaw.description }}</p>
+        <div v-if="lawPresenter.lawStore.requireLaw.lastVoteResultsDatas">
+          <br>
+          <UDivider />
+          <br>
+          <law-election-results-component
+            class="flex-1 overflow-auto"
+            :vote-results-datas="lawPresenter.lawStore.requireLaw.lastVoteResultsDatas"
+          />
+        </div>
       </div>
 
       <template #footer>
         <UButton
+          class="align-baseline"
           :label="alreadyVoted ? 'Already voted' : 'Vote for'"
           :disabled="alreadyVoted"
           :loading="lawPresenter.lawStore.isVotingLaw"

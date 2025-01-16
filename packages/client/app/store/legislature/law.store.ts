@@ -1,8 +1,8 @@
-import type { MinimalLawDto } from '@shared/legislature/minimal-law-dto';
+import type { LawDto } from '@shared/legislature/law-dto';
 
 export const useLawStore = defineStore('lawStore', {
   state: () => ({
-    law: null as MinimalLawDto | null,
+    law: null as LawDto | null,
     gettingLaw: false,
     votingLaw: false,
   }),
@@ -19,7 +19,7 @@ export const useLawStore = defineStore('lawStore', {
     },
   },
   actions: {
-    setLaw(law: MinimalLawDto) {
+    setLaw(law: LawDto) {
       this.law = law;
     },
     setIsGettingLaw() {

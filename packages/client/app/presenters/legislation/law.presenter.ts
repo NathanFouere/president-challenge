@@ -2,10 +2,14 @@ import { injectable } from 'inversify';
 import type LegislatureModule from '~~/server/repository/modules/legislature.module';
 import { useGameStore } from '~/store/game/game.store';
 import { useLawStore } from '~/store/legislature/law.store';
+import container from '~~/config/container';
+import type { LawCategoriesPresenter } from '~/presenters/legislation/law-categories.presenter';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 
 @injectable()
 export class LawPresenter {
   private readonly legislationModule: LegislatureModule = useNuxtApp().$api.legislature;
+  private readonly lawCategoriesPresenter = container.get<LawCategoriesPresenter>(COMMON_DEPENDANCY_TYPES.LawCategoriesPresenter);
   private readonly gameStore = useGameStore();
   private readonly toast = useCustomToast();
   public readonly lawStore = useLawStore();
@@ -33,6 +37,8 @@ export class LawPresenter {
       console.error(error);
       this.toast.showError('Failed to vote.');
     }
+    await this.getLaw(lawId);
+    await this.lawCategoriesPresenter.getLawCategories();
     this.lawStore.unsetIsVotingLaw();
   }
 }

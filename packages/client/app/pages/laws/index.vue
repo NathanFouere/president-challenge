@@ -13,27 +13,27 @@ onMounted(async () => {
 </script>
 
 <template>
-  <USkeleton
-    v-if="lawCategoriesPresenter.lawCategoriesStore.isGettingLawCategories"
-    class="h-64 w-full mb-4"
+  <UProgress
+    v-show="true"
+    :class="{
+      invisible: !lawCategoriesPresenter.lawCategoriesStore.isGettingLawCategories,
+    }"
+    animation="carousel"
   />
+
   <div
-    v-else
+    v-for="lawCategory in lawCategoriesPresenter.lawCategoriesStore.lawCategories"
+    :key="lawCategory.id"
   >
-    <div
-      v-for="lawCategory in lawCategoriesPresenter.lawCategoriesStore.lawCategories"
-      :key="lawCategory.id"
-    >
-      <h1 class="text-center">
-        {{ lawCategory.name }}
-      </h1>
-      <br>
-      <law-group-accordion-component
-        :law-category="lawCategory"
-      />
-      <br>
-      <UDivider class="sticky bottom-0" />
-      <br>
-    </div>
+    <h1 class="text-center">
+      {{ lawCategory.name }}
+    </h1>
+    <br>
+    <law-group-accordion-component
+      :law-category="lawCategory"
+    />
+    <br>
+    <UDivider class="sticky bottom-0" />
+    <br>
   </div>
 </template>

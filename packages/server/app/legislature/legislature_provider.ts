@@ -29,6 +29,9 @@ import {
 import {
   IGetLegislatureVoteResultOfLawForElectionQueryHandler,
 } from '#legislature/application/query/i_get_law_vote_result_of_law_for_election_query_handler';
+import {
+  IGetLastLawVoteResultsInGameQueryHandler,
+} from '#legislature/application/query/i_get_last_law_vote_results_in_game_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot() {
@@ -83,6 +86,9 @@ export default class LegislatureProvider extends AppProvider {
     const { default: GetLegislatureVoteResultOfLawForElectionQueryHandler } = await import(
       '#legislature/infrastructure/query/get_law_vote_result_of_law_for_election_query_handler'
     );
+    const { default: GetLastLawVoteResultsInGameQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_last_law_vote_results_in_game_query_handler'
+    );
 
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
@@ -134,6 +140,9 @@ export default class LegislatureProvider extends AppProvider {
     });
     this.app.container.bind(IGetLegislatureVoteResultOfLawForElectionQueryHandler, () => {
       return new GetLegislatureVoteResultOfLawForElectionQueryHandler();
+    });
+    this.app.container.bind(IGetLastLawVoteResultsInGameQueryHandler, () => {
+      return new GetLastLawVoteResultsInGameQueryHandler();
     });
   }
 }
