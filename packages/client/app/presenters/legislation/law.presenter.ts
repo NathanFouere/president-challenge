@@ -17,7 +17,7 @@ export class LawPresenter {
   public async getLaw(lawId: number): Promise<void> {
     this.lawStore.setIsGettingLaw();
     try {
-      const law = await this.legislationModule.getLaw(this.gameStore.getSelectedGameId, lawId);
+      const law = await this.legislationModule.getLaw(this.gameStore.getSelectedGameId, lawId, this.gameStore.getSelectedGameTurn);
       this.lawStore.setLaw(law);
     }
     catch (error) {
@@ -31,7 +31,6 @@ export class LawPresenter {
     this.lawStore.setIsVotingLaw();
     try {
       await this.legislationModule.voteLaw(this.gameStore.getSelectedGameId, lawId);
-      this.toast.showSuccess('Voted successfully.');
     }
     catch (error) {
       console.error(error);

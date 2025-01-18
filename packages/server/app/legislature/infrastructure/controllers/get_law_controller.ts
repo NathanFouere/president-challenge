@@ -9,19 +9,12 @@ import GetLawByGameAndTypeQuery from '#legislature/application/query/get_law_by_
 import {
   IGetLawByGameAndTypeQueryHandler,
 } from '#legislature/application/query/i_get_law_by_game_and_type_query_handler';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import {
-  IGetLastLawVoteResultsInGameQueryHandler,
-} from '#legislature/application/query/i_get_last_law_vote_results_in_game_query_handler';
-import GetLastLawVoteResultsInGameQuery from '#legislature/application/query/get_last_law_vote_results_in_game_query';
-import { LegislatureType } from '#legislature/domain/models/legislature_type';
 
 @inject()
 export default class GetLawController {
   constructor(
     private readonly getLawByGameAndTypeQueryHandler: IGetLawByGameAndTypeQueryHandler,
     private readonly lawDtoFactory: LawDtoFactory,
-    private readonly getLastLawVoteResultsInGameQueryHandler: IGetLastLawVoteResultsInGameQueryHandler,
   ) {
   }
 
@@ -30,24 +23,13 @@ export default class GetLawController {
       auth.getUserOrFail();
       const gameId: number = params.gameId;
       const lawId: number = params.lawId;
+      const turn: number = params.turn;
 
-      // TODO => regrouper dans promise.all
-      const law = await this.getLawByGameAndTypeQueryHandler.handle(new GetLawByGameAndTypeQuery(
+      const law = await this.getLawByGameAndTypeQueryHandler.handleForDisplay(new GetLawByGameAndTypeQuery(
         lawId,
         gameId,
       ));
-
-      const lawVoteResultInSenate = await this.getLastLawVoteResultsInGameQueryHandler.handle(new GetLastLawVoteResultsInGameQuery(
-        lawId,
-        LegislatureType.SENATE,
-      ));
-
-      const lawVoteResultInParliament = await this.getLastLawVoteResultsInGameQueryHandler.handle(new GetLastLawVoteResultsInGameQuery(
-        lawId,
-        LegislatureType.PARLIAMENT,
-      ));
-
-      return this.lawDtoFactory.createFromLaw(law, lawVoteResultInSenate, lawVoteResultInParliament);
+      return this.lawDtoFactory.createFromLaw(law, turn);
     }
     catch (e) {
       console.error(e);

@@ -52,25 +52,34 @@ watch(
       />
       <div v-else>
         <p>{{ lawPresenter.lawStore.requireLaw.description }}</p>
-        <div v-if="lawPresenter.lawStore.requireLaw.lastVoteResultsDatas">
+        <div v-if="lawPresenter.lawStore.requireLaw.voteResultsDatas[0]">
           <br>
           <UDivider />
           <br>
           <law-election-results-component
-            class="flex-1 overflow-auto"
-            :vote-results-datas="lawPresenter.lawStore.requireLaw.lastVoteResultsDatas"
+            :vote-results-datas="lawPresenter.lawStore.requireLaw.voteResultsDatas"
           />
         </div>
       </div>
 
       <template #footer>
-        <UButton
-          class="align-baseline"
-          :label="alreadyVoted ? 'Already voted' : 'Vote for'"
-          :disabled="alreadyVoted"
-          :loading="lawPresenter.lawStore.isVotingLaw"
-          @click="lawPresenter.voteLaw(props.lawId)"
+        <USkeleton
+          v-if="lawPresenter.lawStore.isGettingLaw || !lawPresenter.lawStore.hasLaw"
+          class="w-full h-64 "
         />
+        <UTooltip
+          v-else
+          class="align-baseline"
+          :text="!lawPresenter.lawStore.requireLaw.canVoteForThisTurn ? 'You already vote for this on on the current turn' : alreadyVoted ? 'Law is already voted' : 'Vote for Law'"
+        >
+          <UButton
+            class="align-baseline"
+            :label="alreadyVoted ? 'Already voted' : 'Vote for'"
+            :disabled="alreadyVoted || !lawPresenter.lawStore.requireLaw.canVoteForThisTurn"
+            :loading="lawPresenter.lawStore.isVotingLaw"
+            @click="lawPresenter.voteLaw(props.lawId)"
+          />
+        </UTooltip>
       </template>
     </UCard>
   </UModal>

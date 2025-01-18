@@ -1,4 +1,4 @@
-import type { LawDto, VoteResultsDatas } from '@shared/dist/legislature/law-dto.js';
+import type { LawDto, VoteResultsData } from '@shared/dist/legislature/law-dto.js';
 import { inject } from '@adonisjs/core';
 import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
 import type { DatasetDTO } from '@shared/dist/chart/DatasetDTO.js';
@@ -6,6 +6,7 @@ import type { DatasetDTO } from '@shared/dist/chart/DatasetDTO.js';
 import MinimalLawDtoFactory from '#legislature/application/dto-factories/minimal_law_dto_factory';
 import type Law from '#legislature/domain/models/law';
 import type LawVoteResults from '#legislature/domain/models/law_vote_results';
+import type LawVote from '#legislature/domain/models/law_vote';
 
 @inject()
 export default class LawDtoFactory {
@@ -14,18 +15,21 @@ export default class LawDtoFactory {
   ) {
   }
 
-  public createFromLaw(law: Law, lawVoteResultInSenate: LawVoteResults | null, lawVoteResultInParliament: LawVoteResults | null): LawDto {
-    let lastVoteResultsDatas: VoteResultsDatas | null = null;
-    if (lawVoteResultInSenate && lawVoteResultInParliament) {
-      lastVoteResultsDatas = {
-        votesInParliament: this.createVoteResultsChartData(lawVoteResultInParliament),
-        votesInSenate: this.createVoteResultsChartData(lawVoteResultInSenate),
-        turnOfVotes: lawVoteResultInSenate.turn,
-      };
+  public createFromLaw(law: Law, turn: number): LawDto {
+    const voteResultsDatas: VoteResultsData[] = [];
+    for (const lawVote of law.lawVotes) {
+      voteResultsDatas.push({
+        votesInParliament: this.createVoteResultsChartData(lawVote.voteResultsInParliament),
+        votesInSenate: this.createVoteResultsChartData(lawVote.voteResultsInSenate),
+        turnOfVotes: lawVote.turn,
+        votePassed: lawVote.votePassed,
+      });
     }
     return {
       ...this.minimalLawDtoFactory.createFromLaw(law),
-      lastVoteResultsDatas: lastVoteResultsDatas,
+      madeIncompatibleBy: law.lawGroup.laws.find((law: Law) => law.voted)?.name,
+      voteResultsDatas: voteResultsDatas,
+      canVoteForThisTurn: law.lawVotes.every((lawVote: LawVote) => lawVote.turn != turn),
     };
   }
 

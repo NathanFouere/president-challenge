@@ -6,11 +6,14 @@ export interface LawDto extends MinimalLawDto {
   name: string;
   description: string;
   voted: boolean;
-  lastVoteResultsDatas: VoteResultsDatas | null;
+  madeIncompatibleBy: string | undefined;
+  canVoteForThisTurn: boolean;
+  voteResultsDatas: VoteResultsData[];
 }
 
-export interface VoteResultsDatas {
+export interface VoteResultsData {
   votesInParliament: ChartDataDTO;
   votesInSenate: ChartDataDTO;
   turnOfVotes: number;
+  votePassed: boolean;
 }

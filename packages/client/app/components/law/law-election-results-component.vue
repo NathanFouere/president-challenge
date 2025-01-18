@@ -1,35 +1,29 @@
 <script setup lang="ts">
-import type { VoteResultsDatas } from '@shared/legislature/law-dto';
-import { getDateFromTurnNumber } from '@shared/utils/date-converter';
-import BarCharComponent from '~/components/common/charts/bar-char-component.vue';
+import type { VoteResultsData } from '@shared/legislature/law-dto';
 
-defineProps<{
-  voteResultsDatas: VoteResultsDatas;
+const props = defineProps<{
+  voteResultsDatas: VoteResultsData[];
 }>();
+
+const voteResultIndex = ref(props.voteResultsDatas.length - 1);
+const voteResultsSelected = computed(() => props.voteResultsDatas[voteResultIndex.value]);
 </script>
 
 <template>
-  <h1 class="text-center">
-    Results in Parliament
-  </h1>
-  <bar-char-component
-    class="h-28 w-full"
-    :data="voteResultsDatas.votesInParliament"
-    stacked
-    :display-legend="false"
+  <law-election-result-component
+    v-if="voteResultsSelected"
+    :vote-result-datas="voteResultsSelected"
   />
-  <br>
-  <UDivider />
-  <br>
-  <h1 class="text-center">
-    Results in Senate
-  </h1>
-  <bar-char-component
-    class="h-28 w-full"
-    :data="voteResultsDatas.votesInSenate"
-    stacked
-    :display-legend="false"
-  />
-  <br>
-  <p>Last vote was on <b>{{ getDateFromTurnNumber(voteResultsDatas.turnOfVotes) }} </b></p>
+  <div class="flex justify-between p-10 ">
+    <UButton
+      label="Previous"
+      :disabled="voteResultIndex === 0"
+      @click="voteResultIndex = Math.max(0, voteResultIndex - 1)"
+    />
+    <UButton
+      label="Next"
+      :disabled="voteResultIndex === voteResultsDatas.length - 1"
+      @click="voteResultIndex = Math.min(voteResultsDatas.length - 1, voteResultIndex + 1)"
+    />
+  </div>
 </template>
