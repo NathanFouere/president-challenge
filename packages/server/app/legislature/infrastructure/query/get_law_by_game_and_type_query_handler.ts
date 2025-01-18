@@ -9,11 +9,26 @@ import type {
 export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAndTypeQueryHandler {
   private async getLawByGameAndType(
     query: GetLawByGameAndTypeQuery,
-    preloadOptions: { percentagesOfVotesForPoliticalParty?: boolean; lawGroup?: boolean } = {},
+    preloadOptions: { percentagesOfVotesForPoliticalParty?: boolean; lawGroup?: boolean; lawVotes?: boolean } = {},
   ): Promise<Law> {
     const queryBuilder = Law.query()
       .where('game_id', query.gameId)
       .where('id', query.lawId);
+
+    if (preloadOptions.lawVotes) {
+      queryBuilder.preload('lawVotes', (query) => {
+        query.preload('voteResultsInSenate', (subQuery) => {
+          subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
+            subSubQuery.preload('politicalParty');
+          });
+        });
+        query.preload('voteResultsInParliament', (subQuery) => {
+          subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
+            subSubQuery.preload('politicalParty');
+          });
+        });
+      });
+    }
 
     if (preloadOptions.percentagesOfVotesForPoliticalParty) {
       queryBuilder.preload('percentagesOfVotesForPoliticalParty');
@@ -33,5 +48,9 @@ export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAnd
 
   public async handleForVote(query: GetLawByGameAndTypeQuery): Promise<Law> {
     return await this.getLawByGameAndType(query, { percentagesOfVotesForPoliticalParty: true, lawGroup: true });
+  }
+
+  public async handleForDisplay(query: GetLawByGameAndTypeQuery): Promise<Law> {
+    return await this.getLawByGameAndType(query, { lawGroup: true, lawVotes: true });
   }
 }

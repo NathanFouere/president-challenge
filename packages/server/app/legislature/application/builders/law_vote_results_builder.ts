@@ -2,17 +2,11 @@ import LawVoteResults from '#legislature/domain/models/law_vote_results';
 import type { LegislatureType } from '#legislature/domain/models/legislature_type';
 
 export default class LawVoteResultsBuilder {
-  private turn: number | null = null;
-  private lawId: number | null = null;
+  private lawVoteId: number | null = null;
   private legislatureType: LegislatureType | null = null;
 
-  public withTurn(turn: number): this {
-    this.turn = turn;
-    return this;
-  }
-
-  public withLawId(lawId: number): this {
-    this.lawId = lawId;
+  public withLawVoteId(lawVoteId: number): this {
+    this.lawVoteId = lawVoteId;
     return this;
   }
 
@@ -23,9 +17,7 @@ export default class LawVoteResultsBuilder {
 
   public build(): LawVoteResults {
     const lawVoteResults = new LawVoteResults();
-    if (this.turn !== null) lawVoteResults.turn = this.turn;
-    else throw new Error('Turn is required');
-    if (this.lawId !== null) lawVoteResults.lawId = this.lawId;
+    if (this.lawVoteId !== null) lawVoteResults.lawVoteId = this.lawVoteId;
     else throw new Error('Law id is required');
     if (this.legislatureType !== null) lawVoteResults.legislatureType = this.legislatureType;
     else throw new Error('Legislature type is required');

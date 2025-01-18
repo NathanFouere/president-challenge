@@ -8,8 +8,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
 
-      table.integer('law_id').unsigned().references('id').inTable('laws').onDelete('CASCADE');
-      table.integer('turn').notNullable();
+      table.boolean('vote_passed').defaultTo(false).notNullable();
+      table.integer('law_vote_id').unsigned().references('id').inTable('law_votes').onDelete('CASCADE');
       table.enum('legislature_type', [LegislatureType.PARLIAMENT, LegislatureType.SENATE]).notNullable();
 
       table.timestamp('created_at');

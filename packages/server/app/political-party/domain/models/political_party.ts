@@ -9,6 +9,7 @@ import PoliticalPartySeatsSenate from '#legislature/domain/models/political_part
 import PoliticalPartyHappinessPerTurn from '#political-party/domain/models/political_party_happiness_per_turn';
 import PoliticalPartyHappinessModifier from '#political-party/domain/models/political_party_happiness_modifier';
 import LawVotesPercentagePerPoliticalParty from '#legislature/domain/models/law_votes_percentage_per_political_party';
+import { LegislatureType } from '#legislature/domain/models/legislature_type';
 
 export default class PoliticalParty extends BaseModel {
   @column({ isPrimary: true })
@@ -56,10 +57,10 @@ export default class PoliticalParty extends BaseModel {
   @hasMany(() => PoliticalPartyHappinessModifier)
   declare happinessModifiers: HasMany<typeof PoliticalPartyHappinessModifier>;
 
-  @column.dateTime({ autoCreate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
 
   public getHappinessLevel(): number {
@@ -73,11 +74,17 @@ export default class PoliticalParty extends BaseModel {
     return happinessLevel;
   }
 
-  public getVotesInFavorOfLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty): number {
+  public getVotesInFavorOfLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty, legislatureType: LegislatureType): number {
+    if (legislatureType === LegislatureType.PARLIAMENT) {
+      return this.parliamentSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
+    }
     return this.senateSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
   }
 
-  public getVotesAgainstLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty): number {
+  public getVotesAgainstLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty, legislatureType: LegislatureType): number {
+    if (legislatureType === LegislatureType.PARLIAMENT) {
+      return this.parliamentSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
+    }
     return this.senateSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
   }
 }

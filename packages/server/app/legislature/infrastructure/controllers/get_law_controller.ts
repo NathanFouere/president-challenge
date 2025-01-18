@@ -23,13 +23,13 @@ export default class GetLawController {
       auth.getUserOrFail();
       const gameId: number = params.gameId;
       const lawId: number = params.lawId;
+      const turn: number = params.turn;
 
-      const law = await this.getLawByGameAndTypeQueryHandler.handle(new GetLawByGameAndTypeQuery(
+      const law = await this.getLawByGameAndTypeQueryHandler.handleForDisplay(new GetLawByGameAndTypeQuery(
         lawId,
         gameId,
       ));
-
-      return this.lawDtoFactory.createFromLaw(law);
+      return this.lawDtoFactory.createFromLaw(law, turn);
     }
     catch (e) {
       console.error(e);
