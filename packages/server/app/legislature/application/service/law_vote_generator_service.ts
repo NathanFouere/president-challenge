@@ -19,7 +19,7 @@ import IGetLawVoteQueryHandler from '#legislature/application/query/i_get_law_vo
 import LawVoteRepository from '#legislature/infrastructure/repositories/law_vote_repository';
 
 @inject()
-export default class GenerateVoteResultsService {
+export default class LawVoteGeneratorService {
   constructor(
     private readonly getPoliticalPartyOfGameQueryHandler: IGetPoliticalPartyOfGameQueryHandler,
     private readonly getLawVoteQueryHandler: IGetLawVoteQueryHandler,
@@ -27,7 +27,7 @@ export default class GenerateVoteResultsService {
   ) {
   }
 
-  public async generateVoteResult(law: Law, turn: number): Promise<LawVote> {
+  public async generateLawVote(law: Law, turn: number): Promise<LawVote> {
     const lawVote = await aLawVote()
       .withTurn(turn)
       .withLawId(law.id)

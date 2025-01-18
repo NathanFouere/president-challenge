@@ -3,7 +3,7 @@ import type Law from '#legislature/domain/models/law';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawRepository from '#legislature/domain/repository/i_law_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import VoteResultsService from '#legislature/application/service/vote_results_service';
+import LawVoteGeneratorService from '#legislature/application/service/law_vote_generator_service';
 import type LawGroup from '#legislature/domain/models/law_group';
 import DuplicateLawVoteForTurnError from '#legislature/application/error/duplicate_law_vote_for_turn_error';
 
@@ -11,7 +11,7 @@ import DuplicateLawVoteForTurnError from '#legislature/application/error/duplica
 export default class VoteLawService {
   constructor(
     private readonly lawRepository: ILawRepository,
-    private readonly voteResultsService: VoteResultsService,
+    private readonly lawVoteGeneratorService: LawVoteGeneratorService,
   ) {
   }
 
@@ -21,7 +21,7 @@ export default class VoteLawService {
         throw new Error('Law already voted');
       }
 
-      const lawVote = await this.voteResultsService.generateVoteResult(law, turn);
+      const lawVote = await this.lawVoteGeneratorService.generateLawVote(law, turn);
 
       if (lawVote.votePassed) {
         law.voted = true;
