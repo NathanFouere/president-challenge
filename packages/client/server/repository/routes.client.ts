@@ -53,6 +53,7 @@ const Routes = {
   },
   State: {
     GetState: (gameId: number) => `${statePrefix}/${gameId}`,
+    GetBudget: (budgetId: number) => `${statePrefix}/budget/${budgetId}`,
   },
 };
 

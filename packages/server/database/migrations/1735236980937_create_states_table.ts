@@ -26,25 +26,9 @@ export default class extends BaseSchema {
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();
     });
-
-    this.schema.alterTable('licensed_files', (table) => {
-      table
-        .integer('state_id')
-        .unsigned()
-        .references('id')
-        .inTable(this.tableName)
-        .onUpdate('CASCADE')
-        .onDelete('SET NULL')
-        .nullable();
-    });
   }
 
   async down() {
-    this.schema.alterTable('licensed_files', (table) => {
-      table.dropForeign(['state_id']);
-      table.dropColumn('state_id');
-    });
-
     this.schema.dropTable(this.tableName);
   }
 }

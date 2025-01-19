@@ -5,12 +5,18 @@ import type IGetStateOfGameQueryHandler from '#state/application/query/i_get_sta
 export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryHandler {
   private async getStateOfGame(
     query: GetStateOfGameQuery,
-    preloadOptions: { flag?: boolean; economicalSituationPerTurn?: boolean } = {},
+    preloadOptions: { flag?: boolean; economicalSituationPerTurn?: boolean; budgets?: boolean } = {},
   ): Promise<State> {
     const queryBuilder = State.query().where('game_id', query.gameId);
 
     if (preloadOptions.flag) {
       queryBuilder.preload('flag');
+    }
+
+    if (preloadOptions.budgets) {
+      queryBuilder.preload('budgets', (query) => {
+        query.preload('licensedFile');
+      });
     }
 
     if (preloadOptions.economicalSituationPerTurn) {
@@ -30,6 +36,7 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
     return await this.getStateOfGame(query, {
       flag: true,
       economicalSituationPerTurn: true,
+      budgets: true,
     });
   }
 }

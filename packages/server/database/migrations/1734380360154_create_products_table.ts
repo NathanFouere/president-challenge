@@ -27,25 +27,9 @@ export default class extends BaseSchema {
         .inTable('games')
         .onDelete('CASCADE');
     });
-
-    this.schema.alterTable('licensed_files', (table) => {
-      table
-        .integer('product_id')
-        .unsigned()
-        .references('id')
-        .inTable(this.tableName)
-        .onUpdate('CASCADE')
-        .onDelete('SET NULL')
-        .nullable();
-    });
   }
 
   async down() {
-    this.schema.alterTable('licensed_files', (table) => {
-      table.dropForeign(['product_id']);
-      table.dropColumn('product_id');
-    });
-
     this.schema.dropTable(this.tableName);
   }
 }

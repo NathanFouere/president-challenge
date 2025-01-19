@@ -17,6 +17,7 @@ import { PoliticalPartyPresenter } from '~/presenters/political-party/political-
 import { PoliticalPartiesPresenter } from '~/presenters/political-party/political-parties.presenter';
 import { LawCategoriesPresenter } from '~/presenters/legislation/law-categories.presenter';
 import { LawPresenter } from '~/presenters/legislation/law.presenter';
+import { BudgetPresenter } from '~/presenters/state/budget.presenter';
 
 const container = new Container();
 
@@ -37,5 +38,6 @@ container.bind<SectorPresenter>(COMMON_DEPENDANCY_TYPES.SectorPresenter).to(Sect
 container.bind<StatePresenter>(COMMON_DEPENDANCY_TYPES.StatePresenter).to(StatePresenter);
 container.bind<LawCategoriesPresenter>(COMMON_DEPENDANCY_TYPES.LawCategoriesPresenter).to(LawCategoriesPresenter);
 container.bind<LawPresenter>(COMMON_DEPENDANCY_TYPES.LawPresenter).to(LawPresenter);
+container.bind<BudgetPresenter>(COMMON_DEPENDANCY_TYPES.BudgetPresenter).to(BudgetPresenter);
 
 export default container;

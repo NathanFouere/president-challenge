@@ -4,6 +4,7 @@ import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
+import Budget from '#state/domain/model/budget';
 
 export default class State extends BaseModel {
   @column({ isPrimary: true })
@@ -29,6 +30,9 @@ export default class State extends BaseModel {
 
   @hasMany(() => StateEconomicalSituationPerTurn)
   declare economicalSituationPerTurn: HasMany<typeof StateEconomicalSituationPerTurn>;
+
+  @hasMany(() => Budget)
+  declare budgets: HasMany<typeof Budget>;
 
   @hasOne(() => LicensedFile, {
     foreignKey: 'identifier',

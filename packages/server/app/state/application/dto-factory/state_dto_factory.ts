@@ -7,6 +7,8 @@ import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licen
 import ChartDataFactory from '#common/utils/chart_data_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import RangeLevelMatch from '#common/utils/range_level_match';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { MinimalBudgetDtoFactory } from '#state/application/dto-factory/minimal_budget_dto_factory';
 
 @inject()
 export class StateDtoFactory {
@@ -14,6 +16,7 @@ export class StateDtoFactory {
     private readonly licensedFileDtoFactory: LicensedFileDTOFactory,
     private readonly chartDataFactory: ChartDataFactory,
     private readonly rangeLevelMatch: RangeLevelMatch,
+    private readonly budgetDtoFactory: MinimalBudgetDtoFactory,
   ) {
   }
 
@@ -41,6 +44,7 @@ export class StateDtoFactory {
         20,
         this.stateHappinessRangeLevels,
       ),
+      budgets: this.budgetDtoFactory.createFromBudgets(state.budgets),
     };
   }
 }

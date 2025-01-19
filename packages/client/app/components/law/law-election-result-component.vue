@@ -18,9 +18,7 @@ defineProps<{
     stacked
     :display-legend="false"
   />
-  <br>
-  <UDivider />
-  <br>
+  <UDivider class="sticky pt-10 pb-10" />
   <h1 class="text-center">
     Results in Senate
   </h1>

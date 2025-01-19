@@ -13,26 +13,11 @@ export default class AddLicensedFileIdentifierToPoliticalParties extends BaseSch
         .onDelete('SET NULL')
         .nullable();
     });
-
-    this.schema.alterTable('licensed_files', (table) => {
-      table
-        .integer('political_party_id')
-        .unsigned()
-        .references('id')
-        .inTable(this.tableName)
-        .onUpdate('CASCADE')
-        .onDelete('SET NULL')
-        .nullable();
-    });
   }
 
   async down() {
     this.schema.alterTable(this.tableName, (table) => {
       table.dropColumn('licensed_file_identifier');
-    });
-
-    this.schema.alterTable('licensed_files', (table) => {
-      table.dropColumn('political_party_id');
     });
   }
 }

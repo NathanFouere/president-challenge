@@ -44,20 +44,24 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div>
-      <USkeleton
-        v-if="statePresenter.stateStore.isGettingState || statePresenter.stateStore.hasErrorOnGetState || !statePresenter.stateStore.getState"
-        class="h-64 w-full"
-      />
-      <p v-else>
-        {{ statePresenter.stateStore.getState?.description }}
-        <br>
-        {{ statePresenter.stateStore.getState?.economicalSituation }}
-      </p>
+    <USkeleton
+      v-if="statePresenter.stateStore.isGettingState || statePresenter.stateStore.hasErrorOnGetState || !statePresenter.stateStore.getState"
+      class="h-64 w-full"
+    />
+    <div v-else>
+      {{ statePresenter.stateStore.getState?.description }}
+      <UDivider class="sticky pt-10 pb-10" />
+      Budget :
+      <div class="flex justify-center items-center gap-5">
+        <budget-component
+          v-for="(budget) in statePresenter.stateStore.requireState.budgets"
+          :key="budget.id"
+          :budget="budget"
+        />
+      </div>
     </div>
-
-    <br>
-    <UDivider class="sticky" />
+    <UDivider class="sticky pt-10 pb-10" />
+    Economical Situation : {{ statePresenter.stateStore.getState?.economicalSituation }}
     <br>
 
     <div>
