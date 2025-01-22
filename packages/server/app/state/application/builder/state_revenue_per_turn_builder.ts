@@ -21,6 +21,12 @@ export default class StateRevenuePerTurnBuilder extends SaveAmountForTurnBuilder
 
     return stateEconomicalSituationPerTurn;
   }
+
+  public async exist(): Promise<StateEconomicalSituationPerTurn> {
+    const stateEconomicalSituationPerTurn = this.build();
+    await stateEconomicalSituationPerTurn.save();
+    return stateEconomicalSituationPerTurn;
+  }
 }
 
 export function aStateRevenuePerTurn(): StateRevenuePerTurnBuilder {

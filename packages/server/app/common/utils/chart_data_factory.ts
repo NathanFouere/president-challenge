@@ -10,8 +10,8 @@ export default class ChartDataFactory {
   public createFromAmountPerTurn(
     saveAmountForTurn: SaveAmountForTurn[],
     title: string,
-    minY: number,
-    maxY: number,
+    minY: number | null = null,
+    maxY: number | null = null,
     ranges: Range[] | null = null,
   ): LineChartDataDTO {
     const labels: string[] = [];

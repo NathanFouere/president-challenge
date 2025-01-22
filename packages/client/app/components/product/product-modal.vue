@@ -38,7 +38,7 @@ watch(
               v-if="productPresenter.productStore.isGettingProduct"
               class="h-6 w-40"
             />
-            <span v-else>{{ productPresenter.productStore.getProduct?.name }}</span>
+            <span v-else>{{ productPresenter.productStore.requireProduct.name }}</span>
           </p>
           <UIcon
             name="i-heroicons-x-mark"
@@ -66,10 +66,10 @@ watch(
           </p>
           <div v-else>
             <p>
-              Price: {{ productPresenter.productStore.getProduct!.price }}
+              Price: {{ productPresenter.productStore.requireProduct.price }}
             </p>
             <p>
-              Cost of production: {{ productPresenter.productStore.getProduct!.costOfProduction }}
+              Cost of production: {{ productPresenter.productStore.requireProduct.costOfProduction }}
             </p>
             <br>
             <LineChartComponent

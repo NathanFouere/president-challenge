@@ -1,4 +1,4 @@
-export class LicensedFileDTO {
+export interface LicensedFileDTO {
   identifier: string;
   title: string;
   attribution: string | null;

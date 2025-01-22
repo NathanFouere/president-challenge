@@ -1,4 +1,4 @@
-import type { StateDto } from '@shared/typesstate/state-dto';
+import type { StateDto } from '@shared/dist/state/state-dto';
 
 export const useStateStore = defineStore('stateStore', {
   state: () => ({

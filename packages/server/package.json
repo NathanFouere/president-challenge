@@ -16,6 +16,7 @@
   },
   "imports": {
     "#common/*": "./app/common/*.js",
+    "#budget/*": "./app/budget/*.js",
     "#user/*": "./app/user/*.js",
     "#social-class/*": "./app/social-class/*.js",
     "#product/*": "./app/product/*.js",

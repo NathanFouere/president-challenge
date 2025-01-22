@@ -32,8 +32,6 @@ onMounted(async () => {
     <law-group-accordion-component
       :law-category="lawCategory"
     />
-    <br>
-    <UDivider class="sticky bottom-0" />
-    <br>
+    <UDivider class="sticky pt-10 pb-10" />
   </div>
 </template>

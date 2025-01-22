@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Health",
+    "description": "Health budget",
+    "level": 1,
+    "color": "#FF0000",
+    "licensedFileIdentifier": "civil-servant-five"
+  },
+  {
+    "name": "Retirement Budget",
+    "description": "Health budget",
+    "level": 1,
+    "color": "#FF0000",
+    "licensedFileIdentifier": "land-owner-five"
+  },
+  {
+    "name": "Army Budget",
+    "description": "Health budget",
+    "level": 1,
+    "color": "#FF0000",
+    "licensedFileIdentifier": "military-one"
+  }
+]

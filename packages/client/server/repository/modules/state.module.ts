@@ -13,6 +13,15 @@ class StateModule extends FetchFactory {
       },
     );
   };
+
+  public async getBudget(budgetId: number): Promise<StateDto> {
+    return this.call<StateDto>(
+      {
+        method: 'GET',
+        url: `${this.RESOURCE.GetBudget(budgetId)}`,
+      },
+    );
+  }
 }
 
 export default StateModule;

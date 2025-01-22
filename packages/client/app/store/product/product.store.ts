@@ -1,4 +1,4 @@
-import type { ProductDto } from '@shared/typesproduct/product-dto';
+import type { ProductDto } from '@shared/product/product-dto';
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({
@@ -9,6 +9,12 @@ export const useProductStore = defineStore('productStore', {
   getters: {
     getProduct: state => state.product,
     hasProduct: state => state.product !== null,
+    requireProduct(): ProductDto {
+      if (!this.hasProduct) {
+        throw new Error('Product is not available.');
+      }
+      return this.product as ProductDto;
+    },
     isGettingProduct: state => state.gettingProduct,
     hadErrorOnGetProduct: state => state.errorOnGetProduct,
   },

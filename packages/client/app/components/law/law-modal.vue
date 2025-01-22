@@ -52,14 +52,11 @@ watch(
       />
       <div v-else>
         <p>{{ lawPresenter.lawStore.requireLaw.description }}</p>
-        <div v-if="lawPresenter.lawStore.requireLaw.voteResultsDatas[0]">
-          <br>
-          <UDivider />
-          <br>
-          <law-election-results-component
-            :vote-results-datas="lawPresenter.lawStore.requireLaw.voteResultsDatas"
-          />
-        </div>
+        <UDivider class="sticky pt-10 pb-10" />
+        <law-election-results-component
+          v-if="lawPresenter.lawStore.requireLaw.voteResultsDatas.length"
+          :vote-results-datas="lawPresenter.lawStore.requireLaw.voteResultsDatas"
+        />
       </div>
 
       <template #footer>

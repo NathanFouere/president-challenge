@@ -1,12 +1,12 @@
 import { injectable } from 'inversify';
 import type StateModule from '../../../server/repository/modules/state.module';
-import { useGameStore } from '../../store/game/game.store';
-import { useStateStore } from '../../store/state/state.store';
+import { useGameStore } from '~/store/game/game.store';
+import { useStateStore } from '~/store/state/state.store';
 
 @injectable()
 export class StatePresenter {
-  public readonly stateModule: StateModule = useNuxtApp().$api.state;
-  public readonly toast = useCustomToast();
+  private readonly stateModule: StateModule = useNuxtApp().$api.state;
+  private readonly toast = useCustomToast();
   private readonly gameStore = useGameStore();
   public readonly stateStore = useStateStore();
 
