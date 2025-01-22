@@ -60,19 +60,20 @@ onMounted(async () => {
         />
       </div>
     </div>
+
     <UDivider class="sticky pt-10 pb-10" />
+
     Economical Situation : {{ statePresenter.stateStore.getState?.economicalSituation }}
+
     <br>
 
-    <div>
-      <USkeleton
-        v-if="statePresenter.stateStore.isGettingState || statePresenter.stateStore.hasErrorOnGetState || !statePresenter.stateStore.getState"
-        class="h-64 w-full"
-      />
-      <LineChartComponent
-        v-else
-        :data="statePresenter.stateStore.getState.economicalSituationPerMonthChartData"
-      />
-    </div>
+    <USkeleton
+      v-if="statePresenter.stateStore.isGettingState || statePresenter.stateStore.hasErrorOnGetState || !statePresenter.stateStore.getState"
+      class="h-64 w-full"
+    />
+    <LineChartComponent
+      v-else
+      :data="statePresenter.stateStore.getState.economicalSituationPerMonthChartData"
+    />
   </div>
 </template>

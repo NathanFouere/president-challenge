@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import container from '../../../config/container';
-import type { PoliticalPartiesPresenter } from '../../presenters/political-party/political-parties.presenter';
 import SenateComponent from '../../components/legislation/senate-component.vue';
 import ParliamentComponent from '../../components/legislation/parliament-component.vue';
+import type { PoliticalPartiesPresenter } from '~/presenters/political-party/political-parties.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import { NUXT_ROUTES } from '~~/config/routes/nuxt-routes';
 
@@ -39,9 +39,9 @@ onMounted(async () => {
       />
     </div>
   </div>
-  <br>
-  <UDivider class="sticky" />
-  <br>
+
+  <UDivider class="sticky pt-10 pb-10" />
+
   <div class="text-center">
     <h1 class="text-center">
       Legislature

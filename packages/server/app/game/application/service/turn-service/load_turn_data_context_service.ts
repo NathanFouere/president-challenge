@@ -28,7 +28,7 @@ export class LoadTurnDataContextService {
   }
 
   public async load(game: Game): Promise<TurnDataContext> {
-    const state = await this.getStateOfGameQueryHandler.handle(new GetStateOfGameQuery(
+    const state = await this.getStateOfGameQueryHandler.handleForSwitchTurn(new GetStateOfGameQuery(
       game.id,
     ));
     const sectors = await this.getSectorsOfGameQueryHandler.handleForSwitchTurn(new GetSectorsByGameQuery(

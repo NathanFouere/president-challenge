@@ -40,9 +40,9 @@ onMounted(async () => {
     <p class="text-justify">
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
     </p>
-    <br>
-    <UDivider />
-    <br>
+
+    <UDivider class="sticky pt-10 pb-10" />
+
     <h1>Happiness</h1>
     <p>Happiness level : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessLevel }}</p>
     <happiness-modifier-component

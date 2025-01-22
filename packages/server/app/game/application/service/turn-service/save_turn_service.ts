@@ -34,6 +34,8 @@ import PoliticalPartySaveForTurnService
   from '#political-party/infrastructure/service/political_party_save_for_turn_service';
 import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import BudgetCostPerTurnSaveService from '#state/application/service/budget_cost_per_turn_save_service';
 
 @inject()
 export default class SaveTurnService implements TurnProcessorStep {
@@ -50,6 +52,7 @@ export default class SaveTurnService implements TurnProcessorStep {
     private readonly stateRepository: StateRepository,
     private readonly socialClassService: SocialClassSaveForTurnService,
     private readonly politicalPartySaveForTurnService: PoliticalPartySaveForTurnService,
+    private readonly budgetCostPerTurnSaveService: BudgetCostPerTurnSaveService,
   ) {
 
   }
@@ -72,7 +75,8 @@ export default class SaveTurnService implements TurnProcessorStep {
 
   private async saveHistoricalDatas(turnDataContext: TurnDataContext): Promise<void> {
     await Promise.all([
-      this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForMonth(turnDataContext.state, turnDataContext.game.turn),
+      this.budgetCostPerTurnSaveService.saveBudgetsCostForTurn(turnDataContext.state.budgets, turnDataContext.game.turn),
+      this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForTurn(turnDataContext.state, turnDataContext.game.turn),
       this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(turnDataContext.socialClasses, turnDataContext.game.turn),
       this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(turnDataContext.socialClasses, turnDataContext.game.turn),
       this.productPricePerTurnSaveService.saveProductsPricesPerTurn(turnDataContext.products, turnDataContext.game.turn),

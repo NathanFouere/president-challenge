@@ -6,7 +6,6 @@ export default class BudgetBuilder {
   private description: string | null = null;
   private color: string | null = null;
   private level: BudgetLevel | null = null;
-  private baseCost: number | null = null;
   private stateId: number | null = null;
   private licensedFileIdentifier: string | null = null;
 
@@ -30,11 +29,6 @@ export default class BudgetBuilder {
     return this;
   }
 
-  public withBaseCost(baseCost: number): this {
-    this.baseCost = baseCost;
-    return this;
-  }
-
   public withStateId(stateId: number): this {
     this.stateId = stateId;
     return this;
@@ -53,8 +47,6 @@ export default class BudgetBuilder {
     if (this.description) budget.description = this.description;
     else throw new Error('Description is required');
     if (this.level) budget.level = this.level;
-    else throw new Error('Level is required');
-    if (this.baseCost) budget.baseCost = this.baseCost;
     else throw new Error('Base cost is required');
     if (this.stateId) budget.stateId = this.stateId;
     else throw new Error('State id is required');

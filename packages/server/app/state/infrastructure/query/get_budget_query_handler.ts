@@ -5,12 +5,16 @@ import type GetBudgetQuery from '#state/application/query/get_budget_query';
 export default class GetBudgetOfStateQueryHandler implements IGetBudgetQueryHandler {
   private async getBudgetOfState(
     query: GetBudgetQuery,
-    preloadOptions: { licensedFile?: boolean } = {},
+    preloadOptions: { licensedFile?: boolean; costPerTurn?: boolean } = {},
   ): Promise<Budget> {
     const queryBuilder = Budget.query().where('id', query.budgetId);
 
     if (preloadOptions.licensedFile) {
       queryBuilder.preload('licensedFile');
+    }
+
+    if (preloadOptions.costPerTurn) {
+      queryBuilder.preload('levelPerTurn');
     }
 
     return queryBuilder.firstOrFail();
@@ -23,6 +27,7 @@ export default class GetBudgetOfStateQueryHandler implements IGetBudgetQueryHand
   public async handleForDisplay(query: GetBudgetQuery): Promise<Budget> {
     return await this.getBudgetOfState(query, {
       licensedFile: true,
+      costPerTurn: true,
     });
   }
 }

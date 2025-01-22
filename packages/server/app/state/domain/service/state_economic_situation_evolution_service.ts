@@ -4,13 +4,18 @@ import type State from '#state/domain/model/state';
 
 export default class StateEconomicalSituationEvolutionService {
   public propagateEconomicalSituationToState(sectors: Sector[], state: State): void {
-    for (const sector of sectors) {
-      this.propagateSectorEconomicalSituationToState(sector, state);
-    }
+    sectors.forEach((sector: Sector) => this.applySectorEconomicalSituationToState(sector, state));
+    this.applyStateBudgets(state);
   }
 
-  private propagateSectorEconomicalSituationToState(sector: Sector, state: State): void {
+  private applySectorEconomicalSituationToState(sector: Sector, state: State): void {
     const added = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
     state.addToEconomicalSituation(added);
+  }
+
+  private applyStateBudgets(state: State): void {
+    for (const budget of state.budgets) {
+      state.addToEconomicalSituation(-budget.level);
+    }
   }
 }

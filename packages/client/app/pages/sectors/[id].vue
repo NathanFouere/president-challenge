@@ -40,9 +40,9 @@ onMounted(async () => {
         :licensed-file="sectorPresenter.sectorStore.requireSector.licensedFile"
       />
     </div>
-    <br>
-    <UDivider />
-    <br>
+
+    <UDivider class="sticky pt-10 pb-10" />
+
     <h2 class="text-center">
       Products
     </h2>
@@ -55,15 +55,15 @@ onMounted(async () => {
         :product="product"
       />
     </div>
-    <br>
-    <UDivider />
-    <br>
+
+    <UDivider class="sticky pt-10 pb-10" />
+
     <LineChartComponent
       :data="sectorPresenter.sectorStore.requireSector.economicalSituationPerMonthChartData"
     />
-    <br>
-    <UDivider />
-    <br>
+
+    <UDivider class="sticky pt-10 pb-10" />
+
     <h2
       class="text-center"
     >

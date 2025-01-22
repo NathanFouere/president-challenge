@@ -6,6 +6,6 @@ export interface LineChartDataDTO {
   datasets: DatasetDTO[];
   title: string | null;
   yLabels: YLabels | null;
-  minY: number;
-  maxY: number;
+  minY: number | null;
+  maxY: number | null;
 }

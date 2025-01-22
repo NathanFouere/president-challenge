@@ -3,6 +3,7 @@ import container from '~~/config/container';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import type { BudgetPresenter } from '~/presenters/state/budget.presenter';
 import LicensedFileComponent from '~/components/common/licensed-file-component.vue';
+import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
 
 const props = defineProps<{
   budgetId: number;
@@ -30,7 +31,12 @@ watch(
   />
 
   <UModal v-model="isOpen">
-    <UCard>
+    <UCard
+      v-if="budgetPresenter.budgetStore.isGettingBudget"
+    >
+      <USkeleton class="h-24 w-full mb-4" />
+    </UCard>
+    <UCard v-else>
       <template #header>
         <div class="flex justify-between items-center">
           <p>
@@ -47,16 +53,16 @@ watch(
         </div>
       </template>
 
-      <div v-if="budgetPresenter.budgetStore.isGettingBudget">
-        <USkeleton class="h-24 w-full mb-4" />
-        <USkeleton class="h-6 w-1/2 mb-2" />
-        <USkeleton class="h-6 w-1/3" />
-      </div>
-      <div v-else>
-        <LicensedFileComponent
-          :licensed-file="budgetPresenter.budgetStore.requireBudget.licensedFile"
-        />
-      </div>
+      <LicensedFileComponent
+        :licensed-file="budgetPresenter.budgetStore.requireBudget.licensedFile"
+        :loading="budgetPresenter.budgetStore.isGettingBudget"
+      />
+      <p>Description : {{ budgetPresenter.budgetStore.requireBudget.description }}</p>
+      <p>
+        Level : <span :style="`color: ${budgetPresenter.budgetStore.requireBudget.level.color}`">{{ budgetPresenter.budgetStore.requireBudget.level.name }}</span>
+      </p>
+      <p>Cost : {{ budgetPresenter.budgetStore.requireBudget.cost }}</p>
+      <LineChartComponent :data="budgetPresenter.budgetStore.requireBudget.costPerMonthChartData" />
     </UCard>
   </umodal>
 </template>

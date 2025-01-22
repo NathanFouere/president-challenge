@@ -44,7 +44,6 @@ export class StateStartupService implements StartupProcessorStep {
         .withDescription(budget.description)
         .withLicensedFileIdentifier(budget.licensedFileIdentifier)
         .withLevel(budget.level)
-        .withBaseCost(budget.baseCost)
         .withStateId(state.id)
         .withColor(budget.color)
         .build();

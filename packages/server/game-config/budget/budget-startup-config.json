@@ -3,24 +3,21 @@
     "name": "Health",
     "description": "Health budget",
     "level": 1,
-    "baseCost": 100,
     "color": "#FF0000",
-    "licensedFileIdentifier": "flag-chile"
+    "licensedFileIdentifier": "civil-servant-five"
   },
   {
     "name": "Retirement Budget",
     "description": "Health budget",
     "level": 1,
-    "baseCost": 100,
     "color": "#FF0000",
-    "licensedFileIdentifier": "flag-chile"
+    "licensedFileIdentifier": "land-owner-five"
   },
   {
     "name": "Army Budget",
     "description": "Health budget",
     "level": 1,
-    "baseCost": 100,
     "color": "#FF0000",
-    "licensedFileIdentifier": "flag-chile"
+    "licensedFileIdentifier": "military-one"
   }
 ]

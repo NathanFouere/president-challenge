@@ -18,11 +18,11 @@ onMounted(async () => {
         Senate
       </template>
       <USkeleton
-        v-if="senatePresenter.senateStore.isGettingSenate"
+        v-if="senatePresenter.senateStore.isGettingSenate || !senatePresenter.senateStore.getSenate"
         class="w-full h-64 "
       />
       <div
-        v-else-if="senatePresenter.senateStore.hasSenate"
+        v-else
         class="flex flex-col items-center"
       >
         <half-circle

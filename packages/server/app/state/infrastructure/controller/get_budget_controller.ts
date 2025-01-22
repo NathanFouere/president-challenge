@@ -19,7 +19,6 @@ export default class GetBudgetController {
     try {
       auth.getUserOrFail();
       const budgetId = request.param('budgetId');
-      console.log('budgetId', budgetId);
 
       const budget = await this.getBudgetQueryHandler.handleForDisplay(new GetBudgetQuery(
         budgetId,

@@ -23,7 +23,7 @@ export class MinimalBudgetDtoFactory {
       color: budget.color,
       description: budget.description,
       level: this.createBudgetLevelFromLevel(budget.level),
-      cost: budget.getCost(),
+      cost: budget.level,
       licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(budget.licensedFile),
     };
   }
