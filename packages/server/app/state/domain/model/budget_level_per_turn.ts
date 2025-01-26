@@ -11,9 +11,4 @@ export default class BudgetLevelPerTurn extends SaveAmountForTurn {
 
   @belongsTo(() => Budget)
   declare budget: BelongsTo<typeof Budget>;
-
-  constructor() {
-    super();
-    this.color = 'green';
-  }
 }

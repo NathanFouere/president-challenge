@@ -4,8 +4,6 @@ import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import State from '#state/domain/model/state';
 
 export default class StateEconomicalSituationPerTurn extends SaveAmountForTurn {
-  public static readonly table = 'state_economical_situation_per_turns';
-
   @column()
   declare stateId: number;
 
@@ -14,6 +12,6 @@ export default class StateEconomicalSituationPerTurn extends SaveAmountForTurn {
 
   constructor() {
     super();
-    this.color = 'blue';
+    this.color = 'red';
   }
 }

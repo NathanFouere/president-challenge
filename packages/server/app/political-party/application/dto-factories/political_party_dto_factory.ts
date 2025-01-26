@@ -36,7 +36,7 @@ export class PoliticalPartyDTOFactory {
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.licensedFile),
       description: politicalParty.description,
       happinessLevel: this.rangeLevelMatch.createFromAmount(politicalParty.getHappinessLevel(), this.politicalPartyHappinessRangeLevels),
-      happinessPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+      happinessPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         politicalParty.happinessPerTurn,
         'Happiness Level',
         0,

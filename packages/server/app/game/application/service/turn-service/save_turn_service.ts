@@ -6,8 +6,6 @@ import ProductRepository from '#product/infrastructure/repository/product_reposi
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SectorRepository from '#sector/infrastructure/repository/sector_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { StateRevenuePerTurnSaveService } from '#state/application/service/state_economical_situation_per_turn_save_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ProductPricePerTurnSaveService } from '#product/application/service/product_price_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -36,6 +34,9 @@ import type { TurnDataContext } from '#game/application/service/turn-service/loa
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import BudgetCostPerTurnSaveService from '#state/application/service/budget_cost_per_turn_save_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import StateEconomicalSituationPerTurnSaveService
+  from '#state/application/service/state_economical_situation_per_turn_save_service';
 
 @inject()
 export default class SaveTurnService implements TurnProcessorStep {
@@ -43,7 +44,7 @@ export default class SaveTurnService implements TurnProcessorStep {
     private readonly gameRepository: IGameRepository,
     private readonly productRepository: ProductRepository,
     private readonly sectorRepository: SectorRepository,
-    private readonly stateRevenuePerTurnSaveService: StateRevenuePerTurnSaveService,
+    private readonly stateEconomicalSituationPerTurnSaveService: StateEconomicalSituationPerTurnSaveService,
     private readonly productPricePerTurnSaveService: ProductPricePerTurnSaveService,
     private readonly socialClassEconomicalSituationPerTurnSaveService: SocialClassEconomicalSituationPerTurnSaveService,
     private readonly sectorEconomicalSituationPerTurnSaveService: SectorEconomicalSituationPerTurnSaveService,
@@ -76,7 +77,7 @@ export default class SaveTurnService implements TurnProcessorStep {
   private async saveHistoricalDatas(turnDataContext: TurnDataContext): Promise<void> {
     await Promise.all([
       this.budgetCostPerTurnSaveService.saveBudgetsCostForTurn(turnDataContext.state.budgets, turnDataContext.game.turn),
-      this.stateRevenuePerTurnSaveService.saveStateEconomicalSituationForTurn(turnDataContext.state, turnDataContext.game.turn),
+      this.stateEconomicalSituationPerTurnSaveService.saveStateEconomicalSituationForTurn(turnDataContext.state, turnDataContext.game.turn),
       this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(turnDataContext.socialClasses, turnDataContext.game.turn),
       this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(turnDataContext.socialClasses, turnDataContext.game.turn),
       this.productPricePerTurnSaveService.saveProductsPricesPerTurn(turnDataContext.products, turnDataContext.game.turn),

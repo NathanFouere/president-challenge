@@ -3,21 +3,21 @@
     "name": "Health",
     "description": "Health budget",
     "level": 1,
-    "color": "#FF0000",
+    "color": "#4CAF50",
     "licensedFileIdentifier": "civil-servant-five"
   },
   {
     "name": "Retirement Budget",
-    "description": "Health budget",
+    "description": "Retirement budget",
     "level": 1,
-    "color": "#FF0000",
+    "color": "#FFC107",
     "licensedFileIdentifier": "land-owner-five"
   },
   {
     "name": "Army Budget",
-    "description": "Health budget",
+    "description": "Army budget",
     "level": 1,
-    "color": "#FF0000",
+    "color": "#2196F3",
     "licensedFileIdentifier": "military-one"
   }
 ]

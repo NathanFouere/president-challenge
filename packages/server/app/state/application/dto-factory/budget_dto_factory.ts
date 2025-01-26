@@ -26,7 +26,7 @@ export default class BudgetDtoFactory {
   public createFromBudget(budget: Budget): BudgetDto {
     return {
       ...this.minimalBudgetDtoFactory.createFromBudget(budget),
-      costPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+      costPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         budget.levelPerTurn,
         'Cost',
         0,

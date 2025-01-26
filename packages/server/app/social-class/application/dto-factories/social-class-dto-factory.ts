@@ -46,14 +46,14 @@ export class SocialClassDtoFactory {
       happinessLevel: this.rangeLevelMatch.createFromAmount(socialClass.getHappinessLevel(), this.socialClassHappinessRangeLevels),
       socialClassType: socialClass.subType,
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
-      happinessPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+      happinessPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         socialClass.happinessPerTurn,
         'Happiness Level',
         0,
         4,
         this.socialClassHappinessRangeLevels,
       ),
-      economicalSituationPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+      economicalSituationPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         socialClass.economicalSituationPerTurn,
         'Economical Situation',
         0,

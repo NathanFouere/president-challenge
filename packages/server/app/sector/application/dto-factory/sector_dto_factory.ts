@@ -61,7 +61,7 @@ export class SectorDtoFactory {
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.licensedFile),
       socialClasses: this.minimalSocialClassDtoFactory.createFromSocialClasses(sector.socialClasses),
       products: this.minimalProductDtoFactory.createFromProducts(sector.products),
-      economicalSituationPerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+      economicalSituationPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         sector.economicalSituationPerTurn,
         'Economical Situation',
         0,
