@@ -26,7 +26,7 @@ export class ProductDtoFactory {
       licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.licensedFile),
       price: product.price,
       costOfProduction: product.costOfProduction,
-      pricePerMonthChartData: this.chartDataFactory.createFromAmountPerTurn(
+      pricePerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         product.pricePerTurn,
         'Price per month',
         0,

@@ -5,7 +5,7 @@ import SectorEconomicalSituationCalculatorService
   from '#sector/domain/service/sector_economical_situation_calculator_service';
 import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import StateEconomicalSituationEvolutionService from '#state/domain/service/state_economic_situation_evolution_service';
+import StateTurnFinancialFlowService from '#state/domain/service/state_turn_financial_flow_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SocialClassEconomicalSituationEvolutionService
   from '#social-class/domain/service/social_class_economic_situation_evolution_service';
@@ -17,7 +17,7 @@ import type { TurnProcessorStep } from '#game/application/service/turn-service/t
 export default class TurnEconomicalService implements TurnProcessorStep {
   constructor(
     private readonly sectorEconomicalSituationCalculatorService: SectorEconomicalSituationCalculatorService,
-    private readonly stateEconomicalSituationEvolutionService: StateEconomicalSituationEvolutionService,
+    private readonly stateEconomicalSituationEvolutionService: StateTurnFinancialFlowService,
     private readonly socialClassEconomicalSituationEvolutionService: SocialClassEconomicalSituationEvolutionService,
     private readonly productChangePriceTurnService: ProductPriceRandomizerService,
   ) {
@@ -25,7 +25,7 @@ export default class TurnEconomicalService implements TurnProcessorStep {
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
     await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
-    this.stateEconomicalSituationEvolutionService.propagateEconomicalSituationToState(turnDataContext.sectors, turnDataContext.state);
+    await this.stateEconomicalSituationEvolutionService.createStateTurnFinancialFlow(turnDataContext.sectors, turnDataContext.state, turnDataContext.game.turn);
     this.socialClassEconomicalSituationEvolutionService.propagateEconomicalSituationToSocialClasses(turnDataContext.socialClasses);
     this.productChangePriceTurnService.changeProductsPricesRandomly(turnDataContext.products);
   }

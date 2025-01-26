@@ -22,6 +22,7 @@ export default class BudgetCostPerTurnSaveService {
       .withBudgetId(budget.id)
       .withAmount(budget.level)
       .withTurn(turn)
+      .withColor(budget.color)
       .exist();
   }
 }

@@ -3,8 +3,9 @@ import type { BelongsTo, HasOne, HasMany } from '@adonisjs/lucid/types/relations
 import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
-import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
+import StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
 import Budget from '#state/domain/model/budget';
+import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
 
 export default class State extends BaseModel {
   @column({ isPrimary: true })
@@ -27,6 +28,9 @@ export default class State extends BaseModel {
 
   @column()
   declare flagIdentifier: string;
+
+  @hasMany(() => StateTurnFinancialFlows)
+  declare turnFinancialFlows: HasMany<typeof StateTurnFinancialFlows>;
 
   @hasMany(() => StateEconomicalSituationPerTurn)
   declare economicalSituationPerTurn: HasMany<typeof StateEconomicalSituationPerTurn>;

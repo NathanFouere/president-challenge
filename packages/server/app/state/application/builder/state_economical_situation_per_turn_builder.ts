@@ -1,7 +1,7 @@
 import { SaveAmountForTurnBuilder } from '#common/builder/save_amount_for_turn_builder';
 import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
 
-export default class StateRevenuePerTurnBuilder extends SaveAmountForTurnBuilder {
+export default class StateEconomicalSituationPerTurnBuilder extends SaveAmountForTurnBuilder {
   private stateId: number | null = null;
 
   public withStateId(stateId: number): this {
@@ -12,10 +12,11 @@ export default class StateRevenuePerTurnBuilder extends SaveAmountForTurnBuilder
   public build(): StateEconomicalSituationPerTurn {
     const stateEconomicalSituationPerTurn = new StateEconomicalSituationPerTurn();
 
-    if (this.amount !== null) stateEconomicalSituationPerTurn.amount = this.amount;
+    if (this.amount != null) stateEconomicalSituationPerTurn.amount = this.amount;
     else throw new Error('Amount is required');
     if (this.turn) stateEconomicalSituationPerTurn.turn = this.turn;
     else throw new Error('Turn is required');
+
     if (this.stateId) stateEconomicalSituationPerTurn.stateId = this.stateId;
     else throw new Error('State id is required');
 
@@ -23,12 +24,12 @@ export default class StateRevenuePerTurnBuilder extends SaveAmountForTurnBuilder
   }
 
   public async exist(): Promise<StateEconomicalSituationPerTurn> {
-    const stateEconomicalSituationPerTurn = this.build();
-    await stateEconomicalSituationPerTurn.save();
-    return stateEconomicalSituationPerTurn;
+    const economicalSituationPerTurn = this.build();
+    await economicalSituationPerTurn.save();
+    return economicalSituationPerTurn;
   }
 }
 
-export function aStateRevenuePerTurn(): StateRevenuePerTurnBuilder {
-  return new StateRevenuePerTurnBuilder();
+export function aStateEconomicalSituationPerTurn(): StateEconomicalSituationPerTurnBuilder {
+  return new StateEconomicalSituationPerTurnBuilder();
 }

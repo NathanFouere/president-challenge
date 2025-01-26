@@ -7,8 +7,8 @@ import type { Range } from '#common/utils/range';
 
 @inject()
 export default class ChartDataFactory {
-  public createFromAmountPerTurn(
-    saveAmountForTurn: SaveAmountForTurn[],
+  public createLineCartFromSaveAmountPerTurn(
+    saveAmountsForTurn: SaveAmountForTurn[],
     title: string,
     minY: number | null = null,
     maxY: number | null = null,
@@ -19,11 +19,11 @@ export default class ChartDataFactory {
     const borderColor: string[] = [];
     const data: number[] = [];
 
-    for (const monthEconomicalSituation of saveAmountForTurn) {
-      data.push(monthEconomicalSituation.amount);
-      backgroundColor.push(monthEconomicalSituation.color);
-      borderColor.push(monthEconomicalSituation.color);
-      labels.push(getDateFromTurnNumber(monthEconomicalSituation.turn));
+    for (const saveAmountForTurn of saveAmountsForTurn) {
+      data.push(saveAmountForTurn.amount);
+      backgroundColor.push(saveAmountForTurn.color);
+      borderColor.push(saveAmountForTurn.color);
+      labels.push(getDateFromTurnNumber(saveAmountForTurn.turn));
     }
 
     return {

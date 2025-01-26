@@ -1,12 +1,9 @@
-import { inject } from '@adonisjs/core';
-
+import { aStateEconomicalSituationPerTurn } from '#state/application/builder/state_economical_situation_per_turn_builder';
 import type State from '#state/domain/model/state';
-import { aStateRevenuePerTurn } from '#state/application/builder/state_revenue_per_turn_builder';
 
-@inject()
-export class StateRevenuePerTurnSaveService {
+export default class StateEconomicalSituationPerTurnSaveService {
   public async saveStateEconomicalSituationForTurn(state: State, turn: number): Promise<void> {
-    await aStateRevenuePerTurn()
+    await aStateEconomicalSituationPerTurn()
       .withStateId(state.id)
       .withAmount(state.economicalSituation)
       .withTurn(turn)
