@@ -14,7 +14,7 @@ export default class TaxService {
   ) {
   }
 
-  public async applyTaxesToSocialClasses(taxes: Tax[], socialClasses: SocialClass[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<void> {
+  public async applyTaxes(taxes: Tax[], socialClasses: SocialClass[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<void> {
     await Promise.all(taxes.map((tax) => {
       switch (tax.type) {
         case TaxType.INCOME:
