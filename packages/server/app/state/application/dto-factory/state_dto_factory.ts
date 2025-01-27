@@ -1,6 +1,7 @@
 import { inject } from '@adonisjs/core';
-import type { StateDto, FinancialFlowDatas } from '@shared/dist/state/state-dto.js';
+import type { StateDto } from '@shared/dist/state/state-dto.js';
 import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
+import type { FinancialFlowDatas } from '@shared/dist/state/financial_flow_datas.js';
 import type State from '#state/domain/model/state';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
@@ -12,6 +13,8 @@ import RangeLevelMatch from '#common/utils/range_level_match';
 import { MinimalBudgetDtoFactory } from '#state/application/dto-factory/minimal_budget_dto_factory';
 import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
 import type FinancialFlow from '#state/domain/model/financial_flow';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import TaxDtoFactory from '#tax/application/dto-factory/tax_dto_factory';
 
 @inject()
 export class StateDtoFactory {
@@ -20,6 +23,7 @@ export class StateDtoFactory {
     private readonly chartDataFactory: ChartDataFactory,
     private readonly rangeLevelMatch: RangeLevelMatch,
     private readonly budgetDtoFactory: MinimalBudgetDtoFactory,
+    private readonly taxDtoFactory: TaxDtoFactory,
   ) {
   }
 
@@ -46,6 +50,7 @@ export class StateDtoFactory {
       ),
       financialFlowDatas: this.createFinancialFlowsChartData(state.turnFinancialFlows),
       budgets: this.budgetDtoFactory.createFromBudgets(state.budgets),
+      taxes: this.taxDtoFactory.fromTaxes(state.taxes),
     };
   }
 

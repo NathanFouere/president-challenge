@@ -1,6 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 import { TaxType } from '#tax/domain/model/tax_type';
-import { TaxLevel } from '#tax/domain/model/tax_level';
 
 export default class extends BaseSchema {
   protected tableName = 'taxes';
@@ -13,13 +12,7 @@ export default class extends BaseSchema {
       table.text('description').notNullable();
       table.string('color').notNullable();
       table.enum('type', [TaxType.INCOME]).notNullable();
-      table.enum('level', [
-        TaxLevel.VERY_LOW,
-        TaxLevel.LOW,
-        TaxLevel.MEDIUM,
-        TaxLevel.HIGH,
-        TaxLevel.VERY_HIGH,
-      ]).notNullable();
+      table.integer('level').notNullable();
       table.integer('state_id').unsigned().references('id').inTable('states').onDelete('CASCADE');
 
       table.timestamp('created_at');

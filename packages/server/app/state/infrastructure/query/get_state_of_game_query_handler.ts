@@ -24,6 +24,8 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
         query.preload('financialFlows');
         query.orderBy('turn', 'asc');
       });
+
+      queryBuilder.preload('taxes');
     }
 
     if (preloadOptions.switchTurn) {

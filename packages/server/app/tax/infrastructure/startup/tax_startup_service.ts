@@ -4,7 +4,6 @@ import type { StartupProcessorStep } from '#common/startup/startup_processor_ste
 import taxStartupConfig from '#game-config/tax/tax-startup-config.json' assert { type: 'json' };
 import { aTax } from '#tax/application/builder/tax_builder';
 import type { TaxType } from '#tax/domain/model/tax_type';
-import type { TaxLevel } from '#tax/domain/model/tax_level';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ITaxRepository from '#tax/domain/repository/i_tax_repository';
@@ -33,7 +32,7 @@ export class TaxStartupService implements StartupProcessorStep {
           .withDescription(taxConfigValue.description)
           .withColor(taxConfigValue.color)
           .withType(taxConfigValue.type as TaxType)
-          .withLevel(taxConfigValue.level as TaxLevel)
+          .withLevel(taxConfigValue.level)
           .withStateId(state.id)
           .build(),
       );

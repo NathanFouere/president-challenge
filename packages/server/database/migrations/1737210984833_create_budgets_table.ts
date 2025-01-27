@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('name').notNullable();
       table.string('description').notNullable();
       table.string('color').notNullable();
-      table.float('level').notNullable();
+      table.integer('level').notNullable();
       table.integer('state_id').unsigned().references('id').inTable('states').onDelete('CASCADE');
 
       table.string('licensed_file_identifier')

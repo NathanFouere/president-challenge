@@ -1,7 +1,8 @@
 import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
 import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
 import type { MinimalBudgetDto } from '@shared/state/minimal-budget-dto.js';
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO.js';
+import type TaxDto from '@shared/tax/tax-dto.js';
+import type { FinancialFlowDatas } from '@shared/state/financial_flow_datas.js';
 
 export interface StateDto {
   name: string;
@@ -11,10 +12,5 @@ export interface StateDto {
   economicalSituationPerMonthChartData: LineChartDataDTO;
   financialFlowDatas: FinancialFlowDatas[];
   budgets: MinimalBudgetDto[];
-}
-
-export interface FinancialFlowDatas {
-  turn: number;
-  positiveFinancialFlows: ChartDataDTO;
-  negativeFinancialFlows: ChartDataDTO;
+  taxes: TaxDto[];
 }
