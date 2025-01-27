@@ -4,6 +4,5 @@ export default interface TaxDto {
   id: number;
   name: string;
   description: string;
-  color: string;
   level: LevelDto;
 }

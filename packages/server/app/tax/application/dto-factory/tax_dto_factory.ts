@@ -13,7 +13,6 @@ export default class TaxDtoFactory {
       id: tax.id,
       name: tax.name,
       description: tax.description,
-      color: tax.color,
       level: this.getLevelDtoFromLevel(tax.level),
     };
   }

@@ -1,10 +1,10 @@
 {
   "PRIVATE": {
-    "0": { "owner": -50, "worker": -50, "state": -25 },
+    "0": { "owner": -50, "worker": -50, "state": 0 },
     "1": { "owner": -25, "worker": -25, "state": 0 },
     "2": { "owner": 0, "worker": -25, "state": 0 },
-    "3": { "owner": 25, "worker": 25, "state": 25 },
-    "4": { "owner": 50, "worker": 25, "state": 50 }
+    "3": { "owner": 25, "worker": 25, "state": 0 },
+    "4": { "owner": 50, "worker": 25, "state": 0 }
   },
   "MIXED": {
     "0": { "owner": -25, "worker": -25, "state": -25 },

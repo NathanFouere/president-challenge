@@ -11,11 +11,11 @@ import SocialClassEconomicalSituationEvolutionService
 import { ProductPriceRandomizerService } from '#product/domain/service/product_price_randomizer_service';
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SectorService from '#state/domain/service/financial-flow/sector_service';
+import SectorService from '#sector/domain/service/sector_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import BudgetService from '#state/domain/service/financial-flow/budget_service';
+import BudgetService from '#state/domain/service/budget_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import TaxService from '#state/domain/service/financial-flow/tax/tax_service';
+import TaxService from '#tax/domain/service/tax_service';
 
 @inject()
 export default class TurnEconomicalService implements TurnProcessorStep {

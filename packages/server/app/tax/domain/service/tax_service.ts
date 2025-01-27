@@ -5,7 +5,7 @@ import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financi
 import type SocialClass from '#social-class/domain/models/social_class';
 import { TaxType } from '#tax/domain/model/tax_type';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IncomeTaxFinancialFlowService from '#state/domain/service/financial-flow/tax/income_tax_financial_flow_service';
+import IncomeTaxFinancialFlowService from '#tax/domain/service/income_tax_financial_flow_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IFinancialFlowRepository from '#state/domain/repository/i_financial_flow_repository';
 
