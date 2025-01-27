@@ -30,6 +30,7 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
 
     if (preloadOptions.switchTurn) {
       queryBuilder.preload('budgets');
+      queryBuilder.preload('taxes');
     }
 
     return queryBuilder.firstOrFail();

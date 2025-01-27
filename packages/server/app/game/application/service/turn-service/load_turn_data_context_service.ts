@@ -17,6 +17,10 @@ import { GetStateOfGameQuery } from '#state/application/query/get_state_of_game_
 import { GetSectorsByGameQuery } from '#sector/application/query/get_sectors_by_game_query';
 import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries/get_political_parties_of_game_query';
 import type Game from '#game/domain/models/game';
+import type Tax from '#tax/domain/model/tax';
+import type Budget from '#state/domain/model/budget';
+import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
+import { aStateTurnFinancialFlows } from '#state/application/builder/state_turn_financial_flows_builder';
 
 @inject()
 export class LoadTurnDataContextService {
@@ -28,23 +32,27 @@ export class LoadTurnDataContextService {
   }
 
   public async load(game: Game): Promise<TurnDataContext> {
-    const state = await this.getStateOfGameQueryHandler.handleForSwitchTurn(new GetStateOfGameQuery(
-      game.id,
-    ));
-    const sectors = await this.getSectorsOfGameQueryHandler.handleForSwitchTurn(new GetSectorsByGameQuery(
-      game.id,
-    ));
+    const [state, sectors, politicalParties] = await Promise.all([
+      this.getStateOfGameQueryHandler.handleForSwitchTurn(new GetStateOfGameQuery(game.id)),
+      this.getSectorsOfGameQueryHandler.handleForSwitchTurn(new GetSectorsByGameQuery(game.id)),
+      this.getPoliticalPartiesOfGameQueryHandler.handleForSwitchTurn(new GetPoliticalPartiesOfGameQuery(game.id)),
+    ]);
+
+    const stateTurnFinancialFlows = await aStateTurnFinancialFlows()
+      .withTurn(game.turn)
+      .withStateId(state.id)
+      .exist();
+
     const socialClasses = this.loadSocialClassesFromSectors(sectors);
     const products = this.loadProductsFromSectors(sectors);
-    const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handleForSwitchTurn(new GetPoliticalPartiesOfGameQuery(
-      game.id,
-    ));
-
     const socialClassesPerType = this.loadSocialClassesPerType(socialClasses);
 
     return {
       game,
+      budgets: state.budgets,
       state,
+      stateTurnFinancialFlow: stateTurnFinancialFlows,
+      taxes: state.taxes,
       sectors,
       products,
       socialClasses,
@@ -72,7 +80,10 @@ export class LoadTurnDataContextService {
 
 export interface TurnDataContext {
   game: Game;
+  budgets: Budget[];
   state: State;
+  stateTurnFinancialFlow: StateTurnFinancialFlows;
+  taxes: Tax[];
   sectors: Sector[];
   products: Product[];
   socialClasses: SocialClass[];

@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 import taxStartupConfig from '#game-config/tax/tax-startup-config.json' assert { type: 'json' };
@@ -30,14 +29,12 @@ export class TaxStartupService implements StartupProcessorStep {
         aTax()
           .withName(taxConfigValue.name)
           .withDescription(taxConfigValue.description)
-          .withColor(taxConfigValue.color)
           .withType(taxConfigValue.type as TaxType)
           .withLevel(taxConfigValue.level)
           .withStateId(state.id)
           .build(),
       );
     }
-    console.log(taxes);
     await this.taxRepository.createMany(taxes);
   }
 }

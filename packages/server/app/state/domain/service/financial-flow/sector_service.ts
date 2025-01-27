@@ -7,7 +7,7 @@ import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-eco
 
 export default class SectorFinancialFlowService {
   private readonly sectorFinancialFlowColor = 'green';
-  public async createSectorsRevenuesFinancialFlows(sectors: Sector[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<FinancialFlow> {
+  public async updateSectorsEconomicalSituation(sectors: Sector[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<FinancialFlow> {
     let flowFromSectors = 0;
     for (const sector of sectors) {
       const added = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;

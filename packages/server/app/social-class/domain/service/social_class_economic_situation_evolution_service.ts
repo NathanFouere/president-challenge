@@ -4,7 +4,7 @@ import sectorEconomicalSituationMatchConfig
 import type SocialClass from '#social-class/domain/models/social_class';
 
 export default class SocialClassEconomicalSituationEvolutionService {
-  public propagateEconomicalSituationToSocialClasses(socialClasses: SocialClass[]): void {
+  public updateSocialClassesEconomicalSituation(socialClasses: SocialClass[]): void {
     socialClasses.forEach(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass));
   }
 

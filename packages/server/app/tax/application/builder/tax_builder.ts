@@ -5,7 +5,6 @@ import type { TaxLevel } from '#tax/domain/model/tax_level';
 export default class TaxBuilder {
   private name: string | null = null;
   private description: string | null = null;
-  private color: string | null = null;
   private type: TaxType | null = null;
   private level: TaxLevel | null = null;
   private stateId: number | null = null;
@@ -17,11 +16,6 @@ export default class TaxBuilder {
 
   public withDescription(description: string): TaxBuilder {
     this.description = description;
-    return this;
-  }
-
-  public withColor(color: string): TaxBuilder {
-    this.color = color;
     return this;
   }
 
@@ -46,8 +40,6 @@ export default class TaxBuilder {
     else throw new Error('Name is required');
     if (this.description != null) tax.description = this.description;
     else throw new Error('Description is required');
-    if (this.color != null) tax.color = this.color;
-    else throw new Error('Color is required');
     if (this.type != null) tax.type = this.type;
     else throw new Error('Type is required');
     if (this.level != null) tax.level = this.level;

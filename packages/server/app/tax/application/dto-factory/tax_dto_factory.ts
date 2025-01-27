@@ -19,7 +19,6 @@ export default class TaxDtoFactory {
   }
 
   private getLevelDtoFromLevel(level: TaxLevel): LevelDto {
-    console.log(level);
     switch (level) {
       case TaxLevel.VERY_LOW:
         return { name: 'Very-Low', color: '#FF0000' };

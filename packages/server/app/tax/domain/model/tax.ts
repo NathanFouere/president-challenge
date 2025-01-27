@@ -16,9 +16,6 @@ export default class Tax extends BaseModel {
   declare description: string;
 
   @column()
-  declare color: string;
-
-  @column()
   declare type: TaxType;
 
   @column()

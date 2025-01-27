@@ -10,7 +10,6 @@ export default class extends BaseSchema {
 
       table.string('name').notNullable();
       table.text('description').notNullable();
-      table.string('color').notNullable();
       table.enum('type', [TaxType.INCOME]).notNullable();
       table.integer('level').notNullable();
       table.integer('state_id').unsigned().references('id').inTable('states').onDelete('CASCADE');
