@@ -18,6 +18,7 @@
     "#common/*": "./app/common/*.js",
     "#budget/*": "./app/budget/*.js",
     "#user/*": "./app/user/*.js",
+    "#tax/*": "./app/tax/*.js",
     "#social-class/*": "./app/social-class/*.js",
     "#product/*": "./app/product/*.js",
     "#happiness-modifier/*": "./app/happiness-modifier/*.js",

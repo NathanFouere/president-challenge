@@ -20,6 +20,8 @@ import { StateStartupService } from '#state/infrastructure/startup/state_startup
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import LawStartupService from '#legislature/infrastructure/startup/law_startup_service';
 import { StartupPipeline } from '#common/startup/startup_pipeline';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { TaxStartupService } from '#tax/infrastructure/startup/tax_startup_service';
 
 @inject()
 export default class StartupPipelineFactory {
@@ -34,6 +36,7 @@ export default class StartupPipelineFactory {
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
     private readonly lawGroupStartupService: LawStartupService,
+    private readonly taxStartupService: TaxStartupService,
   ) {
   }
 
@@ -50,6 +53,7 @@ export default class StartupPipelineFactory {
         this.productStartupService,
         this.stateStartupService,
         this.lawGroupStartupService,
+        this.taxStartupService,
       ],
       gameId,
     );

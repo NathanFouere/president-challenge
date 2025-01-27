@@ -12,8 +12,8 @@ const options = {
   maintainAspectRatio: true,
   scales: {
     y: {
-      min: props.data.minY ? props.data.minY - 0.75 : undefined,
-      max: props.data.maxY ? props.data.maxY + 0.75 : undefined,
+      min: props.data.minY ? props.data.minY - 0.80 : undefined,
+      max: props.data.maxY ? props.data.maxY + 0.80 : undefined,
       beginAtZero: true,
       ticks: props.data.yLabels
         ? {

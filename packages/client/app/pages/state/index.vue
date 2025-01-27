@@ -60,8 +60,16 @@ onMounted(async () => {
           :budget="budget"
         />
       </div>
+      <UDivider class="sticky pt-10 pb-10" />
+      Taxes :
+      <div class="flex justify-center items-center gap-5">
+        <tax-component
+          v-for="(tax) in statePresenter.stateStore.requireState.taxes"
+          :key="tax.id"
+          :tax="tax"
+        />
+      </div>
     </div>
-
     <UDivider class="sticky pt-10 pb-10" />
 
     Economical Situation : {{ statePresenter.stateStore.getState?.economicalSituation }}

@@ -6,6 +6,7 @@ import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
 import Budget from '#state/domain/model/budget';
 import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
+import Tax from '#tax/domain/model/tax';
 
 export default class State extends BaseModel {
   @column({ isPrimary: true })
@@ -37,6 +38,9 @@ export default class State extends BaseModel {
 
   @hasMany(() => Budget)
   declare budgets: HasMany<typeof Budget>;
+
+  @hasMany(() => Tax)
+  declare taxes: HasMany<typeof Tax>;
 
   @hasOne(() => LicensedFile, {
     foreignKey: 'identifier',

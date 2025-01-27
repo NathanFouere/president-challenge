@@ -45,6 +45,7 @@ export default defineConfig({
     () => import('#sector/sector_provider'),
     () => import('#social-class/social_class_provider'),
     () => import('#state/state_provider'),
+    () => import('#tax/tax_provider'),
     () => import('#user/user_provider'),
     () => import('#happiness-modifier/happiness_modifier_provider'),
   ],

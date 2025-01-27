@@ -1,5 +1,6 @@
 import { inject } from '@adonisjs/core';
-import type { LevelDto, MinimalBudgetDto } from '@shared/dist/state/minimal-budget-dto.js';
+import type { MinimalBudgetDto } from '@shared/dist/state/minimal-budget-dto.js';
+import type { LevelDto } from '@shared/dist/common/level-dto.js';
 import type Budget from '#state/domain/model/budget';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';

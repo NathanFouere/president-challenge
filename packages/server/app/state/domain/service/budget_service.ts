@@ -5,16 +5,15 @@ import { aFinancialFlow } from '#state/application/builder/financial_flow_builde
 import type Budget from '#state/domain/model/budget';
 import type State from '#state/domain/model/state';
 import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
-import type FinancialFlow from '#state/domain/model/financial_flow';
 
 @inject()
-export default class BudgetFinancialFlowService {
+export default class BudgetService {
   constructor(
     private readonly financialFlowRepository: IFinancialFlowRepository,
   ) {
   }
 
-  public async createBudgetFinancialFlows(budgets: Budget[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<FinancialFlow[]> {
+  public async updateStateFinancesFromBudgets(budgets: Budget[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<void> {
     let totalBudgetsCosts = 0;
     const financialFlows = [];
     for (const budget of budgets) {
@@ -29,7 +28,5 @@ export default class BudgetFinancialFlowService {
     }
     await this.financialFlowRepository.createMany(financialFlows);
     state.addToEconomicalSituation(totalBudgetsCosts);
-
-    return financialFlows;
   }
 }

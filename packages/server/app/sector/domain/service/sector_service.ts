@@ -5,9 +5,9 @@ import type FinancialFlow from '#state/domain/model/financial_flow';
 import { aFinancialFlow } from '#state/application/builder/financial_flow_builder';
 import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-economical-situation-match-config.json' assert { type: 'json' };
 
-export default class SectorFinancialFlowService {
+export default class SectorService {
   private readonly sectorFinancialFlowColor = 'green';
-  public async createSectorsRevenuesFinancialFlows(sectors: Sector[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<FinancialFlow> {
+  public async updateSectorsEconomicalSituation(sectors: Sector[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<FinancialFlow> {
     let flowFromSectors = 0;
     for (const sector of sectors) {
       const added = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
