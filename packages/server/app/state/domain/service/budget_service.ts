@@ -7,7 +7,7 @@ import type State from '#state/domain/model/state';
 import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
 
 @inject()
-export default class BudgetFinancialFlowService {
+export default class BudgetService {
   constructor(
     private readonly financialFlowRepository: IFinancialFlowRepository,
   ) {

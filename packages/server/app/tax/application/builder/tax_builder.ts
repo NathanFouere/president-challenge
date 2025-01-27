@@ -9,27 +9,27 @@ export default class TaxBuilder {
   private level: TaxLevel | null = null;
   private stateId: number | null = null;
 
-  public withName(name: string): TaxBuilder {
+  public withName(name: string): this {
     this.name = name;
     return this;
   }
 
-  public withDescription(description: string): TaxBuilder {
+  public withDescription(description: string): this {
     this.description = description;
     return this;
   }
 
-  public withType(type: TaxType): TaxBuilder {
+  public withType(type: TaxType): this {
     this.type = type;
     return this;
   }
 
-  public withLevel(level: TaxLevel): TaxBuilder {
+  public withLevel(level: TaxLevel): this {
     this.level = level;
     return this;
   }
 
-  public withStateId(stateId: number): TaxBuilder {
+  public withStateId(stateId: number): this {
     this.stateId = stateId;
     return this;
   }

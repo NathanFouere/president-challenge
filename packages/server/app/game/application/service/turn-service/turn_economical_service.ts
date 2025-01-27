@@ -45,7 +45,7 @@ export default class TurnEconomicalService implements TurnProcessorStep {
         turnDataContext.state,
         turnDataContext.stateTurnFinancialFlow,
       ),
-      this.taxService.makeSocialClassesPayTaxes(
+      this.taxService.applyTaxesToSocialClasses(
         turnDataContext.taxes,
         turnDataContext.socialClasses,
         turnDataContext.state,

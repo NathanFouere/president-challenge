@@ -5,30 +5,23 @@ import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financi
 import type SocialClass from '#social-class/domain/models/social_class';
 import { TaxType } from '#tax/domain/model/tax_type';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IncomeTaxFinancialFlowService from '#tax/domain/service/income_tax_financial_flow_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IFinancialFlowRepository from '#state/domain/repository/i_financial_flow_repository';
+import IncomeTaxService from '#tax/domain/service/income_tax_service';
 
 @inject()
-export default class TaxesFinancialFlowService {
+export default class TaxService {
   constructor(
-    private readonly incomeTaxFinancialFlowService: IncomeTaxFinancialFlowService,
-    private readonly financialFlowRepository: IFinancialFlowRepository,
+    private readonly incomeTaxService: IncomeTaxService,
   ) {
   }
 
-  public async makeSocialClassesPayTaxes(taxes: Tax[], socialClasses: SocialClass[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<void> {
-    const financialFlowsGenerationPromises = [];
-    for (const tax of taxes) {
+  public async applyTaxesToSocialClasses(taxes: Tax[], socialClasses: SocialClass[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<void> {
+    await Promise.all(taxes.map((tax) => {
       switch (tax.type) {
         case TaxType.INCOME:
-          financialFlowsGenerationPromises.push(this.incomeTaxFinancialFlowService.taxFromIncome(socialClasses, state, tax, stateTurnFinancialFlows));
-          break;
+          return this.incomeTaxService.applyIncomeTaxes(socialClasses, state, tax, stateTurnFinancialFlows);
         default:
           throw new Error('Tax type not implemented');
       }
-    }
-    const financialFlows = await Promise.all(financialFlowsGenerationPromises);
-    await this.financialFlowRepository.createMany(financialFlows);
+    }));
   }
 }
