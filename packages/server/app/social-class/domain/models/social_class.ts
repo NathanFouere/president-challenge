@@ -1,7 +1,6 @@
 import { BaseModel, belongsTo, column, manyToMany, hasMany, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, ManyToMany, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import type { SocialClassEconomicalSituation } from '@shared/dist/social-class/social-class-economical-situation.js';
 import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
@@ -26,7 +25,7 @@ export default class SocialClass extends BaseModel {
   declare color: string;
 
   @column()
-  declare economicalSituation: SocialClassEconomicalSituation;
+  declare economicalSituation: number;
 
   @column()
   declare type: SocialClassTypes;
@@ -83,8 +82,19 @@ export default class SocialClass extends BaseModel {
 
   @beforeSave()
   public static async validateEconomicalSituationLevel(socialClass: SocialClass) {
-    if (socialClass.economicalSituation < 0 || socialClass.economicalSituation > 4) {
+    if (socialClass.economicalSituation < 0 || socialClass.economicalSituation > 100) {
       throw new Error('Invalid economicalSituation level');
     }
+  }
+
+  public addEconomicalSituation(addedEconomicalSituation: number) {
+    let newEconomicalSituation = this.economicalSituation + addedEconomicalSituation;
+    if (newEconomicalSituation < 0) {
+      newEconomicalSituation = 0;
+    }
+    if (newEconomicalSituation > 100) {
+      newEconomicalSituation = 100;
+    }
+    this.economicalSituation = newEconomicalSituation;
   }
 }

@@ -12,9 +12,15 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
     if (preloadOptions.display) {
       queryBuilder.preload('budgets', (query) => {
         query.preload('licensedFile');
-      }).preload('flag').preload('economicalSituationPerTurn', (query) => {
+      });
+
+      queryBuilder.preload('flag');
+
+      queryBuilder.preload('economicalSituationPerTurn', (query) => {
         query.orderBy('turn', 'asc');
-      }).preload('flag').preload('turnFinancialFlows', (query) => {
+      });
+
+      queryBuilder.preload('turnFinancialFlows', (query) => {
         query.preload('financialFlows');
         query.orderBy('turn', 'asc');
       });

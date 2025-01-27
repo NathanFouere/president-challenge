@@ -21,11 +21,11 @@ export class SocialClassDtoFactory {
   }
 
   readonly socialClassEconomicalSituationRangeLevels = [
-    { min: 0, max: 0, value: 'Very-Low' },
-    { min: 1, max: 1, value: 'Low' },
-    { min: 2, max: 2, value: 'Medium' },
-    { min: 3, max: 3, value: 'High' },
-    { min: 4, max: 4, value: 'Very-High' },
+    { min: 0, max: 15, value: 'Very-Low' },
+    { min: 15, max: 40, value: 'Low' },
+    { min: 40, max: 60, value: 'Medium' },
+    { min: 60, max: 80, value: 'High' },
+    { min: 80, max: 100, value: 'Very-High' },
   ];
 
   readonly socialClassHappinessRangeLevels = [
@@ -57,7 +57,7 @@ export class SocialClassDtoFactory {
         socialClass.economicalSituationPerTurn,
         'Economical Situation',
         0,
-        4,
+        100,
         this.socialClassEconomicalSituationRangeLevels,
       ),
       happinessModifiers: this.happinessModifierDtoFactory.createFromHappinesssModifiers(socialClass.happinessModifiers),
