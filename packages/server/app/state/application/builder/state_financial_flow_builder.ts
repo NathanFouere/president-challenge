@@ -1,33 +1,16 @@
-import FinancialFlow from '#state/domain/model/financial_flow';
+import StateFinancialFlow from '#state/domain/model/state_financial_flow';
+import FinancialFlowBuilder from '#common/builder/financial_flow_builder';
 
-export default class FinancialFlowBuilder {
-  private amount: number | null = null;
-  private color: string | null = null;
-  private name: string | null = null;
+export default class StateFinancialFlowBuilder extends FinancialFlowBuilder {
   private stateFinancialFlowId: number | null = null;
-
-  public withAmount(amount: number): this {
-    this.amount = amount;
-    return this;
-  }
 
   public withStateFinancialFlowId(stateFinancialFlowId: number): this {
     this.stateFinancialFlowId = stateFinancialFlowId;
     return this;
   }
 
-  public withColor(color: string): this {
-    this.color = color;
-    return this;
-  }
-
-  public withName(name: string): this {
-    this.name = name;
-    return this;
-  }
-
-  public build(): FinancialFlow {
-    const financialFlow = new FinancialFlow();
+  public build(): StateFinancialFlow {
+    const financialFlow = new StateFinancialFlow();
 
     if (this.amount !== null) financialFlow.amount = this.amount;
     else throw new Error('Amount is required');
@@ -41,13 +24,13 @@ export default class FinancialFlowBuilder {
     return financialFlow;
   }
 
-  public async exist(): Promise<FinancialFlow> {
+  public async exist(): Promise<StateFinancialFlow> {
     const financialFlow = this.build();
     await financialFlow.save();
     return financialFlow;
   }
 }
 
-export function aFinancialFlow(): FinancialFlowBuilder {
-  return new FinancialFlowBuilder();
+export function aStateFinancialFlow(): StateFinancialFlowBuilder {
+  return new StateFinancialFlowBuilder();
 }

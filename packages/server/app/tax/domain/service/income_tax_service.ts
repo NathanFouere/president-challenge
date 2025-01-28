@@ -2,7 +2,7 @@ import type SocialClass from '#social-class/domain/models/social_class';
 import type State from '#state/domain/model/state';
 import type Tax from '#tax/domain/model/tax';
 import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
-import { aFinancialFlow } from '#state/application/builder/financial_flow_builder';
+import { aStateFinancialFlow } from '#state/application/builder/state_financial_flow_builder';
 
 export default class IncomeTaxService {
   private readonly BASE_INCOME_TAX = 0.05;
@@ -13,7 +13,7 @@ export default class IncomeTaxService {
 
     state.addToEconomicalSituation(taxGenerated);
 
-    await aFinancialFlow()
+    await aStateFinancialFlow()
       .withStateFinancialFlowId(stateTurnFinancialFlows.id)
       .withAmount(taxGenerated)
       .withColor(this.INCOME_TAX_COLOR)

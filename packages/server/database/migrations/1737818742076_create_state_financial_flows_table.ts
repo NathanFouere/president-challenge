@@ -1,7 +1,7 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 
 export default class extends BaseSchema {
-  protected tableName = 'financial_flows';
+  protected tableName = 'state_financial_flows';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {

@@ -12,7 +12,7 @@ import RangeLevelMatch from '#common/utils/range_level_match';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { MinimalBudgetDtoFactory } from '#state/application/dto-factory/minimal_budget_dto_factory';
 import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
-import type FinancialFlow from '#state/domain/model/financial_flow';
+import type StateFinancialFlow from '#state/domain/model/state_financial_flow';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import TaxDtoFactory from '#tax/application/dto-factory/tax_dto_factory';
 
@@ -86,7 +86,7 @@ export class StateDtoFactory {
   }
 
   private createChartDataFromFinancialFlows(
-    financialFlows: FinancialFlow[],
+    financialFlows: StateFinancialFlow[],
     positive: boolean,
   ): ChartDataDTO {
     const labels = financialFlows.map(flow => flow.name);
