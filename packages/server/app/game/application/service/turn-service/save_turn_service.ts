@@ -66,8 +66,8 @@ export default class SaveTurnService implements TurnProcessorStep {
   private async saveGlobalDatas(turnDataContext: TurnDataContext): Promise<void> {
     await Promise.all([
       this.gameRepository.save(turnDataContext.game),
-      this.stateRepository.save(turnDataContext.state),
-      this.socialClassService.saveSocialClassesForTurn(turnDataContext.socialClasses),
+      this.stateRepository.save(turnDataContext.stateTurnContext.state),
+      this.socialClassService.saveSocialClassesForTurn(turnDataContext.socialClassesTurnContexts),
       this.politicalPartySaveForTurnService.savePoliticalPartiesForTurn(turnDataContext.politicalParties),
       this.productRepository.saveMany(turnDataContext.products),
       this.sectorRepository.saveMany(turnDataContext.sectors),
@@ -76,10 +76,10 @@ export default class SaveTurnService implements TurnProcessorStep {
 
   private async saveHistoricalDatas(turnDataContext: TurnDataContext): Promise<void> {
     await Promise.all([
-      this.budgetCostPerTurnSaveService.saveBudgetsCostForTurn(turnDataContext.state.budgets, turnDataContext.game.turn),
-      this.stateEconomicalSituationPerTurnSaveService.saveStateEconomicalSituationForTurn(turnDataContext.state, turnDataContext.game.turn),
-      this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(turnDataContext.socialClasses, turnDataContext.game.turn),
-      this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(turnDataContext.socialClasses, turnDataContext.game.turn),
+      this.budgetCostPerTurnSaveService.saveBudgetsCostForTurn(turnDataContext.stateTurnContext.state.budgets, turnDataContext.game.turn),
+      this.stateEconomicalSituationPerTurnSaveService.saveStateEconomicalSituationForTurn(turnDataContext.stateTurnContext.state, turnDataContext.game.turn),
+      this.socialClassEconomicalSituationPerTurnSaveService.saveSocialClassesEconomicalSituationForTurn(turnDataContext.socialClassesTurnContexts, turnDataContext.game.turn),
+      this.socialClassHappinessPerTurnSaveService.saveSocialClassesHappinessForTurn(turnDataContext.socialClassesTurnContexts, turnDataContext.game.turn),
       this.productPricePerTurnSaveService.saveProductsPricesPerTurn(turnDataContext.products, turnDataContext.game.turn),
       this.sectorEconomicalSituationPerTurnSaveService.saveSectorsEconomicalSituationForTurn(turnDataContext.sectors, turnDataContext.game.turn),
       this.politicalPartyHappinessPerTurnSaveService.savePoliticalPartiesHappinessForTurn(

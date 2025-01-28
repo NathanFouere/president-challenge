@@ -32,24 +32,21 @@ export default class TurnEconomicalService implements TurnProcessorStep {
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
     await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
-    this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(turnDataContext.socialClasses);
+    await this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(turnDataContext.socialClassesTurnContexts);
     this.productChangePriceTurnService.changeProductsPricesRandomly(turnDataContext.products);
     await Promise.all([
       this.sectorService.updateSectorsEconomicalSituation(
         turnDataContext.sectors,
-        turnDataContext.state,
-        turnDataContext.stateTurnFinancialFlow,
+        turnDataContext.stateTurnContext,
       ),
       this.budgetService.updateStateFinancesFromBudgets(
         turnDataContext.budgets,
-        turnDataContext.state,
-        turnDataContext.stateTurnFinancialFlow,
+        turnDataContext.stateTurnContext,
       ),
       this.taxService.applyTaxes(
         turnDataContext.taxes,
-        turnDataContext.socialClasses,
-        turnDataContext.state,
-        turnDataContext.stateTurnFinancialFlow,
+        turnDataContext.socialClassesTurnContexts,
+        turnDataContext.stateTurnContext,
       ),
     ]);
   }

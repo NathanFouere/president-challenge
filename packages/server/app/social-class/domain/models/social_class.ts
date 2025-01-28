@@ -10,6 +10,8 @@ import SocialClassEconomicalSituationPerTurn
   from '#social-class/domain/models/social_class_economical_situation_per_turn';
 import SocialClassHappinessPerTurn from '#social-class/domain/models/social_class_happiness_per_turn';
 import SocialClassHappinessModifier from '#social-class/domain/models/social_class_happiness_modifier';
+import StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
+import SocialClassTurnFinancialFlows from '#social-class/domain/models/social_class_turn_financial_flows';
 
 export default class SocialClass extends BaseModel {
   @column({ isPrimary: true })
@@ -38,6 +40,9 @@ export default class SocialClass extends BaseModel {
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
+
+  @hasMany(() => SocialClassTurnFinancialFlows)
+  declare turnFinancialFlows: HasMany<typeof SocialClassTurnFinancialFlows>;
 
   @manyToMany(() => LicensedFile, {
     pivotTable: 'social_class_licensed_files',

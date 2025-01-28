@@ -3,8 +3,7 @@ import { inject } from '@adonisjs/core';
 import IStateFinancialFlowRepository from '#state/domain/repository/i_state_financial_flow_repository';
 import { aStateFinancialFlow } from '#state/application/builder/state_financial_flow_builder';
 import type Budget from '#state/domain/model/budget';
-import type State from '#state/domain/model/state';
-import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
+import type { StateTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 
 @inject()
 export default class BudgetService {
@@ -13,20 +12,22 @@ export default class BudgetService {
   ) {
   }
 
-  public async updateStateFinancesFromBudgets(budgets: Budget[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<void> {
+  public async updateStateFinancesFromBudgets(budgets: Budget[], stateTurnContext: StateTurnContext): Promise<void> {
     let totalBudgetsCosts = 0;
     const financialFlows = [];
     for (const budget of budgets) {
       totalBudgetsCosts -= budget.level;
       financialFlows.push(aStateFinancialFlow()
-        .withStateFinancialFlowId(stateTurnFinancialFlows.id)
+        .withStateFinancialFlowId(stateTurnContext.stateTurnFinancialFlows.id)
         .withAmount(-budget.level)
         .withColor(budget.color)
         .withName(budget.name)
         .build(),
       );
     }
+
+    stateTurnContext.state.addToEconomicalSituation(totalBudgetsCosts);
+
     await this.financialFlowRepository.createMany(financialFlows);
-    state.addToEconomicalSituation(totalBudgetsCosts);
   }
 }

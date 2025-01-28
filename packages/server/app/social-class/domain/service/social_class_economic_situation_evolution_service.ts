@@ -1,28 +1,36 @@
 import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import sectorEconomicalSituationMatchConfig
   from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
-import type SocialClass from '#social-class/domain/models/social_class';
+import type { SocialClassTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
+import { aSocialClassFinancialFlow } from '#social-class/application/builders/social_class_financial_flow_builder';
 
 export default class SocialClassEconomicalSituationEvolutionService {
-  public updateSocialClassesEconomicalSituation(socialClasses: SocialClass[]): void {
-    socialClasses.forEach(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass));
+  public async updateSocialClassesEconomicalSituation(socialClassTurnContexts: SocialClassTurnContext[]): Promise<void> {
+    await Promise.all(socialClassTurnContexts.map(socialClassTurnContext => this.propagateSectorEconomicalSituationToSocialClass(socialClassTurnContext)));
   }
 
-  private propagateSectorEconomicalSituationToSocialClass(socialClass: SocialClass) {
-    let newEconomicalSituation;
-    const sector = socialClass.sector;
-    switch (socialClass.type) {
+  private async propagateSectorEconomicalSituationToSocialClass(socialClassTurnContext: SocialClassTurnContext): Promise<void> {
+    let revenuesFromSectors;
+    const sector = socialClassTurnContext.socialClass.sector;
+    switch (socialClassTurnContext.socialClass.type) {
       case SocialClassTypes.CAPITALIST:
-        newEconomicalSituation = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
         break;
       case SocialClassTypes.PETIT_BOURGEOIS:
-        newEconomicalSituation = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
         break;
       case SocialClassTypes.PROLETARIAT:
-        newEconomicalSituation = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
         break;
     }
 
-    socialClass.addEconomicalSituation(newEconomicalSituation);
+    await aSocialClassFinancialFlow()
+      .withSocialClassFinancialFlowId(socialClassTurnContext.socialClassTurnFinancialFlows.id)
+      .withAmount(revenuesFromSectors)
+      .withColor('green')
+      .withName('Sector')
+      .exist();
+
+    socialClassTurnContext.socialClass.addEconomicalSituation(revenuesFromSectors);
   }
 }

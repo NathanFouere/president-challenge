@@ -27,4 +27,8 @@ export default class GetProductsOfGameQueryHandler implements IGetProductsOfGame
   public async handleForDisplay(query: GetProductsOfGameQuery): Promise<Product[]> {
     return await this.getProductsOfGame(query, { licensedFile: true, pricePerTurn: true });
   }
+
+  public async handleForSwitchTurn(query: GetProductsOfGameQuery): Promise<Product[]> {
+    return await this.getProductsOfGame(query, { pricePerTurn: true });
+  }
 }

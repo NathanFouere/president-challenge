@@ -3,11 +3,12 @@ import type SocialClass from '#social-class/domain/models/social_class';
 import {
   aSocialClassHappinessModifier,
 } from '#social-class/application/builders/social_class_happiness_modifier_builder';
+import type { SocialClassTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 
 export default class SocialClassHappinessService {
-  public updateSocialClassesHappiness(socialClasses: SocialClass[]): void {
-    for (const socialClass of socialClasses) {
-      this.changeSocialClassHappinessLevelThroughtEconomicalSituationEvolution(socialClass);
+  public updateSocialClassesHappiness(socialClassesTurnContexts: SocialClassTurnContext[]): void {
+    for (const socialClassTurnContexts of socialClassesTurnContexts) {
+      this.changeSocialClassHappinessLevelThroughtEconomicalSituationEvolution(socialClassTurnContexts.socialClass);
     }
   }
 
@@ -16,7 +17,7 @@ export default class SocialClassHappinessService {
       aSocialClassHappinessModifier()
         .withName('Economical Situation Evolution')
         .withDescription('Economical Situation Evolution')
-        .withColor('blue')
+        .withColor('blue') // TODO => change this
         .withType(HappinessModifierType.TEMPORARY)
         .withDuration(1)
         .withAmount(1)

@@ -5,7 +5,7 @@ import type IGetSectorsByGameQueryHandler from '#sector/application/query/i_get_
 export default class GetSectorsByGameQueryHandler implements IGetSectorsByGameQueryHandler {
   private async getSectorsByGame(
     query: GetSectorsByGameQuery,
-    preloadOptions: { licensedFiles?: boolean; economicalSituationPerTurn?: boolean; socialClasses?: boolean; products?: boolean } = {},
+    preloadOptions: { licensedFiles?: boolean; economicalSituationPerTurn?: boolean; products?: boolean } = {},
   ): Promise<Sector[]> {
     const queryBuilder = Sector.query().where('gameId', query.gameId);
 
@@ -15,14 +15,6 @@ export default class GetSectorsByGameQueryHandler implements IGetSectorsByGameQu
 
     if (preloadOptions.economicalSituationPerTurn) {
       queryBuilder.preload('economicalSituationPerTurn');
-    }
-
-    if (preloadOptions.socialClasses) {
-      // load social classes with their happiness modifiers
-      queryBuilder.preload('socialClasses', (eventQuery) => {
-        eventQuery.preload('happinessModifiers');
-        eventQuery.preload('sector'); // TODO => remove this preload that is not necessary ( should be set "in memory" like socialClass.sector = sector or smth)
-      });
     }
 
     if (preloadOptions.products) {
@@ -48,7 +40,6 @@ export default class GetSectorsByGameQueryHandler implements IGetSectorsByGameQu
   public async handleForSwitchTurn(query: GetSectorsByGameQuery): Promise<Sector[]> {
     return this.getSectorsByGame(query, {
       economicalSituationPerTurn: true,
-      socialClasses: true,
       products: true,
     });
   }

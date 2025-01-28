@@ -5,6 +5,7 @@ import type SocialClass from '#social-class/domain/models/social_class';
 import ISocialClassHappinessPerTurnRepository
   from '#social-class/domain/repository/i_social_class_happiness_per_turn_repository';
 import { aSocialClassHappinessPerTurn } from '#social-class/application/builders/social_class_happiness_per_turn_builder';
+import type { SocialClassTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 
 @inject()
 export class SocialClassHappinessPerTurnSaveService {
@@ -13,8 +14,8 @@ export class SocialClassHappinessPerTurnSaveService {
   ) {
   }
 
-  public async saveSocialClassesHappinessForTurn(socialClasses: SocialClass[], turn: number): Promise<void> {
-    const promises = socialClasses.map(socialClass => this.saveSocialClassHappinessForTurn(socialClass, turn));
+  public async saveSocialClassesHappinessForTurn(socialClassesTurnContexts: SocialClassTurnContext[], turn: number): Promise<void> {
+    const promises = socialClassesTurnContexts.map(socialClassTurnContexts => this.saveSocialClassHappinessForTurn(socialClassTurnContexts.socialClass, turn));
     await Promise.all(promises);
   }
 

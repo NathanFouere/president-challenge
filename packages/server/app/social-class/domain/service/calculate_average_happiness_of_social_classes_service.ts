@@ -5,6 +5,6 @@ export class CalculateAverageMarginOfSocialClassesService {
     if (0 === socialClasses.length) {
       return 0;
     }
-    return socialClasses.reduce((happinessSum, socialClassHappiness) => happinessSum + socialClassHappiness.getHappinessLevel(), 0) / socialClasses.length;
+    return socialClasses.reduce((happinessSum, socialClass) => happinessSum + socialClass.getHappinessLevel(), 0) / socialClasses.length;
   }
 }

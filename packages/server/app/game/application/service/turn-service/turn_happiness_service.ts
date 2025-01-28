@@ -20,7 +20,7 @@ export default class TurnHappinessService implements TurnProcessorStep {
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
     await this.happinessModifierTurnGestionService.processHappinessModifiersOfGame(turnDataContext.game.id);
-    this.socialClassHappinessService.updateSocialClassesHappiness(turnDataContext.socialClasses);
+    this.socialClassHappinessService.updateSocialClassesHappiness(turnDataContext.socialClassesTurnContexts);
     this.politicalPartyHappinessService.updatePoliticalPartiesHappiness(turnDataContext.politicalParties, turnDataContext.socialClassesPerType);
   }
 }

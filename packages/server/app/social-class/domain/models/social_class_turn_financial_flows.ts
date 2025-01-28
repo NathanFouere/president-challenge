@@ -1,10 +1,10 @@
 import { belongsTo, column, BaseModel, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import State from '#state/domain/model/state';
-import StateFinancialFlow from '#state/domain/model/state_financial_flow';
+import SocialClassFinancialFlow from '#social-class/domain/models/social_class_financial_flow';
+import SocialClass from '#social-class/domain/models/social_class';
 
-export default class StateTurnFinancialFlows extends BaseModel {
+export default class SocialClassTurnFinancialFlows extends BaseModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -12,13 +12,13 @@ export default class StateTurnFinancialFlows extends BaseModel {
   declare turn: number;
 
   @column()
-  declare stateId: number;
+  declare socialClassId: number;
 
-  @belongsTo(() => State)
-  declare state: BelongsTo<typeof State>;
+  @belongsTo(() => SocialClass)
+  declare socialClass: BelongsTo<typeof SocialClass>;
 
-  @hasMany(() => StateFinancialFlow)
-  declare financialFlows: HasMany<typeof StateFinancialFlow>;
+  @hasMany(() => SocialClassFinancialFlow)
+  declare financialFlows: HasMany<typeof SocialClassFinancialFlow>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;

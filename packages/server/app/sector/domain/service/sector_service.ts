@@ -4,20 +4,21 @@ import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financi
 import type StateFinancialFlow from '#state/domain/model/state_financial_flow';
 import { aStateFinancialFlow } from '#state/application/builder/state_financial_flow_builder';
 import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-economical-situation-match-config.json' assert { type: 'json' };
+import type { StateTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 
 export default class SectorService {
   private readonly sectorFinancialFlowColor = 'green';
-  public async updateSectorsEconomicalSituation(sectors: Sector[], state: State, stateTurnFinancialFlows: StateTurnFinancialFlows): Promise<StateFinancialFlow> {
+  public async updateSectorsEconomicalSituation(sectors: Sector[], stateTurnContext: StateTurnContext): Promise<StateFinancialFlow> {
     let flowFromSectors = 0;
     for (const sector of sectors) {
       const added = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
       flowFromSectors += added;
     }
 
-    state.addToEconomicalSituation(flowFromSectors);
+    stateTurnContext.state.addToEconomicalSituation(flowFromSectors);
 
     return await aStateFinancialFlow()
-      .withStateFinancialFlowId(stateTurnFinancialFlows.id)
+      .withStateFinancialFlowId(stateTurnContext.stateTurnFinancialFlows.id)
       .withAmount(flowFromSectors)
       .withColor(this.sectorFinancialFlowColor)
       .withName('Sectors')

@@ -5,6 +5,7 @@ import ISocialClassHappinessModifierRepository
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISocialClassRepository from '#social-class/domain/repository/i_social_class_repository';
 import type SocialClass from '#social-class/domain/models/social_class';
+import type { SocialClassTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 
 @inject()
 export default class SocialClassSaveForTurnService {
@@ -14,8 +15,8 @@ export default class SocialClassSaveForTurnService {
   ) {
   }
 
-  public async saveSocialClassesForTurn(socialClasses: SocialClass[]): Promise<void> {
-    const promises = socialClasses.map(socialClass => this.saveSocialClassForTurn(socialClass));
+  public async saveSocialClassesForTurn(socialClassesTurnContexts: SocialClassTurnContext[]): Promise<void> {
+    const promises = socialClassesTurnContexts.map(socialClassTurnContexts => this.saveSocialClassForTurn(socialClassTurnContexts.socialClass));
     await Promise.all(promises);
   }
 
