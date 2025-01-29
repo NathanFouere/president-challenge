@@ -2,10 +2,10 @@ import StateFinancialFlow from '#state/domain/model/state_financial_flow';
 import FinancialFlowBuilder from '#common/builder/financial_flow_builder';
 
 export default class StateFinancialFlowBuilder extends FinancialFlowBuilder {
-  private stateFinancialFlowId: number | null = null;
+  private stateId: number | null = null;
 
-  public withStateFinancialFlowId(stateFinancialFlowId: number): this {
-    this.stateFinancialFlowId = stateFinancialFlowId;
+  public withStateId(stateId: number): this {
+    this.stateId = stateId;
     return this;
   }
 
@@ -18,8 +18,10 @@ export default class StateFinancialFlowBuilder extends FinancialFlowBuilder {
     else throw new Error('Color is required');
     if (this.name) financialFlow.name = this.name;
     else throw new Error('Name is required');
-    if (this.stateFinancialFlowId) financialFlow.stateTurnFinancialFlowsId = this.stateFinancialFlowId;
-    else throw new Error('State financial flow id is required');
+    if (this.turn) financialFlow.turn = this.turn;
+    else throw new Error('Turn is required');
+    if (this.stateId) financialFlow.stateId = this.stateId;
+    else throw new Error('State id is required');
 
     return financialFlow;
   }

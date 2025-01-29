@@ -3,10 +3,8 @@ import type Tax from '#tax/domain/model/tax';
 import { TaxType } from '#tax/domain/model/tax_type';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IncomeTaxService from '#tax/domain/service/income_tax_service';
-import type {
-  SocialClassTurnContext,
-  StateTurnContext,
-} from '#game/application/service/turn-service/load_turn_data_context_service';
+import type SocialClass from '#social-class/domain/models/social_class';
+import type State from '#state/domain/model/state';
 
 @inject()
 export default class TaxService {
@@ -15,11 +13,11 @@ export default class TaxService {
   ) {
   }
 
-  public async applyTaxes(taxes: Tax[], socialClassTurnContexts: SocialClassTurnContext[], stateTurnContext: StateTurnContext): Promise<void> {
+  public async applyTaxes(taxes: Tax[], socialClasses: SocialClass[], state: State, turn: number): Promise<void> {
     await Promise.all(taxes.map((tax) => {
       switch (tax.type) {
         case TaxType.INCOME:
-          return this.incomeTaxService.applyIncomeTaxes(socialClassTurnContexts, stateTurnContext, tax);
+          return this.incomeTaxService.applyIncomeTaxes(socialClasses, state, tax, turn);
         default:
           throw new Error('Tax type not implemented');
       }

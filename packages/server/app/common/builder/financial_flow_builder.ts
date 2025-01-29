@@ -1,14 +1,9 @@
 import type FinancialFlow from '#common/model/financial_flow';
+import { SaveAmountForTurnBuilder } from '#common/builder/save_amount_for_turn_builder';
 
-export default abstract class FinancialFlowBuilder {
-  protected amount: number | null = null;
+export default abstract class FinancialFlowBuilder extends SaveAmountForTurnBuilder {
   protected color: string | null = null;
   protected name: string | null = null;
-
-  public withAmount(amount: number): this {
-    this.amount = amount;
-    return this;
-  }
 
   public withColor(color: string): this {
     this.color = color;

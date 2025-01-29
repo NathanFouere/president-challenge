@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 import type Sector from '#sector/domain/model/sector';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

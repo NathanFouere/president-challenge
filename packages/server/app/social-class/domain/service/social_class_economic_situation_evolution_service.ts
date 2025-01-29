@@ -1,36 +1,27 @@
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import sectorEconomicalSituationMatchConfig
-  from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
-import type { SocialClassTurnContext } from '#game/application/service/turn-service/load_turn_data_context_service';
-import { aSocialClassFinancialFlow } from '#social-class/application/builders/social_class_financial_flow_builder';
+import { inject } from '@adonisjs/core';
+import type SocialClass from '#social-class/domain/models/social_class';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ISocialClassFinancialFlowRepository
+  from '#social-class/domain/repository/i_social_class_financial_flow_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SocialClassFinancialFlowFactory from '#social-class/application/factory/social_class_financial_flow_factory';
 
+@inject()
 export default class SocialClassEconomicalSituationEvolutionService {
-  public async updateSocialClassesEconomicalSituation(socialClassTurnContexts: SocialClassTurnContext[]): Promise<void> {
-    await Promise.all(socialClassTurnContexts.map(socialClassTurnContext => this.propagateSectorEconomicalSituationToSocialClass(socialClassTurnContext)));
+  constructor(
+    private readonly socialClassFinancialFlowRepository: ISocialClassFinancialFlowRepository,
+    private readonly socialClassFinancialFlowFactory: SocialClassFinancialFlowFactory,
+  ) {
   }
 
-  private async propagateSectorEconomicalSituationToSocialClass(socialClassTurnContext: SocialClassTurnContext): Promise<void> {
-    let revenuesFromSectors;
-    const sector = socialClassTurnContext.socialClass.sector;
-    switch (socialClassTurnContext.socialClass.type) {
-      case SocialClassTypes.CAPITALIST:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
-        break;
-      case SocialClassTypes.PETIT_BOURGEOIS:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
-        break;
-      case SocialClassTypes.PROLETARIAT:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
-        break;
-    }
+  public async updateSocialClassesEconomicalSituation(socialClasses: SocialClass[], turn: number): Promise<void> {
+    await Promise.all(socialClasses.map(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass, turn)));
+  }
 
-    await aSocialClassFinancialFlow()
-      .withSocialClassFinancialFlowId(socialClassTurnContext.socialClassTurnFinancialFlows.id)
-      .withAmount(revenuesFromSectors)
-      .withColor('green')
-      .withName('Sector')
-      .exist();
+  private async propagateSectorEconomicalSituationToSocialClass(socialClass: SocialClass, turn: number): Promise<void> {
+    const generatedRevenuesFromSector = socialClass.generateRevenueFromSector();
 
-    socialClassTurnContext.socialClass.addEconomicalSituation(revenuesFromSectors);
+    const socialClassFinancialFlow = this.socialClassFinancialFlowFactory.createFromSectorRevenue(socialClass, generatedRevenuesFromSector, turn);
+    await this.socialClassFinancialFlowRepository.save(socialClassFinancialFlow);
   }
 }

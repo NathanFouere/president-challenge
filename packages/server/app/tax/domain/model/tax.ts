@@ -16,6 +16,12 @@ export default class Tax extends BaseModel {
   declare description: string;
 
   @column()
+  declare baseRate: number;
+
+  @column()
+  declare color: string;
+
+  @column()
   declare type: TaxType;
 
   @column()
@@ -32,4 +38,8 @@ export default class Tax extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
+
+  public calculateTaxAmount(valueToTax: number): number {
+    return Math.round(Math.max(0, valueToTax * (this.level * this.baseRate)));
+  }
 }

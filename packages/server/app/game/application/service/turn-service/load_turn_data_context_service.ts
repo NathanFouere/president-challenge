@@ -19,9 +19,6 @@ import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries
 import type Game from '#game/domain/models/game';
 import type Tax from '#tax/domain/model/tax';
 import type Budget from '#state/domain/model/budget';
-import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
-import { aStateTurnFinancialFlows } from '#state/application/builder/state_turn_financial_flows_builder';
-import type SocialClassTurnFinancialFlows from '#social-class/domain/models/social_class_turn_financial_flows';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetSocialClassesOfGameQueryHandler
   from '#social-class/application/queries/i_get_social_classes_of_game_query_handler';
@@ -29,9 +26,6 @@ import IGetSocialClassesOfGameQueryHandler
 import IGetProductsOfGameQueryHandler from '#product/application/query/i_get_products_of_game_query_handler';
 import { GetSocialClassesOfGameQuery } from '#social-class/application/queries/get_social_classes_of_game_query';
 import { GetProductsOfGameQuery } from '#product/application/query/get_products_of_game_query';
-import {
-  aSocialClassTurnFinancialFlows,
-} from '#social-class/application/builders/social_class_turn_financial_flows_builder';
 
 @inject()
 export class LoadTurnDataContextService {
@@ -53,52 +47,23 @@ export class LoadTurnDataContextService {
       this.getProductsOfGameQueryHandler.handleForSwitchTurn(new GetProductsOfGameQuery(game.id)),
     ]);
 
-    const stateTurnFinancialFlows = await aStateTurnFinancialFlows()
-      .withTurn(game.turn)
-      .withStateId(state.id)
-      .exist();
-
-    const stateTurnContext = {
-      state,
-      stateTurnFinancialFlows,
-    };
-
-    const socialClassesTurnContexts = await this.mapSocialClassesToSocialClassTurnContexts(socialClasses, game.turn);
-
-    const socialClassesPerType = this.mapSocialClassesToSectorsAndGroupByType(socialClassesTurnContexts, sectors);
+    const socialClassesPerType = this.mapSocialClassesToSectorsAndGroupByType(socialClasses, sectors);
 
     return {
       game,
       budgets: state.budgets,
-      stateTurnContext,
+      state,
       taxes: state.taxes,
       sectors,
       products,
-      socialClassesTurnContexts,
+      socialClasses,
       politicalParties,
       socialClassesPerType,
     };
   }
 
-  private async mapSocialClassesToSocialClassTurnContexts(socialClasses: SocialClass[], turn: number): Promise<SocialClassTurnContext[]> {
-    const socialClassTurnsContextsPromises = socialClasses.map(socialClass => this.mapSocialClassToSocialClassTurnContext(socialClass, turn));
-    return await Promise.all(socialClassTurnsContextsPromises);
-  }
-
-  private async mapSocialClassToSocialClassTurnContext(socialClass: SocialClass, turn: number): Promise<SocialClassTurnContext> {
-    const socialClassTurnFinancialFlows = await aSocialClassTurnFinancialFlows()
-      .withSocialClassId(socialClass.id)
-      .withTurn(turn)
-      .exist();
-
-    return {
-      socialClass,
-      socialClassTurnFinancialFlows,
-    };
-  }
-
   private mapSocialClassesToSectorsAndGroupByType(
-    socialClassesTurnContexts: SocialClassTurnContext[],
+    socialClasses: SocialClass[],
     sectors: Sector[],
   ): SocialClassesPerType {
     const socialClassesPerType = {
@@ -108,24 +73,24 @@ export class LoadTurnDataContextService {
     };
 
     for (const sector of sectors) {
-      sector.socialClasses = [];
+      sector.$setRelated('socialClasses', []);
     }
 
-    for (const socialClassTurnContext of socialClassesTurnContexts) {
-      const sector = sectors.find(sector => sector.id === socialClassTurnContext.socialClass.sectorId);
+    for (const socialClass of socialClasses) {
+      const sector = sectors.find(sector => sector.id === socialClass.sectorId);
       if (sector) {
-        sector.socialClasses.push(socialClassTurnContext.socialClass);
-        socialClassTurnContext.socialClass.sector = sector;
+        sector.socialClasses.push(socialClass);
+        socialClass.$setRelated('sector', sector);
       }
 
-      if (socialClassTurnContext.socialClass.type === SocialClassTypes.CAPITALIST) {
-        socialClassesPerType.capitalist.push(socialClassTurnContext.socialClass);
+      if (socialClass.type === SocialClassTypes.CAPITALIST) {
+        socialClassesPerType.capitalist.push(socialClass);
       }
-      else if (socialClassTurnContext.socialClass.type === SocialClassTypes.PROLETARIAT) {
-        socialClassesPerType.proletariat.push(socialClassTurnContext.socialClass);
+      else if (socialClass.type === SocialClassTypes.PROLETARIAT) {
+        socialClassesPerType.proletariat.push(socialClass);
       }
-      else if (socialClassTurnContext.socialClass.type === SocialClassTypes.PETIT_BOURGEOIS) {
-        socialClassesPerType.petiteBourgeoisie.push(socialClassTurnContext.socialClass);
+      else if (socialClass.type === SocialClassTypes.PETIT_BOURGEOIS) {
+        socialClassesPerType.petiteBourgeoisie.push(socialClass);
       }
     }
 
@@ -136,11 +101,11 @@ export class LoadTurnDataContextService {
 export interface TurnDataContext {
   game: Game;
   budgets: Budget[];
-  stateTurnContext: StateTurnContext;
+  state: State;
   taxes: Tax[];
   sectors: Sector[];
   products: Product[];
-  socialClassesTurnContexts: SocialClassTurnContext[];
+  socialClasses: SocialClass[];
   politicalParties: PoliticalParty[];
   socialClassesPerType: SocialClassesPerType;
 }
@@ -149,14 +114,4 @@ export interface SocialClassesPerType {
   capitalist: SocialClass[];
   proletariat: SocialClass[];
   petiteBourgeoisie: SocialClass[];
-}
-
-export interface SocialClassTurnContext {
-  socialClass: SocialClass;
-  socialClassTurnFinancialFlows: SocialClassTurnFinancialFlows;
-}
-
-export interface StateTurnContext {
-  state: State;
-  stateTurnFinancialFlows: StateTurnFinancialFlows;
 }

@@ -1,12 +1,12 @@
 import { belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
-import StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
 import FinancialFlow from '#common/model/financial_flow';
+import State from '#state/domain/model/state';
 
 export default class StateFinancialFlow extends FinancialFlow {
   @column()
-  declare stateTurnFinancialFlowsId: number;
+  declare stateId: number;
 
-  @belongsTo(() => StateTurnFinancialFlows)
-  declare stateTurnFinancialFlows: BelongsTo<typeof StateTurnFinancialFlows>;
+  @belongsTo(() => State)
+  declare state: BelongsTo<typeof State>;
 }

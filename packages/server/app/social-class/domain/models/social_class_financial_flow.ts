@@ -1,12 +1,12 @@
 import { belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
 import FinancialFlow from '#common/model/financial_flow';
-import SocialClassTurnFinancialFlows from '#social-class/domain/models/social_class_turn_financial_flows';
+import SocialClass from '#social-class/domain/models/social_class';
 
 export default class SocialClassFinancialFlow extends FinancialFlow {
   @column()
-  declare socialClassTurnFinancialFlowsId: number;
+  declare socialClassId: number;
 
-  @belongsTo(() => SocialClassTurnFinancialFlows)
-  declare socialClassTurnFinancialFlows: BelongsTo<typeof SocialClassTurnFinancialFlows>;
+  @belongsTo(() => SocialClass)
+  declare socialClass: BelongsTo<typeof SocialClass>;
 }

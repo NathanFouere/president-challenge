@@ -20,8 +20,7 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
         query.orderBy('turn', 'asc');
       });
 
-      queryBuilder.preload('turnFinancialFlows', (query) => {
-        query.preload('financialFlows');
+      queryBuilder.preload('financialFlows', (query) => {
         query.orderBy('turn', 'asc');
       });
 

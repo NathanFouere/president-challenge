@@ -2,10 +2,10 @@ import FinancialFlowBuilder from '#common/builder/financial_flow_builder';
 import SocialClassFinancialFlow from '#social-class/domain/models/social_class_financial_flow';
 
 export default class SocialClassFinancialFlowBuilder extends FinancialFlowBuilder {
-  private socialClassFinancialFlowId: number | null = null;
+  private socialClassId: number | null = null;
 
-  public withSocialClassFinancialFlowId(socialClassFinancialFlowId: number): this {
-    this.socialClassFinancialFlowId = socialClassFinancialFlowId;
+  public withSocialClassId(socialClassId: number): this {
+    this.socialClassId = socialClassId;
     return this;
   }
 
@@ -18,8 +18,10 @@ export default class SocialClassFinancialFlowBuilder extends FinancialFlowBuilde
     else throw new Error('Color is required');
     if (this.name) financialFlow.name = this.name;
     else throw new Error('Name is required');
-    if (this.socialClassFinancialFlowId) financialFlow.socialClassTurnFinancialFlowsId = this.socialClassFinancialFlowId;
-    else throw new Error('Social class financial flow id is required');
+    if (this.socialClassId) financialFlow.socialClassId = this.socialClassId;
+    else throw new Error('Social class  id is required');
+    if (this.turn) financialFlow.turn = this.turn;
+    else throw new Error('Turn is required');
 
     return financialFlow;
   }

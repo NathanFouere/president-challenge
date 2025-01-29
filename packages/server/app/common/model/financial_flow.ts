@@ -1,22 +1,7 @@
-import { column, BaseModel } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column } from '@adonisjs/lucid/orm';
+import { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 
-export default class FinancialFlow extends BaseModel {
-  @column({ isPrimary: true })
-  declare id: number;
-
-  @column()
-  declare amount: number;
-
-  @column()
-  declare color: string;
-
+export default class FinancialFlow extends SaveAmountForTurn {
   @column()
   declare name: string;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

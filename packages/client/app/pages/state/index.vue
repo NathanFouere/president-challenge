@@ -4,7 +4,7 @@ import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import type { StatePresenter } from '~/presenters/state/state.presenter';
 import LicensedFileComponent from '~/components/common/licensed-file-component.vue';
 import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
-import StateFinancialFlowsComponent from '~/components/state/state-financial-flows-component.vue';
+import FinancialFlowsComponent from '~/components/financial-flow/financial-flows-component.vue';
 
 usePageTitle().setTitle('State');
 
@@ -84,7 +84,7 @@ onMounted(async () => {
       <LineChartComponent
         :data="statePresenter.stateStore.requireState.economicalSituationPerMonthChartData"
       />
-      <state-financial-flows-component
+      <financial-flows-component
         :financial-flows-chart-datas="statePresenter.stateStore.requireState.financialFlowDatas"
       />
     </div>

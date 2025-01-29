@@ -32,6 +32,8 @@ export class TaxStartupService implements StartupProcessorStep {
           .withType(taxConfigValue.type as TaxType)
           .withLevel(taxConfigValue.level)
           .withStateId(state.id)
+          .withBaseRate(taxConfigValue.baseRate)
+          .withColor(taxConfigValue.color)
           .build(),
       );
     }
