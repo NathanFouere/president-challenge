@@ -14,12 +14,12 @@ export default class SocialClassHappinessService {
   private addHappinessModifierFromEconomicalSituation(socialClass: SocialClass): void {
     socialClass.happinessModifiers.push(
       aSocialClassHappinessModifier()
-        .withName('Economical Situation Evolution')
-        .withDescription('Economical Situation Evolution')
-        .withColor('blue') // TODO => change this
+        .withName('Economical Situation')
+        .withDescription('Economical Situation')
+        .withColor('blue')
         .withType(HappinessModifierType.TEMPORARY)
         .withDuration(1)
-        .withAmount(1)
+        .withAmount(socialClass.getHappinessValueFromEconomicalSituation())
         .withSocialClassId(socialClass.id)
         .build(),
     );

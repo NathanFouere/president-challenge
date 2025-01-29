@@ -1,5 +1,5 @@
-import { BaseModel, belongsTo, column, manyToMany, hasMany, beforeSave } from '@adonisjs/lucid/orm';
-import type { BelongsTo, ManyToMany, HasMany } from '@adonisjs/lucid/types/relations';
+import { BaseModel, beforeSave, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
@@ -129,5 +129,18 @@ export default class SocialClass extends BaseModel {
     const taxAmount = tax.calculateTaxAmount(this.economicalSituation);
     this.addEconomicalSituation(-taxAmount);
     return taxAmount;
+  }
+
+  public getHappinessValueFromEconomicalSituation(): number {
+    switch (this.type) {
+      case SocialClassTypes.PROLETARIAT:
+        return this.economicalSituation > 30 ? 1 : -1;
+      case SocialClassTypes.CAPITALIST:
+        return this.economicalSituation > 75 ? 1 : -1;
+      case SocialClassTypes.PETIT_BOURGEOIS:
+        return this.economicalSituation > 50 ? 1 : -1;
+      default:
+        throw new Error('Invalid social class type');
+    }
   }
 }
