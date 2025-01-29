@@ -89,16 +89,15 @@ export default class SocialClass extends BaseModel {
 
   public generateRevenueFromSector(): number {
     let revenuesFromSectors;
-    const sector = this.sector;
     switch (this.type) {
       case SocialClassTypes.CAPITALIST:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
         break;
       case SocialClassTypes.PETIT_BOURGEOIS:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
         break;
       case SocialClassTypes.PROLETARIAT:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].worker;
         break;
     }
 

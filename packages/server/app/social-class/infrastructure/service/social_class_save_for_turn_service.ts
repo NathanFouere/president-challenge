@@ -5,12 +5,16 @@ import ISocialClassHappinessModifierRepository
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISocialClassRepository from '#social-class/domain/repository/i_social_class_repository';
 import type SocialClass from '#social-class/domain/models/social_class';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ISocialClassFinancialFlowRepository
+  from '#social-class/domain/repository/i_social_class_financial_flow_repository';
 
 @inject()
 export default class SocialClassSaveForTurnService {
   constructor(
     private readonly socialClassRepository: ISocialClassRepository,
     private readonly socialClassHappinessModifierRepository: ISocialClassHappinessModifierRepository,
+    private readonly socialClassFinancialFlowRepository: ISocialClassFinancialFlowRepository,
   ) {
   }
 
@@ -22,5 +26,6 @@ export default class SocialClassSaveForTurnService {
   private async saveSocialClassForTurn(socialClass: SocialClass): Promise<void> {
     await this.socialClassRepository.save(socialClass);
     await this.socialClassHappinessModifierRepository.saveMany(socialClass.happinessModifiers);
+    await this.socialClassFinancialFlowRepository.createMany(socialClass.financialFlows);
   }
 }

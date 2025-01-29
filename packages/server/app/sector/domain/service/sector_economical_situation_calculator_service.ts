@@ -17,26 +17,14 @@ export default class SectorEconomicalSituationCalculatorService {
   ) {
   }
 
-  public async setSectorsEconomicalSituation(sectors: Sector[]): Promise<void> {
-    const promises = sectors.map(sector => this.setSectorEconomicalSituation(sector));
-    await Promise.all(promises);
-  }
-
-  public async setSectorEconomicalSituation(sector: Sector): Promise<void> {
-    sector.economicalSituation = this.calculateSectorEconomicalSituation(sector);
+  public setSectorsEconomicalSituation(sectors: Sector[]): void {
+    sectors.forEach(sector => sector.setEconomicalSituation(this.calculateSectorEconomicalSituation(sector)));
   }
 
   public calculateSectorEconomicalSituation(sector: Sector): number {
     const averageMarginOfProducts = this.calculateAverageMarginOfProductsService.calculateAverageMarginOfProducts(sector.products);
     const averageHappinessOfSocialClasses = this.calculateAverageHappinessOfSocialClassesService.calculateAverageHappinessOfSocialClasses(sector.socialClasses);
 
-    let result = Math.floor(((averageMarginOfProducts + averageHappinessOfSocialClasses) / 2) * 5);
-    if (result > 4) {
-      result = 4;
-    }
-    else if (result < 0) {
-      result = 0;
-    }
-    return result;
+    return Math.floor(((averageMarginOfProducts + averageHappinessOfSocialClasses) / 2) * 5);
   }
 }

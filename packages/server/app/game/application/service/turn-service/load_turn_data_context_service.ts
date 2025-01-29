@@ -47,6 +47,8 @@ export class LoadTurnDataContextService {
       this.getProductsOfGameQueryHandler.handleForSwitchTurn(new GetProductsOfGameQuery(game.id)),
     ]);
 
+    state.$setRelated('financialFlows', []);
+
     const socialClassesPerType = this.mapSocialClassesToSectorsAndGroupByType(socialClasses, sectors);
 
     return {
@@ -77,6 +79,7 @@ export class LoadTurnDataContextService {
     }
 
     for (const socialClass of socialClasses) {
+      socialClass.$setRelated('financialFlows', []);
       const sector = sectors.find(sector => sector.id === socialClass.sectorId);
       if (sector) {
         sector.socialClasses.push(socialClass);
