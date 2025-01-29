@@ -6,17 +6,17 @@ import {
 
 export default class SocialClassHappinessService {
   public updateSocialClassesHappiness(socialClasses: SocialClass[]): void {
-    for (const socialClass of socialClasses) {
-      this.changeSocialClassHappinessLevelThroughtEconomicalSituationEvolution(socialClass);
-    }
+    socialClasses.forEach((socialClass) => {
+      this.addHappinessModifierFromEconomicalSituation(socialClass);
+    });
   }
 
-  private changeSocialClassHappinessLevelThroughtEconomicalSituationEvolution(socialClass: SocialClass): void {
+  private addHappinessModifierFromEconomicalSituation(socialClass: SocialClass): void {
     socialClass.happinessModifiers.push(
       aSocialClassHappinessModifier()
         .withName('Economical Situation Evolution')
         .withDescription('Economical Situation Evolution')
-        .withColor('blue')
+        .withColor('blue') // TODO => change this
         .withType(HappinessModifierType.TEMPORARY)
         .withDuration(1)
         .withAmount(1)

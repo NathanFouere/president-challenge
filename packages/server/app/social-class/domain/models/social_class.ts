@@ -1,7 +1,7 @@
 import { BaseModel, belongsTo, column, manyToMany, hasMany, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, ManyToMany, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
@@ -10,6 +10,10 @@ import SocialClassEconomicalSituationPerTurn
   from '#social-class/domain/models/social_class_economical_situation_per_turn';
 import SocialClassHappinessPerTurn from '#social-class/domain/models/social_class_happiness_per_turn';
 import SocialClassHappinessModifier from '#social-class/domain/models/social_class_happiness_modifier';
+import SocialClassFinancialFlow from '#social-class/domain/models/social_class_financial_flow';
+import sectorEconomicalSituationMatchConfig
+  from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
+import type Tax from '#tax/domain/model/tax';
 
 export default class SocialClass extends BaseModel {
   @column({ isPrimary: true })
@@ -38,6 +42,9 @@ export default class SocialClass extends BaseModel {
 
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
+
+  @hasMany(() => SocialClassFinancialFlow)
+  declare financialFlows: HasMany<typeof SocialClassFinancialFlow>;
 
   @manyToMany(() => LicensedFile, {
     pivotTable: 'social_class_licensed_files',
@@ -80,6 +87,26 @@ export default class SocialClass extends BaseModel {
     return happinessLevel;
   }
 
+  public generateRevenueFromSector(): number {
+    let revenuesFromSectors;
+    const sector = this.sector;
+    switch (this.type) {
+      case SocialClassTypes.CAPITALIST:
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+        break;
+      case SocialClassTypes.PETIT_BOURGEOIS:
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
+        break;
+      case SocialClassTypes.PROLETARIAT:
+        revenuesFromSectors = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
+        break;
+    }
+
+    this.addEconomicalSituation(revenuesFromSectors);
+
+    return revenuesFromSectors;
+  }
+
   @beforeSave()
   public static async validateEconomicalSituationLevel(socialClass: SocialClass) {
     if (socialClass.economicalSituation < 0 || socialClass.economicalSituation > 100) {
@@ -96,5 +123,11 @@ export default class SocialClass extends BaseModel {
       newEconomicalSituation = 100;
     }
     this.economicalSituation = newEconomicalSituation;
+  }
+
+  public payTaxOnRevenue(tax: Tax): number {
+    const taxAmount = tax.calculateTaxAmount(this.economicalSituation);
+    this.addEconomicalSituation(-taxAmount);
+    return taxAmount;
   }
 }

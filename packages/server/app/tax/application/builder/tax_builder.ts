@@ -8,6 +8,18 @@ export default class TaxBuilder {
   private type: TaxType | null = null;
   private level: TaxLevel | null = null;
   private stateId: number | null = null;
+  private baseRate: number | null = null;
+  private color: string | null = null;
+
+  public withBaseRate(baseRate: number): this {
+    this.baseRate = baseRate;
+    return this;
+  }
+
+  public withColor(color: string): this {
+    this.color = color;
+    return this;
+  }
 
   public withName(name: string): this {
     this.name = name;
@@ -46,6 +58,10 @@ export default class TaxBuilder {
     else throw new Error('Level is required');
     if (this.stateId != null) tax.stateId = this.stateId;
     else throw new Error('State ID is required');
+    if (this.baseRate != null) tax.baseRate = this.baseRate;
+    else throw new Error('Base rate is required');
+    if (this.color != null) tax.color = this.color;
+    else throw new Error('Color is required');
     return tax;
   }
 

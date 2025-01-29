@@ -1,28 +1,27 @@
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import sectorEconomicalSituationMatchConfig
-  from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
+import { inject } from '@adonisjs/core';
 import type SocialClass from '#social-class/domain/models/social_class';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ISocialClassFinancialFlowRepository
+  from '#social-class/domain/repository/i_social_class_financial_flow_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SocialClassFinancialFlowFactory from '#social-class/application/factory/social_class_financial_flow_factory';
 
+@inject()
 export default class SocialClassEconomicalSituationEvolutionService {
-  public updateSocialClassesEconomicalSituation(socialClasses: SocialClass[]): void {
-    socialClasses.forEach(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass));
+  constructor(
+    private readonly socialClassFinancialFlowRepository: ISocialClassFinancialFlowRepository,
+    private readonly socialClassFinancialFlowFactory: SocialClassFinancialFlowFactory,
+  ) {
   }
 
-  private propagateSectorEconomicalSituationToSocialClass(socialClass: SocialClass) {
-    let newEconomicalSituation;
-    const sector = socialClass.sector;
-    switch (socialClass.type) {
-      case SocialClassTypes.CAPITALIST:
-        newEconomicalSituation = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
-        break;
-      case SocialClassTypes.PETIT_BOURGEOIS:
-        newEconomicalSituation = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].owner;
-        break;
-      case SocialClassTypes.PROLETARIAT:
-        newEconomicalSituation = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].worker;
-        break;
-    }
+  public async updateSocialClassesEconomicalSituation(socialClasses: SocialClass[], turn: number): Promise<void> {
+    await Promise.all(socialClasses.map(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass, turn)));
+  }
 
-    socialClass.addEconomicalSituation(newEconomicalSituation);
+  private async propagateSectorEconomicalSituationToSocialClass(socialClass: SocialClass, turn: number): Promise<void> {
+    const generatedRevenuesFromSector = socialClass.generateRevenueFromSector();
+
+    const socialClassFinancialFlow = this.socialClassFinancialFlowFactory.createFromSectorRevenue(socialClass, generatedRevenuesFromSector, turn);
+    await this.socialClassFinancialFlowRepository.save(socialClassFinancialFlow);
   }
 }

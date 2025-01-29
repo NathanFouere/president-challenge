@@ -4,4 +4,5 @@ import type SocialClass from '#social-class/domain/models/social_class';
 export default abstract class IGetSocialClassesOfGameQueryHandler {
   public abstract handle(query: GetSocialClassesOfGameQuery): Promise<SocialClass[]>;
   public abstract handleForDisplay(query: GetSocialClassesOfGameQuery): Promise<SocialClass[]>;
+  public abstract handleForSwitchTurn(query: GetSocialClassesOfGameQuery): Promise<SocialClass[]>;
 }

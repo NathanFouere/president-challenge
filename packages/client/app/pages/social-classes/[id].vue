@@ -4,6 +4,7 @@ import LicensedFilesComponent from '../../components/common/licensed-files-compo
 import type { SocialClassPresenter } from '~/presenters/social-class/social-class.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import LineChartComponent from '~/components/common/charts/line-chart-component.vue';
+import FinancialFlowsComponent from '~/components/financial-flow/financial-flows-component.vue';
 
 const route = useRoute();
 const id = Number(route.params.id);
@@ -54,6 +55,10 @@ onMounted(async () => {
     <br>
     <line-chart-component
       :data="socialClassPresenter.socialClassStore.requireSocialClass.happinessPerMonthChartData"
+    />
+
+    <financial-flows-component
+      :financial-flows-chart-datas="socialClassPresenter.socialClassStore.requireSocialClass.financialFlowDatas"
     />
   </div>
 </template>

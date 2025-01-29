@@ -11,7 +11,7 @@ import SocialClassEconomicalSituationEvolutionService
 import { ProductPriceRandomizerService } from '#product/domain/service/product_price_randomizer_service';
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import SectorService from '#sector/domain/service/sector_service';
+import StateEconomicalSituationService from '#sector/domain/service/state_economical_situation_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import BudgetService from '#state/domain/service/budget_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -23,7 +23,7 @@ export default class TurnEconomicalService implements TurnProcessorStep {
     private readonly sectorEconomicalSituationCalculatorService: SectorEconomicalSituationCalculatorService,
     private readonly socialClassEconomicalSituationEvolutionService: SocialClassEconomicalSituationEvolutionService,
     private readonly productChangePriceTurnService: ProductPriceRandomizerService,
-    private readonly sectorService: SectorService,
+    private readonly sectorService: StateEconomicalSituationService,
     private readonly budgetService: BudgetService,
     private readonly taxService: TaxService,
 
@@ -32,24 +32,26 @@ export default class TurnEconomicalService implements TurnProcessorStep {
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
     await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
-    this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(turnDataContext.socialClasses);
+    await this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(
+      turnDataContext.socialClasses,
+      turnDataContext.game.turn,
+    );
     this.productChangePriceTurnService.changeProductsPricesRandomly(turnDataContext.products);
     await Promise.all([
-      this.sectorService.updateSectorsEconomicalSituation(
+      this.sectorService.updateStateEconomicalSituationFromSectors(
         turnDataContext.sectors,
         turnDataContext.state,
-        turnDataContext.stateTurnFinancialFlow,
+        turnDataContext.game.turn,
       ),
       this.budgetService.updateStateFinancesFromBudgets(
-        turnDataContext.budgets,
         turnDataContext.state,
-        turnDataContext.stateTurnFinancialFlow,
+        turnDataContext.game.turn,
       ),
       this.taxService.applyTaxes(
         turnDataContext.taxes,
         turnDataContext.socialClasses,
         turnDataContext.state,
-        turnDataContext.stateTurnFinancialFlow,
+        turnDataContext.game.turn,
       ),
     ]);
   }

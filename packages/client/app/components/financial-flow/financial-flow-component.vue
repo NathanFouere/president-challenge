@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FinancialFlowDatas } from '@shared/state/state-dto';
+import type { FinancialFlowDatas } from '@shared/state/financial_flow_datas';
 import PieChartComponent from '~/components/common/charts/pie-chart-component.vue';
 
 defineProps<{

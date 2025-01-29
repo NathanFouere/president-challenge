@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { FinancialFlowDatas } from '@shared/state/state-dto';
 import { getDateFromTurnNumber } from '@shared/utils/date-converter';
-import StateFinancialFlowComponent from '~/components/state/state-financial-flow-component.vue';
+import type { FinancialFlowDatas } from '@shared/state/financial_flow_datas';
 
 const props = defineProps<{
   financialFlowsChartDatas: FinancialFlowDatas[];
@@ -20,7 +19,7 @@ const financialFlowChartSelected = computed(() => props.financialFlowsChartDatas
     >
       <h1>Expenses and revenues of {{ getDateFromTurnNumber(financialFlowChartSelected.turn) }}</h1>
     </template>
-    <state-financial-flow-component
+    <financial-flow-component
       :financial-flow-chart-data="financialFlowChartSelected"
     />
     <div class="flex justify-between p-10 ">

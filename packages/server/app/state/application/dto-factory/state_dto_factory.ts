@@ -1,7 +1,5 @@
 import { inject } from '@adonisjs/core';
 import type { StateDto } from '@shared/dist/state/state-dto.js';
-import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
-import type { FinancialFlowDatas } from '@shared/dist/state/financial_flow_datas.js';
 import type State from '#state/domain/model/state';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
@@ -11,10 +9,10 @@ import ChartDataFactory from '#common/utils/chart_data_factory';
 import RangeLevelMatch from '#common/utils/range_level_match';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { MinimalBudgetDtoFactory } from '#state/application/dto-factory/minimal_budget_dto_factory';
-import type StateTurnFinancialFlows from '#state/domain/model/state_turn_financial_flows';
-import type FinancialFlow from '#state/domain/model/financial_flow';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import TaxDtoFactory from '#tax/application/dto-factory/tax_dto_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import FinancialFlowDataFactory from '#common/factory/financial_flow_data_factory';
 
 @inject()
 export class StateDtoFactory {
@@ -24,6 +22,7 @@ export class StateDtoFactory {
     private readonly rangeLevelMatch: RangeLevelMatch,
     private readonly budgetDtoFactory: MinimalBudgetDtoFactory,
     private readonly taxDtoFactory: TaxDtoFactory,
+    private readonly financialFlowDtoFactory: FinancialFlowDataFactory,
   ) {
   }
 
@@ -48,7 +47,7 @@ export class StateDtoFactory {
         20,
         this.economicalSituationRangeLevels,
       ),
-      financialFlowDatas: this.createFinancialFlowsChartData(state.turnFinancialFlows),
+      financialFlowDatas: this.financialFlowDtoFactory.generateFinancialFlowsDatasFromFinancialFlows(state.financialFlows),
       budgets: this.budgetDtoFactory.createFromBudgets(state.budgets),
       taxes: this.taxDtoFactory.fromTaxes(state.taxes),
     };
@@ -59,49 +58,5 @@ export class StateDtoFactory {
       economicalSituation,
       this.economicalSituationRangeLevels,
     );
-  }
-
-  private createFinancialFlowsChartData(turnFinancialFlows: StateTurnFinancialFlows[]): FinancialFlowDatas[] {
-    return turnFinancialFlows.map(turnFinancialFlow => this.createFinancialFlowChartData(turnFinancialFlow));
-  }
-
-  private createFinancialFlowChartData(stateTurnFinancialFlows: StateTurnFinancialFlows): FinancialFlowDatas {
-    const positiveFlows = [];
-    const negativeFlows = [];
-
-    for (const flow of stateTurnFinancialFlows.financialFlows) {
-      if (flow.amount >= 0) {
-        positiveFlows.push(flow);
-      }
-      else {
-        negativeFlows.push(flow);
-      }
-    }
-
-    return {
-      turn: stateTurnFinancialFlows.turn,
-      positiveFinancialFlows: this.createChartDataFromFinancialFlows(positiveFlows, true),
-      negativeFinancialFlows: this.createChartDataFromFinancialFlows(negativeFlows, false),
-    };
-  }
-
-  private createChartDataFromFinancialFlows(
-    financialFlows: FinancialFlow[],
-    positive: boolean,
-  ): ChartDataDTO {
-    const labels = financialFlows.map(flow => flow.name);
-    const data = financialFlows.map(flow => flow.amount);
-    const backgroundColor = financialFlows.map(flow => flow.color);
-    const borderColor = financialFlows.map(flow => flow.color);
-
-    return {
-      title: positive ? 'Incomes' : 'Expenses',
-      labels,
-      datasets: [{
-        data,
-        backgroundColor,
-        borderColor,
-      }],
-    };
   }
 }
