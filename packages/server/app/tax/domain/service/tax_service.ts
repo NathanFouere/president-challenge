@@ -14,7 +14,7 @@ export default class TaxService {
   }
 
   public applyTaxes(taxes: Tax[], socialClasses: SocialClass[], state: State, turn: number): void {
-    taxes.map((tax) => {
+    taxes.forEach((tax) => {
       switch (tax.type) {
         case TaxType.INCOME:
           return this.incomeTaxService.applyIncomeTaxes(socialClasses, state, tax, turn);

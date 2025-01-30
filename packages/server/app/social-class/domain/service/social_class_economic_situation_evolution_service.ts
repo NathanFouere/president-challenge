@@ -11,7 +11,7 @@ export default class SocialClassEconomicalSituationEvolutionService {
   }
 
   public updateSocialClassesEconomicalSituation(socialClasses: SocialClass[], turn: number): void {
-    socialClasses.map(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass, turn));
+    socialClasses.forEach(socialClass => this.propagateSectorEconomicalSituationToSocialClass(socialClass, turn));
   }
 
   private propagateSectorEconomicalSituationToSocialClass(socialClass: SocialClass, turn: number): void {
