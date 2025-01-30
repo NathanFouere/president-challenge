@@ -16,8 +16,16 @@ export default class FinancialFlowDataFactory {
     }
 
     for (const [turn, flows] of groupedByTurn.entries()) {
-      const positiveFlows = flows.filter(flow => flow.amount >= 0);
-      const negativeFlows = flows.filter(flow => flow.amount < 0);
+      const positiveFlows = [];
+      const negativeFlows = [];
+      for (const flow of flows) {
+        if (flow.amount >= 0) {
+          positiveFlows.push(flow);
+        }
+        else {
+          negativeFlows.push(flow);
+        }
+      }
 
       const positiveFinancialFlows = this.createChartDataFromFinancialFlows(positiveFlows, true);
       const negativeFinancialFlows = this.createChartDataFromFinancialFlows(negativeFlows, false);
@@ -36,10 +44,16 @@ export default class FinancialFlowDataFactory {
     financialFlows: FinancialFlow[],
     positive: boolean,
   ): ChartDataDTO {
-    const labels = financialFlows.map(flow => flow.name);
-    const data = financialFlows.map(flow => flow.amount);
-    const backgroundColor = financialFlows.map(flow => flow.color);
-    const borderColor = financialFlows.map(flow => flow.color);
+    const labels = [];
+    const data = [];
+    const backgroundColor = [];
+    const borderColor = [];
+    for (const financialFlow of financialFlows) {
+      labels.push(financialFlow.name);
+      data.push(financialFlow.amount);
+      backgroundColor.push(financialFlow.color);
+      borderColor.push(financialFlow.color);
+    }
 
     return {
       title: positive ? 'Incomes' : 'Expenses',

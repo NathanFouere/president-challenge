@@ -26,16 +26,17 @@ export default class TurnEconomicalService implements TurnProcessorStep {
     private readonly sectorService: StateEconomicalSituationService,
     private readonly budgetService: BudgetService,
     private readonly taxService: TaxService,
-
   ) {
   }
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
     this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
+
     this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(
       turnDataContext.socialClasses,
       turnDataContext.game.turn,
     );
+
     this.productChangePriceTurnService.changeProductsPricesRandomly(turnDataContext.products);
 
     this.sectorService.updateStateEconomicalSituationFromSectors(
@@ -43,10 +44,12 @@ export default class TurnEconomicalService implements TurnProcessorStep {
       turnDataContext.state,
       turnDataContext.game.turn,
     );
+
     this.budgetService.updateStateFinancesFromBudgets(
       turnDataContext.state,
       turnDataContext.game.turn,
     );
+
     this.taxService.applyTaxes(
       turnDataContext.taxes,
       turnDataContext.socialClasses,
