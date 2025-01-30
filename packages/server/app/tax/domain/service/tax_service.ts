@@ -13,14 +13,14 @@ export default class TaxService {
   ) {
   }
 
-  public async applyTaxes(taxes: Tax[], socialClasses: SocialClass[], state: State, turn: number): Promise<void> {
-    await Promise.all(taxes.map((tax) => {
+  public applyTaxes(taxes: Tax[], socialClasses: SocialClass[], state: State, turn: number): void {
+    taxes.forEach((tax) => {
       switch (tax.type) {
         case TaxType.INCOME:
           return this.incomeTaxService.applyIncomeTaxes(socialClasses, state, tax, turn);
         default:
           throw new Error('Tax type not implemented');
       }
-    }));
+    });
   }
 }

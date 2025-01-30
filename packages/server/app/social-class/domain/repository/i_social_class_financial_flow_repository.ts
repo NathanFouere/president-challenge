@@ -2,4 +2,5 @@ import type SocialClassFinancialFlow from '#social-class/domain/models/social_cl
 
 export default abstract class ISocialClassFinancialFlowRepository {
   abstract save(socialClassFinancialFlow: SocialClassFinancialFlow): Promise<void>;
+  abstract createMany(socialClassFinancialFlows: SocialClassFinancialFlow[]): Promise<void>;
 }

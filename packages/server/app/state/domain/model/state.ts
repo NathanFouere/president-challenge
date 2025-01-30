@@ -59,8 +59,8 @@ export default class State extends BaseModel {
 
   public addToEconomicalSituation(addedEconomicalSituation: number) {
     let newEconomicalSituation = this.economicalSituation + addedEconomicalSituation;
-    if (newEconomicalSituation > 20) {
-      newEconomicalSituation = 20;
+    if (newEconomicalSituation > 100) {
+      newEconomicalSituation = 100;
     }
     if (newEconomicalSituation < 0) {
       newEconomicalSituation = 0;
@@ -102,7 +102,7 @@ export default class State extends BaseModel {
 
   @beforeSave()
   public static async validateEconomicalSituationLevel(state: State) {
-    if (state.economicalSituation < 0 || state.economicalSituation > 20) {
+    if (state.economicalSituation < 0 || state.economicalSituation > 100) {
       throw new Error('Invalid economicalSituation level');
     }
   }

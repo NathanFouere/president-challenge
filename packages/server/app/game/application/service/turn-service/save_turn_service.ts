@@ -15,8 +15,7 @@ import {
 import {
   SectorEconomicalSituationPerTurnSaveService,
 } from '#sector/application/service/sector_economical_situation_per_turn_save_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import StateRepository from '#state/infrastructure/repository/state_repository';
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   SocialClassHappinessPerTurnSaveService,
@@ -37,6 +36,8 @@ import BudgetCostPerTurnSaveService from '#state/application/service/budget_cost
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import StateEconomicalSituationPerTurnSaveService
   from '#state/application/service/state_economical_situation_per_turn_save_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import StateSaveForTurnService from '#state/infrastructure/service/state_save_for_turn_service';
 
 @inject()
 export default class SaveTurnService implements TurnProcessorStep {
@@ -50,10 +51,10 @@ export default class SaveTurnService implements TurnProcessorStep {
     private readonly sectorEconomicalSituationPerTurnSaveService: SectorEconomicalSituationPerTurnSaveService,
     private readonly socialClassHappinessPerTurnSaveService: SocialClassHappinessPerTurnSaveService,
     private readonly politicalPartyHappinessPerTurnSaveService: PoliticalPartyHappinessPerTurnSaveService,
-    private readonly stateRepository: StateRepository,
     private readonly socialClassService: SocialClassSaveForTurnService,
     private readonly politicalPartySaveForTurnService: PoliticalPartySaveForTurnService,
     private readonly budgetCostPerTurnSaveService: BudgetCostPerTurnSaveService,
+    private readonly stateSaveForTurnService: StateSaveForTurnService,
   ) {
 
   }
@@ -66,7 +67,7 @@ export default class SaveTurnService implements TurnProcessorStep {
   private async saveGlobalDatas(turnDataContext: TurnDataContext): Promise<void> {
     await Promise.all([
       this.gameRepository.save(turnDataContext.game),
-      this.stateRepository.save(turnDataContext.state),
+      this.stateSaveForTurnService.save(turnDataContext.state),
       this.socialClassService.saveSocialClassesForTurn(turnDataContext.socialClasses),
       this.politicalPartySaveForTurnService.savePoliticalPartiesForTurn(turnDataContext.politicalParties),
       this.productRepository.saveMany(turnDataContext.products),

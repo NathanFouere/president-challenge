@@ -20,7 +20,7 @@ export default class SocialClassHappinessModifierBuilder extends HappinessModifi
     if (this.type) happinessModifier.type = this.type;
     else throw new Error('Type is required');
     if (this.duration) happinessModifier.duration = this.duration;
-    if (this.amount) happinessModifier.amount = this.amount;
+    if (this.amount !== null) happinessModifier.amount = this.amount;
     else throw new Error('Amount is required');
     if (this.socialClassId) happinessModifier.socialClassId = this.socialClassId;
     else throw new Error('Social class id is required');

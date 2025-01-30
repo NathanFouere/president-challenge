@@ -25,12 +25,6 @@ export default class SocialClassFinancialFlowBuilder extends FinancialFlowBuilde
 
     return financialFlow;
   }
-
-  public async exist(): Promise<SocialClassFinancialFlow> {
-    const financialFlow = this.build();
-    await financialFlow.save();
-    return financialFlow;
-  }
 }
 
 export function aSocialClassFinancialFlow(): SocialClassFinancialFlowBuilder {

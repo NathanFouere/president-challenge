@@ -65,4 +65,15 @@ export default class Sector extends BaseModel {
       throw new Error('Invalid economicalSituation level');
     }
   }
+
+  public setEconomicalSituation(economicalSituation: number) {
+    if (economicalSituation > 4) {
+      economicalSituation = 4;
+    }
+    else if (economicalSituation < 0) {
+      economicalSituation = 0;
+    }
+
+    this.economicalSituation = economicalSituation;
+  }
 }

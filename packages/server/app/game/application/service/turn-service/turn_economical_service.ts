@@ -26,33 +26,35 @@ export default class TurnEconomicalService implements TurnProcessorStep {
     private readonly sectorService: StateEconomicalSituationService,
     private readonly budgetService: BudgetService,
     private readonly taxService: TaxService,
-
   ) {
   }
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
-    await this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
-    await this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(
+    this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
+
+    this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(
       turnDataContext.socialClasses,
       turnDataContext.game.turn,
     );
+
     this.productChangePriceTurnService.changeProductsPricesRandomly(turnDataContext.products);
-    await Promise.all([
-      this.sectorService.updateStateEconomicalSituationFromSectors(
-        turnDataContext.sectors,
-        turnDataContext.state,
-        turnDataContext.game.turn,
-      ),
-      this.budgetService.updateStateFinancesFromBudgets(
-        turnDataContext.state,
-        turnDataContext.game.turn,
-      ),
-      this.taxService.applyTaxes(
-        turnDataContext.taxes,
-        turnDataContext.socialClasses,
-        turnDataContext.state,
-        turnDataContext.game.turn,
-      ),
-    ]);
+
+    this.sectorService.updateStateEconomicalSituationFromSectors(
+      turnDataContext.sectors,
+      turnDataContext.state,
+      turnDataContext.game.turn,
+    );
+
+    this.budgetService.updateStateFinancesFromBudgets(
+      turnDataContext.state,
+      turnDataContext.game.turn,
+    );
+
+    this.taxService.applyTaxes(
+      turnDataContext.taxes,
+      turnDataContext.socialClasses,
+      turnDataContext.state,
+      turnDataContext.game.turn,
+    );
   }
 }

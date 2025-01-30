@@ -12,7 +12,7 @@ export default class ProductPricePerTurnBuilder extends SaveAmountForTurnBuilder
   public build(): ProductPricePerTurn {
     const productPricePerTurn = new ProductPricePerTurn();
 
-    if (this.amount) productPricePerTurn.amount = this.amount;
+    if (this.amount !== null) productPricePerTurn.amount = this.amount;
     else throw new Error('Amount is required');
     if (this.turn) productPricePerTurn.turn = this.turn;
     else throw new Error('Turn is required');

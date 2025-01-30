@@ -27,11 +27,11 @@ export class StateDtoFactory {
   }
 
   readonly economicalSituationRangeLevels = [
-    { min: 0, max: 5, value: 'Very-Low' },
-    { min: 6, max: 8, value: 'Low' },
-    { min: 9, max: 12, value: 'Medium' },
-    { min: 13, max: 16, value: 'High' },
-    { min: 17, max: 20, value: 'Very-High' },
+    { min: 0, max: 20, value: 'Very-Low' },
+    { min: 20, max: 40, value: 'Low' },
+    { min: 40, max: 60, value: 'Medium' },
+    { min: 60, max: 80, value: 'High' },
+    { min: 80, max: 100, value: 'Very-High' },
   ];
 
   public createFromState(state: State): StateDto {
@@ -44,7 +44,7 @@ export class StateDtoFactory {
         state.economicalSituationPerTurn,
         'Economical Situation',
         0,
-        20,
+        100,
         this.economicalSituationRangeLevels,
       ),
       financialFlowDatas: this.financialFlowDtoFactory.generateFinancialFlowsDatasFromFinancialFlows(state.financialFlows),
