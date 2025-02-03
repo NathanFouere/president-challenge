@@ -4,7 +4,7 @@ Game project developed on my free time to learn more about NodeJs, DDD, Docker, 
 
 ## Description
 
-This project is a historical simulation game set in Chile during the government of Salvador Allende in the early 1970s. The aim of the game is to inform and educate players about the challenges and events of this period while providing an engaging, gamified experience.
+This project is a historical simulation game set in Chile in the early 1970s. The aim of the game is to inform and educate players about the challenges and events of this period while providing an engaging, gamified experience.
 
 Players assume the role of the Chilean government and make critical decisions that impact the economy, social classes, and political stability. Each decision leads to specific events and outcomes, ultimately shaping one of several possible endings for the game. The project blends history, politics, and strategy to create an immersive and thought-provoking experience.
 
