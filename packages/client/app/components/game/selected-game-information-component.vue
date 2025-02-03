@@ -11,5 +11,4 @@ defineProps<{
   <p>Date : {{ getDateFromTurnNumber(game.turn) }}</p>
   <p>|</p>
   <p>Political Weight : {{ game.politicalWeight }}</p>
-  <p>|</p>
 </template>
