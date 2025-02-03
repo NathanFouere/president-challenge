@@ -86,6 +86,7 @@ const links = computed(() => [
               v-if="gameStore.hasSelectedGame"
               :game="gameStore.requireSelectedGame"
             />
+            <p>|</p>
             <UIcon
               class="h-5 w-5 mt-0.5 "
               name="i-heroicons-arrow-turn-down-left"
