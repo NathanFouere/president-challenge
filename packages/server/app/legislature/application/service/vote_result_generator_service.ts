@@ -19,6 +19,8 @@ export default class VoteResultGeneratorService {
     const voteResultsInSenate = await this.generateVoteResults(law, lawVote, LegislatureType.SENATE);
     lawVote.setVoteResultsInSenate(voteResultsInSenate);
     lawVote.setVoteResultsInParliament(voteResultsInParliament);
+
+    lawVote.processVotePassed();
   }
 
   private async generateVoteResults(law: Law, lawVote: LawVote, legislatureType: LegislatureType): Promise<LawVoteResults> {

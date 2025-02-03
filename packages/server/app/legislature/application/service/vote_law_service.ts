@@ -21,7 +21,7 @@ export default class VoteLawService {
 
   public async voteLaw(law: Law, game: Game): Promise<void> {
     try {
-      if (law.voted) {
+      if (law.isVoted()) {
         throw new Error('Law already voted');
       }
       else if (law.politicalWeightRequired > game.politicalWeight) {
@@ -31,7 +31,7 @@ export default class VoteLawService {
       const lawVote = await this.lawVoteGeneratorService.generateLawVote(law, game.turn);
 
       if (lawVote.votePassed) {
-        law.voted = true;
+        law.setVoted();
         game.updatePoliticalWeight(-law.politicalWeightRequired);
 
         await this.gameRepository.save(game);
@@ -50,7 +50,7 @@ export default class VoteLawService {
   public async unvoteIncompatibleLaws(lawGroup: LawGroup): Promise<void> {
     for (const law of lawGroup.laws) {
       if (law.voted) {
-        law.voted = false;
+        law.setUnvoted();
       }
     }
     await this.lawRepository.saveMany(lawGroup.laws);

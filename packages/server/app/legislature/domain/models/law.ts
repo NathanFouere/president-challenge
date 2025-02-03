@@ -48,4 +48,16 @@ export default class Law extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
+
+  public setVoted(): void {
+    this.voted = true;
+  }
+
+  public setUnvoted(): void {
+    this.voted = false;
+  }
+
+  public isVoted(): boolean {
+    return this.voted;
+  }
 }
