@@ -106,4 +106,8 @@ export default class State extends BaseModel {
       throw new Error('Invalid economicalSituation level');
     }
   }
+
+  public setFinancialFlows(financialFlows: StateFinancialFlow[]): void {
+    this.$setRelated('financialFlows', financialFlows);
+  }
 }

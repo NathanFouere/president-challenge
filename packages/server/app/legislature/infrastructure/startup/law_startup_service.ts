@@ -95,6 +95,7 @@ export default class LawStartupService implements StartupProcessorStep {
       .withOrder(lawStartupInterface.order)
       .withDescription(lawStartupInterface.description)
       .withLawGroupId(lawGroupId)
+      .withPoliticalWeightRequired(lawStartupInterface.politicalWeightRequired)
       .withVoted(lawStartupInterface.voted)
       .build();
 

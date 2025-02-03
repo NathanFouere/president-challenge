@@ -32,7 +32,7 @@ export default class VoteLawController {
         gameId,
       ));
 
-      await this.voteLawService.voteLaw(law, game.turn);
+      await this.voteLawService.voteLaw(law, game);
     }
 
     catch (e) {

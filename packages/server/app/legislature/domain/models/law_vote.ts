@@ -36,4 +36,35 @@ export default class LawVote extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
+
+  public setVoteResultsInSenate(voteResultsInSenate: LawVoteResults) {
+    this.$setRelated('voteResultsInSenate', voteResultsInSenate);
+  }
+
+  public setVoteResultsInParliament(voteResultsInParliament: LawVoteResults) {
+    this.$setRelated('voteResultsInParliament', voteResultsInParliament);
+  }
+
+  public processVotePassed() {
+    let votesForInParliament = 0;
+    let votesAgainstInParliament = 0;
+    this.voteResultsInParliament.politicalPartiesVoteResults.forEach((politicalPartyVoteResults) => {
+      votesForInParliament += politicalPartyVoteResults.votesFor;
+      votesAgainstInParliament += politicalPartyVoteResults.votesAgainst;
+    });
+
+    const lawPassedInParliament = votesForInParliament > votesAgainstInParliament;
+
+    let votesForInSenate = 0;
+    let votesAgainstInSenate = 0;
+
+    this.voteResultsInSenate.politicalPartiesVoteResults.forEach((politicalPartyVoteResults) => {
+      votesForInSenate += politicalPartyVoteResults.votesFor;
+      votesAgainstInSenate += politicalPartyVoteResults.votesAgainst;
+    });
+
+    const lawPassedInSenate = votesForInSenate > votesAgainstInSenate;
+
+    this.votePassed = lawPassedInParliament && lawPassedInSenate;
+  }
 }

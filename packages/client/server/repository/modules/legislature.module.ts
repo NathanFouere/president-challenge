@@ -35,11 +35,11 @@ class LegislatureModule extends FetchFactory {
     );
   }
 
-  public async getLaw(gameId: number, lawId: number, turn: number): Promise<LawDto> {
+  public async getLaw(gameId: number, lawId: number): Promise<LawDto> {
     return this.call<LawDto>(
       {
         method: 'GET',
-        url: `${this.RESOURCE.GetLaw(gameId, lawId, turn)}`,
+        url: `${this.RESOURCE.GetLaw(gameId, lawId)}`,
       },
     );
   }

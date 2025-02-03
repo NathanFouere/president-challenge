@@ -19,6 +19,10 @@ const columns = [
     label: 'Voted',
   },
   {
+    key: 'politicalWeightRequired',
+    label: 'Political Weight Required',
+  },
+  {
     key: 'actions',
     label: 'Actions',
   },

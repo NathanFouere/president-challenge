@@ -1,4 +1,4 @@
-import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
+import { BaseModel, belongsTo, column, hasMany, hasOne, beforeSave } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import User from '#user/domain/models/user';
@@ -32,6 +32,9 @@ export default class Game extends BaseModel {
   @hasOne(() => State)
   declare state: HasOne<typeof State>;
 
+  @column()
+  declare politicalWeight: number;
+
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime;
 
@@ -40,5 +43,31 @@ export default class Game extends BaseModel {
 
   public changeTurn() {
     this.turn += 1;
+    this.politicalWeight += 5;
+  }
+
+  public setPoliticalWeight(politicalWeight: number) {
+    if (politicalWeight < 0) {
+      throw new Error('Invalid political weight');
+    }
+
+    this.politicalWeight = politicalWeight;
+  }
+
+  public updatePoliticalWeight(politicalWeight: number) {
+    const updatedPoliticalWeight = this.politicalWeight + politicalWeight;
+
+    if (updatedPoliticalWeight < 0) {
+      throw new Error('Invalid political weight');
+    }
+
+    this.politicalWeight = updatedPoliticalWeight;
+  }
+
+  @beforeSave()
+  public static async validatePrice(game: Game) {
+    if (game.politicalWeight < 0) {
+      throw new Error('Invalid political weight');
+    }
   }
 }

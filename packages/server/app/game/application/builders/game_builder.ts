@@ -1,11 +1,17 @@
 import Game from '#game/domain/models/game';
 
 export class GameBuilder {
-  public turn: number | null = null;
-  public userId: number | null = null;
+  private turn: number | null = null;
+  private userId: number | null = null;
+  private politicalWeight: number | null = null;
 
   public withTurn(turn: number): this {
     this.turn = turn;
+    return this;
+  }
+
+  public withPoliticalWeight(politicalWeight: number): this {
+    this.politicalWeight = politicalWeight;
     return this;
   }
 
@@ -28,6 +34,13 @@ export class GameBuilder {
     else {
       throw new Error('userId is required');
     }
+    if (this.politicalWeight !== null) {
+      game.politicalWeight = this.politicalWeight;
+    }
+    else {
+      throw new Error('politicalWeight is required');
+    }
+
     return game;
   }
 }

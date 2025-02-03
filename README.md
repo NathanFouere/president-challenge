@@ -1,6 +1,6 @@
 # Allende Challenge
 
-Game project developed on my free time to learn more about NodeJs, DDD, Docker, Deployment.
+MinimalGameDto project developed on my free time to learn more about NodeJs, DDD, Docker, Deployment.
 
 ## Description
 

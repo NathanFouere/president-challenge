@@ -7,6 +7,7 @@ import MinimalLawDtoFactory from '#legislature/application/dto-factories/minimal
 import type Law from '#legislature/domain/models/law';
 import type LawVoteResults from '#legislature/domain/models/law_vote_results';
 import type LawVote from '#legislature/domain/models/law_vote';
+import type Game from '#game/domain/models/game';
 
 @inject()
 export default class LawDtoFactory {
@@ -15,7 +16,7 @@ export default class LawDtoFactory {
   ) {
   }
 
-  public createFromLaw(law: Law, turn: number): LawDto {
+  public createFromLaw(law: Law, game: Game): LawDto {
     const voteResultsDatas: VoteResultsData[] = [];
     for (const lawVote of law.lawVotes) {
       voteResultsDatas.push({
@@ -25,11 +26,13 @@ export default class LawDtoFactory {
         votePassed: lawVote.votePassed,
       });
     }
+
     return {
       ...this.minimalLawDtoFactory.createFromLaw(law),
       madeIncompatibleBy: law.lawGroup.laws.find((law: Law) => law.voted)?.name,
       voteResultsDatas: voteResultsDatas,
-      canVoteForThisTurn: law.lawVotes.every((lawVote: LawVote) => lawVote.turn != turn),
+      alreadyVotedForThisTurn: law.lawVotes.some((lawVote: LawVote) => lawVote.turn === game.turn),
+      superiorToAvailablePoliticalWeight: law.politicalWeightRequired > game.politicalWeight,
     };
   }
 

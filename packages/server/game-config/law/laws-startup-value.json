@@ -12,6 +12,7 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -44,6 +45,7 @@
             "description": "test",
             "voted": true,
             "order": 2,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -76,6 +78,7 @@
             "description": "test",
             "voted": false,
             "order": 3,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -114,6 +117,7 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -146,6 +150,7 @@
             "description": "Privatize mines",
             "voted": true,
             "order": 2,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -178,6 +183,7 @@
             "description": "Mixed mines",
             "voted": false,
             "order": 3,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -216,6 +222,7 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -248,6 +255,7 @@
             "description": "test",
             "voted": true,
             "order": 2,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -280,6 +288,7 @@
             "description": "test",
             "voted": false,
             "order": 3,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -318,6 +327,7 @@
             "description": "Nationalize industry",
             "voted": false,
             "order": 1,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -350,6 +360,7 @@
             "description": "Privatize industry",
             "voted": true,
             "order": 2,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -382,6 +393,7 @@
             "description": "Mixed industry",
             "voted": false,
             "order": 3,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -426,6 +438,7 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -458,6 +471,7 @@
             "description": "test",
             "voted": true,
             "order": 2,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -496,6 +510,7 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",

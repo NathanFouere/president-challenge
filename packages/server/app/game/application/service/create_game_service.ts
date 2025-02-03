@@ -33,13 +33,12 @@ export default class CreateGameService {
     const game = aGame()
       .withUserId(user.id)
       .withTurn(0)
+      .withPoliticalWeight(25)
       .build();
 
     try {
       await this.gameRepository.save(game);
-
       await this.startupService.initialize(game.id);
-
       await this.gameRepository.save(game);
     }
     catch (error) {

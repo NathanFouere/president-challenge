@@ -23,6 +23,9 @@ export default class Law extends BaseModel {
   declare description: string;
 
   @column()
+  declare politicalWeightRequired: number;
+
+  @column()
   declare gameId: number;
 
   @belongsTo(() => Game)

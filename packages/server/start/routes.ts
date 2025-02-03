@@ -27,6 +27,7 @@ router.group(() => {
 /* GAME */
 
 const GetGamesController = () => import('#game/infrastructure/controllers/get_games_controller');
+const GetGameController = () => import('#game/infrastructure/controllers/get_game_controller');
 const CreateGameController = () => import('../app/game/infrastructure/controllers/create_game_controller.js');
 const DeleteGameController = () => import('../app/game/infrastructure/controllers/delete_game_controller.js');
 const ChangeTurnController = () => import('../app/game/infrastructure/controllers/change_turn_controller.js');
@@ -34,6 +35,7 @@ const GetTurnInformationsController = () => import('../app/game/infrastructure/c
 
 router.group(() => {
   router.get('/', [GetGamesController, 'getUserGames']).use(middleware.auth());
+  router.get('/:id', [GetGameController, 'getUserGame']).use(middleware.auth());
   router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
   router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
   router.post('/change-turn/:gameId', [ChangeTurnController, 'changeTurn']).use(middleware.auth());
@@ -72,7 +74,7 @@ router.group(() => {
   router.get('/senate/:gameId', [GetSenateController, 'getSenate']).use(middleware.auth());
   router.get('/parliament/:gameId', [GetParliamentController, 'getParliament']).use(middleware.auth());
   router.get('/law-categories/:gameId', [GetLawCategoriesController, 'getLawCategories']).use(middleware.auth());
-  router.get('/law/:gameId/:lawId/:turn', [GetLawController, 'getLaw']).use(middleware.auth());
+  router.get('/law/:gameId/:lawId', [GetLawController, 'getLaw']).use(middleware.auth());
   router.post('/vote-law/:gameId/:lawId', [VoteLawController, 'voteLaw']).use(middleware.auth());
 }).prefix('api/legislature');
 

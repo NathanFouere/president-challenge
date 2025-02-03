@@ -18,6 +18,7 @@ const Routes = {
   },
   Game: {
     GetGames: () => `${gamePrefix}/`,
+    GetGame: (id: number) => `${gamePrefix}/${id}`,
     CreateGame: () => `${gamePrefix}/create`,
     DeleteGame: (id: number) => `${gamePrefix}/delete/${id}`,
     ChangeTurn: (gameId: number) => `${gamePrefix}/change-turn/${gameId}`,
@@ -36,7 +37,7 @@ const Routes = {
     GetSenate: (gameId: number) => `${legislaturePrefix}/senate/${gameId}`,
     GetParliament: (gameId: number) => `${legislaturePrefix}/parliament/${gameId}`,
     GetLawCategories: (gameId: number) => `${legislaturePrefix}/law-categories/${gameId}`,
-    GetLaw: (gameId: number, lawId: number, turn: number) => `${legislaturePrefix}/law/${gameId}/${lawId}/${turn}`,
+    GetLaw: (gameId: number, lawId: number) => `${legislaturePrefix}/law/${gameId}/${lawId}/`,
     VoteLaw: (gameId: number, lawId: number) => `${legislaturePrefix}/vote-law/${gameId}/${lawId}`,
   },
   SocialClass: {

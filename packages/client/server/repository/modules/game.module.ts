@@ -1,19 +1,29 @@
-import type { Game } from '@shared/dist/game/game';
+import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
 import type { TurnInformationsDto } from '@shared/turn-informations/turn-informations-dto';
+import type { GameDto } from '@shared/game/game-dto';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 
 class GameModule extends FetchFactory {
   private readonly RESOURCE = Routes.Game;
 
-  public async getUserGames(): Promise<Game[]> {
-    return this.call<Game[]>(
+  public async getUserGames(): Promise<MinimalGameDto[]> {
+    return this.call<MinimalGameDto[]>(
       {
         method: 'GET',
         url: `${this.RESOURCE.GetGames()}`,
       },
     );
   };
+
+  public async getGame(gameId: number): Promise<GameDto> {
+    return this.call<GameDto>(
+      {
+        method: 'GET',
+        url: `${this.RESOURCE.GetGame(gameId)}`,
+      },
+    );
+  }
 
   public async createGame(): Promise<void> {
     return this.call(
@@ -33,8 +43,8 @@ class GameModule extends FetchFactory {
     );
   }
 
-  public async changeTurn(gameId: number): Promise<Game> {
-    return this.call<Game>(
+  public async changeTurn(gameId: number): Promise<MinimalGameDto> {
+    return this.call<MinimalGameDto>(
       {
         method: 'POST',
         url: `${this.RESOURCE.ChangeTurn(gameId)}`,

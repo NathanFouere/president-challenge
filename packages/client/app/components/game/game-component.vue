@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import type { Game } from '@shared/game/game';
+import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
 import { getDateFromTurnNumber } from '@shared/utils/date-converter';
 import ConfirmDeletionModal from '../common/modal/confirm-deletion-modal.vue';
 
 const props = defineProps<{
-  game: Game;
+  game: MinimalGameDto;
   isSelected: boolean;
+  isSelectingGame: boolean;
   pendingDeletion: boolean;
 }>();
 
 const emit = defineEmits<{
   (event: 'deleteGame', deletedGameId: number): void;
-  (event: 'selectGame', selectedGame: Game): void;
+  (event: 'selectGame', selectedGame: MinimalGameDto): void;
 }>();
 
 const handleDelete = () => {
@@ -42,6 +43,7 @@ const handleSelect = () => {
         <UButton
           label="Select"
           :disabled="isSelected || pendingDeletion"
+          :loading="isSelectingGame"
           @click="handleSelect"
         />
       </div>

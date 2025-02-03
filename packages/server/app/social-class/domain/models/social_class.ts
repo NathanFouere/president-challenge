@@ -142,4 +142,12 @@ export default class SocialClass extends BaseModel {
         throw new Error('Invalid social class type');
     }
   }
+
+  public setSector(sector: Sector): void {
+    this.$setRelated('sector', sector);
+  }
+
+  public setFinancialFlows(financialFlows: SocialClassFinancialFlow[]): void {
+    this.$setRelated('financialFlows', financialFlows);
+  }
 }

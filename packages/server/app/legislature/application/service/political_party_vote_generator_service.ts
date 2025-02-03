@@ -4,38 +4,37 @@ import type LawVoteResults from '#legislature/domain/models/law_vote_results';
 import type { LegislatureType } from '#legislature/domain/models/legislature_type';
 import type LawVotesPercentagePerPoliticalParty
   from '#legislature/domain/models/law_votes_percentage_per_political_party';
-import GetPoliticalPartyOfGameQuery from '#political-party/application/queries/get_political_party_of_game_query';
 import { aPoliticalPartyVoteForLaw } from '#legislature/application/builders/political_party_vote_for_law_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetPoliticalPartyOfGameQueryHandler
-  from '#political-party/application/queries/i_get_political_party_of_game_query_handler';
+import {
+  IPoliticalPartyVoteForLawRepository,
+} from '#legislature/domain/repository/i_political_party_vote_for_law_repository';
+import type PoliticalPartyVoteForLaw from '#legislature/domain/models/political_party_vote_for_law';
 
 @inject()
 export default class PoliticalPartyVoteGeneratorService {
   constructor(
-    private readonly getPoliticalPartyOfGameQueryHandler: IGetPoliticalPartyOfGameQueryHandler,
+    private readonly politicalPartyVotesForLawRepository: IPoliticalPartyVoteForLawRepository,
   ) {
   }
 
-  public async generateVotesForPoliticalParties(law: Law, lawVoteResults: LawVoteResults, legislatureType: LegislatureType): Promise<void> {
-    const createVotesForPoliticalPartiesPromises = [];
+  public async generateVotesForPoliticalParties(law: Law, lawVoteResults: LawVoteResults, legislatureType: LegislatureType): Promise<PoliticalPartyVoteForLaw[]> {
+    const politicalPartyVotesForLaw = [];
     for (const votePercentagePerPoliticalParty of law.percentagesOfVotesForPoliticalParty) {
-      createVotesForPoliticalPartiesPromises.push(this.generateVotesForPoliticalParty(law.gameId, votePercentagePerPoliticalParty, lawVoteResults, legislatureType));
+      politicalPartyVotesForLaw.push(this.generateVotesForPoliticalParty(votePercentagePerPoliticalParty, lawVoteResults, legislatureType));
     }
 
-    await Promise.all(createVotesForPoliticalPartiesPromises);
+    await this.politicalPartyVotesForLawRepository.createMany(politicalPartyVotesForLaw);
+
+    return politicalPartyVotesForLaw;
   }
 
-  private async generateVotesForPoliticalParty(gameId: number, lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty, lawVoteResults: LawVoteResults, legislatureType: LegislatureType): Promise<void> {
-    const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handleForVote(
-      new GetPoliticalPartyOfGameQuery(gameId, lawVotesPercentagePerPoliticalParty.politicalPartyId),
-    );
-
-    await aPoliticalPartyVoteForLaw()
-      .withPoliticalPartyId(politicalParty.id)
+  private generateVotesForPoliticalParty(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty, lawVoteResults: LawVoteResults, legislatureType: LegislatureType): PoliticalPartyVoteForLaw {
+    return aPoliticalPartyVoteForLaw()
+      .withPoliticalPartyId(lawVotesPercentagePerPoliticalParty.politicalPartyId)
       .withLawVoteResultsId(lawVoteResults.id)
-      .withVotesFor(politicalParty.getVotesInFavorOfLaw(lawVotesPercentagePerPoliticalParty, legislatureType))
-      .withVotesAgainst(politicalParty.getVotesAgainstLaw(lawVotesPercentagePerPoliticalParty, legislatureType))
-      .exist();
+      .withVotesFor(lawVotesPercentagePerPoliticalParty.politicalParty.getVotesInFavorOfLaw(lawVotesPercentagePerPoliticalParty, legislatureType))
+      .withVotesAgainst(lawVotesPercentagePerPoliticalParty.politicalParty.getVotesAgainstLaw(lawVotesPercentagePerPoliticalParty, legislatureType))
+      .build();
   }
 }

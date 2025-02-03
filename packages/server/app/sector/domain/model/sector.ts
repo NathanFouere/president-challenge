@@ -66,7 +66,7 @@ export default class Sector extends BaseModel {
     }
   }
 
-  public setEconomicalSituation(economicalSituation: number) {
+  public setEconomicalSituation(economicalSituation: number): void {
     if (economicalSituation > 4) {
       economicalSituation = 4;
     }
@@ -75,5 +75,9 @@ export default class Sector extends BaseModel {
     }
 
     this.economicalSituation = economicalSituation;
+  }
+
+  public setSocialClasses(socialClasses: SocialClass[]): void {
+    this.$setRelated('socialClasses', socialClasses);
   }
 }

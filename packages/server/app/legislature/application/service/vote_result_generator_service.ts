@@ -6,6 +6,7 @@ import type Law from '#legislature/domain/models/law';
 import type LawVote from '#legislature/domain/models/law_vote';
 import { LegislatureType } from '#legislature/domain/models/legislature_type';
 import { aLawVoteResult } from '#legislature/application/builders/law_vote_results_builder';
+import type LawVoteResults from '#legislature/domain/models/law_vote_results';
 
 @inject()
 export default class VoteResultGeneratorService {
@@ -14,16 +15,22 @@ export default class VoteResultGeneratorService {
   }
 
   public async generateAllVoteResults(law: Law, lawVote: LawVote): Promise<void> {
-    await this.generateVoteResults(law, lawVote, LegislatureType.PARLIAMENT);
-    await this.generateVoteResults(law, lawVote, LegislatureType.SENATE);
+    const voteResultsInParliament = await this.generateVoteResults(law, lawVote, LegislatureType.PARLIAMENT);
+    const voteResultsInSenate = await this.generateVoteResults(law, lawVote, LegislatureType.SENATE);
+    lawVote.setVoteResultsInSenate(voteResultsInSenate);
+    lawVote.setVoteResultsInParliament(voteResultsInParliament);
   }
 
-  private async generateVoteResults(law: Law, lawVote: LawVote, legislatureType: LegislatureType): Promise<void> {
+  private async generateVoteResults(law: Law, lawVote: LawVote, legislatureType: LegislatureType): Promise<LawVoteResults> {
     const lawVoteResults = await aLawVoteResult()
       .withLawVoteId(lawVote.id)
       .withLegislatureType(legislatureType)
       .exist();
 
-    await this.politicalPartyVoteGeneratorService.generateVotesForPoliticalParties(law, lawVoteResults, legislatureType);
+    lawVoteResults.politicalPartiesVoteResults.push(
+      ...await this.politicalPartyVoteGeneratorService.generateVotesForPoliticalParties(law, lawVoteResults, legislatureType),
+    );
+
+    return lawVoteResults;
   }
 }

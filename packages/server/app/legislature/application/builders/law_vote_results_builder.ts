@@ -22,6 +22,7 @@ export default class LawVoteResultsBuilder {
     if (this.legislatureType !== null) lawVoteResults.legislatureType = this.legislatureType;
     else throw new Error('Legislature type is required');
 
+    lawVoteResults.$setRelated('politicalPartiesVoteResults', []);
     return lawVoteResults;
   }
 

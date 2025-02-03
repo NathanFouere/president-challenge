@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useUserStore } from '../store/user/user.store';
-import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
-import { useGameStore } from '../store/game/game.store';
-import { usePageTitle } from '../composables/usePageTitle';
+import { useUserStore } from '~/store/user/user.store';
+import { NUXT_ROUTES } from '~~/config/routes/nuxt-routes';
+import { useGameStore } from '~/store/game/game.store';
+import { usePageTitle } from '~/composables/usePageTitle';
+import SelectedGameInformationComponent from '~/components/game/selected-game-information-component.vue';
 
 const userStore = useUserStore();
 const gameStore = useGameStore();
@@ -81,6 +82,10 @@ const links = computed(() => [
             {{ pageTitle.title.value }}
           </template>
           <template #right>
+            <selected-game-information-component
+              v-if="gameStore.hasSelectedGame"
+              :game="gameStore.requireSelectedGame"
+            />
             <UIcon
               class="h-5 w-5 mt-0.5 "
               name="i-heroicons-arrow-turn-down-left"
