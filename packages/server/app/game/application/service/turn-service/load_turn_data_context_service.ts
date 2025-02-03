@@ -47,7 +47,7 @@ export class LoadTurnDataContextService {
       this.getProductsOfGameQueryHandler.handleForSwitchTurn(new GetProductsOfGameQuery(game.id)),
     ]);
 
-    state.$setRelated('financialFlows', []);
+    state.setFinancialFlows([]);
 
     const socialClassesPerType = this.mapSocialClassesToSectorsAndGroupByType(socialClasses, sectors);
 
@@ -75,15 +75,15 @@ export class LoadTurnDataContextService {
     };
 
     for (const sector of sectors) {
-      sector.$setRelated('socialClasses', []);
+      sector.setSocialClasses([]);
     }
 
     for (const socialClass of socialClasses) {
-      socialClass.$setRelated('financialFlows', []);
+      socialClass.setFinancialFlows([]);
       const sector = sectors.find(sector => sector.id === socialClass.sectorId);
       if (sector) {
         sector.socialClasses.push(socialClass);
-        socialClass.$setRelated('sector', sector);
+        socialClass.setSector(sector);
       }
 
       if (socialClass.type === SocialClassTypes.CAPITALIST) {

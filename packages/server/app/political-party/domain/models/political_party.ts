@@ -75,16 +75,26 @@ export default class PoliticalParty extends BaseModel {
   }
 
   public getVotesInFavorOfLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty, legislatureType: LegislatureType): number {
+    let votesInFavorOfLaw = 0;
     if (legislatureType === LegislatureType.PARLIAMENT) {
-      return this.parliamentSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
+      votesInFavorOfLaw = this.parliamentSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
     }
-    return this.senateSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
+    else {
+      votesInFavorOfLaw = this.senateSeats.numberOfSeats * (lawVotesPercentagePerPoliticalParty.percentage / 100);
+    }
+
+    return Math.round(votesInFavorOfLaw);
   }
 
   public getVotesAgainstLaw(lawVotesPercentagePerPoliticalParty: LawVotesPercentagePerPoliticalParty, legislatureType: LegislatureType): number {
+    let votesAgainstLaw = 0;
     if (legislatureType === LegislatureType.PARLIAMENT) {
-      return this.parliamentSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
+      votesAgainstLaw = this.parliamentSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
     }
-    return this.senateSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
+    else {
+      votesAgainstLaw = this.senateSeats.numberOfSeats * ((100 - lawVotesPercentagePerPoliticalParty.percentage) / 100);
+    }
+
+    return Math.round(votesAgainstLaw);
   }
 }

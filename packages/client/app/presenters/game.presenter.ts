@@ -1,14 +1,14 @@
 import { injectable } from 'inversify';
-import type { Game } from '@shared/game/game';
+import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
 import type GameModule from '../../server/repository/modules/game.module';
 import { useGameStore } from '~/store/game/game.store';
 import { useCustomToast } from '~/composables/useCustomToast';
 
 @injectable()
 export class GamePresenter {
-  public readonly gameModule: GameModule = useNuxtApp().$api.game;
+  private readonly gameModule: GameModule = useNuxtApp().$api.game;
   public readonly gameStore = useGameStore();
-  public readonly toast = useCustomToast();
+  private readonly toast = useCustomToast();
 
   public hasMaxGames(): boolean {
     return this.gameStore.userGames.length >= 3;
@@ -54,11 +54,21 @@ export class GamePresenter {
     this.gameStore.unsetGamePendingDeletionId();
   }
 
-  public async selectGame(game: Game): Promise<void> {
-    this.gameStore.setSelectedGame(game);
+  public async selectGame(game: MinimalGameDto): Promise<void> {
+    this.gameStore.setSelectingGame(game.id);
+    try {
+      const gameDto = await this.gameModule.getGame(game.id);
+      this.gameStore.setSelectedGame(gameDto);
+    }
+    catch (error) {
+      this.toast.showError('Failed to select game.');
+    }
+    finally {
+      this.gameStore.unsetSelectingGame();
+    }
   }
 
-  private async fetchUserGames(): Promise<Game[]> {
+  private async fetchUserGames(): Promise<MinimalGameDto[]> {
     this.gameStore.setGettingGames();
     try {
       const games = await this.gameModule.getUserGames();

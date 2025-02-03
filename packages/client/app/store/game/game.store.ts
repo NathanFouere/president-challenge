@@ -1,19 +1,24 @@
-import type { Game } from '@shared/game/game';
+import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
+import type { GameDto } from '@shared/game/game-dto';
 
 export const useGameStore = defineStore('gameStore', {
   state: () => ({
-    games: [] as Game[],
-    selectedGame: null as Game | null,
+    games: [] as MinimalGameDto[],
+    selectedGame: null as GameDto | null,
     creatingGame: false,
     errorOnCreatingGame: false,
     gettingGames: false,
     errorOnGettingGames: false,
     gamePendingDeletionId: null as number | null,
     changingTurn: false,
+    selectingGameId: null as number | null,
   }),
   getters: {
-    userGames(state): Game[] {
+    userGames(state): MinimalGameDto[] {
       return state.games;
+    },
+    getSelectingGameId(state): number | null {
+      return state.selectingGameId;
     },
     isCreatingGame(state): boolean {
       return state.creatingGame;
@@ -33,7 +38,13 @@ export const useGameStore = defineStore('gameStore', {
     hasSelectedGame(state): boolean {
       return state.selectedGame != null;
     },
-    getSelectedGame(state): Game | null {
+    getSelectedGame(state): GameDto | null {
+      return state.selectedGame;
+    },
+    requireSelectedGame(state): GameDto {
+      if (!state.selectedGame) {
+        throw new Error('No game selected');
+      }
       return state.selectedGame;
     },
     getSelectedGameId(state): number {
@@ -53,8 +64,14 @@ export const useGameStore = defineStore('gameStore', {
     },
   },
   actions: {
-    setGames(games: Game[]) {
+    setGames(games: MinimalGameDto[]) {
       this.games = games;
+    },
+    setSelectingGame(gameId: number) {
+      this.selectingGameId = gameId;
+    },
+    unsetSelectingGame() {
+      this.selectingGameId = null;
     },
     setChangingTurn() {
       this.changingTurn = true;
@@ -86,11 +103,11 @@ export const useGameStore = defineStore('gameStore', {
     unsetErrorOnCreatingGame() {
       this.errorOnCreatingGame = false;
     },
-    setSelectedGame(game: Game) {
+    setSelectedGame(game: GameDto) {
       this.selectedGame = game;
     },
-    updateSelectedGame(game: Game) {
-      this.selectedGame = { ...game };
+    updateSelectedGame(game: GameDto) {
+      this.selectedGame = game;
     },
     unsetSelectedGame() {
       this.selectedGame = null;

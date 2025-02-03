@@ -3,4 +3,5 @@ export interface MinimalLawDto {
   name: string;
   description: string;
   voted: boolean;
+  politicalWeightRequired: number;
 }

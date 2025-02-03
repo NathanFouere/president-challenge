@@ -7,6 +7,12 @@ export class LawBuilder {
   protected lawGroupId: number | null = null;
   protected name: string | null = null;
   protected description: string | null = null;
+  protected politicalWeightRequired: number | null = null;
+
+  public withPoliticalWeightRequired(politicalWeightRequired: number): this {
+    this.politicalWeightRequired = politicalWeightRequired;
+    return this;
+  }
 
   public withName(name: string): this {
     this.name = name;
@@ -50,6 +56,8 @@ export class LawBuilder {
     if (this.voted !== null) law.voted = this.voted;
     else throw new Error('Voted status is required');
     if (this.order !== null) law.order = this.order;
+    if (this.politicalWeightRequired !== null) law.politicalWeightRequired = this.politicalWeightRequired;
+    else throw new Error('Political weight required is required');
 
     return law;
   }

@@ -20,6 +20,28 @@ watch(
     }
   },
 );
+
+const tooltip = ref('');
+
+watch(
+  () => lawPresenter.lawStore.getLaw,
+  () => {
+    if (lawPresenter.lawStore.requireLaw) {
+      if (lawPresenter.lawStore.requireLaw.voted) {
+        tooltip.value = 'Law is already voted';
+      }
+      else if (lawPresenter.lawStore.requireLaw.superiorToAvailablePoliticalWeight) {
+        tooltip.value = 'Law required political weight is superior to available one';
+      }
+      else if (lawPresenter.lawStore.requireLaw.alreadyVotedForThisTurn) {
+        tooltip.value = 'You already voted for this law on this turn';
+      }
+      else {
+        tooltip.value = 'Vote for Law';
+      }
+    }
+  },
+);
 </script>
 
 <template>
@@ -43,6 +65,7 @@ watch(
         />
         <div v-else>
           <p>{{ lawPresenter.lawStore.requireLaw.name }}</p>
+          <p>Political Weight required : {{ lawPresenter.lawStore.requireLaw.politicalWeightRequired }}</p>
         </div>
       </template>
 
@@ -67,12 +90,12 @@ watch(
         <UTooltip
           v-else
           class="align-baseline"
-          :text="!lawPresenter.lawStore.requireLaw.canVoteForThisTurn ? 'You already vote for this on on the current turn' : alreadyVoted ? 'Law is already voted' : 'Vote for Law'"
+          :text="tooltip"
         >
           <UButton
             class="align-baseline"
             :label="alreadyVoted ? 'Already voted' : 'Vote for'"
-            :disabled="alreadyVoted || !lawPresenter.lawStore.requireLaw.canVoteForThisTurn"
+            :disabled="lawPresenter.lawStore.requireLaw.voted || lawPresenter.lawStore.requireLaw.alreadyVotedForThisTurn || lawPresenter.lawStore.requireLaw.superiorToAvailablePoliticalWeight"
             :loading="lawPresenter.lawStore.isVotingLaw"
             @click="lawPresenter.voteLaw(props.lawId)"
           />

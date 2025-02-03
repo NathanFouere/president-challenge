@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Game } from '@shared/dist/game/game';
+import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
 import container from '../../../config/container';
 import type { GamePresenter } from '~/presenters/game.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
@@ -26,8 +26,9 @@ onMounted(async () => {
       :game="game"
       :is-selected="gamePresenter.gameStore.selectedGame?.id === game.id"
       :pending-deletion="gamePresenter.gameStore.gamePendingDeletionId === game.id"
+      :is-selecting-game="gamePresenter.gameStore.selectingGameId === game.id"
       class="mb-3"
-      @select-game="(selectedGame: Game) => gamePresenter.selectGame(selectedGame)"
+      @select-game="(selectedGame: MinimalGameDto) => gamePresenter.selectGame(selectedGame)"
       @delete-game="(deletedGameId) => gamePresenter.deleteGame(deletedGameId)"
     />
   </template>

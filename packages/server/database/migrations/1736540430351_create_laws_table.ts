@@ -16,6 +16,7 @@ export default class extends BaseSchema {
 
       table.boolean('voted').notNullable();
       table.integer('order').notNullable();
+      table.integer('political_weight_required').notNullable();
       table.string('name').notNullable();
       table.text('description').notNullable();
 

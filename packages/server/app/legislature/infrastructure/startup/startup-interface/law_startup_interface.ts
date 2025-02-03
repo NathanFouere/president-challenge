@@ -7,5 +7,6 @@ export interface LawStartupInterface {
   description: string;
   voted: boolean;
   order: number;
+  politicalWeightRequired: number;
   votesPerAffiliation: VotePerAffiliationStartupInterface[];
 }

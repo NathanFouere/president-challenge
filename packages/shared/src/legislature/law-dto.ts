@@ -7,7 +7,9 @@ export interface LawDto extends MinimalLawDto {
   description: string;
   voted: boolean;
   madeIncompatibleBy: string | undefined;
-  canVoteForThisTurn: boolean;
+  alreadyVotedForThisTurn: boolean;
+  superiorToAvailablePoliticalWeight: boolean;
+  politicalWeightRequired: number;
   voteResultsDatas: VoteResultsData[];
 }
 
