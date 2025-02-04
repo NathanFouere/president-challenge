@@ -2,9 +2,9 @@ import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import Game from '#game/domain/models/game';
-import LawGroup from '#legislature/domain/models/law_group';
-import LawVotesPercentagePerPoliticalParty from '#legislature/domain/models/law_votes_percentage_per_political_party';
-import LawVote from '#legislature/domain/models/law_vote';
+import LawGroup from '#law/domain/model/law_group';
+import LawVotesPercentagePerPoliticalParty from '#law/domain/model/law_votes_percentage_per_political_party';
+import LawVote from '#law/domain/model/law_vote';
 
 export default class Law extends BaseModel {
   @column({ isPrimary: true })
