@@ -8,7 +8,7 @@ import PoliticalPartySeatsParliament from '#legislature/domain/models/political_
 import PoliticalPartySeatsSenate from '#legislature/domain/models/political_party_seats_senate';
 import PoliticalPartyHappinessPerTurn from '#political-party/domain/models/political_party_happiness_per_turn';
 import PoliticalPartyHappinessModifier from '#political-party/domain/models/political_party_happiness_modifier';
-import LawVotesPercentagePerPoliticalParty from '#legislature/domain/models/law_votes_percentage_per_political_party';
+import LawVotesPercentagePerPoliticalParty from '#law/domain/model/law_votes_percentage_per_political_party';
 import { LegislatureType } from '#legislature/domain/models/legislature_type';
 
 export default class PoliticalParty extends BaseModel {

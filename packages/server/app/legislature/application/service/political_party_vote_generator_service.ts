@@ -1,9 +1,9 @@
 import { inject } from '@adonisjs/core';
-import type Law from '#legislature/domain/models/law';
-import type LawVoteResults from '#legislature/domain/models/law_vote_results';
+import type Law from '#law/domain/model/law';
+import type LawVoteResults from '#law/domain/model/law_vote_results';
 import type { LegislatureType } from '#legislature/domain/models/legislature_type';
 import type LawVotesPercentagePerPoliticalParty
-  from '#legislature/domain/models/law_votes_percentage_per_political_party';
+  from '#law/domain/model/law_votes_percentage_per_political_party';
 import { aPoliticalPartyVoteForLaw } from '#legislature/application/builders/political_party_vote_for_law_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {

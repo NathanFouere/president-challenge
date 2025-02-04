@@ -66,9 +66,9 @@ router.group(() => {
 
 const GetSenateController = () => import('#legislature/infrastructure/controllers/get_senate_controller');
 const GetParliamentController = () => import('#legislature/infrastructure/controllers/get_parliament_controller');
-const GetLawCategoriesController = () => import('#legislature/infrastructure/controllers/get_law_categories_controller');
-const GetLawController = () => import('#legislature/infrastructure/controllers/get_law_controller');
-const VoteLawController = () => import('#legislature/infrastructure/controllers/vote_law_controller');
+const GetLawCategoriesController = () => import('#law/infrastructure/controllers/get_law_categories_controller');
+const GetLawController = () => import('#law/infrastructure/controllers/get_law_controller');
+const VoteLawController = () => import('#law/infrastructure/controllers/vote_law_controller');
 
 router.group(() => {
   router.get('/senate/:gameId', [GetSenateController, 'getSenate']).use(middleware.auth());
