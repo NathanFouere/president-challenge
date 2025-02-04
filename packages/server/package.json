@@ -17,6 +17,7 @@
   "imports": {
     "#common/*": "./app/common/*.js",
     "#budget/*": "./app/budget/*.js",
+    "#law/*": "./app/law/*.js",
     "#user/*": "./app/user/*.js",
     "#tax/*": "./app/tax/*.js",
     "#social-class/*": "./app/social-class/*.js",

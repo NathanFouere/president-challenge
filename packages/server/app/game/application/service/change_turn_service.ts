@@ -12,7 +12,7 @@ import TurnResetService from '#game/application/service/turn-service/turn_reset_
 @inject()
 export default class ChangeTurnService {
   constructor(
-    private readonly turnCacheService: LoadTurnDataContextService,
+    private readonly loadTurnDataContextService: LoadTurnDataContextService,
     private readonly turnPipelineFactory: TurnPipelineFactory,
     private readonly turnResetService: TurnResetService,
   ) {
@@ -22,8 +22,8 @@ export default class ChangeTurnService {
     try {
       game.changeTurn();
       await this.turnResetService.execute(game.id);
-      const turnDataCache = await this.turnCacheService.load(game);
-      const turnPipeline = this.turnPipelineFactory.createPipeline(turnDataCache);
+      const turnDataContext = await this.loadTurnDataContextService.load(game);
+      const turnPipeline = this.turnPipelineFactory.createPipeline(turnDataContext);
       await turnPipeline.execute();
     }
     catch (e) {

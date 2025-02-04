@@ -18,7 +18,7 @@ import { SectorStartupService } from '#sector/infrastructure/startup/sector_star
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import LawStartupService from '#legislature/infrastructure/startup/law_startup_service';
+import LawStartupService from '#law/infrastructure/startup/law_startup_service';
 import { StartupPipeline } from '#common/startup/startup_pipeline';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { TaxStartupService } from '#tax/infrastructure/startup/tax_startup_service';
