@@ -9,7 +9,13 @@ export default class TaxBuilder {
   private level: TaxLevel | null = null;
   private stateId: number | null = null;
   private baseRate: number | null = null;
+  private gameId: number | null = null;
   private color: string | null = null;
+
+  public withGameId(gameId: number): this {
+    this.gameId = gameId;
+    return this;
+  }
 
   public withBaseRate(baseRate: number): this {
     this.baseRate = baseRate;
@@ -62,6 +68,8 @@ export default class TaxBuilder {
     else throw new Error('Base rate is required');
     if (this.color != null) tax.color = this.color;
     else throw new Error('Color is required');
+    if (this.gameId != null) tax.gameId = this.gameId;
+    else throw new Error('Game ID is required');
     return tax;
   }
 

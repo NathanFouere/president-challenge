@@ -5,6 +5,7 @@ import Game from '#game/domain/models/game';
 import LawGroup from '#law/domain/model/law_group';
 import LawVotesPercentagePerPoliticalParty from '#law/domain/model/law_votes_percentage_per_political_party';
 import LawVote from '#law/domain/model/law_vote';
+import type { LawType } from '#law/domain/model/law_type';
 
 export default class Law extends BaseModel {
   @column({ isPrimary: true })
@@ -15,6 +16,9 @@ export default class Law extends BaseModel {
 
   @belongsTo(() => LawGroup)
   declare lawGroup: BelongsTo<typeof LawGroup>;
+
+  @column()
+  declare type: LawType;
 
   @column()
   declare name: string;

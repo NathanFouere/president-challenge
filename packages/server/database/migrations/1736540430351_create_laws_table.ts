@@ -1,4 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
+import { LawType } from '#law/domain/model/law_type';
 
 export default class extends BaseSchema {
   protected tableName = 'laws';
@@ -14,6 +15,11 @@ export default class extends BaseSchema {
         .inTable('games')
         .onDelete('CASCADE');
 
+      table.enum('type', [
+        LawType.BUDGET_LEVEL,
+        LawType.TAX_LEVEL,
+        LawType.SECTOR_PROPERTY,
+      ]).notNullable();
       table.boolean('voted').notNullable();
       table.integer('order').notNullable();
       table.integer('political_weight_required').notNullable();

@@ -35,7 +35,7 @@ export default class StartupPipelineFactory {
     private readonly productStartupService: ProductStartupService,
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
-    private readonly lawGroupStartupService: LawStartupService,
+    private readonly lawStartupService: LawStartupService,
     private readonly taxStartupService: TaxStartupService,
   ) {
   }
@@ -52,8 +52,8 @@ export default class StartupPipelineFactory {
         this.socialClassStartupService,
         this.productStartupService,
         this.stateStartupService,
-        this.lawGroupStartupService,
         this.taxStartupService,
+        this.lawStartupService,
       ],
       gameId,
     );

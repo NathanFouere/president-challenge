@@ -1,4 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
+import { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 
 export default class extends BaseSchema {
   protected tableName = 'sectors';
@@ -19,9 +20,9 @@ export default class extends BaseSchema {
         .notNullable();
 
       table.enum('ownership_type', [
-        'PRIVATE',
-        'MIXED',
-        'PUBLIC',
+        SectorOwnershipType.PUBLIC,
+        SectorOwnershipType.MIXED,
+        SectorOwnershipType.PRIVATE,
       ]).notNullable();
 
       table

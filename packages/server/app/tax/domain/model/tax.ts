@@ -4,10 +4,17 @@ import type { DateTime } from 'luxon';
 import type { TaxType } from '#tax/domain/model/tax_type';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
 import State from '#state/domain/model/state';
+import Game from '#game/domain/models/game';
 
 export default class Tax extends BaseModel {
   @column({ isPrimary: true })
   declare id: number;
+
+  @column()
+  declare gameId: number;
+
+  @belongsTo(() => Game)
+  declare game: BelongsTo<typeof Game>;
 
   @column()
   declare name: string;

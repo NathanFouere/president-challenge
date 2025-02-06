@@ -6,6 +6,7 @@ import IGetBudgetOfStateQueryHandler from '#state/application/query/i_get_budget
 import IStateFinancialFlowRepository from '#state/domain/repository/i_state_financial_flow_repository';
 import ISocialClassFinancialFlowRepository
   from '#social-class/domain/repository/i_social_class_financial_flow_repository';
+import IGetBudgetByGameAndTypeQueryHandler from '#state/application/query/i_get_budget_by_game_and_type_query_handler';
 
 export default class StateProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -31,6 +32,14 @@ export default class StateProvider extends AppProvider {
     const { default: SocialClassFinancialFlowRepository } = await import(
       '#social-class/infrastructure/repository/social_class_financial_flow_repository'
     );
+
+    const { default: GetBudgetByGameAndTypeQueryHandler } = await import(
+      '#state/infrastructure/query/get_budget_by_game_and_type_query_handler'
+    );
+
+    this.app.container.bind(IGetBudgetByGameAndTypeQueryHandler, () => {
+      return new GetBudgetByGameAndTypeQueryHandler();
+    });
 
     this.app.container.bind(ISocialClassFinancialFlowRepository, () => {
       return new SocialClassFinancialFlowRepository();

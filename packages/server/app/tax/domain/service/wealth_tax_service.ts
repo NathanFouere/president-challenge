@@ -9,18 +9,18 @@ import StateFinancialFlowFactory from '#state/application/factory/state_financia
 import SocialClassFinancialFlowFactory from '#social-class/application/factory/social_class_financial_flow_factory';
 
 @inject()
-export default class IncomeTaxService {
+export default class WealthTaxService {
   constructor(
     private readonly stateFinancialFlowFactory: StateFinancialFlowFactory,
     private readonly socialClassFinancialFlowFactory: SocialClassFinancialFlowFactory,
   ) {
   }
 
-  public applyIncomeTaxes(socialClasses: SocialClass[], state: State, tax: Tax, turn: number): void {
+  public applyWealthTaxes(socialClasses: SocialClass[], state: State, tax: Tax, turn: number): void {
     let taxGenerated = 0;
 
     for (const socialClassTurnContext of socialClasses) {
-      taxGenerated += this.makeSocialClassPayIncomeTax(socialClassTurnContext, tax, turn);
+      taxGenerated += this.makeSocialClassPayWealthTax(socialClassTurnContext, tax, turn);
     }
 
     state.addToEconomicalSituation(taxGenerated);
@@ -30,8 +30,8 @@ export default class IncomeTaxService {
     state.financialFlows.push(financialFlowFromTax);
   }
 
-  private makeSocialClassPayIncomeTax(socialClass: SocialClass, tax: Tax, turn: number): number {
-    const taxGenerated = socialClass.payTaxOnRevenue(tax);
+  private makeSocialClassPayWealthTax(socialClass: SocialClass, tax: Tax, turn: number): number {
+    const taxGenerated = socialClass.payTaxOnWealth(tax);
 
     const financialFlowFromTax = this.socialClassFinancialFlowFactory.createFromTax(socialClass, tax, taxGenerated, turn);
     socialClass.financialFlows.push(financialFlowFromTax);

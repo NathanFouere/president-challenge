@@ -124,7 +124,7 @@ export default class SocialClass extends BaseModel {
     this.economicalSituation = newEconomicalSituation;
   }
 
-  public payTaxOnRevenue(tax: Tax): number {
+  public payTaxOnWealth(tax: Tax): number {
     const taxAmount = tax.calculateTaxAmount(this.economicalSituation);
     this.addEconomicalSituation(-taxAmount);
     return taxAmount;
