@@ -9,6 +9,8 @@ import DuplicateLawVoteForTurnError from '#law/application/error/duplicate_law_v
 import type Game from '#game/domain/models/game';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGameRepository from '#game/domain/repository/i_game_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ApplyLawEffectService from '#law/application/service/law-effect/apply_law_effect_service';
 
 @inject()
 export default class VoteLawService {
@@ -16,6 +18,7 @@ export default class VoteLawService {
     private readonly lawRepository: ILawRepository,
     private readonly lawVoteGeneratorService: LawVoteGeneratorService,
     private readonly gameRepository: IGameRepository,
+    private readonly applyLawEffectService: ApplyLawEffectService,
   ) {
   }
 
@@ -34,6 +37,7 @@ export default class VoteLawService {
         law.setVoted();
         game.updatePoliticalWeight(-law.politicalWeightRequired);
 
+        await this.applyLawEffectService.applyLawEffect(law, game.id);
         await this.gameRepository.save(game);
         await this.unvoteIncompatibleLaws(law.lawGroup);
         await this.lawRepository.save(law);

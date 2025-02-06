@@ -1,5 +1,6 @@
 import type { BudgetLevel } from '#state/domain/model/budget_level';
 import Budget from '#state/domain/model/budget';
+import type { BudgetType } from '#state/domain/model/budget_type';
 
 export default class BudgetBuilder {
   private name: string | null = null;
@@ -7,7 +8,19 @@ export default class BudgetBuilder {
   private color: string | null = null;
   private level: BudgetLevel | null = null;
   private stateId: number | null = null;
+  private gameId: number | null = null;
+  private type: BudgetType | null = null;
   private licensedFileIdentifier: string | null = null;
+
+  public withGameId(gameId: number): this {
+    this.gameId = gameId;
+    return this;
+  }
+
+  public withType(type: BudgetType): this {
+    this.type = type;
+    return this;
+  }
 
   public withName(name: string): this {
     this.name = name;
@@ -54,6 +67,10 @@ export default class BudgetBuilder {
     else throw new Error('Color is required');
     if (this.licensedFileIdentifier) budget.licensedFileIdentifier = this.licensedFileIdentifier;
     else throw new Error('Licensed file identifier is required');
+    if (this.gameId) budget.gameId = this.gameId;
+    else throw new Error('Game id is required');
+    if (this.type) budget.type = this.type;
+    else throw new Error('type is required');
 
     return budget;
   }

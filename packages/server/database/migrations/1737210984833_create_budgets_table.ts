@@ -1,4 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
+import { BudgetType } from '#state/domain/model/budget_type';
 
 export default class extends BaseSchema {
   protected tableName = 'budgets';
@@ -10,9 +11,15 @@ export default class extends BaseSchema {
       table.string('name').notNullable();
       table.string('description').notNullable();
       table.string('color').notNullable();
+      // TODO => ajouter limite car level est issus d'une enum
       table.integer('level').notNullable();
       table.integer('state_id').unsigned().references('id').inTable('states').onDelete('CASCADE');
-
+      table.integer('game_id').unsigned().references('id').inTable('games').onDelete('CASCADE');
+      table.enum('type', [
+        BudgetType.DEFENSE,
+        BudgetType.HEALTH,
+        BudgetType.RETIREMENT,
+      ]).notNullable();
       table.string('licensed_file_identifier')
         .references('identifier')
         .inTable('licensed_files')

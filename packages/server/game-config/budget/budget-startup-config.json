@@ -1,5 +1,6 @@
 [
   {
+    "type": "HEALTH",
     "name": "Health",
     "description": "Health budget",
     "level": 1,
@@ -7,6 +8,7 @@
     "licensedFileIdentifier": "civil-servant-five"
   },
   {
+    "type": "RETIREMENT",
     "name": "Retirement Budget",
     "description": "Retirement budget",
     "level": 1,
@@ -14,6 +16,7 @@
     "licensedFileIdentifier": "land-owner-five"
   },
   {
+    "type": "DEFENSE",
     "name": "Army Budget",
     "description": "Army budget",
     "level": 1,

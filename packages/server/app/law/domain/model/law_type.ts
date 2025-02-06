@@ -1,0 +1,5 @@
+export enum LawType {
+  TAX_LEVEL = 'TAX_LEVEL',
+  BUDGET_LEVEL = 'BUDGET_LEVEL',
+  SECTOR_PROPERTY = 'SECTOR_PROPERTY',
+}

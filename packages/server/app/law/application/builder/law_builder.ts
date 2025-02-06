@@ -1,4 +1,5 @@
 import Law from '#law/domain/model/law';
+import type { LawType } from '#law/domain/model/law_type';
 
 export class LawBuilder {
   protected gameId: number | null = null;
@@ -8,6 +9,7 @@ export class LawBuilder {
   protected name: string | null = null;
   protected description: string | null = null;
   protected politicalWeightRequired: number | null = null;
+  protected type: LawType | null = null;
 
   public withPoliticalWeightRequired(politicalWeightRequired: number): this {
     this.politicalWeightRequired = politicalWeightRequired;
@@ -44,6 +46,11 @@ export class LawBuilder {
     return this;
   }
 
+  public withType(type: LawType): this {
+    this.type = type;
+    return this;
+  }
+
   public build(): Law {
     const law = new Law();
     if (this.name !== null) law.name = this.name;
@@ -56,9 +63,18 @@ export class LawBuilder {
     if (this.voted !== null) law.voted = this.voted;
     else throw new Error('Voted status is required');
     if (this.order !== null) law.order = this.order;
+    else throw new Error('Order is required');
     if (this.politicalWeightRequired !== null) law.politicalWeightRequired = this.politicalWeightRequired;
     else throw new Error('Political weight required is required');
+    if (this.type !== null) law.type = this.type;
+    else throw new Error('Type is required');
 
+    return law;
+  }
+
+  public async exists(): Promise<Law> {
+    const law = this.build();
+    await law.save();
     return law;
   }
 }

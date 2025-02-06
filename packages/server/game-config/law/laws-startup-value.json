@@ -13,6 +13,11 @@
             "voted": false,
             "order": 1,
             "politicalWeightRequired": 5,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Agricultural",
+              "ownershipType": "PUBLIC"
+            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -45,6 +50,11 @@
             "description": "test",
             "voted": true,
             "order": 2,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Agricultural",
+              "ownershipType": "PRIVATE"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -78,6 +88,11 @@
             "description": "test",
             "voted": false,
             "order": 3,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Agricultural",
+              "ownershipType": "MIXED"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -117,6 +132,11 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Mine",
+              "ownershipType": "PUBLIC"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -150,6 +170,11 @@
             "description": "Privatize mines",
             "voted": true,
             "order": 2,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Mine",
+              "ownershipType": "PRIVATE"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -183,6 +208,11 @@
             "description": "Mixed mines",
             "voted": false,
             "order": 3,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Mine",
+              "ownershipType": "MIXED"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -222,6 +252,11 @@
             "description": "test",
             "voted": false,
             "order": 1,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Service",
+              "ownershipType": "PUBLIC"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -255,6 +290,11 @@
             "description": "test",
             "voted": true,
             "order": 2,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Service",
+              "ownershipType": "PRIVATE"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -288,6 +328,11 @@
             "description": "test",
             "voted": false,
             "order": 3,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Service",
+              "ownershipType": "MIXED"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -327,6 +372,11 @@
             "description": "Nationalize industry",
             "voted": false,
             "order": 1,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Industrial",
+              "ownershipType": "PUBLIC"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -360,6 +410,11 @@
             "description": "Privatize industry",
             "voted": true,
             "order": 2,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Industrial",
+              "ownershipType": "PRIVATE"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -393,123 +448,11 @@
             "description": "Mixed industry",
             "voted": false,
             "order": 3,
-            "politicalWeightRequired": 5,
-            "votesPerAffiliation": [
-              {
-                "affiliation": "Far Left",
-                "percentageVoteFor": 100
-              },
-              {
-                "affiliation": "Left",
-                "percentageVoteFor": 80
-              },
-              {
-                "affiliation": "Center Left",
-                "percentageVoteFor": 40
-              },
-              {
-                "affiliation": "Center Right",
-                "percentageVoteFor": 20
-              },
-              {
-                "affiliation": "Right",
-                "percentageVoteFor": 0
-              },
-              {
-                "affiliation": "Far Right",
-                "percentageVoteFor": 0
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "test2",
-    "description": "2",
-    "lawGroups": [
-      {
-        "name": "Test Group",
-        "description": "This is a test group for demonstration purposes.",
-        "laws": [
-          {
-            "name": "test",
-            "description": "test",
-            "voted": false,
-            "order": 1,
-            "politicalWeightRequired": 5,
-            "votesPerAffiliation": [
-              {
-                "affiliation": "Far Left",
-                "percentageVoteFor": 100
-              },
-              {
-                "affiliation": "Left",
-                "percentageVoteFor": 80
-              },
-              {
-                "affiliation": "Center Left",
-                "percentageVoteFor": 40
-              },
-              {
-                "affiliation": "Center Right",
-                "percentageVoteFor": 20
-              },
-              {
-                "affiliation": "Right",
-                "percentageVoteFor": 0
-              },
-              {
-                "affiliation": "Far Right",
-                "percentageVoteFor": 0
-              }
-            ]
-          },
-          {
-            "name": "test voted",
-            "description": "test",
-            "voted": true,
-            "order": 2,
-            "politicalWeightRequired": 5,
-            "votesPerAffiliation": [
-              {
-                "affiliation": "Far Left",
-                "percentageVoteFor": 100
-              },
-              {
-                "affiliation": "Left",
-                "percentageVoteFor": 80
-              },
-              {
-                "affiliation": "Center Left",
-                "percentageVoteFor": 40
-              },
-              {
-                "affiliation": "Center Right",
-                "percentageVoteFor": 20
-              },
-              {
-                "affiliation": "Right",
-                "percentageVoteFor": 0
-              },
-              {
-                "affiliation": "Far Right",
-                "percentageVoteFor": 0
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Another Test Group",
-        "description": "This is another test group for demonstration purposes.",
-        "laws": [
-          {
-            "name": "always passes test",
-            "description": "test",
-            "voted": false,
-            "order": 1,
+            "type": "SECTOR_PROPERTY",
+            "effect": {
+              "sectorType": "Industrial",
+              "ownershipType": "MIXED"
+            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {

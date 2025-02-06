@@ -9,6 +9,7 @@ import IBudgetRepository from '#state/domain/repository/i_budget_repository';
 import type State from '#state/domain/model/state';
 import { aBudget } from '#state/application/builder/budget_builder';
 import budgetStartupConfig from '#game-config/budget/budget-startup-config.json' assert { type: 'json' };
+import type { BudgetType } from '#state/domain/model/budget_type';
 
 @inject()
 export class StateStartupService implements StartupProcessorStep {
@@ -20,7 +21,7 @@ export class StateStartupService implements StartupProcessorStep {
 
   public async execute(gameId: number): Promise<void> {
     const state = await this.createState(gameId);
-    await this.createBudgets(state);
+    await this.createBudgets(state, gameId);
   }
 
   private async createState(gameId: number): Promise<State> {
@@ -37,7 +38,7 @@ export class StateStartupService implements StartupProcessorStep {
     return state;
   }
 
-  private async createBudgets(state: State): Promise<void> {
+  private async createBudgets(state: State, gameId: number): Promise<void> {
     const budgets = budgetStartupConfig.map((budget) => {
       return aBudget()
         .withName(budget.name)
@@ -46,6 +47,8 @@ export class StateStartupService implements StartupProcessorStep {
         .withLevel(budget.level)
         .withStateId(state.id)
         .withColor(budget.color)
+        .withType(budget.type as BudgetType)
+        .withGameId(gameId)
         .build();
     });
 

@@ -14,6 +14,12 @@ import {
   IGetLastLawVoteResultsInGameQueryHandler,
 } from '#law/application/query/i_get_last_law_vote_results_in_game_query_handler';
 import { ILawVoteResultsRepository } from '#law/domain/repository/i_law_vote_results_repository';
+import IGetBudgetLevelLawEffectByGameAndLawQueryHandler
+  from '#law/application/query/law-effect/i_get_budget_level_law_effect_by_game_and_law_query_handler';
+import IGetTaxLevelLawEffectByGameAndLawQueryHandler
+  from '#law/application/query/law-effect/i_get_tax_level_law_effect_by_game_and_law_query_handler';
+import IGetSectorPropertyLawEffectByGameAndLawQueryHandler
+  from '#law/application/query/law-effect/i_get_sector_property_law_effect_by_game_and_law_query_handler';
 
 export default class LawProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -47,6 +53,30 @@ export default class LawProvider extends AppProvider {
     const { default: LawVoteRepository } = await import(
       '#law/infrastructure/repositories/law_vote_repository'
     );
+
+    const { default: GetBudgetLevelLawEffectByGameAndLawQueryHandler } = await import(
+      '#law/infrastructure/query/law-effect/get_budget_level_law_effect_by_game_and_law_query_handler'
+    );
+
+    const { default: GetTaxLevelLawEffectByGameAndLawQueryHandler } = await import(
+      '#law/infrastructure/query/law-effect/get_tax_level_law_effect_by_game_and_law_query_handler'
+    );
+
+    const { default: GetSectorPropertyLawEffectByGameAndLawQueryHandler } = await import(
+      '#law/infrastructure/query/law-effect/get_sector_property_law_effect_by_game_and_law_query_handler'
+    );
+
+    this.app.container.bind(IGetSectorPropertyLawEffectByGameAndLawQueryHandler, () => {
+      return new GetSectorPropertyLawEffectByGameAndLawQueryHandler();
+    });
+
+    this.app.container.bind(IGetBudgetLevelLawEffectByGameAndLawQueryHandler, () => {
+      return new GetBudgetLevelLawEffectByGameAndLawQueryHandler();
+    });
+
+    this.app.container.bind(IGetTaxLevelLawEffectByGameAndLawQueryHandler, () => {
+      return new GetTaxLevelLawEffectByGameAndLawQueryHandler();
+    });
 
     this.app.container.bind(ILawVoteRepository, () => {
       return new LawVoteRepository();
