@@ -54,7 +54,7 @@ export default class LawEffectStartupService {
       .withLawId(lawId)
       .withGameId(gameId)
       .withBudgetId(budget.id)
-      .withLevel(budgetEffectStartupInterface.level)
+      .withLevel(budgetEffectStartupInterface.budgetLevel)
       .exists();
   }
 
@@ -70,7 +70,7 @@ export default class LawEffectStartupService {
       .withLawId(lawId)
       .withGameId(gameId)
       .withTaxId(tax.id)
-      .withLevel(taxEffectStartupInterface.level)
+      .withLevel(taxEffectStartupInterface.taxLevel)
       .exists();
   }
 

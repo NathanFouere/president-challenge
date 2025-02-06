@@ -8,9 +8,14 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
 
+      table.integer('game_id')
+        .unsigned()
+        .references('id')
+        .inTable('games')
+        .onDelete('CASCADE').notNullable();
       table.string('name').notNullable();
       table.text('description').notNullable();
-      table.enum('type', [TaxType.INCOME]).notNullable();
+      table.enum('type', [TaxType.WEALTH]).notNullable();
       // TODO => ajouter limite car level est issus d'une enum
       table.integer('level').notNullable();
       table.string('color').notNullable();

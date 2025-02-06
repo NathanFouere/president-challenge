@@ -4,6 +4,792 @@
     "description": "Laws related to the economy of the country.",
     "lawGroups": [
       {
+        "name": "Retirement budget laws",
+        "description": "Laws regulating the retirement budget.",
+        "laws": [
+          {
+            "name": "Very low retirement budget",
+            "description": "Reduce retirement budget to a very low level.",
+            "voted": false,
+            "order": 1,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 0
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+
+          {
+            "name": "Low retirement budget",
+            "description": "Reduce retirement budget to a low level.",
+            "voted": true,
+            "order": 1,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 1
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+          {
+            "name": "Medium retirement budget",
+            "description": "Set retirement budget to a medium level.",
+            "voted": false,
+            "order": 2,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 2
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 20
+              }
+            ]
+          },
+          {
+            "name": "High retirement budget",
+            "description": "Set retirement budget to a high level.",
+            "voted": false,
+            "order": 2,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 3
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 20
+              }
+            ]
+          },
+          {
+            "name": "Very high retirement budget",
+            "description": "Increase retirement budget to a very high level.",
+            "voted": false,
+            "order": 5,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 4
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 90
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Defense budget laws",
+        "description": "Laws regulating the defense budget.",
+        "laws": [
+          {
+            "name": "Very low defense budget",
+            "description": "Reduce defense budget to a very low level.",
+            "voted": false,
+            "order": 1,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 0
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Low defense budget",
+            "description": "Reduce defense budget to a low level.",
+            "voted": true,
+            "order": 2,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 1
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 60
+              }
+            ]
+          },
+          {
+            "name": "Medium defense budget",
+            "description": "Set defense budget to a medium level.",
+            "voted": false,
+            "order": 3,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 2
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+          {
+            "name": "High defense budget",
+            "description": "Increase defense budget to a high level.",
+            "voted": false,
+            "order": 4,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 3
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 90
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+          {
+            "name": "Very high defense budget",
+            "description": "Increase defense budget to a very high level.",
+            "voted": false,
+            "order": 5,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 4
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Health budget laws",
+        "description": "Laws regulating the health budget.",
+        "laws": [
+          {
+            "name": "Very low health budget",
+            "description": "Reduce health budget to a very low level.",
+            "voted": false,
+            "order": 1,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 0
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 90
+              }
+            ]
+          },
+          {
+            "name": "Low health budget",
+            "description": "Reduce health budget to a low level.",
+            "voted": true,
+            "order": 2,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 1
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+          {
+            "name": "Medium health budget",
+            "description": "Set health budget to a medium level.",
+            "voted": false,
+            "order": 3,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 2
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 30
+              }
+            ]
+          },
+          {
+            "name": "High health budget",
+            "description": "Increase health budget to a high level.",
+            "voted": false,
+            "order": 4,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 3
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 90
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 20
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Very high health budget",
+            "description": "Increase health budget to a very high level.",
+            "voted": false,
+            "order": 5,
+            "politicalWeightRequired": 5,
+            "type": "BUDGET_LEVEL",
+            "effect": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 4
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 90
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wealth tax laws",
+        "description": "Laws regulating wealth tax levels.",
+        "laws": [
+          {
+            "name": "Very low wealth tax",
+            "description": "Reduce wealth tax to a very low level.",
+            "voted": false,
+            "order": 1,
+            "politicalWeightRequired": 5,
+            "type": "TAX_LEVEL",
+            "effect": {
+              "taxType": "WEALTH",
+              "taxLevel": 0
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 0
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+          {
+            "name": "Low wealth tax",
+            "description": "Reduce wealth tax to a low level.",
+            "voted": true,
+            "order": 2,
+            "politicalWeightRequired": 5,
+            "type": "TAX_LEVEL",
+            "effect": {
+              "taxType": "WEALTH",
+              "taxLevel": 1
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 90
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 100
+              }
+            ]
+          },
+          {
+            "name": "Medium wealth tax",
+            "description": "Set wealth tax to a medium level.",
+            "voted": false,
+            "order": 3,
+            "politicalWeightRequired": 5,
+            "type": "TAX_LEVEL",
+            "effect": {
+              "taxType": "WEALTH",
+              "taxLevel": 2
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 50
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 20
+              }
+            ]
+          },
+          {
+            "name": "High wealth tax",
+            "description": "Increase wealth tax to a high level.",
+            "voted": false,
+            "order": 4,
+            "politicalWeightRequired": 5,
+            "type": "TAX_LEVEL",
+            "effect": {
+              "taxType": "WEALTH",
+              "taxLevel": 3
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 80
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 60
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 30
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          },
+          {
+            "name": "Very high wealth tax",
+            "description": "Increase wealth tax to a very high level.",
+            "voted": false,
+            "order": 5,
+            "politicalWeightRequired": 5,
+            "type": "TAX_LEVEL",
+            "effect": {
+              "taxType": "WEALTH",
+              "taxLevel": 4
+            },
+            "votesPerAffiliation": [
+              {
+                "affiliation": "Far Left",
+                "percentageVoteFor": 100
+              },
+              {
+                "affiliation": "Left",
+                "percentageVoteFor": 90
+              },
+              {
+                "affiliation": "Center Left",
+                "percentageVoteFor": 70
+              },
+              {
+                "affiliation": "Center Right",
+                "percentageVoteFor": 40
+              },
+              {
+                "affiliation": "Right",
+                "percentageVoteFor": 10
+              },
+              {
+                "affiliation": "Far Right",
+                "percentageVoteFor": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
         "name": "Agriculture property laws",
         "description": "Agriculture property laws",
         "laws": [
@@ -461,23 +1247,23 @@
               },
               {
                 "affiliation": "Left",
-                "percentageVoteFor": 100
+                "percentageVoteFor": 80
               },
               {
                 "affiliation": "Center Left",
-                "percentageVoteFor": 100
+                "percentageVoteFor": 40
               },
               {
                 "affiliation": "Center Right",
-                "percentageVoteFor": 100
+                "percentageVoteFor": 20
               },
               {
                 "affiliation": "Right",
-                "percentageVoteFor": 100
+                "percentageVoteFor": 0
               },
               {
                 "affiliation": "Far Right",
-                "percentageVoteFor": 100
+                "percentageVoteFor": 0
               }
             ]
           }

@@ -9,12 +9,12 @@ export type LawEffectStartupInterface = object;
 
 export interface BudgetLevelLawEffectStartupInterface extends LawEffectStartupInterface {
   budgetType: BudgetType;
-  level: BudgetLevel;
+  budgetLevel: BudgetLevel;
 }
 
 export interface TaxLevelLawEffectStartupInterface extends LawEffectStartupInterface {
   taxType: TaxType;
-  level: TaxLevel;
+  taxLevel: TaxLevel;
 }
 
 export interface SectorPropertyLawEffectStartupInterface extends LawEffectStartupInterface {
