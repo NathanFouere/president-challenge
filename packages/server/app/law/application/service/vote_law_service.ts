@@ -23,14 +23,14 @@ export default class VoteLawService {
   }
 
   public async voteLaw(law: Law, game: Game): Promise<void> {
-    try {
-      if (law.isVoted()) {
-        throw new Error('Law already voted');
-      }
-      else if (law.politicalWeightRequired > game.politicalWeight) {
-        throw new Error('Political weight required to vote is not enough');
-      }
+    if (law.isVoted()) {
+      throw new Error('Law already voted');
+    }
+    else if (law.politicalWeightRequired > game.politicalWeight) {
+      throw new Error('Political weight required to vote is not enough');
+    }
 
+    try {
       const lawVote = await this.lawVoteGeneratorService.generateLawVote(law, game.turn);
 
       if (lawVote.votePassed) {
