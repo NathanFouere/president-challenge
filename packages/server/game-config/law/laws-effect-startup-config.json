@@ -1,0 +1,168 @@
+{
+  "budgetEffects": [
+    {
+      "identifier": "RETIREMENT_VERY_LOW",
+      "budgetType": "RETIREMENT",
+      "budgetLevel": 0
+    },
+    {
+      "identifier": "RETIREMENT_LOW",
+      "budgetType": "RETIREMENT",
+      "budgetLevel": 1
+    },
+    {
+      "identifier": "RETIREMENT_MEDIUM",
+      "budgetType": "RETIREMENT",
+      "budgetLevel": 2
+    },
+    {
+      "identifier": "RETIREMENT_HIGH",
+      "budgetType": "RETIREMENT",
+      "budgetLevel": 3
+    },
+    {
+      "identifier": "RETIREMENT_VERY_HIGH",
+      "budgetType": "RETIREMENT",
+      "budgetLevel": 4
+    },
+    {
+      "identifier": "DEFENSE_VERY_LOW",
+      "budgetType": "DEFENSE",
+      "budgetLevel": 0
+    },
+    {
+      "identifier": "DEFENSE_LOW",
+      "budgetType": "DEFENSE",
+      "budgetLevel": 1
+    },
+    {
+      "identifier": "DEFENSE_MEDIUM",
+      "budgetType": "DEFENSE",
+      "budgetLevel": 2
+    },
+    {
+      "identifier": "DEFENSE_HIGH",
+      "budgetType": "DEFENSE",
+      "budgetLevel": 3
+    },
+    {
+      "identifier": "DEFENSE_VERY_HIGH",
+      "budgetType": "DEFENSE",
+      "budgetLevel": 4
+    },
+    {
+      "identifier": "HEALTH_VERY_LOW",
+      "budgetType": "HEALTH",
+      "budgetLevel": 0
+    },
+    {
+      "identifier": "HEALTH_LOW",
+      "budgetType": "HEALTH",
+      "budgetLevel": 1
+    },
+    {
+      "identifier": "HEALTH_MEDIUM",
+      "budgetType": "HEALTH",
+      "budgetLevel": 2
+    },
+    {
+      "identifier": "HEALTH_HIGH",
+      "budgetType": "HEALTH",
+      "budgetLevel": 3
+    },
+    {
+      "identifier": "HEALTH_VERY_HIGH",
+      "budgetType": "HEALTH",
+      "budgetLevel": 4
+    }
+  ],
+  "taxEffects": [
+    {
+      "identifier": "WEALTH_VERY_LOW",
+      "taxType": "WEALTH",
+      "taxLevel": 0
+    },
+    {
+      "identifier": "WEALTH_LOW",
+      "taxType": "WEALTH",
+      "taxLevel": 1
+    },
+    {
+      "identifier": "WEALTH_MEDIUM",
+      "taxType": "WEALTH",
+      "taxLevel": 2
+    },
+    {
+      "identifier": "WEALTH_HIGH",
+      "taxType": "WEALTH",
+      "taxLevel": 3
+    },
+    {
+      "identifier": "WEALTH_VERY_HIGH",
+      "taxType": "WEALTH",
+      "taxLevel": 4
+    }
+  ],
+  "sectorPropertyEffects": [
+    {
+      "identifier": "AGRICULTURAL_NATIONALIZE",
+      "sectorType": "Agricultural",
+      "ownershipType": "PUBLIC"
+    },
+    {
+      "identifier": "AGRICULTURAL_PRIVATIZE",
+      "sectorType": "Agricultural",
+      "ownershipType": "PRIVATE"
+    },
+    {
+      "identifier": "AGRICULTURAL_MIXED",
+      "sectorType": "Agricultural",
+      "ownershipType": "MIXED"
+    },
+    {
+      "identifier": "MINE_NATIONALIZE",
+      "sectorType": "Mine",
+      "ownershipType": "PUBLIC"
+    },
+    {
+      "identifier": "MINE_PRIVATIZE",
+      "sectorType": "Mine",
+      "ownershipType": "PRIVATE"
+    },
+    {
+      "identifier": "MINE_MIXED",
+      "sectorType": "Mine",
+      "ownershipType": "MIXED"
+    },
+    {
+      "identifier": "SERVICE_NATIONALIZE",
+      "sectorType": "Service",
+      "ownershipType": "PUBLIC"
+    },
+    {
+      "identifier": "SERVICE_PRIVATIZE",
+      "sectorType": "Service",
+      "ownershipType": "PRIVATE"
+    },
+    {
+      "identifier": "SERVICE_MIXED",
+      "sectorType": "Service",
+      "ownershipType": "MIXED"
+    },
+    {
+      "identifier": "INDUSTRIAL_NATIONALIZE",
+      "sectorType": "Industrial",
+      "ownershipType": "PUBLIC"
+    },
+    {
+      "identifier": "INDUSTRIAL_PRIVATIZE",
+      "sectorType": "Industrial",
+      "ownershipType": "PRIVATE"
+    },
+    {
+      "identifier": "INDUSTRIAL_MIXED",
+      "sectorType": "Industrial",
+      "ownershipType": "MIXED"
+    }
+  ]
+}

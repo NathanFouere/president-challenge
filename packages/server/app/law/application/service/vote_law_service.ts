@@ -37,7 +37,7 @@ export default class VoteLawService {
         law.setVoted();
         game.updatePoliticalWeight(-law.politicalWeightRequired);
 
-        await this.applyLawEffectService.applyLawEffect(law, game.id);
+        await this.applyLawEffectService.applyLawEffect(law.lawEffect, game.id);
         await this.gameRepository.save(game);
         await this.unvoteIncompatibleLaws(law.lawGroup);
         await this.lawRepository.save(law);

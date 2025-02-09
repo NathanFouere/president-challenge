@@ -1,30 +1,46 @@
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm';
-import type { BelongsTo } from '@adonisjs/lucid/types/relations';
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm';
+import type { HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import Game from '#game/domain/models/game';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
+import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import Law from '#law/domain/model/law';
+import type { LawEffectType } from '#law/domain/model/law-effect/law_effect_type';
+import type { BudgetType } from '#state/domain/model/budget_type';
+import type { BudgetLevel } from '#state/domain/model/budget_level';
+import type { TaxType } from '#tax/domain/model/tax_type';
+import type { TaxLevel } from '#tax/domain/model/tax_level';
 
-export default abstract class LawEffect extends BaseModel {
+export default class LawEffect extends BaseModel {
   @column({ isPrimary: true })
-  declare id: number;
+  declare identifier: string;
 
   @column()
-  declare gameId: number;
-
-  @belongsTo(() => Game)
-  declare game: BelongsTo<typeof Game>;
+  declare type: LawEffectType;
 
   @column()
-  declare lawId: number;
+  declare budgetTypeToChange?: BudgetType;
 
-  @belongsTo(() => Law)
-  declare law: BelongsTo<typeof Law>;
+  @column()
+  declare budgetLevelToChange?: BudgetLevel;
+
+  @column()
+  declare sectorTypeToChange?: SectorTypes;
+
+  @column()
+  declare sectorOwnershipTypeToChange?: SectorOwnershipType;
+
+  @column()
+  declare taxTypeToChange?: TaxType;
+
+  @column()
+  declare taxLevelToChange?: TaxLevel;
+
+  @hasMany(() => Law)
+  declare laws: HasMany<typeof Law>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null;
-
-  public abstract apply(): void;
 }

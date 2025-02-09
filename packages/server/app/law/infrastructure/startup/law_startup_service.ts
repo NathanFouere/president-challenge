@@ -34,8 +34,6 @@ import { aLaw } from '#law/application/builder/law_builder';
 import {
   ILawVotesPercentagePerPoliticalPartyRepository,
 } from '#law/domain/repository/i_law_votes_percentage_per_political_party_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import LawEffectStartupService from '#law/infrastructure/startup/law_effect_startup_service';
 
 @inject()
 export default class LawStartupService implements StartupProcessorStep {
@@ -45,7 +43,6 @@ export default class LawStartupService implements StartupProcessorStep {
     private readonly lawCategoryRepository: ILawCategoryRepository,
     private readonly getPoliticalPartyPerAffiliationInGameQueryHandler: IGetPoliticalPartyPerAffiliationInGameQueryHandler,
     private readonly lawVotesPercentagePerPoliticalPartyRepository: ILawVotesPercentagePerPoliticalPartyRepository,
-    private readonly lawEffectStartupService: LawEffectStartupService,
   ) {
   }
 
@@ -101,11 +98,10 @@ export default class LawStartupService implements StartupProcessorStep {
       .withType(lawStartupInterface.type)
       .withPoliticalWeightRequired(lawStartupInterface.politicalWeightRequired)
       .withVoted(lawStartupInterface.voted)
+      .withLawEffectIdentifier(lawStartupInterface.effectIdentifier)
       .build();
 
     await this.lawRepository.save(law);
-
-    await this.lawEffectStartupService.createLawEffect(law.id, lawStartupInterface.type, lawStartupInterface.effect, gameId);
 
     await this.createsVotesPercentagesForPoliticalAffiliation(gameId, law.id, lawStartupInterface.votesPerAffiliation);
   }

@@ -1,20 +1,12 @@
-import { belongsTo, column } from '@adonisjs/lucid/orm';
-import type { BelongsTo } from '@adonisjs/lucid/types/relations';
+import { column } from '@adonisjs/lucid/orm';
 import LawEffect from '#law/domain/model/law-effect/law_effect';
-import Tax from '#tax/domain/model/tax';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
+import type { TaxType } from '#tax/domain/model/tax_type';
 
 export default class TaxLevelLawEffect extends LawEffect {
   @column()
-  declare taxId: number;
-
-  @belongsTo(() => Tax)
-  declare tax: BelongsTo<typeof Tax>;
+  declare taxType: TaxType;
 
   @column()
   declare level: TaxLevel;
-
-  public apply(): void {
-    this.tax.level = this.level;
-  }
 }
