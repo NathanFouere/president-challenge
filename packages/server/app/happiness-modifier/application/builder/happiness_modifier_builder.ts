@@ -7,6 +7,12 @@ export abstract class HappinessModifierBuilder {
   protected type: HappinessModifierType | null = null;
   protected duration: number | null = null;
   protected amount: number | null = null;
+  protected lawOriginId: number | null = null;
+
+  public withLawOriginId(lawOriginId: number): this {
+    this.lawOriginId = lawOriginId;
+    return this;
+  }
 
   public withName(name: string): this {
     this.name = name;
@@ -28,7 +34,7 @@ export abstract class HappinessModifierBuilder {
     return this;
   }
 
-  public withDuration(duration: number): this {
+  public withDuration(duration: number | null): this {
     this.duration = duration;
     return this;
   }

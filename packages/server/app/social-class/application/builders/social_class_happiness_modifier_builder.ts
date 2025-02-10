@@ -24,6 +24,7 @@ export default class SocialClassHappinessModifierBuilder extends HappinessModifi
     else throw new Error('Amount is required');
     if (this.socialClassId) happinessModifier.socialClassId = this.socialClassId;
     else throw new Error('Social class id is required');
+    if (this.lawOriginId) happinessModifier.lawOriginId = this.lawOriginId;
     return happinessModifier;
   }
 }

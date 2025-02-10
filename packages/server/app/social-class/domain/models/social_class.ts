@@ -81,8 +81,8 @@ export default class SocialClass extends BaseModel {
     if (happinessLevel < 0) {
       return 0;
     }
-    if (happinessLevel > 5) {
-      return 5;
+    if (happinessLevel > 4) {
+      return 4;
     }
     return happinessLevel;
   }
@@ -130,7 +130,7 @@ export default class SocialClass extends BaseModel {
     return taxAmount;
   }
 
-  public getHappinessValueFromEconomicalSituation(): number {
+  public getHappinessModifierValueFromEconomicalSituation(): number {
     switch (this.type) {
       case SocialClassTypes.PROLETARIAT:
         return this.economicalSituation > 30 ? 1 : -1;

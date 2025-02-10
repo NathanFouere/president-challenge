@@ -11,21 +11,17 @@
             "name": "Very low retirement budget",
             "description": "Reduce retirement budget to a very low level.",
             "voted": false,
-            "order": 1,
+            "order": 0,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "RETIREMENT",
-              "budgetLevel": 0
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
-                "percentageVoteFor": 0
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Left",
-                "percentageVoteFor": 10
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Center Left",
@@ -43,9 +39,9 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "RETIREMENT_VERY_LOW"
           },
-
           {
             "name": "Low retirement budget",
             "description": "Reduce retirement budget to a low level.",
@@ -53,10 +49,6 @@
             "order": 1,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "RETIREMENT",
-              "budgetLevel": 1
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -82,7 +74,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "RETIREMENT_LOW"
           },
           {
             "name": "Medium retirement budget",
@@ -91,10 +84,6 @@
             "order": 2,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "RETIREMENT",
-              "budgetLevel": 2
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -120,7 +109,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 20
               }
-            ]
+            ],
+            "effectIdentifier": "RETIREMENT_MEDIUM"
           },
           {
             "name": "High retirement budget",
@@ -129,10 +119,6 @@
             "order": 2,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "RETIREMENT",
-              "budgetLevel": 3
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -158,7 +144,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 20
               }
-            ]
+            ],
+            "effectIdentifier": "RETIREMENT_HIGH"
           },
           {
             "name": "Very high retirement budget",
@@ -167,10 +154,6 @@
             "order": 5,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "RETIREMENT",
-              "budgetLevel": 4
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -196,7 +179,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 10
               }
-            ]
+            ],
+            "effectIdentifier": "RETIREMENT_VERY_HIGH"
           }
         ]
       },
@@ -211,10 +195,6 @@
             "order": 1,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "DEFENSE",
-              "budgetLevel": 0
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -240,7 +220,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "DEFENSE_VERY_LOW"
           },
           {
             "name": "Low defense budget",
@@ -249,10 +230,6 @@
             "order": 2,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "DEFENSE",
-              "budgetLevel": 1
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -278,7 +255,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 60
               }
-            ]
+            ],
+            "effectIdentifier": "DEFENSE_LOW"
           },
           {
             "name": "Medium defense budget",
@@ -287,10 +265,6 @@
             "order": 3,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "DEFENSE",
-              "budgetLevel": 2
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -316,7 +290,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "DEFENSE_MEDIUM"
           },
           {
             "name": "High defense budget",
@@ -325,10 +300,6 @@
             "order": 4,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "DEFENSE",
-              "budgetLevel": 3
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -354,7 +325,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "DEFENSE_HIGH"
           },
           {
             "name": "Very high defense budget",
@@ -363,10 +335,6 @@
             "order": 5,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "DEFENSE",
-              "budgetLevel": 4
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -392,11 +360,11 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "DEFENSE_VERY_HIGH"
           }
         ]
       },
-
       {
         "name": "Health budget laws",
         "description": "Laws regulating the health budget.",
@@ -408,10 +376,6 @@
             "order": 1,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "HEALTH",
-              "budgetLevel": 0
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -437,7 +401,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 90
               }
-            ]
+            ],
+            "effectIdentifier": "HEALTH_VERY_LOW"
           },
           {
             "name": "Low health budget",
@@ -446,10 +411,6 @@
             "order": 2,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "HEALTH",
-              "budgetLevel": 1
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -475,7 +436,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "HEALTH_LOW"
           },
           {
             "name": "Medium health budget",
@@ -484,10 +446,6 @@
             "order": 3,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "HEALTH",
-              "budgetLevel": 2
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -513,7 +471,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 30
               }
-            ]
+            ],
+            "effectIdentifier": "HEALTH_MEDIUM"
           },
           {
             "name": "High health budget",
@@ -522,10 +481,6 @@
             "order": 4,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "HEALTH",
-              "budgetLevel": 3
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -551,7 +506,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "HEALTH_HIGH"
           },
           {
             "name": "Very high health budget",
@@ -560,10 +516,6 @@
             "order": 5,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
-            "effect": {
-              "budgetType": "HEALTH",
-              "budgetLevel": 4
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -589,7 +541,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 10
               }
-            ]
+            ],
+            "effectIdentifier": "HEALTH_VERY_HIGH"
           }
         ]
       },
@@ -604,10 +557,6 @@
             "order": 1,
             "politicalWeightRequired": 5,
             "type": "TAX_LEVEL",
-            "effect": {
-              "taxType": "WEALTH",
-              "taxLevel": 0
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -633,7 +582,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "WEALTH_VERY_LOW"
           },
           {
             "name": "Low wealth tax",
@@ -642,10 +592,6 @@
             "order": 2,
             "politicalWeightRequired": 5,
             "type": "TAX_LEVEL",
-            "effect": {
-              "taxType": "WEALTH",
-              "taxLevel": 1
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -671,7 +617,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 100
               }
-            ]
+            ],
+            "effectIdentifier": "WEALTH_LOW"
           },
           {
             "name": "Medium wealth tax",
@@ -680,10 +627,6 @@
             "order": 3,
             "politicalWeightRequired": 5,
             "type": "TAX_LEVEL",
-            "effect": {
-              "taxType": "WEALTH",
-              "taxLevel": 2
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -709,7 +652,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 20
               }
-            ]
+            ],
+            "effectIdentifier": "WEALTH_MEDIUM"
           },
           {
             "name": "High wealth tax",
@@ -718,10 +662,6 @@
             "order": 4,
             "politicalWeightRequired": 5,
             "type": "TAX_LEVEL",
-            "effect": {
-              "taxType": "WEALTH",
-              "taxLevel": 3
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -747,7 +687,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "WEALTH_HIGH"
           },
           {
             "name": "Very high wealth tax",
@@ -756,10 +697,6 @@
             "order": 5,
             "politicalWeightRequired": 5,
             "type": "TAX_LEVEL",
-            "effect": {
-              "taxType": "WEALTH",
-              "taxLevel": 4
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -785,7 +722,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "WEALTH_VERY_HIGH"
           }
         ]
       },
@@ -800,10 +738,6 @@
             "order": 1,
             "politicalWeightRequired": 5,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Agricultural",
-              "ownershipType": "PUBLIC"
-            },
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
@@ -829,7 +763,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "AGRICULTURAL_NATIONALIZE"
           },
           {
             "name": "Privatize agriculture",
@@ -837,10 +772,6 @@
             "voted": true,
             "order": 2,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Agricultural",
-              "ownershipType": "PRIVATE"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -867,7 +798,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "AGRICULTURAL_PRIVATIZE"
           },
           {
             "name": "Mixed agriculture",
@@ -875,10 +807,6 @@
             "voted": false,
             "order": 3,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Agricultural",
-              "ownershipType": "MIXED"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -905,7 +833,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "AGRICULTURAL_MIXED"
           }
         ]
       },
@@ -919,10 +848,6 @@
             "voted": false,
             "order": 1,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Mine",
-              "ownershipType": "PUBLIC"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -949,7 +874,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "MINE_NATIONALIZE"
           },
           {
             "name": "Privatize mines",
@@ -957,10 +883,6 @@
             "voted": true,
             "order": 2,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Mine",
-              "ownershipType": "PRIVATE"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -987,7 +909,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "MINE_PRIVATIZE"
           },
           {
             "name": "Mixed mines",
@@ -995,10 +918,6 @@
             "voted": false,
             "order": 3,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Mine",
-              "ownershipType": "MIXED"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1025,7 +944,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "MINE_MIXED"
           }
         ]
       },
@@ -1039,10 +959,6 @@
             "voted": false,
             "order": 1,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Service",
-              "ownershipType": "PUBLIC"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1069,7 +985,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "SERVICE_NATIONALIZE"
           },
           {
             "name": "Privatize services",
@@ -1077,10 +994,6 @@
             "voted": true,
             "order": 2,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Service",
-              "ownershipType": "PRIVATE"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1107,7 +1020,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "SERVICE_PRIVATIZE"
           },
           {
             "name": "Mixed services",
@@ -1115,10 +1029,6 @@
             "voted": false,
             "order": 3,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Service",
-              "ownershipType": "MIXED"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1145,7 +1055,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "SERVICE_MIXED"
           }
         ]
       },
@@ -1159,10 +1070,6 @@
             "voted": false,
             "order": 1,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Industrial",
-              "ownershipType": "PUBLIC"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1189,7 +1096,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "INDUSTRIAL_NATIONALIZE"
           },
           {
             "name": "Privatize industry",
@@ -1197,10 +1105,6 @@
             "voted": true,
             "order": 2,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Industrial",
-              "ownershipType": "PRIVATE"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1227,7 +1131,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "INDUSTRIAL_PRIVATIZE"
           },
           {
             "name": "Mixed industry",
@@ -1235,10 +1140,6 @@
             "voted": false,
             "order": 3,
             "type": "SECTOR_PROPERTY",
-            "effect": {
-              "sectorType": "Industrial",
-              "ownershipType": "MIXED"
-            },
             "politicalWeightRequired": 5,
             "votesPerAffiliation": [
               {
@@ -1265,7 +1166,8 @@
                 "affiliation": "Far Right",
                 "percentageVoteFor": 0
               }
-            ]
+            ],
+            "effectIdentifier": "INDUSTRIAL_MIXED"
           }
         ]
       }

@@ -10,6 +10,12 @@ export class LawBuilder {
   protected description: string | null = null;
   protected politicalWeightRequired: number | null = null;
   protected type: LawType | null = null;
+  protected lawEffectIdentifier: string | null = null;
+
+  public withLawEffectIdentifier(lawEffectIdentifier: string): this {
+    this.lawEffectIdentifier = lawEffectIdentifier;
+    return this;
+  }
 
   public withPoliticalWeightRequired(politicalWeightRequired: number): this {
     this.politicalWeightRequired = politicalWeightRequired;
@@ -68,7 +74,8 @@ export class LawBuilder {
     else throw new Error('Political weight required is required');
     if (this.type !== null) law.type = this.type;
     else throw new Error('Type is required');
-
+    if (this.lawEffectIdentifier !== null) law.lawEffectIdentifier = this.lawEffectIdentifier;
+    else throw new Error('Law effect identifier is required');
     return law;
   }
 

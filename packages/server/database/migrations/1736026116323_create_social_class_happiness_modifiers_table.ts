@@ -1,4 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
+import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 
 export default class extends BaseSchema {
   protected tableName = 'social_class_happiness_modifiers';
@@ -10,7 +11,10 @@ export default class extends BaseSchema {
       table.string('name').notNullable();
       table.text('description').notNullable();
       table.string('color').notNullable();
-      table.enum('type', ['Permanent', 'Temporary']).notNullable();
+      table.enum('type', [
+        HappinessModifierType.TEMPORARY,
+        HappinessModifierType.PERMANENT,
+      ]).notNullable();
       table.integer('duration').nullable();
       table.float('amount').notNullable();
 

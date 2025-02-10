@@ -35,9 +35,25 @@ export default class extends BaseSchema {
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();
     });
+
+    this.schema.alterTable('political_party_happiness_modifiers', (table) => {
+      table.integer('law_origin_id').references('id').inTable('laws').nullable();
+    });
+
+    this.schema.alterTable('social_class_happiness_modifiers', (table) => {
+      table.integer('law_origin_id').references('id').inTable('laws').nullable();
+    });
   }
 
   async down() {
+    this.schema.alterTable('political_party_happiness_modifiers', (table) => {
+      table.dropColumn('law_origin_id');
+    });
+
+    this.schema.alterTable('social_class_happiness_modifiers', (table) => {
+      table.dropColumn('law_origin_id');
+    });
+
     this.schema.dropTable(this.tableName);
   }
 }

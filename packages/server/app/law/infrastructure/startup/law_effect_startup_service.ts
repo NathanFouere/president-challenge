@@ -1,92 +1,149 @@
 import { inject } from '@adonisjs/core';
+import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
+import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import lawEffectStartupConfig from '#game-config/law/laws-effect-startup-config.json' assert { type: 'json' };
+import { aLawEffect } from '#law/application/builder/law-effect/law_effect_builder';
+import { LawEffectType } from '#law/domain/model/law-effect/law_effect_type';
+import type { BudgetType } from '#state/domain/model/budget_type';
+import type { TaxType } from '#tax/domain/model/tax_type';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetBudgetByGameAndTypeQueryHandler from '#state/application/query/i_get_budget_by_game_and_type_query_handler';
+import ILawEffectRepository from '#law/domain/repository/i_law_effect_repository';
+import {
+  aSocialClassLawHappinessEffect,
+} from '#social-class/application/builders/social_class_law_happiness_effect_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetTaxByGameAndTypeQueryHandler from '#tax/application/query/i_get_tax_by_game_and_type_query_handler';
+import ISocialClassLawHappinessEffectRepository
+  from '#social-class/domain/repository/i_social_class_law_happiness_effect_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetSectorByGameAndTypeQueryHandler from '#sector/application/query/i_get_sector_by_game_and_type_query_handler';
-import { LawType } from '#law/domain/model/law_type';
-import { aBudgetLevelLawEffect } from '#law/application/builder/law-effect/budget_level_law_effect_builder';
-import type {
-  BudgetLevelLawEffectStartupInterface,
-  LawEffectStartupInterface, SectorPropertyLawEffectStartupInterface, TaxLevelLawEffectStartupInterface,
-} from '#law/infrastructure/startup/startup-interface/law-effect/law_effect_startup_interface';
-import GetBudgetByGameAndTypeQuery from '#state/application/query/get_budget_by_game_and_type_query';
-import { aTaxLevelLawEffect } from '#law/application/builder/law-effect/tax_level_law_effect_builder';
-import GetTaxByGameAndTypeQuery from '#tax/application/query/get_tax_by_game_and_type_query';
-import { aSectorPropertyLawEffect } from '#law/application/builder/law-effect/sector_property_law_effect_builder';
-import { GetSectorByGameAndTypeQuery } from '#sector/application/query/get_sector_by_game_and_type_query';
+import IPoliticalAffiliationLawHappinessEffectRepository
+  from '#political-party/domain/repository/i_political_affiliation_law_happiness_effect_repository';
+import {
+  aPoliticalAffiliationLawHappinessEffect,
+} from '#political-party/application/builders/political_affiliation_law_happiness_effect_builder';
 
 @inject()
 export default class LawEffectStartupService {
   constructor(
-    private readonly getBudgetByGameAndTypeQueryHandler: IGetBudgetByGameAndTypeQueryHandler,
-    private readonly getTaxByGameAndTypeQueryHandler: IGetTaxByGameAndTypeQueryHandler,
-    private readonly getSectorByGameAndTypeQueryHandler: IGetSectorByGameAndTypeQueryHandler,
+    private readonly lawEffectRepository: ILawEffectRepository,
+    private readonly socialClassLawHappinessEffectRepository: ISocialClassLawHappinessEffectRepository,
+    private readonly politicalAffiliationsHappinessEffectRepository: IPoliticalAffiliationLawHappinessEffectRepository,
   ) {
   }
 
-  public async createLawEffect(lawId: number, lawType: LawType, lawEffectStartupInterface: LawEffectStartupInterface, gameId: number): Promise<void> {
-    switch (lawType) {
-      case LawType.BUDGET_LEVEL:
-        await this.createBudgetEffect(lawId, lawEffectStartupInterface as BudgetLevelLawEffectStartupInterface, gameId);
-        break;
-      case LawType.TAX_LEVEL:
-        await this.createTaxEffect(lawId, lawEffectStartupInterface as TaxLevelLawEffectStartupInterface, gameId);
-        break;
-      case LawType.SECTOR_PROPERTY:
-        await this.createSectorPropertyEffect(lawId, lawEffectStartupInterface as SectorPropertyLawEffectStartupInterface, gameId);
-        break;
-      default:
-        throw new Error('Invalid law type');
+  public async createLawEffects(): Promise<void> {
+    const lawEffects = [];
+    const socialClassHappinessEffects = [];
+    const politicalAffiliationHappinessEffects = [];
+
+    for (const effect of lawEffectStartupConfig.budgetEffects) {
+      const lawEffect = aLawEffect()
+        .withIdentifier(effect.identifier)
+        .withType(LawEffectType.BUDGET_LEVEL)
+        .withBudgetTypeToChange(effect.budgetType as BudgetType)
+        .withBudgetLevelToChange(effect.budgetLevel)
+        .build();
+      for (const socialClassHappinessEffect of effect.socialClassHappinessEffects) {
+        socialClassHappinessEffects.push(
+          aSocialClassLawHappinessEffect()
+            .withLawEffectIdentifier(effect.identifier)
+            .withIdentifier(socialClassHappinessEffect.identifier)
+            .withDuration(socialClassHappinessEffect.duration)
+            .withType(socialClassHappinessEffect.type as HappinessModifierType)
+            .withSocialClassType(socialClassHappinessEffect.socialClassType as SocialClassTypes)
+            .withHappinessModifier(socialClassHappinessEffect.modifier)
+            .build(),
+        );
+      }
+      for (const politicalAffiliationHappinessEffect of effect.politicalAffiliationsHappinessEffects) {
+        politicalAffiliationHappinessEffects.push(
+          aPoliticalAffiliationLawHappinessEffect()
+            .withLawEffectIdentifier(effect.identifier)
+            .withIdentifier(politicalAffiliationHappinessEffect.identifier)
+            .withDuration(politicalAffiliationHappinessEffect.duration)
+            .withType(politicalAffiliationHappinessEffect.type as HappinessModifierType)
+            .withPoliticalAffiliation(politicalAffiliationHappinessEffect.politicalAffiliationType as PoliticalAffiliation)
+            .withHappinessModifier(politicalAffiliationHappinessEffect.modifier)
+            .build(),
+        );
+      }
+      lawEffects.push(lawEffect);
     }
-  }
 
-  private async createBudgetEffect(lawId: number, budgetEffectStartupInterface: BudgetLevelLawEffectStartupInterface, gameId: number): Promise<void> {
-    const budget = await this.getBudgetByGameAndTypeQueryHandler.handle(
-      new GetBudgetByGameAndTypeQuery(
-        gameId,
-        budgetEffectStartupInterface.budgetType,
-      ),
-    );
+    for (const effect of lawEffectStartupConfig.taxEffects) {
+      const lawEffect = aLawEffect()
+        .withIdentifier(effect.identifier)
+        .withType(LawEffectType.TAX_LEVEL)
+        .withTaxTypeToChange(effect.taxType as TaxType)
+        .withTaxLevelToChange(effect.taxLevel)
+        .build();
+      for (const socialClassHappinessEffect of effect.socialClassHappinessEffects) {
+        socialClassHappinessEffects.push(
+          aSocialClassLawHappinessEffect()
+            .withLawEffectIdentifier(effect.identifier)
+            .withIdentifier(socialClassHappinessEffect.identifier)
+            .withDuration(socialClassHappinessEffect.duration)
+            .withType(socialClassHappinessEffect.type as HappinessModifierType)
+            .withSocialClassType(socialClassHappinessEffect.socialClassType as SocialClassTypes)
+            .withHappinessModifier(socialClassHappinessEffect.modifier)
+            .build(),
+        );
+      }
 
-    await aBudgetLevelLawEffect()
-      .withLawId(lawId)
-      .withGameId(gameId)
-      .withBudgetId(budget.id)
-      .withLevel(budgetEffectStartupInterface.budgetLevel)
-      .exists();
-  }
+      for (const politicalAffiliationHappinessEffect of effect.politicalAffiliationsHappinessEffects) {
+        politicalAffiliationHappinessEffects.push(
+          aPoliticalAffiliationLawHappinessEffect()
+            .withLawEffectIdentifier(effect.identifier)
+            .withIdentifier(politicalAffiliationHappinessEffect.identifier)
+            .withDuration(politicalAffiliationHappinessEffect.duration)
+            .withType(politicalAffiliationHappinessEffect.type as HappinessModifierType)
+            .withPoliticalAffiliation(politicalAffiliationHappinessEffect.politicalAffiliationType as PoliticalAffiliation)
+            .withHappinessModifier(politicalAffiliationHappinessEffect.modifier)
+            .build(),
+        );
+      }
+      lawEffects.push(lawEffect);
+    }
 
-  private async createTaxEffect(lawId: number, taxEffectStartupInterface: TaxLevelLawEffectStartupInterface, gameId: number): Promise<void> {
-    const tax = await this.getTaxByGameAndTypeQueryHandler.handle(
-      new GetTaxByGameAndTypeQuery(
-        gameId,
-        taxEffectStartupInterface.taxType,
-      ),
-    );
+    for (const effect of lawEffectStartupConfig.sectorPropertyEffects) {
+      const lawEffect = aLawEffect()
+        .withIdentifier(effect.identifier)
+        .withType(LawEffectType.SECTOR_PROPERTY)
+        .withSectorTypeToChange(effect.sectorType as SectorTypes)
+        .withSectorOwnershipTypeToChange(effect.ownershipType as SectorOwnershipType)
+        .build();
+      for (const socialClassHappinessEffect of effect.socialClassHappinessEffects) {
+        socialClassHappinessEffects.push(
+          aSocialClassLawHappinessEffect()
+            .withLawEffectIdentifier(effect.identifier)
+            .withIdentifier(socialClassHappinessEffect.identifier)
+            .withDuration(socialClassHappinessEffect.duration)
+            .withType(socialClassHappinessEffect.type as HappinessModifierType)
+            .withSocialClassType(socialClassHappinessEffect.socialClassType as SocialClassTypes)
+            .withHappinessModifier(socialClassHappinessEffect.modifier)
+            .build(),
+        );
+      }
 
-    await aTaxLevelLawEffect()
-      .withLawId(lawId)
-      .withGameId(gameId)
-      .withTaxId(tax.id)
-      .withLevel(taxEffectStartupInterface.taxLevel)
-      .exists();
-  }
+      for (const politicalAffiliationHappinessEffect of effect.politicalAffiliationsHappinessEffects) {
+        politicalAffiliationHappinessEffects.push(
+          aPoliticalAffiliationLawHappinessEffect()
+            .withLawEffectIdentifier(effect.identifier)
+            .withIdentifier(politicalAffiliationHappinessEffect.identifier)
+            .withDuration(politicalAffiliationHappinessEffect.duration)
+            .withType(politicalAffiliationHappinessEffect.type as HappinessModifierType)
+            .withPoliticalAffiliation(politicalAffiliationHappinessEffect.politicalAffiliationType as PoliticalAffiliation)
+            .withHappinessModifier(politicalAffiliationHappinessEffect.modifier)
+            .build(),
+        );
+      }
+      lawEffects.push(lawEffect);
+    }
 
-  private async createSectorPropertyEffect(lawId: number, sectorPropertyEffectStartupInterface: SectorPropertyLawEffectStartupInterface, gameId: number): Promise<void> {
-    const sector = await this.getSectorByGameAndTypeQueryHandler.handle(
-      new GetSectorByGameAndTypeQuery(
-        gameId,
-        sectorPropertyEffectStartupInterface.sectorType,
-      ),
-    );
-
-    await aSectorPropertyLawEffect()
-      .withLawId(lawId)
-      .withGameId(gameId)
-      .withSectorId(sector.id)
-      .withOwnershipType(sectorPropertyEffectStartupInterface.ownershipType)
-      .exists();
+    await this.lawEffectRepository.saveOrUpdateAll(lawEffects);
+    await this.socialClassLawHappinessEffectRepository.saveOrUpdateAll(socialClassHappinessEffects);
+    await this.politicalAffiliationsHappinessEffectRepository.saveOrUpdateAll(politicalAffiliationHappinessEffects);
   }
 }
