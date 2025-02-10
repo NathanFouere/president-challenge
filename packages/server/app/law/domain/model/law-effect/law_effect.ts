@@ -9,6 +9,9 @@ import type { BudgetType } from '#state/domain/model/budget_type';
 import type { BudgetLevel } from '#state/domain/model/budget_level';
 import type { TaxType } from '#tax/domain/model/tax_type';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
+import SocialClassLawHappinessEffect from '#social-class/domain/models/social_class_law_happiness_effect';
+import PoliticalAffiliationLawHappinessEffect
+  from '#political-party/domain/models/political_affiliation_law_happiness_effect';
 
 export default class LawEffect extends BaseModel {
   @column({ isPrimary: true })
@@ -37,6 +40,12 @@ export default class LawEffect extends BaseModel {
 
   @hasMany(() => Law)
   declare laws: HasMany<typeof Law>;
+
+  @hasMany(() => SocialClassLawHappinessEffect)
+  declare socialClassesHappinessEffects: HasMany<typeof SocialClassLawHappinessEffect>;
+
+  @hasMany(() => PoliticalAffiliationLawHappinessEffect)
+  declare politicalPartiesAffiliationHappinessEffects: HasMany<typeof PoliticalAffiliationLawHappinessEffect>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;

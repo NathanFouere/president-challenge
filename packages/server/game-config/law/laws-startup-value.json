@@ -11,17 +11,17 @@
             "name": "Very low retirement budget",
             "description": "Reduce retirement budget to a very low level.",
             "voted": false,
-            "order": 1,
+            "order": 0,
             "politicalWeightRequired": 5,
             "type": "BUDGET_LEVEL",
             "votesPerAffiliation": [
               {
                 "affiliation": "Far Left",
-                "percentageVoteFor": 0
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Left",
-                "percentageVoteFor": 10
+                "percentageVoteFor": 100
               },
               {
                 "affiliation": "Center Left",

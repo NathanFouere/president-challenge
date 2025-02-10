@@ -14,7 +14,7 @@ import GetSocialClassByGameAndTypeQuery
   from '#social-class/application/queries/get_social_class_by_game_and_type_query';
 
 @inject()
-export default class ApplySocialClassHappinessLawEffectService {
+export default class SocialClassHappinessLawEffectService {
   constructor(
     private readonly getSocialClassByGameAndTypeQueryHandler: IGetSocialClassByGameAndTypeQueryHandler,
     private readonly socialClassHappinessModifierRepository: ISocialClassHappinessModifierRepository,

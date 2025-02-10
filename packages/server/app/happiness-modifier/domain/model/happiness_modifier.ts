@@ -23,6 +23,9 @@ export default abstract class HappinessModifier extends BaseModel {
   @column()
   declare amount: number;
 
+  @column()
+  declare lawOriginId?: number;
+
   public reduceDuration(): void {
     if (this.type == HappinessModifierType.TEMPORARY && this.duration !== null) {
       this.duration--;

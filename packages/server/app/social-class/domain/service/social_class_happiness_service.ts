@@ -19,7 +19,7 @@ export default class SocialClassHappinessService {
         .withColor('blue')
         .withType(HappinessModifierType.TEMPORARY)
         .withDuration(1)
-        .withAmount(socialClass.getHappinessValueFromEconomicalSituation())
+        .withAmount(socialClass.getHappinessModifierValueFromEconomicalSituation())
         .withSocialClassId(socialClass.id)
         .build(),
     );

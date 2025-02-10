@@ -2,7 +2,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm';
 import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
 
-export default class PoliticalPartyHappinessEffect extends BaseModel {
+export default abstract class PoliticalAffiliationHappinessEffect extends BaseModel {
   @column({ isPrimary: true })
   declare identifier: string;
 

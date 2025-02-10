@@ -1,14 +1,14 @@
 import { inject } from '@adonisjs/core';
 import Law from '#law/domain/model/law';
-import type GetLawByGameAndTypeQuery from '#law/application/query/get_law_by_game_and_type_query';
+import type GetLawByGameQuery from '#law/application/query/get_law_by_game_and_type_query';
 import type {
-  IGetLawByGameAndTypeQueryHandler,
-} from '#law/application/query/i_get_law_by_game_and_type_query_handler';
+  IGetLawByGameQueryHandler,
+} from '#law/application/query/i_get_law_by_game_query_handler';
 
 @inject()
-export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAndTypeQueryHandler {
+export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandler {
   private async getLawByGameAndType(
-    query: GetLawByGameAndTypeQuery,
+    query: GetLawByGameQuery,
     preloadOptions: { percentagesOfVotesForPoliticalParty?: boolean; lawVotes?: boolean; display?: boolean } = {},
   ): Promise<Law> {
     const queryBuilder = Law.query()
@@ -56,23 +56,21 @@ export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAnd
         lawEffectQuery.preload('socialClassesHappinessEffects');
         lawEffectQuery.preload('politicalPartiesAffiliationHappinessEffects');
       });
-      queryBuilder.preload('lawGroup', (lawQuery) => {
-        lawQuery.preload('laws');
-      });
+      queryBuilder.preload('lawGroup');
     }
 
     return await queryBuilder.firstOrFail();
   }
 
-  public async handle(query: GetLawByGameAndTypeQuery): Promise<Law> {
+  public async handle(query: GetLawByGameQuery): Promise<Law> {
     return await this.getLawByGameAndType(query);
   }
 
-  public async handleForVote(query: GetLawByGameAndTypeQuery): Promise<Law> {
+  public async handleForVote(query: GetLawByGameQuery): Promise<Law> {
     return await this.getLawByGameAndType(query, { lawVotes: true });
   }
 
-  public async handleForDisplay(query: GetLawByGameAndTypeQuery): Promise<Law> {
+  public async handleForDisplay(query: GetLawByGameQuery): Promise<Law> {
     return await this.getLawByGameAndType(query, { display: true });
   }
 }

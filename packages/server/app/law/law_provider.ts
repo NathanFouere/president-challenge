@@ -8,13 +8,14 @@ import ILawCategoryRepository from '#law/domain/repository/i_law_category_reposi
 import IGetLawCategoriesByGameQueryHandler
   from '#law/application/query/i_get_law_categories_by_game_query_handler';
 import {
-  IGetLawByGameAndTypeQueryHandler,
-} from '#law/application/query/i_get_law_by_game_and_type_query_handler';
+  IGetLawByGameQueryHandler,
+} from '#law/application/query/i_get_law_by_game_query_handler';
 import {
   IGetLastLawVoteResultsInGameQueryHandler,
 } from '#law/application/query/i_get_last_law_vote_results_in_game_query_handler';
 import { ILawVoteResultsRepository } from '#law/domain/repository/i_law_vote_results_repository';
 import ILawEffectRepository from '#law/domain/repository/i_law_effect_repository';
+import IGetIncompatibleLawsQueryHandler from '#law/application/query/i_get_incompatible_laws_query_handler';
 
 export default class LawProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -33,8 +34,8 @@ export default class LawProvider extends AppProvider {
     const { default: GetLawCategoriesByGameQueryHandler } = await import(
       '#law/infrastructure/query/get_law_categories_by_game_query_handler'
     );
-    const { default: GetLawByGameAndTypeQueryHandler } = await import(
-      '#law/infrastructure/query/get_law_by_game_and_type_query_handler'
+    const { default: GetLawByGameQueryHandler } = await import(
+      '#law/infrastructure/query/get_law_by_game_query_handler'
     );
     const { default: LawVoteResultsRepository } = await import(
       '#law/infrastructure/repositories/law_vote_results_repository'
@@ -52,6 +53,14 @@ export default class LawProvider extends AppProvider {
     const { default: LawEffectRepository } = await import(
       '#law/infrastructure/repositories/law_effect_repository'
     );
+
+    const { default: GetIncompatibleLawsQueryHandler } = await import(
+      '#law/infrastructure/query/get_incompatible_laws_query_handler'
+    );
+
+    this.app.container.bind(IGetIncompatibleLawsQueryHandler, () => {
+      return new GetIncompatibleLawsQueryHandler();
+    });
 
     this.app.container.bind(ILawEffectRepository, () => {
       return new LawEffectRepository();
@@ -79,8 +88,8 @@ export default class LawProvider extends AppProvider {
     this.app.container.bind(IGetLawCategoriesByGameQueryHandler, () => {
       return new GetLawCategoriesByGameQueryHandler();
     });
-    this.app.container.bind(IGetLawByGameAndTypeQueryHandler, () => {
-      return new GetLawByGameAndTypeQueryHandler();
+    this.app.container.bind(IGetLawByGameQueryHandler, () => {
+      return new GetLawByGameQueryHandler();
     });
     this.app.container.bind(IGetLastLawVoteResultsInGameQueryHandler, () => {
       return new GetLastLawVoteResultsInGameQueryHandler();

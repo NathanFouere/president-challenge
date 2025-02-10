@@ -1,29 +1,29 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
+import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 
 export default class extends BaseSchema {
-  protected tableName = 'social_class_happiness_modifiers';
+  protected tableName = 'social_class_law_happiness_effects';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id');
+      table.string('identifier').primary();
 
-      table.string('name').notNullable();
-      table.text('description').notNullable();
-      table.string('color').notNullable();
+      table.enum('social_class_type', [
+        SocialClassTypes.CAPITALIST,
+        SocialClassTypes.PETIT_BOURGEOIS,
+        SocialClassTypes.PROLETARIAT,
+      ]).notNullable();
+
       table.enum('type', [
         HappinessModifierType.TEMPORARY,
         HappinessModifierType.PERMANENT,
       ]).notNullable();
       table.integer('duration').nullable();
-      table.float('amount').notNullable();
 
-      table
-        .integer('social_class_id')
-        .unsigned()
-        .references('id')
-        .inTable('social_classes')
-        .onDelete('CASCADE');
+      table.integer('happiness_modifier').notNullable();
+
+      table.string('law_effect_identifier').references('law_effects.identifier').onDelete('CASCADE');
 
       table.timestamp('created_at');
       table.timestamp('updated_at');

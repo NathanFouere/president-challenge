@@ -24,6 +24,7 @@ export default class PoliticalPartyHappinessModifierBuilder extends HappinessMod
     else throw new Error('Social class id is required');
     if (this.amount !== null) happinessModifier.amount = this.amount;
     else throw new Error('Amount is required');
+    if (this.lawOriginId) happinessModifier.lawOriginId = this.lawOriginId;
     return happinessModifier;
   }
 }

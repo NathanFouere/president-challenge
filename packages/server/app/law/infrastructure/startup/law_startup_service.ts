@@ -34,6 +34,16 @@ import { aLaw } from '#law/application/builder/law_builder';
 import {
   ILawVotesPercentagePerPoliticalPartyRepository,
 } from '#law/domain/repository/i_law_votes_percentage_per_political_party_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import SocialClassHappinessLawEffectService
+  from '#law/application/service/law-effect/social_class_happiness_law_effect_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ApplyPoliticalPartiesHappinessLawEffectService
+  from '#law/application/service/law-effect/apply_political_parties_happiness_law_effect_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { IGetLawByGameQueryHandler } from '#law/application/query/i_get_law_by_game_query_handler';
+import GetLawByGameQuery from '#law/application/query/get_law_by_game_and_type_query';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class LawStartupService implements StartupProcessorStep {
@@ -43,6 +53,9 @@ export default class LawStartupService implements StartupProcessorStep {
     private readonly lawCategoryRepository: ILawCategoryRepository,
     private readonly getPoliticalPartyPerAffiliationInGameQueryHandler: IGetPoliticalPartyPerAffiliationInGameQueryHandler,
     private readonly lawVotesPercentagePerPoliticalPartyRepository: ILawVotesPercentagePerPoliticalPartyRepository,
+    private readonly applySocialClassesHappinessEffects: SocialClassHappinessLawEffectService,
+    private readonly applyPoliticalPartiesHappinessEffects: ApplyPoliticalPartiesHappinessLawEffectService,
+    private readonly getLawByGameAndTypeQueryHandler: IGetLawByGameQueryHandler,
   ) {
   }
 
@@ -104,6 +117,21 @@ export default class LawStartupService implements StartupProcessorStep {
     await this.lawRepository.save(law);
 
     await this.createsVotesPercentagesForPoliticalAffiliation(gameId, law.id, lawStartupInterface.votesPerAffiliation);
+    if (law.voted) {
+      await this.applyLawEffect(law, gameId);
+    }
+  }
+
+  private async applyLawEffect(law: Law, gameId: number): Promise<void> {
+    const updatedLaw = await this.getLawByGameAndTypeQueryHandler.handleForVote(new GetLawByGameQuery(
+      law.id,
+      gameId,
+    ));
+
+    await Promise.all([
+      this.applySocialClassesHappinessEffects.applySocialClassesHappinessEffects(updatedLaw, gameId),
+      this.applyPoliticalPartiesHappinessEffects.applyPoliticalPartiesHappinessEffects(updatedLaw, gameId),
+    ]);
   }
 
   private async createsVotesPercentagesForPoliticalAffiliation(gameId: number, lawId: number, votePerAffiliationStartupValues: VotePerAffiliationStartupInterface[]): Promise<void> {

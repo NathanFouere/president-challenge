@@ -2,4 +2,6 @@ import type SocialClassLawHappinessEffect from '#social-class/domain/models/soci
 
 export default abstract class ISocialClassLawHappinessEffectRepository {
   public abstract saveOrUpdateAll(socialClassLawHappinessEffects: SocialClassLawHappinessEffect[]): Promise<void>;
+  public abstract getById(id: string): Promise<SocialClassLawHappinessEffect>;
+  public abstract findById(id: string): Promise<SocialClassLawHappinessEffect | null>;
 }

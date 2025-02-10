@@ -11,6 +11,7 @@ export default class GetPoliticalPartyPerAffiliationInGameQueryHandler implement
     preloadOptions: {
       senateSeats?: boolean;
       parliamentSeats?: boolean;
+      happinessModifiers?: boolean;
     } = {},
   ): Promise<PoliticalParty> {
     const queryBuilder = PoliticalParty
@@ -26,11 +27,17 @@ export default class GetPoliticalPartyPerAffiliationInGameQueryHandler implement
       queryBuilder.preload('parliamentSeats');
     }
 
+    if (preloadOptions.happinessModifiers) {
+      queryBuilder.preload('happinessModifiers');
+    }
+
     return queryBuilder.firstOrFail();
   }
 
   public async handle(query: GetPoliticalPartyPerAffiliationInGameQuery): Promise<PoliticalParty> {
-    return await this.getPoliticalPartyPerAffiliationInGame(query);
+    return await this.getPoliticalPartyPerAffiliationInGame(query, {
+      happinessModifiers: true,
+    });
   }
 
   public async handleForVote(query: GetPoliticalPartyPerAffiliationInGameQuery): Promise<PoliticalParty> {
