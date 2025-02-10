@@ -7,12 +7,13 @@ import type Law from '#law/domain/model/law';
 import GetPoliticalPartyPerAffiliationInGameQuery
   from '#political-party/application/queries/get_political_party_per_affiliation_in_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IPoliticalPartyRepository from '#political-party/domain/repository/i_political_party_repository';
+import IPoliticalPartyHappinessModifierRepository
+  from '#political-party/domain/repository/i_political_party_happiness_modifier_repository';
 
 @inject()
 export default class RemovePoliticalHappinessEffectFromLawService {
   constructor(
-    private readonly politicalPartyHappinessModifierFactory: IPoliticalPartyRepository,
+    private readonly politicalPartyHappinessModifierRepository: IPoliticalPartyHappinessModifierRepository,
     private readonly iGetPoliticalPartyPerAffiliationInGameQueryHandler: IGetPoliticalPartyPerAffiliationInGameQueryHandler,
   ) {
   }
@@ -25,7 +26,7 @@ export default class RemovePoliticalHappinessEffectFromLawService {
       ));
       for (const happinessModifier of politicalParty.happinessModifiers) {
         if (happinessModifier.lawOriginId === law.id) {
-          await this.politicalPartyHappinessModifierFactory.delete(happinessModifier);
+          await this.politicalPartyHappinessModifierRepository.delete(happinessModifier);
         }
       }
     }
