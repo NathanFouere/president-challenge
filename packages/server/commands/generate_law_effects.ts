@@ -5,8 +5,8 @@ import type { CommandOptions } from '@adonisjs/core/types/ace';
 import LawEffectStartupService from '#law/infrastructure/startup/law_effect_startup_service';
 
 export default class GenerateLawEffects extends BaseCommand {
-  static commandName = 'generate:law-effects';
-  static description = 'Generate law effects for the game';
+  static readonly commandName = 'generate:law-effects';
+  static readonly description = 'Generate law effects for the game';
 
   static readonly options: CommandOptions = {
     startApp: true,
