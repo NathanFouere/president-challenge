@@ -52,7 +52,10 @@ export default class GetLawByGameAndTypeQueryHandler implements IGetLawByGameAnd
           politicalPartyQuery.preload('parliamentSeats');
         });
       });
-      queryBuilder.preload('lawEffect');
+      queryBuilder.preload('lawEffect', (lawEffectQuery) => {
+        lawEffectQuery.preload('socialClassesHappinessEffects');
+        lawEffectQuery.preload('politicalPartiesAffiliationHappinessEffects');
+      });
       queryBuilder.preload('lawGroup', (lawQuery) => {
         lawQuery.preload('laws');
       });
