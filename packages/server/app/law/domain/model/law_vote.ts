@@ -1,9 +1,9 @@
 import { BaseModel, column, belongsTo, hasOne } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
 import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations';
-import Law from '#law/domain/model/law';
 import LawVoteResults from '#law/domain/model/law_vote_results';
 import { LegislatureType } from '#legislature/domain/models/legislature_type';
+import Law from '#law/domain/model/law';
 
 export default class LawVote extends BaseModel {
   @column({ isPrimary: true })

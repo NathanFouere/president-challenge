@@ -7,10 +7,11 @@ export default class GetLawCategoriesByGameQueryHandler extends IGetLawCategorie
   async handle(query: GetLawCategoriesByGameQuery): Promise<LawCategory[]> {
     return await LawCategory
       .query()
-      .where('game_id', query.gameId)
-      .preload('lawGroups', (eventQuery) => {
-        eventQuery.preload('laws', (lawQuery) => {
-          lawQuery.orderBy('order', 'asc');
+      .preload('lawGroups', (lawGroupQuery) => {
+        lawGroupQuery.preload('definitions', (definitionQuery) => {
+          definitionQuery.preload('laws', (lawQuery) => {
+            lawQuery.where('game_id', query.gameId).preload('definition');
+          });
         });
       })
       .exec();

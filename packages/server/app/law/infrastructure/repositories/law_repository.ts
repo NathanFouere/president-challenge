@@ -14,4 +14,8 @@ export default class LawRepository extends ILawRepository {
     const saveLawsPromises = laws.map(law => law.save());
     await Promise.all(saveLawsPromises);
   }
+
+  public async getAll(): Promise<Law[]> {
+    return await Law.all();
+  }
 }

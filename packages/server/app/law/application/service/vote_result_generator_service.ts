@@ -2,11 +2,11 @@ import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import PoliticalPartyVoteGeneratorService
   from '#legislature/application/service/political_party_vote_generator_service';
-import type Law from '#law/domain/model/law';
 import type LawVote from '#law/domain/model/law_vote';
 import { LegislatureType } from '#legislature/domain/models/legislature_type';
 import { aLawVoteResult } from '#law/application/builder/law_vote_results_builder';
 import type LawVoteResults from '#law/domain/model/law_vote_results';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class VoteResultGeneratorService {

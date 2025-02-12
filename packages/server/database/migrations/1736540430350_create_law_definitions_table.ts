@@ -1,22 +1,27 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 import { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
-import { LawEffectType } from '#law/domain/model/law-effect/law_effect_type';
-import { BudgetType } from '#state/domain/model/budget_type';
+import { LawType } from '#law/domain/model/law_type';
 import { TaxType } from '#tax/domain/model/tax_type';
+import { BudgetType } from '#state/domain/model/budget_type';
 
 export default class extends BaseSchema {
-  protected tableName = 'law_effects';
+  protected tableName = 'law_definitions';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.string('identifier').primary();
+      table.increments('id');
 
       table.enum('type', [
-        LawEffectType.BUDGET_LEVEL,
-        LawEffectType.SECTOR_PROPERTY,
-        LawEffectType.TAX_LEVEL,
+        LawType.BUDGET_LEVEL,
+        LawType.TAX_LEVEL,
+        LawType.SECTOR_PROPERTY,
       ]).notNullable();
+      table.boolean('voted_by_default').notNullable();
+      table.integer('order').notNullable();
+      table.integer('political_weight_required').notNullable();
+      table.string('name').notNullable();
+      table.text('description').notNullable();
 
       table.enum('budget_type_to_change', [
         BudgetType.RETIREMENT,
@@ -45,20 +50,18 @@ export default class extends BaseSchema {
 
       table.integer('tax_level_to_change').nullable();
 
-      table.timestamp('created_at');
-      table.timestamp('updated_at');
-    });
+      table.integer('law_group_id')
+        .unsigned()
+        .references('id')
+        .inTable('law_groups')
+        .onDelete('CASCADE');
 
-    this.schema.alterTable('laws', (table) => {
-      table.string('law_effect_identifier').unsigned().references('identifier').inTable('law_effects').onDelete('CASCADE');
+      table.timestamp('created_at').notNullable();
+      table.timestamp('updated_at').nullable();
     });
   }
 
   async down() {
-    this.schema.alterTable('laws', (table) => {
-      table.dropColumn('law_effect_identifier');
-    });
-
     this.schema.dropTable(this.tableName);
   }
 }

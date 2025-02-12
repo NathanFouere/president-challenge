@@ -16,16 +16,7 @@ export default class SocialClassLawHappinessEffectRepository implements ISocialC
     return socialClassLawHappinessEffect;
   }
 
-  public async saveOrUpdateAll(socialClassLawHappinessEffects: SocialClassLawHappinessEffect[]): Promise<void> {
-    for (const socialClassLawHappinessEffect of socialClassLawHappinessEffects) {
-      const existingEffect = await this.findById(socialClassLawHappinessEffect.identifier);
-      if (existingEffect) {
-        existingEffect.merge(socialClassLawHappinessEffect.$attributes);
-        await existingEffect.save();
-      }
-      else {
-        await socialClassLawHappinessEffect.save();
-      }
-    }
+  public async createMany(socialClassLawHappinessEffects: SocialClassLawHappinessEffect[]): Promise<void> {
+    await SocialClassLawHappinessEffect.createMany(socialClassLawHappinessEffects);
   }
 }

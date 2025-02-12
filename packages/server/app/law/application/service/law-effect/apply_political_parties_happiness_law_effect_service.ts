@@ -9,11 +9,11 @@ import {
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IPoliticalPartyHappinessModifierRepository
   from '#political-party/domain/repository/i_political_party_happiness_modifier_repository';
-import type Law from '#law/domain/model/law';
 import type PoliticalAffiliationLawHappinessEffect
   from '#political-party/domain/models/political_affiliation_law_happiness_effect';
 import GetPoliticalPartyPerAffiliationInGameQuery
   from '#political-party/application/queries/get_political_party_per_affiliation_in_game_query';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class ApplyPoliticalPartiesHappinessLawEffectService {
@@ -26,7 +26,7 @@ export default class ApplyPoliticalPartiesHappinessLawEffectService {
 
   public async applyPoliticalPartiesHappinessEffects(law: Law, gameId: number): Promise<void> {
     const happinessModifierCreationPromises = [];
-    for (const politicalAffiliationLawHappinessEffect of law.lawEffect.politicalPartiesAffiliationHappinessEffects) {
+    for (const politicalAffiliationLawHappinessEffect of law.definition.politicalPartiesAffiliationHappinessEffects) {
       happinessModifierCreationPromises.push(this.applyPoliticalPartyHappinessEffect(law, politicalAffiliationLawHappinessEffect, gameId));
     }
     await Promise.all(happinessModifierCreationPromises);

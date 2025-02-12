@@ -1,9 +1,9 @@
 import { inject } from '@adonisjs/core';
-import Law from '#law/domain/model/law';
 import type GetLawByGameQuery from '#law/application/query/get_law_by_game_and_type_query';
 import type {
   IGetLawByGameQueryHandler,
 } from '#law/application/query/i_get_law_by_game_query_handler';
+import Law from '#law/domain/model/law';
 
 @inject()
 export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandler {
@@ -16,7 +16,7 @@ export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandl
       .where('id', query.lawId);
 
     if (preloadOptions.display) {
-      queryBuilder.preload('lawVotes', (query) => {
+      queryBuilder.preload('votes', (query) => {
         query.preload('voteResultsInSenate', (subQuery) => {
           subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
             subSubQuery.preload('politicalParty');
@@ -28,13 +28,13 @@ export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandl
           });
         });
       });
-      queryBuilder.preload('lawGroup', (lawQuery) => {
-        lawQuery.preload('laws');
+      queryBuilder.preload('definition', (lawDefinitionQuery) => {
+        lawDefinitionQuery.preload('lawGroup');
       });
     }
 
     if (preloadOptions.lawVotes) {
-      queryBuilder.preload('lawVotes', (query) => {
+      queryBuilder.preload('votes', (query) => {
         query.preload('voteResultsInSenate', (subQuery) => {
           subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
             subSubQuery.preload('politicalParty');
@@ -46,17 +46,12 @@ export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandl
           });
         });
       });
-      queryBuilder.preload('percentagesOfVotesForPoliticalParty', (query) => {
-        query.preload('politicalParty', (politicalPartyQuery) => {
-          politicalPartyQuery.preload('senateSeats');
-          politicalPartyQuery.preload('parliamentSeats');
-        });
+      queryBuilder.preload('definition', (lawDefinitionQuery) => {
+        lawDefinitionQuery.preload('socialClassesHappinessEffects');
+        lawDefinitionQuery.preload('politicalPartiesAffiliationHappinessEffects');
+        lawDefinitionQuery.preload('lawGroup');
+        lawDefinitionQuery.preload('percentagesOfVotesForPoliticalParty');
       });
-      queryBuilder.preload('lawEffect', (lawEffectQuery) => {
-        lawEffectQuery.preload('socialClassesHappinessEffects');
-        lawEffectQuery.preload('politicalPartiesAffiliationHappinessEffects');
-      });
-      queryBuilder.preload('lawGroup');
     }
 
     return await queryBuilder.firstOrFail();

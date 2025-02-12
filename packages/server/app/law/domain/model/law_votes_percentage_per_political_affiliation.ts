@@ -1,27 +1,24 @@
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
-import Law from '#law/domain/model/law';
-import PoliticalParty from '#political-party/domain/models/political_party';
+import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import LawDefinition from '#law/domain/model/law_definition';
 
-export default class LawVotesPercentagePerPoliticalParty extends BaseModel {
+export default class LawVotesPercentagePerPoliticalAffiliation extends BaseModel {
   @column({ isPrimary: true })
   declare id: number;
 
   @column()
-  declare lawId: number;
+  declare lawDefinitionId: number;
 
-  @belongsTo(() => Law)
-  declare law: BelongsTo<typeof Law>;
+  @belongsTo(() => LawDefinition)
+  declare lawDefinition: BelongsTo<typeof LawDefinition>;
 
   @column()
-  declare politicalPartyId: number;
+  declare politicalAffiliation: PoliticalAffiliation;
 
   @column()
   declare percentage: number;
-
-  @belongsTo(() => PoliticalParty)
-  declare politicalParty: BelongsTo<typeof PoliticalParty>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;

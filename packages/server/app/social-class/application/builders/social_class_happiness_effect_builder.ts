@@ -4,7 +4,6 @@ import type { HappinessModifierType } from '@shared/dist/common/happiness-modifi
 export default abstract class SocialClassHappinessEffectBuilder {
   protected socialClassType: SocialClassTypes | null = null;
   protected happinessModifier: number | null = null;
-  protected identifier: string | null = null;
   protected duration: number | null = null;
   protected type: HappinessModifierType | null = null;
 
@@ -15,11 +14,6 @@ export default abstract class SocialClassHappinessEffectBuilder {
 
   public withDuration(duration: number | null): this {
     this.duration = duration;
-    return this;
-  }
-
-  public withIdentifier(identifier: string): this {
-    this.identifier = identifier;
     return this;
   }
 

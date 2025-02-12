@@ -17,11 +17,11 @@ import { SocialClassStartupService } from '#social-class/infrastructure/startup/
 import { SectorStartupService } from '#sector/infrastructure/startup/sector_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import LawStartupService from '#law/infrastructure/startup/law_startup_service';
 import { StartupPipeline } from '#common/startup/startup_pipeline';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { TaxStartupService } from '#tax/infrastructure/startup/tax_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import GameLawStartupService from '#law/infrastructure/startup/game_law_startup_service';
 
 @inject()
 export default class StartupPipelineFactory {
@@ -35,8 +35,8 @@ export default class StartupPipelineFactory {
     private readonly productStartupService: ProductStartupService,
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
-    private readonly lawStartupService: LawStartupService,
     private readonly taxStartupService: TaxStartupService,
+    private readonly gameLawService: GameLawStartupService,
   ) {
   }
 
@@ -53,7 +53,7 @@ export default class StartupPipelineFactory {
         this.productStartupService,
         this.stateStartupService,
         this.taxStartupService,
-        this.lawStartupService,
+        this.gameLawService,
       ],
       gameId,
     );

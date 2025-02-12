@@ -5,10 +5,10 @@ export default class MinimalLawDtoFactory {
   public createFromLaw(law: Law): MinimalLawDto {
     return {
       id: law.id,
-      name: law.name,
-      description: law.description,
+      name: law.definition.name,
+      description: law.definition.description,
       voted: law.voted,
-      politicalWeightRequired: law.politicalWeightRequired,
+      politicalWeightRequired: law.definition.politicalWeightRequired,
     };
   }
 

@@ -6,14 +6,14 @@ import ApplySectorPropertyLawEffectService
 import ApplyBudgetLawEffectService from '#law/application/service/law-effect/apply_budget_law_effect_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ApplyTaxLawEffectService from '#law/application/service/law-effect/apply_tax_law_effect_service';
-import { LawEffectType } from '#law/domain/model/law-effect/law_effect_type';
-import type Law from '#law/domain/model/law';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SocialClassHappinessLawEffectService
   from '#law/application/service/law-effect/social_class_happiness_law_effect_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ApplyPoliticalPartiesHappinessLawEffectService
   from '#law/application/service/law-effect/apply_political_parties_happiness_law_effect_service';
+import { LawType } from '#law/domain/model/law_type';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class ApplyLawEffectService {
@@ -27,18 +27,18 @@ export default class ApplyLawEffectService {
   }
 
   public async applyLawEffect(law: Law, gameId: number): Promise<void> {
-    switch (law.lawEffect.type) {
-      case LawEffectType.BUDGET_LEVEL:
-        await this.applyBudgetLawEffectService.apply(law.lawEffect, gameId);
+    switch (law.definition.type) {
+      case LawType.BUDGET_LEVEL:
+        await this.applyBudgetLawEffectService.apply(law);
         break;
-      case LawEffectType.TAX_LEVEL:
-        await this.applyTaxLawEffectService.apply(law.lawEffect, gameId);
+      case LawType.TAX_LEVEL:
+        await this.applyTaxLawEffectService.apply(law);
         break;
-      case LawEffectType.SECTOR_PROPERTY:
-        await this.applySectorPropertyLawEffectService.apply(law.lawEffect, gameId);
+      case LawType.SECTOR_PROPERTY:
+        await this.applySectorPropertyLawEffectService.apply(law);
         break;
       default:
-        throw new Error(`Unknown law effect type: ${law.lawEffect.type}`);
+        throw new Error(`Unknown law type: ${law.definition.type}`);
     }
 
     await Promise.all([

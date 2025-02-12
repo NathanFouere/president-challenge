@@ -9,4 +9,11 @@ export default class LawCategoryRepository extends ILawCategoryRepository {
   public async createMany(lawCategories: LawCategory[]): Promise<void> {
     await LawCategory.createMany(lawCategories);
   }
+
+  public async getAll(): Promise<LawCategory[]> {
+    return await LawCategory
+      .query()
+      .preload('lawGroups')
+      .exec();
+  }
 }

@@ -4,7 +4,7 @@ import type { PoliticalAffiliation } from '@shared/dist/political-party/politica
 
 export default abstract class PoliticalAffiliationHappinessEffect extends BaseModel {
   @column({ isPrimary: true })
-  declare identifier: string;
+  declare id: number;
 
   @column()
   declare politicalAffiliation: PoliticalAffiliation;

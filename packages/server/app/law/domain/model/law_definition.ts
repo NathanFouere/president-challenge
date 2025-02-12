@@ -1,10 +1,10 @@
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm';
-import type { HasMany } from '@adonisjs/lucid/types/relations';
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
 import type { DateTime } from 'luxon';
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
-import Law from '#law/domain/model/law';
-import type { LawEffectType } from '#law/domain/model/law-effect/law_effect_type';
+import LawGroup from '#law/domain/model/law_group';
+import type { LawType } from '#law/domain/model/law_type';
 import type { BudgetType } from '#state/domain/model/budget_type';
 import type { BudgetLevel } from '#state/domain/model/budget_level';
 import type { TaxType } from '#tax/domain/model/tax_type';
@@ -12,40 +12,75 @@ import type { TaxLevel } from '#tax/domain/model/tax_level';
 import SocialClassLawHappinessEffect from '#social-class/domain/models/social_class_law_happiness_effect';
 import PoliticalAffiliationLawHappinessEffect
   from '#political-party/domain/models/political_affiliation_law_happiness_effect';
+import Law from '#law/domain/model/law';
+import LawVotesPercentagePerPoliticalAffiliation
+  from '#law/domain/model/law_votes_percentage_per_political_affiliation';
 
-export default class LawEffect extends BaseModel {
+export default class LawDefinition extends BaseModel {
   @column({ isPrimary: true })
-  declare identifier: string;
+  declare id: number;
 
   @column()
-  declare type: LawEffectType;
+  declare lawGroupId: number;
 
+  @belongsTo(() => LawGroup)
+  declare lawGroup: BelongsTo<typeof LawGroup>;
+
+  @column()
+  declare type: LawType;
+
+  @column()
+  declare name: string;
+
+  @column()
+  declare votedByDefault: boolean;
+
+  @column()
+  declare description: string;
+
+  @column()
+  declare politicalWeightRequired: number;
+
+  @column()
+  declare order: number;
+
+  // Simulates a SingleInheritance
   @column()
   declare budgetTypeToChange?: BudgetType;
 
+  // Simulates a SingleInheritance
   @column()
   declare budgetLevelToChange?: BudgetLevel;
 
+  // Simulates a SingleInheritance
   @column()
   declare sectorTypeToChange?: SectorTypes;
 
+  // Simulates a SingleInheritance
   @column()
   declare sectorOwnershipTypeToChange?: SectorOwnershipType;
 
+  // Simulates a SingleInheritance
   @column()
   declare taxTypeToChange?: TaxType;
 
+  // Simulates a SingleInheritance
   @column()
   declare taxLevelToChange?: TaxLevel;
-
-  @hasMany(() => Law)
-  declare laws: HasMany<typeof Law>;
 
   @hasMany(() => SocialClassLawHappinessEffect)
   declare socialClassesHappinessEffects: HasMany<typeof SocialClassLawHappinessEffect>;
 
   @hasMany(() => PoliticalAffiliationLawHappinessEffect)
   declare politicalPartiesAffiliationHappinessEffects: HasMany<typeof PoliticalAffiliationLawHappinessEffect>;
+
+  @hasMany(() => LawVotesPercentagePerPoliticalAffiliation)
+  declare percentagesOfVotesForPoliticalParty: HasMany<typeof LawVotesPercentagePerPoliticalAffiliation>;
+
+  @hasMany(() => Law, {
+    foreignKey: 'definitionId',
+  })
+  declare laws: HasMany<typeof Law>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;

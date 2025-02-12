@@ -1,4 +1,4 @@
-export default class GetLawCategoriesByGameQuery {
+export default class GetLawsByGroupAndGameQuery {
   constructor(
     public readonly gameId: number,
   ) {

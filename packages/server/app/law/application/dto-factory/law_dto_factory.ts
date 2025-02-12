@@ -4,10 +4,10 @@ import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
 import type { DatasetDTO } from '@shared/dist/chart/DatasetDTO.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import MinimalLawDtoFactory from '#law/application/dto-factory/minimal_law_dto_factory';
-import type Law from '#law/domain/model/law';
 import type LawVoteResults from '#law/domain/model/law_vote_results';
 import type LawVote from '#law/domain/model/law_vote';
 import type Game from '#game/domain/models/game';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class LawDtoFactory {
@@ -18,7 +18,7 @@ export default class LawDtoFactory {
 
   public createFromLaw(law: Law, game: Game): LawDto {
     const voteResultsDatas: VoteResultsData[] = [];
-    for (const lawVote of law.lawVotes) {
+    for (const lawVote of law.votes) {
       voteResultsDatas.push({
         votesInParliament: this.createVoteResultsChartData(lawVote.voteResultsInParliament),
         votesInSenate: this.createVoteResultsChartData(lawVote.voteResultsInSenate),
@@ -29,10 +29,10 @@ export default class LawDtoFactory {
 
     return {
       ...this.minimalLawDtoFactory.createFromLaw(law),
-      madeIncompatibleBy: law.lawGroup.laws.find((law: Law) => law.voted)?.name,
+      madeIncompatibleBy: 'ttooto',
       voteResultsDatas: voteResultsDatas,
-      alreadyVotedForThisTurn: law.lawVotes.some((lawVote: LawVote) => lawVote.turn === game.turn),
-      superiorToAvailablePoliticalWeight: law.politicalWeightRequired > game.politicalWeight,
+      alreadyVotedForThisTurn: law.votes.some((lawVote: LawVote) => lawVote.turn === game.turn),
+      superiorToAvailablePoliticalWeight: law.definition.politicalWeightRequired > game.politicalWeight,
     };
   }
 
