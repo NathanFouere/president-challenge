@@ -8,14 +8,20 @@ export default class GetSocialClassByGameAndTypeQueryHandler implements IGetSoci
   public async handle(query: GetSocialClassByGameAndTypeQuery): Promise<SocialClass> {
     return await SocialClass.query()
       .where('game_id', query.gameId)
-      .where('type', query.socialClassType)
+      .whereHas('definition', (definitionQuery) => {
+        definitionQuery.where('type', query.socialClassType);
+      })
+      .preload('definition')
       .firstOrFail();
   }
 
   public async handleForLawEffects(query: GetSocialClassByGameAndTypeQuery): Promise<SocialClass> {
     return await SocialClass.query()
       .where('game_id', query.gameId)
-      .where('type', query.socialClassType)
+      .whereHas('definition', (definitionQuery) => {
+        definitionQuery.where('type', query.socialClassType);
+      })
+      .preload('definition')
       .preload('happinessModifiers')
       .firstOrFail();
   }

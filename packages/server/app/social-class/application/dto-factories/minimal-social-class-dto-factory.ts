@@ -7,11 +7,11 @@ export class MinimalSocialClassDtoFactory {
   public createFromSocialClass(socialClass: SocialClass): MinimalSocialClassDto {
     return {
       id: socialClass.id,
-      name: socialClass.name,
-      description: socialClass.description,
-      color: socialClass.color,
-      socialClassType: socialClass.subType,
-      licensedFile: socialClass.licensedFiles[0],
+      name: socialClass.definition.name,
+      description: socialClass.definition.description,
+      color: socialClass.definition.color,
+      socialClassType: socialClass.definition.subType,
+      licensedFile: socialClass.definition.licensedFiles[0],
     };
   }
 

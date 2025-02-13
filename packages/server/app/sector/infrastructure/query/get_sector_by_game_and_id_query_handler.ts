@@ -35,7 +35,9 @@ export default class GetSectorByGameAndIdQueryHandler implements IGetSectorByGam
 
     if (preloadOptions.socialClasses) {
       queryBuilder.preload('socialClasses', (socialClassQuery) => {
-        socialClassQuery.preload('licensedFiles');
+        socialClassQuery.preload('definition', (definitionQuery) => {
+          definitionQuery.preload('licensedFiles');
+        });
       });
     }
 

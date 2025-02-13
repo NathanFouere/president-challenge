@@ -7,6 +7,8 @@ import LawDefinitionStartupService from '#law/infrastructure/startup/law_definit
 import { LicensedFileCreationService } from '#licensed-file/infrastructure/startup/licensed_file_creation_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventDefinitionStartupService } from '#event/infrastructure/startup/event_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { SocialClassDefinitionStartupService } from '#social-class/infrastructure/startup/social_class_definition_startup_service';
 
 export default class GenerateBaseValue extends BaseCommand {
   static readonly commandName = 'generate:base';
@@ -21,10 +23,11 @@ export default class GenerateBaseValue extends BaseCommand {
     lawStartupService: LawDefinitionStartupService,
     licensedFileCreationService: LicensedFileCreationService,
     eventStartupService: EventDefinitionStartupService,
+    socialClassDefinitionStartupService: SocialClassDefinitionStartupService,
   ) {
-    /*    await licensedFileCreationService.initializeLicensedFiles();
-    await lawStartupService.execute(); */
     await licensedFileCreationService.initializeLicensedFiles();
+    await socialClassDefinitionStartupService.execute();
+    await lawStartupService.execute();
     await eventStartupService.execute();
   }
 }

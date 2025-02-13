@@ -86,13 +86,13 @@ export class LoadTurnDataContextService {
         socialClass.setSector(sector);
       }
 
-      if (socialClass.type === SocialClassTypes.CAPITALIST) {
+      if (socialClass.definition.type === SocialClassTypes.CAPITALIST) {
         socialClassesPerType.capitalist.push(socialClass);
       }
-      else if (socialClass.type === SocialClassTypes.PROLETARIAT) {
+      else if (socialClass.definition.type === SocialClassTypes.PROLETARIAT) {
         socialClassesPerType.proletariat.push(socialClass);
       }
-      else if (socialClass.type === SocialClassTypes.PETIT_BOURGEOIS) {
+      else if (socialClass.definition.type === SocialClassTypes.PETIT_BOURGEOIS) {
         socialClassesPerType.petiteBourgeoisie.push(socialClass);
       }
     }

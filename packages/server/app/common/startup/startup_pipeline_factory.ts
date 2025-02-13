@@ -10,8 +10,6 @@ import { SenateStartupService } from '#legislature/infrastructure/startup/senate
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartySeatsStartupService } from '#legislature/infrastructure/startup/political_party_seats_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { SocialClassStartupService } from '#social-class/infrastructure/startup/social_class_startup_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SectorStartupService } from '#sector/infrastructure/startup/sector_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
@@ -22,6 +20,8 @@ import { TaxStartupService } from '#tax/infrastructure/startup/tax_startup_servi
 import LawStartupService from '#law/infrastructure/startup/law_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { EventStartupService } from '#event/infrastructure/startup/event_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { SocialClassStartupService } from '#social-class/infrastructure/startup/social_class_startup_service';
 
 @inject()
 export default class StartupPipelineFactory {
@@ -30,13 +30,13 @@ export default class StartupPipelineFactory {
     private readonly parliamentStartupService: ParliamentStartupService,
     private readonly senateStartupService: SenateStartupService,
     private readonly politicalPartySeatsStartupService: PoliticalPartySeatsStartupService,
-    private readonly socialClassStartupService: SocialClassStartupService,
     private readonly productStartupService: ProductStartupService,
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
     private readonly taxStartupService: TaxStartupService,
-    private readonly gameLawService: LawStartupService,
+    private readonly lawStartupService: LawStartupService,
     private readonly eventStartupService: EventStartupService,
+    private readonly socialClassStartupService: SocialClassStartupService,
   ) {
   }
 
@@ -48,12 +48,12 @@ export default class StartupPipelineFactory {
         this.politicalPartyStartupService,
         this.politicalPartySeatsStartupService,
         this.sectorStartupService,
-        this.socialClassStartupService,
         this.productStartupService,
         this.stateStartupService,
         this.taxStartupService,
-        this.gameLawService,
         this.eventStartupService,
+        this.socialClassStartupService,
+        this.lawStartupService,
       ],
       gameId,
     );

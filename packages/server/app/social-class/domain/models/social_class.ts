@@ -1,9 +1,7 @@
-import { BaseModel, beforeSave, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
-import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
+import { BaseModel, beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
 import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
-import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';
 import SocialClassEconomicalSituationPerTurn
@@ -14,28 +12,14 @@ import SocialClassFinancialFlow from '#social-class/domain/models/social_class_f
 import sectorEconomicalSituationMatchConfig
   from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
 import type Tax from '#tax/domain/model/tax';
+import SocialClassDefinition from '#social-class/domain/models/social_class_definition';
 
 export default class SocialClass extends BaseModel {
   @column({ isPrimary: true })
   declare id: number;
 
   @column()
-  declare name: string;
-
-  @column()
-  declare description: string;
-
-  @column()
-  declare color: string;
-
-  @column()
   declare economicalSituation: number;
-
-  @column()
-  declare type: SocialClassTypes;
-
-  @column()
-  declare subType: SocialClassSubtypes;
 
   @column()
   declare gameId: number;
@@ -43,17 +27,16 @@ export default class SocialClass extends BaseModel {
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
 
+  @column()
+  declare definitionId: number;
+
+  @belongsTo(() => SocialClassDefinition, {
+    foreignKey: 'definitionId',
+  })
+  declare definition: BelongsTo<typeof SocialClassDefinition>;
+
   @hasMany(() => SocialClassFinancialFlow)
   declare financialFlows: HasMany<typeof SocialClassFinancialFlow>;
-
-  @manyToMany(() => LicensedFile, {
-    pivotTable: 'social_class_licensed_files',
-    pivotForeignKey: 'social_class_id',
-    pivotRelatedForeignKey: 'licensed_file_identifier',
-    localKey: 'id',
-    relatedKey: 'identifier',
-  })
-  declare licensedFiles: ManyToMany<typeof LicensedFile>;
 
   @hasMany(() => SocialClassEconomicalSituationPerTurn)
   declare economicalSituationPerTurn: HasMany<typeof SocialClassEconomicalSituationPerTurn>;
@@ -89,7 +72,7 @@ export default class SocialClass extends BaseModel {
 
   public generateRevenueFromSector(): number {
     let revenuesFromSectors;
-    switch (this.type) {
+    switch (this.definition.type) {
       case SocialClassTypes.CAPITALIST:
         revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
         break;
@@ -131,7 +114,7 @@ export default class SocialClass extends BaseModel {
   }
 
   public getHappinessModifierValueFromEconomicalSituation(): number {
-    switch (this.type) {
+    switch (this.definition.type) {
       case SocialClassTypes.PROLETARIAT:
         return this.economicalSituation > 30 ? 1 : -1;
       case SocialClassTypes.CAPITALIST:
