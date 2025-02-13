@@ -17,7 +17,7 @@ import GetLawByGameQuery from '#law/application/query/get_law_by_game_and_type_q
 import ILawRepository from '#law/domain/repository/i_law_repository';
 
 @inject()
-export default class GameLawStartupService implements StartupProcessorStep {
+export default class LawStartupService implements StartupProcessorStep {
   constructor(
     private readonly lawDefinitionRepository: ILawDefinitionRepository,
     private readonly applySocialClassesHappinessEffects: SocialClassHappinessLawEffectService,

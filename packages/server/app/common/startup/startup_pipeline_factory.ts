@@ -4,8 +4,6 @@ import { ProductStartupService } from '#product/infrastructure/startup/product_s
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartyStartupService } from '#political-party/infrastructure/startup/political_party_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { EventStartupService } from '#event/infrastructure/startup/event_startup_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ParliamentStartupService } from '#legislature/infrastructure/startup/parliament_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SenateStartupService } from '#legislature/infrastructure/startup/senate_startup_service';
@@ -21,13 +19,14 @@ import { StartupPipeline } from '#common/startup/startup_pipeline';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { TaxStartupService } from '#tax/infrastructure/startup/tax_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import GameLawStartupService from '#law/infrastructure/startup/game_law_startup_service';
+import LawStartupService from '#law/infrastructure/startup/law_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { EventStartupService } from '#event/infrastructure/startup/event_startup_service';
 
 @inject()
 export default class StartupPipelineFactory {
   constructor(
     private readonly politicalPartyStartupService: PoliticalPartyStartupService,
-    private readonly eventStartupService: EventStartupService,
     private readonly parliamentStartupService: ParliamentStartupService,
     private readonly senateStartupService: SenateStartupService,
     private readonly politicalPartySeatsStartupService: PoliticalPartySeatsStartupService,
@@ -36,14 +35,14 @@ export default class StartupPipelineFactory {
     private readonly sectorStartupService: SectorStartupService,
     private readonly stateStartupService: StateStartupService,
     private readonly taxStartupService: TaxStartupService,
-    private readonly gameLawService: GameLawStartupService,
+    private readonly gameLawService: LawStartupService,
+    private readonly eventStartupService: EventStartupService,
   ) {
   }
 
   public create(gameId: number): StartupPipeline {
     return new StartupPipeline(
       [
-        this.eventStartupService,
         this.parliamentStartupService,
         this.senateStartupService,
         this.politicalPartyStartupService,
@@ -54,6 +53,7 @@ export default class StartupPipelineFactory {
         this.stateStartupService,
         this.taxStartupService,
         this.gameLawService,
+        this.eventStartupService,
       ],
       gameId,
     );

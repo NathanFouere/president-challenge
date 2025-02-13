@@ -1,7 +1,8 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
+import { EventType } from '@shared/dist/event/event-type.js';
 
 export default class extends BaseSchema {
-  protected tableName = 'events';
+  protected tableName = 'event_definitions';
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -10,20 +11,13 @@ export default class extends BaseSchema {
       table.string('title').notNullable();
       table.text('text').notNullable();
       table.integer('turn').notNullable();
-      table.boolean('is_available').notNullable();
-      table.boolean('been_read').notNullable();
-      table.boolean('is_displayable').notNullable();
+      table.boolean('is_available_by_default').notNullable();
+      table.boolean('is_displayable_by_default').notNullable();
       table.enum('type', [
-        'historical',
-        'choice',
-        'super-event',
+        EventType.Choice,
+        EventType.SuperEvent,
+        EventType.Historical,
       ]).notNullable();
-      table
-        .integer('game_id')
-        .unsigned()
-        .references('id')
-        .inTable('games')
-        .onDelete('CASCADE');
 
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();
