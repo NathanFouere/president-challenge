@@ -54,11 +54,11 @@ export class SectorDtoFactory {
   public createFromSector(sector: Sector): SectorDto {
     return {
       id: sector.id,
-      name: sector.name,
-      type: sector.type,
-      description: sector.description,
+      name: sector.definition.name,
+      type: sector.definition.type,
+      description: sector.definition.description,
       economicalSituation: this.rangeLevelMatch.createFromAmount(sector.economicalSituation, this.sectorEconomicalSituationRangeLevels),
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.licensedFile),
+      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.definition.licensedFile),
       socialClasses: this.minimalSocialClassDtoFactory.createFromSocialClasses(sector.socialClasses),
       products: this.minimalProductDtoFactory.createFromProducts(sector.products),
       economicalSituationPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(

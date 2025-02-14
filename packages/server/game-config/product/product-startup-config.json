@@ -5,7 +5,7 @@
     "price": 10,
     "costOfProduction": 10,
     "licensedFileIdentifier": "bread",
-    "sectorType": "Agricultural"
+    "sectorId": 1
   },
   {
     "name": "Car",
@@ -13,7 +13,7 @@
     "price": 75,
     "costOfProduction": 75,
     "licensedFileIdentifier": "car",
-    "sectorType": "Industrial"
+    "sectorId": 3
   },
   {
     "name": "Coal",
@@ -21,7 +21,7 @@
     "price": 35,
     "costOfProduction": 35,
     "licensedFileIdentifier": "coal",
-    "sectorType": "Mine"
+    "sectorId": 2
   },
   {
     "name": "Copper",
@@ -29,7 +29,7 @@
     "price": 40,
     "costOfProduction": 40,
     "licensedFileIdentifier": "copper",
-    "sectorType": "Mine"
+    "sectorId": 2
   },
   {
     "name": "Grain",
@@ -37,6 +37,6 @@
     "price": 20,
     "costOfProduction": 20,
     "licensedFileIdentifier": "grain",
-    "sectorType": "Agricultural"
+    "sectorId": 1
   }
 ]

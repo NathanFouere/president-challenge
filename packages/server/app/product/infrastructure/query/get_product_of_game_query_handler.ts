@@ -11,10 +11,11 @@ export default class GetProductOfGameQueryHandler implements IGetProductOfGameQu
       .query()
       .where('game_id', query.gameId)
       .where('id', query.productId);
-
-    if (preloadOptions.licensedFile) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (builder) => {
+      if (preloadOptions.licensedFile) {
+        builder.preload('licensedFile');
+      }
+    });
 
     if (preloadOptions.pricePerTurn) {
       queryBuilder.preload('pricePerTurn', (query) => {

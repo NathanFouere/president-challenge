@@ -9,6 +9,10 @@ import { LicensedFileCreationService } from '#licensed-file/infrastructure/start
 import { EventDefinitionStartupService } from '#event/infrastructure/startup/event_definition_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { SocialClassDefinitionStartupService } from '#social-class/infrastructure/startup/social_class_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { SectorDefinitionStartupService } from '#sector/infrastructure/startup/sector_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ProductDefinitionStartupService } from '#product/infrastructure/startup/product_definition_startup_service';
 
 export default class GenerateBaseValue extends BaseCommand {
   static readonly commandName = 'generate:base';
@@ -20,14 +24,18 @@ export default class GenerateBaseValue extends BaseCommand {
 
   @inject()
   async run(
-    lawStartupService: LawDefinitionStartupService,
     licensedFileCreationService: LicensedFileCreationService,
+    lawStartupService: LawDefinitionStartupService,
     eventStartupService: EventDefinitionStartupService,
     socialClassDefinitionStartupService: SocialClassDefinitionStartupService,
+    sectorDefinitionStartupService: SectorDefinitionStartupService,
+    productDefinitionStartupService: ProductDefinitionStartupService,
   ) {
     await licensedFileCreationService.initializeLicensedFiles();
     await socialClassDefinitionStartupService.execute();
     await lawStartupService.execute();
     await eventStartupService.execute();
+    await sectorDefinitionStartupService.execute();
+    await productDefinitionStartupService.execute();
   }
 }

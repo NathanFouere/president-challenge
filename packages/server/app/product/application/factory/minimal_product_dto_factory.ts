@@ -18,9 +18,9 @@ export class MinimalProductDtoFactory {
   public createFromProduct(product: Product): MinimalProductDto {
     return {
       id: product.id,
-      name: product.name,
-      description: product.description,
-      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.licensedFile),
+      name: product.definition.name,
+      description: product.definition.description,
+      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.definition.licensedFile),
       price: product.price,
       costOfProduction: product.costOfProduction,
     };

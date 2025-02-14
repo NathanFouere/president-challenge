@@ -8,10 +8,11 @@ export default class GetProductsOfGameQueryHandler implements IGetProductsOfGame
     preloadOptions: { licensedFile?: boolean; pricePerTurn?: boolean } = {},
   ): Promise<Product[]> {
     const queryBuilder = Product.query().where('game_id', query.gameId);
-
-    if (preloadOptions.licensedFile) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (builder) => {
+      if (preloadOptions.licensedFile) {
+        builder.preload('licensedFile');
+      }
+    });
 
     if (preloadOptions.pricePerTurn) {
       queryBuilder.preload('pricePerTurn');

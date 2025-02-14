@@ -17,9 +17,11 @@ export default class GetSectorByGameAndIdQueryHandler implements IGetSectorByGam
       .where('game_id', query.gameId)
       .where('id', query.sectorId);
 
-    if (preloadOptions.licensedFile) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (builder) => {
+      if (preloadOptions.licensedFile) {
+        builder.preload('licensedFile');
+      }
+    });
 
     if (preloadOptions.economicalSituationPerTurn) {
       queryBuilder.preload('economicalSituationPerTurn', (query) => {
@@ -29,7 +31,9 @@ export default class GetSectorByGameAndIdQueryHandler implements IGetSectorByGam
 
     if (preloadOptions.products) {
       queryBuilder.preload('products', (productQuery) => {
-        productQuery.preload('licensedFile');
+        productQuery.preload('definition', (definitionQuery) => {
+          definitionQuery.preload('licensedFile');
+        });
       });
     }
 
