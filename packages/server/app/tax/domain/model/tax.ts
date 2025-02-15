@@ -1,10 +1,10 @@
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
 import type { DateTime } from 'luxon';
-import type { TaxType } from '#tax/domain/model/tax_type';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
 import State from '#state/domain/model/state';
 import Game from '#game/domain/models/game';
+import TaxDefinition from '#tax/domain/model/tax_definition';
 
 export default class Tax extends BaseModel {
   @column({ isPrimary: true })
@@ -17,19 +17,15 @@ export default class Tax extends BaseModel {
   declare game: BelongsTo<typeof Game>;
 
   @column()
-  declare name: string;
+  declare definitionId: number;
+
+  @belongsTo(() => TaxDefinition, {
+    foreignKey: 'definitionId',
+  })
+  declare definition: BelongsTo<typeof TaxDefinition>;
 
   @column()
-  declare description: string;
-
-  @column()
-  declare baseRate: number;
-
-  @column()
-  declare color: string;
-
-  @column()
-  declare type: TaxType;
+  declare rate: number;
 
   @column()
   declare level: TaxLevel;
@@ -47,6 +43,6 @@ export default class Tax extends BaseModel {
   declare updatedAt: DateTime | null;
 
   public calculateTaxAmount(valueToTax: number): number {
-    return Math.round(Math.max(0, valueToTax * (this.level * this.baseRate)));
+    return Math.round(Math.max(0, valueToTax * (this.level * this.rate)));
   }
 }

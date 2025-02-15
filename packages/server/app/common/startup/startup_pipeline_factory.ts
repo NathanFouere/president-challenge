@@ -7,8 +7,6 @@ import { ParliamentStartupService } from '#legislature/infrastructure/startup/pa
 import { SenateStartupService } from '#legislature/infrastructure/startup/senate_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { PoliticalPartySeatsStartupService } from '#legislature/infrastructure/startup/political_party_seats_startup_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { StateStartupService } from '#state/infrastructure/startup/state_startup_service';
 import { StartupPipeline } from '#common/startup/startup_pipeline';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { TaxStartupService } from '#tax/infrastructure/startup/tax_startup_service';
@@ -22,6 +20,10 @@ import { SocialClassStartupService } from '#social-class/infrastructure/startup/
 import { SectorStartupService } from '#sector/infrastructure/startup/sector_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ProductStartupService } from '#product/infrastructure/startup/product_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import StateStartupService from '#state/infrastructure/startup/state_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import BudgetStartupService from '#budget/infrastructure/startup/budget_startup_service';
 
 @inject()
 export default class StartupPipelineFactory {
@@ -37,6 +39,7 @@ export default class StartupPipelineFactory {
     private readonly socialClassStartupService: SocialClassStartupService,
     private readonly sectorStartupService: SectorStartupService,
     private readonly productStartupService: ProductStartupService,
+    private readonly budgetStartupService: BudgetStartupService,
   ) {
   }
 
@@ -51,6 +54,7 @@ export default class StartupPipelineFactory {
         this.politicalPartySeatsStartupService,
         this.stateStartupService,
         this.taxStartupService,
+        this.budgetStartupService,
         this.eventStartupService,
         this.socialClassStartupService,
         this.lawStartupService,

@@ -1,4 +1,4 @@
-import type Budget from '#state/domain/model/budget';
+import type Budget from '#budget/domain/model/budget';
 
 export default abstract class IBudgetRepository {
   abstract save(budget: Budget): Promise<void>;

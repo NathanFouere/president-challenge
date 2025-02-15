@@ -6,21 +6,19 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
-      table.string('name').notNullable();
-      table.text('description').notNullable();
       table.integer('economical_situation').notNullable();
-      table
-        .string('flag_identifier')
-        .references('identifier')
-        .inTable('licensed_files')
-        .onUpdate('CASCADE')
-        .onDelete('SET NULL')
-        .nullable();
 
       table.integer('game_id')
         .unsigned()
         .references('id')
         .inTable('games')
+        .onDelete('CASCADE');
+
+      table
+        .integer('definition_id')
+        .unsigned()
+        .references('id')
+        .inTable('state_definitions')
         .onDelete('CASCADE');
 
       table.timestamp('created_at').notNullable();

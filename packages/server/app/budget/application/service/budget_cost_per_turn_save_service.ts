@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
-import type Budget from '#state/domain/model/budget';
-import { aBudgetLevelPerTurn } from '#state/application/builder/budget_level_per_turn_builder';
+import type Budget from '#budget/domain/model/budget';
+import { aBudgetLevelPerTurn } from '#budget/application/builder/budget_level_per_turn_builder';
 
 @inject()
 export default class BudgetCostPerTurnSaveService {
@@ -22,7 +22,7 @@ export default class BudgetCostPerTurnSaveService {
       .withBudgetId(budget.id)
       .withAmount(budget.level)
       .withTurn(turn)
-      .withColor(budget.color)
+      .withColor(budget.definition.color)
       .exist();
   }
 }

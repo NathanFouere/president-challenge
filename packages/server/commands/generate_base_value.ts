@@ -13,6 +13,12 @@ import { SocialClassDefinitionStartupService } from '#social-class/infrastructur
 import { SectorDefinitionStartupService } from '#sector/infrastructure/startup/sector_definition_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ProductDefinitionStartupService } from '#product/infrastructure/startup/product_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import BudgetDefinitionStartupService from '#budget/infrastructure/startup/budget_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { TaxDefinitionStartupService } from '#tax/infrastructure/startup/tax_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { StateDefinitionStartupService } from '#state/infrastructure/startup/state_definition_startup_service';
 
 export default class GenerateBaseValue extends BaseCommand {
   static readonly commandName = 'generate:base';
@@ -30,6 +36,9 @@ export default class GenerateBaseValue extends BaseCommand {
     socialClassDefinitionStartupService: SocialClassDefinitionStartupService,
     sectorDefinitionStartupService: SectorDefinitionStartupService,
     productDefinitionStartupService: ProductDefinitionStartupService,
+    bugdetDefinitionStartupService: BudgetDefinitionStartupService,
+    taxDefinitionStartupService: TaxDefinitionStartupService,
+    stateDefinitionStartupService: StateDefinitionStartupService,
   ) {
     await licensedFileCreationService.initializeLicensedFiles();
     await socialClassDefinitionStartupService.execute();
@@ -37,5 +46,8 @@ export default class GenerateBaseValue extends BaseCommand {
     await eventStartupService.execute();
     await sectorDefinitionStartupService.execute();
     await productDefinitionStartupService.execute();
+    await stateDefinitionStartupService.execute();
+    await bugdetDefinitionStartupService.execute();
+    await taxDefinitionStartupService.execute();
   }
 }

@@ -1,4 +1,4 @@
-import type { BudgetType } from '#state/domain/model/budget_type';
+import type { BudgetType } from '#budget/domain/model/budget_type';
 
 export default class GetBudgetByGameAndTypeQuery {
   constructor(

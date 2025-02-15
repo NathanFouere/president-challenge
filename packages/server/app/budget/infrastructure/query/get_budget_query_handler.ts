@@ -1,6 +1,6 @@
-import type IGetBudgetQueryHandler from '#state/application/query/i_get_budget_query_handler';
-import Budget from '#state/domain/model/budget';
-import type GetBudgetQuery from '#state/application/query/get_budget_query';
+import type IGetBudgetQueryHandler from '#budget/application/query/i_get_budget_query_handler';
+import Budget from '#budget/domain/model/budget';
+import type GetBudgetQuery from '#budget/application/query/get_budget_query';
 
 export default class GetBudgetOfStateQueryHandler implements IGetBudgetQueryHandler {
   private async getBudgetOfState(
@@ -9,9 +9,11 @@ export default class GetBudgetOfStateQueryHandler implements IGetBudgetQueryHand
   ): Promise<Budget> {
     const queryBuilder = Budget.query().where('id', query.budgetId);
 
-    if (preloadOptions.licensedFile) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (definitionQuery) => {
+      if (preloadOptions.licensedFile) {
+        definitionQuery.preload('licensedFile');
+      }
+    });
 
     if (preloadOptions.costPerTurn) {
       queryBuilder.preload('levelPerTurn');

@@ -10,11 +10,14 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
     const queryBuilder = State.query().where('game_id', query.gameId);
 
     if (preloadOptions.display) {
-      queryBuilder.preload('budgets', (query) => {
-        query.preload('licensedFile');
+      queryBuilder.preload('definition', (definitionQuery) => {
+        definitionQuery.preload('flag');
       });
-
-      queryBuilder.preload('flag');
+      queryBuilder.preload('budgets', (budgetsQuery) => {
+        budgetsQuery.preload('definition', (definitionQuery) => {
+          definitionQuery.preload('licensedFile');
+        });
+      });
 
       queryBuilder.preload('economicalSituationPerTurn', (query) => {
         query.orderBy('turn', 'asc');
@@ -24,7 +27,9 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
         query.orderBy('turn', 'asc');
       });
 
-      queryBuilder.preload('taxes');
+      queryBuilder.preload('taxes', (taxesQuery) => {
+        taxesQuery.preload('definition');
+      });
     }
 
     if (preloadOptions.switchTurn) {

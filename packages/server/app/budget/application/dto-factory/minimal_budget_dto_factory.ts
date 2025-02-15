@@ -1,10 +1,10 @@
 import { inject } from '@adonisjs/core';
 import type { MinimalBudgetDto } from '@shared/dist/state/minimal-budget-dto.js';
 import type { LevelDto } from '@shared/dist/common/level-dto.js';
-import type Budget from '#state/domain/model/budget';
+import type Budget from '#budget/domain/model/budget';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
-import { BudgetLevel } from '#state/domain/model/budget_level';
+import { BudgetLevel } from '#budget/domain/model/budget_level';
 
 @inject()
 export class MinimalBudgetDtoFactory {
@@ -20,12 +20,12 @@ export class MinimalBudgetDtoFactory {
   public createFromBudget(budget: Budget): MinimalBudgetDto {
     return {
       id: budget.id,
-      name: budget.name,
-      color: budget.color,
-      description: budget.description,
+      name: budget.definition.name,
+      color: budget.definition.color,
+      description: budget.definition.description,
       level: this.createBudgetLevelFromLevel(budget.level),
       cost: budget.level,
-      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(budget.licensedFile),
+      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(budget.definition.licensedFile),
     };
   }
 

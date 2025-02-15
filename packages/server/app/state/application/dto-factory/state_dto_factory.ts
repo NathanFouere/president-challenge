@@ -8,7 +8,7 @@ import ChartDataFactory from '#common/utils/chart_data_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import RangeLevelMatch from '#common/utils/range_level_match';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { MinimalBudgetDtoFactory } from '#state/application/dto-factory/minimal_budget_dto_factory';
+import { MinimalBudgetDtoFactory } from '#budget/application/dto-factory/minimal_budget_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import TaxDtoFactory from '#tax/application/dto-factory/tax_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -36,10 +36,10 @@ export class StateDtoFactory {
 
   public createFromState(state: State): StateDto {
     return {
-      name: state.name,
-      description: state.description,
+      name: state.definition.name,
+      description: state.definition.description,
       economicalSituation: this.mapEconomicalSituation(state.economicalSituation),
-      flag: this.licensedFileDtoFactory.createFromLicensedFile(state.flag),
+      flag: this.licensedFileDtoFactory.createFromLicensedFile(state.definition.flag),
       economicalSituationPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         state.economicalSituationPerTurn,
         'Economical Situation',

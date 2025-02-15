@@ -1,5 +1,5 @@
-import type Budget from '#state/domain/model/budget';
-import type GetBudgetQuery from '#state/application/query/get_budget_query';
+import type Budget from '#budget/domain/model/budget';
+import type GetBudgetQuery from '#budget/application/query/get_budget_query';
 
 export default abstract class IGetBudgetQueryHandler {
   public abstract handle(query: GetBudgetQuery): Promise<Budget>;

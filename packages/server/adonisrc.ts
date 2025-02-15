@@ -47,6 +47,7 @@ export default defineConfig({
     () => import('#state/state_provider'),
     () => import('#tax/tax_provider'),
     () => import('#law/law_provider'),
+    () => import('#budget/budget_provider'),
     () => import('#user/user_provider'),
     () => import('#happiness-modifier/happiness_modifier_provider'),
   ],

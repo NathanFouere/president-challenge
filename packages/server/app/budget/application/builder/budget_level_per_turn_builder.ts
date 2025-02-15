@@ -1,5 +1,5 @@
 import { SaveAmountForTurnBuilder } from '#common/builder/save_amount_for_turn_builder';
-import BudgetLevelPerTurn from '#state/domain/model/budget_level_per_turn';
+import BudgetLevelPerTurn from '#budget/domain/model/budget_level_per_turn';
 
 export default class BudgetLevelPerTurnBuilder extends SaveAmountForTurnBuilder {
   private budgetId: number | null = null;
