@@ -43,10 +43,10 @@ export default class LawDtoFactory {
     labels.push('Votes for', 'Votes against');
     for (const voteResult of lawVoteResultFor.politicalPartiesVoteResults) {
       datasets.push({
-        label: voteResult.politicalParty.name,
+        label: voteResult.politicalParty.definition.name,
         data: [voteResult.votesFor, voteResult.votesAgainst],
-        backgroundColor: [voteResult.politicalParty.color],
-        borderColor: [voteResult.politicalParty.color],
+        backgroundColor: [voteResult.politicalParty.definition.color],
+        borderColor: [voteResult.politicalParty.definition.color],
       });
     }
     return {

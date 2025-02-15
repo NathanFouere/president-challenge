@@ -19,6 +19,10 @@ import BudgetDefinitionStartupService from '#budget/infrastructure/startup/budge
 import { TaxDefinitionStartupService } from '#tax/infrastructure/startup/tax_definition_startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StateDefinitionStartupService } from '#state/infrastructure/startup/state_definition_startup_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  PoliticalPartyDefinitionStartupService,
+} from '#political-party/infrastructure/startup/political_party_definition_startup_service';
 
 export default class GenerateBaseValue extends BaseCommand {
   static readonly commandName = 'generate:base';
@@ -39,6 +43,7 @@ export default class GenerateBaseValue extends BaseCommand {
     bugdetDefinitionStartupService: BudgetDefinitionStartupService,
     taxDefinitionStartupService: TaxDefinitionStartupService,
     stateDefinitionStartupService: StateDefinitionStartupService,
+    politicalPartyDefinitionStartupService: PoliticalPartyDefinitionStartupService,
   ) {
     await licensedFileCreationService.initializeLicensedFiles();
     await socialClassDefinitionStartupService.execute();
@@ -49,5 +54,6 @@ export default class GenerateBaseValue extends BaseCommand {
     await stateDefinitionStartupService.execute();
     await bugdetDefinitionStartupService.execute();
     await taxDefinitionStartupService.execute();
+    await politicalPartyDefinitionStartupService.execute();
   }
 }

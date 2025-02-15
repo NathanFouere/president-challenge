@@ -7,7 +7,10 @@ export default class GetBudgetByGameAndTypeQueryHandler extends IGetBudgetByGame
     return await Budget
       .query()
       .where('game_id', query.gameId)
-      .where('type', query.budgetType)
+      .preload('definition')
+      .whereHas('definition', (definitionQuery) => {
+        definitionQuery.where('type', query.budgetType);
+      })
       .firstOrFail();
   }
 }

@@ -19,20 +19,22 @@ export default class GetPoliticalPartyOfGameQueryHandler implements IGetPolitica
       .where('id', query.politicalPartyId)
       .where('game_id', query.gameId);
 
-    if (preloadOptions.licensedFile) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (definitionQuery) => {
+      if (preloadOptions.licensedFile) {
+        definitionQuery.preload('licensedFile');
+      }
+
+      if (preloadOptions.senateSeats) {
+        queryBuilder.preload('senateSeats');
+      }
+
+      if (preloadOptions.parliamentSeats) {
+        queryBuilder.preload('parliamentSeats');
+      }
+    });
 
     if (preloadOptions.happinessModifiers) {
       queryBuilder.preload('happinessModifiers');
-    }
-
-    if (preloadOptions.senateSeats) {
-      queryBuilder.preload('senateSeats');
-    }
-
-    if (preloadOptions.parliamentSeats) {
-      queryBuilder.preload('parliamentSeats');
     }
 
     if (preloadOptions.happinessPerTurn) {

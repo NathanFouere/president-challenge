@@ -18,8 +18,4 @@ export default class PoliticalPartyRepository implements IPoliticalPartyReposito
   public async createMany(politicalParties: PoliticalParty[]): Promise<void> {
     await PoliticalParty.createMany(politicalParties);
   }
-
-  public async getByAffiliationAndGameId(affiliation: string, gameId: number): Promise<PoliticalParty> {
-    return PoliticalParty.query().where('affiliation', affiliation).where('game_id', gameId).firstOrFail();
-  }
 }

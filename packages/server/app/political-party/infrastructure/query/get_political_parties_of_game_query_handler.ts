@@ -9,10 +9,11 @@ export default class GetPoliticalPartiesOfGameQueryHandler implements IGetPoliti
     preloadOptions: { licensedFiles?: boolean; happinessModifiers?: boolean } = {},
   ): Promise<PoliticalParty[]> {
     const queryBuilder = PoliticalParty.query().where('game_id', query.gameId);
-
-    if (preloadOptions.licensedFiles) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (definitionQuery) => {
+      if (preloadOptions.licensedFiles) {
+        definitionQuery.preload('licensedFile');
+      }
+    });
 
     if (preloadOptions.happinessModifiers) {
       queryBuilder.preload('happinessModifiers');

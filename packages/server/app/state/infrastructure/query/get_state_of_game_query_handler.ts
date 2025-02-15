@@ -9,10 +9,13 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
   } = {}): Promise<State> {
     const queryBuilder = State.query().where('game_id', query.gameId);
 
-    if (preloadOptions.display) {
-      queryBuilder.preload('definition', (definitionQuery) => {
+    queryBuilder.preload('definition', (definitionQuery) => {
+      if (preloadOptions.display) {
         definitionQuery.preload('flag');
-      });
+      }
+    });
+
+    if (preloadOptions.display) {
       queryBuilder.preload('budgets', (budgetsQuery) => {
         budgetsQuery.preload('definition', (definitionQuery) => {
           definitionQuery.preload('licensedFile');
@@ -33,8 +36,12 @@ export default class GetStateOfGameQueryHandler implements IGetStateOfGameQueryH
     }
 
     if (preloadOptions.switchTurn) {
-      queryBuilder.preload('budgets');
-      queryBuilder.preload('taxes');
+      queryBuilder.preload('budgets', (budgetsQuery) => {
+        budgetsQuery.preload('definition');
+      });
+      queryBuilder.preload('taxes', (taxesQuery) => {
+        taxesQuery.preload('definition');
+      });
     }
 
     return queryBuilder.firstOrFail();

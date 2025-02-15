@@ -8,7 +8,9 @@ export default class GetParliamentByGameQueryHandler implements IGetParliamentBy
       .query()
       .where('game_id', getParliamentByUserAndGameQuery.gameId)
       .preload('partySeats', (query) => {
-        query.preload('politicalParty');
+        query.preload('politicalParty', (query) => {
+          query.preload('definition');
+        });
       })
       .firstOrFail();
   }
