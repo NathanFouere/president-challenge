@@ -7,7 +7,7 @@ import Event from '#event/domain/models/event';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 
 export default class EventDefinition extends BaseModel {
-  @column({ isPrimary: true, serializeAs: null })
+  @column({ isPrimary: true })
   declare id: number;
 
   @column()
