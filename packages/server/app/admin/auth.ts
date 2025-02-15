@@ -1,6 +1,7 @@
-import { DefaultAuthProvider, DefaultAuthenticatePayload } from 'adminjs'
+import type { DefaultAuthenticatePayload } from 'adminjs';
+import { DefaultAuthProvider } from 'adminjs';
 
-import componentLoader from './component_loader.js'
+import componentLoader from './component_loader.js';
 
 /**
  * Your "authenticate" function. Depending on the auth provider used, the payload may be different.
@@ -11,12 +12,12 @@ import componentLoader from './component_loader.js'
  * The default implementation below will let any in, so make sure to update it.
  */
 const authenticate = async ({ email }: DefaultAuthenticatePayload) => {
-  return Promise.resolve({ email })
-}
+  return Promise.resolve({ email });
+};
 
 const authProvider = new DefaultAuthProvider({
   componentLoader,
   authenticate,
-})
+});
 
-export default authProvider
+export default authProvider;

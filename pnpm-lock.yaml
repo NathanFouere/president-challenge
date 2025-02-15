@@ -99,6 +99,9 @@ importers:
       '@adminjs/adonis':
         specifier: ^1.1.1
         version: 1.1.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/lucid@21.4.0(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(luxon@3.5.0)(pg@8.13.1))(@adonisjs/session@7.5.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0))(reflect-metadata@0.2.2)
+      '@adminjs/relations':
+        specifier: ^1.1.2
+        version: 1.1.2(adminjs@7.8.15(@types/babel__core@7.20.5)(@types/react@19.0.8))
       '@adonisjs/auth':
         specifier: ^9.2.3
         version: 9.2.4(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/lucid@21.4.0(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(luxon@3.5.0)(pg@8.13.1))(@adonisjs/session@7.5.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0))(@japa/plugin-adonisjs@3.0.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@japa/runner@3.1.4))
@@ -221,6 +224,14 @@ packages:
     peerDependencies:
       react: ^18.1.0
       react-dom: ^18.1.0
+
+  '@adminjs/license@1.0.1':
+    resolution: {integrity: sha512-I1z1jgXlv9Ouk/FPRqm3W7cPjhKBYRuO8sv6vtRudu7foLdhweWNNGMUN+ccWhl+5nqjMi7c9dhBQVLo3/5CFw==}
+
+  '@adminjs/relations@1.1.2':
+    resolution: {integrity: sha512-uA7ekwCNUqvNgabipoZ0ShOEBK2aW3fzdqejriM+iunkAFqc08S05L7IrfPOOTYrgINSgzVHiLzstKyBam1DOg==}
+    peerDependencies:
+      adminjs: ^7.3.0
 
   '@adonisjs/ace@13.3.0':
     resolution: {integrity: sha512-68dveDFd766p69cBvK/MtOrOP0+YKYLeHspa9KLEWcWk9suPf3pbGkHQ2pwDnvLJxBPHk4932KbbSSzzpGNZGw==}
@@ -5247,6 +5258,9 @@ packages:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
 
+  js-base64@3.7.7:
+    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
+
   js-levenshtein@1.1.6:
     resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
     engines: {node: '>=0.10.0'}
@@ -5576,6 +5590,9 @@ packages:
 
   md5@2.2.1:
     resolution: {integrity: sha512-PlGG4z5mBANDGCKsYQe0CaUYHdZYZt8ZPZLmEt+Urf0W4GlpTX4HescwHU+dc9+Z/G/vZKYZYFrwgm9VxK6QOQ==}
+
+  md5@2.3.0:
+    resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==}
 
   mdn-data@2.0.28:
     resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
@@ -8228,6 +8245,22 @@ snapshots:
       - prop-types
       - react-is
       - supports-color
+
+  '@adminjs/license@1.0.1':
+    dependencies:
+      axios: 1.7.9
+      js-base64: 3.7.7
+      md5: 2.3.0
+    transitivePeerDependencies:
+      - debug
+
+  '@adminjs/relations@1.1.2(adminjs@7.8.15(@types/babel__core@7.20.5)(@types/react@19.0.8))':
+    dependencies:
+      '@adminjs/license': 1.0.1
+      adminjs: 7.8.15(@types/babel__core@7.20.5)(@types/react@19.0.8)
+      lodash: 4.17.21
+    transitivePeerDependencies:
+      - debug
 
   '@adonisjs/ace@13.3.0':
     dependencies:
@@ -14236,6 +14269,8 @@ snapshots:
 
   joycon@3.1.1: {}
 
+  js-base64@3.7.7: {}
+
   js-levenshtein@1.1.6: {}
 
   js-stringify@1.0.2: {}
@@ -14596,6 +14631,12 @@ snapshots:
       uc.micro: 2.1.0
 
   md5@2.2.1:
+    dependencies:
+      charenc: 0.0.2
+      crypt: 0.0.2
+      is-buffer: 1.1.6
+
+  md5@2.3.0:
     dependencies:
       charenc: 0.0.2
       crypt: 0.0.2
