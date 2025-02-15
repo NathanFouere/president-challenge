@@ -19,13 +19,13 @@ export class EventDtoFactory {
   public createFromEvent(event: Event): EventDto {
     return {
       id: event.id,
-      identifier: event.identifier,
-      title: event.title,
-      text: event.text,
+      identifier: event.definition.identifier,
+      title: event.definition.title,
+      text: event.definition.text,
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
       needsAction: !event?.choices.map((choice: Choice) => choice.status).includes(ChoiceStatus.Chosen),
-      licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(event.licensedFiles),
+      licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(event.definition.licensedFiles),
       choices: this.choiceDtoFactory.createFromChoices(event.choices),
     };
   }

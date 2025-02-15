@@ -3,6 +3,7 @@ import IProductRepository from '#product/domain/repository/i_product_repository'
 import IProductPricePerTurnRepository from '#product/domain/repository/i_product_price_per_turn_repository';
 import IGetProductsOfGameQueryHandler from '#product/application/query/i_get_products_of_game_query_handler';
 import IGetProductOfGameQueryHandler from '#product/application/query/i_get_product_of_game_query_handler';
+import IProductDefinitionRepository from '#product/domain/repository/i_product_definition_repository';
 
 export default class ProductProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -18,6 +19,13 @@ export default class ProductProvider extends AppProvider {
     const { default: GetProductsOfGameQueryHandler } = await import(
       '#product/infrastructure/query/get_products_of_game_query_handler'
     );
+    const { default: ProductDefinitionRepository } = await import(
+      '#product/infrastructure/repository/product_definition_repository'
+    );
+
+    this.app.container.bind(IProductDefinitionRepository, () => {
+      return new ProductDefinitionRepository();
+    });
 
     this.app.container.bind(IProductRepository, () => {
       return new ProductRepository();

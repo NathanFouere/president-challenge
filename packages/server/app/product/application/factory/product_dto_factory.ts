@@ -21,9 +21,9 @@ export class ProductDtoFactory {
   public createFromProduct(product: Product): ProductDto {
     return {
       id: product.id,
-      name: product.name,
-      description: product.description,
-      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.licensedFile),
+      name: product.definition.name,
+      description: product.definition.description,
+      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.definition.licensedFile),
       price: product.price,
       costOfProduction: product.costOfProduction,
       pricePerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(

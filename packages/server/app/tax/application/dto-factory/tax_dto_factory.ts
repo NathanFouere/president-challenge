@@ -11,8 +11,8 @@ export default class TaxDtoFactory {
   public fromTax(tax: Tax): TaxDto {
     return {
       id: tax.id,
-      name: tax.name,
-      description: tax.description,
+      name: tax.definition.name,
+      description: tax.definition.description,
       level: this.getLevelDtoFromLevel(tax.level),
     };
   }

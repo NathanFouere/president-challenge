@@ -6,8 +6,8 @@ export default class StateRepository implements IStateRepository {
     await state.save();
   }
 
-  public async saveMany(states: State[]): Promise<void> {
-    states.forEach(state => state.save());
+  public async createMany(states: State[]): Promise<void> {
+    await State.createMany(states);
   }
 
   public async findById(id: number): Promise<State | null> {

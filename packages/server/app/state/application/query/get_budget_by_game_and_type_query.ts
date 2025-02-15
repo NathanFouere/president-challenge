@@ -1,9 +1,0 @@
-import type { BudgetType } from '#state/domain/model/budget_type';
-
-export default class GetBudgetByGameAndTypeQuery {
-  constructor(
-    public readonly gameId: number,
-    public readonly budgetType: BudgetType,
-  ) {
-  }
-}

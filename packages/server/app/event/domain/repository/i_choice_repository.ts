@@ -5,4 +5,5 @@ export default abstract class IChoiceRepository {
   public abstract findById(choiceId: number): Promise<Choice | null>;
   public abstract delete(choice: Choice): Promise<void>;
   public abstract saveMany(choices: Choice[]): Promise<void>;
+  public abstract createMany(choices: Choice[]): Promise<void>;
 }

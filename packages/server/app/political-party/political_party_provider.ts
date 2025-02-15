@@ -13,6 +13,8 @@ import {
 } from '#political-party/application/queries/i_get_political_party_per_affiliation_in_game_query_handler';
 import IPoliticalAffiliationLawHappinessEffectRepository
   from '#political-party/domain/repository/i_political_affiliation_law_happiness_effect_repository';
+import IPoliticalPartyDefinitionRepository
+  from '#political-party/domain/repository/i_political_party_definition_repository';
 
 export default class PoliticalPartyProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -37,7 +39,13 @@ export default class PoliticalPartyProvider extends AppProvider {
     const { default: PoliticalAffiliationLawHappinessEffectRepository } = await import(
       '#political-party/infrastructure/repositories/political_affiliation_law_happiness_effect_repository'
     );
+    const { default: PoliticalPartyDefinitionRepository } = await import(
+      '#political-party/infrastructure/repositories/political_party_definition_repository'
+    );
 
+    this.app.container.bind(IPoliticalPartyDefinitionRepository, () => {
+      return new PoliticalPartyDefinitionRepository();
+    });
     this.app.container.bind(IPoliticalAffiliationLawHappinessEffectRepository, () => {
       return new PoliticalAffiliationLawHappinessEffectRepository();
     });

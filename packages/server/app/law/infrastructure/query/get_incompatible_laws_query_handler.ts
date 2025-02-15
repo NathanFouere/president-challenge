@@ -13,7 +13,7 @@ export default class GetIncompatibleLawsQueryHandler implements IGetIncompatible
         lawEffectQuery.preload('politicalPartiesAffiliationHappinessEffects');
       })
       .whereHas('definition', (builder) => {
-        builder.where('id', query.law.definition.id);
+        builder.where('lawGroupId', query.law.definition.lawGroupId);
       })
       .exec();
   }

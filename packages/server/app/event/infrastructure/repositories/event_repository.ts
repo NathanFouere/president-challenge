@@ -10,12 +10,11 @@ export default class EventRepository implements IEventRepository {
     return Event.find(eventId);
   }
 
-  public async saveWithLicensedFiles(event: Event, licensedFilesIdentifiers: string[]): Promise<void> {
-    await event.save();
-    event.related('licensedFiles').attach(licensedFilesIdentifiers);
-  }
-
   public async delete(event: Event): Promise<void> {
     await event.delete();
+  }
+
+  public async createMany(events: Event[]): Promise<void> {
+    await Event.createMany(events);
   }
 }

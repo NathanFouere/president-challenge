@@ -21,4 +21,8 @@ export default class ChoiceRepository implements IChoiceRepository {
     }
     await Promise.all(savePromises);
   }
+
+  public async createMany(choices: Choice[]): Promise<void> {
+    await Choice.createMany(choices);
+  }
 }

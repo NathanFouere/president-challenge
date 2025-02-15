@@ -31,10 +31,10 @@ export class PoliticalPartyDTOFactory {
   public createPoliticalPartyDTO(politicalParty: PoliticalParty): PoliticalPartyDTO {
     return {
       id: politicalParty.id,
-      name: politicalParty.name,
-      affiliation: politicalParty.affiliation,
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.licensedFile),
-      description: politicalParty.description,
+      name: politicalParty.definition.name,
+      affiliation: politicalParty.definition.affiliation,
+      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.definition.licensedFile),
+      description: politicalParty.definition.description,
       happinessLevel: this.rangeLevelMatch.createFromAmount(politicalParty.getHappinessLevel(), this.politicalPartyHappinessRangeLevels),
       happinessPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         politicalParty.happinessPerTurn,

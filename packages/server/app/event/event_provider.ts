@@ -10,6 +10,8 @@ import IGetEventByIdentifierAndGameQueryHandler
   from '#event/application/queries/i_get_event_by_identifier_and_game_query_handler';
 import IEventRepository from '#event/domain/repository/i_event_repository';
 import IChoiceRepository from '#event/domain/repository/i_choice_repository';
+import IEventDefinitionRepository from '#event/domain/repository/i_event_definition_repository';
+import IChoiceDefinitionRepository from '#event/domain/repository/i_choice_definition_repository';
 
 export default class EventProvider extends AppProvider {
   public async boot() {
@@ -31,6 +33,20 @@ export default class EventProvider extends AppProvider {
     const { default: ChoiceRepository } = await import(
       '#event/infrastructure/repositories/choice_repository'
     );
+    const { default: EventDefinitionRepository } = await import(
+      '#event/infrastructure/repositories/event_definition_repository'
+    );
+    const { default: ChoiceDefinitionRepository } = await import(
+      '#event/infrastructure/repositories/choice_definition_repository'
+    );
+
+    this.app.container.bind(IChoiceDefinitionRepository, () => {
+      return new ChoiceDefinitionRepository();
+    });
+
+    this.app.container.bind(IEventDefinitionRepository, () => {
+      return new EventDefinitionRepository();
+    });
 
     this.app.container.bind(IGetChoiceByIdAndEventQueryHandler, () => {
       return new GetChoiceByIdAndEventQueryHandler();

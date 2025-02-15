@@ -14,14 +14,14 @@ export class PoliticalPartyMinimalDTOFactory {
   public createPoliticalPartyMinimalDTO(politicalParty: PoliticalParty): PoliticalPartyMinimalDto {
     return {
       id: politicalParty.id,
-      name: politicalParty.name,
-      affiliation: politicalParty.affiliation,
-      licensedFile: politicalParty.licensedFile,
+      name: politicalParty.definition.name,
+      affiliation: politicalParty.definition.affiliation,
+      licensedFile: politicalParty.definition.licensedFile,
     };
   }
 
   public createPoliticalPartyMinimalDTOList(politicalParties: PoliticalParty[]): PoliticalPartyMinimalDto[] {
-    politicalParties.sort((a, b) => this.AffiliationOrder[a.affiliation] - this.AffiliationOrder[b.affiliation]);
+    politicalParties.sort((a, b) => this.AffiliationOrder[a.definition.affiliation] - this.AffiliationOrder[b.definition.affiliation]);
     return politicalParties.map(this.createPoliticalPartyMinimalDTO);
   }
 }

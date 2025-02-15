@@ -6,22 +6,17 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
-      table.string('name').notNullable();
-      table.text('description').notNullable();
-      table.string('color').notNullable();
       table.integer('economical_situation').notNullable();
-      table.enum('type',
-        [
-          'Capitalist',
-          'Petit Bourgeois',
-          'Proletariat',
-        ])
-        .notNullable();
-      table.string('sub_type').notNullable();
       table.integer('game_id')
         .unsigned()
         .references('id')
         .inTable('games')
+        .onDelete('CASCADE');
+
+      table.integer('definition_id')
+        .unsigned()
+        .references('id')
+        .inTable('social_class_definitions')
         .onDelete('CASCADE');
 
       table.timestamp('created_at').notNullable();

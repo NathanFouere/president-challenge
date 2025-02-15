@@ -33,7 +33,7 @@ export default class PoliticalPartyHappinessService {
 
   private fromSocialClassType(politicalParty: PoliticalParty, socialClasses: SocialClass[], socialClassType: SocialClassTypes) {
     const socialClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClasses);
-    const politicalPartyModifierRatioForSocialClass = politicalPartySocialClassHappiness[politicalParty.affiliation][socialClassType];
+    const politicalPartyModifierRatioForSocialClass = politicalPartySocialClassHappiness[politicalParty.definition.affiliation][socialClassType];
     const processedAmount = socialClassAverageHappiness * politicalPartyModifierRatioForSocialClass;
     const happinessModifier = aPoliticalPartyHappinessModifier()
       .withPoliticalPartyId(politicalParty.id)

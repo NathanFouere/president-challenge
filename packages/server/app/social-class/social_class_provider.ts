@@ -14,6 +14,7 @@ import ISocialClassLawHappinessEffectRepository
   from '#social-class/domain/repository/i_social_class_law_happiness_effect_repository';
 import IGetSocialClassByGameAndTypeQueryHandler
   from '#social-class/application/queries/i_get_social_class_by_game_and_type_query_handler';
+import ISocialClassDefinitionRepository from '#social-class/domain/repository/i_social_class_definition_repository';
 
 export default class SocialClassProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -42,6 +43,14 @@ export default class SocialClassProvider extends AppProvider {
     const { default: GetSocialClassByGameAndTypeQueryHandler } = await import(
       '#social-class/infrastructure/query/get_social_class_by_game_and_type_query_handler'
     );
+
+    const { default: SocialClassDefinitionRepository } = await import(
+      '#social-class/infrastructure/repository/social_class_definition_repository'
+    );
+
+    this.app.container.bind(ISocialClassDefinitionRepository, () => {
+      return new SocialClassDefinitionRepository();
+    });
 
     this.app.container.bind(IGetSocialClassByGameAndTypeQueryHandler, () => {
       return new GetSocialClassByGameAndTypeQueryHandler();

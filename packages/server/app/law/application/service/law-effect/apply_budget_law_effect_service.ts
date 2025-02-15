@@ -1,9 +1,9 @@
 import { inject } from '@adonisjs/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IBudgetRepository from '#state/domain/repository/i_budget_repository';
+import IBudgetRepository from '#budget/domain/repository/i_budget_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetBudgetByGameAndTypeQueryHandler from '#state/application/query/i_get_budget_by_game_and_type_query_handler';
-import GetBudgetByGameAndTypeQuery from '#state/application/query/get_budget_by_game_and_type_query';
+import IGetBudgetByGameAndTypeQueryHandler from '#budget/application/query/i_get_budget_by_game_and_type_query_handler';
+import GetBudgetByGameAndTypeQuery from '#budget/application/query/get_budget_by_game_and_type_query';
 import type Law from '#law/domain/model/law';
 
 @inject()

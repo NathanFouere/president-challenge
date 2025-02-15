@@ -1,5 +1,6 @@
 import { inject } from '@adonisjs/core';
 
+import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
 import { aPoliticalPartySeatsSenate } from '#legislature/application/builders/political_party_seats_senate_builder';
 import {
   aPoliticalPartySeatsParliament,
@@ -19,18 +20,22 @@ import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_get_parliament_by_game_query_handler';
 import { GetParliamentByGameQuery } from '#legislature/application/query/get_parliament_by_game_query';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IPoliticalPartyRepository from '#political-party/domain/repository/i_political_party_repository';
 import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import {
+  IGetPoliticalPartyPerAffiliationInGameQueryHandler,
+} from '#political-party/application/queries/i_get_political_party_per_affiliation_in_game_query_handler';
+import GetPoliticalPartyPerAffiliationInGameQuery
+  from '#political-party/application/queries/get_political_party_per_affiliation_in_game_query';
 
 @inject()
 export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
   constructor(
-    private readonly politicalPartyRepository: IPoliticalPartyRepository,
     private readonly politicalPartySeatsParliamentRepository: IPoliticalPartySeatsParliamentRepository,
     private readonly politicalPartySeatsSenateRepository: IPoliticalPartySeatsSenateRepository,
     private readonly getSenateByGameQueryHandler: IGetSenateByGameQueryHandler,
     private readonly getParliamentByGameQueryHandler: IGetParliamentByGameQueryHandler,
+    private readonly getPoliticalPartyPerAffiliationInGameQueryHandler: IGetPoliticalPartyPerAffiliationInGameQueryHandler,
   ) {
   }
 
@@ -41,7 +46,12 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
     const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(gameId));
 
     for (const politicalPartySeatsConfig of political_party_seats_config) {
-      const politicalParty = await this.politicalPartyRepository.getByAffiliationAndGameId(politicalPartySeatsConfig.affiliation, gameId);
+      const politicalParty = await this.getPoliticalPartyPerAffiliationInGameQueryHandler.handle(
+        new GetPoliticalPartyPerAffiliationInGameQuery(
+          gameId,
+          politicalPartySeatsConfig.affiliation as PoliticalAffiliation,
+        ),
+      );
       seatsInSenates.push(
         aPoliticalPartySeatsSenate()
           .withPoliticalPartyId(politicalParty.id)

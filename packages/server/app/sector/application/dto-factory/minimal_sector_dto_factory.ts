@@ -14,10 +14,10 @@ export class MinimalSectorDtoFactory {
   public createFromSector(sector: Sector): MinimalSectorDto {
     return {
       id: sector.id,
-      name: sector.name,
-      type: sector.type,
-      description: sector.description,
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.licensedFile),
+      name: sector.definition.name,
+      type: sector.definition.type,
+      description: sector.definition.description,
+      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.definition.licensedFile),
     };
   }
 

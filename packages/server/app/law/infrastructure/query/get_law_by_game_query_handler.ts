@@ -16,15 +16,19 @@ export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandl
       .where('id', query.lawId);
 
     if (preloadOptions.display) {
-      queryBuilder.preload('votes', (query) => {
-        query.preload('voteResultsInSenate', (subQuery) => {
-          subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
-            subSubQuery.preload('politicalParty');
+      queryBuilder.preload('votes', (votesQuery) => {
+        votesQuery.preload('voteResultsInSenate', (senateResultsQuery) => {
+          senateResultsQuery.preload('politicalPartiesVoteResults', (partyVoteResultsQuery) => {
+            partyVoteResultsQuery.preload('politicalParty', (politicalPartyQuery) => {
+              politicalPartyQuery.preload('definition');
+            });
           });
         });
-        query.preload('voteResultsInParliament', (subQuery) => {
-          subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
-            subSubQuery.preload('politicalParty');
+        votesQuery.preload('voteResultsInParliament', (parliamentResultsQuery) => {
+          parliamentResultsQuery.preload('politicalPartiesVoteResults', (partyVoteResultsQuery) => {
+            partyVoteResultsQuery.preload('politicalParty', (politicalPartyQuery) => {
+              politicalPartyQuery.preload('definition');
+            });
           });
         });
       });
@@ -34,15 +38,19 @@ export default class GetLawByGameQueryHandler implements IGetLawByGameQueryHandl
     }
 
     if (preloadOptions.lawVotes) {
-      queryBuilder.preload('votes', (query) => {
-        query.preload('voteResultsInSenate', (subQuery) => {
-          subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
-            subSubQuery.preload('politicalParty');
+      queryBuilder.preload('votes', (votesQuery) => {
+        votesQuery.preload('voteResultsInSenate', (senateResultsQuery) => {
+          senateResultsQuery.preload('politicalPartiesVoteResults', (partyVoteResultsQuery) => {
+            partyVoteResultsQuery.preload('politicalParty', (politicalPartyQuery) => {
+              politicalPartyQuery.preload('definition');
+            });
           });
         });
-        query.preload('voteResultsInParliament', (subQuery) => {
-          subQuery.preload('politicalPartiesVoteResults', (subSubQuery) => {
-            subSubQuery.preload('politicalParty');
+        votesQuery.preload('voteResultsInParliament', (parliamentResultsQuery) => {
+          parliamentResultsQuery.preload('politicalPartiesVoteResults', (partyVoteResultsQuery) => {
+            partyVoteResultsQuery.preload('politicalParty', (politicalPartyQuery) => {
+              politicalPartyQuery.preload('definition');
+            });
           });
         });
       });

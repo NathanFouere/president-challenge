@@ -32,7 +32,7 @@ import PoliticalPartySaveForTurnService
 import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import BudgetCostPerTurnSaveService from '#state/application/service/budget_cost_per_turn_save_service';
+import BudgetCostPerTurnSaveService from '#budget/application/service/budget_cost_per_turn_save_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import StateEconomicalSituationPerTurnSaveService
   from '#state/application/service/state_economical_situation_per_turn_save_service';

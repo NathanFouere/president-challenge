@@ -9,8 +9,8 @@ import type {
 import type { LawType } from '#law/domain/model/law_type';
 import type { TaxType } from '#tax/domain/model/tax_type';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
-import type { BudgetType } from '#state/domain/model/budget_type';
-import type { BudgetLevel } from '#state/domain/model/budget_level';
+import type { BudgetType } from '#budget/domain/model/budget_type';
+import type { BudgetLevel } from '#budget/domain/model/budget_level';
 
 export interface LawStartupInterface {
   name: string;

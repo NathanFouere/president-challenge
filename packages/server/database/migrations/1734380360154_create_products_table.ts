@@ -6,14 +6,20 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
-      table.string('name').notNullable();
-      table.text('description').notNullable();
       table.double('price', 10, 2).notNullable();
       table.double('cost_of_production', 10, 2).notNullable();
+
+      table.integer('definition_id')
+        .unsigned()
+        .references('id')
+        .inTable('product_definitions')
+        .onDelete('CASCADE');
+
       table
-        .string('licensed_file_identifier')
-        .references('identifier')
-        .inTable('licensed_files')
+        .integer('sector_id')
+        .unsigned()
+        .references('id')
+        .inTable('sectors')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
         .nullable();

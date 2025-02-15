@@ -3,7 +3,7 @@ import { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import { LawType } from '#law/domain/model/law_type';
 import { TaxType } from '#tax/domain/model/tax_type';
-import { BudgetType } from '#state/domain/model/budget_type';
+import { BudgetType } from '#budget/domain/model/budget_type';
 
 export default class extends BaseSchema {
   protected tableName = 'law_definitions';
