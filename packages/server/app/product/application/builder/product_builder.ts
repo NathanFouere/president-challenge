@@ -1,26 +1,14 @@
 import Product from '#product/domain/models/product';
 
 export default class ProductBuilder {
-  private name: string | null = null;
-  private description: string | null = null;
-  private licensedFileIdentifier: string | null = null;
   private price: number | null = null;
   private costOfProduction: number | null = null;
   private gameId: number | null = null;
   private sectorId: number | null = null;
+  private definitionId: number | null = null;
 
-  public withName(name: string): this {
-    this.name = name;
-    return this;
-  }
-
-  public withDescription(description: string): this {
-    this.description = description;
-    return this;
-  }
-
-  public withLicensedFileIdentifier(licensedFileIdentifier: string): this {
-    this.licensedFileIdentifier = licensedFileIdentifier;
+  public withDefinitionId(definitionId: number): this {
+    this.definitionId = definitionId;
     return this;
   }
 
@@ -47,12 +35,6 @@ export default class ProductBuilder {
   public build(): Product {
     const product = new Product();
 
-    if (this.name) product.name = this.name;
-    else throw new Error('Name is required');
-    if (this.description) product.description = this.description;
-    else throw new Error('Description is required');
-    if (this.licensedFileIdentifier) product.licensedFileIdentifier = this.licensedFileIdentifier;
-    else throw new Error('Licensed file identifier is required');
     if (this.price) product.price = this.price;
     else throw new Error('Price is required');
     if (this.costOfProduction) product.costOfProduction = this.costOfProduction;
@@ -61,6 +43,8 @@ export default class ProductBuilder {
     else throw new Error('Game ID is required');
     if (this.sectorId) product.sectorId = this.sectorId;
     else throw new Error('Sector ID is required');
+    if (this.definitionId) product.definitionId = this.definitionId;
+    else throw new Error('Definition ID is required');
 
     return product;
   }

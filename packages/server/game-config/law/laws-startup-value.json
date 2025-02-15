@@ -40,7 +40,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "RETIREMENT_VERY_LOW"
+            "budgetEffects": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 0
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Low retirement budget",
@@ -75,7 +136,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "RETIREMENT_LOW"
+            "budgetEffects": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 1
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Medium retirement budget",
@@ -110,7 +232,68 @@
                 "percentageVoteFor": 20
               }
             ],
-            "effectIdentifier": "RETIREMENT_MEDIUM"
+            "budgetEffects": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 2
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "High retirement budget",
@@ -145,7 +328,68 @@
                 "percentageVoteFor": 20
               }
             ],
-            "effectIdentifier": "RETIREMENT_HIGH"
+            "budgetEffects": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 3
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Very high retirement budget",
@@ -180,7 +424,68 @@
                 "percentageVoteFor": 10
               }
             ],
-            "effectIdentifier": "RETIREMENT_VERY_HIGH"
+            "budgetEffects": {
+              "budgetType": "RETIREMENT",
+              "budgetLevel": 4
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -221,7 +526,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "DEFENSE_VERY_LOW"
+            "budgetEffects": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 0
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Low defense budget",
@@ -256,7 +622,68 @@
                 "percentageVoteFor": 60
               }
             ],
-            "effectIdentifier": "DEFENSE_LOW"
+            "budgetEffects": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 1
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Medium defense budget",
@@ -291,7 +718,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "DEFENSE_MEDIUM"
+            "budgetEffects": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 2
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "High defense budget",
@@ -326,7 +814,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "DEFENSE_HIGH"
+            "budgetEffects": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 3
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Very high defense budget",
@@ -361,7 +910,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "DEFENSE_VERY_HIGH"
+            "budgetEffects": {
+              "budgetType": "DEFENSE",
+              "budgetLevel": 4
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -402,7 +1012,68 @@
                 "percentageVoteFor": 90
               }
             ],
-            "effectIdentifier": "HEALTH_VERY_LOW"
+            "budgetEffects": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 0
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Low health budget",
@@ -437,7 +1108,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "HEALTH_LOW"
+            "budgetEffects": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 1
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Medium health budget",
@@ -472,7 +1204,68 @@
                 "percentageVoteFor": 30
               }
             ],
-            "effectIdentifier": "HEALTH_MEDIUM"
+            "budgetEffects": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 2
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "High health budget",
@@ -507,7 +1300,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "HEALTH_HIGH"
+            "budgetEffects": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 3
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Very high health budget",
@@ -542,7 +1396,68 @@
                 "percentageVoteFor": 10
               }
             ],
-            "effectIdentifier": "HEALTH_VERY_HIGH"
+            "budgetEffects": {
+              "budgetType": "HEALTH",
+              "budgetLevel": 4
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -583,7 +1498,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "WEALTH_VERY_LOW"
+            "taxEffects": {
+              "taxType": "WEALTH",
+              "taxLevel": 0
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Low wealth tax",
@@ -618,7 +1594,68 @@
                 "percentageVoteFor": 100
               }
             ],
-            "effectIdentifier": "WEALTH_LOW"
+            "taxEffects": {
+              "taxType": "WEALTH",
+              "taxLevel": 1
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Medium wealth tax",
@@ -653,7 +1690,68 @@
                 "percentageVoteFor": 20
               }
             ],
-            "effectIdentifier": "WEALTH_MEDIUM"
+            "taxEffects": {
+              "taxType": "WEALTH",
+              "taxLevel": 2
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "High wealth tax",
@@ -688,7 +1786,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "WEALTH_HIGH"
+            "taxEffects": {
+              "taxType": "WEALTH",
+              "taxLevel": 3
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Very high wealth tax",
@@ -723,7 +1882,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "WEALTH_VERY_HIGH"
+            "taxEffects": {
+              "taxType": "WEALTH",
+              "taxLevel": 4
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -764,7 +1984,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "AGRICULTURAL_NATIONALIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Agricultural",
+              "ownershipType": "PUBLIC"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Privatize agriculture",
@@ -799,7 +2080,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "AGRICULTURAL_PRIVATIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Agricultural",
+              "ownershipType": "PRIVATE"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Mixed agriculture",
@@ -834,7 +2176,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "AGRICULTURAL_MIXED"
+            "sectorPropertyEffects": {
+              "sectorType": "Agricultural",
+              "ownershipType": "MIXED"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -875,7 +2278,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "MINE_NATIONALIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Mine",
+              "ownershipType": "PUBLIC"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Privatize mines",
@@ -910,7 +2374,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "MINE_PRIVATIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Mine",
+              "ownershipType": "PRIVATE"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Mixed mines",
@@ -945,7 +2470,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "MINE_MIXED"
+            "sectorPropertyEffects": {
+              "sectorType": "Mine",
+              "ownershipType": "MIXED"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -986,7 +2572,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "SERVICE_NATIONALIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Service",
+              "ownershipType": "PUBLIC"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Privatize services",
@@ -1021,7 +2668,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "SERVICE_PRIVATIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Service",
+              "ownershipType": "PRIVATE"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Mixed services",
@@ -1056,7 +2764,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "SERVICE_MIXED"
+            "sectorPropertyEffects": {
+              "sectorType": "Service",
+              "ownershipType": "MIXED"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       },
@@ -1097,7 +2866,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "INDUSTRIAL_NATIONALIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Industrial",
+              "ownershipType": "PUBLIC"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Privatize industry",
@@ -1132,7 +2962,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "INDUSTRIAL_PRIVATIZE"
+            "sectorPropertyEffects": {
+              "sectorType": "Industrial",
+              "ownershipType": "PRIVATE"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           },
           {
             "name": "Mixed industry",
@@ -1167,7 +3058,68 @@
                 "percentageVoteFor": 0
               }
             ],
-            "effectIdentifier": "INDUSTRIAL_MIXED"
+            "sectorPropertyEffects": {
+              "sectorType": "Industrial",
+              "ownershipType": "MIXED"
+            },
+            "socialClassHappinessEffects": [
+              {
+                "socialClassType": "Capitalist",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Petit Bourgeois",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "socialClassType": "Proletariat",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ],
+            "politicalAffiliationsHappinessEffects": [
+              {
+                "politicalAffiliation": "Far Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Left",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Center Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              },
+              {
+                "politicalAffiliation": "Far Right",
+                "modifier": 30,
+                "duration": null,
+                "type": "Permanent"
+              }
+            ]
           }
         ]
       }

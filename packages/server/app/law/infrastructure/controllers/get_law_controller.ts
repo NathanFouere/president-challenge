@@ -17,7 +17,7 @@ import type User from '#user/domain/models/user';
 @inject()
 export default class GetLawController {
   constructor(
-    private readonly getLawByGameAndTypeQueryHandler: IGetLawByGameQueryHandler,
+    private readonly getLawByGameQueryHandler: IGetLawByGameQueryHandler,
     private readonly lawDtoFactory: LawDtoFactory,
     private readonly getGameQueryHandler: IGetGameOfUserQueryHandler,
   ) {
@@ -29,7 +29,7 @@ export default class GetLawController {
       const gameId: number = params.gameId;
       const lawId: number = params.lawId;
 
-      const law = await this.getLawByGameAndTypeQueryHandler.handleForDisplay(new GetLawByGameQuery(
+      const law = await this.getLawByGameQueryHandler.handleForDisplay(new GetLawByGameQuery(
         lawId,
         gameId,
       ));

@@ -10,13 +10,6 @@ export default class extends BaseSchema {
       table.string('name');
       table.text('description');
 
-      table
-        .integer('game_id')
-        .unsigned()
-        .references('id')
-        .inTable('games')
-        .onDelete('CASCADE');
-
       table.timestamp('created_at');
       table.timestamp('updated_at');
     });

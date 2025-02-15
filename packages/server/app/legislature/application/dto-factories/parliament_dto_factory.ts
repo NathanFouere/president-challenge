@@ -16,11 +16,10 @@ export class ParliamentDtoFactory {
     const data: number[] = [];
 
     for (const seats of senate.partySeats) {
-      const politicalParty = seats.politicalParty;
       data.push(seats.numberOfSeats);
-      backgroundColor.push(politicalParty.color);
-      borderColor.push(politicalParty.color);
-      labels.push(politicalParty.name);
+      backgroundColor.push(seats.politicalParty.definition.color);
+      borderColor.push(seats.politicalParty.definition.color);
+      labels.push(seats.politicalParty.definition.name);
     }
 
     return {

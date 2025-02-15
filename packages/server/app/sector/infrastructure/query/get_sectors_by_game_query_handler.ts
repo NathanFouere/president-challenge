@@ -9,9 +9,11 @@ export default class GetSectorsByGameQueryHandler implements IGetSectorsByGameQu
   ): Promise<Sector[]> {
     const queryBuilder = Sector.query().where('gameId', query.gameId);
 
-    if (preloadOptions.licensedFiles) {
-      queryBuilder.preload('licensedFile');
-    }
+    queryBuilder.preload('definition', (builder) => {
+      if (preloadOptions.licensedFiles) {
+        builder.preload('licensedFile');
+      }
+    });
 
     if (preloadOptions.economicalSituationPerTurn) {
       queryBuilder.preload('economicalSituationPerTurn');

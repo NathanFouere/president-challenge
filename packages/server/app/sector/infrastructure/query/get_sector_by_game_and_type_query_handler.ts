@@ -7,7 +7,10 @@ export default class GetSectorByGameAndTypeQueryHandler implements IGetSectorByG
     return Sector
       .query()
       .where('gameId', query.gameId)
-      .where('type', query.type)
+      .preload('definition')
+      .whereHas('definition', (builder) => {
+        builder.where('type', query.type);
+      })
       .firstOrFail();
   }
 }

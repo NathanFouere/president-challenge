@@ -5,12 +5,12 @@ import RemoveSocialClassHappinessEffectFromLawService
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import RemovePoliticalHappinessEffectFromLawService
   from '#law/application/service/law-effect/remove_political_happiness_effect_from_law_service';
-import type Law from '#law/domain/model/law';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawRepository from '#law/domain/repository/i_law_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetIncompatibleLawsQueryHandler from '#law/application/query/i_get_incompatible_laws_query_handler';
 import GetIncompatibleLawsQuery from '#law/application/query/get_incompatible_laws_query';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class UnvoteLawService {
@@ -29,15 +29,15 @@ export default class UnvoteLawService {
     ));
     const unvotePromises = [];
     for (const law of laws) {
-      unvotePromises.push(this.unvoteLawVote(law, gameId));
+      unvotePromises.push(this.unvoteLawVote(law));
     }
     await Promise.all(unvotePromises);
   }
 
-  private async unvoteLawVote(law: Law, gameId: number): Promise<void> {
+  private async unvoteLawVote(law: Law): Promise<void> {
     law.setUnvoted();
-    await this.removeSocialClassHappinessEffectFromLawService.removeSocialClassesHappinessEffectOfLaw(law, gameId);
-    await this.removePoliticalPartiesHappinessEffectFromLawService.removePoliticalPartiesHappinessEffectOfLaw(law, gameId);
+    await this.removeSocialClassHappinessEffectFromLawService.removeSocialClassesHappinessEffectOfLaw(law, law.gameId);
+    await this.removePoliticalPartiesHappinessEffectFromLawService.removePoliticalPartiesHappinessEffectOfLaw(law, law.gameId);
     await this.lawRepository.save(law);
   }
 }

@@ -30,6 +30,7 @@ export default class CreateGameService {
       );
     }
 
+    // TODO => passer en factory
     const game = aGame()
       .withUserId(user.id)
       .withTurn(0)

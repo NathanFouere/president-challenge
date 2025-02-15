@@ -1,5 +1,4 @@
 import { inject } from '@adonisjs/core';
-import type Law from '#law/domain/model/law';
 import GetSocialClassByGameAndTypeQuery
   from '#social-class/application/queries/get_social_class_by_game_and_type_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -8,6 +7,7 @@ import IGetSocialClassByGameAndTypeQueryHandler
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISocialClassHappinessModifierRepository
   from '#social-class/domain/repository/i_social_class_happiness_modifier_repository';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class RemoveSocialClassHappinessEffectFromLawService {
@@ -18,7 +18,7 @@ export default class RemoveSocialClassHappinessEffectFromLawService {
   }
 
   public async removeSocialClassesHappinessEffectOfLaw(law: Law, gameId: number): Promise<void> {
-    for (const socialClassHappinessEffect of law.lawEffect.socialClassesHappinessEffects) {
+    for (const socialClassHappinessEffect of law.definition.socialClassesHappinessEffects) {
       const socialClass = await this.getSocialClassByGameAndTypeQueryHandler.handleForLawEffects(new GetSocialClassByGameAndTypeQuery(
         gameId,
         socialClassHappinessEffect.socialClassType,

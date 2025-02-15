@@ -17,13 +17,13 @@ export class MinimalEventDtoFactory {
   public createFromEvent(event: Event): MinimalEventDto {
     return {
       id: event.id,
-      identifier: event.identifier,
-      title: event.title,
-      text: event.text,
+      identifier: event.definition.identifier,
+      title: event.definition.title,
+      text: event.definition.text,
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
       needsAction: event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available),
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(event.licensedFiles[0]),
+      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(event.definition.licensedFiles[0]),
     };
   }
 

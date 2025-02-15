@@ -1,5 +1,4 @@
 import { inject } from '@adonisjs/core';
-import type Law from '#law/domain/model/law';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawRepository from '#law/domain/repository/i_law_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -12,6 +11,7 @@ import IGameRepository from '#game/domain/repository/i_game_repository';
 import ApplyLawEffectService from '#law/application/service/law-effect/apply_law_effect_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import UnvoteLawService from '#law/application/service/unvote_law_service';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class VoteLawService {
@@ -28,7 +28,7 @@ export default class VoteLawService {
     if (law.isVoted()) {
       throw new Error('Law already voted');
     }
-    else if (law.politicalWeightRequired > game.politicalWeight) {
+    else if (law.definition.politicalWeightRequired > game.politicalWeight) {
       throw new Error('Political weight required to vote is not enough');
     }
 
@@ -37,7 +37,7 @@ export default class VoteLawService {
 
       if (lawVote.votePassed) {
         law.setVoted();
-        game.updatePoliticalWeight(-law.politicalWeightRequired);
+        game.updatePoliticalWeight(-law.definition.politicalWeightRequired);
 
         await this.applyLawEffectService.applyLawEffect(law, game.id);
         await this.unvoteLawService.unvoteIncompatibleLawsOfLaw(law, game.id);

@@ -1,23 +1,12 @@
-import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
-import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import type { EventType } from '@shared/dist/event/event-type.js';
-import type { DateTime } from 'luxon';
-import LicensedFile from '#licensed-file/domain/models/licensed_file';
+import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import Game from '#game/domain/models/game';
+import EventDefinition from '#event/domain/models/event_definition';
 import Choice from '#event/domain/models/choice';
 
 export default class Event extends BaseModel {
   @column({ isPrimary: true, serializeAs: null })
   declare id: number;
-
-  @column()
-  declare identifier: string;
-
-  @column()
-  declare title: string;
-
-  @column()
-  declare text: string;
 
   @column()
   declare turn: number;
@@ -26,22 +15,18 @@ export default class Event extends BaseModel {
   declare isAvailable: boolean;
 
   @column()
-  declare isDisplayable: boolean;
-
-  @column()
-  declare type: EventType;
+  declare definitionId: number;
 
   @column()
   declare beenRead: boolean;
 
-  @manyToMany(() => LicensedFile, {
-    pivotTable: 'event_licensed_file',
-    pivotForeignKey: 'event_id',
-    pivotRelatedForeignKey: 'licensed_file_identifier',
-    localKey: 'id',
-    relatedKey: 'identifier',
+  @column()
+  declare isDisplayable: boolean;
+
+  @belongsTo(() => EventDefinition, {
+    foreignKey: 'definitionId',
   })
-  declare licensedFiles: ManyToMany<typeof LicensedFile>;
+  declare definition: BelongsTo<typeof EventDefinition>;
 
   @column({ serializeAs: null })
   declare gameId: number;
@@ -51,10 +36,4 @@ export default class Event extends BaseModel {
 
   @hasMany(() => Choice)
   declare choices: HasMany<typeof Choice>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }

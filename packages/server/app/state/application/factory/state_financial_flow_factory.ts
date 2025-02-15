@@ -7,8 +7,8 @@ export default class StateFinancialFlowFactory {
   public createFromTax(tax: Tax, amount: number, state: State, turn: number): StateFinancialFlow {
     return aStateFinancialFlow()
       .withAmount(amount)
-      .withColor(tax.color)
-      .withName(tax.name)
+      .withColor(tax.definition.color)
+      .withName(tax.definition.name)
       .withTurn(turn)
       .withStateId(state.id)
       .build();

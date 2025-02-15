@@ -6,17 +6,14 @@ export default class extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id');
-      table.string('name').notNullable();
-      table.text('description').notNullable();
-      table.string('color').notNullable();
-      table.enum('affiliation', [
-        'Far Left',
-        'Left',
-        'Center Left',
-        'Center Right',
-        'Right',
-        'Far Right',
-      ]).notNullable();
+
+      table
+        .integer('definition_id')
+        .unsigned()
+        .references('id')
+        .inTable('political_party_definitions')
+        .onDelete('CASCADE');
+
       table
         .integer('game_id')
         .unsigned()

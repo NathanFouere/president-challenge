@@ -7,7 +7,10 @@ export default class GetTaxByGameAndTypeQueryHandler extends IGetTaxByGameAndTyp
     return await Tax
       .query()
       .where('game_id', query.gameId)
-      .where('type', query.taxType)
+      .preload('definition')
+      .whereHas('definition', (definitionQuery) => {
+        definitionQuery.where('type', query.taxType);
+      })
       .firstOrFail();
   }
 }

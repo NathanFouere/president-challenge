@@ -1,5 +1,6 @@
 import { inject } from '@adonisjs/core';
 import type { EventListDto } from '@shared/dist/event/event-list-dto.js';
+import { EventType } from '@shared/dist/event/event-type.js';
 import type Event from '#event/domain/models/event';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { MinimalEventDtoFactory } from '#event/application/dto-factory/minimal_event_dto_factory';
@@ -17,13 +18,13 @@ export class EventListDtoFactory {
     const superEvents = [];
 
     for (const event of events) {
-      if (event.type == 'choice') {
+      if (event.definition.type == EventType.Choice) {
         choicesEvents.push(event);
       }
-      else if (event.type == 'historical') {
+      else if (event.definition.type == EventType.Historical) {
         historicalEvents.push(event);
       }
-      else if (event.type == 'super-event') {
+      else if (event.definition.type == EventType.SuperEvent) {
         superEvents.push(event);
       }
     }

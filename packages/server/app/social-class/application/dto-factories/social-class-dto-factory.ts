@@ -42,13 +42,13 @@ export class SocialClassDtoFactory {
   public createFromSocialClass(socialClass: SocialClass): SocialClassDto {
     return {
       id: socialClass.id,
-      name: socialClass.name,
-      description: socialClass.description,
-      color: socialClass.color,
+      name: socialClass.definition.name,
+      description: socialClass.definition.description,
+      color: socialClass.definition.color,
       economicalSituation: this.rangeLevelMatch.createFromAmount(socialClass.economicalSituation, this.socialClassEconomicalSituationRangeLevels),
       happinessLevel: this.rangeLevelMatch.createFromAmount(socialClass.getHappinessLevel(), this.socialClassHappinessRangeLevels),
-      socialClassType: socialClass.subType,
-      licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.licensedFiles),
+      socialClassType: socialClass.definition.subType,
+      licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.definition.licensedFiles),
       happinessPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         socialClass.happinessPerTurn,
         'Happiness Level',

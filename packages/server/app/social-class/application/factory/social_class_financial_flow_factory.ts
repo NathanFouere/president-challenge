@@ -19,8 +19,8 @@ export default class SocialClassFinancialFlowFactory {
       .withSocialClassId(socialClass.id)
       .withAmount(-taxAmount)
       .withTurn(turn)
-      .withColor(tax.color)
-      .withName(tax.name)
+      .withColor(tax.definition.color)
+      .withName(tax.definition.name)
       .build();
   }
 }

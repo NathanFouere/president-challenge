@@ -16,7 +16,10 @@ export default class GetPoliticalPartyPerAffiliationInGameQueryHandler implement
   ): Promise<PoliticalParty> {
     const queryBuilder = PoliticalParty
       .query()
-      .where('affiliation', query.politicalAffiliation)
+      .preload('definition')
+      .whereHas('definition', (builder) => {
+        builder.where('affiliation', query.politicalAffiliation);
+      })
       .where('game_id', query.gameId);
 
     if (preloadOptions.senateSeats) {

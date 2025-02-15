@@ -18,7 +18,7 @@ import { GetSectorsByGameQuery } from '#sector/application/query/get_sectors_by_
 import GetPoliticalPartiesOfGameQuery from '#political-party/application/queries/get_political_parties_of_game_query';
 import type Game from '#game/domain/models/game';
 import type Tax from '#tax/domain/model/tax';
-import type Budget from '#state/domain/model/budget';
+import type Budget from '#budget/domain/model/budget';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetSocialClassesOfGameQueryHandler
   from '#social-class/application/queries/i_get_social_classes_of_game_query_handler';
@@ -86,13 +86,13 @@ export class LoadTurnDataContextService {
         socialClass.setSector(sector);
       }
 
-      if (socialClass.type === SocialClassTypes.CAPITALIST) {
+      if (socialClass.definition.type === SocialClassTypes.CAPITALIST) {
         socialClassesPerType.capitalist.push(socialClass);
       }
-      else if (socialClass.type === SocialClassTypes.PROLETARIAT) {
+      else if (socialClass.definition.type === SocialClassTypes.PROLETARIAT) {
         socialClassesPerType.proletariat.push(socialClass);
       }
-      else if (socialClass.type === SocialClassTypes.PETIT_BOURGEOIS) {
+      else if (socialClass.definition.type === SocialClassTypes.PETIT_BOURGEOIS) {
         socialClassesPerType.petiteBourgeoisie.push(socialClass);
       }
     }

@@ -1,7 +1,7 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
 
 export default class AddLicensedFileIdentifierToPoliticalParties extends BaseSchema {
-  protected tableName = 'political_parties';
+  protected tableName = 'political_party_definitions';
 
   async up() {
     this.schema.alterTable(this.tableName, (table) => {

@@ -8,8 +8,11 @@ export default class GetEventByIdAndGameQueryHandler implements IGetEventByIdAnd
       .query()
       .where('id', query.eventId)
       .where('game_id', query.gameId)
-      .preload('licensedFiles')
+      .preload('definition', (query) => {
+        query.preload('licensedFiles');
+      })
       .preload('choices', (query) => {
+        query.preload('definition');
         query.orderBy('id', 'asc');
       })
       .firstOrFail();

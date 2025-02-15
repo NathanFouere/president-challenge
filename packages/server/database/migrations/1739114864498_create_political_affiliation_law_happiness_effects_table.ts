@@ -7,7 +7,7 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.string('identifier').primary();
+      table.increments('id');
 
       table.enum('political_affiliation', [
         PoliticalAffiliation.FarLeft,
@@ -27,7 +27,7 @@ export default class extends BaseSchema {
 
       table.integer('happiness_modifier').notNullable();
 
-      table.string('law_effect_identifier').references('law_effects.identifier').onDelete('CASCADE');
+      table.integer('law_definition_id').references('id').inTable('law_definitions').notNullable();
 
       table.timestamp('created_at');
       table.timestamp('updated_at');

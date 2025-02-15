@@ -13,7 +13,7 @@ import type { TurnProcessorStep } from '#game/application/service/turn-service/t
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import StateEconomicalSituationService from '#sector/domain/service/state_economical_situation_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import BudgetService from '#state/domain/service/budget_service';
+import BudgetService from '#budget/domain/service/budget_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import TaxService from '#tax/domain/service/tax_service';
 

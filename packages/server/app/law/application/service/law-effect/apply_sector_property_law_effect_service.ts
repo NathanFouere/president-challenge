@@ -4,7 +4,7 @@ import IGetSectorByGameAndTypeQueryHandler from '#sector/application/query/i_get
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISectorRepository from '#sector/domain/repository/i_sector_repository';
 import { GetSectorByGameAndTypeQuery } from '#sector/application/query/get_sector_by_game_and_type_query';
-import type LawEffect from '#law/domain/model/law-effect/law_effect';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class ApplySectorPropertyLawEffectService {
@@ -14,12 +14,12 @@ export default class ApplySectorPropertyLawEffectService {
   ) {
   }
 
-  public async apply(lawEffect: LawEffect, gameId: number): Promise<void> {
+  public async apply(law: Law): Promise<void> {
     const sector = await this.getSectorByGameAndTypeQueryHandler.handle(
-      new GetSectorByGameAndTypeQuery(gameId, lawEffect.sectorTypeToChange!),
+      new GetSectorByGameAndTypeQuery(law.gameId, law.definition.sectorTypeToChange!),
     );
 
-    sector.ownershipType = lawEffect.sectorOwnershipTypeToChange!;
+    sector.ownershipType = law.definition.sectorOwnershipTypeToChange!;
 
     await this.sectorRepository.save(sector);
   }

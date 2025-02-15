@@ -5,7 +5,7 @@ export class ChoiceDtoFactory {
   public createFromChoice(choice: Choice): ChoiceDto {
     return {
       id: choice.id,
-      text: choice.text,
+      text: choice.definition.text,
       status: choice.status,
     };
   }

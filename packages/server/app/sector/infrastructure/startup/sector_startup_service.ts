@@ -1,32 +1,31 @@
 import { inject } from '@adonisjs/core';
-import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
-import type Sector from '#sector/domain/model/sector';
-import { aSector } from '#sector/application/builder/sector_builder';
-import sectorStartupConfig from '#game-config/sector/sector-startup-config.json' assert { type: 'json' };
+import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISectorRepository from '#sector/domain/repository/i_sector_repository';
-import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
+import type Sector from '#sector/domain/model/sector';
+import { aSector } from '#sector/application/builder/sector_builder';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ISectorDefinitionRepository from '#sector/domain/repository/i_sector_definition_repository';
 
 @inject()
 export class SectorStartupService implements StartupProcessorStep {
   constructor(
     private readonly sectorRepository: ISectorRepository,
+    private readonly sectorDefinitionRepository: ISectorDefinitionRepository,
   ) {
   }
 
   public async execute(gameId: number): Promise<void> {
+    const sectorDefinitions = await this.sectorDefinitionRepository.findAll();
     const sectors: Sector[] = [];
 
-    for (const sectorValues of sectorStartupConfig) {
-      const sector: Sector = aSector()
-        .withName(sectorValues.name)
-        .withType(sectorValues.type as SectorTypes)
-        .withEconomicalSituation(sectorValues.economicalSituation)
-        .withDescription(sectorValues.description)
+    for (const sectorDefinition of sectorDefinitions) {
+      const sector = aSector()
         .withGameId(gameId)
-        .withOwnershipType(sectorValues.ownershipType as SectorOwnershipType)
-        .withLicensedFileIdentifier(sectorValues.licensedFileIdentifier)
+        .withEconomicalSituation(sectorDefinition.defaultEconomicalSituation)
+        .withOwnershipType(sectorDefinition.defaultOwnershipType as SectorOwnershipType)
+        .withDefinitionId(sectorDefinition.id)
         .build();
 
       sectors.push(sector);

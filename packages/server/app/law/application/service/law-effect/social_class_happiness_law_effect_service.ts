@@ -8,10 +8,10 @@ import ISocialClassHappinessModifierRepository
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SocialClassHappinessModifierFactory
   from '#social-class/application/factory/social_class_happiness_modifier_factory';
-import type Law from '#law/domain/model/law';
 import type SocialClassLawHappinessEffect from '#social-class/domain/models/social_class_law_happiness_effect';
 import GetSocialClassByGameAndTypeQuery
   from '#social-class/application/queries/get_social_class_by_game_and_type_query';
+import type Law from '#law/domain/model/law';
 
 @inject()
 export default class SocialClassHappinessLawEffectService {
@@ -24,7 +24,7 @@ export default class SocialClassHappinessLawEffectService {
 
   public async applySocialClassesHappinessEffects(law: Law, gameId: number): Promise<void> {
     const happinessModifierCreationPromises = [];
-    for (const socialClassHappinessEffect of law.lawEffect.socialClassesHappinessEffects) {
+    for (const socialClassHappinessEffect of law.definition.socialClassesHappinessEffects) {
       happinessModifierCreationPromises.push(this.applySocialClassHappinessEffect(law, socialClassHappinessEffect, gameId));
     }
     await Promise.all(happinessModifierCreationPromises);

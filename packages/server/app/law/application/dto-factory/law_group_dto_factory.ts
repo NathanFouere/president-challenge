@@ -17,11 +17,17 @@ export default class LawGroupDtoFactory {
   }
 
   public createFromLawGroup(lawGroup: LawGroup): LawGroupDto {
+    const law = lawGroup.definitions.map((definition) => {
+      if (definition.laws.length !== 1) {
+        throw new Error(`Expected exactly one law per definition after game filtering, got ${definition.laws.length}`);
+      }
+      return definition.laws[0];
+    });
     return {
       id: lawGroup.id,
       name: lawGroup.name,
       description: lawGroup.description,
-      laws: this.minimalLawDtoFactory.createFromLaws(lawGroup.laws),
+      laws: this.minimalLawDtoFactory.createFromLaws(law),
     };
   }
 }

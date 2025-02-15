@@ -4,7 +4,7 @@ import type { HappinessModifierType } from '@shared/dist/common/happiness-modifi
 
 export default abstract class SocialClassHappinessEffect extends BaseModel {
   @column({ isPrimary: true })
-  declare identifier: string;
+  declare id: number;
 
   @column()
   declare socialClassType: SocialClassTypes;

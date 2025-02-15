@@ -16,9 +16,9 @@ export default class PoliticalPartyHappinessModifierFactory {
       .withAmount(politicalAffiliationLawHappinessEffect.happinessModifier)
       .withPoliticalPartyId(politicalParty.id)
       .withType(politicalAffiliationLawHappinessEffect.type)
-      .withDescription(law.name)
+      .withDescription(law.definition.name)
       .withColor(this.taxHappinessModifierColor)
-      .withName(law.name)
+      .withName(law.definition.name)
       .withLawOriginId(law.id)
       .build();
   }

@@ -5,4 +5,5 @@ export default abstract class ILawRepository {
 
   public abstract createMany(law: Law[]): Promise<void>;
   public abstract saveMany(law: Law[]): Promise<void>;
+  public abstract getAll(): Promise<Law[]>;
 }

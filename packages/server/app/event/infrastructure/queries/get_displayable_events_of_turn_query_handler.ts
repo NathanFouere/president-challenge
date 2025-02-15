@@ -10,8 +10,10 @@ export default class GetDisplayableEventsOfTurnQueryHandler implements IGetDispl
       .where('turn', query.turn)
       .where('game_id', query.gameId)
       .where('is_displayable', true)
-      .orderBy('identifier', 'asc')
-      .preload('licensedFiles')
+      .orderBy('id', 'desc')
+      .preload('definition', (definitionQuery) => {
+        definitionQuery.preload('licensedFiles');
+      })
       .preload('choices')
       .exec();
   }
