@@ -10,7 +10,8 @@
     "dev": "node ace serve --hmr",
     "test": "node ace test",
     "coverage": "c8 --reporter=lcov node ace test",
-    "lint": "eslint .",
+    "lint:fix": "eslint .",
+    "lint:check": "eslint . --fix --quiet",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"
   },

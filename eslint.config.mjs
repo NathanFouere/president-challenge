@@ -41,6 +41,7 @@ export default createConfigForNuxt({
           allowTernary: true,
         },
       ],
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
 );
