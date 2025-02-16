@@ -40,7 +40,9 @@ export default class EventDefinition extends BaseModel {
   })
   declare licensedFiles: ManyToMany<typeof LicensedFile>;
 
-  @hasMany(() => Event)
+  @hasMany(() => Event, {
+    foreignKey: 'definitionId',
+  })
   declare events: HasMany<typeof Event>;
 
   @hasMany(() => Choice)

@@ -16,13 +16,13 @@ export default class Event extends BaseModel {
   declare isAvailable: boolean;
 
   @column()
-  declare definitionId: number;
-
-  @column()
   declare beenRead: boolean;
 
   @column()
   declare isDisplayable: boolean;
+
+  @column()
+  declare definitionId: number;
 
   @belongsTo(() => EventDefinition, {
     foreignKey: 'definitionId',

@@ -1,32 +1,50 @@
 import type { AdminJSProviderConfig } from '@adminjs/adonis';
-import { LucidResource } from '@adminjs/adonis';
 
 import componentLoader from '../app/admin/component_loader.js';
 import authProvider from '../app/admin/auth.js';
-import User from '#user/domain/models/user';
-import Budget from '#budget/domain/model/budget';
-import Game from '#game/domain/models/game';
-import PoliticalParty from '#political-party/domain/models/political_party';
-import PoliticalPartyDefinition from '#political-party/domain/models/political_party_definition';
-import Event from '#event/domain/models/event';
-import EventDefinition from '#event/domain/models/event_definition';
-import Law from '#law/domain/model/law';
-import LawDefinition from '#law/domain/model/law_definition';
-import SocialClassHappinessModifier from '#social-class/domain/models/social_class_happiness_modifier';
-import PoliticalPartyHappinessModifier from '#political-party/domain/models/political_party_happiness_modifier';
-import LicensedFile from '#licensed-file/domain/models/licensed_file';
-import { Parliament } from '#legislature/domain/models/parliament';
-import Senate from '#legislature/domain/models/senate';
-import Product from '#product/domain/models/product';
-import ProductDefinition from '#product/domain/models/product_definition';
-import Sector from '#sector/domain/model/sector';
-import SectorDefinition from '#sector/domain/model/sector_definition';
-import SocialClassDefinition from '#social-class/domain/models/social_class_definition';
-import SocialClass from '#social-class/domain/models/social_class';
-import State from '#state/domain/model/state';
-import StateDefinition from '#state/domain/model/state_definition';
-import Tax from '#tax/domain/model/tax';
-import TaxDefinition from '#tax/domain/model/tax_definition';
+import {
+  createEventAdminResource,
+  createEventDefinitionAdminResource,
+} from '#event/infrastructure/admin/event_admin_configuration';
+import { createUsersAdminResource } from '#user/infrastructure/admin/user_admin_configuration';
+import { createGameAdminResource } from '#game/infrastructure/admin/game_admin_configuration';
+import {
+  createBudgetAdminResource,
+  createBudgetDefinitionAdminResource,
+} from '#budget/infrastructure/admin/budget_admin_configuration';
+import {
+  createStateAdminResource,
+  createStateDefinitionAdminResource,
+} from '#state/infrastructure/admin/state_admin_configuration';
+import {
+  createTaxAdminResource,
+  createTaxDefinitionAdminResource,
+} from '#tax/infrastructure/admin/tax_admin_configuration';
+import {
+  createSocialClassAdminResource,
+  createSocialClassDefinitionAdminResource,
+} from '#social-class/infrastructure/admin/social_class_admin_configuration';
+import {
+  createSectorAdminResource,
+  createSectorDefinitionAdminResource,
+} from '#sector/infrastructure/admin/sector_admin_configuration';
+import {
+  createProductAdminResource,
+  createProductDefinitionAdminResource,
+} from '#product/infrastructure/admin/product_admin_configuration';
+import {
+  createPoliticalPartyAdminResource,
+  createPoliticalPartyDefinitionAdminResource,
+} from '#political-party/infrastructure/admin/political_party_admin_configuration';
+import { createLicensedFileAdminResource } from '#licensed-file/infrastructure/admin/licensed_file_admin_configuration';
+import {
+  createLawAdminResource,
+  createLawDefinitionAdminResource,
+} from '#law/infrastructure/admin/law_admin_configuration';
+import {
+  createPoliticalPartyHappinessModifierAdminResource,
+  createSocialClassHappinessModifierAdminResource,
+} from '#happiness-modifier/infrastructure/admin/happiness_modifier_admin_configuration';
 
 const adminjsConfig: AdminJSProviderConfig = {
   adapter: {
@@ -38,30 +56,29 @@ const adminjsConfig: AdminJSProviderConfig = {
     logoutPath: '/admin/logout',
     componentLoader,
     resources: [
-      new LucidResource(User, 'postgres'),
-      new LucidResource(LicensedFile, 'postgres'),
-      new LucidResource(Budget, 'postgres'),
-      new LucidResource(Game, 'postgres'),
-      new LucidResource(PoliticalParty, 'postgres'),
-      new LucidResource(PoliticalPartyDefinition, 'postgres'),
-      new LucidResource(Event, 'postgres'),
-      new LucidResource(EventDefinition, 'postgres'),
-      new LucidResource(Law, 'postgres'),
-      new LucidResource(LawDefinition, 'postgres'),
-      new LucidResource(SocialClassHappinessModifier, 'postgres'),
-      new LucidResource(PoliticalPartyHappinessModifier, 'postgres'),
-      new LucidResource(Parliament, 'postgres'),
-      new LucidResource(Senate, 'postgres'),
-      new LucidResource(Product, 'postgres'),
-      new LucidResource(ProductDefinition, 'postgres'),
-      new LucidResource(Sector, 'postgres'),
-      new LucidResource(SectorDefinition, 'postgres'),
-      new LucidResource(SocialClassDefinition, 'postgres'),
-      new LucidResource(SocialClass, 'postgres'),
-      new LucidResource(State, 'postgres'),
-      new LucidResource(StateDefinition, 'postgres'),
-      new LucidResource(Tax, 'postgres'),
-      new LucidResource(TaxDefinition, 'postgres'),
+      createUsersAdminResource(),
+      createGameAdminResource(),
+      createEventAdminResource(),
+      createEventDefinitionAdminResource(),
+      createBudgetDefinitionAdminResource(),
+      createBudgetAdminResource(),
+      createStateAdminResource(),
+      createStateDefinitionAdminResource(),
+      createTaxAdminResource(),
+      createTaxDefinitionAdminResource(),
+      createSocialClassAdminResource(),
+      createSocialClassDefinitionAdminResource(),
+      createSectorAdminResource(),
+      createSectorDefinitionAdminResource(),
+      createProductAdminResource(),
+      createProductDefinitionAdminResource(),
+      createPoliticalPartyDefinitionAdminResource(),
+      createPoliticalPartyAdminResource(),
+      createLicensedFileAdminResource(),
+      createLawDefinitionAdminResource(),
+      createLawAdminResource(),
+      createSocialClassHappinessModifierAdminResource(),
+      createPoliticalPartyHappinessModifierAdminResource(),
     ],
     pages: {},
     locale: {
