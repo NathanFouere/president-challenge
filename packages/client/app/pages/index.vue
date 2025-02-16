@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const router = useRouter();
-
-onMounted(() => {
-  router.push('/games');
-});
 </script>
 
 <template>
+  Redirecting...
+  <UProgress
+    v-show="true"
+    animation="carousel"
+  />
 </template>

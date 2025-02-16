@@ -44,4 +44,10 @@ export default createConfigForNuxt({
       '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 );

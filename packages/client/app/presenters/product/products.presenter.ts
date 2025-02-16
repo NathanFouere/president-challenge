@@ -17,7 +17,7 @@ export class ProductsPresenter {
       const products = await this.productModule.getProducts(this.gameStore.getSelectedGameId);
       this.productStore.setProducts(products);
     }
-    catch (error) {
+    catch {
       this.productStore.setErrorOnGetProducts();
       this.toast.showError('Failed to fetch products.');
     }

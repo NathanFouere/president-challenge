@@ -17,7 +17,7 @@ export class PoliticalPartiesPresenter {
       const politicalParties = await this.politicalPartyModule.getPoliticalParties(this.gameStore.getSelectedGameId);
       this.politicalPartiesStore.setPoliticalParties(politicalParties);
     }
-    catch (error) {
+    catch {
       this.politicalPartiesStore.setErrorOnGetPoliticalParties();
       this.toast.showError('Failed to fetch political parties.');
     }

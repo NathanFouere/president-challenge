@@ -9,7 +9,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint ."
+    "lint:fix": "eslint .",
+    "lint:check": "eslint . --fix --quiet"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.3",

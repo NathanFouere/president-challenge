@@ -28,7 +28,7 @@ export class EventPresenter {
       this.eventStore.unsetGettingEvent();
       this.eventStore.unsetErrorOnGettingEvent();
     }
-    catch (error) {
+    catch {
       this.toast.showError('Failed to fetch event');
       this.eventStore.setErrorOnGettingEvent();
     }
@@ -40,7 +40,7 @@ export class EventPresenter {
       await this.eventModule.chooseChoice(eventId, choiceId);
       await this.getEvent(eventId);
     }
-    catch (error) {
+    catch {
       this.toast.showError('Failed to choose choice');
     }
     this.eventStore.unsetLoadingChoiceId();

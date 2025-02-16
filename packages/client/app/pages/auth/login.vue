@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { COMMON_DEPENDANCY_TYPES } from '../../../config/common.types';
 import container from '../../../config/container';
-import type { AuthPresenter } from '../../presenters/auth.presenter';
-import { NUXT_ROUTES } from '../../../config/routes/nuxt-routes';
+import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import type { AuthPresenter } from '~/presenters/auth.presenter';
+import { NUXT_ROUTES } from '~~/config/routes/nuxt-routes';
 
 usePageTitle().setTitle('Login');
 const authPresenter = container.get<AuthPresenter>(COMMON_DEPENDANCY_TYPES.AuthPresenter);
@@ -22,14 +22,19 @@ const fields = [
   },
 ];
 
-const validate = (state: any) => {
+interface ISubmitData {
+  email: string;
+  password: string;
+}
+
+const validate = (state: ISubmitData) => {
   const errors = [];
   if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
   if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
   return errors;
 };
 
-async function onSubmit(data: any) {
+async function onSubmit(data: ISubmitData) {
   await authPresenter.login(data.email, data.password);
 }
 
