@@ -65,7 +65,15 @@ export default defineConfig({
   |
   */
   preloads: [
-    () => import('#start/routes'),
+    () => import('#user/infrastructure/routes'),
+    () => import('#state/infrastructure/routes'),
+    () => import('#social-class/infrastructure/routes'),
+    () => import('#sector/infrastructure/routes'),
+    () => import('#product/infrastructure/routes'),
+    () => import('#political-party/infrastructure/routes'),
+    () => import('#legislature/infrastructure/routes'),
+    () => import('#game/infrastructure/routes'),
+    () => import('#event/infrastructure/routes'),
     () => import('#start/kernel'),
   ],
 
