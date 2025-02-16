@@ -1,10 +1,10 @@
-import { BaseModel, column, hasMany, belongsTo } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column, hasMany, belongsTo } from '@adonisjs/lucid/orm';
 import type { HasMany, BelongsTo } from '@adonisjs/lucid/types/relations';
 import LawCategory from '#law/domain/model/law_category';
 import LawDefinition from '#law/domain/model/law_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class LawGroup extends BaseModel {
+export default class LawGroup extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -22,10 +22,4 @@ export default class LawGroup extends BaseModel {
 
   @belongsTo(() => LawCategory)
   declare lawCategory: BelongsTo<typeof LawCategory>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

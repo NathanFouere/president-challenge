@@ -1,11 +1,11 @@
-import { BaseModel, column, belongsTo, hasOne } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column, belongsTo, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations';
 import LawVoteResults from '#law/domain/model/law_vote_results';
 import { LegislatureType } from '#legislature/domain/models/legislature_type';
 import Law from '#law/domain/model/law';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class LawVote extends BaseModel {
+export default class LawVote extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -30,12 +30,6 @@ export default class LawVote extends BaseModel {
     onQuery: query => query.where('legislature_type', LegislatureType.PARLIAMENT),
   })
   declare voteResultsInParliament: HasOne<typeof LawVoteResults>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 
   public setVoteResultsInSenate(voteResultsInSenate: LawVoteResults) {
     this.$setRelated('voteResultsInSenate', voteResultsInSenate);

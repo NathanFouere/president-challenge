@@ -1,14 +1,14 @@
-import { BaseModel, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
+import { column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { HasMany, HasOne } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import type { SectorEconomicalSituation } from '@shared/dist/sector/sector-economical-situation.js';
 import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import ProductDefinition from '#product/domain/models/product_definition';
 import Sector from '#sector/domain/model/sector';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class SectorDefinition extends BaseModel {
+export default class SectorDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -43,10 +43,4 @@ export default class SectorDefinition extends BaseModel {
     foreignKey: 'definitionId',
   })
   declare sectors: HasMany<typeof Sector>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }

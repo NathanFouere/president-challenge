@@ -1,13 +1,13 @@
-import { BaseModel, belongsTo, column, hasMany, hasOne, beforeSave } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { belongsTo, column, hasMany, hasOne, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
 import User from '#user/domain/models/user';
 import PoliticalParty from '#political-party/domain/models/political_party';
 import Event from '#event/domain/models/event';
 import Senate from '#legislature/domain/models/senate';
 import State from '#state/domain/model/state';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class Game extends BaseModel {
+export default class Game extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -34,12 +34,6 @@ export default class Game extends BaseModel {
 
   @column()
   declare politicalWeight: number;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 
   public changeTurn() {
     this.turn += 1;

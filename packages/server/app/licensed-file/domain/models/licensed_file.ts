@@ -1,10 +1,10 @@
-import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm';
+import { column, manyToMany } from '@adonisjs/lucid/orm';
 import type { ManyToMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import Event from '#event/domain/models/event';
 import SocialClass from '#social-class/domain/models/social_class';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class LicensedFile extends BaseModel {
+export default class LicensedFile extends TimeStampedModel {
   @column({ isPrimary: true })
   declare identifier: string;
 
@@ -46,10 +46,4 @@ export default class LicensedFile extends BaseModel {
     relatedKey: 'id',
   })
   declare socialClasses: ManyToMany<typeof SocialClass>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }

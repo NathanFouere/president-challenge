@@ -1,8 +1,9 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm';
+import { column } from '@adonisjs/lucid/orm';
 import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default abstract class PoliticalAffiliationHappinessEffect extends BaseModel {
+export default abstract class PoliticalAffiliationHappinessEffect extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 

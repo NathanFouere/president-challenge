@@ -1,11 +1,11 @@
-import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import { belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import EventDefinition from '#event/domain/models/event_definition';
 import Choice from '#event/domain/models/choice';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class Event extends BaseModel {
+export default class Event extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -37,10 +37,4 @@ export default class Event extends BaseModel {
 
   @hasMany(() => Choice)
   declare choices: HasMany<typeof Choice>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }

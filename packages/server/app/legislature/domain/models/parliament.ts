@@ -1,10 +1,10 @@
-import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import { belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import ParliamentPartySeats from '#legislature/domain/models/political_party_seats_parliament';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export class Parliament extends BaseModel {
+export class Parliament extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -16,10 +16,4 @@ export class Parliament extends BaseModel {
 
   @hasMany(() => ParliamentPartySeats)
   declare partySeats: HasMany<typeof ParliamentPartySeats>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

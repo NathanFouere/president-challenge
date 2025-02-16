@@ -1,12 +1,12 @@
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm';
+import { column, belongsTo } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import PoliticalParty from '#political-party/domain/models/political_party';
 import { Parliament } from '#legislature/domain/models/parliament';
 import PoliticalPartySeatsParliamentDefinition
   from '#legislature/domain/models/political_party_seats_parliament_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class PoliticalPartySeatsParliament extends BaseModel {
+export default class PoliticalPartySeatsParliament extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -32,10 +32,4 @@ export default class PoliticalPartySeatsParliament extends BaseModel {
 
   @belongsTo(() => Parliament)
   declare parliament: BelongsTo<typeof Parliament>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }

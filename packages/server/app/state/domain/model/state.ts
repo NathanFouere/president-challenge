@@ -1,6 +1,5 @@
-import { BaseModel, belongsTo, column, hasMany, beforeSave } from '@adonisjs/lucid/orm';
+import { belongsTo, column, hasMany, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import Budget from '#budget/domain/model/budget';
 import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
@@ -10,8 +9,9 @@ import { aStateFinancialFlow } from '#state/application/builder/state_financial_
 import StateFinancialFlow from '#state/domain/model/state_financial_flow';
 import type Sector from '#sector/domain/model/sector';
 import StateDefinition from '#state/domain/model/state_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class State extends BaseModel {
+export default class State extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -43,12 +43,6 @@ export default class State extends BaseModel {
 
   @hasMany(() => Tax)
   declare taxes: HasMany<typeof Tax>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 
   public addToEconomicalSituation(addedEconomicalSituation: number) {
     let newEconomicalSituation = this.economicalSituation + addedEconomicalSituation;

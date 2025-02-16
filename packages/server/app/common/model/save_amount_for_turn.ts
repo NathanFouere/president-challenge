@@ -1,7 +1,7 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column } from '@adonisjs/lucid/orm';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export abstract class SaveAmountForTurn extends BaseModel {
+export abstract class SaveAmountForTurn extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -13,10 +13,4 @@ export abstract class SaveAmountForTurn extends BaseModel {
 
   @column()
   declare color: string;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

@@ -1,12 +1,12 @@
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
+import { belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
 import State from '#state/domain/model/state';
 import Game from '#game/domain/models/game';
 import TaxDefinition from '#tax/domain/model/tax_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class Tax extends BaseModel {
+export default class Tax extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -35,12 +35,6 @@ export default class Tax extends BaseModel {
 
   @belongsTo(() => State)
   declare state: BelongsTo<typeof State>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 
   public calculateTaxAmount(valueToTax: number): number {
     return Math.round(Math.max(0, valueToTax * (this.level * this.rate)));

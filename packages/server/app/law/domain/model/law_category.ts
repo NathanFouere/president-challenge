@@ -1,9 +1,9 @@
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column, hasMany } from '@adonisjs/lucid/orm';
 import type { HasMany } from '@adonisjs/lucid/types/relations';
 import LawGroup from '#law/domain/model/law_group';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class LawCategory extends BaseModel {
+export default class LawCategory extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -15,10 +15,4 @@ export default class LawCategory extends BaseModel {
 
   @hasMany(() => LawGroup)
   declare lawGroups: HasMany<typeof LawGroup>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

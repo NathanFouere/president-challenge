@@ -1,6 +1,5 @@
-import { BaseModel, beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import { beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import type { SectorEconomicalSituation } from '@shared/dist/sector/sector-economical-situation.js';
 import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
 import Product from '#product/domain/models/product';
@@ -8,8 +7,9 @@ import SocialClass from '#social-class/domain/models/social_class';
 import Game from '#game/domain/models/game';
 import SectorEconomicalSituationPerTurn from '#sector/domain/model/sector_economical_situation_per_turn';
 import SectorDefinition from '#sector/domain/model/sector_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class Sector extends BaseModel {
+export default class Sector extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -41,12 +41,6 @@ export default class Sector extends BaseModel {
 
   @hasMany(() => SectorEconomicalSituationPerTurn)
   declare economicalSituationPerTurn: HasMany<typeof SectorEconomicalSituationPerTurn>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 
   @beforeSave()
   public static async validateEconomicalSituationLevel(sector: Sector) {
