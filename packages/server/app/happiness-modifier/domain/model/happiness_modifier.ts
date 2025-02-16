@@ -1,7 +1,8 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm';
+import { column } from '@adonisjs/lucid/orm';
 import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default abstract class HappinessModifier extends BaseModel {
+export default abstract class HappinessModifier extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 

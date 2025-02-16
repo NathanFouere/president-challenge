@@ -1,9 +1,15 @@
 import PoliticalPartySeatsParliament from '#legislature/domain/models/political_party_seats_parliament';
 
 export class PoliticalPartySeatsParliamentBuilder {
-  public numberOfSeats: number | null = null;
-  public politicalPartyId: number | null = null;
-  public parliamentId: number | null = null;
+  private numberOfSeats: number | null = null;
+  private politicalPartyId: number | null = null;
+  private parliamentId: number | null = null;
+  private definitionId: number | null = null;
+
+  public withDefinitionId(definitionId: number): this {
+    this.definitionId = definitionId;
+    return this;
+  }
 
   public withNumberOfSeats(numberOfSeats: number): this {
     this.numberOfSeats = numberOfSeats;
@@ -42,6 +48,12 @@ export class PoliticalPartySeatsParliamentBuilder {
     }
     else {
       throw new Error('parliamentId is required');
+    }
+    if (this.definitionId !== null) {
+      politicalPartySeatsParliament.definitionId = this.definitionId;
+    }
+    else {
+      throw new Error('definitionId is required');
     }
     return politicalPartySeatsParliament;
   }

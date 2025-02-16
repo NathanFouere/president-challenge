@@ -1,5 +1,4 @@
-import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
 import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
@@ -15,8 +14,9 @@ import PoliticalAffiliationLawHappinessEffect
 import Law from '#law/domain/model/law';
 import LawVotesPercentagePerPoliticalAffiliation
   from '#law/domain/model/law_votes_percentage_per_political_affiliation';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class LawDefinition extends BaseModel {
+export default class LawDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -81,10 +81,4 @@ export default class LawDefinition extends BaseModel {
     foreignKey: 'definitionId',
   })
   declare laws: HasMany<typeof Law>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

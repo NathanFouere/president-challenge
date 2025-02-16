@@ -1,6 +1,5 @@
-import { BaseModel, beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
+import { beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';
@@ -13,8 +12,9 @@ import sectorEconomicalSituationMatchConfig
   from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
 import type Tax from '#tax/domain/model/tax';
 import SocialClassDefinition from '#social-class/domain/models/social_class_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class SocialClass extends BaseModel {
+export default class SocialClass extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -52,12 +52,6 @@ export default class SocialClass extends BaseModel {
 
   @belongsTo(() => Sector)
   declare sector: BelongsTo<typeof Sector>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 
   public getHappinessLevel(): number {
     const happinessLevel = this.happinessModifiers.reduce((acc, modifier) => acc + modifier.amount, 0);

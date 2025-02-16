@@ -1,6 +1,5 @@
-import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
+import { belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import PoliticalPartySeatsSenate from '#legislature/domain/models/political_party_seats_senate';
 import PoliticalPartyHappinessModifier from '#political-party/domain/models/political_party_happiness_modifier';
@@ -9,8 +8,9 @@ import { LegislatureType } from '#legislature/domain/models/legislature_type';
 import PoliticalPartyDefinition from '#political-party/domain/models/political_party_definition';
 import PoliticalPartyHappinessPerTurn from '#political-party/domain/models/political_party_happiness_per_turn';
 import PoliticalPartySeatsParliament from '#legislature/domain/models/political_party_seats_parliament';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class PoliticalParty extends BaseModel {
+export default class PoliticalParty extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -39,12 +39,6 @@ export default class PoliticalParty extends BaseModel {
     foreignKey: 'definitionId',
   })
   declare definition: BelongsTo<typeof PoliticalPartyDefinition>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 
   public getHappinessLevel(): number {
     const happinessLevel = this.happinessModifiers.reduce((acc, happinessModifier) => acc + happinessModifier.amount, 0);

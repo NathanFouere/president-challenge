@@ -19,6 +19,10 @@ import {
 import {
   IGetLegislatureVoteResultOfLawForElectionQueryHandler,
 } from '#law/application/query/i_get_law_vote_result_of_law_for_election_query_handler';
+import IPoliticalPartySeatsParliamentDefinitionRepository
+  from '#legislature/domain/repository/i_political_party_seats_parliament_definition_repository';
+import IPoliticalPartySeatsSenateDefinitionRepository
+  from '#legislature/domain/repository/i_politcal_party_seats_senate_definition_repository';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -52,6 +56,21 @@ export default class LegislatureProvider extends AppProvider {
     const { default: GetLegislatureVoteResultOfLawForElectionQueryHandler } = await import(
       '#law/infrastructure/query/get_law_vote_result_of_law_for_election_query_handler'
     );
+    const { default: PoliticalPartySeatsParliamentDefinitionRepository } = await import(
+      '#legislature/infrastructure/repositories/political_party_seats_parliament_definition_repository'
+    );
+
+    const { default: PoliticalPartySeatsSenateDefinitionRepository } = await import(
+      '#legislature/infrastructure/repositories/political_party_seats_senate_definition_repository'
+    );
+
+    this.app.container.bind(IPoliticalPartySeatsSenateDefinitionRepository, () => {
+      return new PoliticalPartySeatsSenateDefinitionRepository();
+    });
+    this.app.container.bind(IPoliticalPartySeatsParliamentDefinitionRepository, () => {
+      return new PoliticalPartySeatsParliamentDefinitionRepository();
+    });
+
     this.app.container.bind(IGetSenateByGameQueryHandler, () => {
       return new GetSenateByGameQueryHandler();
     });

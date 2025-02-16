@@ -1,11 +1,11 @@
-import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import Game from '#game/domain/models/game';
 import LawDefinition from '#law/domain/model/law_definition';
 import LawVote from '#law/domain/model/law_vote';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class Law extends BaseModel {
+export default class Law extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -40,10 +40,4 @@ export default class Law extends BaseModel {
   public isVoted(): boolean {
     return this.voted;
   }
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

@@ -1,12 +1,12 @@
-import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
+import { column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
 import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import type { EventType } from '@shared/dist/event/event-type.js';
 import Choice from '#event/domain/models/choice';
 import Event from '#event/domain/models/event';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class EventDefinition extends BaseModel {
+export default class EventDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -40,15 +40,11 @@ export default class EventDefinition extends BaseModel {
   })
   declare licensedFiles: ManyToMany<typeof LicensedFile>;
 
-  @hasMany(() => Event)
+  @hasMany(() => Event, {
+    foreignKey: 'definitionId',
+  })
   declare events: HasMany<typeof Event>;
 
   @hasMany(() => Choice)
   declare choices: HasMany<typeof Choice>;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }

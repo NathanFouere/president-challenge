@@ -1,12 +1,12 @@
-import { BaseModel, belongsTo, column, hasMany, beforeSave } from '@adonisjs/lucid/orm';
+import { belongsTo, column, hasMany, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';
 import ProductPricePerTurn from '#product/domain/models/product_price_per_turn';
 import ProductDefinition from '#product/domain/models/product_definition';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class Product extends BaseModel {
+export default class Product extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -38,12 +38,6 @@ export default class Product extends BaseModel {
 
   @column()
   declare costOfProduction: number;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 
   public getMargin(): number {
     return this.price - this.costOfProduction;

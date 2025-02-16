@@ -1,11 +1,11 @@
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm';
-import type { DateTime } from 'luxon';
+import { column, hasMany } from '@adonisjs/lucid/orm';
 import type { HasMany } from '@adonisjs/lucid/types/relations';
 import type { TaxType } from '#tax/domain/model/tax_type';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
 import Tax from '#tax/domain/model/tax';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class TaxDefinition extends BaseModel {
+export default class TaxDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -29,10 +29,4 @@ export default class TaxDefinition extends BaseModel {
 
   @hasMany(() => Tax)
   declare taxes: HasMany<typeof Tax>;
-
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null;
 }

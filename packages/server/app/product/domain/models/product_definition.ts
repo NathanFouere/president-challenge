@@ -1,11 +1,11 @@
-import { BaseModel, belongsTo, column, hasOne, hasMany } from '@adonisjs/lucid/orm';
+import { belongsTo, column, hasOne, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasOne, HasMany } from '@adonisjs/lucid/types/relations';
-import type { DateTime } from 'luxon';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import SectorDefinition from '#sector/domain/model/sector_definition';
 import Product from '#product/domain/models/product';
+import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default class ProductDefinition extends BaseModel {
+export default class ProductDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 
@@ -40,10 +40,4 @@ export default class ProductDefinition extends BaseModel {
 
   @column()
   declare defaultCostOfProduction: number;
-
-  @column.dateTime({ autoCreate: true, serializeAs: null })
-  declare createdAt: DateTime;
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
-  declare updatedAt: DateTime | null;
 }
