@@ -43,8 +43,8 @@ class GameModule extends FetchFactory {
     );
   }
 
-  public async changeTurn(gameId: number): Promise<MinimalGameDto> {
-    return this.call<MinimalGameDto>(
+  public async changeTurn(gameId: number): Promise<GameDto> {
+    return this.call<GameDto>(
       {
         method: 'POST',
         url: `${this.RESOURCE.ChangeTurn(gameId)}`,

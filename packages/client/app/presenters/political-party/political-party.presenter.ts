@@ -20,7 +20,7 @@ export class PoliticalPartyPresenter {
       this.politicalPartyStore.unsetErrorOnGetPoliticalParty();
       this.politicalPartyStore.unsetIsGettingPoliticalParty();
     }
-    catch (error) {
+    catch {
       this.politicalPartyStore.setErrorOnGetPoliticalParty();
       this.toast.showError('Failed to fetch political party.');
     }

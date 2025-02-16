@@ -20,9 +20,8 @@ export class GamePresenter {
       await this.fetchUserGames();
       this.gameStore.unsetGettingGames();
     }
-    catch (error) {
-      this.toast.showError(error.data?.message || 'Failed to fetch games.');
-      throw error;
+    catch {
+      this.toast.showError('Failed to fetch games.');
     }
   }
 
@@ -33,8 +32,8 @@ export class GamePresenter {
       await this.fetchUserGames();
       this.toast.showSuccess('Game created successfully');
     }
-    catch (error) {
-      this.toast.showError(error.data?.message || 'Failed to create game.');
+    catch {
+      this.toast.showError('Failed to create game.');
     }
     this.gameStore.unsetCreatingGame();
   }
@@ -48,7 +47,7 @@ export class GamePresenter {
       }
       await this.fetchUserGames();
     }
-    catch (error) {
+    catch {
       this.toast.showError('Failed to delete game.');
     }
     this.gameStore.unsetGamePendingDeletionId();
@@ -60,7 +59,7 @@ export class GamePresenter {
       const gameDto = await this.gameModule.getGame(game.id);
       this.gameStore.setSelectedGame(gameDto);
     }
-    catch (error) {
+    catch {
       this.toast.showError('Failed to select game.');
     }
     finally {

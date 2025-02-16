@@ -17,7 +17,7 @@ export class SocialClassesPresenter {
       const socialClasses = await this.socialClassModule.getSocialClasses(this.gameStore.getSelectedGameId);
       this.socialClassesStore.setSocialClasses(socialClasses);
     }
-    catch (error) {
+    catch {
       this.socialClassesStore.setErrorOnGetSocialClasses();
       this.toast.showError('Error fetching social classes');
     }

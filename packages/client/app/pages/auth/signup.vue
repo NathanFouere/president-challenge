@@ -28,7 +28,13 @@ const fields = [
   },
 ];
 
-const validate = (state: any) => {
+interface IForm {
+  fullName: string;
+  email: string;
+  password: string;
+}
+
+const validate = (state: IForm) => {
   const errors = [];
   if (!state.fullName) errors.push({ path: 'name', message: 'Name is required' });
   if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
@@ -36,7 +42,7 @@ const validate = (state: any) => {
   return errors;
 };
 
-async function onSubmit(data: any) {
+async function onSubmit(data: IForm) {
   await authPresenter.signup(data.email, data.fullName, data.password);
 }
 </script>

@@ -24,5 +24,6 @@ declare module '@adonisjs/auth/types' {
   export interface Authenticators extends InferAuthenticators<typeof authConfig> {}
 }
 declare module '@adonisjs/core/types' {
+
   interface EventsList extends InferAuthEvents<Authenticators> {}
 }

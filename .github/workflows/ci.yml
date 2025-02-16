@@ -32,6 +32,9 @@ jobs:
         env:
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
 
+      - name: Lint Check
+        run: pnpm run lint:check
+
       - name: Run tests and coverage
         run: pnpm run coverage
         env:

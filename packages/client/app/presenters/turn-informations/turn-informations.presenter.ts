@@ -22,8 +22,8 @@ export class TurnInformationsPresenter {
       this.gameStore.setSelectedGame(updatedGame);
       await this.getEventsOfTurn();
     }
-    catch (error) {
-      this.toast.showError('Error while changing turn');
+    catch {
+      this.toast.showError(`Error while changing turn`);
     }
     this.gameStore.unsetChangingTurn();
   }
@@ -37,7 +37,7 @@ export class TurnInformationsPresenter {
       this.eventsStore.setSuperEvents(eventList.eventListDto.superEvents);
       this.turnInformationsStore.setAllowChangeTurn(!eventList.canChangeTurn);
     }
-    catch (error) {
+    catch {
       this.toast.showError('Error while getting events');
     }
     this.eventsStore.unsetGettingEvents();

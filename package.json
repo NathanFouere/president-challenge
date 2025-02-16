@@ -14,7 +14,8 @@
     "test": "pnpm --filter server run test",
     "coverage": "pnpm --filter server run coverage",
     "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",
-    "lint": "pnpm --filter server run lint && pnpm --filter client run lint"
+    "lint:fix": "pnpm --filter server run lint:fix && pnpm --filter client run lint:fix",
+    "lint:check": "pnpm --filter server run lint:check && pnpm --filter client run lint:check"
   },
   "keywords": [],
   "author": "",
