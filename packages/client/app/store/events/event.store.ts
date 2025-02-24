@@ -1,4 +1,4 @@
-import type { EventDto } from '@shared/typesevent/event-dto';
+import type { EventDto } from '@shared/event/event-dto';
 
 export const useEventStore = defineStore('eventStore', {
   state: () => ({
@@ -27,6 +27,9 @@ export const useEventStore = defineStore('eventStore', {
       return state.event;
     },
     getLoadingChoice(state): number {
+      if (state.loadingChoiceId === null) {
+        throw new Error('Loading choice id is not set');
+      }
       return state.loadingChoiceId;
     },
   },

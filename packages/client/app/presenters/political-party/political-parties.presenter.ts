@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 import type PoliticalPartyModule from '../../../server/repository/modules/political-party.module';
-import { usePoliticalPartiesStore } from '../../store/political-party/political-parties.store';
-import { useGameStore } from '../../store/game/game.store';
-import { useCustomToast } from '../../composables/useCustomToast';
+import { usePoliticalPartiesStore } from '~/store/political-party/political-parties.store';
+import { useGameStore } from '~/store/game/game.store';
+import { useCustomToast } from '~/composables/useCustomToast';
 
 @injectable()
 export class PoliticalPartiesPresenter {

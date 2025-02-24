@@ -1,4 +1,4 @@
-import type { SocialClassDto } from '@shared/typessocial-class/social-class-dto';
+import type { SocialClassDto } from '@shared/social-class/social-class-dto';
 
 export const useSocialClassStore = defineStore('socialClassStore', {
   state: () => ({

@@ -2,7 +2,7 @@ import { joinURL } from 'ufo';
 import { Routes } from './routes.server';
 
 export default defineEventHandler(async (event) => {
-  const coreUrl = useRuntimeConfig().NUXT_BASE_URL_JSON_PLACEHOLDER_SERVER;
+  const coreUrl: string = useRuntimeConfig().NUXT_BASE_URL_JSON_PLACEHOLDER_SERVER as string;
 
   let path = '';
   let target = '';

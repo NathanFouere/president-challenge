@@ -15,7 +15,8 @@
     "coverage": "pnpm --filter server run coverage",
     "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",
     "lint:fix": "pnpm --filter server run lint:fix && pnpm --filter client run lint:fix",
-    "lint:check": "pnpm --filter server run lint:check && pnpm --filter client run lint:check"
+    "lint:check": "pnpm --filter server run lint:check && pnpm --filter client run lint:check",
+    "typecheck": "pnpm --filter server run typecheck && pnpm --filter client run typecheck"
   },
   "keywords": [],
   "author": "",
