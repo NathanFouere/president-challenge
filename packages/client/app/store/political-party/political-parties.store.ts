@@ -1,8 +1,8 @@
-import type { PoliticalPartyDTO } from '@shared/typespolitical-party/political-party-dto';
+import type { PoliticalPartyMinimalDto } from '@shared/political-party/political-party-minimal-dto';
 
 export const usePoliticalPartiesStore = defineStore('politicalPartiesStore', {
   state: () => ({
-    politicalParties: [] as PoliticalPartyDTO[],
+    politicalParties: [] as PoliticalPartyMinimalDto[],
     gettingPoliticalParties: false,
     errorOnGetPoliticalParties: false,
   }),
@@ -12,7 +12,7 @@ export const usePoliticalPartiesStore = defineStore('politicalPartiesStore', {
     hadErrorOnGetPoliticalParties: state => state.errorOnGetPoliticalParties,
   },
   actions: {
-    setPoliticalParties(politicalParties: PoliticalPartyDTO[]) {
+    setPoliticalParties(politicalParties: PoliticalPartyMinimalDto[]) {
       this.politicalParties = politicalParties;
     },
     setIsGettingPoliticalParties() {

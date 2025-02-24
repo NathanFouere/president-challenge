@@ -1,4 +1,4 @@
-import type { SectorDto } from '@shared/typessector/sector-dto';
+import type { SectorDto } from '@shared/sector/sector-dto';
 
 export const useSectorsStore = defineStore('sectorsStore', {
   state: () => ({

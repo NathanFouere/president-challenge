@@ -10,7 +10,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint:fix": "eslint .",
-    "lint:check": "eslint . --fix --quiet"
+    "lint:check": "eslint . --fix --quiet",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.3",

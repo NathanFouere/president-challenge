@@ -32,5 +32,10 @@ function matchTurnNumberWithMonth(turnNumber: number): string {
     'September',
     'October',
   ];
-  return monthNames[monthNumber];
+
+  const monthName = monthNames[monthNumber];
+  if (!monthName) {
+    throw new Error(`Invalid month number: ${monthNumber}`);
+  }
+  return monthName;
 }

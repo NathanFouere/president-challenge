@@ -1,12 +1,12 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
-import { useUserStore } from '../store/user/user.store';
-import { useUserLoginStore } from '../store/user/user-login.store';
 import type AuthModule from '../../server/repository/modules/auth.module';
-import { useUserLogoutStore } from '../store/user/user-logout.store';
-import { useUserSignupStore } from '../store/user/user-signup.store';
-import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
-import { useCustomToast } from '../composables/useCustomToast';
+import { useUserStore } from '~/store/user/user.store';
+import { useUserLoginStore } from '~/store/user/user-login.store';
+import { useUserLogoutStore } from '~/store/user/user-logout.store';
+import { useUserSignupStore } from '~/store/user/user-signup.store';
+import { NUXT_ROUTES } from '~~/config/routes/nuxt-routes';
+import { useCustomToast } from '~/composables/useCustomToast';
 
 @injectable()
 export class AuthPresenter {
@@ -23,8 +23,8 @@ export class AuthPresenter {
       await this.handleLogin(email, password);
       this.toast.showSuccess('Login successful!');
     }
-    catch (error) {
-      this.toast.showError(error.data?.message || 'Error occurred while logging in');
+    catch {
+      this.toast.showError('Error occurred while logging in');
     }
   }
 
@@ -33,8 +33,8 @@ export class AuthPresenter {
       await this.handleLogout();
       this.toast.showSuccess('Logged out successfully!');
     }
-    catch (error) {
-      this.toast.showError(error.data?.message || 'Error occurred while logging out');
+    catch {
+      this.toast.showError('Error occurred while logging out');
     }
   }
 
@@ -43,8 +43,8 @@ export class AuthPresenter {
       await this.handleSignup(email, fullname, password);
       this.toast.showSuccess('Signup successful!');
     }
-    catch (error) {
-      this.toast.showError(error.data?.message || 'Error occurred while signing up');
+    catch {
+      this.toast.showError('Error occurred while signing up');
     }
   }
 
