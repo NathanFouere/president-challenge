@@ -1,6 +1,6 @@
 import SocialClassHappinessEffectBuilder
   from '#social-class/application/builders/social_class_happiness_effect_builder';
-import SocialClassLawHappinessEffect from '#social-class/domain/models/social_class_law_happiness_effect';
+import SocialClassTypeLawHappinessEffect from '#social-class/domain/models/social_class_type_law_happiness_effect';
 
 export default class SocialClassLawHappinessEffectBuilder extends SocialClassHappinessEffectBuilder {
   protected lawDefinitionId: number | null = null;
@@ -10,8 +10,8 @@ export default class SocialClassLawHappinessEffectBuilder extends SocialClassHap
     return this;
   }
 
-  public build(): SocialClassLawHappinessEffect {
-    const socialClassHappinessEffect = new SocialClassLawHappinessEffect();
+  public build(): SocialClassTypeLawHappinessEffect {
+    const socialClassHappinessEffect = new SocialClassTypeLawHappinessEffect();
     if (this.socialClassType === null) {
       throw new Error('Social class type is required');
     }

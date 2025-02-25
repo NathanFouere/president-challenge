@@ -4,6 +4,8 @@ import { LucidResource } from '@adminjs/adonis';
 import componentLoader from '../../../admin/component_loader.js';
 import EventDefinition from '#event/domain/models/event_definition';
 import Event from '#event/domain/models/event';
+import Choice from '#event/domain/models/choice';
+import ChoiceDefinition from '#event/domain/models/choice_definition';
 
 export const createEventDefinitionAdminResource = () => (
   {
@@ -28,5 +30,15 @@ export const createEventDefinitionAdminResource = () => (
 
 export const createEventAdminResource = () => ({
   resource: new LucidResource(Event, 'postgres'),
+  features: [targetRelationSettingsFeature()],
+});
+
+export const createChoiceDefinitionAdminResource = () => ({
+  resource: new LucidResource(ChoiceDefinition, 'postgres'),
+  features: [targetRelationSettingsFeature()],
+});
+
+export const createChoiceAdminResource = () => ({
+  resource: new LucidResource(Choice, 'postgres'),
   features: [targetRelationSettingsFeature()],
 });

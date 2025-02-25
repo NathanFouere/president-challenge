@@ -3,6 +3,9 @@ import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations
 import Choice from '#event/domain/models/choice';
 import EventDefinition from '#event/domain/models/event_definition';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import PoliticalAffiliationChoiceHappinessEffect
+  from '#political-party/domain/models/political_affiliation_choice_happiness_effect';
+import SocialClassTypeChoiceHappinessEffect from '#social-class/domain/models/social_class_type_choice_happiness_effect';
 
 export default class ChoiceDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -30,4 +33,10 @@ export default class ChoiceDefinition extends TimeStampedModel {
     foreignKey: 'id',
   })
   declare triggerEventDefinition: HasOne<typeof EventDefinition>;
+
+  @hasMany(() => SocialClassTypeChoiceHappinessEffect)
+  declare socialClassHappinessEffects: HasMany<typeof SocialClassTypeChoiceHappinessEffect>;
+
+  @hasMany(() => PoliticalAffiliationChoiceHappinessEffect)
+  declare politicalAffiliationHappinessEffects: HasMany<typeof PoliticalAffiliationChoiceHappinessEffect>;
 }

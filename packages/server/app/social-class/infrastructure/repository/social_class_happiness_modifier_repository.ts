@@ -15,4 +15,9 @@ export default class SocialClassHappinessModifierRepository implements ISocialCl
   public async delete(socialClassHappinessModifier: SocialClassHappinessModifier): Promise<void> {
     await socialClassHappinessModifier.delete();
   }
+
+  public async createMany(socialClassHappinessModifiers: SocialClassHappinessModifier[]): Promise<void> {
+    const promises = socialClassHappinessModifiers.map(socialClassHappinessModifier => socialClassHappinessModifier.save());
+    await Promise.all(promises);
+  }
 }

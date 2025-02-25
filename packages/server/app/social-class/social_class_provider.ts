@@ -12,8 +12,8 @@ import ISocialClassHappinessModifierRepository
   from '#social-class/domain/repository/i_social_class_happiness_modifier_repository';
 import ISocialClassLawHappinessEffectRepository
   from '#social-class/domain/repository/i_social_class_law_happiness_effect_repository';
-import IGetSocialClassByGameAndTypeQueryHandler
-  from '#social-class/application/queries/i_get_social_class_by_game_and_type_query_handler';
+import IGetSocialClassesByGameAndTypeQueryHandler
+  from '#social-class/application/queries/i_get_social_classes_by_game_and_type_query_handler';
 import ISocialClassDefinitionRepository from '#social-class/domain/repository/i_social_class_definition_repository';
 
 export default class SocialClassProvider extends AppProvider {
@@ -40,8 +40,8 @@ export default class SocialClassProvider extends AppProvider {
       '#social-class/infrastructure/repository/social_class_law_happiness_effect_repository'
     );
 
-    const { default: GetSocialClassByGameAndTypeQueryHandler } = await import(
-      '#social-class/infrastructure/query/get_social_class_by_game_and_type_query_handler'
+    const { default: GetSocialClassesByGameAndTypeQueryHandler } = await import(
+      '#social-class/infrastructure/query/get_social_classes_by_game_and_type_query_handler'
     );
 
     const { default: SocialClassDefinitionRepository } = await import(
@@ -52,8 +52,8 @@ export default class SocialClassProvider extends AppProvider {
       return new SocialClassDefinitionRepository();
     });
 
-    this.app.container.bind(IGetSocialClassByGameAndTypeQueryHandler, () => {
-      return new GetSocialClassByGameAndTypeQueryHandler();
+    this.app.container.bind(IGetSocialClassesByGameAndTypeQueryHandler, () => {
+      return new GetSocialClassesByGameAndTypeQueryHandler();
     });
 
     this.app.container.bind(ISocialClassLawHappinessEffectRepository, () => {

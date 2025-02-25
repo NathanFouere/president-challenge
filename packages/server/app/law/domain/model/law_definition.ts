@@ -8,7 +8,7 @@ import type { BudgetType } from '#budget/domain/model/budget_type';
 import type { BudgetLevel } from '#budget/domain/model/budget_level';
 import type { TaxType } from '#tax/domain/model/tax_type';
 import type { TaxLevel } from '#tax/domain/model/tax_level';
-import SocialClassLawHappinessEffect from '#social-class/domain/models/social_class_law_happiness_effect';
+import SocialClassTypeLawHappinessEffect from '#social-class/domain/models/social_class_type_law_happiness_effect';
 import PoliticalAffiliationLawHappinessEffect
   from '#political-party/domain/models/political_affiliation_law_happiness_effect';
 import Law from '#law/domain/model/law';
@@ -44,6 +44,7 @@ export default class LawDefinition extends TimeStampedModel {
   @column()
   declare order: number;
 
+  // TODO => those attributes should be moved in separate tables
   // Simulates a SingleInheritance
   @column()
   declare budgetTypeToChange?: BudgetType;
@@ -68,8 +69,8 @@ export default class LawDefinition extends TimeStampedModel {
   @column()
   declare taxLevelToChange?: TaxLevel;
 
-  @hasMany(() => SocialClassLawHappinessEffect)
-  declare socialClassesHappinessEffects: HasMany<typeof SocialClassLawHappinessEffect>;
+  @hasMany(() => SocialClassTypeLawHappinessEffect)
+  declare socialClassesHappinessEffects: HasMany<typeof SocialClassTypeLawHappinessEffect>;
 
   @hasMany(() => PoliticalAffiliationLawHappinessEffect)
   declare politicalPartiesAffiliationHappinessEffects: HasMany<typeof PoliticalAffiliationLawHappinessEffect>;

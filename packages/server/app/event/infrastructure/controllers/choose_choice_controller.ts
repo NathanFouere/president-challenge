@@ -24,7 +24,7 @@ export default class ChooseChoiceController {
       const choiceId: number = params.choiceId;
       const eventId: number = params.eventId;
 
-      const choice = await this.getChoiceByIdAndEventQueryHandler.handle(new GetChoiceByIdAndEventQuery(
+      const choice = await this.getChoiceByIdAndEventQueryHandler.handleForChoose(new GetChoiceByIdAndEventQuery(
         choiceId,
         eventId,
       ));
