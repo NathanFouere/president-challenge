@@ -5,13 +5,17 @@ import type {
 } from '#event/application/queries/i_get_choice_by_id_and_event_query_handler';
 
 export default class GetChoiceByIdAndEventQueryHandler implements IGetChoiceByIdAndEventQueryHandler {
-  public async handle(query: GetChoiceByIdAndEventQuery): Promise<Choice> {
+  public async handleForChoose(query: GetChoiceByIdAndEventQuery): Promise<Choice> {
     const choice = await Choice
       .query()
       .where('id', query.choiceId)
       .where('event_id', query.eventId)
       .preload('event', (eventQuery) => {
         eventQuery.preload('choices');
+      })
+      .preload('definition', (definitionQuery) => {
+        definitionQuery.preload('socialClassHappinessEffects');
+        definitionQuery.preload('politicalAffiliationHappinessEffects');
       })
       .firstOrFail();
 

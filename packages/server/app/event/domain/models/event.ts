@@ -37,4 +37,13 @@ export default class Event extends TimeStampedModel {
 
   @hasMany(() => Choice)
   declare choices: HasMany<typeof Choice>;
+
+  public makeAvailable(): void {
+    this.isAvailable = true;
+    this.isDisplayable = true;
+  }
+
+  public makeUnavailable(): void {
+    this.isAvailable = false;
+  }
 }

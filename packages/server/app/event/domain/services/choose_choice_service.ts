@@ -7,43 +7,44 @@ import type Event from '#event/domain/models/event';
 import IChoiceRepository from '#event/domain/repository/i_choice_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IEventRepository from '#event/domain/repository/i_event_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ChoiceEffectService } from '#event/domain/services/choice_effect_service';
 
 @inject()
 export class ChooseChoiceService {
   constructor(
     private readonly eventRepository: IEventRepository,
     private readonly choiceRepository: IChoiceRepository,
+    private readonly choiceEffectService: ChoiceEffectService,
   ) {}
 
   public async chooseChoice(choice: Choice): Promise<void> {
     await this.changeChoicesStatus(choice);
     if (choice.triggerEventId) {
-      await this.activateEvent(choice.event, choice.triggerEvent);
+      await this.activateEvent(choice.triggerEvent);
     }
-    choice.event.isAvailable = false;
+    choice.event.makeUnavailable();
+    await this.choiceEffectService.applyChoiceEffect(choice);
     await this.eventRepository.save(choice.event);
   }
 
   private async changeChoicesStatus(choice: Choice): Promise<void> {
     const choiceEvent = choice.event;
-    for (const eventChoice of choiceEvent.choices) {
-      if (eventChoice.id == choice.id) {
+    for (const otherChoiceOfEvent of choiceEvent.choices) {
+      if (otherChoiceOfEvent.id == choice.id) {
         choice.status = ChoiceStatus.Chosen;
         continue;
       }
-      eventChoice.status = ChoiceStatus.Unavailable;
+      otherChoiceOfEvent.status = ChoiceStatus.Unavailable;
     }
     await this.choiceRepository.save(choice);
     await this.choiceRepository.saveMany(choice.event.choices);
   }
 
-  private async activateEvent(choiceEvent: Event, eventToTrigger: Event): Promise<void> {
+  private async activateEvent(eventToTrigger: Event): Promise<void> {
     if (!eventToTrigger.isAvailable) {
-      eventToTrigger.isAvailable = true;
-      eventToTrigger.isDisplayable = true;
+      eventToTrigger.makeAvailable();
+      await this.eventRepository.save(eventToTrigger);
     }
-    choiceEvent.isAvailable = false;
-    await this.eventRepository.save(eventToTrigger);
-    await this.eventRepository.save(choiceEvent);
   }
 }

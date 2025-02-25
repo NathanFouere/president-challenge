@@ -26,10 +26,7 @@ export const useEventStore = defineStore('eventStore', {
       }
       return state.event;
     },
-    getLoadingChoice(state): number {
-      if (state.loadingChoiceId === null) {
-        throw new Error('Loading choice id is not set');
-      }
+    getLoadingChoice(state): number | null {
       return state.loadingChoiceId;
     },
   },

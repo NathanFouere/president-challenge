@@ -3,7 +3,7 @@ import type { SocialClassTypes } from '@shared/dist/social-class/social-class-ty
 import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 import { TimeStampedModel } from '#common/model/timestamped_model';
 
-export default abstract class SocialClassHappinessEffect extends TimeStampedModel {
+export default abstract class SocialClassTypeHappinessEffect extends TimeStampedModel {
   @column({ isPrimary: true })
   declare id: number;
 

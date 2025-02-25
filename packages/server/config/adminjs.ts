@@ -3,6 +3,8 @@ import type { AdminJSProviderConfig } from '@adminjs/adonis';
 import componentLoader from '../app/admin/component_loader.js';
 import authProvider from '../app/admin/auth.js';
 import {
+  createChoiceAdminResource,
+  createChoiceDefinitionAdminResource,
   createEventAdminResource,
   createEventDefinitionAdminResource,
 } from '#event/infrastructure/admin/event_admin_configuration';
@@ -21,8 +23,8 @@ import {
   createTaxDefinitionAdminResource,
 } from '#tax/infrastructure/admin/tax_admin_configuration';
 import {
-  createSocialClassAdminResource,
-  createSocialClassDefinitionAdminResource,
+  createSocialClassAdminResource, createSocialClassChoiceHappinessEffectAdminResource,
+  createSocialClassDefinitionAdminResource, createSocialClassLawHappinessEffectAdminResource,
 } from '#social-class/infrastructure/admin/social_class_admin_configuration';
 import {
   createSectorAdminResource,
@@ -33,6 +35,8 @@ import {
   createProductDefinitionAdminResource,
 } from '#product/infrastructure/admin/product_admin_configuration';
 import {
+  createPoliticalAffiliationChoiceHappinessEffectAdminResource,
+  createPoliticalAffiliationLawHappinessEffectAdminResource,
   createPoliticalPartyAdminResource,
   createPoliticalPartyDefinitionAdminResource,
 } from '#political-party/infrastructure/admin/political_party_admin_configuration';
@@ -74,6 +78,12 @@ const adminjsConfig: AdminJSProviderConfig = {
       createProductDefinitionAdminResource(),
       createPoliticalPartyDefinitionAdminResource(),
       createPoliticalPartyAdminResource(),
+      createPoliticalAffiliationChoiceHappinessEffectAdminResource(),
+      createSocialClassChoiceHappinessEffectAdminResource(),
+      createSocialClassLawHappinessEffectAdminResource(),
+      createPoliticalAffiliationLawHappinessEffectAdminResource(),
+      createChoiceDefinitionAdminResource(),
+      createChoiceAdminResource(),
       createLicensedFileAdminResource(),
       createLawDefinitionAdminResource(),
       createLawAdminResource(),

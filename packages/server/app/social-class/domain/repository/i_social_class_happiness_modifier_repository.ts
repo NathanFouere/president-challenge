@@ -4,4 +4,5 @@ export default abstract class ISocialClassHappinessModifierRepository {
   public abstract save(socialClassHappinessModifier: SocialClassHappinessModifier): Promise<void>;
   public abstract delete(socialClassHappinessModifier: SocialClassHappinessModifier): Promise<void>;
   public abstract saveMany(socialClassHappinessModifiers: SocialClassHappinessModifier[]): Promise<void>;
+  public abstract createMany(socialClassHappinessModifiers: SocialClassHappinessModifier[]): Promise<void>;
 }
