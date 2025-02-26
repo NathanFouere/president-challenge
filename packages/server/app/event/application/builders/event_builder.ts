@@ -23,7 +23,7 @@ export class EventBuilder {
     return this;
   }
 
-  public withTurn(turn: number): this {
+  public withTurn(turn: number | null): this {
     this.turn = turn;
     return this;
   }

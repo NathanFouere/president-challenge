@@ -33,7 +33,7 @@ export class TurnInformationsPresenter {
     try {
       const eventList = await this.gameModule.getTurnInformations(this.gameStore.getSelectedGameId, this.gameStore.getSelectedGameTurn);
       this.eventsStore.setChoiceEvents(eventList.eventListDto.choiceEvents);
-      this.eventsStore.setHistoricalEvents(eventList.eventListDto.historicalEvents);
+      this.eventsStore.setHistoricalEvents(eventList.eventListDto.commonEvents);
       this.eventsStore.setSuperEvents(eventList.eventListDto.superEvents);
       this.turnInformationsStore.setAllowChangeTurn(!eventList.canChangeTurn);
     }

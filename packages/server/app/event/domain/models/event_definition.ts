@@ -23,7 +23,7 @@ export default class EventDefinition extends TimeStampedModel {
   declare text: string;
 
   @column()
-  declare turn: number;
+  declare turn: number | null;
 
   @column()
   declare isAvailableByDefault: boolean;
