@@ -5,17 +5,26 @@ import SocialClassHappinessService from '#social-class/domain/service/social_cla
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import PoliticalPartyHappinessService from '#political-party/domain/service/political_party_happiness_service';
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import EventGenerationFromSocialClassHappinessService
+  from '#social-class/domain/service/event_generation_from_social_class_happiness_service';
 
 @inject()
 export default class TurnHappinessService implements TurnProcessorStep {
   constructor(
     private readonly socialClassHappinessService: SocialClassHappinessService,
     private readonly politicalPartyHappinessService: PoliticalPartyHappinessService,
+    private readonly eventGenerationFromSocialClassHappinessService: EventGenerationFromSocialClassHappinessService,
   ) {
   }
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
     this.socialClassHappinessService.updateSocialClassesHappiness(turnDataContext.socialClasses);
     this.politicalPartyHappinessService.updatePoliticalPartiesHappiness(turnDataContext.politicalParties, turnDataContext.socialClassesPerType);
+    await this.eventGenerationFromSocialClassHappinessService.generateEventsFromSocialClassHappiness(
+      turnDataContext.socialClassesPerType,
+      turnDataContext.game.id,
+      turnDataContext.game.turn,
+    );
   }
 }

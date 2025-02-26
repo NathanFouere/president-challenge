@@ -6,8 +6,8 @@ import IGetEventByIdAndGameQueryHandler from '#event/application/queries/i_get_e
 import {
   IGetDisplayableEventsOfTurnQueryHandler,
 } from '#event/application/queries/i_get_displayable_events_of_turn_query_handler';
-import IGetEventByIdentifierAndGameQueryHandler
-  from '#event/application/queries/i_get_event_by_identifier_and_game_query_handler';
+import IGetEventDefinitionByIdentifierQueryHandler
+  from '#event/application/queries/i_get_event_definition_by_identifier_query_handler';
 import IEventRepository from '#event/domain/repository/i_event_repository';
 import IChoiceRepository from '#event/domain/repository/i_choice_repository';
 import IEventDefinitionRepository from '#event/domain/repository/i_event_definition_repository';
@@ -21,8 +21,8 @@ export default class EventProvider extends AppProvider {
     const { default: GetEventByIdAndGameQueryHandler } = await import(
       '#event/infrastructure/queries/get_event_by_id_and_game_query_handler'
     );
-    const { default: GetEventByIdentifierAndGameQueryHandler } = await import(
-      '#event/infrastructure/queries/get_event_by_identifier_and_game_query_handler'
+    const { default: GetEventDefinitionByGameQueryHandler } = await import(
+      '#event/infrastructure/queries/get_event_definition_by_identifier_query_handler'
     );
     const { default: GetDisplayableEventsOfTurnQueryHandler } = await import(
       '#event/infrastructure/queries/get_displayable_events_of_turn_query_handler'
@@ -54,8 +54,8 @@ export default class EventProvider extends AppProvider {
     this.app.container.bind(IGetEventByIdAndGameQueryHandler, () => {
       return new GetEventByIdAndGameQueryHandler();
     });
-    this.app.container.bind(IGetEventByIdentifierAndGameQueryHandler, () => {
-      return new GetEventByIdentifierAndGameQueryHandler();
+    this.app.container.bind(IGetEventDefinitionByIdentifierQueryHandler, () => {
+      return new GetEventDefinitionByGameQueryHandler();
     });
     this.app.container.bind(IGetDisplayableEventsOfTurnQueryHandler, () => {
       return new GetDisplayableEventsOfTurnQueryHandler();

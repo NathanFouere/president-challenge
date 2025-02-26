@@ -10,7 +10,7 @@ export default class Event extends TimeStampedModel {
   declare id: number;
 
   @column()
-  declare turn: number;
+  declare turn: number | null;
 
   @column()
   declare isAvailable: boolean;

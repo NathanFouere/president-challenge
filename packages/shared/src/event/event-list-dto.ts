@@ -1,7 +1,7 @@
 import type { MinimalEventDto } from '@shared/event/minimal-event-dto.js';
 
 export interface EventListDto {
-  historicalEvents: MinimalEventDto[];
+  commonEvents: MinimalEventDto[];
   choiceEvents: MinimalEventDto[];
   superEvents: MinimalEventDto[];
 }

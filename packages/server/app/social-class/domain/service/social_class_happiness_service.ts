@@ -12,6 +12,7 @@ export default class SocialClassHappinessService {
   }
 
   private addHappinessModifierFromEconomicalSituation(socialClass: SocialClass): void {
+    // TODO => mettre dans une factory
     socialClass.happinessModifiers.push(
       aSocialClassHappinessModifier()
         .withName('Economical Situation')
