@@ -58,8 +58,8 @@ export default class SocialClass extends TimeStampedModel {
     if (happinessLevel < 0) {
       return 0;
     }
-    if (happinessLevel > 4) {
-      return 4;
+    if (happinessLevel > 5) {
+      return 5;
     }
     return happinessLevel;
   }

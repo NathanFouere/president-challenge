@@ -2,7 +2,7 @@ import { anEvent } from '#event/application/builders/event_builder';
 import type Event from '#event/domain/models/event';
 
 export default class EventFactory {
-  public createAvailableEventForTurn(eventDefinitionId: number, gameId: number, turn: number): Event {
+  public createAvailableEventForTurnFromDefinition(eventDefinitionId: number, gameId: number, turn: number): Event {
     return anEvent()
       .withTurn(turn)
       .withDefinitionId(eventDefinitionId)

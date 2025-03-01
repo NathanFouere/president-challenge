@@ -7,7 +7,10 @@ import PoliticalPartyHappinessService from '#political-party/domain/service/poli
 import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import EventGenerationFromSocialClassHappinessService
-  from '#social-class/domain/service/event_generation_from_social_class_happiness_service';
+  from '#social-class/application/service/event_generation_from_social_class_happiness_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import EventGenerationFromPoliticalPartyHappinessService
+  from '#political-party/application/service/event_generation_from_political_party_happiness_service';
 
 @inject()
 export default class TurnHappinessService implements TurnProcessorStep {
@@ -15,14 +18,30 @@ export default class TurnHappinessService implements TurnProcessorStep {
     private readonly socialClassHappinessService: SocialClassHappinessService,
     private readonly politicalPartyHappinessService: PoliticalPartyHappinessService,
     private readonly eventGenerationFromSocialClassHappinessService: EventGenerationFromSocialClassHappinessService,
+    private readonly eventGenerationFromPoliticalPartyHappinessService: EventGenerationFromPoliticalPartyHappinessService,
   ) {
   }
 
   public async execute(turnDataContext: TurnDataContext): Promise<void> {
+    await Promise.all([
+      this.handleSocialClassHappiness(turnDataContext),
+      this.handlePoliticalPartyHappiness(turnDataContext),
+    ]);
+  }
+
+  private async handleSocialClassHappiness(turnDataContext: TurnDataContext): Promise<void> {
     this.socialClassHappinessService.updateSocialClassesHappiness(turnDataContext.socialClasses);
-    this.politicalPartyHappinessService.updatePoliticalPartiesHappiness(turnDataContext.politicalParties, turnDataContext.socialClassesPerType);
     await this.eventGenerationFromSocialClassHappinessService.generateEventsFromSocialClassHappiness(
       turnDataContext.socialClassesPerType,
+      turnDataContext.game.id,
+      turnDataContext.game.turn,
+    );
+  }
+
+  private async handlePoliticalPartyHappiness(turnDataContext: TurnDataContext): Promise<void> {
+    this.politicalPartyHappinessService.updatePoliticalPartiesHappiness(turnDataContext.politicalParties, turnDataContext.socialClassesPerType);
+    await this.eventGenerationFromPoliticalPartyHappinessService.generateEventsFromPoliticalPartyHappiness(
+      turnDataContext.politicalParties,
       turnDataContext.game.id,
       turnDataContext.game.turn,
     );
