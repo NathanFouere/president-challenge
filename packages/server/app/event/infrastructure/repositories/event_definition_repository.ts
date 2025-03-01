@@ -10,18 +10,8 @@ export default class EventDefinitionRepository implements IEventDefinitionReposi
     return await EventDefinition.find(eventId);
   }
 
-  public async saveWithLicensedFiles(event: EventDefinition, licensedFilesIdentifiers: string[]): Promise<void> {
-    await event.save();
-    event.related('licensedFiles').attach(licensedFilesIdentifiers);
-  }
-
   public async delete(event: EventDefinition): Promise<void> {
     await event.delete();
-  }
-
-  // TODO => will be removed when admin
-  public async findByIdentifier(identifier: string): Promise<EventDefinition> {
-    return await EventDefinition.query().where('identifier', identifier).firstOrFail();
   }
 
   public async getAll(): Promise<EventDefinition[]> {

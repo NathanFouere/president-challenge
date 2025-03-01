@@ -22,10 +22,4 @@ export default class SocialClassDefinitionRepository implements ISocialClassDefi
   public async getAll(): Promise<SocialClassDefinition[]> {
     return await SocialClassDefinition.all();
   }
-
-  // TODO => will be removed when admin
-  public async saveWithLicensedFiles(socialClass: SocialClassDefinition, licensedFilesIdentifiers: string[]): Promise<void> {
-    await socialClass.save();
-    socialClass.related('licensedFiles').attach(licensedFilesIdentifiers);
-  }
 }

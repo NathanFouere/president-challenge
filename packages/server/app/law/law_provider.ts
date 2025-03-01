@@ -10,9 +10,6 @@ import IGetLawsByGroupAndGameQueryHandler
 import {
   IGetLawByGameQueryHandler,
 } from '#law/application/query/i_get_law_by_game_query_handler';
-import {
-  IGetLastLawVoteResultsInGameQueryHandler,
-} from '#law/application/query/i_get_last_law_vote_results_in_game_query_handler';
 import { ILawVoteResultsRepository } from '#law/domain/repository/i_law_vote_results_repository';
 import IGetIncompatibleLawsQueryHandler from '#law/application/query/i_get_incompatible_laws_query_handler';
 import ILawDefinitionRepository from '#law/domain/repository/i_law_definition_repository';
@@ -39,9 +36,6 @@ export default class LawProvider extends AppProvider {
     );
     const { default: LawVoteResultsRepository } = await import(
       '#law/infrastructure/repositories/law_vote_results_repository'
-    );
-    const { default: GetLastLawVoteResultsInGameQueryHandler } = await import(
-      '#law/infrastructure/query/get_last_law_vote_results_in_game_query_handler'
     );
     const { default: GetLawVoteQueryHandler } = await import(
       '#law/infrastructure/query/get_law_vote_query_handler'
@@ -88,9 +82,6 @@ export default class LawProvider extends AppProvider {
     });
     this.app.container.bind(IGetLawByGameQueryHandler, () => {
       return new GetLawByGameQueryHandler();
-    });
-    this.app.container.bind(IGetLastLawVoteResultsInGameQueryHandler, () => {
-      return new GetLastLawVoteResultsInGameQueryHandler();
     });
     this.app.container.bind(ILawVoteResultsRepository, () => {
       return new LawVoteResultsRepository();
