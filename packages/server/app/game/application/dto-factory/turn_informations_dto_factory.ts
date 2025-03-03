@@ -14,18 +14,19 @@ export class TurnInformationsDtoFactory {
   ) {
   }
 
-  public createFromTurnInformations(events: Event[]): TurnInformationsDto {
-    let canChangeTurn = true;
+  public createFromTurnInformations(events: Event[], maxTurnReached: boolean): TurnInformationsDto {
+    let eventNeedToBeAddress = false;
     for (const event of events) {
       if (event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available)) {
-        canChangeTurn = false;
+        eventNeedToBeAddress = true;
         break;
       }
     }
 
     return {
       eventListDto: this.eventListDtoFactory.createFromEvents(events),
-      canChangeTurn: canChangeTurn,
+      eventNeedToBeAddress: eventNeedToBeAddress,
+      maxTurnReached: maxTurnReached,
     };
   }
 }

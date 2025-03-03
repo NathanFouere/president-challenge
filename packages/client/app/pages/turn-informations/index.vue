@@ -59,12 +59,16 @@ onMounted(async () => {
   <div
     class="text-center"
   >
-    <UButton
-      :loading="turnInformationsPresenter.gameStore.isChangingTurn"
-      :disabled="turnInformationsPresenter.turnInformationsStore.isAllowingChangeTurn"
-      @click="turnInformationsPresenter.changeTurn()"
+    <UTooltip
+      :text="turnInformationsPresenter.turnInformationsStore.getMaxTurnReached ? 'Max turn reached' : turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress ? 'You need to address all events' : ''"
     >
-      Change turn
-    </UButton>
+      <UButton
+        :loading="turnInformationsPresenter.gameStore.isChangingTurn"
+        :disabled="turnInformationsPresenter.turnInformationsStore.getMaxTurnReached || turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress"
+        @click="turnInformationsPresenter.changeTurn()"
+      >
+        Change turn
+      </UButton>
+    </UTooltip>
   </div>
 </template>

@@ -1,6 +1,5 @@
 import { injectable } from 'inversify';
 import type GameModule from '../../../server/repository/modules/game.module';
-import type EventModule from '../../../server/repository/modules/event.module';
 import { useCustomToast } from '~/composables/useCustomToast';
 import { useGameStore } from '~/store/game/game.store';
 import { useEventsStore } from '~/store/events/events.store';
@@ -10,7 +9,6 @@ import { useTurnInformationsStore } from '~/store/turn-informations/turn-informa
 export class TurnInformationsPresenter {
   public readonly toast = useCustomToast();
   public readonly gameModule: GameModule = useNuxtApp().$api.game;
-  public readonly eventModule: EventModule = useNuxtApp().$api.event;
   public readonly turnInformationsStore = useTurnInformationsStore();
   public readonly gameStore = useGameStore();
   public readonly eventsStore = useEventsStore();
@@ -31,11 +29,12 @@ export class TurnInformationsPresenter {
   public async getEventsOfTurn(): Promise<void> {
     this.eventsStore.setGettingEvents();
     try {
-      const eventList = await this.gameModule.getTurnInformations(this.gameStore.getSelectedGameId, this.gameStore.getSelectedGameTurn);
-      this.eventsStore.setChoiceEvents(eventList.eventListDto.choiceEvents);
-      this.eventsStore.setHistoricalEvents(eventList.eventListDto.commonEvents);
-      this.eventsStore.setSuperEvents(eventList.eventListDto.superEvents);
-      this.turnInformationsStore.setAllowChangeTurn(!eventList.canChangeTurn);
+      const turnInformations = await this.gameModule.getTurnInformations(this.gameStore.getSelectedGameId, this.gameStore.getSelectedGameTurn);
+      this.eventsStore.setChoiceEvents(turnInformations.eventListDto.choiceEvents);
+      this.eventsStore.setHistoricalEvents(turnInformations.eventListDto.commonEvents);
+      this.eventsStore.setSuperEvents(turnInformations.eventListDto.superEvents);
+      this.turnInformationsStore.setMaxTurnReached(turnInformations.maxTurnReached);
+      this.turnInformationsStore.setEventNeedToBeAddress(turnInformations.eventNeedToBeAddress);
     }
     catch {
       this.toast.showError('Error while getting events');

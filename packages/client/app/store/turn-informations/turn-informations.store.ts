@@ -1,15 +1,22 @@
 export const useTurnInformationsStore = defineStore('turnInformationsStore', {
   state: () => ({
-    allowChangeTurn: false,
+    maxTurnReached: false,
+    eventNeedToBeAddress: false,
   }),
   getters: {
-    isAllowingChangeTurn(state) {
-      return state.allowChangeTurn;
+    getMaxTurnReached(state): boolean {
+      return state.maxTurnReached;
+    },
+    getEventNeedToBeAddress(state): boolean {
+      return state.eventNeedToBeAddress;
     },
   },
   actions: {
-    setAllowChangeTurn(allows: boolean) {
-      this.allowChangeTurn = allows;
+    setMaxTurnReached(maxTurnReached: boolean) {
+      this.maxTurnReached = maxTurnReached;
+    },
+    setEventNeedToBeAddress(eventNeedToBeAddress: boolean) {
+      this.eventNeedToBeAddress = eventNeedToBeAddress;
     },
   },
 });

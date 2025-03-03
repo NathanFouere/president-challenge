@@ -22,7 +22,9 @@ export default class GetGameController {
         user,
         gameId,
       ));
-      return response.ok(this.gameDtoFactory.createFromGame(game));
+
+      const gameDto = this.gameDtoFactory.createFromGame(game);
+      return gameDto;
     }
     catch (error) {
       console.error(error);

@@ -7,6 +7,7 @@ export default class GameFactory {
       .withUserId(userId)
       .withTurn(0)
       .withPoliticalWeight(25)
+      .withMaxTurns(36)
       .build();
   }
 }
