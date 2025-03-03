@@ -24,6 +24,7 @@ export class PoliticalPartyStartupService implements StartupProcessorStep {
       const politicalParty: PoliticalParty = aPoliticalParty()
         .withGameId(gameId)
         .withDefinitionId(politicalPartyDefinition.id)
+        .withInPower(politicalPartyDefinition.inPowerByDefault)
         .build();
 
       politicalParties.push(politicalParty);

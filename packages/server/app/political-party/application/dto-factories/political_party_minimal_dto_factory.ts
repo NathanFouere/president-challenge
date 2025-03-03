@@ -17,6 +17,7 @@ export class PoliticalPartyMinimalDTOFactory {
       name: politicalParty.definition.name,
       affiliation: politicalParty.definition.affiliation,
       licensedFile: politicalParty.definition.licensedFile,
+      inPower: politicalParty.inPower,
     };
   }
 

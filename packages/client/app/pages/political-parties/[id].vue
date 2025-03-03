@@ -40,6 +40,9 @@ onMounted(async () => {
     <p class="text-justify">
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
     </p>
+    <p>
+      In Power : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.inPower }}
+    </p>
 
     <UDivider class="sticky pt-10 pb-10" />
 
