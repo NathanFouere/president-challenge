@@ -1,10 +1,11 @@
 import { inject } from '@adonisjs/core';
 import type User from '#user/domain/models/user';
-import { aGame } from '#game/application/builders/game_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { StartupService } from '#common/services/startup_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGameRepository from '#game/domain/repository/i_game_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import GameFactory from '#game/application/factory/game_factory';
 
 @inject()
 export default class CreateGameService {
@@ -13,6 +14,7 @@ export default class CreateGameService {
   constructor(
     private readonly gameRepository: IGameRepository,
     private readonly startupService: StartupService,
+    private readonly gameFactory: GameFactory,
   ) {
   }
 
@@ -30,12 +32,7 @@ export default class CreateGameService {
       );
     }
 
-    // TODO => passer en factory
-    const game = aGame()
-      .withUserId(user.id)
-      .withTurn(0)
-      .withPoliticalWeight(25)
-      .build();
+    const game = this.gameFactory.createForUser(user.id);
 
     try {
       await this.gameRepository.save(game);

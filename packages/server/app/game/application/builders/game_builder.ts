@@ -4,6 +4,12 @@ export class GameBuilder {
   private turn: number | null = null;
   private userId: number | null = null;
   private politicalWeight: number | null = null;
+  private maxTurns: number | null = null;
+
+  public withMaxTurns(maxTurns: number): this {
+    this.maxTurns = maxTurns;
+    return this;
+  }
 
   public withTurn(turn: number): this {
     this.turn = turn;
@@ -39,6 +45,12 @@ export class GameBuilder {
     }
     else {
       throw new Error('politicalWeight is required');
+    }
+    if (this.maxTurns !== null) {
+      game.maxTurns = this.maxTurns;
+    }
+    else {
+      throw new Error('maxTurns is required');
     }
 
     return game;

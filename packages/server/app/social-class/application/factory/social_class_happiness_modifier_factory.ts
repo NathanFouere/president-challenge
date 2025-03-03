@@ -1,3 +1,4 @@
+import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
 import type SocialClass from '#social-class/domain/models/social_class';
 import {
   aSocialClassHappinessModifier,
@@ -12,6 +13,7 @@ export default class SocialClassHappinessModifierFactory {
   // TODO => colors should be places in the dto factory
   readonly taxHappinessModifierColor = 'red';
   readonly choiceHappinessModifierColor = 'blue';
+  readonly economicalSituationHappinessModifierColor = 'blue';
 
   public createFromLaw(law: Law, socialClassHappinessEffect: SocialClassTypeLawHappinessEffect, socialClass: SocialClass): SocialClassHappinessModifier {
     return aSocialClassHappinessModifier()
@@ -35,6 +37,18 @@ export default class SocialClassHappinessModifierFactory {
       .withDescription(choiceDefinition.text)
       .withColor(this.choiceHappinessModifierColor)
       .withName(choiceDefinition.text)
+      .build();
+  }
+
+  public createFromEconomicalSituation(socialClass: SocialClass): SocialClassHappinessModifier {
+    return aSocialClassHappinessModifier()
+      .withName('Economical Situation')
+      .withDescription('Economical Situation')
+      .withColor(this.economicalSituationHappinessModifierColor)
+      .withType(HappinessModifierType.TEMPORARY)
+      .withDuration(1)
+      .withAmount(socialClass.getHappinessModifierValueFromEconomicalSituation())
+      .withSocialClassId(socialClass.id)
       .build();
   }
 }

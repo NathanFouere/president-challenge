@@ -6,6 +6,7 @@ import Event from '#event/domain/models/event';
 import Senate from '#legislature/domain/models/senate';
 import State from '#state/domain/model/state';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import GameMaxTurnError from '#game/domain/error/game_max_turn_error';
 
 export default class Game extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -35,9 +36,19 @@ export default class Game extends TimeStampedModel {
   @column()
   declare politicalWeight: number;
 
+  @column()
+  declare maxTurns: number;
+
   public changeTurn() {
+    if (this.turn >= this.maxTurns) {
+      throw new GameMaxTurnError(this.id, this.turn);
+    }
     this.turn += 1;
     this.politicalWeight += 5;
+  }
+
+  public hasReachedMaxTurns(): boolean {
+    return this.turn >= this.maxTurns;
   }
 
   public setPoliticalWeight(politicalWeight: number) {

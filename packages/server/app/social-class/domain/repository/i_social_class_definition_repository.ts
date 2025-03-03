@@ -5,5 +5,4 @@ export default abstract class ISocialClassDefinitionRepository {
   public abstract delete(socialClass: SocialClassDefinition): Promise<void>;
   public abstract createMany(socialClasses: SocialClassDefinition[]): Promise<void>;
   public abstract getAll(): Promise<SocialClassDefinition[]>;
-  public abstract saveWithLicensedFiles(socialClass: SocialClassDefinition, licensedFilesIdentifiers: string[]): Promise<void>;
 }
