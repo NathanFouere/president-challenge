@@ -41,6 +41,7 @@ export default defineConfig({
     () => import('#legislature/legislature_provider'),
     () => import('#licensed-file/licensed_file_provider'),
     () => import('#political-party/political_party_provider'),
+    () => import('#election/election_provider'),
     () => import('#product/product_provider'),
     () => import('#sector/sector_provider'),
     () => import('#social-class/social_class_provider'),

@@ -42,7 +42,6 @@ export default class PoliticalPartyProvider extends AppProvider {
     const { default: PoliticalPartyDefinitionRepository } = await import(
       '#political-party/infrastructure/repositories/political_party_definition_repository'
     );
-
     this.app.container.bind(IPoliticalPartyDefinitionRepository, () => {
       return new PoliticalPartyDefinitionRepository();
     });

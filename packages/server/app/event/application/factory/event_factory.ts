@@ -12,4 +12,15 @@ export default class EventFactory {
       .withGameId(gameId)
       .build();
   }
+
+  public createEventFromElection(eventDefinitionId: number, gameId: number, turn: number): Event {
+    return anEvent()
+      .withTurn(turn)
+      .withDefinitionId(eventDefinitionId)
+      .withIsAvailable(true)
+      .withBeenRead(false)
+      .withDisplayable(true)
+      .withGameId(gameId)
+      .build();
+  }
 }
