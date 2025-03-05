@@ -21,6 +21,7 @@ import { GetEventDefinitionByIdentifierQuery } from '#event/application/queries/
 import IEventRepository from '#event/domain/repository/i_event_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import EventFactory from '#event/application/factory/event_factory';
+import type Election from '#election/domain/model/election';
 
 @inject()
 export class ElectionService {
@@ -35,6 +36,7 @@ export class ElectionService {
   ) {
   }
 
+  // TODO => cela devrait être dans la configuration du jeu
   readonly parliamentoryElectionTurns = [2, 3, 4];
   readonly senateElectionTurns = [1, 5];
   readonly presidentialElectionTurns = [6, 10];
@@ -64,15 +66,15 @@ export class ElectionService {
     }
 
     await this.votesForPoliticalPartyInElectionRepository.createMany(votesForPoliticalPartyInElections);
-    await this.generateEventFromElection(game, electionType);
+    await this.generateEventFromElection(game, election);
   }
 
-  private async generateEventFromElection(game: Game, electionType: ElectionType): Promise<void> {
+  private async generateEventFromElection(game: Game, election: Election): Promise<void> {
     const eventDefinition = await this.getEventDefinitionByIdentifierQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
-      electionType,
+      election.type,
     ));
 
-    const event = this.eventFactory.createEventFromElection(eventDefinition.id, game.id, game.turn);
+    const event = this.eventFactory.createEventFromElection(eventDefinition.id, game.id, game.turn, election.id);
     await this.eventRepository.save(event);
   }
 

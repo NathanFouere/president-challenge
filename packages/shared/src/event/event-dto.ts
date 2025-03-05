@@ -1,5 +1,6 @@
 import type { ChoiceDto } from '@shared/event/choice-dto.js';
 import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
+import type { ElectionResultsDto } from '@shared/event/election-results-dto.js';
 
 export interface EventDto {
   id: number;
@@ -11,4 +12,5 @@ export interface EventDto {
   needsAction: boolean;
   choices: ChoiceDto[];
   licensedFiles: LicensedFileDTO[];
+  electionResults: ElectionResultsDto | null;
 }

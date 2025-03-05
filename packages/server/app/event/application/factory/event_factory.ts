@@ -13,7 +13,7 @@ export default class EventFactory {
       .build();
   }
 
-  public createEventFromElection(eventDefinitionId: number, gameId: number, turn: number): Event {
+  public createEventFromElection(eventDefinitionId: number, gameId: number, turn: number, electionId: number): Event {
     return anEvent()
       .withTurn(turn)
       .withDefinitionId(eventDefinitionId)
@@ -21,6 +21,7 @@ export default class EventFactory {
       .withBeenRead(false)
       .withDisplayable(true)
       .withGameId(gameId)
+      .withElectionId(electionId)
       .build();
   }
 }
