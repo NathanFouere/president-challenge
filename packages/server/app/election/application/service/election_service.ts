@@ -69,6 +69,10 @@ export class ElectionService {
     await this.generateEventFromElection(game, election);
   }
 
+  private async applyElectionEffects(game: Game, election: Election): Promise<void> {
+
+  }
+
   private async generateEventFromElection(game: Game, election: Election): Promise<void> {
     const eventDefinition = await this.getEventDefinitionByIdentifierQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
       election.type,

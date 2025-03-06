@@ -31,6 +31,8 @@ import IPoliticalPartySeatsSenateDefinitionRepository
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IPoliticalPartySeatsParliamentDefinitionRepository
   from '#legislature/domain/repository/i_political_party_seats_parliament_definition_repository';
+import { Parliament } from '#legislature/domain/models/parliament';
+import Senate from '#legislature/domain/models/senate';
 
 @inject()
 export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
@@ -89,5 +91,7 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
 
     await this.politicalPartySeatsSenateRepository.createMany(seatsInSenates);
     await this.politicalPartySeatsParliamentRepository.createMany(seatsInParliaments);
+    await Parliament.validateSeatsCount(parliament);
+    await Senate.validateSeatsCount(senate);
   }
 }
