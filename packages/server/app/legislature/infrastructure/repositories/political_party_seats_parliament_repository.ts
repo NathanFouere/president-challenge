@@ -4,10 +4,15 @@ import type IPoliticalPartySeatsParliamentRepository
 
 export default class PoliticalPartySeatsParliamentRepository implements IPoliticalPartySeatsParliamentRepository {
   public async save(politicalPartySeatsParliament: PoliticalPartySeatsParliament): Promise<void> {
-    politicalPartySeatsParliament.save();
+    await politicalPartySeatsParliament.save();
   }
 
   public async createMany(politicalPartySeatsParliaments: PoliticalPartySeatsParliament[]): Promise<void> {
-    PoliticalPartySeatsParliament.createMany(politicalPartySeatsParliaments);
+    await PoliticalPartySeatsParliament.createMany(politicalPartySeatsParliaments);
+  }
+
+  public async saveMany(politicalPartySeatsParliaments: PoliticalPartySeatsParliament[]): Promise<void> {
+    const savePromises = politicalPartySeatsParliaments.map((politicalPartySeatsParliament: PoliticalPartySeatsParliament) => politicalPartySeatsParliament.save());
+    await Promise.all(savePromises);
   }
 }

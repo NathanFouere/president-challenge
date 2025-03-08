@@ -12,6 +12,7 @@ export default class GetSenateByGameQueryHandler implements IGetSenateByGameQuer
           query.preload('definition');
         }).orderBy('id', 'desc');
       })
+      .preload('definition')
       .firstOrFail();
   }
 }

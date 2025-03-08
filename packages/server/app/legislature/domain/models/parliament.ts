@@ -4,6 +4,7 @@ import Game from '#game/domain/models/game';
 import ParliamentPartySeats from '#legislature/domain/models/political_party_seats_parliament';
 import { TimeStampedModel } from '#common/model/timestamped_model';
 import ParliamentDefinition from '#legislature/domain/models/parliament_definition';
+import type Election from '#election/domain/model/election';
 
 export class Parliament extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -21,7 +22,9 @@ export class Parliament extends TimeStampedModel {
   @column()
   declare definitionId: number;
 
-  @belongsTo(() => ParliamentDefinition)
+  @belongsTo(() => ParliamentDefinition, {
+    foreignKey: 'definitionId',
+  })
   declare definition: BelongsTo<typeof ParliamentDefinition>;
 
   @beforeSave()
@@ -30,23 +33,38 @@ export class Parliament extends TimeStampedModel {
       return;
     }
 
-    const definition = await ParliamentDefinition.find(parliament.definitionId);
-    if (!definition) {
-      throw new Error(`Parliament definition with ID ${parliament.definitionId} not found`);
-    }
-
-    const partySeats = await ParliamentPartySeats.query()
-      .where('parliamentId', parliament.id)
-      .exec();
-
-    const totalPartySeats = partySeats.reduce(
+    await parliament.load('definition');
+    await parliament.load('partySeats');
+    const totalPartySeats = parliament.partySeats.reduce(
       (total, seat) => total + seat.numberOfSeats,
       0,
     );
 
-    if (totalPartySeats !== definition.numberOfSeats) {
+    if (totalPartySeats !== parliament.definition.numberOfSeats) {
       throw new Error(
-        `Total party seats (${totalPartySeats}) does not match parliament definition seats (${definition.numberOfSeats})`,
+        `Total party seats (${totalPartySeats}) does not match parliament definition seats (${parliament.definition.numberOfSeats})`,
+      );
+    }
+  }
+
+  public applyElectionEffects(election: Election) {
+    const totalVotes = election.votesForPoliticalPartyInElection.reduce(
+      (total, voteForPoliticalPartyInElection) => total + voteForPoliticalPartyInElection.votes,
+      0,
+    );
+    for (const voteForPoliticalPartyInElection of election.votesForPoliticalPartyInElection) {
+      const partySeats = this.partySeats.find(
+        (partySeat: ParliamentPartySeats) => partySeat.politicalPartyId === voteForPoliticalPartyInElection.politicalPartyId,
+      );
+
+      if (!partySeats) {
+        throw new Error(
+          `Party seats for political party with ID ${voteForPoliticalPartyInElection.politicalPartyId} not found`,
+        );
+      }
+
+      partySeats.numberOfSeats = Math.round(
+        (voteForPoliticalPartyInElection.votes / totalVotes) * this.definition.numberOfSeats,
       );
     }
   }

@@ -1,5 +1,4 @@
 import { inject } from '@adonisjs/core';
-
 import { aPoliticalPartySeatsSenate } from '#legislature/application/builders/political_party_seats_senate_builder';
 import {
   aPoliticalPartySeatsParliament,
@@ -48,12 +47,18 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
   }
 
   public async execute(gameId: number): Promise<void> {
+    await Promise.all([
+      this.createPoliticalPartySeatsSenate(gameId),
+      this.createPoliticalPartySeatsParliament(gameId),
+    ]);
+  }
+
+  private async createPoliticalPartySeatsSenate(
+    gameId: number,
+  ): Promise<void> {
     const seatsInSenates = [];
-    const seatsInParliaments = [];
     const senate = await this.getSenateByGameQueryHandler.handle(new GetSenateByGameQuery(gameId));
-    const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(gameId));
     const politicalPartySeatsSenateDefinitions = await this.politicalPartySeatsSenateDefinitionRepository.findAll();
-    const politicalPartySeatsParliamentDefinitions = await this.politicalPartySeatsParliamentDefinitionRepository.findAll();
 
     for (const politicalPartySeatsSenateDefinition of politicalPartySeatsSenateDefinitions) {
       const politicalParty = await this.getPoliticalPartyPerAffiliationInGameQueryHandler.handle(
@@ -72,6 +77,17 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
       );
     }
 
+    await this.politicalPartySeatsSenateRepository.createMany(seatsInSenates);
+    await Senate.validateSeatsCount(senate);
+  }
+
+  private async createPoliticalPartySeatsParliament(
+    gameId: number,
+  ): Promise<void> {
+    const seatsInParliaments = [];
+    const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(gameId));
+    const politicalPartySeatsParliamentDefinitions = await this.politicalPartySeatsParliamentDefinitionRepository.findAll();
+
     for (const politicalPartySeatsParliamentDefinition of politicalPartySeatsParliamentDefinitions) {
       const politicalParty = await this.getPoliticalPartyPerAffiliationInGameQueryHandler.handle(
         new GetPoliticalPartyPerAffiliationInGameQuery(
@@ -89,9 +105,7 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
       );
     }
 
-    await this.politicalPartySeatsSenateRepository.createMany(seatsInSenates);
     await this.politicalPartySeatsParliamentRepository.createMany(seatsInParliaments);
     await Parliament.validateSeatsCount(parliament);
-    await Senate.validateSeatsCount(senate);
   }
 }

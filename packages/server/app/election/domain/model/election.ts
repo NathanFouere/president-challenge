@@ -27,4 +27,8 @@ export default class Election extends TimeStampedModel {
 
   @hasMany(() => VotesForPoliticalPartyInElection)
   declare votesForPoliticalPartyInElection: HasMany<typeof VotesForPoliticalPartyInElection>;
+
+  public setVotesForPoliticalPartyInElection(votesForPoliticalPartyInElection: VotesForPoliticalPartyInElection[]) {
+    this.$setRelated('votesForPoliticalPartyInElection', votesForPoliticalPartyInElection);
+  }
 }

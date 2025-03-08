@@ -3,5 +3,7 @@ import type PoliticalPartySeatsSenate from '#legislature/domain/models/political
 export default abstract class IPoliticalPartySeatsSenateRepository {
   public abstract save(politicalPartySeatsSenate: PoliticalPartySeatsSenate): Promise<void>;
 
+  public abstract saveMany(politicalPartySeatsSenates: PoliticalPartySeatsSenate[]): Promise<void>;
+
   public abstract createMany(politicalPartySeatsSenates: PoliticalPartySeatsSenate[]): Promise<void>;
 }

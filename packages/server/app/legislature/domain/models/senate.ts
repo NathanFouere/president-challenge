@@ -4,6 +4,7 @@ import Game from '#game/domain/models/game';
 import SenatePartySeats from '#legislature/domain/models/political_party_seats_senate';
 import { TimeStampedModel } from '#common/model/timestamped_model';
 import SenateDefinition from '#legislature/domain/models/senate_definition';
+import type Election from '#election/domain/model/election';
 
 export default class Senate extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -21,7 +22,9 @@ export default class Senate extends TimeStampedModel {
   @column()
   declare definitionId: number;
 
-  @belongsTo(() => SenateDefinition)
+  @belongsTo(() => SenateDefinition, {
+    foreignKey: 'definitionId',
+  })
   declare definition: BelongsTo<typeof SenateDefinition>;
 
   @beforeSave()
@@ -30,23 +33,37 @@ export default class Senate extends TimeStampedModel {
       return;
     }
 
-    const definition = await SenateDefinition.find(senate.definitionId);
-    if (!definition) {
-      throw new Error(`Senate definition with ID ${senate.definitionId} not found`);
-    }
+    await senate.load('definition');
+    await senate.load('partySeats');
 
-    const partySeats = await SenatePartySeats.query()
-      .where('senateId', senate.id)
-      .exec();
-
-    const totalPartySeats = partySeats.reduce(
+    const totalPartySeats = senate.partySeats.reduce(
       (total, seat) => total + seat.numberOfSeats,
       0,
     );
 
-    if (totalPartySeats !== definition.numberOfSeats) {
+    if (totalPartySeats !== senate.definition.numberOfSeats) {
       throw new Error(
-        `Total party seats (${totalPartySeats}) does not match senate definition seats (${definition.numberOfSeats})`,
+        `Total party seats (${totalPartySeats}) does not match senate definition seats (${senate.definition.numberOfSeats})`,
+      );
+    }
+  }
+
+  public applyElectionEffects(election: Election) {
+    const totalVotes = election.votesForPoliticalPartyInElection.reduce(
+      (total, voteForPoliticalPartyInElection) => total + voteForPoliticalPartyInElection.votes,
+      0,
+    );
+    for (const voteForPoliticalPartyInElection of election.votesForPoliticalPartyInElection) {
+      const partySeats = this.partySeats.find(
+        (partySeat: SenatePartySeats) => partySeat.politicalPartyId === voteForPoliticalPartyInElection.politicalPartyId,
+      );
+
+      if (!partySeats) {
+        throw new Error(`Party seats not found for political party with ID ${voteForPoliticalPartyInElection.politicalPartyId}`);
+      }
+
+      partySeats.numberOfSeats += Math.round(
+        (voteForPoliticalPartyInElection.votes / totalVotes) * this.definition.numberOfSeats,
       );
     }
   }

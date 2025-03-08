@@ -13,15 +13,21 @@ import type SocialClass from '#social-class/domain/models/social_class';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import VotesForPoliticalPartyInElectionFactory
   from '#election/application/factory/votes_for_political_party_in_election_factory';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetEventDefinitionByIdentifierQueryHandler
-  from '#event/application/queries/i_get_event_definition_by_identifier_query_handler';
-import { GetEventDefinitionByIdentifierQuery } from '#event/application/queries/get_event_definition_by_identifier_query';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IEventRepository from '#event/domain/repository/i_event_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import EventFactory from '#event/application/factory/event_factory';
 import type Election from '#election/domain/model/election';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_get_parliament_by_game_query_handler';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetSenateByGameQueryHandler from '#legislature/application/query/i_get_senate_by_game_query_handler';
+import { GetParliamentByGameQuery } from '#legislature/application/query/get_parliament_by_game_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IPoliticalPartySeatsParliamentRepository
+  from '#legislature/domain/repository/i_political_party_seats_parliament_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IPoliticalPartySeatsSenateRepository
+  from '#legislature/domain/repository/i_politcal_party_seats_senate_repository';
+import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_by_game_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import EventGenerationService from '#event/application/service/event_generation_service';
 
 @inject()
 export class ElectionService {
@@ -30,9 +36,11 @@ export class ElectionService {
     private readonly votesForPoliticalPartyInElectionRepository: IVotesForPoliticalPartyInElectionRepository,
     private readonly electionFactory: ElectionFactory,
     private readonly votesForPoliticalPartyInElectionFactory: VotesForPoliticalPartyInElectionFactory,
-    private readonly getEventDefinitionByIdentifierQueryHandler: IGetEventDefinitionByIdentifierQueryHandler,
-    private readonly eventFactory: EventFactory,
-    private readonly eventRepository: IEventRepository,
+    private readonly eventGenerationService: EventGenerationService,
+    private readonly getParliamentByGameQueryHandler: IGetParliamentByGameQueryHandler,
+    private readonly getSenateByGameQueryHandler: IGetSenateByGameQueryHandler,
+    private readonly politicalPartySeatsParliamentRepository: IPoliticalPartySeatsParliamentRepository,
+    private readonly politicalPartySeatsSenateRepository: IPoliticalPartySeatsSenateRepository,
   ) {
   }
 
@@ -66,20 +74,25 @@ export class ElectionService {
     }
 
     await this.votesForPoliticalPartyInElectionRepository.createMany(votesForPoliticalPartyInElections);
-    await this.generateEventFromElection(game, election);
+    election.setVotesForPoliticalPartyInElection(votesForPoliticalPartyInElections);
+    await Promise.all([
+      await this.eventGenerationService.generateEventFromElection(game, election),
+      this.applyElectionEffects(game, election),
+    ]);
+    await this.electionRepository.save(election);
   }
 
   private async applyElectionEffects(game: Game, election: Election): Promise<void> {
-
-  }
-
-  private async generateEventFromElection(game: Game, election: Election): Promise<void> {
-    const eventDefinition = await this.getEventDefinitionByIdentifierQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
-      election.type,
-    ));
-
-    const event = this.eventFactory.createEventFromElection(eventDefinition.id, game.id, game.turn, election.id);
-    await this.eventRepository.save(event);
+    if (election.type === ElectionType.PARLIAMENTARY) {
+      const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(game.id));
+      parliament.applyElectionEffects(election);
+      await this.politicalPartySeatsParliamentRepository.saveMany(parliament.partySeats);
+    }
+    else if (election.type === ElectionType.SENATORIAL) {
+      const senate = await this.getSenateByGameQueryHandler.handle(new GetSenateByGameQuery(game.id));
+      senate.applyElectionEffects(election);
+      await this.politicalPartySeatsSenateRepository.saveMany(senate.partySeats);
+    }
   }
 
   private getElectionTypeForTurn(turn: number): ElectionType {
