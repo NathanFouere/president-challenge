@@ -7,12 +7,15 @@ import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licen
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ChoiceDtoFactory } from '#event/application/dto-factory/choice_dto_factory';
 import type Choice from '#event/domain/models/choice';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ElectionResultsDtoFactory from '#election/application/dto-factory/election_results_dto_factory';
 
 @inject()
 export class EventDtoFactory {
   constructor(
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
     private readonly choiceDtoFactory: ChoiceDtoFactory,
+    private readonly electionResultsDtoFactory: ElectionResultsDtoFactory,
   ) {
   }
 
@@ -27,6 +30,7 @@ export class EventDtoFactory {
       needsAction: !event?.choices.map((choice: Choice) => choice.status).includes(ChoiceStatus.Chosen),
       licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(event.definition.licensedFiles),
       choices: this.choiceDtoFactory.createFromChoices(event.choices),
+      electionResults: event.election ? this.electionResultsDtoFactory.createFromElection(event.election) : null,
     };
   }
 }

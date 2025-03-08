@@ -1,10 +1,16 @@
 import Senate from '#legislature/domain/models/senate';
 
 export class SenateBuilder {
-  public gameId: number | null = null;
+  private gameId: number | null = null;
+  private definitionId: number | null = null;
 
   public withGameId(gameId: number): this {
     this.gameId = gameId;
+    return this;
+  }
+
+  public withDefinitionId(definitionId: number): this {
+    this.definitionId = definitionId;
     return this;
   }
 
@@ -15,6 +21,13 @@ export class SenateBuilder {
     }
     else {
       throw new Error('game is required');
+    }
+
+    if (this.definitionId !== null) {
+      senate.definitionId = this.definitionId;
+    }
+    else {
+      throw new Error('definition is required');
     }
     return senate;
   }

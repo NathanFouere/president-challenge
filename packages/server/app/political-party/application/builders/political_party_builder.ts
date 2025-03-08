@@ -3,6 +3,7 @@ import PoliticalParty from '#political-party/domain/models/political_party';
 export class PoliticalPartyBuilder {
   private gameId: number | null = null;
   private definitionId: number | null = null;
+  private inPower: boolean | null = null;
 
   public withGameId(gameId: number): this {
     this.gameId = gameId;
@@ -11,6 +12,11 @@ export class PoliticalPartyBuilder {
 
   public withDefinitionId(definitionId: number): this {
     this.definitionId = definitionId;
+    return this;
+  }
+
+  public withInPower(inPower: boolean): this {
+    this.inPower = inPower;
     return this;
   }
 
@@ -29,6 +35,12 @@ export class PoliticalPartyBuilder {
     }
     else {
       throw new Error('definition is required');
+    }
+    if (this.inPower !== null) {
+      politicalParty.inPower = this.inPower;
+    }
+    else {
+      throw new Error('inPower is required');
     }
 
     return politicalParty;

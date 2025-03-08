@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
 
-import { EventType } from '@shared/dist/event/event-type.js';
+import { EventType } from '#event/domain/models/event_type';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IEventDefinitionRepository from '#event/domain/repository/i_event_definition_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

@@ -1,6 +1,6 @@
 import { column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
 import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import type { EventType } from '@shared/dist/event/event-type.js';
+import type { EventType } from '#event/domain/models/event_type';
 import Choice from '#event/domain/models/choice';
 import Event from '#event/domain/models/event';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';

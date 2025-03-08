@@ -6,4 +6,5 @@ export interface PoliticalPartyMinimalDto {
   name: string;
   affiliation: PoliticalAffiliation;
   licensedFile: LicensedFileDTO;
+  inPower: boolean;
 }

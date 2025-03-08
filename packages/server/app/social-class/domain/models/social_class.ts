@@ -13,6 +13,9 @@ import sectorEconomicalSituationMatchConfig
 import type Tax from '#tax/domain/model/tax';
 import SocialClassDefinition from '#social-class/domain/models/social_class_definition';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import { HappinessLevel } from '#social-class/domain/models/happiness_level';
+import type PoliticalParty from '#political-party/domain/models/political_party';
+import socialClassDefaultVoteRatioForPoliticalAffiliationConfig from '#game-config/political-party/social_class_default_vote_ratio_for_political_party_config.json' assert { type: 'json' };
 
 export default class SocialClass extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -53,13 +56,13 @@ export default class SocialClass extends TimeStampedModel {
   @belongsTo(() => Sector)
   declare sector: BelongsTo<typeof Sector>;
 
-  public getHappinessLevel(): number {
+  public getHappinessLevel(): HappinessLevel {
     const happinessLevel = this.happinessModifiers.reduce((acc, modifier) => acc + modifier.amount, 0);
     if (happinessLevel < 0) {
       return 0;
     }
-    if (happinessLevel > 5) {
-      return 5;
+    if (happinessLevel > 4) {
+      return 4;
     }
     return happinessLevel;
   }
@@ -118,6 +121,32 @@ export default class SocialClass extends TimeStampedModel {
       default:
         throw new Error('Invalid social class type');
     }
+  }
+
+  public getVotesOfSocialClassForPoliticalParty(politicalParty: PoliticalParty): number {
+    const defaultRatio = socialClassDefaultVoteRatioForPoliticalAffiliationConfig[this.definition.type][politicalParty.definition.affiliation];
+    // Niveau de bonheur normalisé entre -2 et +2 (par rapport au neutre)
+    const normalizedHappiness = this.getHappinessLevel() - HappinessLevel.NEUTRAL; // -2 à +2
+
+    let votingRatio: number;
+
+    if (politicalParty.inPower) {
+      // Si le parti est au pouvoir:
+      // - Les gens heureux (+) votent davantage pour lui
+      // - Les gens mécontents (-) votent moins pour lui
+      votingRatio = defaultRatio * (1 + 0.3 * normalizedHappiness);
+    }
+    else {
+      // Si le parti n'est pas au pouvoir:
+      // - Les gens heureux (+) votent moins pour lui
+      // - Les gens mécontents (-) votent davantage pour lui
+      votingRatio = defaultRatio * (1 - 0.2 * normalizedHappiness);
+    }
+
+    // Limiter la variation pour éviter des valeurs extrêmes
+    votingRatio = Math.max(defaultRatio * 0.2, Math.min(defaultRatio * 2.5, votingRatio));
+
+    return this.definition.population * votingRatio;
   }
 
   public setSector(sector: Sector): void {

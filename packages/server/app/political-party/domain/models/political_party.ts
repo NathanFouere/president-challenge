@@ -17,6 +17,9 @@ export default class PoliticalParty extends TimeStampedModel {
   @column()
   declare gameId: number;
 
+  @column()
+  declare inPower: boolean;
+
   @belongsTo(() => Game)
   declare game: BelongsTo<typeof Game>;
 

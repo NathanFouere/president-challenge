@@ -4,6 +4,7 @@ import container from '../../../../config/container';
 import LicensedFilesComponent from '../../common/licensed-files-component.vue';
 import type { EventPresenter } from '~/presenters/events/event.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
+import ElectionResultsComponent from '~/components/event/modal/election-results-component.vue';
 
 const props = defineProps<{
   eventId: number;
@@ -75,7 +76,13 @@ const getChoiceIcon = (choice: ChoiceDto) => {
       </template>
       <template v-else>
         <licensed-files-component :licensed-files="eventPresenter.eventStore.requireCurrentEvent.licensedFiles" />
+        <br>
         <p>{{ eventPresenter.eventStore.requireCurrentEvent.text }}</p>
+        <br>
+        <election-results-component
+          v-if="eventPresenter.eventStore.requireCurrentEvent.electionResults"
+          :election-results="eventPresenter.eventStore.requireCurrentEvent.electionResults"
+        />
       </template>
 
       <template

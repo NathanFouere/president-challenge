@@ -49,6 +49,10 @@ import {
   createPoliticalPartyHappinessModifierAdminResource,
   createSocialClassHappinessModifierAdminResource,
 } from '#happiness-modifier/infrastructure/admin/happiness_modifier_admin_configuration';
+import {
+  createParliamentAdminResource,
+  createParliamentDefinitionAdminResource, createSenateAdminResource, createSenateDefinitionAdminResource,
+} from '#legislature/infrastructure/admin/legislature_admin_configuration';
 
 const adminjsConfig: AdminJSProviderConfig = {
   adapter: {
@@ -89,6 +93,12 @@ const adminjsConfig: AdminJSProviderConfig = {
       createLawAdminResource(),
       createSocialClassHappinessModifierAdminResource(),
       createPoliticalPartyHappinessModifierAdminResource(),
+      createLawDefinitionAdminResource(),
+      createLawAdminResource(),
+      createParliamentDefinitionAdminResource(),
+      createParliamentAdminResource(),
+      createSenateDefinitionAdminResource(),
+      createSenateAdminResource(),
     ],
     pages: {},
     locale: {

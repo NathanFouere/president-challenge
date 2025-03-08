@@ -1,0 +1,26 @@
+{
+  "Capitalist": {
+    "Far Left": 0.1,
+    "Left": 0.2,
+    "Center Left": 0.3,
+    "Center Right": 0.2,
+    "Right": 0.2,
+    "Far Right": 0.1
+  },
+  "Petit Bourgeois": {
+    "Far Left": 0.1,
+    "Left": 0.2,
+    "Center Left": 0.3,
+    "Center Right": 0.2,
+    "Right": 0.2,
+    "Far Right": 0.1
+  },
+  "Proletariat": {
+    "Far Left": 0.1,
+    "Left": 0.2,
+    "Center Left": 0.3,
+    "Center Right": 0.2,
+    "Right": 0.2,
+    "Far Right": 0.1
+  }
+}

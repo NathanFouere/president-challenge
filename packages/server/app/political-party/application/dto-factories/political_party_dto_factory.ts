@@ -40,10 +40,11 @@ export class PoliticalPartyDTOFactory {
         politicalParty.happinessPerTurn,
         'Happiness Level',
         0,
-        4,
+        5,
         this.politicalPartyHappinessRangeLevels,
       ),
       happinessModifiers: this.happinessModifierDtoFactory.createFromHappinesssModifiers(politicalParty.happinessModifiers),
+      inPower: politicalParty.inPower,
     };
   }
 }

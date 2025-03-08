@@ -10,6 +10,7 @@ export interface PoliticalPartyDTO {
   licensedFile: LicensedFileDTO;
   description: string;
   happinessLevel: string;
+  inPower: boolean;
   happinessPerMonthChartData: LineChartDataDTO;
   happinessModifiers: HappinessModifierDto[];
 }

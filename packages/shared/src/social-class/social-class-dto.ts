@@ -11,6 +11,7 @@ export interface SocialClassDto {
   color: string;
   economicalSituation: string;
   happinessLevel: string;
+  population: number;
   socialClassType: SocialClassSubtypes;
   licensedFiles: LicensedFileDTO[];
   economicalSituationPerMonthChartData: LineChartDataDTO;

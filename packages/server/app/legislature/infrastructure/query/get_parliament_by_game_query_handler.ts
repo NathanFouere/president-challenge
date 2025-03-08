@@ -12,6 +12,7 @@ export default class GetParliamentByGameQueryHandler implements IGetParliamentBy
           query.preload('definition');
         }).orderBy('id', 'desc');
       })
+      .preload('definition')
       .firstOrFail();
   }
 }

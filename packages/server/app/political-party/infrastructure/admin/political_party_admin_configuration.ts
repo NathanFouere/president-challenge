@@ -21,7 +21,7 @@ export const createPoliticalPartyDefinitionAdminResource = () => (
             type: RelationType.OneToMany,
             target: {
               joinKey: 'definitionId',
-              resourceId: 'political-parties',
+              resourceId: 'political_parties',
             },
           },
         },

@@ -36,6 +36,7 @@ onMounted(async () => {
       />
     </div>
     <br>
+    <p>Population : {{ socialClassPresenter.socialClassStore.requireSocialClass.population }}</p>
     <p>Description : {{ socialClassPresenter.socialClassStore.requireSocialClass.description }}</p>
 
     <UDivider class="sticky pt-10 pb-10" />

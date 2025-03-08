@@ -25,6 +25,7 @@
     "#product/*": "./app/product/*.js",
     "#happiness-modifier/*": "./app/happiness-modifier/*.js",
     "#sector/*": "./app/sector/*.js",
+    "#election/*": "./app/election/*.js",
     "#state/*": "./app/state/*.js",
     "#political-party/*": "./app/political-party/*.js",
     "#legislature/*": "./app/legislature/*.js",

@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { EventType } from '@shared/dist/event/event-type.js';
+import { EventType } from '#event/domain/models/event_type';
 
 export default class extends BaseSchema {
   public async up() {

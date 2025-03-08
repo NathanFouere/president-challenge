@@ -23,6 +23,9 @@ export default class SocialClassDefinition extends TimeStampedModel {
   @column()
   declare color: string;
 
+  @column()
+  declare population: number;
+
   @hasMany(() => SocialClass, {
     foreignKey: 'definitionId',
   })

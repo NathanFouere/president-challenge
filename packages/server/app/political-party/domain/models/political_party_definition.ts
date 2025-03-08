@@ -20,6 +20,9 @@ export default class PoliticalPartyDefinition extends TimeStampedModel {
   declare color: string;
 
   @column()
+  declare inPowerByDefault: boolean;
+
+  @column()
   declare affiliation: PoliticalAffiliation;
 
   @column()
@@ -34,6 +37,8 @@ export default class PoliticalPartyDefinition extends TimeStampedModel {
   @hasMany(() => LawVotesPercentagePerPoliticalAffiliation)
   declare percentageOfVotesForLaw: HasMany<typeof LawVotesPercentagePerPoliticalAffiliation>;
 
-  @hasMany(() => PoliticalParty)
+  @hasMany(() => PoliticalParty, {
+    foreignKey: 'definitionId',
+  })
   declare politicalParties: HasMany<typeof PoliticalParty>;
 }

@@ -7,6 +7,7 @@ export class EventBuilder {
   private beenRead: boolean | null = null;
   private displayable: boolean | null = null;
   private definitionId: number | null = null;
+  private electionId: number | null = null;
 
   public withDefinitionId(definitionId: number): this {
     this.definitionId = definitionId;
@@ -35,6 +36,11 @@ export class EventBuilder {
 
   public withBeenRead(beenRead: boolean): this {
     this.beenRead = beenRead;
+    return this;
+  }
+
+  public withElectionId(electionId: number): this {
+    this.electionId = electionId;
     return this;
   }
 
@@ -76,6 +82,9 @@ export class EventBuilder {
     }
     else {
       throw new Error('definitionId is required');
+    }
+    if (this.electionId !== null) {
+      event.electionId = this.electionId;
     }
     return event;
   }

@@ -4,7 +4,7 @@ import type IGetEventByIdAndGameQueryHandler from '#event/application/queries/i_
 
 export default class GetEventByIdAndGameQueryHandler implements IGetEventByIdAndGameQueryHandler {
   public async handle(query: GetEventByIdAndGameQuery): Promise<Event> {
-    return Event
+    const event = await Event
       .query()
       .where('id', query.eventId)
       .where('game_id', query.gameId)
@@ -16,5 +16,17 @@ export default class GetEventByIdAndGameQueryHandler implements IGetEventByIdAnd
         query.orderBy('id', 'asc');
       })
       .firstOrFail();
+
+    if (event.electionId) {
+      await event.load('election', (electionQuery) => {
+        electionQuery.preload('votesForPoliticalPartyInElection', (votesForPoliticalPartyInElectionQuery) => {
+          votesForPoliticalPartyInElectionQuery.preload('politicalParty', (politicalPartyQuery) => {
+            politicalPartyQuery.preload('definition');
+          }).orderBy('id', 'desc');
+        });
+      });
+    }
+
+    return event;
   }
 }

@@ -1,10 +1,16 @@
 import { Parliament } from '#legislature/domain/models/parliament';
 
 export class ParliamentBuilder {
-  public gameId: number | null = null;
+  private gameId: number | null = null;
+  private definitionId: number | null = null;
 
   public withGameId(game: number): this {
     this.gameId = game;
+    return this;
+  }
+
+  public withDefinitionId(definition: number): this {
+    this.definitionId = definition;
     return this;
   }
 
@@ -15,6 +21,12 @@ export class ParliamentBuilder {
     }
     else {
       throw new Error('game is required');
+    }
+    if (this.definitionId !== null) {
+      parliament.definitionId = this.definitionId;
+    }
+    else {
+      throw new Error('definition is required');
     }
     return parliament;
   }

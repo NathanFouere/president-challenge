@@ -45,6 +45,7 @@ export class SocialClassDtoFactory {
       name: socialClass.definition.name,
       description: socialClass.definition.description,
       color: socialClass.definition.color,
+      population: socialClass.definition.population,
       economicalSituation: this.rangeLevelMatch.createFromAmount(socialClass.economicalSituation, this.socialClassEconomicalSituationRangeLevels),
       happinessLevel: this.rangeLevelMatch.createFromAmount(socialClass.getHappinessLevel(), this.socialClassHappinessRangeLevels),
       socialClassType: socialClass.definition.subType,
