@@ -1,5 +1,6 @@
 import { belongsTo, column, hasMany, hasOne, beforeSave } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations';
+import type { GameStatus } from '@shared/dist/game/game_status.js';
 import User from '#user/domain/models/user';
 import PoliticalParty from '#political-party/domain/models/political_party';
 import Event from '#event/domain/models/event';
@@ -38,6 +39,9 @@ export default class Game extends TimeStampedModel {
 
   @column()
   declare maxTurns: number;
+
+  @column()
+  declare status: GameStatus;
 
   public changeTurn() {
     if (this.turn >= this.maxTurns) {
