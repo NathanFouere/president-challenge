@@ -3,8 +3,7 @@ import type IGetSenateDefinitionQueryHandler from '#legislature/application/quer
 import SenateDefinition from '#legislature/domain/models/senate_definition';
 
 export default class GetSenateDefinitionQueryHandler implements IGetSenateDefinitionQueryHandler {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async handle(query: GetSenateDefinitionQuery): Promise<SenateDefinition> {
+  public async handle(_query: GetSenateDefinitionQuery): Promise<SenateDefinition> {
     return await SenateDefinition.firstOrFail();
   }
 }

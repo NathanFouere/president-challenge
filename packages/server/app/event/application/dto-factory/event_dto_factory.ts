@@ -1,14 +1,12 @@
 import type { EventDto } from '@shared/dist/event/event-dto.js';
 import { inject } from '@adonisjs/core';
 import { ChoiceStatus } from '@shared/dist/event/choice-status.js';
-import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
 import type Event from '#event/domain/models/event';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ChoiceDtoFactory } from '#event/application/dto-factory/choice_dto_factory';
 import type Choice from '#event/domain/models/choice';
-import type Election from '#election/domain/model/election';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ElectionResultsDtoFactory from '#election/application/dto-factory/election_results_dto_factory';
 

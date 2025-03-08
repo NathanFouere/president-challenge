@@ -27,13 +27,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Type Check
+        run: pnpm run typecheck
+
       - name: Build packages
         run: pnpm run build
         env:
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-
-      - name: Type Check
-        run: pnpm run typecheck
 
       - name: Lint Check
         run: pnpm run lint:check

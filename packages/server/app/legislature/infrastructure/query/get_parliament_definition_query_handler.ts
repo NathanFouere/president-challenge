@@ -4,8 +4,7 @@ import type IGetParliamentDefinitionQueryHandler
 import ParliamentDefinition from '#legislature/domain/models/parliament_definition';
 
 export default class GetParliamentDefinitionQueryHandler implements IGetParliamentDefinitionQueryHandler {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async handle(query: GetParliamentDefinitionQuery): Promise<ParliamentDefinition> {
+  public async handle(_query: GetParliamentDefinitionQuery): Promise<ParliamentDefinition> {
     return await ParliamentDefinition.firstOrFail();
   }
 }
