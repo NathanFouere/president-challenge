@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
 import { getDateFromTurnNumber } from '@shared/utils/date-converter';
+import { GameStatus } from '@shared/game/game_status';
 import ConfirmDeletionModal from '../common/modal/confirm-deletion-modal.vue';
 
 const props = defineProps<{
@@ -22,6 +23,31 @@ const handleDelete = () => {
 const handleSelect = () => {
   emit('selectGame', props.game);
 };
+
+const getStatusTranslation = (status: GameStatus) => {
+  switch (status) {
+    case GameStatus.Active:
+      return 'Active';
+    case GameStatus.Finished:
+      return 'Finished';
+    case GameStatus.Defeated:
+      return 'Defeated';
+    default:
+  }
+};
+
+const getStatusColor = (status: GameStatus) => {
+  switch (status) {
+    case GameStatus.Active:
+      return 'primary';
+    case GameStatus.Finished:
+      return 'orange';
+    case GameStatus.Defeated:
+      return 'red';
+    default:
+      return 'indigo';
+  }
+};
 </script>
 
 <template>
@@ -30,7 +56,13 @@ const handleSelect = () => {
     :class="isSelected ? 'ring-gray-300 dark:ring-gray-70' : '' "
   >
     <template #header>
-      Turn {{ game.turn }} : {{ getDateFromTurnNumber(game.turn) }}
+      <div class="flex justify-between">
+        Turn {{ game.turn }} : {{ getDateFromTurnNumber(game.turn) }}
+        <u-badge
+          :label="getStatusTranslation(game.status)"
+          :color="getStatusColor(game.status)"
+        />
+      </div>
     </template>
 
     <template #footer>

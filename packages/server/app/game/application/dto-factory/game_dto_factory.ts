@@ -8,6 +8,7 @@ export default class GameDtoFactory {
       turn: game.turn,
       politicalWeight: game.politicalWeight,
       maxTurns: game.maxTurns,
+      status: game.status,
     };
   }
 }
