@@ -46,8 +46,8 @@ export class ElectionService {
 
   // TODO => cela devrait être dans la configuration du jeu
   readonly parliamentoryElectionTurns = [2, 3, 4];
-  readonly senateElectionTurns = [1, 5];
-  readonly presidentialElectionTurns = [6, 10];
+  readonly senateElectionTurns = [6, 5];
+  readonly presidentialElectionTurns = [1, 10];
   readonly electionTurns = [
     ...this.parliamentoryElectionTurns,
     ...this.senateElectionTurns,
@@ -67,8 +67,8 @@ export class ElectionService {
         votesForPoliticalParty += socialClass.getVotesOfSocialClassForPoliticalParty(politicalParty);
       }
       votesForPoliticalPartyInElections.push(this.votesForPoliticalPartyInElectionFactory.createVotesForPoliticalPartyInElection(
-        election.id,
-        politicalParty.id,
+        election,
+        politicalParty,
         votesForPoliticalParty,
       ));
     }
@@ -76,22 +76,26 @@ export class ElectionService {
     await this.votesForPoliticalPartyInElectionRepository.createMany(votesForPoliticalPartyInElections);
     election.setVotesForPoliticalPartyInElection(votesForPoliticalPartyInElections);
     await Promise.all([
-      await this.eventGenerationService.generateEventFromElection(game, election),
+      this.eventGenerationService.generateEventFromElection(game, election),
       this.applyElectionEffects(game, election),
     ]);
     await this.electionRepository.save(election);
   }
 
   private async applyElectionEffects(game: Game, election: Election): Promise<void> {
-    if (election.type === ElectionType.PARLIAMENTARY) {
-      const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(game.id));
-      parliament.applyElectionEffects(election);
-      await this.politicalPartySeatsParliamentRepository.saveMany(parliament.partySeats);
-    }
-    else if (election.type === ElectionType.SENATORIAL) {
-      const senate = await this.getSenateByGameQueryHandler.handle(new GetSenateByGameQuery(game.id));
-      senate.applyElectionEffects(election);
-      await this.politicalPartySeatsSenateRepository.saveMany(senate.partySeats);
+    switch (election.type) {
+      case ElectionType.PARLIAMENTARY: {
+        const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(game.id));
+        parliament.applyElectionEffects(election);
+        await this.politicalPartySeatsParliamentRepository.saveMany(parliament.partySeats);
+        break;
+      }
+      case ElectionType.SENATORIAL: {
+        const senate = await this.getSenateByGameQueryHandler.handle(new GetSenateByGameQuery(game.id));
+        senate.applyElectionEffects(election);
+        await this.politicalPartySeatsSenateRepository.saveMany(senate.partySeats);
+        break;
+      }
     }
   }
 

@@ -26,9 +26,24 @@ export default class Election extends TimeStampedModel {
   declare event: HasOne<typeof Event>;
 
   @hasMany(() => VotesForPoliticalPartyInElection)
-  declare votesForPoliticalPartyInElection: HasMany<typeof VotesForPoliticalPartyInElection>;
+  declare votesForPoliticalParties: HasMany<typeof VotesForPoliticalPartyInElection>;
 
   public setVotesForPoliticalPartyInElection(votesForPoliticalPartyInElection: VotesForPoliticalPartyInElection[]) {
-    this.$setRelated('votesForPoliticalPartyInElection', votesForPoliticalPartyInElection);
+    this.$setRelated('votesForPoliticalParties', votesForPoliticalPartyInElection);
+  }
+
+  public isADefeatForPartiesInPower(): boolean {
+    let totalVotesForPartiesInPower = 0;
+    let totalVotesForPartiesInOpposition = 0;
+    for (const votesForPoliticalPartyInElection of this.votesForPoliticalParties) {
+      if (votesForPoliticalPartyInElection.politicalParty.inPower) {
+        totalVotesForPartiesInPower += votesForPoliticalPartyInElection.votes;
+      }
+      else {
+        totalVotesForPartiesInOpposition += votesForPoliticalPartyInElection.votes;
+      }
+    }
+
+    return totalVotesForPartiesInPower < totalVotesForPartiesInOpposition;
   }
 }

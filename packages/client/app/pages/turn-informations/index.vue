@@ -17,6 +17,26 @@ watch(selectedTurn, async () => {
 onMounted(async () => {
   await turnInformationsPresenter.getEventsOfTurn();
 });
+
+function getCantChangeTurnContext() {
+  if (turnInformationsPresenter.turnInformationsStore.getMaxTurnReached) {
+    return 'Max turn reached';
+  }
+
+  if (turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress) {
+    return 'You need to address all events';
+  }
+
+  if (turnInformationsPresenter.turnInformationsStore.defeat) {
+    return 'You have been defeated';
+  }
+
+  return '';
+}
+
+function getCantChangeTurn() {
+  return turnInformationsPresenter.turnInformationsStore.getMaxTurnReached || turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress || turnInformationsPresenter.turnInformationsStore.getDefeat;
+}
 </script>
 
 <template>
@@ -60,11 +80,11 @@ onMounted(async () => {
     class="text-center"
   >
     <UTooltip
-      :text="turnInformationsPresenter.turnInformationsStore.getMaxTurnReached ? 'Max turn reached' : turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress ? 'You need to address all events' : ''"
+      :text="getCantChangeTurnContext()"
     >
       <UButton
         :loading="turnInformationsPresenter.gameStore.isChangingTurn"
-        :disabled="turnInformationsPresenter.turnInformationsStore.getMaxTurnReached || turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress"
+        :disabled="getCantChangeTurn()"
         @click="turnInformationsPresenter.changeTurn()"
       >
         Change turn

@@ -19,7 +19,7 @@ export default class GetEventByIdAndGameQueryHandler implements IGetEventByIdAnd
 
     if (event.electionId) {
       await event.load('election', (electionQuery) => {
-        electionQuery.preload('votesForPoliticalPartyInElection', (votesForPoliticalPartyInElectionQuery) => {
+        electionQuery.preload('votesForPoliticalParties', (votesForPoliticalPartyInElectionQuery) => {
           votesForPoliticalPartyInElectionQuery.preload('politicalParty', (politicalPartyQuery) => {
             politicalPartyQuery.preload('definition');
           }).orderBy('id', 'desc');

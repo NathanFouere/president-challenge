@@ -9,6 +9,8 @@ import { TurnPipeline } from '#game/application/service/turn-service/turn_pipeli
 import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import TurnPoliticalService from '#game/application/service/turn-service/turn_political_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import GameDefeatService from '#game/application/service/turn-service/game_defeat_service';
 
 @inject()
 export default class TurnPipelineFactory {
@@ -17,6 +19,7 @@ export default class TurnPipelineFactory {
     private readonly turnEconomicalService: TurnEconomicalService,
     private readonly turnPoliticalService: TurnPoliticalService,
     private readonly turnHappinessService: TurnHappinessService,
+    private readonly gameDefeatService: GameDefeatService,
   ) {
   }
 
@@ -26,6 +29,7 @@ export default class TurnPipelineFactory {
         this.turnEconomicalService,
         this.turnHappinessService,
         this.turnPoliticalService,
+        this.gameDefeatService,
         this.saveTurnService,
       ],
       turnContext,

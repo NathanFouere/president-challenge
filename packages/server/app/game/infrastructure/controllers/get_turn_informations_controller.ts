@@ -32,7 +32,7 @@ export default class GetTurnInformationsController {
         gameId,
       ));
       const events = await this.getEventsOfTurnQueryHandler.handle(new GetDisplayableEventsOfTurnQuery(gameId, turn));
-      return this.turnInformationsDtoFactory.createFromTurnInformations(events, game.hasReachedMaxTurns());
+      return this.turnInformationsDtoFactory.createFromTurnInformations(events, game);
     }
     catch (error) {
       console.error(error);

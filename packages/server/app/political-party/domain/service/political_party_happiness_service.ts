@@ -35,6 +35,7 @@ export default class PoliticalPartyHappinessService {
     const socialClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClasses);
     const politicalPartyModifierRatioForSocialClass = politicalPartySocialClassHappiness[politicalParty.definition.affiliation][socialClassType];
     const processedAmount = socialClassAverageHappiness * politicalPartyModifierRatioForSocialClass;
+    // TODO => moove to a factory
     const happinessModifier = aPoliticalPartyHappinessModifier()
       .withPoliticalPartyId(politicalParty.id)
       .withType(HappinessModifierType.TEMPORARY)
