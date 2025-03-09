@@ -1,7 +1,7 @@
 import type { AdminJSProviderConfig } from '@adminjs/adonis';
 
 import componentLoader from '../app/admin/component_loader.js';
-import authProvider from '../app/admin/auth.js';
+import authProvider from '../app/admin/auth_admin.js';
 import {
   createChoiceAdminResource,
   createChoiceDefinitionAdminResource,
