@@ -2,6 +2,7 @@ export const useTurnInformationsStore = defineStore('turnInformationsStore', {
   state: () => ({
     maxTurnReached: false,
     eventNeedToBeAddress: false,
+    defeat: false,
   }),
   getters: {
     getMaxTurnReached(state): boolean {
@@ -10,6 +11,9 @@ export const useTurnInformationsStore = defineStore('turnInformationsStore', {
     getEventNeedToBeAddress(state): boolean {
       return state.eventNeedToBeAddress;
     },
+    getDefeat(state): boolean {
+      return state.defeat;
+    },
   },
   actions: {
     setMaxTurnReached(maxTurnReached: boolean) {
@@ -17,6 +21,9 @@ export const useTurnInformationsStore = defineStore('turnInformationsStore', {
     },
     setEventNeedToBeAddress(eventNeedToBeAddress: boolean) {
       this.eventNeedToBeAddress = eventNeedToBeAddress;
+    },
+    setDefeat(defeat: boolean) {
+      this.defeat = defeat;
     },
   },
 });

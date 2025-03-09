@@ -4,4 +4,5 @@ export interface TurnInformationsDto {
   eventListDto: EventListDto;
   maxTurnReached: boolean;
   eventNeedToBeAddress: boolean;
+  defeat: boolean;
 }

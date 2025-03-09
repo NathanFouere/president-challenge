@@ -42,7 +42,6 @@ const getChoiceIcon = (choice: ChoiceDto) => {
 
 <template>
   <UButton
-    v-if="!props.openedByDefault"
     label="Details"
     :loading="eventPresenter.eventStore.isGettingEvent && isOpen"
     @click="isOpen = true"

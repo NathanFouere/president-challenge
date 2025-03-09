@@ -22,4 +22,14 @@ export default class VotesForPoliticalPartyInElection extends TimeStampedModel {
 
   @belongsTo(() => PoliticalParty)
   declare politicalParty: BelongsTo<typeof PoliticalParty>;
+
+  public setPoliticalParty(politicalParty: PoliticalParty): void {
+    this.politicalPartyId = politicalParty.id;
+    this.$setRelated('politicalParty', politicalParty);
+  }
+
+  public setElection(election: Election): void {
+    this.electionId = election.id;
+    this.$setRelated('election', election);
+  }
 }

@@ -49,11 +49,9 @@ export default class Senate extends TimeStampedModel {
   }
 
   public applyElectionEffects(election: Election) {
-    const totalVotes = election.votesForPoliticalPartyInElection.reduce(
-      (total, voteForPoliticalPartyInElection) => total + voteForPoliticalPartyInElection.votes,
-      0,
-    );
-    for (const voteForPoliticalPartyInElection of election.votesForPoliticalPartyInElection) {
+    let totalVotes = 0;
+    for (const voteForPoliticalPartyInElection of election.votesForPoliticalParties) {
+      totalVotes += voteForPoliticalPartyInElection.votes;
       const partySeats = this.partySeats.find(
         (partySeat: SenatePartySeats) => partySeat.politicalPartyId === voteForPoliticalPartyInElection.politicalPartyId,
       );

@@ -16,7 +16,7 @@ export default class ElectionResultsDtoFactory {
     const data = [];
     const backgroundColor = [];
 
-    for (const votes of election.votesForPoliticalPartyInElection) {
+    for (const votes of election.votesForPoliticalParties) {
       labels.push(votes.politicalParty.definition.name);
       data.push(votes.votes);
       backgroundColor.push(votes.politicalParty.definition.color);

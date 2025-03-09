@@ -35,6 +35,7 @@ export class TurnInformationsPresenter {
       this.eventsStore.setSuperEvents(turnInformations.eventListDto.superEvents);
       this.turnInformationsStore.setMaxTurnReached(turnInformations.maxTurnReached);
       this.turnInformationsStore.setEventNeedToBeAddress(turnInformations.eventNeedToBeAddress);
+      this.turnInformationsStore.setDefeat(turnInformations.defeat);
     }
     catch {
       this.toast.showError('Error while getting events');

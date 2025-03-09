@@ -24,4 +24,15 @@ export default class EventFactory {
       .withElectionId(electionId)
       .build();
   }
+
+  public createEventFromGameDefeat(eventDefinitionId: number, gameId: number, turn: number): Event {
+    return anEvent()
+      .withTurn(turn)
+      .withDefinitionId(eventDefinitionId)
+      .withIsAvailable(true)
+      .withBeenRead(false)
+      .withDisplayable(true)
+      .withGameId(gameId)
+      .build();
+  }
 }
