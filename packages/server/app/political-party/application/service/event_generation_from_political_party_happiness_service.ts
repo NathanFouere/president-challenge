@@ -32,7 +32,7 @@ export default class EventGenerationFromPoliticalPartyHappinessService {
     const eventDefinition = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
       eventDefinitionIdentifier,
     ));
-    const event = this.eventFactory.createAvailableEventForTurnFromDefinition(eventDefinition.id, gameId, turn);
+    const event = this.eventFactory.createEventForGameAtTurn(eventDefinition.id, gameId, turn);
 
     await this.eventRepository.save(event);
   }

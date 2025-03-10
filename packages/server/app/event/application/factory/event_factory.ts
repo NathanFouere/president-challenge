@@ -2,7 +2,7 @@ import { anEvent } from '#event/application/builders/event_builder';
 import type Event from '#event/domain/models/event';
 
 export default class EventFactory {
-  public createAvailableEventForTurnFromDefinition(eventDefinitionId: number, gameId: number, turn: number): Event {
+  public createEventForGameAtTurn(eventDefinitionId: number, gameId: number, turn: number): Event {
     return anEvent()
       .withTurn(turn)
       .withDefinitionId(eventDefinitionId)
@@ -22,17 +22,6 @@ export default class EventFactory {
       .withDisplayable(true)
       .withGameId(gameId)
       .withElectionId(electionId)
-      .build();
-  }
-
-  public createEventFromGameDefeat(eventDefinitionId: number, gameId: number, turn: number): Event {
-    return anEvent()
-      .withTurn(turn)
-      .withDefinitionId(eventDefinitionId)
-      .withIsAvailable(true)
-      .withBeenRead(false)
-      .withDisplayable(true)
-      .withGameId(gameId)
       .build();
   }
 }
