@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import type { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ISectorRepository from '#sector/domain/repository/i_sector_repository';

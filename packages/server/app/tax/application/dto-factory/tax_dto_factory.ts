@@ -1,5 +1,5 @@
-import type TaxDto from '@shared/dist/tax/tax-dto.js';
-import type { LevelDto } from '@shared/dist/common/level-dto.js';
+import type TaxDto from '@president-challenge/shared/dist/tax/tax-dto.js';
+import type { LevelDto } from '@president-challenge/shared/dist/common/level-dto.js';
 import type Tax from '#tax/domain/model/tax';
 import { TaxLevel } from '#tax/domain/model/tax_level';
 

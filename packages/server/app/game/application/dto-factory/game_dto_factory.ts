@@ -1,4 +1,4 @@
-import type { GameDto } from '@shared/dist/game/game-dto.js';
+import type { GameDto } from '@president-challenge/shared/dist/game/game-dto.js';
 import type Game from '#game/domain/models/game';
 
 export default class GameDtoFactory {

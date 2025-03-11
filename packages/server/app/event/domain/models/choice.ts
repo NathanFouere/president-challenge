@@ -1,6 +1,6 @@
 import { belongsTo, column, hasOne } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations';
-import { ChoiceStatus } from '@shared/dist/event/choice-status.js';
+import { ChoiceStatus } from '@president-challenge/shared/dist/event/choice-status.js';
 import ChoiceDefinition from '#event/domain/models/choice_definition';
 import Game from '#game/domain/models/game';
 import Event from '#event/domain/models/event';

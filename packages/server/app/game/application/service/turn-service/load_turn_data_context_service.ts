@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
 
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetPoliticalPartiesOfGameQueryHandler
   from '#political-party/application/queries/i_get_political_parties_of_game_query_handler';

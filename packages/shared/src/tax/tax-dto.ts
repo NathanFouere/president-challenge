@@ -1,4 +1,4 @@
-import type { LevelDto } from '@shared/common/level-dto.js';
+import type { LevelDto } from '@president-challenge/shared/common/level-dto.js';
 
 export default interface TaxDto {
   id: number;

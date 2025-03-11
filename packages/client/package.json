@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "@president-challenge/client",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,14 +11,15 @@
     "postinstall": "nuxt prepare",
     "lint:fix": "eslint .",
     "lint:check": "eslint . --fix --quiet",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.3",
     "@nuxt/types": "^2.18.1",
     "@nuxt/ui": "^2.19.2",
     "@nuxt/ui-pro": "^1.5.0",
-    "@shared": "workspace:*",
+    "@president-challenge/shared": "workspace:*",
     "inversify": "^6.1.4",
     "nuxt": "^3.13.2",
     "reflect-metadata": "^0.2.2",
@@ -27,7 +28,7 @@
     "zod": "^3.0.0"
   },
   "devDependencies": {
-    "@pinia/nuxt": "^0.7.0",
+    "@pinia/nuxt": "^0.9.0",
     "@types/inversify": "^2.0.33",
     "chart.js": "^4.4.7",
     "pinia": "^2.2.6",

@@ -17,7 +17,7 @@
     "esModuleInterop": true,
     "paths": {
       "#services/*": ["./app/services/*.js"],
-      "#controllers/*": ["./app/controllers/*.js"]
+      "#controllers/*": ["./app/controllers/*.js"],
     }
   }
 }

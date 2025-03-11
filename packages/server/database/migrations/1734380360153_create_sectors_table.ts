@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 
 export default class extends BaseSchema {
   protected tableName = 'sectors';

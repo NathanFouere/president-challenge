@@ -1,8 +1,8 @@
-import type { SocialClassSubtypes } from '@shared/social-class/social-class-subtypes.js';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
-import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
-import type HappinessModifierDto from '@shared/common/happiness-modifier-dto.js';
-import type { FinancialFlowDatas } from '@shared/state/financial_flow_datas.js';
+import type { SocialClassSubtypes } from '@president-challenge/shared/social-class/social-class-subtypes.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/licensed-file/licensed-file-dto.js';
+import type { LineChartDataDTO } from '@president-challenge/shared/chart/LineChartDataDTO.js';
+import type HappinessModifierDto from '@president-challenge/shared/common/happiness-modifier-dto.js';
+import type { FinancialFlowDatas } from '@president-challenge/shared/state/financial_flow_datas.js';
 
 export interface SocialClassDto {
   id: number;

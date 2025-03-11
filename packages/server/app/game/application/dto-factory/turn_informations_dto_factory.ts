@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
-import type { TurnInformationsDto } from '@shared/dist/turn-informations/turn-informations-dto.js';
-import { ChoiceStatus } from '@shared/dist/event/choice-status.js';
+import type { TurnInformationsDto } from '@president-challenge/shared/dist/turn-informations/turn-informations-dto.js';
+import { ChoiceStatus } from '@president-challenge/shared/dist/event/choice-status.js';
 import type Event from '#event/domain/models/event';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

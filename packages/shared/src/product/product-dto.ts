@@ -1,5 +1,5 @@
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
-import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/licensed-file/licensed-file-dto.js';
+import type { LineChartDataDTO } from '@president-challenge/shared/chart/LineChartDataDTO.js';
 
 export interface ProductDto {
   id: number;

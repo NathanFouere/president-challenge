@@ -1,7 +1,7 @@
-import type { MinimalBudgetDto } from '@shared/state/minimal-budget-dto.js';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
-import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO.js';
-import type { LevelDto } from '@shared/common/level-dto.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/licensed-file/licensed-file-dto.js';
+import type { LineChartDataDTO } from '@president-challenge/shared/chart/LineChartDataDTO.js';
+import type { LevelDto } from '@president-challenge/shared/common/level-dto.js';
+import type { MinimalBudgetDto } from '@president-challenge/shared/state/minimal-budget-dto.js';
 
 export interface BudgetDto extends MinimalBudgetDto {
   id: number;

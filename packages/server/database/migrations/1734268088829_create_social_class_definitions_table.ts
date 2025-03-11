@@ -1,6 +1,6 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
-import { SectorTypes } from '@shared/dist/sector/sector-types.js';
+import { SocialClassSubtypes } from '@president-challenge/shared/dist/social-class/social-class-subtypes.js';
+import { SectorTypes } from '@president-challenge/shared/dist/sector/sector-types.js';
 
 export default class extends BaseSchema {
   protected tableName = 'social_class_definitions';

@@ -1,5 +1,5 @@
-import type { FinancialFlowDatas } from '@shared/dist/state/financial_flow_datas.js';
-import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
+import type { FinancialFlowDatas } from '@president-challenge/shared/dist/state/financial_flow_datas.js';
+import type { ChartDataDTO } from '@president-challenge/shared/dist/chart/ChartDataDTO.js';
 import type FinancialFlow from '#common/model/financial_flow';
 
 export default class FinancialFlowDataFactory {

@@ -1,6 +1,6 @@
 import { column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { HasMany, HasOne } from '@adonisjs/lucid/types/relations';
-import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import type { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import LawVotesPercentagePerPoliticalAffiliation from '#law/domain/model/law_votes_percentage_per_political_affiliation';
 import PoliticalParty from '#political-party/domain/models/political_party';

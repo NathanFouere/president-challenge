@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "@president-challenge/server",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -83,7 +83,7 @@
     "@adonisjs/session": "^7.5.0",
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
-    "@shared": "workspace:*",
+    "@president-challenge/shared": "workspace:*",
     "@vinejs/vine": "^2.1.0",
     "adminjs": "^7.8.15",
     "edge.js": "^6.2.0",

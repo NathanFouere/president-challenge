@@ -1,4 +1,4 @@
-import type { MinimalLawDto } from '@shared/legislature/minimal-law-dto.js';
+import type { MinimalLawDto } from '@president-challenge/shared/legislature/minimal-law-dto.js';
 
 export interface LawGroupDto {
   id: number;

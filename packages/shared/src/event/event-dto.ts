@@ -1,6 +1,6 @@
-import type { ChoiceDto } from '@shared/event/choice-dto.js';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
-import type { ElectionResultsDto } from '@shared/event/election-results-dto.js';
+import type { ChoiceDto } from '@president-challenge/shared/event/choice-dto.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/licensed-file/licensed-file-dto.js';
+import type { ElectionResultsDto } from '@president-challenge/shared/event/election-results-dto.js';
 
 export interface EventDto {
   id: number;

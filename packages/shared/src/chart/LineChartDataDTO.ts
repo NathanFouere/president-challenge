@@ -1,5 +1,5 @@
-import type { YLabels } from '@shared/chart/YLabels.js';
-import type { DatasetDTO } from '@shared/chart/DatasetDTO.js';
+import type { YLabels } from '@president-challenge/shared/chart/YLabels.js';
+import type { DatasetDTO } from '@president-challenge/shared/chart/DatasetDTO.js';
 
 export interface LineChartDataDTO {
   labels: string[];

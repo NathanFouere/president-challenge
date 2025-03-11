@@ -1,7 +1,7 @@
 import { column, belongsTo, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
-import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import type { SectorTypes } from '@president-challenge/shared/dist/sector/sector-types.js';
+import type { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 import LawGroup from '#law/domain/model/law_group';
 import type { LawType } from '#law/domain/model/law_type';
 import type { BudgetType } from '#budget/domain/model/budget_type';

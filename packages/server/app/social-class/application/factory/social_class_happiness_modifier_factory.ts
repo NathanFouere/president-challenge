@@ -1,4 +1,4 @@
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 import type SocialClass from '#social-class/domain/models/social_class';
 import {
   aSocialClassHappinessModifier,

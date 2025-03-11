@@ -1,6 +1,6 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 
 export default class extends BaseSchema {
   protected tableName = 'social_class_choice_happiness_effects';

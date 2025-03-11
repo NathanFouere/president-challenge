@@ -1,8 +1,8 @@
 import { column, hasMany, hasOne } from '@adonisjs/lucid/orm';
 import type { HasMany, HasOne } from '@adonisjs/lucid/types/relations';
-import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
-import type { SectorEconomicalSituation } from '@shared/dist/sector/sector-economical-situation.js';
-import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import type { SectorTypes } from '@president-challenge/shared/dist/sector/sector-types.js';
+import type { SectorEconomicalSituation } from '@president-challenge/shared/dist/sector/sector-economical-situation.js';
+import type { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import ProductDefinition from '#product/domain/models/product_definition';
 import Sector from '#sector/domain/model/sector';

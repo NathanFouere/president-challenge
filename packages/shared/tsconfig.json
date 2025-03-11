@@ -10,7 +10,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "paths": {
-      "@shared/*": ["src/*"]
+      "@president-challenge/shared/*": ["src/*"]
     },
     "skipLibCheck": true
   },

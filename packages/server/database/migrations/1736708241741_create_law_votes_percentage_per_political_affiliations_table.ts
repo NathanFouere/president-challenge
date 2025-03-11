@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
 
 export default class extends BaseSchema {
   protected tableName = 'law_votes_percentage_per_political_affiliations';

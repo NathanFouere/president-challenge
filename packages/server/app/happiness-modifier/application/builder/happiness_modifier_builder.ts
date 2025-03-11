@@ -1,4 +1,4 @@
-import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import type { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 
 export abstract class HappinessModifierBuilder {
   protected name: string | null = null;

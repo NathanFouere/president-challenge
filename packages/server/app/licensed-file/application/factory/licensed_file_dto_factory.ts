@@ -1,4 +1,4 @@
-import type { LicensedFileDTO } from '@shared/dist/licensed-file/licensed-file-dto.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/dist/licensed-file/licensed-file-dto.js';
 import type LicensedFile from '#licensed-file/domain/models/licensed_file';
 
 export class LicensedFileDTOFactory {

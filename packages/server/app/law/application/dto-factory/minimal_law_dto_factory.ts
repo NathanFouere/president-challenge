@@ -1,4 +1,4 @@
-import type { MinimalLawDto } from '@shared/dist/legislature/minimal-law-dto.js';
+import type { MinimalLawDto } from '@president-challenge/shared/dist/legislature/minimal-law-dto.js';
 import type Law from '#law/domain/model/law';
 
 export default class MinimalLawDtoFactory {

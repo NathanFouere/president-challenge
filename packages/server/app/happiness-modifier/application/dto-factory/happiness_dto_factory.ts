@@ -1,4 +1,4 @@
-import type HappinessModifierDto from '@shared/dist/common/happiness-modifier-dto.js';
+import type HappinessModifierDto from '@president-challenge/shared/dist/common/happiness-modifier-dto.js';
 import type HappinessModifier from '#happiness-modifier/domain/model/happiness_modifier';
 
 export default class HappinessDtoFactory {

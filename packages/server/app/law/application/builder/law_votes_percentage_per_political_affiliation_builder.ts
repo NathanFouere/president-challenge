@@ -1,4 +1,4 @@
-import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import type { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
 import LawVotesPercentagePerPoliticalAffiliation from '#law/domain/model/law_votes_percentage_per_political_affiliation';
 
 export default class LawVotesPerPoliticalAffiliationBuilder {

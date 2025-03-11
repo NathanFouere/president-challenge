@@ -1,5 +1,5 @@
-import type { SocialClassSubtypes } from '@shared/social-class/social-class-subtypes.js';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
+import type { SocialClassSubtypes } from '@president-challenge/shared/social-class/social-class-subtypes.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/licensed-file/licensed-file-dto.js';
 
 export interface MinimalSocialClassDto {
   id: number;

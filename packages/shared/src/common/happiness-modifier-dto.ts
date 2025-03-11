@@ -1,4 +1,4 @@
-import type { HappinessModifierType } from '@shared/common/happiness-modifier-type.js';
+import type { HappinessModifierType } from '@president-challenge/shared/common/happiness-modifier-type.js';
 
 export default interface HappinessModifierDto {
   id: number;

@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { MinimalProductDto } from '@shared/dist/product/minimal-product-dto.js';
+import type { MinimalProductDto } from '@president-challenge/shared/dist/product/minimal-product-dto.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
 import type Product from '#product/domain/models/product';

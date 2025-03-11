@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
 
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IEventRepository from '#event/domain/repository/i_event_repository';
 import type { SocialClassesPerType } from '#game/application/service/turn-service/load_turn_data_context_service';

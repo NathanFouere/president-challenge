@@ -1,8 +1,8 @@
 import { column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
 import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import type { SectorTypes } from '@shared/dist/sector/sector-types.js';
-import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import type { SocialClassSubtypes } from '@shared/dist/social-class/social-class-subtypes.js';
+import type { SectorTypes } from '@president-challenge/shared/dist/sector/sector-types.js';
+import type { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
+import type { SocialClassSubtypes } from '@president-challenge/shared/dist/social-class/social-class-subtypes.js';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import SocialClass from '#social-class/domain/models/social_class';
 import { TimeStampedModel } from '#common/model/timestamped_model';

@@ -1,4 +1,4 @@
-import type { MinimalEventDto } from '@shared/event/minimal-event-dto.js';
+import type { MinimalEventDto } from '@president-challenge/shared/event/minimal-event-dto.js';
 
 export interface EventListDto {
   commonEvents: MinimalEventDto[];

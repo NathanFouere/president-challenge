@@ -1,7 +1,7 @@
-import type { LawDto, VoteResultsData } from '@shared/dist/legislature/law-dto.js';
+import type { LawDto, VoteResultsData } from '@president-challenge/shared/dist/legislature/law-dto.js';
 import { inject } from '@adonisjs/core';
-import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
-import type { DatasetDTO } from '@shared/dist/chart/DatasetDTO.js';
+import type { ChartDataDTO } from '@president-challenge/shared/dist/chart/ChartDataDTO.js';
+import type { DatasetDTO } from '@president-challenge/shared/dist/chart/DatasetDTO.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import MinimalLawDtoFactory from '#law/application/dto-factory/minimal_law_dto_factory';
 import type LawVoteResults from '#law/domain/model/law_vote_results';
