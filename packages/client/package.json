@@ -19,7 +19,7 @@
     "@nuxt/types": "^2.18.1",
     "@nuxt/ui": "^2.19.2",
     "@nuxt/ui-pro": "^1.5.0",
-    "@president-challenge/shared/dist": "workspace:*",
+    "@president-challenge/shared": "workspace:*",
     "inversify": "^6.1.4",
     "nuxt": "^3.13.2",
     "reflect-metadata": "^0.2.2",
