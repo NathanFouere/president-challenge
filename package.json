@@ -14,9 +14,9 @@
     "test": "pnpm --filter @president-challenge/server run test",
     "coverage": "pnpm --filter @president-challenge/server run coverage",
     "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",
-    "lint:fix": "pnpm --filter @president-challenge/server run lint:fix && pnpm --filter @president-challenge/client run lint:fix",
-    "lint:check": "pnpm --filter @president-challenge/server run lint:check && pnpm --filter @president-challenge/client run lint:check",
-    "typecheck": "pnpm --filter @president-challenge/server run typecheck && pnpm --filter @president-challenge/client run typecheck"
+    "lint:fix": "pnpm --filter @president-challenge/shared run lint:fix && pnpm --filter @president-challenge/server run lint:fix && pnpm --filter @president-challenge/client run lint:fix",
+    "lint:check": "pnpm --filter @president-challenge/shared run lint:fix && pnpm --filter @president-challenge/server run lint:check && pnpm --filter @president-challenge/client run lint:check",
+    "typecheck": "pnpm --filter @president-challenge/shared run lint:fix && pnpm --filter @president-challenge/server run typecheck && pnpm --filter @president-challenge/client run typecheck"
   },
   "keywords": [],
   "author": "",

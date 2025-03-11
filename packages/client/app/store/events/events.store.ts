@@ -1,4 +1,4 @@
-import type { MinimalEventDto } from '@shared/event/minimal-event-dto';
+import type { MinimalEventDto } from '@president-challenge/shared/dist/event/minimal-event-dto';
 
 export const useEventsStore = defineStore('eventsStore', {
   state: () => ({

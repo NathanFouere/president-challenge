@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getDateFromTurnNumber } from '@shared/utils/date-converter';
-import type { FinancialFlowDatas } from '@shared/state/financial_flow_datas';
+import { getDateFromTurnNumber } from '@president-challenge/shared/dist/utils/date-converter';
+import type { FinancialFlowDatas } from '@president-challenge/shared/dist/state/financial_flow_datas';
 
 const props = defineProps<{
   financialFlowsChartDatas: FinancialFlowDatas[];

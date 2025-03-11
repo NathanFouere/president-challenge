@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalEventDto } from '@shared/event/minimal-event-dto';
+import type { MinimalEventDto } from '@president-challenge/shared/dist/event/minimal-event-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{

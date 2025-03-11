@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PoliticalPartyMinimalDto } from '@shared/political-party/political-party-minimal-dto';
+import type { PoliticalPartyMinimalDto } from '@president-challenge/shared/dist/political-party/political-party-minimal-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{

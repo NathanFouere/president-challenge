@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "build": "tsc --build --force",
+    "type-check": "tsc --noEmit",
     "delete-dist": "rm -rf dist",
     "delete-dist-build": "pnpm delete-dist && pnpm build"
   },

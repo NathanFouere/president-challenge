@@ -1,4 +1,4 @@
-import type { PoliticalPartyMinimalDto } from '@shared/political-party/political-party-minimal-dto';
+import type { PoliticalPartyMinimalDto } from '@president-challenge/shared/dist/political-party/political-party-minimal-dto';
 
 export const usePoliticalPartiesStore = defineStore('politicalPartiesStore', {
   state: () => ({

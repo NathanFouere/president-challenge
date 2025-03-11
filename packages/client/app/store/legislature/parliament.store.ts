@@ -1,4 +1,4 @@
-import type { ParliamentDto } from '@shared/legislature/parliament-dto';
+import type { ParliamentDto } from '@president-challenge/shared/dist/legislature/parliament-dto';
 
 export const useParliamentStore = defineStore('parliamentStore', {
   state: () => ({

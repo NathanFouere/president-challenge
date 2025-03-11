@@ -1,4 +1,4 @@
-import type { LawDto } from '@shared/legislature/law-dto';
+import type { LawDto } from '@president-challenge/shared/dist/legislature/law-dto';
 
 export const useLawStore = defineStore('lawStore', {
   state: () => ({

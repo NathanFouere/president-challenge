@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import type GameModule from '../../server/repository/modules/game.module';
 import { useGameStore } from '~/store/game/game.store';
 import { useCustomToast } from '~/composables/useCustomToast';

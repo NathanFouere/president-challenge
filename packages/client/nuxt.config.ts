@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import * as path from 'node:path';
 import 'reflect-metadata';
 
 export default defineNuxtConfig({
@@ -24,10 +23,6 @@ export default defineNuxtConfig({
     public: {
       baseURLProxyServer: process.env.NUXT_PUBLIC_BASE_URL_PROXY_SERVER,
     },
-  },
-
-  alias: {
-    '@shared': path.resolve(__dirname, '../shared/src'),
   },
   build: {
     transpile: ['@nuxt/ui'],

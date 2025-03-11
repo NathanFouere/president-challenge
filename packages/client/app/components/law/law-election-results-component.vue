@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { VoteResultsData } from '@shared/legislature/law-dto';
+import type { VoteResultsData } from '@president-challenge/shared/dist/legislature/law-dto';
 
 const props = defineProps<{
   voteResultsDatas: VoteResultsData[];

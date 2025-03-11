@@ -1,5 +1,5 @@
-import type { StateDto } from '@shared/state/state-dto';
-import type { BudgetDto } from '@shared/state/budget-dto';
+import type { StateDto } from '@president-challenge/shared/dist/state/state-dto';
+import type { BudgetDto } from '@president-challenge/shared/dist/state/budget-dto';
 import FetchFactory from '../factory';
 import Routes from '~~/server/repository/routes.client';
 

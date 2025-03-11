@@ -1,4 +1,4 @@
-import type { User } from '@shared/user/user';
+import type { User } from '@president-challenge/shared/dist/user/user';
 
 export const useUserStore = defineStore('userStore', {
   state: () => ({

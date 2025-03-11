@@ -1,4 +1,4 @@
-import type { MinimalSocialClassDto } from '@shared/social-class/minimal-social-class-dto';
+import type { MinimalSocialClassDto } from '@president-challenge/shared/dist/social-class/minimal-social-class-dto';
 
 export const useSocialClassesStore = defineStore('socialClassesStore', {
   state: () => ({

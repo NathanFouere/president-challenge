@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type HappinessModifierDto from '@shared/common/happiness-modifier-dto';
-import { HappinessModifierType } from '@shared/common/happiness-modifier-type';
+import type HappinessModifierDto from '@president-challenge/shared/dist/common/happiness-modifier-dto';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type';
 
 defineProps<{
   happinessModifiers: HappinessModifierDto[];

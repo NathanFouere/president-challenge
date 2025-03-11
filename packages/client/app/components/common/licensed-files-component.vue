@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto';
+import type { LicensedFileDTO } from '@president-challenge/shared/dist/licensed-file/licensed-file-dto';
 
 defineProps<{
   licensedFiles: LicensedFileDTO[];

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type TaxDto from '@shared/tax/tax-dto';
+import type TaxDto from '@president-challenge/shared/dist/tax/tax-dto';
 
 defineProps<{
   tax: TaxDto;

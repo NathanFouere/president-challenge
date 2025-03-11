@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Doughnut } from 'vue-chartjs';
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO';
+import type { ChartDataDTO } from '@president-challenge/shared/dist/chart/ChartDataDTO';
 
 defineProps<{
   data: ChartDataDTO;
