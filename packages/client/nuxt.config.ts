@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import 'reflect-metadata';
 import * as process from 'node:process';
+import { resolve } from 'node:path';
+import { config } from 'dotenv';
+
+config({ path: resolve(process.cwd(), '.env.local') });
 
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
