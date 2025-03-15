@@ -37,6 +37,10 @@ export default class extends BaseSchema {
   }
 
   async down() {
+    this.schema.alterTable('political_party_seats_parliaments', (table) => {
+      table.dropForeign(['definition_id']);
+    });
+
     this.schema.dropTable(this.tableName);
   }
 }
