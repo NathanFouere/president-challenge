@@ -1,16 +1,14 @@
-# Allende Challenge
+# President Challenge
 
-MinimalGameDto project developed on my free time to learn more about NodeJs, DDD, Docker, Deployment.
+Game project which aims to create configurable and dynamic historical simulations of political and economic events during the 20th century.
 
 ## Description
 
-This project is a historical simulation game set in Chile in the early 1970s. The aim of the game is to inform and educate players about the challenges and events of this period while providing an engaging, gamified experience.
-
-Players assume the role of the Chilean government and make critical decisions that impact the economy, social classes, and political stability. Each decision leads to specific events and outcomes, ultimately shaping one of several possible endings for the game. The project blends history, politics, and strategy to create an immersive and thought-provoking experience.
+**President Challenge** is a text-based simulation game that puts players in the shoes of a political leader during the 20th century. Players navigate through a series of events, making decisions that shape the course of history. The game is designed to be highly configurable, allowing creator of games to create unique scenarios.
 
 ## Architecture
 
-The project is designed following **Domain-Driven Design (DDD)** principles, emphasizing modularity and clear domain logic. The architecture allows scalability and flexibility, making it easier to implement complex gameplay mechanics and interactions.
+The project is designed following **Domain-Driven Design (DDD)** principles.
 
 ## Features
 
@@ -21,10 +19,8 @@ The project is designed following **Domain-Driven Design (DDD)** principles, emp
 
 ## Technologies
 
-### Backend
+### Frameworks
 - **AdonisJS**: A powerful Node.js framework used to handle authentication, routing, and API development.
-
-### Frontend
 - **Nuxt**: A robust Vue.js-based framework for building a dynamic, interactive user interface.
 
 ### Database
@@ -36,7 +32,7 @@ The project is designed following **Domain-Driven Design (DDD)** principles, emp
 - **GitHub Actions**: Automates the CI/CD pipeline for building and deploying the application.
 
 ## Learning Objectives
-This project serves as a personal learning journey, allowing me to deepen my understanding of:
+I am unsure of finalizing this project, but I have set the following learning objectives:
 - **Node.js**: Mastering backend development with modern frameworks.
 - **Domain-Driven Design**: Structuring applications with a focus on the domain logic.
 - **Docker**: Creating portable and reproducible development environments.
