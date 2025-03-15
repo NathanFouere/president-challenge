@@ -1,7 +1,7 @@
-import type { SenateDto } from '@shared/legislature/senate-dto';
-import type { LawCategoryDto } from '@shared/legislature/law-category-dto';
-import type { ParliamentDto } from '@shared/legislature/parliament-dto';
-import type { LawDto } from '@shared/legislature/law-dto';
+import type { SenateDto } from '@president-challenge/shared/dist/legislature/senate-dto';
+import type { LawCategoryDto } from '@president-challenge/shared/dist/legislature/law-category-dto';
+import type { ParliamentDto } from '@president-challenge/shared/dist/legislature/parliament-dto';
+import type { LawDto } from '@president-challenge/shared/dist/legislature/law-dto';
 import FetchFactory from '~~/server/repository/factory';
 import Routes from '~~/server/repository/routes.client';
 

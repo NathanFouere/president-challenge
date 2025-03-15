@@ -1,4 +1,4 @@
-import type { User } from '@shared/dist/user/user';
+import type { User } from '@president-challenge/shared/dist/user/user';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 

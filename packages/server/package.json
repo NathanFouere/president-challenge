@@ -1,11 +1,11 @@
 {
-  "name": "server",
+  "name": "@president-challenge/server",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "node bin/server.js",
+    "start": "node build/bin/server.js",
     "build": "node ace build",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
@@ -13,8 +13,14 @@
     "lint:fix": "eslint .",
     "lint:check": "eslint . --fix --quiet",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "startup-start": "node build/ace migration:run && node build/bin/server.js"
   },
+  "files": [
+    "build",
+    ".env",
+    "package.json"
+  ],
   "imports": {
     "#common/*": "./app/common/*.js",
     "#budget/*": "./app/budget/*.js",
@@ -68,7 +74,6 @@
     "c8": "^10.1.3",
     "eslint": "^9.12.0",
     "hot-hook": "^0.3.1",
-    "pino-pretty": "^11.2.2",
     "prettier": "^3.3.3",
     "ts-node-maintained": "^10.9.4",
     "typescript": "~5.6"
@@ -83,13 +88,14 @@
     "@adonisjs/session": "^7.5.0",
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
-    "@shared": "workspace:*",
+    "@president-challenge/shared": "workspace:*",
     "@vinejs/vine": "^2.1.0",
     "adminjs": "^7.8.15",
     "edge.js": "^6.2.0",
     "luxon": "^3.5.0",
     "pg": "^8.13.1",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "pino-pretty": "^11.2.2"
   },
   "hotHook": {
     "boundaries": [

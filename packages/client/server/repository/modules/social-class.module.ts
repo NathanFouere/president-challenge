@@ -1,5 +1,5 @@
-import type { MinimalSocialClassDto } from '@shared/social-class/minimal-social-class-dto';
-import type { SocialClassDto } from '@shared/social-class/social-class-dto';
+import type { MinimalSocialClassDto } from '@president-challenge/shared/dist/social-class/minimal-social-class-dto';
+import type { SocialClassDto } from '@president-challenge/shared/dist/social-class/social-class-dto';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ChoiceDto } from '@shared/event/choice-dto';
+import type { ChoiceDto } from '@president-challenge/shared/dist/event/choice-dto';
 import container from '../../../../config/container';
 import LicensedFilesComponent from '../../common/licensed-files-component.vue';
 import type { EventPresenter } from '~/presenters/events/event.presenter';

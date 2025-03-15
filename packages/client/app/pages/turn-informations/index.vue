@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getDateFromTurnNumber } from '@shared/utils/date-converter';
+import { getDateFromTurnNumber } from '@president-challenge/shared/dist/utils/date-converter';
 import container from '../../../config/container';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import type { TurnInformationsPresenter } from '~/presenters/turn-informations/turn-informations.presenter';

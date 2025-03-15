@@ -1,6 +1,6 @@
 import { beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
 import Game from '#game/domain/models/game';
 import Sector from '#sector/domain/model/sector';
 import SocialClassEconomicalSituationPerTurn

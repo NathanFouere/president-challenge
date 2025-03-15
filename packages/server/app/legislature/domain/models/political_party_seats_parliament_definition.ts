@@ -1,5 +1,5 @@
 import { column, hasMany } from '@adonisjs/lucid/orm';
-import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import type { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
 import type { HasMany } from '@adonisjs/lucid/types/relations';
 import PoliticalPartySeatsParliament from '#legislature/domain/models/political_party_seats_parliament';
 import { TimeStampedModel } from '#common/model/timestamped_model';

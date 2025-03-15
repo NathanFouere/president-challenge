@@ -21,7 +21,6 @@ export default class extends BaseSchema {
   async down() {
     this.schema.alterTable('parliaments', (table) => {
       table.dropForeign(['definition_id']);
-      table.dropColumn('definition');
     });
 
     this.schema.dropTable(this.tableName);

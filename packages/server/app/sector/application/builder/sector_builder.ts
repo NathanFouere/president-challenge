@@ -1,4 +1,4 @@
-import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import type { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 import Sector from '#sector/domain/model/sector';
 
 export class SectorBuilder {

@@ -1,7 +1,7 @@
 import { beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
-import type { SectorEconomicalSituation } from '@shared/dist/sector/sector-economical-situation.js';
-import type { SectorOwnershipType } from '@shared/dist/sector/sector-ownership-type.js';
+import type { SectorEconomicalSituation } from '@president-challenge/shared/dist/sector/sector-economical-situation.js';
+import type { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 import Product from '#product/domain/models/product';
 import SocialClass from '#social-class/domain/models/social_class';
 import Game from '#game/domain/models/game';

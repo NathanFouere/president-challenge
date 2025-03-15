@@ -1,4 +1,4 @@
-import type { GameStatus } from '@shared/game/game_status.js';
+import type { GameStatus } from '@president-challenge/shared/game/game_status.js';
 
 export interface MinimalGameDto {
   id: number;

@@ -1,6 +1,6 @@
-import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
-import type { TurnInformationsDto } from '@shared/turn-informations/turn-informations-dto';
-import type { GameDto } from '@shared/game/game-dto';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
+import type { TurnInformationsDto } from '@president-challenge/shared/dist/turn-informations/turn-informations-dto';
+import type { GameDto } from '@president-challenge/shared/dist/game/game-dto';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 

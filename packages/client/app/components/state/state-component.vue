@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalStateDto } from '@shared/state/minimal-state-dto';
+import type { MinimalStateDto } from '@president-challenge/shared/dist/state/minimal-state-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { LawCategoryDto } from '@shared/legislature/law-category-dto';
-import type { LawGroupDto } from '@shared/legislature/law-group-dto';
+import type { LawCategoryDto } from '@president-challenge/shared/dist/legislature/law-category-dto';
+import type { LawGroupDto } from '@president-challenge/shared/dist/legislature/law-group-dto';
 
 const props = defineProps<{
   lawCategory: LawCategoryDto;

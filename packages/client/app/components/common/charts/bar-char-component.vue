@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO';
+import type { ChartDataDTO } from '@president-challenge/shared/dist/chart/ChartDataDTO';
 import { Bar } from 'vue-chartjs';
 
 const props = defineProps<{

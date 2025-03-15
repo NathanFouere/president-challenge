@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { EventListDto } from '@shared/dist/event/event-list-dto.js';
+import type { EventListDto } from '@president-challenge/shared/dist/event/event-list-dto.js';
 import { EventType } from '#event/domain/models/event_type';
 import type Event from '#event/domain/models/event';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

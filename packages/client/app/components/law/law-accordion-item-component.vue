@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalLawDto } from '@shared/legislature/minimal-law-dto';
+import type { MinimalLawDto } from '@president-challenge/shared/dist/legislature/minimal-law-dto';
 
 defineProps<{
   rows: MinimalLawDto[];

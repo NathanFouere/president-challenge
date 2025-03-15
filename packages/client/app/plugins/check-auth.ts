@@ -1,4 +1,4 @@
-import type { User } from '@shared/user/user';
+import type { User } from '@president-challenge/shared/dist/user/user';
 import { useUserStore } from '~/store/user/user.store';
 
 export default defineNuxtPlugin(() => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalGameDto } from '@shared/game/minimal-game-dto';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import container from '../../../config/container';
 import type { GamePresenter } from '~/presenters/game.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';

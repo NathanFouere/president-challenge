@@ -1,5 +1,5 @@
-import type { ProductDto } from '@shared/product/product-dto';
-import type { MinimalProductDto } from '@shared/product/minimal-product-dto';
+import type { ProductDto } from '@president-challenge/shared/dist/product/product-dto';
+import type { MinimalProductDto } from '@president-challenge/shared/dist/product/minimal-product-dto';
 import FetchFactory from '../factory';
 import Routes from '~~/server/repository/routes.client';
 

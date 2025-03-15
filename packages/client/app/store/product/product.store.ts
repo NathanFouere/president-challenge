@@ -1,4 +1,4 @@
-import type { ProductDto } from '@shared/product/product-dto';
+import type { ProductDto } from '@president-challenge/shared/dist/product/product-dto';
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({

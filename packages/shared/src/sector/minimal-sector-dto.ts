@@ -1,5 +1,5 @@
-import type { SectorTypes } from '@shared/sector/sector-types.js';
-import type { LicensedFileDTO } from '@shared/licensed-file/licensed-file-dto.js';
+import type { SectorTypes } from '@president-challenge/shared/sector/sector-types.js';
+import type { LicensedFileDTO } from '@president-challenge/shared/licensed-file/licensed-file-dto.js';
 
 export interface MinimalSectorDto {
   id: number;

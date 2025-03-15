@@ -1,6 +1,6 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 
 export default class extends BaseSchema {
   protected tableName = 'political_affiliation_choice_happiness_effects';

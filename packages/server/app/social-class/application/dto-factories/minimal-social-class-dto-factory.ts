@@ -1,4 +1,4 @@
-import type { MinimalSocialClassDto } from '@shared/dist/social-class/minimal-social-class-dto.js';
+import type { MinimalSocialClassDto } from '@president-challenge/shared/dist/social-class/minimal-social-class-dto.js';
 import { inject } from '@adonisjs/core';
 import type SocialClass from '#social-class/domain/models/social_class';
 

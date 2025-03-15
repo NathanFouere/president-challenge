@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { ProductDto } from '@shared/dist/product/product-dto';
+import type { MinimalProductDto } from '@president-challenge/shared/dist/product/minimal-product-dto';
 import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{
-  product: ProductDto;
+  product: MinimalProductDto;
 }>();
 </script>
 

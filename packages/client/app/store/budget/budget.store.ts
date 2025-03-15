@@ -1,4 +1,4 @@
-import type { BudgetDto } from '@shared/state/budget-dto';
+import type { BudgetDto } from '@president-challenge/shared/dist/state/budget-dto';
 
 export const useBudgetStore = defineStore('budgetStore', {
   state: () => ({

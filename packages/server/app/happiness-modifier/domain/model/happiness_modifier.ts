@@ -1,5 +1,5 @@
 import { column } from '@adonisjs/lucid/orm';
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 import { TimeStampedModel } from '#common/model/timestamped_model';
 
 export default abstract class HappinessModifier extends TimeStampedModel {

@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import * as path from 'node:path';
 import 'reflect-metadata';
+import * as process from 'node:process';
+import { resolve } from 'node:path';
+import { config } from 'dotenv';
+
+config({ path: resolve(process.cwd(), '.env.local') });
 
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
@@ -24,10 +28,6 @@ export default defineNuxtConfig({
     public: {
       baseURLProxyServer: process.env.NUXT_PUBLIC_BASE_URL_PROXY_SERVER,
     },
-  },
-
-  alias: {
-    '@shared': path.resolve(__dirname, '../shared/src'),
   },
   build: {
     transpile: ['@nuxt/ui'],
@@ -56,5 +56,8 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  uiPro: {
+    license: process.env.NUXT_UI_PRO_LICENSE,
   },
 });

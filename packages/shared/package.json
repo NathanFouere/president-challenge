@@ -1,18 +1,11 @@
 {
-  "name": "@shared",
+  "name": "@president-challenge/shared",
   "version": "1.0.0",
   "type": "module",
   "description": "",
   "scripts": {
-    "build": "tsc --build --force",
-    "delete-dist": "rm -rf dist",
-    "delete-dist-build": "pnpm delete-dist && pnpm build"
-  },
-  "exports": {
-    "./*": {
-      "import": "./dist/*.js",
-      "require": "./dist/*.js"
-    }
+    "build": "tsc --build",
+    "type-check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

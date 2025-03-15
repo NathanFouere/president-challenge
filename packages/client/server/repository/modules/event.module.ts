@@ -1,4 +1,4 @@
-import type { EventDto } from '@shared/event/event-dto';
+import type { EventDto } from '@president-challenge/shared/dist/event/event-dto';
 import FetchFactory from '../factory';
 import Routes from '~~/server/repository/routes.client';
 

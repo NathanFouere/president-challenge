@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { Line } from 'vue-chartjs';
-import type { LineChartDataDTO } from '@shared/chart/LineChartDataDTO';
+import type { LineChartDataDTO } from '@president-challenge/shared/dist/chart/LineChartDataDTO';
 
 const props = defineProps<{
   data: LineChartDataDTO;

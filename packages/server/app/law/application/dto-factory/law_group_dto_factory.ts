@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { LawGroupDto } from '@shared/dist/legislature/law-group-dto.js';
+import type { LawGroupDto } from '@president-challenge/shared/dist/legislature/law-group-dto.js';
 
 import type LawGroup from '#law/domain/model/law_group';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

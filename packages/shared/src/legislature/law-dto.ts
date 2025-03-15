@@ -1,5 +1,5 @@
-import type { MinimalLawDto } from '@shared/legislature/minimal-law-dto.js';
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO.js';
+import type { MinimalLawDto } from '@president-challenge/shared/legislature/minimal-law-dto.js';
+import type { ChartDataDTO } from '@president-challenge/shared/chart/ChartDataDTO.js';
 
 export interface LawDto extends MinimalLawDto {
   id: number;

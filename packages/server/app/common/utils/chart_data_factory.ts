@@ -1,7 +1,7 @@
-import { getDateFromTurnNumber } from '@shared/dist/utils/date-converter.js';
+import { getDateFromTurnNumber } from '@president-challenge/shared/dist/utils/date-converter.js';
 import { inject } from '@adonisjs/core';
-import type { YLabels } from '@shared/dist/chart/YLabels.js';
-import type { LineChartDataDTO } from '@shared/dist/chart/LineChartDataDTO.js';
+import type { YLabels } from '@president-challenge/shared/dist/chart/YLabels.js';
+import type { LineChartDataDTO } from '@president-challenge/shared/dist/chart/LineChartDataDTO.js';
 import type { SaveAmountForTurn } from '#common/model/save_amount_for_turn';
 import type { Range } from '#common/utils/range';
 

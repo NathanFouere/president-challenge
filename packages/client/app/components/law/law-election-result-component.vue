@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { VoteResultsData } from '@shared/legislature/law-dto';
-import { getDateFromTurnNumber } from '@shared/utils/date-converter';
+import type { VoteResultsData } from '@president-challenge/shared/dist/legislature/law-dto';
+import { getDateFromTurnNumber } from '@president-challenge/shared/dist/utils/date-converter';
 import BarCharComponent from '~/components/common/charts/bar-char-component.vue';
 
 defineProps<{

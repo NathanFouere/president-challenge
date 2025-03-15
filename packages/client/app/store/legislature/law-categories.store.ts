@@ -1,4 +1,4 @@
-import type { LawCategoryDto } from '@shared/legislature/law-category-dto';
+import type { LawCategoryDto } from '@president-challenge/shared/dist/legislature/law-category-dto';
 
 export const useLawCategoriesStore = defineStore('lawCategoriesStore', {
   state: () => ({

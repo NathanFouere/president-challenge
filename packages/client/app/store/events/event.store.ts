@@ -1,4 +1,4 @@
-import type { EventDto } from '@shared/event/event-dto';
+import type { EventDto } from '@president-challenge/shared/dist/event/event-dto';
 
 export const useEventStore = defineStore('eventStore', {
   state: () => ({

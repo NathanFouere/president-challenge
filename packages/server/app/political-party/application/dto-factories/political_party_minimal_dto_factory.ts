@@ -1,4 +1,4 @@
-import type { PoliticalPartyMinimalDto } from '@shared/dist/political-party/political-party-minimal-dto.js';
+import type { PoliticalPartyMinimalDto } from '@president-challenge/shared/dist/political-party/political-party-minimal-dto.js';
 import type PoliticalParty from '#political-party/domain/models/political_party';
 
 export class PoliticalPartyMinimalDTOFactory {

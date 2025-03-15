@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MinimalBudgetDto } from '@shared/state/minimal-budget-dto';
+import type { MinimalBudgetDto } from '@president-challenge/shared/dist/state/minimal-budget-dto';
 
 defineProps<{
   budget: MinimalBudgetDto;

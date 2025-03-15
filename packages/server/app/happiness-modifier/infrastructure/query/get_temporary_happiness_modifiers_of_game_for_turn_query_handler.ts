@@ -1,4 +1,4 @@
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 import type HappinessModifier from '#happiness-modifier/domain/model/happiness_modifier';
 import type GetTemporaryHappinessModifiersOfGameForTurnQuery
   from '#happiness-modifier/application/query/get_temporary_happiness_modifiers_of_game_for_turn_query';

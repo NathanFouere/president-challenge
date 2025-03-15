@@ -1,4 +1,4 @@
-import type { LawGroupDto } from '@shared/legislature/law-group-dto.js';
+import type { LawGroupDto } from '@president-challenge/shared/legislature/law-group-dto.js';
 
 export interface LawCategoryDto {
   id: number;

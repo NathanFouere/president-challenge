@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core';
-import { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
-import { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
+import { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
+import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
 import type PoliticalParty from '#political-party/domain/models/political_party';
 import type { SocialClassesPerType } from '#game/application/service/turn-service/load_turn_data_context_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports

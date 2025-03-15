@@ -1,4 +1,4 @@
-import type { ChoiceStatus } from '@shared/event/choice-status.js';
+import type { ChoiceStatus } from '@president-challenge/shared/event/choice-status.js';
 
 export interface ChoiceDto {
   id: number;

@@ -1,6 +1,6 @@
 import { column } from '@adonisjs/lucid/orm';
-import type { SocialClassTypes } from '@shared/dist/social-class/social-class-types.js';
-import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import type { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
+import type { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 import { TimeStampedModel } from '#common/model/timestamped_model';
 
 export default abstract class SocialClassTypeHappinessEffect extends TimeStampedModel {

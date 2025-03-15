@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core';
-import type { LawCategoryDto } from '@shared/dist/legislature/law-category-dto.js';
+import type { LawCategoryDto } from '@president-challenge/shared/dist/legislature/law-category-dto.js';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import LawGroupDtoFactory from '#law/application/dto-factory/law_group_dto_factory';
 import type LawCategory from '#law/domain/model/law_category';

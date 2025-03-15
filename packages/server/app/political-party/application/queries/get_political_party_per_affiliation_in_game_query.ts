@@ -1,4 +1,4 @@
-import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
+import type { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
 
 export default class GetPoliticalPartyPerAffiliationInGameQuery {
   constructor(

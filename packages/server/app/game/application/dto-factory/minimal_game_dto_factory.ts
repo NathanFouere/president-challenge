@@ -1,4 +1,4 @@
-import type { MinimalGameDto } from '@shared/dist/game/minimal-game-dto.js';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto.js';
 import type Game from '#game/domain/models/game';
 
 export default class MinimalGameDtoFactory {

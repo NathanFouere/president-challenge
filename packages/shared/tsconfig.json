@@ -3,14 +3,14 @@
     "baseUrl": ".",
     "composite": true,
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "declarationDir": "dist",
     "rootDir": "src",
     "noEmit": false,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "paths": {
-      "@shared/*": ["src/*"]
+      "@president-challenge/shared/*": ["src/*"]
     },
     "skipLibCheck": true
   },

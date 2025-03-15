@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema';
-import { GameStatus } from '@shared/dist/game/game_status.js';
+import { GameStatus } from '@president-challenge/shared/dist/game/game_status.js';
 
 export default class extends BaseSchema {
   async up() {

@@ -1,5 +1,5 @@
-import type { ElectionResultsDto } from '@shared/dist/event/election-results-dto.js';
-import type { ChartDataDTO } from '@shared/dist/chart/ChartDataDTO.js';
+import type { ElectionResultsDto } from '@president-challenge/shared/dist/event/election-results-dto.js';
+import type { ChartDataDTO } from '@president-challenge/shared/dist/chart/ChartDataDTO.js';
 import type Election from '#election/domain/model/election';
 
 export default class ElectionResultsDtoFactory {

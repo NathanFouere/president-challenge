@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { Pie } from 'vue-chartjs';
-import type { ChartDataDTO } from '@shared/chart/ChartDataDTO';
+import type { ChartDataDTO } from '@president-challenge/shared/dist/chart/ChartDataDTO';
 
 const props = defineProps<{
   data: ChartDataDTO;

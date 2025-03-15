@@ -1,5 +1,5 @@
-import type { PoliticalPartyMinimalDto } from '@shared/political-party/political-party-minimal-dto';
-import type { PoliticalPartyDTO } from '@shared/political-party/political-party-dto';
+import type { PoliticalPartyMinimalDto } from '@president-challenge/shared/dist/political-party/political-party-minimal-dto';
+import type { PoliticalPartyDTO } from '@president-challenge/shared/dist/political-party/political-party-dto';
 import FetchFactory from '../factory';
 import Routes from '~~/server/repository/routes.client';
 

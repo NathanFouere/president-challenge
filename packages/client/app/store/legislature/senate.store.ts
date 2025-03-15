@@ -1,4 +1,4 @@
-import type { SenateDto } from '../../../../shared/src/legislature/senate-dto';
+import type { SenateDto } from '@president-challenge/shared/dist/legislature/senate-dto';
 
 export const useSenateStore = defineStore('senateStore', {
   state: () => ({

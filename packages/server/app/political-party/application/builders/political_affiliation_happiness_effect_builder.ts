@@ -1,5 +1,5 @@
-import type { PoliticalAffiliation } from '@shared/dist/political-party/political-affiliation.js';
-import type { HappinessModifierType } from '@shared/dist/common/happiness-modifier-type.js';
+import type { PoliticalAffiliation } from '@president-challenge/shared/dist/political-party/political-affiliation.js';
+import type { HappinessModifierType } from '@president-challenge/shared/dist/common/happiness-modifier-type.js';
 
 export default abstract class PoliticalAffiliationHappinessEffectBuilder {
   protected identifier: string | null = null;
