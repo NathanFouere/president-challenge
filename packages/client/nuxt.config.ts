@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import 'reflect-metadata';
+import * as process from 'node:process';
 
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
@@ -51,5 +52,8 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  uiPro: {
+    license: process.env.NUXT_UI_PRO_LICENSE,
   },
 });

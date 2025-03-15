@@ -141,6 +141,9 @@ importers:
       pg:
         specifier: ^8.13.1
         version: 8.13.1
+      pino-pretty:
+        specifier: ^11.2.2
+        version: 11.3.0
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -187,9 +190,6 @@ importers:
       hot-hook:
         specifier: ^0.3.1
         version: 0.3.1
-      pino-pretty:
-        specifier: ^11.2.2
-        version: 11.3.0
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1542,6 +1542,7 @@ packages:
   '@faker-js/faker@9.2.0':
     resolution: {integrity: sha512-ulqQu4KMr1/sTFIYvqSdegHT8NIkt66tFAkugGnHA+1WAfEn6hMzNR+svjXGFRVLnapxvej67Z/LwchFrnLBUg==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
+    deprecated: Please update to a newer version
 
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
@@ -5496,12 +5497,14 @@ packages:
 
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.isarguments@3.1.0:
     resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.isnil@4.0.0:
     resolution: {integrity: sha512-up2Mzq3545mwVnMhTDMdfoG1OurpA/s5t88JmQX809eH3C8491iu2sfKhTfhQtKY78oPNhiaHJUpT/dUDAAtng==}
@@ -6498,6 +6501,7 @@ packages:
 
   prettier-edgejs@0.2.33:
     resolution: {integrity: sha512-c2iBbK02NhMIcLY1jcO56FMUTkcNZ2ImFLGC7zl7YJUDYTaGokSCegAkD94yHwOtJEC7zDmcqIp0F9v8S/iVeA==}
+    deprecated: This package has been renamed to prettier-plugin-edgejs. Please install that instead.
 
   prettier-linter-helpers@1.0.0:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}

@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "composite": true,
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "declarationDir": "dist",
     "rootDir": "src",
     "noEmit": false,

@@ -102,6 +102,9 @@ export default defineConfig({
     ],
     forceExit: false,
   },
+  metaFiles: [
+    '.env',
+  ],
 
   assetsBundler: false,
 });

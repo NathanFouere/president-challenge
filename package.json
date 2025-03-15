@@ -5,15 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev:backend": "pnpm --filter @president-challenge/server run dev",
-    "dev:frontend": "pnpm --filter @president-challenge/client run dev",
-    "build:shared": "pnpm --filter @president-challenge/shared run delete-dist-build",
+    "dev:client": "pnpm --filter @president-challenge/client run dev",
+    "build:shared": "pnpm --filter @president-challenge/shared run build",
     "build:backend": "pnpm --filter @president-challenge/server run build",
-    "build:frontend": "pnpm --filter @president-challenge/client run build",
-    "build:frontend:local": "pnpm --filter @president-challenge/client run build:local",
-    "build:local": "pnpm build:shared && pnpm build:backend && pnpm build:frontend:local",
+    "build:client": "pnpm --filter @president-challenge/client run build",
     "test": "pnpm --filter @president-challenge/server run test",
     "coverage": "pnpm --filter @president-challenge/server run coverage",
-    "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend",
+    "build": "pnpm build:shared && pnpm build:backend && pnpm build:client",
     "lint:fix": "pnpm --filter @president-challenge/shared run lint:fix && pnpm --filter @president-challenge/server run lint:fix && pnpm --filter @president-challenge/client run lint:fix",
     "lint:check": "pnpm --filter @president-challenge/shared run lint:fix && pnpm --filter @president-challenge/server run lint:check && pnpm --filter @president-challenge/client run lint:check",
     "typecheck": "pnpm --filter @president-challenge/shared run lint:fix && pnpm --filter @president-challenge/server run typecheck && pnpm --filter @president-challenge/client run typecheck"
@@ -33,5 +31,9 @@
     "globals": "^15.12.0",
     "typescript": "~5.6.3",
     "typescript-eslint": "^8.15.0"
-  }
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
 }
