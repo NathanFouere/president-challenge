@@ -1,4 +1,18 @@
-// TODO => migrer tout les appels à des constantes ici
 export enum EventDefinitionsConstants {
-  END_GAME = 'end_game',
+  END_GAME = 'end-game',
+  DEFEAT_LOSE_PRESIDENTIAL_ELECTION = 'defeat-lose-presidential-election',
+  DEFEAT_POPULAR_UPRISING = 'defeat-popular-uprising',
+  DEFEAT_REVOLUTION = 'defeat-revolution',
+  UNHAPPINESS_FAR_LEFT = 'unhappiness-far-left',
+  UNHAPPINESS_LEFT = 'unhappiness-left',
+  UNHAPPINESS_CENTER_LEFT = 'unhappiness-center-left',
+  UNHAPPINESS_CENTER_RIGHT = 'unhappiness-center-right',
+  UNHAPPINESS_RIGHT = 'unhappiness-right',
+  UNHAPPINESS_FAR_RIGHT = 'unhappiness-far-right',
+  PRESIDENTIAL_ELECTION = 'presidential-election',
+  PARLIAMENTARY_ELECTION = 'parliamentary-election',
+  SENATORIAL_ELECTION = 'senatorial-election',
+  UNHAPPINESS_CAPITALIST = 'unhappiness-capitalist',
+  UNHAPPINESS_PROLETARIAT = 'unhappiness-proletariat',
+  UNHAPPINESS_PETIT_BOURGEOIS = 'unhappiness-petit-bourgeois',
 }
