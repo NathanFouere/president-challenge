@@ -104,7 +104,7 @@ export default defineConfig({
     forceExit: false,
   },
   metaFiles: [
-    '.env',
+    '.env.test',
   ],
 
   assetsBundler: false,
