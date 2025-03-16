@@ -11,17 +11,17 @@ export class MinimalSectorDtoFactory {
   ) {
   }
 
-  public createFromSector(sector: Sector): MinimalSectorDto {
+  public async createFromSector(sector: Sector): Promise<MinimalSectorDto> {
     return {
       id: sector.id,
       name: sector.definition.name,
       type: sector.definition.type,
       description: sector.definition.description,
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.definition.licensedFile),
+      licensedFile: await this.licensedFileDTOFactory.createFromLicensedFile(sector.definition.licensedFile),
     };
   }
 
-  public createFromSectors(sectors: Sector[]): MinimalSectorDto[] {
-    return sectors.map(sector => this.createFromSector(sector));
+  public async createFromSectors(sectors: Sector[]): Promise<MinimalSectorDto[]> {
+    return Promise.all(sectors.map(sector => this.createFromSector(sector)));
   }
 }

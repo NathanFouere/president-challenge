@@ -24,7 +24,7 @@ export default class LicensedFile extends TimeStampedModel {
   declare date: string | null;
 
   @column()
-  declare path: string;
+  declare key: string;
 
   @column()
   declare isVideo: boolean;

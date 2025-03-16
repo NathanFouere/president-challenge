@@ -14,7 +14,7 @@ export class MinimalEventDtoFactory {
   ) {
   }
 
-  public createFromEvent(event: Event): MinimalEventDto {
+  public async createFromEvent(event: Event): Promise<MinimalEventDto> {
     return {
       id: event.id,
       identifier: event.definition.identifier,
@@ -23,11 +23,12 @@ export class MinimalEventDtoFactory {
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
       needsAction: event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available),
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(event.definition.licensedFiles[0]),
+      licensedFile: await this.licensedFileDTOFactory.createFromLicensedFile(event.definition.licensedFiles[0]),
     };
   }
 
-  public createFromEvents(events: Event[]): MinimalEventDto[] {
-    return events.map(event => this.createFromEvent(event));
+  public async createFromEvents(events: Event[]): Promise<MinimalEventDto[]> {
+    const minimalEventsDtoPromises = events.map((event: Event) => this.createFromEvent(event));
+    return Promise.all(minimalEventsDtoPromises);
   }
 }

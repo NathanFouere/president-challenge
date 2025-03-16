@@ -5,6 +5,6 @@ export interface LicensedFileDTO {
   source: string | null;
   license: string | null;
   date: string | null;
-  path: string;
+  url: string;
   isVideo: boolean;
 }

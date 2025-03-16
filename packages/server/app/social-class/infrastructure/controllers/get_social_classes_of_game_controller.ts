@@ -22,7 +22,7 @@ export default class GetSocialClassesOfGameController {
       const socialClasses = await this.getSocialClassesOfGameQueryHandler.handleForDisplay(new GetSocialClassesOfGameQuery(
         gameId,
       ));
-      return this.minimalSocialClassDtoFactory.createFromSocialClasses(socialClasses);
+      return await this.minimalSocialClassDtoFactory.createFromSocialClasses(socialClasses);
     }
     catch (error) {
       console.error(error);

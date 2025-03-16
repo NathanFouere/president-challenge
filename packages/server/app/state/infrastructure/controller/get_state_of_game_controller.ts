@@ -21,7 +21,7 @@ export default class GetStateOfGameController {
       const state = await this.getStateOfGameQueryHandler.handleForDisplay(new GetStateOfGameQuery(
         gameId,
       ));
-      return this.stateDtoFactory.createFromState(state);
+      return await this.stateDtoFactory.createFromState(state);
     }
     catch (error) {
       console.error(error);

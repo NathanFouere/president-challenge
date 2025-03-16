@@ -43,7 +43,7 @@ defineProps<{
 
       <img
         draggable="false"
-        :src="item.path"
+        :src="item.url"
         :alt="item.title"
       >
     </utooltip>

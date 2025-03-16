@@ -1,4 +1,5 @@
 services:
+
   postgres:
     image: postgres:latest
     container_name: database
@@ -37,5 +38,19 @@ services:
     ports:
       - "3000:3000"
 
+  minio:
+    image: docker.io/bitnami/minio:2022
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_DEFAULT_BUCKETS=${MINIO_DEFAULT_BUCKETS}
+
 volumes:
   postgres_database:
+  minio_data:
+    driver: local

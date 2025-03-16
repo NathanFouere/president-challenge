@@ -22,9 +22,9 @@ export default class BudgetDtoFactory {
     { min: 4, max: 5, value: 'Very-High' },
   ];
 
-  public createFromBudget(budget: Budget): BudgetDto {
+  public async createFromBudget(budget: Budget): Promise<BudgetDto> {
     return {
-      ...this.minimalBudgetDtoFactory.createFromBudget(budget),
+      ...await this.minimalBudgetDtoFactory.createFromBudget(budget),
       costPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         budget.levelPerTurn,
         'Cost',

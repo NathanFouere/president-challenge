@@ -55,6 +55,7 @@ export default defineConfig({
       file: () => import('@adminjs/adonis/adminjs_provider'),
       environment: ['web'],
     },
+    () => import('@adonisjs/drive/drive_provider'),
   ],
 
   /*
@@ -103,7 +104,7 @@ export default defineConfig({
     forceExit: false,
   },
   metaFiles: [
-    '.env',
+    '.env.test',
   ],
 
   assetsBundler: false,

@@ -28,12 +28,12 @@ export class PoliticalPartyDTOFactory {
     { min: 4, max: 5, value: 'Very-High' },
   ];
 
-  public createPoliticalPartyDTO(politicalParty: PoliticalParty): PoliticalPartyDTO {
+  public async createPoliticalPartyDTO(politicalParty: PoliticalParty): Promise<PoliticalPartyDTO> {
     return {
       id: politicalParty.id,
       name: politicalParty.definition.name,
       affiliation: politicalParty.definition.affiliation,
-      licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.definition.licensedFile),
+      licensedFile: await this.licensedFileDTOFactory.createFromLicensedFile(politicalParty.definition.licensedFile),
       description: politicalParty.definition.description,
       happinessLevel: this.rangeLevelMatch.createFromAmount(politicalParty.getHappinessLevel(), this.politicalPartyHappinessRangeLevels),
       happinessPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(

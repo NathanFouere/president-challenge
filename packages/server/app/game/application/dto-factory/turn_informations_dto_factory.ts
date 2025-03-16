@@ -15,7 +15,7 @@ export class TurnInformationsDtoFactory {
   ) {
   }
 
-  public createFromTurnInformations(events: Event[], game: Game): TurnInformationsDto {
+  public async createFromTurnInformations(events: Event[], game: Game): Promise<TurnInformationsDto> {
     let eventNeedToBeAddress = false;
     for (const event of events) {
       if (event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available)) {
@@ -25,7 +25,7 @@ export class TurnInformationsDtoFactory {
     }
 
     return {
-      eventListDto: this.eventListDtoFactory.createFromEvents(events),
+      eventListDto: await this.eventListDtoFactory.createFromEvents(events),
       eventNeedToBeAddress: eventNeedToBeAddress,
       maxTurnReached: game.isInFinishedStatus(),
       defeat: game.isInDefeatStatus(),

@@ -24,7 +24,7 @@ export default class GetBudgetController {
         budgetId,
       ));
 
-      return this.budgetDtoFactory.createFromBudget(budget);
+      return await this.budgetDtoFactory.createFromBudget(budget);
     }
     catch (error) {
       console.error(error);
