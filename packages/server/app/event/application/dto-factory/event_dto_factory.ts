@@ -19,7 +19,7 @@ export class EventDtoFactory {
   ) {
   }
 
-  public createFromEvent(event: Event): EventDto {
+  public async createFromEvent(event: Event): Promise<EventDto> {
     return {
       id: event.id,
       identifier: event.definition.identifier,
@@ -28,7 +28,7 @@ export class EventDtoFactory {
       isAvailable: event.isAvailable,
       beenRead: event.beenRead,
       needsAction: !event?.choices.map((choice: Choice) => choice.status).includes(ChoiceStatus.Chosen),
-      licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(event.definition.licensedFiles),
+      licensedFiles: await this.licensedFileDTOFactory.createFromLicensedFiles(event.definition.licensedFiles),
       choices: this.choiceDtoFactory.createFromChoices(event.choices),
       electionResults: event.election ? this.electionResultsDtoFactory.createFromElection(event.election) : null,
     };

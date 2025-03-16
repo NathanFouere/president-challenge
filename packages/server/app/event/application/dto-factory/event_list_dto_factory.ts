@@ -12,7 +12,7 @@ export class EventListDtoFactory {
   ) {
   }
 
-  public createFromEvents(events: Event[]): EventListDto {
+  public async createFromEvents(events: Event[]): Promise<EventListDto> {
     const choicesEvents = [];
     const commonEvents = [];
     const superEvents = [];
@@ -29,10 +29,16 @@ export class EventListDtoFactory {
       }
     }
 
+    const [choiceEventsDto, commonEventsDto, superEventsDto] = await Promise.all([
+      this.minimalEventDtoFactory.createFromEvents(choicesEvents),
+      this.minimalEventDtoFactory.createFromEvents(commonEvents),
+      this.minimalEventDtoFactory.createFromEvents(superEvents),
+    ]);
+
     return {
-      choiceEvents: this.minimalEventDtoFactory.createFromEvents(choicesEvents),
-      commonEvents: this.minimalEventDtoFactory.createFromEvents(commonEvents),
-      superEvents: this.minimalEventDtoFactory.createFromEvents(superEvents),
+      choiceEvents: choiceEventsDto,
+      commonEvents: commonEventsDto,
+      superEvents: superEventsDto,
     };
   }
 }

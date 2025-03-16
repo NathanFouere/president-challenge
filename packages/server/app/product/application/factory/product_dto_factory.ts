@@ -14,16 +14,12 @@ export class ProductDtoFactory {
   ) {
   }
 
-  public createFromProducts(products: Product[]): ProductDto[] {
-    return products.map(product => this.createFromProduct(product));
-  }
-
-  public createFromProduct(product: Product): ProductDto {
+  public async createFromProduct(product: Product): Promise<ProductDto> {
     return {
       id: product.id,
       name: product.definition.name,
       description: product.definition.description,
-      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.definition.licensedFile),
+      licensedFile: await this.licensedFileDtoFactory.createFromLicensedFile(product.definition.licensedFile),
       price: product.price,
       costOfProduction: product.costOfProduction,
       pricePerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(

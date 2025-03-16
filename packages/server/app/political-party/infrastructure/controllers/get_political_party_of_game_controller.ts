@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { PoliticalPartyDTOFactory } from '#political-party/application/dto-factories/political_party_dto_factory';
+
+import type { PoliticalPartyDTOFactory } from '#political-party/application/dto-factories/political_party_dto_factory';
 import GetPoliticalPartyOfGameQuery from '#political-party/application/queries/get_political_party_of_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetPoliticalPartyOfGameQueryHandler
@@ -21,7 +21,7 @@ export default class GetPoliticalPartyController {
       const gameId = params.gameId;
 
       const politicalParty = await this.getPoliticalPartyOfGameQueryHandler.handleForDisplay(new GetPoliticalPartyOfGameQuery(gameId, politicalPartyId));
-      return this.politicalPartyFactory.createPoliticalPartyDTO(politicalParty);
+      return await this.politicalPartyFactory.createPoliticalPartyDTO(politicalParty);
     }
     catch (error) {
       console.error(error);

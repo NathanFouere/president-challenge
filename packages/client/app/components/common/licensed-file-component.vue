@@ -36,7 +36,7 @@ defineProps<{
     </template>
 
     <img
-      :src="licensedFile.path"
+      :src="licensedFile.url"
       :alt="licensedFile.title"
     >
   </UTooltip>

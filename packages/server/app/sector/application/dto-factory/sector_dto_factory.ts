@@ -51,7 +51,7 @@ export class SectorDtoFactory {
     },
   ];
 
-  public createFromSector(sector: Sector): SectorDto {
+  public async createFromSector(sector: Sector): Promise<SectorDto> {
     return {
       id: sector.id,
       name: sector.definition.name,
@@ -59,8 +59,8 @@ export class SectorDtoFactory {
       description: sector.definition.description,
       economicalSituation: this.rangeLevelMatch.createFromAmount(sector.economicalSituation, this.sectorEconomicalSituationRangeLevels),
       licensedFile: this.licensedFileDTOFactory.createFromLicensedFile(sector.definition.licensedFile),
-      socialClasses: this.minimalSocialClassDtoFactory.createFromSocialClasses(sector.socialClasses),
-      products: this.minimalProductDtoFactory.createFromProducts(sector.products),
+      socialClasses: await this.minimalSocialClassDtoFactory.createFromSocialClasses(sector.socialClasses),
+      products: await this.minimalProductDtoFactory.createFromProducts(sector.products),
       economicalSituationPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         sector.economicalSituationPerTurn,
         'Economical Situation',

@@ -76,7 +76,7 @@ export class LicensedFileBuilder {
     licensedFile.date = this.date;
 
     if (this.path) {
-      licensedFile.path = this.path;
+      licensedFile.key = this.path;
     }
     else {
       throw new Error('LicensedFile path is required');

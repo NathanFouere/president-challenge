@@ -25,7 +25,7 @@ export default class GetSectorOfGameController {
         new GetSectorByGameAndIdQuery(gameId, sectorId),
       );
 
-      const sectorDto = this.sectorDtoFactory.createFromSector(sector);
+      const sectorDto = await this.sectorDtoFactory.createFromSector(sector);
       return sectorDto;
     }
     catch (error) {

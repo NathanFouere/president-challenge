@@ -39,7 +39,7 @@ export class SocialClassDtoFactory {
     { min: 4, max: 4, value: 'Very-High' },
   ];
 
-  public createFromSocialClass(socialClass: SocialClass): SocialClassDto {
+  public async createFromSocialClass(socialClass: SocialClass): Promise<SocialClassDto> {
     return {
       id: socialClass.id,
       name: socialClass.definition.name,
@@ -49,7 +49,7 @@ export class SocialClassDtoFactory {
       economicalSituation: this.rangeLevelMatch.createFromAmount(socialClass.economicalSituation, this.socialClassEconomicalSituationRangeLevels),
       happinessLevel: this.rangeLevelMatch.createFromAmount(socialClass.getHappinessLevel(), this.socialClassHappinessRangeLevels),
       socialClassType: socialClass.definition.subType,
-      licensedFiles: this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.definition.licensedFiles),
+      licensedFiles: await this.licensedFileDTOFactory.createFromLicensedFiles(socialClass.definition.licensedFiles),
       happinessPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         socialClass.happinessPerTurn,
         'Happiness Level',

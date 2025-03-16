@@ -34,12 +34,12 @@ export class StateDtoFactory {
     { min: 80, max: 100, value: 'Very-High' },
   ];
 
-  public createFromState(state: State): StateDto {
+  public async createFromState(state: State): Promise<StateDto> {
     return {
       name: state.definition.name,
       description: state.definition.description,
       economicalSituation: this.mapEconomicalSituation(state.economicalSituation),
-      flag: this.licensedFileDtoFactory.createFromLicensedFile(state.definition.flag),
+      flag: await this.licensedFileDtoFactory.createFromLicensedFile(state.definition.flag),
       economicalSituationPerMonthChartData: this.chartDataFactory.createLineCartFromSaveAmountPerTurn(
         state.economicalSituationPerTurn,
         'Economical Situation',
@@ -48,7 +48,7 @@ export class StateDtoFactory {
         this.economicalSituationRangeLevels,
       ),
       financialFlowDatas: this.financialFlowDtoFactory.generateFinancialFlowsDatasFromFinancialFlows(state.financialFlows),
-      budgets: this.budgetDtoFactory.createFromBudgets(state.budgets),
+      budgets: await this.budgetDtoFactory.createFromBudgets(state.budgets),
       taxes: this.taxDtoFactory.fromTaxes(state.taxes),
     };
   }

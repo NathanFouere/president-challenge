@@ -13,11 +13,11 @@ export class MinimalBudgetDtoFactory {
   ) {
   }
 
-  public createFromBudgets(budgets: Budget[]): MinimalBudgetDto[] {
-    return budgets.map(budget => this.createFromBudget(budget));
+  public async createFromBudgets(budgets: Budget[]): Promise<MinimalBudgetDto[]> {
+    return Promise.all(budgets.map(budget => this.createFromBudget(budget)));
   }
 
-  public createFromBudget(budget: Budget): MinimalBudgetDto {
+  public async createFromBudget(budget: Budget): Promise<MinimalBudgetDto> {
     return {
       id: budget.id,
       name: budget.definition.name,
@@ -25,7 +25,7 @@ export class MinimalBudgetDtoFactory {
       description: budget.definition.description,
       level: this.createBudgetLevelFromLevel(budget.level),
       cost: budget.level,
-      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(budget.definition.licensedFile),
+      licensedFile: await this.licensedFileDtoFactory.createFromLicensedFile(budget.definition.licensedFile),
     };
   }
 

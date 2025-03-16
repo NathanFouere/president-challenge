@@ -11,16 +11,16 @@ export class MinimalProductDtoFactory {
   ) {
   }
 
-  public createFromProducts(products: Product[]): MinimalProductDto[] {
-    return products.map(product => this.createFromProduct(product));
+  public async createFromProducts(products: Product[]): Promise<MinimalProductDto[]> {
+    return Promise.all(products.map(product => this.createFromProduct(product)));
   }
 
-  public createFromProduct(product: Product): MinimalProductDto {
+  public async createFromProduct(product: Product): Promise<MinimalProductDto> {
     return {
       id: product.id,
       name: product.definition.name,
       description: product.definition.description,
-      licensedFile: this.licensedFileDtoFactory.createFromLicensedFile(product.definition.licensedFile),
+      licensedFile: await this.licensedFileDtoFactory.createFromLicensedFile(product.definition.licensedFile),
       price: product.price,
       costOfProduction: product.costOfProduction,
     };

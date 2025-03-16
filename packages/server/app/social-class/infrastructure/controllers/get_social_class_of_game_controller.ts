@@ -25,7 +25,7 @@ export default class GetSocialClassOfGameController {
         gameId,
         socialClassId,
       ));
-      return this.socialClassDtoFactory.createFromSocialClass(socialClass);
+      return await this.socialClassDtoFactory.createFromSocialClass(socialClass);
     }
     catch (error) {
       console.error(error);
