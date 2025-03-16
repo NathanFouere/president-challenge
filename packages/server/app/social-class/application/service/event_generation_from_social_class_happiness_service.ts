@@ -13,6 +13,8 @@ import IGetEventDefinitionByIdentifierQueryHandler
 import { GetEventDefinitionByIdentifierQuery } from '#event/application/queries/get_event_definition_by_identifier_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import EventFactory from '#event/application/factory/event_factory';
+import { EventDefinitionsConstants } from '#event/application/queries/event_definitions_constants';
+import type EventDefinition from '#event/domain/models/event_definition';
 
 @inject()
 export default class EventGenerationFromSocialClassHappinessService {
@@ -43,12 +45,25 @@ export default class EventGenerationFromSocialClassHappinessService {
   }
 
   private async generateSocialClassTypeEventFromLawHappiness(socialClassType: SocialClassTypes, gameId: number, turn: number): Promise<void> {
-    const eventDefinitionIdentifier = `unhappiness-${socialClassType}`;
-    const eventDefinition = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
+    const eventDefinitionIdentifier: EventDefinitionsConstants = this.getEventDefinitionIdentifierFromSocialClassType(socialClassType);
+    const eventDefinition: EventDefinition = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
       eventDefinitionIdentifier,
     ));
     const event = this.eventFactory.createEventForGameAtTurn(eventDefinition.id, gameId, turn);
 
     await this.eventRepository.save(event);
+  }
+
+  private getEventDefinitionIdentifierFromSocialClassType(socialClassType: SocialClassTypes): EventDefinitionsConstants {
+    switch (socialClassType) {
+      case SocialClassTypes.CAPITALIST:
+        return EventDefinitionsConstants.UNHAPPINESS_CAPITALIST;
+      case SocialClassTypes.PROLETARIAT:
+        return EventDefinitionsConstants.UNHAPPINESS_PROLETARIAT;
+      case SocialClassTypes.PETIT_BOURGEOIS:
+        return EventDefinitionsConstants.UNHAPPINESS_PETIT_BOURGEOIS;
+      default:
+        throw new Error('Unknown social class type');
+    }
   }
 }
