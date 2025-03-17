@@ -20,23 +20,23 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 ## Technologies
 
 ### Frameworks
-- **AdonisJS**: A powerful Node.js framework used to handle authentication, routing, and API development.
-- **Nuxt**: A robust Vue.js-based framework for building a dynamic, interactive user interface.
+- **AdonisJS**
+- **Nuxt**
 
 ### Database
-- **PostgreSQL**: A reliable, high-performance relational database for storing game state, events, and player data.
+- **PostgreSQL**
 
 ### DevOps
-- **Docker**: Ensures consistent deployment environments and simplifies local development.
-- **Docker Compose**: Manages multi-container applications seamlessly.
-- **GitHub Actions**: Automates the CI/CD pipeline for building and deploying the application.
+- **Docker**
+- **Docker Compose**
+- **GitHub Actions**
 
 ## Learning Objectives
 I am unsure of finalizing this project, but I have set the following learning objectives:
-- **Node.js**: Mastering backend development with modern frameworks.
-- **Domain-Driven Design**: Structuring applications with a focus on the domain logic.
-- **Docker**: Creating portable and reproducible development environments.
-- **Deployment**: Setting up production-ready systems and pipelines.
+- **Adonis.js**: Learning AdonisJs to get into the NodeJs ecosystem
+- **Domain-Driven Design**: Learning how to structure applications with a focus on the domain logic.
+- **Docker**: Learning how to create portable and reproducible development environments.
+- **Deployment**: Learning how to set-up production-ready systems and pipelines.
 
 ## Roadmap
 You can track the progress and upcoming features of this project on the [Trello Board](https://trello.com/b/yeDvZUYI/allende-challenge-v2) (In French)
