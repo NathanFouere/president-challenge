@@ -41,7 +41,7 @@ onMounted(async () => {
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
     </p>
     <p>
-      In Power : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.inPower }}
+      <b>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.inPower ? 'Is in government' : 'Is in the opposition' }}</b>
     </p>
 
     <UDivider class="sticky pt-10 pb-10" />

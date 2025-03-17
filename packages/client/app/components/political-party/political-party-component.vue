@@ -15,7 +15,8 @@ defineProps<{
       <div class="justify-center">
         {{ minimalPoliticalParty.name }}
         ({{ minimalPoliticalParty.affiliation }})
-        <p>In Power: {{ minimalPoliticalParty.inPower }}</p>
+        <br>
+        <b>{{ minimalPoliticalParty.inPower ? 'Is in government' : 'Is in the opposition' }}</b>
       </div>
     </template>
 

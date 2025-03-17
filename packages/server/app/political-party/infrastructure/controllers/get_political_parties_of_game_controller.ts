@@ -24,7 +24,7 @@ export default class GetPoliticalPartiesOfGameController {
 
       const politicalParties = await this.getPoliticalPartiesOfGameQueryHandler.handleForDisplay(new GetPoliticalPartiesOfGameQuery(gameId));
 
-      return this.politicalPartyMinimalDTOFactory.createPoliticalPartyMinimalDTOList(politicalParties);
+      return await this.politicalPartyMinimalDTOFactory.createPoliticalPartyMinimalDTOList(politicalParties);
     }
     catch (error) {
       console.error(error);
