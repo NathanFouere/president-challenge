@@ -22,11 +22,11 @@ export default class TurnHappinessService extends TurnProcessorStep {
     private readonly eventGenerationFromSocialClassHappinessService: EventGenerationFromSocialClassHappinessService,
     private readonly eventGenerationFromPoliticalPartyHappinessService: EventGenerationFromPoliticalPartyHappinessService,
   ) {
-    super();
+    super('Processing happiness');
   }
 
   public async execute(turnDataContext: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
-    gameTurnProcessStreamContainer.message = 'Processing happiness';
+    super.updateStreamData(gameTurnProcessStreamContainer);
     await Promise.all([
       this.handleSocialClassHappiness(turnDataContext),
       this.handlePoliticalPartyHappiness(turnDataContext),

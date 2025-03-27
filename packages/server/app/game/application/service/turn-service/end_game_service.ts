@@ -11,11 +11,11 @@ export default class EndGameService extends TurnProcessorStep {
   constructor(
     private readonly gameEndEventGenerationService: GameEndEventGenerationService,
   ) {
-    super();
+    super('Processing end game');
   }
 
   public async execute(context: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
-    gameTurnProcessStreamContainer.message = 'Processing end game';
+    super.updateStreamData(gameTurnProcessStreamContainer);
     if (!context.game.isInFinishedStatus()) {
       return;
     }

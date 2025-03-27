@@ -1,11 +1,11 @@
-import type { User } from '@president-challenge/shared/dist/user/user';
+import type { UserDto } from '@president-challenge/shared/dist/user/user-dto';
 
 export const useUserStore = defineStore('userStore', {
   state: () => ({
-    user: null as User | null,
+    user: null as UserDto | null,
   }),
   getters: {
-    connectedUser(state): User | null {
+    connectedUser(state): UserDto | null {
       return state.user;
     },
     hasConnectedUser(state): boolean {
@@ -13,7 +13,7 @@ export const useUserStore = defineStore('userStore', {
     },
   },
   actions: {
-    setUser(user: User) {
+    setUser(user: UserDto) {
       this.user = user;
     },
 

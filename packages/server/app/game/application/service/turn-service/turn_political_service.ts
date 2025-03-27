@@ -11,11 +11,11 @@ export default class TurnPoliticalService extends TurnProcessorStep {
   constructor(
     private readonly electionService: ElectionService,
   ) {
-    super();
+    super('Processing political situation');
   }
 
   public async execute(context: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
-    gameTurnProcessStreamContainer.message = 'Processing political situation';
+    super.updateStreamData(gameTurnProcessStreamContainer);
     if (this.electionService.hasElectionForTurn(context.game.turn)) {
       await this.electionService.processElection(context.game, context.politicalParties, context.socialClasses);
     }
