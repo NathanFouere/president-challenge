@@ -56,6 +56,7 @@ export default defineConfig({
       environment: ['web'],
     },
     () => import('@adonisjs/drive/drive_provider'),
+    () => import('@adonisjs/transmit/transmit_provider'),
   ],
 
   /*
@@ -67,6 +68,7 @@ export default defineConfig({
   |
   */
   preloads: [
+    () => import('#common/utils/transmit_routes'),
     () => import('#user/infrastructure/routes'),
     () => import('#state/infrastructure/routes'),
     () => import('#social-class/infrastructure/routes'),

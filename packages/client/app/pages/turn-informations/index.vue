@@ -15,7 +15,7 @@ watch(selectedTurn, async () => {
 });
 
 onMounted(async () => {
-  await turnInformationsPresenter.getEventsOfTurn();
+  await turnInformationsPresenter.getTurnInformations();
 });
 
 function getCantChangeTurnContext() {
@@ -87,7 +87,7 @@ function getCantChangeTurn() {
         :disabled="getCantChangeTurn()"
         @click="turnInformationsPresenter.changeTurn()"
       >
-        Change turn
+        {{ turnInformationsPresenter.turnInformationsStore.getTurnProcessDatas?.message ?? 'Change turn' }}
       </UButton>
     </UTooltip>
   </div>

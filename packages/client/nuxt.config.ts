@@ -18,6 +18,8 @@ export default defineNuxtConfig({
     '~/plugins/api.ts',
     '~/plugins/check-auth.ts',
     '~/plugins/inversify.ts',
+    '~/plugins/chartjs.ts',
+    '~/plugins/sse-client.ts',
   ],
   ssr: false,
   devtools: { enabled: true },
