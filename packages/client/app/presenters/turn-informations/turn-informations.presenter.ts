@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
-import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-container';
 
 import type { Subscription } from '@adonisjs/transmit-client';
+import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-data';
 import type GameModule from '../../../server/repository/modules/game.module';
 import { useCustomToast } from '~/composables/useCustomToast';
 import { useGameStore } from '~/store/game/game.store';
