@@ -1,12 +1,12 @@
-import type { User } from '@president-challenge/shared/dist/user/user';
+import type { UserDto } from '@president-challenge/shared/dist/user/user-dto';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 
 class AuthModule extends FetchFactory {
   private readonly RESOURCE = Routes.User;
 
-  public async signup(email: string, fullName: string, password: string): Promise<User> {
-    return this.call<User>(
+  public async signup(email: string, fullName: string, password: string): Promise<UserDto> {
+    return this.call<UserDto>(
       {
         method: 'POST',
         url: `${this.RESOURCE.Signup()}`,
@@ -19,8 +19,8 @@ class AuthModule extends FetchFactory {
     );
   };
 
-  public async login(email: string, password: string): Promise<User> {
-    return this.call<User>(
+  public async login(email: string, password: string): Promise<UserDto> {
+    return this.call<UserDto>(
       {
         method: 'POST',
         url: `${this.RESOURCE.Login()}`,
@@ -32,8 +32,8 @@ class AuthModule extends FetchFactory {
     );
   };
 
-  public async me(): Promise<User> {
-    return this.call<User>(
+  public async me(): Promise<UserDto> {
+    return this.call<UserDto>(
       {
         method: 'GET',
         url: `${this.RESOURCE.Me()}`,

@@ -1,14 +1,14 @@
-import type { User } from '@president-challenge/shared/dist/user/user';
+import type { UserDto } from '@president-challenge/shared/dist/user/user-dto';
 import { useUserStore } from '~/store/user/user.store';
 
 export default defineNuxtPlugin(() => {
-  const checkAuth = async (): Promise<User | null> => {
+  const checkAuth = async (): Promise<UserDto | null> => {
     const userStore = useUserStore();
     const { $api } = useNuxtApp();
 
     if (!userStore.connectedUser) {
       try {
-        const user: User = await $api.auth.me();
+        const user: UserDto = await $api.auth.me();
         userStore.setUser(user);
         return user;
       }

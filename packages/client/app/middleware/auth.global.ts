@@ -1,4 +1,4 @@
-import type { User } from '@president-challenge/shared/dist/user/user';
+import type { UserDto } from '@president-challenge/shared/dist/user/user-dto';
 import { useUserStore } from '../store/user/user.store';
 import { NUXT_ROUTES } from '../../config/routes/nuxt-routes';
 
@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   const userStore = useUserStore();
 
-  let user: User | null;
+  let user: UserDto | null;
 
   if (!userStore.user) {
     user = await $checkAuth();
