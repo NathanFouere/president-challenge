@@ -59,11 +59,11 @@ export default class SaveTurnService extends TurnProcessorStep {
     private readonly budgetCostPerTurnSaveService: BudgetCostPerTurnSaveService,
     private readonly stateSaveForTurnService: StateSaveForTurnService,
   ) {
-    super();
+    super('Saving turn');
   }
 
   public async execute(turnDataContext: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
-    gameTurnProcessStreamContainer.message = 'Saving turn';
+    super.updateStreamData(gameTurnProcessStreamContainer);
     await this.saveGlobalDatas(turnDataContext);
     await this.saveHistoricalDatas(turnDataContext);
   }

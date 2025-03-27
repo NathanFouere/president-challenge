@@ -25,14 +25,14 @@ export default class ChangeTurnService {
   public async changeTurn(game: Game): Promise<Game> {
     try {
       // TODO => faire de la refacto pour tout regrouper dans pipeline et bouger le gameTurnProcessStream
-      const gameTurnProcessStreamContainer: GameTurnProcessStreamData = {
+      const gameTurnProcessStreamData: GameTurnProcessStreamData = {
         message: 'Starting turn',
       };
-      this.gameTurnProcessStreamService.createGameTurnProcessStream(game.id, gameTurnProcessStreamContainer);
+      this.gameTurnProcessStreamService.createGameTurnProcessStream(game.id, gameTurnProcessStreamData);
       game.changeTurn();
-      await this.turnResetService.execute(game.id, gameTurnProcessStreamContainer);
-      const turnDataContext = await this.loadTurnDataContextService.load(game, gameTurnProcessStreamContainer);
-      const turnPipeline = this.turnPipelineFactory.createPipelineForGame(turnDataContext, gameTurnProcessStreamContainer);
+      await this.turnResetService.execute(game.id, gameTurnProcessStreamData);
+      const turnDataContext = await this.loadTurnDataContextService.load(game, gameTurnProcessStreamData);
+      const turnPipeline = this.turnPipelineFactory.createPipelineForGame(turnDataContext, gameTurnProcessStreamData);
       await turnPipeline.execute();
       this.gameTurnProcessStreamService.deleteGameTurnProcessStream(game.id);
     }

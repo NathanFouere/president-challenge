@@ -29,11 +29,11 @@ export default class TurnEconomicalService extends TurnProcessorStep {
     private readonly budgetService: BudgetService,
     private readonly taxService: TaxService,
   ) {
-    super();
+    super('Processing economical situation');
   }
 
   public async execute(turnDataContext: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
-    gameTurnProcessStreamContainer.message = 'Processing economical situation';
+    super.updateStreamData(gameTurnProcessStreamContainer);
     this.sectorEconomicalSituationCalculatorService.setSectorsEconomicalSituation(turnDataContext.sectors);
 
     this.socialClassEconomicalSituationEvolutionService.updateSocialClassesEconomicalSituation(

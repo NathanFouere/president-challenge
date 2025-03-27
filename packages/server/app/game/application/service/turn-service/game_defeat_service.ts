@@ -22,11 +22,11 @@ export default class GameDefeatService extends TurnProcessorStep {
     private readonly defeatPresidentialElectionService: DefeatPresidentialElectionService,
     private readonly gameDefeatEventGenerationService: GameDefeatEventGenerationService,
   ) {
-    super();
+    super('Processing defeat');
   }
 
   public async execute(context: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
-    gameTurnProcessStreamContainer.message = 'Processing defeat';
+    gameTurnProcessStreamContainer.message = this.description;
     const defeatFromLosingPresidentialElection = await this.defeatPresidentialElectionService.checkDefeatPresidentialElection(context.game.id, context.game.turn);
     if (defeatFromLosingPresidentialElection) {
       context.game.setDefeatFromLosePresidentialElection();
