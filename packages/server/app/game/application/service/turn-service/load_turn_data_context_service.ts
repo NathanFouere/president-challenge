@@ -1,6 +1,9 @@
 import { inject } from '@adonisjs/core';
 
 import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
+
+import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-data.js';
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetPoliticalPartiesOfGameQueryHandler
   from '#political-party/application/queries/i_get_political_parties_of_game_query_handler';
@@ -38,7 +41,9 @@ export class LoadTurnDataContextService {
   ) {
   }
 
-  public async load(game: Game): Promise<TurnDataContext> {
+  public async load(game: Game, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<TurnDataContext> {
+    gameTurnProcessStreamContainer.message = 'Loading turn data context';
+
     const [state, sectors, politicalParties, socialClasses, products] = await Promise.all([
       this.getStateOfGameQueryHandler.handleForSwitchTurn(new GetStateOfGameQuery(game.id)),
       this.getSectorsOfGameQueryHandler.handleForSwitchTurn(new GetSectorsByGameQuery(game.id)),

@@ -1,10 +1,12 @@
 import { inject } from '@adonisjs/core';
+import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-data.js';
+
 import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SocialClassHappinessService from '#social-class/domain/service/social_class_happiness_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import PoliticalPartyHappinessService from '#political-party/domain/service/political_party_happiness_service';
-import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
+import { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import EventGenerationFromSocialClassHappinessService
   from '#social-class/application/service/event_generation_from_social_class_happiness_service';
@@ -13,16 +15,18 @@ import EventGenerationFromPoliticalPartyHappinessService
   from '#political-party/application/service/event_generation_from_political_party_happiness_service';
 
 @inject()
-export default class TurnHappinessService implements TurnProcessorStep {
+export default class TurnHappinessService extends TurnProcessorStep {
   constructor(
     private readonly socialClassHappinessService: SocialClassHappinessService,
     private readonly politicalPartyHappinessService: PoliticalPartyHappinessService,
     private readonly eventGenerationFromSocialClassHappinessService: EventGenerationFromSocialClassHappinessService,
     private readonly eventGenerationFromPoliticalPartyHappinessService: EventGenerationFromPoliticalPartyHappinessService,
   ) {
+    super();
   }
 
-  public async execute(turnDataContext: TurnDataContext): Promise<void> {
+  public async execute(turnDataContext: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
+    gameTurnProcessStreamContainer.message = 'Processing happiness';
     await Promise.all([
       this.handleSocialClassHappiness(turnDataContext),
       this.handlePoliticalPartyHappiness(turnDataContext),

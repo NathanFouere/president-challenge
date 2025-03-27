@@ -1,5 +1,6 @@
 import { inject } from '@adonisjs/core';
 
+import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-data.js';
 import type Game from '#game/domain/models/game';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -8,6 +9,8 @@ import { LoadTurnDataContextService } from '#game/application/service/turn-servi
 import TurnPipelineFactory from '#game/application/service/turn-service/turn_pipeline_factory';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import TurnResetService from '#game/application/service/turn-service/turn_reset_sercice';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import GameTurnProcessStreamService from '#game/infrastructure/stream/game_turn_process_stream_service';
 
 @inject()
 export default class ChangeTurnService {
@@ -15,16 +18,23 @@ export default class ChangeTurnService {
     private readonly loadTurnDataContextService: LoadTurnDataContextService,
     private readonly turnPipelineFactory: TurnPipelineFactory,
     private readonly turnResetService: TurnResetService,
+    private readonly gameTurnProcessStreamService: GameTurnProcessStreamService,
   ) {
   }
 
   public async changeTurn(game: Game): Promise<Game> {
     try {
+      // TODO => faire de la refacto pour tout regrouper dans pipeline et bouger le gameTurnProcessStream
+      const gameTurnProcessStreamContainer: GameTurnProcessStreamData = {
+        message: 'Starting turn',
+      };
+      this.gameTurnProcessStreamService.createGameTurnProcessStream(game.id, gameTurnProcessStreamContainer);
       game.changeTurn();
-      await this.turnResetService.execute(game.id);
-      const turnDataContext = await this.loadTurnDataContextService.load(game);
-      const turnPipeline = this.turnPipelineFactory.createPipeline(turnDataContext);
+      await this.turnResetService.execute(game.id, gameTurnProcessStreamContainer);
+      const turnDataContext = await this.loadTurnDataContextService.load(game, gameTurnProcessStreamContainer);
+      const turnPipeline = this.turnPipelineFactory.createPipelineForGame(turnDataContext, gameTurnProcessStreamContainer);
       await turnPipeline.execute();
+      this.gameTurnProcessStreamService.deleteGameTurnProcessStream(game.id);
     }
     catch (e) {
       console.error(e);

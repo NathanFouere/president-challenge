@@ -11,8 +11,6 @@ defineProps<{
     :ui="{
       base: 'h-full',
     }"
-
-    class="max-h-full object-contain flex justify-center items-center h-full w-full"
   >
     <template #text>
       <div>

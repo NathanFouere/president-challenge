@@ -15,6 +15,7 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@adonisjs/transmit-client": "^1.0.0",
     "@nuxt/fonts": "^0.10.3",
     "@nuxt/types": "^2.18.1",
     "@nuxt/ui": "^2.19.2",

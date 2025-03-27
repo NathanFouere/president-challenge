@@ -1,4 +1,7 @@
 import { inject } from '@adonisjs/core';
+
+import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-data.js';
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SaveTurnService from '#game/application/service/turn-service/save_turn_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -12,7 +15,7 @@ import TurnPoliticalService from '#game/application/service/turn-service/turn_po
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import GameDefeatService from '#game/application/service/turn-service/game_defeat_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import EndGameService from '#game/application/service/end_game_service';
+import EndGameService from '#game/application/service/turn-service/end_game_service';
 
 @inject()
 export default class TurnPipelineFactory {
@@ -26,7 +29,7 @@ export default class TurnPipelineFactory {
   ) {
   }
 
-  public createPipeline(turnContext: TurnDataContext): TurnPipeline {
+  public createPipelineForGame(turnContext: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): TurnPipeline {
     return new TurnPipeline(
       [
         this.turnEconomicalService,
@@ -37,6 +40,7 @@ export default class TurnPipelineFactory {
         this.endGameService,
       ],
       turnContext,
+      gameTurnProcessStreamContainer,
     );
   }
 }

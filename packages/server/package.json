@@ -89,6 +89,7 @@
     "@adonisjs/session": "^7.5.0",
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
+    "@adonisjs/transmit": "^2.0.2",
     "@president-challenge/shared": "workspace:*",
     "@vinejs/vine": "^2.1.0",
     "adminjs": "^7.8.15",

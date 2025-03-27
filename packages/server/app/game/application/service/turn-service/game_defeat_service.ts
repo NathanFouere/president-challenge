@@ -1,6 +1,8 @@
 import { inject } from '@adonisjs/core';
+import type { GameTurnProcessStreamData } from '@president-challenge/shared/dist/game/game-turn-process-stream-data.js';
+
 import type { TurnDataContext } from '#game/application/service/turn-service/load_turn_data_context_service';
-import type { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
+import { TurnProcessorStep } from '#game/application/service/turn-service/turn_processor_step';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import DefeatSocialClassUnhappinessService
   from '#game/application/service/defeat/defeat_social_class_unhappiness_service';
@@ -13,16 +15,18 @@ import DefeatPresidentialElectionService from '#game/application/service/defeat/
 import GameDefeatEventGenerationService from '#game/application/service/defeat/game_defeat_event_generation_service';
 
 @inject()
-export default class GameDefeatService implements TurnProcessorStep {
+export default class GameDefeatService extends TurnProcessorStep {
   constructor(
     private readonly defeatSocialClassUnhappinessService: DefeatSocialClassUnhappinessService,
     private readonly defeatPoliticalPartyUnhappinessService: DefeatPoliticalPartyUnhappinessService,
     private readonly defeatPresidentialElectionService: DefeatPresidentialElectionService,
     private readonly gameDefeatEventGenerationService: GameDefeatEventGenerationService,
   ) {
+    super();
   }
 
-  public async execute(context: TurnDataContext): Promise<void> {
+  public async execute(context: TurnDataContext, gameTurnProcessStreamContainer: GameTurnProcessStreamData): Promise<void> {
+    gameTurnProcessStreamContainer.message = 'Processing defeat';
     const defeatFromLosingPresidentialElection = await this.defeatPresidentialElectionService.checkDefeatPresidentialElection(context.game.id, context.game.turn);
     if (defeatFromLosingPresidentialElection) {
       context.game.setDefeatFromLosePresidentialElection();
