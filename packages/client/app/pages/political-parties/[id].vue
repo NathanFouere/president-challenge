@@ -26,7 +26,7 @@ onMounted(async () => {
   />
 
   <div
-    v-if="!politicalPartyPresenter.politicalPartyStore.isGettingPoliticalParty && null !== politicalPartyPresenter.politicalPartyStore.getPoliticalParty"
+    v-if="!politicalPartyPresenter.politicalPartyStore.isGettingPoliticalParty && politicalPartyPresenter.politicalPartyStore.getPoliticalParty"
     class="text-center"
   >
     <h1 class="font-bold">

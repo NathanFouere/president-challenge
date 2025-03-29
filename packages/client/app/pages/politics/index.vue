@@ -19,7 +19,6 @@ onMounted(async () => {
 
 <template>
   <div>
-    <br>
     <h1 class="text-center">
       Political Parties
     </h1>

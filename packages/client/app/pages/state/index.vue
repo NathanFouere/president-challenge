@@ -72,17 +72,17 @@ onMounted(async () => {
     </div>
     <UDivider class="sticky pt-10 pb-10" />
 
-    <h1 class="text-center font-bold">
-      Economical Situation : {{ statePresenter.stateStore.getState?.economicalSituation }}
-    </h1>
-
-    <br>
-
     <USkeleton
       v-if="statePresenter.stateStore.isGettingState || statePresenter.stateStore.hasErrorOnGetState || !statePresenter.stateStore.getState"
       class="h-64 w-full"
     />
     <div v-else>
+      <h1 class="text-center font-bold">
+        Economical Situation : {{ statePresenter.stateStore.requireState.economicalSituation }}
+      </h1>
+
+      <br>
+
       <LineChartComponent
         :data="statePresenter.stateStore.requireState.economicalSituationPerMonthChartData"
       />
