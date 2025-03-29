@@ -3,6 +3,7 @@ import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minim
 import type GameModule from '../../server/repository/modules/game.module';
 import { useGameStore } from '~/store/game/game.store';
 import { useCustomToast } from '~/composables/useCustomToast';
+import { useClearStore } from '~/composables/useClearStore';
 
 @injectable()
 export class GamePresenter {
@@ -63,6 +64,8 @@ export class GamePresenter {
       this.toast.showError('Failed to select game.');
     }
     finally {
+      // ugly but prevents datas from other games to be displayed
+      useClearStore().clear();
       this.gameStore.unsetSelectingGame();
     }
   }

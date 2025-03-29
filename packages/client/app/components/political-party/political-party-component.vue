@@ -14,7 +14,7 @@ defineProps<{
     <template #header>
       <div class="justify-center">
         {{ minimalPoliticalParty.name }}
-        ({{ minimalPoliticalParty.affiliation }})
+        (<i>{{ minimalPoliticalParty.affiliation }}</i>)
         <br>
         <b>{{ minimalPoliticalParty.inPower ? 'Is in government' : 'Is in the opposition' }}</b>
       </div>
@@ -31,12 +31,10 @@ defineProps<{
     <template
       #footer
     >
-      <div class="flex justify-center items-center">
-        <UButton
-          label="Details"
-          @click="() => navigateTo(`/political-parties/${minimalPoliticalParty.id}`)"
-        />
-      </div>
+      <UButton
+        label="Details"
+        @click="() => navigateTo(`/political-parties/${minimalPoliticalParty.id}`)"
+      />
     </template>
   </UCard>
 </template>

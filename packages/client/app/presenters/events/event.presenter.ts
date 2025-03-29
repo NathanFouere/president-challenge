@@ -24,7 +24,6 @@ export class EventPresenter {
     try {
       const event = await this.eventModule.getEvent(eventId, this.gameStore.getSelectedGameId);
       this.eventStore.setEvent(event);
-      await this.turnInformationsPresenter.getTurnInformations();
       this.eventStore.unsetGettingEvent();
       this.eventStore.unsetErrorOnGettingEvent();
     }
@@ -38,6 +37,7 @@ export class EventPresenter {
     this.eventStore.setLoadingChoiceId(choiceId);
     try {
       await this.eventModule.chooseChoice(eventId, choiceId);
+      await this.turnInformationsPresenter.getTurnInformations();
       await this.getEvent(eventId);
     }
     catch {

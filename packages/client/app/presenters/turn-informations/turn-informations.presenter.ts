@@ -34,7 +34,7 @@ export class TurnInformationsPresenter {
   }
 
   public async getTurnInformations(): Promise<void> {
-    this.eventsStore.setGettingEvents();
+    this.turnInformationsStore.setGettingTurnInformations();
     try {
       const turnInformations = await this.gameModule.getTurnInformations(this.gameStore.getSelectedGameId, this.gameStore.getSelectedGameTurn);
       this.eventsStore.setChoiceEvents(turnInformations.eventListDto.choiceEvents);
@@ -47,7 +47,7 @@ export class TurnInformationsPresenter {
     catch {
       this.toast.showError('Error while getting events');
     }
-    this.eventsStore.unsetGettingEvents();
+    this.turnInformationsStore.unsetGettingTurnInformations();
   }
 
   public async getGameTurnProcessStream(): Promise<void> {

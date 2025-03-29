@@ -8,8 +8,9 @@ defineProps<{
 
 <template>
   <UTooltip
+    class="flex justify-center items-center"
     :ui="{
-      base: 'h-full',
+      item: 'basis-full',
     }"
   >
     <template #text>
@@ -34,6 +35,7 @@ defineProps<{
     </template>
 
     <img
+      class="h-80"
       :src="licensedFile.url"
       :alt="licensedFile.title"
     >

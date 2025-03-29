@@ -23,13 +23,13 @@ export const useEventsStore = defineStore('eventsStore', {
   },
   actions: {
     setChoiceEvents(events: MinimalEventDto[]) {
-      this.choiceEvents = [...events];
+      this.choiceEvents = events;
     },
     setHistoricalEvents(events: MinimalEventDto[]) {
-      this.historicalEvents = [...events];
+      this.historicalEvents = events;
     },
     setSuperEvents(events: MinimalEventDto[]) {
-      this.superEvents = [...events];
+      this.superEvents = events;
     },
     setGettingEvents() {
       this.gettingEvents = true;

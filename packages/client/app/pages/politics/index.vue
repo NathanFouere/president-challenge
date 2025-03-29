@@ -30,7 +30,7 @@ onMounted(async () => {
     />
     <div
       v-else
-      class="grid grid-cols-6 gap-4"
+      class="grid grid-cols-3 gap-4"
     >
       <political-party-component
         v-for="(politicalParty) in politicalPartiesPresenter.politicalPartiesStore.getPoliticalParties"

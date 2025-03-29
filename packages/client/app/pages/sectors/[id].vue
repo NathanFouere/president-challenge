@@ -25,14 +25,11 @@ onMounted(async () => {
   <div
     v-else-if="sectorPresenter.sectorStore.hasSector"
   >
-    <h1 class="text-center">
+    <h1 class="text-center font-bold">
       {{ sectorPresenter.sectorStore.requireSector.name }}
     </h1>
     <h2 class="text-center">
       {{ sectorPresenter.sectorStore.requireSector.description }}
-    </h2>
-    <h2 class="text-center">
-      Wealth : {{ sectorPresenter.sectorStore.requireSector.economicalSituation }}
     </h2>
     <div class="flex-1 flex justify-center">
       <licensed-file-component
@@ -58,6 +55,10 @@ onMounted(async () => {
 
     <UDivider class="sticky pt-10 pb-10" />
 
+    <h2 class="text-center">
+      Wealth : {{ sectorPresenter.sectorStore.requireSector.economicalSituation }}
+    </h2>
+    <br>
     <LineChartComponent
       :data="sectorPresenter.sectorStore.requireSector.economicalSituationPerMonthChartData"
     />

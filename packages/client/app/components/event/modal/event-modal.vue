@@ -49,6 +49,7 @@ const getChoiceIcon = (choice: ChoiceDto) => {
 
   <UModal
     v-model="isOpen"
+    :ui="{ width: 'md:max-w-4xl' }"
   >
     <UCard>
       <template #header>

@@ -15,7 +15,11 @@ export default class GetEventByIdAndGameQueryHandler implements IGetEventByIdAnd
         query.preload('definition');
         query.orderBy('id', 'asc');
       })
-      .firstOrFail();
+      .first();
+
+    if (!event) {
+      throw new Error('Event ' + query.eventId + ' not found for game of id: ' + query.gameId);
+    }
 
     if (event.electionId) {
       await event.load('election', (electionQuery) => {

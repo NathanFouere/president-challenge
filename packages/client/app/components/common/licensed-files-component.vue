@@ -10,32 +10,28 @@ defineProps<{
   <UCarousel
     v-slot="{ item }"
     :items="licensedFiles"
-    :ui="{ item: 'basis-full' }"
+    :ui="{
+      item: 'basis-full',
+    }"
     class="rounded-lg overflow-hidden"
     arrows
   >
     <UTooltip
-      class="flex justify-center items-center"
+      class="flex justify-center items-center w-full h-full"
       :ui="{
-        base: 'h-full',
+        base: 'h-full w-full flex justify-center items-center',
       }"
     >
       <template #text>
         <div>
-          <p> {{ item.title }}</p>
-          <p
-            v-if="item.source"
-          >
+          <p>{{ item.title }}</p>
+          <p v-if="item.source">
             {{ item.source }}
           </p>
-          <p
-            v-if="item.attribution"
-          >
+          <p v-if="item.attribution">
             {{ item.attribution }}
           </p>
-          <p
-            v-if="item.date"
-          >
+          <p v-if="item.date">
             {{ item.date }}
           </p>
         </div>
@@ -46,6 +42,6 @@ defineProps<{
         :src="item.url"
         :alt="item.title"
       >
-    </utooltip>
+    </UTooltip>
   </UCarousel>
 </template>
