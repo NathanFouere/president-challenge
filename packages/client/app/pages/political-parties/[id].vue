@@ -29,24 +29,27 @@ onMounted(async () => {
     v-if="!politicalPartyPresenter.politicalPartyStore.isGettingPoliticalParty && null !== politicalPartyPresenter.politicalPartyStore.getPoliticalParty"
     class="text-center"
   >
-    <h1>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.name }}</h1>
-    <licensed-file-component
-      class="w-1/6"
-      :licensed-file="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.licensedFile"
-    />
+    <h1 class="font-bold">
+      {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.name }}
+      <i>( {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.affiliation }})</i>
+    </h1>
     <p>
-      Affiliation : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.affiliation }}
+      <b>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.inPower ? 'In government' : 'In the opposition' }}</b>
     </p>
+    <div class="flex justify-center items-center">
+      <licensed-file-component
+        :licensed-file="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.licensedFile"
+      />
+    </div>
     <p class="text-justify">
       Description : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.description }}
-    </p>
-    <p>
-      <b>{{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.inPower ? 'Is in government' : 'Is in the opposition' }}</b>
     </p>
 
     <UDivider class="sticky pt-10 pb-10" />
 
-    <h1>Happiness</h1>
+    <h1 class="font-bold">
+      Happiness
+    </h1>
     <p>Happiness level : {{ politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessLevel }}</p>
     <happiness-modifier-component
       :happiness-modifiers="politicalPartyPresenter.politicalPartyStore.getPoliticalParty.happinessModifiers"

@@ -10,7 +10,9 @@ defineProps<{
 <template>
   <UCard>
     <template #header>
-      <h2>{{ sector.name }}</h2>
+      <h2 class="font-bold">
+        {{ sector.name }}
+      </h2>
       <h2>{{ sector.description }}</h2>
     </template>
     <licensed-file-component :licensed-file="sector.licensedFile" />

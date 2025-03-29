@@ -20,7 +20,10 @@ defineProps<{
         <p>Price: {{ product.price }}</p>
         <p>Cost of production: {{ product.costOfProduction }}</p>
       </div>
-      <product-modal :product-id="product.id" />
+
+      <product-modal
+        :product-id="product.id"
+      />
     </template>
   </UCard>
 </template>

@@ -4,7 +4,6 @@ import LicensedFileComponent from '../common/licensed-file-component.vue';
 
 defineProps<{
   event: MinimalEventDto;
-  isSelected: boolean;
   modalOpenedByDefault?: boolean;
 }>();
 </script>
@@ -19,13 +18,10 @@ defineProps<{
       <br>
       <i>{{ event.needsAction ? 'Needs action' : 'Doesnt need action' }}</i>
     </template>
-    <div
-      class="justify-between"
-    >
-      <licensed-file-component
-        :licensed-file="event.licensedFile!"
-      />
-    </div>
+    <licensed-file-component
+      class="text-center"
+      :licensed-file="event.licensedFile!"
+    />
     <template #footer>
       <div class="flex justify-center items-center">
         <event-modal

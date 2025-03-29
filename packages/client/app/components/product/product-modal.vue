@@ -24,6 +24,7 @@ watch(
 
 <template>
   <UButton
+    class="text-center"
     label="Details"
     :loading="productPresenter.productStore.isGettingProduct && isOpen"
     @click="isOpen = true"

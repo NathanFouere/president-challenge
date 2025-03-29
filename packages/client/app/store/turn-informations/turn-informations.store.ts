@@ -6,6 +6,7 @@ export const useTurnInformationsStore = defineStore('turnInformationsStore', {
     eventNeedToBeAddress: false,
     defeat: false,
     turnProcessDatas: null as GameTurnProcessStreamData | null,
+    gettingTurnInformations: true,
   }),
   getters: {
     getMaxTurnReached(state): boolean {
@@ -19,6 +20,9 @@ export const useTurnInformationsStore = defineStore('turnInformationsStore', {
     },
     getTurnProcessDatas(state): GameTurnProcessStreamData | null {
       return state.turnProcessDatas;
+    },
+    isGettingTurnInformations(state): boolean {
+      return state.gettingTurnInformations;
     },
   },
   actions: {
@@ -36,6 +40,12 @@ export const useTurnInformationsStore = defineStore('turnInformationsStore', {
     },
     unsetTurnProcessDatas() {
       this.turnProcessDatas = null;
+    },
+    setGettingTurnInformations() {
+      this.gettingTurnInformations = true;
+    },
+    unsetGettingTurnInformations() {
+      this.gettingTurnInformations = false;
     },
   },
 });

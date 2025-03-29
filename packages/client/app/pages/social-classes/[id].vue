@@ -27,24 +27,32 @@ onMounted(async () => {
     v-else-if="socialClassPresenter.socialClassStore.hasSocialClass"
     class="text-center"
   >
-    <h1>Type : {{ socialClassPresenter.socialClassStore.requireSocialClass.name }}</h1>
-    <br>
+    <h1 class="font-bold ">
+      Type : {{ socialClassPresenter.socialClassStore.requireSocialClass.name }}
+    </h1>
     <div class="flex justify-center items-center">
       <licensed-files-component
         class="w-3/12"
         :licensed-files="socialClassPresenter.socialClassStore.requireSocialClass.licensedFiles"
       />
     </div>
-    <br>
     <p>Population : {{ socialClassPresenter.socialClassStore.requireSocialClass.population }}</p>
-    <p>Description : {{ socialClassPresenter.socialClassStore.requireSocialClass.description }}</p>
+    <p class="text-justify">
+      Description : {{ socialClassPresenter.socialClassStore.requireSocialClass.description }}
+    </p>
 
     <UDivider class="sticky pt-10 pb-10" />
 
-    <h1>Economical situation</h1>
+    <h1 class="font-bold">
+      Economical situation
+    </h1>
     <p>Wealth Level : {{ socialClassPresenter.socialClassStore.requireSocialClass.economicalSituation }}</p>
     <br>
     <line-chart-component :data="socialClassPresenter.socialClassStore.requireSocialClass.economicalSituationPerMonthChartData" />
+    <br>
+    <financial-flows-component
+      :financial-flows-chart-datas="socialClassPresenter.socialClassStore.requireSocialClass.financialFlowDatas"
+    />
 
     <UDivider class="sticky pt-10 pb-10" />
 
@@ -54,12 +62,9 @@ onMounted(async () => {
       :happiness-modifiers="socialClassPresenter.socialClassStore.requireSocialClass.happinessModifiers"
     />
     <br>
+    <p>Happiness Per Month : {{ socialClassPresenter.socialClassStore.requireSocialClass.happinessLevel }}</p>
     <line-chart-component
       :data="socialClassPresenter.socialClassStore.requireSocialClass.happinessPerMonthChartData"
-    />
-
-    <financial-flows-component
-      :financial-flows-chart-datas="socialClassPresenter.socialClassStore.requireSocialClass.financialFlowDatas"
     />
   </div>
 </template>

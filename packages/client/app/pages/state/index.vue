@@ -28,20 +28,15 @@ onMounted(async () => {
         v-else
         class="justify-center"
       >
-        {{ statePresenter.stateStore.getState.name }}
-      </div>
-    </div>
-
-    <div class="justify-between">
-      <USkeleton
-        v-if="statePresenter.stateStore.isGettingState || statePresenter.stateStore.hasErrorOnGetState || !statePresenter.stateStore.getState"
-        class="h-64 w-full"
-      />
-      <div v-else>
+        <h1 class="font-bold">
+          {{ statePresenter.stateStore.getState.name }}
+        </h1>
+        <br>
         <LicensedFileComponent
           :licensed-file="statePresenter.stateStore.getState.flag"
-          class="w-full h-full object-cover"
         />
+        <br>
+        {{ statePresenter.stateStore.getState?.description }}
       </div>
     </div>
 
@@ -50,9 +45,11 @@ onMounted(async () => {
       class="h-64 w-full"
     />
     <div v-else>
-      {{ statePresenter.stateStore.getState?.description }}
       <UDivider class="sticky pt-10 pb-10" />
-      Budget :
+      <h1 class="text-center font-bold">
+        Budget :
+      </h1>
+      <br>
       <div class="flex justify-center items-center gap-5">
         <budget-component
           v-for="(budget) in statePresenter.stateStore.requireState.budgets"
@@ -61,7 +58,10 @@ onMounted(async () => {
         />
       </div>
       <UDivider class="sticky pt-10 pb-10" />
-      Taxes :
+      <h1 class="text-center font-bold">
+        Taxes :
+      </h1>
+      <br>
       <div class="flex justify-center items-center gap-5">
         <tax-component
           v-for="(tax) in statePresenter.stateStore.requireState.taxes"
@@ -72,7 +72,9 @@ onMounted(async () => {
     </div>
     <UDivider class="sticky pt-10 pb-10" />
 
-    Economical Situation : {{ statePresenter.stateStore.getState?.economicalSituation }}
+    <h1 class="text-center font-bold">
+      Economical Situation : {{ statePresenter.stateStore.getState?.economicalSituation }}
+    </h1>
 
     <br>
 
