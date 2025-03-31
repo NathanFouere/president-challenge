@@ -40,7 +40,7 @@ I am unsure of finalizing this project, but I have set the following learning ob
 
 ## Roadmap
 You can track the progress and upcoming features of this project on the [Trello Board](https://trello.com/b/yeDvZUYI/allende-challenge-v2) (In French)
-
+(Globally, the main issues are cleaning up the front-end code, balancing gameplay mechanics, and creating a more usable admin interface.)
 ## How to Run the Project
 TODO
 
