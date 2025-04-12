@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 
 import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';

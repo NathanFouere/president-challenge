@@ -1,5 +1,5 @@
 export enum SocialClassTypes {
-  CAPITALIST = 'Capitalist',
-  PETIT_BOURGEOIS = 'Petit Bourgeois',
-  PROLETARIAT = 'Proletariat',
+  BUSINESS_OWNER = 'Business Owner',
+  WORKING_CLASS = 'Working Class',
+  MIDDLE_CLASS = 'Middle Class',
 }
