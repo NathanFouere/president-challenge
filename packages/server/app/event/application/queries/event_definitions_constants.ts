@@ -12,7 +12,7 @@ export enum EventDefinitionsConstants {
   PRESIDENTIAL_ELECTION = 'presidential-election',
   PARLIAMENTARY_ELECTION = 'parliamentary-election',
   SENATORIAL_ELECTION = 'senatorial-election',
-  UNHAPPINESS_CAPITALIST = 'unhappiness-capitalist',
-  UNHAPPINESS_PROLETARIAT = 'unhappiness-proletariat',
-  UNHAPPINESS_PETIT_BOURGEOIS = 'unhappiness-petit-bourgeois',
+  UNHAPPINESS_BUSINESS_OWNER = 'unhappiness-business-owner',
+  UNHAPPINESS_WORKING_CLASS = 'unhappiness-working-class',
+  UNHAPPINESS_MIDDLE_CLASS = 'unhappiness-middle-class',
 }

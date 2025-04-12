@@ -1,32 +1,32 @@
 {
   "Far Left": {
-    "Capitalist": 0.01,
-    "Petit Bourgeois": 0.05,
-    "Proletariat": 0.1
+    "Business Owner": 0.01,
+    "Middle Class": 0.05,
+    "Working Class": 0.1
   },
   "Left": {
-    "Capitalist": 0.01,
-    "Petit Bourgeois": 0.05,
-    "Proletariat": 0.1
+    "Business Owner": 0.01,
+    "Middle Class": 0.05,
+    "Working Class": 0.1
   },
   "Center Left": {
-    "Capitalist": 0.05,
-    "Petit Bourgeois": 0.05,
-    "Proletariat": 0.1
+    "Business Owner": 0.05,
+    "Middle Class": 0.05,
+    "Working Class": 0.1
   },
   "Center Right": {
-    "Capitalist": 0.05,
-    "Petit Bourgeois": 0.1,
-    "Proletariat": 0.05
+    "Business Owner": 0.05,
+    "Middle Class": 0.1,
+    "Working Class": 0.05
   },
   "Right": {
-    "Capitalist": 0.1,
-    "Petit Bourgeois": 0.05,
-    "Proletariat": 0.01
+    "Business Owner": 0.1,
+    "Middle Class": 0.05,
+    "Working Class": 0.01
   },
   "Far Right": {
-    "Capitalist": 0.05,
-    "Petit Bourgeois": 0.1,
-    "Proletariat": 0.01
+    "Business Owner": 0.05,
+    "Middle Class": 0.1,
+    "Working Class": 0.01
   }
 }

@@ -14,9 +14,9 @@ export default class extends BaseSchema {
       table.integer('default_economical_situation').notNullable();
       table.enum('type',
         [
-          'Capitalist',
-          'Petit Bourgeois',
-          'Proletariat',
+          'Business Owner',
+          'Middle Class',
+          'Working Class',
         ])
         .notNullable();
       // TODO => moove to sector_definition

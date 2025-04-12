@@ -1,3 +1,4 @@
+import * as console from 'node:console';
 import { inject } from '@adonisjs/core';
 
 import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
@@ -27,24 +28,24 @@ export default class EventGenerationFromSocialClassHappinessService {
   }
 
   public async generateEventsFromSocialClassHappiness(socialClassesPerType: SocialClassesPerType, gameId: number, turn: number): Promise<void> {
-    const capitalistsAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.capitalist);
-    const proletariatAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.proletariat);
-    const petiteBourgeoisieAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.petiteBourgeoisie);
+    const businessOwnerAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.businessOwner);
+    const workingClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.workingClass);
+    const middleClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.middleClass);
 
-    if (capitalistsAverageHappiness <= 1) {
-      await this.generateSocialClassTypeEventFromLawHappiness(SocialClassTypes.CAPITALIST, gameId, turn);
+    if (businessOwnerAverageHappiness <= 1) {
+      await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.BUSINESS_OWNER, gameId, turn);
     }
 
-    if (proletariatAverageHappiness <= 1) {
-      await this.generateSocialClassTypeEventFromLawHappiness(SocialClassTypes.PROLETARIAT, gameId, turn);
+    if (workingClassAverageHappiness <= 1) {
+      await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.MIDDLE_CLASS, gameId, turn);
     }
 
-    if (petiteBourgeoisieAverageHappiness <= 1) {
-      await this.generateSocialClassTypeEventFromLawHappiness(SocialClassTypes.PETIT_BOURGEOIS, gameId, turn);
+    if (middleClassAverageHappiness <= 1) {
+      await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.WORKING_CLASS, gameId, turn);
     }
   }
 
-  private async generateSocialClassTypeEventFromLawHappiness(socialClassType: SocialClassTypes, gameId: number, turn: number): Promise<void> {
+  private async generateSocialClassTypeEventFromHappiness(socialClassType: SocialClassTypes, gameId: number, turn: number): Promise<void> {
     const eventDefinitionIdentifier: EventDefinitionsConstants = this.getEventDefinitionIdentifierFromSocialClassType(socialClassType);
     const eventDefinition: EventDefinition = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
       eventDefinitionIdentifier,
@@ -56,12 +57,12 @@ export default class EventGenerationFromSocialClassHappinessService {
 
   private getEventDefinitionIdentifierFromSocialClassType(socialClassType: SocialClassTypes): EventDefinitionsConstants {
     switch (socialClassType) {
-      case SocialClassTypes.CAPITALIST:
-        return EventDefinitionsConstants.UNHAPPINESS_CAPITALIST;
-      case SocialClassTypes.PROLETARIAT:
-        return EventDefinitionsConstants.UNHAPPINESS_PROLETARIAT;
-      case SocialClassTypes.PETIT_BOURGEOIS:
-        return EventDefinitionsConstants.UNHAPPINESS_PETIT_BOURGEOIS;
+      case SocialClassTypes.BUSINESS_OWNER:
+        return EventDefinitionsConstants.UNHAPPINESS_BUSINESS_OWNER;
+      case SocialClassTypes.MIDDLE_CLASS:
+        return EventDefinitionsConstants.UNHAPPINESS_WORKING_CLASS;
+      case SocialClassTypes.WORKING_CLASS:
+        return EventDefinitionsConstants.UNHAPPINESS_MIDDLE_CLASS;
       default:
         throw new Error('Unknown social class type');
     }

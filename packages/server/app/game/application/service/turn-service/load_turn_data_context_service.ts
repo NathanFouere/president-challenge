@@ -73,10 +73,10 @@ export class LoadTurnDataContextService {
     socialClasses: SocialClass[],
     sectors: Sector[],
   ): SocialClassesPerType {
-    const socialClassesPerType = {
-      capitalist: [] as SocialClass[],
-      proletariat: [] as SocialClass[],
-      petiteBourgeoisie: [] as SocialClass[],
+    const socialClassesPerType: SocialClassesPerType = {
+      businessOwner: [] as SocialClass[],
+      middleClass: [] as SocialClass[],
+      workingClass: [] as SocialClass[],
     };
 
     for (const sector of sectors) {
@@ -91,14 +91,14 @@ export class LoadTurnDataContextService {
         socialClass.setSector(sector);
       }
 
-      if (socialClass.definition.type === SocialClassTypes.CAPITALIST) {
-        socialClassesPerType.capitalist.push(socialClass);
+      if (socialClass.definition.type === SocialClassTypes.BUSINESS_OWNER) {
+        socialClassesPerType.businessOwner.push(socialClass);
       }
-      else if (socialClass.definition.type === SocialClassTypes.PROLETARIAT) {
-        socialClassesPerType.proletariat.push(socialClass);
+      else if (socialClass.definition.type === SocialClassTypes.MIDDLE_CLASS) {
+        socialClassesPerType.middleClass.push(socialClass);
       }
-      else if (socialClass.definition.type === SocialClassTypes.PETIT_BOURGEOIS) {
-        socialClassesPerType.petiteBourgeoisie.push(socialClass);
+      else if (socialClass.definition.type === SocialClassTypes.WORKING_CLASS) {
+        socialClassesPerType.workingClass.push(socialClass);
       }
     }
 
@@ -119,7 +119,7 @@ export interface TurnDataContext {
 }
 
 export interface SocialClassesPerType {
-  capitalist: SocialClass[];
-  proletariat: SocialClass[];
-  petiteBourgeoisie: SocialClass[];
+  businessOwner: SocialClass[];
+  workingClass: SocialClass[];
+  middleClass: SocialClass[];
 }
