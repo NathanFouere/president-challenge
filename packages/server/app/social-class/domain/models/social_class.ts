@@ -1,4 +1,3 @@
-import * as console from 'node:console';
 import { beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import { SocialClassTypes } from '@president-challenge/shared/dist/social-class/social-class-types.js';
@@ -66,7 +65,6 @@ export default class SocialClass extends TimeStampedModel {
       return 4;
     }
 
-    console.log('Happiness level calculation', happinessLevel);
     return happinessLevel;
   }
 
