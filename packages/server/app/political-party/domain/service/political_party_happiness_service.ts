@@ -26,9 +26,9 @@ export default class PoliticalPartyHappinessService {
   }
 
   private changePoliticalPartiesHappinessThroughtSocialClassesHappiness(politicalParty: PoliticalParty, socialClassesPerType: SocialClassesPerType): void {
-    this.fromSocialClassType(politicalParty, socialClassesPerType.capitalist, SocialClassTypes.CAPITALIST);
-    this.fromSocialClassType(politicalParty, socialClassesPerType.proletariat, SocialClassTypes.PROLETARIAT);
-    this.fromSocialClassType(politicalParty, socialClassesPerType.petiteBourgeoisie, SocialClassTypes.PETIT_BOURGEOIS);
+    this.fromSocialClassType(politicalParty, socialClassesPerType.businessOwner, SocialClassTypes.BUSINESS_OWNER);
+    this.fromSocialClassType(politicalParty, socialClassesPerType.workingClass, SocialClassTypes.MIDDLE_CLASS);
+    this.fromSocialClassType(politicalParty, socialClassesPerType.middleClass, SocialClassTypes.WORKING_CLASS);
   }
 
   private fromSocialClassType(politicalParty: PoliticalParty, socialClasses: SocialClass[], socialClassType: SocialClassTypes) {

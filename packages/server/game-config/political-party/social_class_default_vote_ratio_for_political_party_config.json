@@ -1,5 +1,5 @@
 {
-  "Capitalist": {
+  "Business Owner": {
     "Far Left": 0.1,
     "Left": 0.2,
     "Center Left": 0.3,
@@ -7,7 +7,7 @@
     "Right": 0.2,
     "Far Right": 0.1
   },
-  "Petit Bourgeois": {
+  "Middle Class": {
     "Far Left": 0.1,
     "Left": 0.2,
     "Center Left": 0.3,
@@ -15,7 +15,7 @@
     "Right": 0.2,
     "Far Right": 0.1
   },
-  "Proletariat": {
+  "Working Class": {
     "Far Left": 0.1,
     "Left": 0.2,
     "Center Left": 0.3,

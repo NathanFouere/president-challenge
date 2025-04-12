@@ -64,19 +64,20 @@ export default class SocialClass extends TimeStampedModel {
     if (happinessLevel > 4) {
       return 4;
     }
+
     return happinessLevel;
   }
 
   public generateRevenueFromSector(): number {
     let revenuesFromSectors;
     switch (this.definition.type) {
-      case SocialClassTypes.CAPITALIST:
+      case SocialClassTypes.BUSINESS_OWNER:
         revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
         break;
-      case SocialClassTypes.PETIT_BOURGEOIS:
+      case SocialClassTypes.WORKING_CLASS:
         revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
         break;
-      case SocialClassTypes.PROLETARIAT:
+      case SocialClassTypes.MIDDLE_CLASS:
         revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].worker;
         break;
     }
@@ -112,11 +113,11 @@ export default class SocialClass extends TimeStampedModel {
 
   public getHappinessModifierValueFromEconomicalSituation(): number {
     switch (this.definition.type) {
-      case SocialClassTypes.PROLETARIAT:
+      case SocialClassTypes.MIDDLE_CLASS:
         return this.economicalSituation > 30 ? 1 : -1;
-      case SocialClassTypes.CAPITALIST:
+      case SocialClassTypes.BUSINESS_OWNER:
         return this.economicalSituation > 75 ? 1 : -1;
-      case SocialClassTypes.PETIT_BOURGEOIS:
+      case SocialClassTypes.WORKING_CLASS:
         return this.economicalSituation > 50 ? 1 : -1;
       default:
         throw new Error('Invalid social class type');

@@ -13,7 +13,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="flex flex-nowrap justify-center gap-4"
+    class="grid grid-cols-4 gap-4"
   >
     <USkeleton
       v-if="sectorsPresenter.sectorsStore.isGettingSectors"

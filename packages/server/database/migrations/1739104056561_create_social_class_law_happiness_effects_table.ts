@@ -10,9 +10,9 @@ export default class extends BaseSchema {
       table.increments('id');
 
       table.enum('social_class_type', [
-        SocialClassTypes.CAPITALIST,
-        SocialClassTypes.PETIT_BOURGEOIS,
-        SocialClassTypes.PROLETARIAT,
+        SocialClassTypes.BUSINESS_OWNER,
+        SocialClassTypes.WORKING_CLASS,
+        SocialClassTypes.MIDDLE_CLASS,
       ]).notNullable();
 
       table.enum('type', [
