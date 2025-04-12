@@ -4,7 +4,9 @@ import type IGetParliamentDefinitionQueryHandler
 import ParliamentDefinition from '#legislature/domain/models/parliament_definition';
 
 export default class GetParliamentDefinitionQueryHandler implements IGetParliamentDefinitionQueryHandler {
-  public async handle(_query: GetParliamentDefinitionQuery): Promise<ParliamentDefinition> {
-    return await ParliamentDefinition.firstOrFail();
+  public async handle(query: GetParliamentDefinitionQuery): Promise<ParliamentDefinition> {
+    return await ParliamentDefinition.query()
+      .where('gameDefinitionIdentifier', query.gameDefinitionIdentifier)
+      .firstOrFail();
   }
 }

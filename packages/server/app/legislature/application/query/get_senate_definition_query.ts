@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export default class GetSenateDefinitionQuery {
-
+  constructor(
+    public readonly gameDefinitionIdentifier: string,
+  ) {}
 }

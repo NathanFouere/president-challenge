@@ -9,7 +9,10 @@ import {
   createEventDefinitionAdminResource,
 } from '#event/infrastructure/admin/event_admin_configuration';
 import { createUsersAdminResource } from '#user/infrastructure/admin/user_admin_configuration';
-import { createGameAdminResource } from '#game/infrastructure/admin/game_admin_configuration';
+import {
+  createGameAdminResource,
+  createGameDefinitionAdminResource,
+} from '#game/infrastructure/admin/game_admin_configuration';
 import {
   createBudgetAdminResource,
   createBudgetDefinitionAdminResource,
@@ -66,6 +69,7 @@ const adminjsConfig: AdminJSProviderConfig = {
     resources: [
       createUsersAdminResource(),
       createGameAdminResource(),
+      createGameDefinitionAdminResource(),
       createEventAdminResource(),
       createEventDefinitionAdminResource(),
       createBudgetDefinitionAdminResource(),

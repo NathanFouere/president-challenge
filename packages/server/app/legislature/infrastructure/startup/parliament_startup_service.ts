@@ -16,8 +16,8 @@ export class ParliamentStartupService implements StartupProcessorStep {
   ) {
   }
 
-  public async execute(gameId: number): Promise<void> {
-    const parliamentDefinition = await this.getParliamentDefinitionQueryHandler.handle(new GetParliamentDefinitionQuery());
+  public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
+    const parliamentDefinition = await this.getParliamentDefinitionQueryHandler.handle(new GetParliamentDefinitionQuery(gameDefinitionIdentifier));
     const parliament = aParliament()
       .withGameId(gameId)
       .withDefinitionId(parliamentDefinition.id)

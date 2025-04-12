@@ -7,11 +7,13 @@ const CreateGameController = () => import('#game/infrastructure/controllers/crea
 const DeleteGameController = () => import('#game/infrastructure/controllers/delete_game_controller');
 const ChangeTurnController = () => import('#game/infrastructure/controllers/change_turn_controller');
 const GetTurnInformationsController = () => import('#game/infrastructure/controllers/get_turn_informations_controller');
+const GetGameDefinitionsController = () => import('#game/infrastructure/controllers/get_game_definitions_controller');
 
 router.group(() => {
   router.get('/', [GetGamesController, 'getUserGames']).use(middleware.auth());
+  router.get('/definitions', [GetGameDefinitionsController, 'getGameDefinitions']).use(middleware.auth());
   router.get('/:id', [GetGameController, 'getUserGame']).use(middleware.auth());
-  router.post('/create', [CreateGameController, 'createGame']).use(middleware.auth());
+  router.post('/create/:identifier', [CreateGameController, 'createGame']).use(middleware.auth());
   router.delete('/delete/:id', [DeleteGameController, 'deleteGame']).use(middleware.auth());
   router.post('/change-turn/:gameId', [ChangeTurnController, 'changeTurn']).use(middleware.auth());
   router.get('/turn-informations/:gameId/:turn', [GetTurnInformationsController, 'getTurnInformations']).use(middleware.auth());

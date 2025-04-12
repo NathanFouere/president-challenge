@@ -1,10 +1,11 @@
-import { column, hasOne, hasMany } from '@adonisjs/lucid/orm';
-import type { HasOne, HasMany } from '@adonisjs/lucid/types/relations';
+import { column, hasOne, hasMany, belongsTo } from '@adonisjs/lucid/orm';
+import type { HasOne, HasMany, BelongsTo } from '@adonisjs/lucid/types/relations';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import TaxDefinition from '#tax/domain/model/tax_definition';
 import BudgetDefinition from '#budget/domain/model/budget_definition';
 import State from '#state/domain/model/state';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class StateDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -36,4 +37,12 @@ export default class StateDefinition extends TimeStampedModel {
 
   @hasMany(() => State)
   declare states: HasMany<typeof State>;
+
+  @column()
+  declare gameDefinitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition, {
+    foreignKey: 'gameDefinitionIdentifier',
+  })
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }

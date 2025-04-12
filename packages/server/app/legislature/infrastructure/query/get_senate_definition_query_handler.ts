@@ -3,7 +3,9 @@ import type IGetSenateDefinitionQueryHandler from '#legislature/application/quer
 import SenateDefinition from '#legislature/domain/models/senate_definition';
 
 export default class GetSenateDefinitionQueryHandler implements IGetSenateDefinitionQueryHandler {
-  public async handle(_query: GetSenateDefinitionQuery): Promise<SenateDefinition> {
-    return await SenateDefinition.firstOrFail();
+  public async handle(query: GetSenateDefinitionQuery): Promise<SenateDefinition> {
+    return await SenateDefinition.query()
+      .where('gameDefinitionIdentifier', query.gameDefinitionIdentifier)
+      .firstOrFail();
   }
 }

@@ -11,6 +11,7 @@ import { TimeStampedModel } from '#common/model/timestamped_model';
 import GameMaxTurnError from '#game/domain/error/game_max_turn_error';
 import GameInDefeatStatusError from '#game/domain/error/game_in_defeat_status_error';
 import GameInFinishedStatusError from '#game/domain/error/game_in_finished_status_error';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class Game extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -19,7 +20,7 @@ export default class Game extends TimeStampedModel {
   @column()
   declare turn: number;
 
-  @column({ serializeAs: null })
+  @column()
   declare userId: number;
 
   @belongsTo(() => User)
@@ -41,19 +42,24 @@ export default class Game extends TimeStampedModel {
   declare politicalWeight: number;
 
   @column()
-  declare maxTurns: number;
-
-  @column()
   declare status: GameStatus;
 
   @column()
   declare defeatSource: GameDefeatSource;
 
+  @column()
+  declare definitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition, {
+    foreignKey: 'definitionIdentifier',
+  })
+  declare definition: BelongsTo<typeof GameDefinition>;
+
   public changeTurn() {
     this.checkCanChangeTurn();
     this.turn += 1;
     this.politicalWeight += 5;
-    if (this.turn >= this.maxTurns) {
+    if (this.turn >= this.definition.maxTurns) {
       this.status = GameStatus.Finished;
     }
   }
@@ -94,7 +100,7 @@ export default class Game extends TimeStampedModel {
   }
 
   public hasReachedMaxTurns(): boolean {
-    return this.turn >= this.maxTurns;
+    return this.turn >= this.definition.maxTurns;
   }
 
   public setPoliticalWeight(politicalWeight: number) {

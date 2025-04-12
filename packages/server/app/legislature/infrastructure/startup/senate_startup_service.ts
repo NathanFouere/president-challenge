@@ -15,8 +15,8 @@ export class SenateStartupService implements StartupProcessorStep {
   ) {
   }
 
-  public async execute(gameId: number): Promise<void> {
-    const senateDefinition = await this.getSenateDefinitionQueryHandler.handle(new GetSenateDefinitionQuery());
+  public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
+    const senateDefinition = await this.getSenateDefinitionQueryHandler.handle(new GetSenateDefinitionQuery(gameDefinitionIdentifier));
 
     const senate = aSenate()
       .withGameId(gameId)
