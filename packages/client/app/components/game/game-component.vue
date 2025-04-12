@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import { getDateFromTurnNumber } from '@president-challenge/shared/dist/utils/date-converter';
 import { GameStatus } from '@president-challenge/shared/dist/game/game_status';
+import type { GameDefinitionDto } from '@president-challenge/shared/dist/game/game-definition-dto';
 import ConfirmDeletionModal from '../common/modal/confirm-deletion-modal.vue';
 
 const props = defineProps<{
-  game: MinimalGameDto;
+  game: GameDefinitionDto;
   isSelected: boolean;
   isSelectingGame: boolean;
   pendingDeletion: boolean;
@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (event: 'deleteGame', deletedGameId: number): void;
-  (event: 'selectGame', selectedGame: MinimalGameDto): void;
+  (event: 'selectGame', selectedGame: GameDefinitionDto): void;
 }>();
 
 const handleDelete = () => {

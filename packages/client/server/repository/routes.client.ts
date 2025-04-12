@@ -18,8 +18,9 @@ const Routes = {
   },
   Game: {
     GetGames: () => `${gamePrefix}/`,
+    GetGameDefinitions: () => `${gamePrefix}/definitions/`,
     GetGame: (id: number) => `${gamePrefix}/${id}`,
-    CreateGame: () => `${gamePrefix}/create`,
+    CreateGame: (identifier: string) => `${gamePrefix}/create/${identifier}`,
     DeleteGame: (id: number) => `${gamePrefix}/delete/${id}`,
     ChangeTurn: (gameId: number) => `${gamePrefix}/change-turn/${gameId}`,
     GetTurnInformations: (gameId: number, turn: number) => `${gamePrefix}/turn-informations/${gameId}/${turn}`,
