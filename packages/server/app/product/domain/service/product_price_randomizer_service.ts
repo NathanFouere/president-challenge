@@ -8,12 +8,9 @@ export class ProductPriceRandomizerService {
   }
 
   public changeProductPriceRandomly(product: Product): void {
-    const costOfProduction = product.costOfProduction;
-    const maxInterval = 25;
-    const minPrice = Math.max(costOfProduction - maxInterval, 1);
-    const maxPrice = costOfProduction + maxInterval;
+    const minPrice = Math.max(product.costOfProduction - 25, 1);
+    const maxPrice = product.costOfProduction + 25;
 
-    const newPrice = Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
-    product.price = newPrice;
+    product.price = Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
   }
 }

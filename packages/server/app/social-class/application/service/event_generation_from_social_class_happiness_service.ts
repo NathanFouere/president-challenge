@@ -15,6 +15,7 @@ import { GetEventDefinitionByIdentifierQuery } from '#event/application/queries/
 import EventFactory from '#event/application/factory/event_factory';
 import { EventDefinitionsConstants } from '#event/application/queries/event_definitions_constants';
 import type EventDefinition from '#event/domain/models/event_definition';
+import { HappinessLevel } from '#social-class/domain/models/happiness_level';
 
 @inject()
 export default class EventGenerationFromSocialClassHappinessService {
@@ -31,15 +32,15 @@ export default class EventGenerationFromSocialClassHappinessService {
     const workingClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.workingClass);
     const middleClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.middleClass);
 
-    if (businessOwnerAverageHappiness <= 1) {
+    if (businessOwnerAverageHappiness <= HappinessLevel.UNHAPPY) {
       await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.BUSINESS_OWNER, gameId, turn);
     }
 
-    if (workingClassAverageHappiness <= 1) {
+    if (workingClassAverageHappiness <= HappinessLevel.UNHAPPY) {
       await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.MIDDLE_CLASS, gameId, turn);
     }
 
-    if (middleClassAverageHappiness <= 1) {
+    if (middleClassAverageHappiness <= HappinessLevel.UNHAPPY) {
       await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.WORKING_CLASS, gameId, turn);
     }
   }
