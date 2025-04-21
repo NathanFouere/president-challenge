@@ -10,9 +10,6 @@ import type Game from '#game/domain/models/game';
 import { ElectionType } from '#election/domain/model/election_type';
 import type PoliticalParty from '#political-party/domain/models/political_party';
 import type SocialClass from '#social-class/domain/models/social_class';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import VotesForPoliticalPartyInElectionFactory
-  from '#election/application/factory/votes_for_political_party_in_election_factory';
 import type Election from '#election/domain/model/election';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IGetParliamentByGameQueryHandler from '#legislature/application/query/i_get_parliament_by_game_query_handler';
@@ -28,6 +25,10 @@ import IPoliticalPartySeatsSenateRepository
 import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_by_game_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import EventGenerationService from '#event/application/service/event_generation_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { ElectionVotesService } from '#election/domain/service/election_votes_service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import ElectionTurnService from '#election/domain/service/election_turn_service';
 
 @inject()
 export class ElectionService {
@@ -35,46 +36,24 @@ export class ElectionService {
     private readonly electionRepository: IElectionRepository,
     private readonly votesForPoliticalPartyInElectionRepository: IVotesForPoliticalPartyInElectionRepository,
     private readonly electionFactory: ElectionFactory,
-    private readonly votesForPoliticalPartyInElectionFactory: VotesForPoliticalPartyInElectionFactory,
     private readonly eventGenerationService: EventGenerationService,
     private readonly getParliamentByGameQueryHandler: IGetParliamentByGameQueryHandler,
     private readonly getSenateByGameQueryHandler: IGetSenateByGameQueryHandler,
     private readonly politicalPartySeatsParliamentRepository: IPoliticalPartySeatsParliamentRepository,
     private readonly politicalPartySeatsSenateRepository: IPoliticalPartySeatsSenateRepository,
+    private readonly electionVotesService: ElectionVotesService,
+    private readonly electionTurnService: ElectionTurnService,
   ) {
   }
 
-  // TODO => cela devrait être dans la configuration du jeu
-  readonly parliamentoryElectionTurns = [2, 3, 4];
-  readonly senateElectionTurns = [6, 5];
-  readonly presidentialElectionTurns = [1, 10];
-  readonly electionTurns = [
-    ...this.parliamentoryElectionTurns,
-    ...this.senateElectionTurns,
-    ...this.presidentialElectionTurns,
-  ];
-
   public async processElection(game: Game, politicalParties: PoliticalParty[], socialClasses: SocialClass[]): Promise<void> {
-    const electionType = this.getElectionTypeForTurn(game.turn);
+    const electionType = this.electionTurnService.getElectionTypeForTurn(game.turn);
     const election = this.electionFactory.createElectionForGame(game, electionType);
     await this.electionRepository.save(election);
 
-    const votesForPoliticalPartyInElections = [];
-
-    for (const politicalParty of politicalParties) {
-      let votesForPoliticalParty = 0;
-      for (const socialClass of socialClasses) {
-        votesForPoliticalParty += socialClass.getVotesOfSocialClassForPoliticalParty(politicalParty);
-      }
-      votesForPoliticalPartyInElections.push(this.votesForPoliticalPartyInElectionFactory.createVotesForPoliticalPartyInElection(
-        election,
-        politicalParty,
-        votesForPoliticalParty,
-      ));
-    }
+    const votesForPoliticalPartyInElections = this.electionVotesService.createVotesForPoliticalPartyInElection(election, politicalParties, socialClasses);
 
     await this.votesForPoliticalPartyInElectionRepository.createMany(votesForPoliticalPartyInElections);
-    election.setVotesForPoliticalPartyInElection(votesForPoliticalPartyInElections);
     await Promise.all([
       this.eventGenerationService.generateEventFromElection(game, election),
       this.applyElectionEffects(game, election),
@@ -97,23 +76,5 @@ export class ElectionService {
         break;
       }
     }
-  }
-
-  private getElectionTypeForTurn(turn: number): ElectionType {
-    if (this.parliamentoryElectionTurns.includes(turn)) {
-      return ElectionType.PARLIAMENTARY;
-    }
-    else if (this.senateElectionTurns.includes(turn)) {
-      return ElectionType.SENATORIAL;
-    }
-    else if (this.presidentialElectionTurns.includes(turn)) {
-      return ElectionType.PRESIDENTIAL;
-    }
-
-    throw new Error(`No election for turn ${turn}`);
-  }
-
-  public hasElectionForTurn(turn: number): boolean {
-    return this.electionTurns.includes(turn);
   }
 }
