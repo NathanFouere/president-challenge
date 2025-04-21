@@ -4,7 +4,7 @@ Game project which aims to create configurable and dynamic historical simulation
 
 ## Description
 
-**President Challenge** is a text-based simulation game that puts players in the shoes of a political leader during the 20th century. Players navigate through a series of events, making decisions that shape the course of history. The game is designed to be highly configurable, allowing creator of games to create unique scenarios.
+**President Challenge** is a simulation game that puts players in the shoes of a political leader during the 20th century. Players navigate through a series of events, making decisions that shape the course of history. The game is designed to be highly configurable, allowing creator of games to create unique scenarios.
 
 ## Architecture
 
@@ -13,15 +13,18 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 ## Features
 
 - **Event System**: Players navigate through a system of dynamic events, with consequences that affect the state of the game.
-- **Class and Party Dynamics**: Social classes and political parties react to the player's decisions based on their ideologies.
+- **Class and Party Dynamics**: Social classes and political parties react to the player's decisions
 - **Economic Management**: Players balance resources, industries, and budgets to maintain stability.
 - **Multiple Endings**: Outcomes are shaped by player choices, reflecting different historical and hypothetical scenarios.
 
 ## Technologies
 
 ### Frameworks
-- **AdonisJS**
-- **Nuxt**
+- **AdonisJS**: For the backend
+- **Nuxt**: For the frontend
+
+### Libraries
+- **AdminJS**: For the administration interface
 
 ### Database
 - **PostgreSQL**
@@ -45,8 +48,9 @@ You can track the progress and upcoming features of this project on the [Trello 
 
 - Some aspect of the Domain Driven Design separation are not respected, especially the separation between the domain and the application layer
 - The project is not tested
-- Front code needs some refacto
-- Turn pipeline could be improved
+- Front code should be refactored partially
+- The existing global pipeline for turn processing could be leveraged further by introducing nested pipelines, or by using an event-based system
+- Event generation could be improved
 
 ## How to Run the Project
 TODO
