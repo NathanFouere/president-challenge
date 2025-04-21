@@ -9,7 +9,7 @@ import SocialClassesAverageHappinessCalculatorService
 import {
   aPoliticalPartyHappinessModifier,
 } from '#political-party/application/builders/political_party_happiness_modifier_builder';
-import politicalPartySocialClassHappiness from '#game-config/political-party/political-party-social-class-happiness.json' assert { type: 'json' };
+import politicalPartySocialClassHappiness from '#game-config/political-party/political-party-social-class-happiness-modifier.json' assert { type: 'json' };
 import type SocialClass from '#social-class/domain/models/social_class';
 
 @inject()
@@ -35,7 +35,7 @@ export default class PoliticalPartyHappinessService {
     const socialClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClasses);
     const politicalPartyModifierRatioForSocialClass = politicalPartySocialClassHappiness[politicalParty.definition.affiliation][socialClassType];
     const processedAmount = socialClassAverageHappiness * politicalPartyModifierRatioForSocialClass;
-    // TODO => moove to a factory
+    // TODO => move to a factory
     const happinessModifier = aPoliticalPartyHappinessModifier()
       .withPoliticalPartyId(politicalParty.id)
       .withType(HappinessModifierType.TEMPORARY)
