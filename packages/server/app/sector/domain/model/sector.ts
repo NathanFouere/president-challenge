@@ -1,7 +1,7 @@
 import { beforeSave, belongsTo, column, hasMany } from '@adonisjs/lucid/orm';
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations';
 import type { SectorEconomicalSituation } from '@president-challenge/shared/dist/sector/sector-economical-situation.js';
-import type { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
+import { SectorOwnershipType } from '@president-challenge/shared/dist/sector/sector-ownership-type.js';
 import Product from '#product/domain/models/product';
 import SocialClass from '#social-class/domain/models/social_class';
 import Game from '#game/domain/models/game';
@@ -63,4 +63,35 @@ export default class Sector extends TimeStampedModel {
   public setSocialClasses(socialClasses: SocialClass[]): void {
     this.$setRelated('socialClasses', socialClasses);
   }
+
+  public calculateSectorRevenues(): SectorRevenueForSocialClass {
+    switch (this.ownershipType) {
+      case SectorOwnershipType.PRIVATE:
+        return {
+          owner: -50 + this.economicalSituation * 25,
+          worker: -50 + this.economicalSituation * 25,
+          state: 0,
+        };
+      case SectorOwnershipType.MIXED:
+        return {
+          owner: -25 + this.economicalSituation * 25,
+          worker: -25 + this.economicalSituation * 25,
+          state: -25 + this.economicalSituation * 25,
+        };
+      case SectorOwnershipType.PUBLIC:
+        return {
+          owner: 0,
+          worker: -25 + this.economicalSituation * 25,
+          state: -50 + this.economicalSituation * 25,
+        };
+      default:
+        throw new Error('Unknown sector ownership type');
+    }
+  }
+}
+
+interface SectorRevenueForSocialClass {
+  owner: number;
+  worker: number;
+  state: number;
 }

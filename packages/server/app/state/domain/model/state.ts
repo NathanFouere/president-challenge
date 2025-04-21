@@ -4,7 +4,6 @@ import Game from '#game/domain/models/game';
 import Budget from '#budget/domain/model/budget';
 import StateEconomicalSituationPerTurn from '#state/domain/model/state_economical_situation_per_turn';
 import Tax from '#tax/domain/model/tax';
-import sectorEconomicalSituationMatchConfig from '#game-config/sector/sector-economical-situation-match-config.json' assert { type: 'json' };
 import { aStateFinancialFlow } from '#state/application/builder/state_financial_flow_builder';
 import StateFinancialFlow from '#state/domain/model/state_financial_flow';
 import type Sector from '#sector/domain/model/sector';
@@ -79,7 +78,8 @@ export default class State extends TimeStampedModel {
   public generateRevenueFromSectors(sectors: Sector[]): number {
     let generatedRevenueFromSectors = 0;
     for (const sector of sectors) {
-      const added = sectorEconomicalSituationMatchConfig[sector.ownershipType][sector.economicalSituation].state;
+      const revenue = sector.calculateSectorRevenues();
+      const added = revenue.state;
       generatedRevenueFromSectors += added;
     }
 

@@ -2,7 +2,6 @@ import type { EventListDto } from '@president-challenge/shared/event/event-list-
 
 export interface TurnInformationsDto {
   eventListDto: EventListDto;
-  maxTurnReached: boolean;
-  eventNeedToBeAddress: boolean;
-  defeat: boolean;
+  canChangeTurnContext: string;
+  canChangeTurn: boolean;
 }

@@ -5,10 +5,10 @@ import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 import type { TurnInformationsPresenter } from '~/presenters/turn-informations/turn-informations.presenter';
 
 const turnInformationsPresenter = container.get<TurnInformationsPresenter>(COMMON_DEPENDANCY_TYPES.TurnInformationsPresenter);
+// TODO => This page should be refactored because it has evolved a lot
 
 usePageTitle().setTitle('Informations for ' + getDateFromTurnNumber(turnInformationsPresenter.gameStore.getSelectedGameTurn));
 
-// TODO => really hacky, need to find a better way to do this
 const selectedTurn = computed(() => turnInformationsPresenter.gameStore.getSelectedGameTurn);
 watch(selectedTurn, async () => {
   usePageTitle().setTitle('Informations for ' + getDateFromTurnNumber(selectedTurn.value));
@@ -17,26 +17,6 @@ watch(selectedTurn, async () => {
 onMounted(async () => {
   await turnInformationsPresenter.getTurnInformations();
 });
-
-function getCantChangeTurnContext() {
-  if (turnInformationsPresenter.turnInformationsStore.getMaxTurnReached) {
-    return 'Max turn reached';
-  }
-
-  if (turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress) {
-    return 'You need to address all events';
-  }
-
-  if (turnInformationsPresenter.turnInformationsStore.defeat) {
-    return 'You have been defeated';
-  }
-
-  return '';
-}
-
-function getCantChangeTurn() {
-  return turnInformationsPresenter.turnInformationsStore.getMaxTurnReached || turnInformationsPresenter.turnInformationsStore.getEventNeedToBeAddress || turnInformationsPresenter.turnInformationsStore.getDefeat;
-}
 </script>
 
 <template>
@@ -80,11 +60,11 @@ function getCantChangeTurn() {
       class="text-center"
     >
       <UTooltip
-        :text="getCantChangeTurnContext()"
+        :text="turnInformationsPresenter.turnInformationsStore.getTurnInformations!.canChangeTurnContext"
       >
         <UButton
           :loading="turnInformationsPresenter.gameStore.isChangingTurn"
-          :disabled="getCantChangeTurn()"
+          :disabled="turnInformationsPresenter.turnInformationsStore.getTurnInformations!.canChangeTurn"
           @click="turnInformationsPresenter.changeTurn()"
         >
           {{ turnInformationsPresenter.turnInformationsStore.getTurnProcessDatas?.message ?? 'Change turn' }}

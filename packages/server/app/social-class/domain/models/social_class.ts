@@ -8,8 +8,6 @@ import SocialClassEconomicalSituationPerTurn
 import SocialClassHappinessPerTurn from '#social-class/domain/models/social_class_happiness_per_turn';
 import SocialClassHappinessModifier from '#social-class/domain/models/social_class_happiness_modifier';
 import SocialClassFinancialFlow from '#social-class/domain/models/social_class_financial_flow';
-import sectorEconomicalSituationMatchConfig
-  from '#game-config/sector/sector-economical-situation-match-config.json' assert {type: 'json'};
 import type Tax from '#tax/domain/model/tax';
 import SocialClassDefinition from '#social-class/domain/models/social_class_definition';
 import { TimeStampedModel } from '#common/model/timestamped_model';
@@ -69,16 +67,17 @@ export default class SocialClass extends TimeStampedModel {
   }
 
   public generateRevenueFromSector(): number {
+    const revenues = this.sector.calculateSectorRevenues();
     let revenuesFromSectors;
     switch (this.definition.type) {
       case SocialClassTypes.BUSINESS_OWNER:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
+        revenuesFromSectors = revenues.owner;
         break;
       case SocialClassTypes.WORKING_CLASS:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].owner;
+        revenuesFromSectors = revenues.worker;
         break;
       case SocialClassTypes.MIDDLE_CLASS:
-        revenuesFromSectors = sectorEconomicalSituationMatchConfig[this.sector.ownershipType][this.sector.economicalSituation].worker;
+        revenuesFromSectors = revenues.worker;
         break;
     }
 

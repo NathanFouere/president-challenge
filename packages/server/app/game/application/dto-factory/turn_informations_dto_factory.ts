@@ -16,19 +16,33 @@ export class TurnInformationsDtoFactory {
   }
 
   public async createFromTurnInformations(events: Event[], game: Game): Promise<TurnInformationsDto> {
-    let eventNeedToBeAddress = false;
-    for (const event of events) {
-      if (event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available)) {
-        eventNeedToBeAddress = true;
-        break;
-      }
-    }
-
     return {
       eventListDto: await this.eventListDtoFactory.createFromEvents(events),
-      eventNeedToBeAddress: eventNeedToBeAddress,
-      maxTurnReached: game.isInFinishedStatus(),
-      defeat: game.isInDefeatStatus(),
+      canChangeTurnContext: this.canChangeTurnContext(game, events),
+      canChangeTurn: game.isInDefeatStatus() || game.isInFinishedStatus() || this.hasEventNeedToBeAddress(events),
     };
+  }
+
+  private hasEventNeedToBeAddress(events: Event[]): boolean {
+    for (const event of events) {
+      if (event.choices.some((choice: Choice) => choice.status === ChoiceStatus.Available)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private canChangeTurnContext(game: Game, events: Event[]): string {
+    if (game.isInFinishedStatus()) {
+      return 'Game finished';
+    }
+    else if (game.isInDefeatStatus()) {
+      return 'You have been defeated';
+    }
+    else if (this.hasEventNeedToBeAddress(events)) {
+      return 'You need to address all events';
+    }
+
+    return '';
   }
 }

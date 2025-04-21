@@ -40,9 +40,7 @@ export class TurnInformationsPresenter {
       this.eventsStore.setChoiceEvents(turnInformations.eventListDto.choiceEvents);
       this.eventsStore.setHistoricalEvents(turnInformations.eventListDto.commonEvents);
       this.eventsStore.setSuperEvents(turnInformations.eventListDto.superEvents);
-      this.turnInformationsStore.setMaxTurnReached(turnInformations.maxTurnReached);
-      this.turnInformationsStore.setEventNeedToBeAddress(turnInformations.eventNeedToBeAddress);
-      this.turnInformationsStore.setDefeat(turnInformations.defeat);
+      this.turnInformationsStore.setTurnInformations(turnInformations);
     }
     catch {
       this.toast.showError('Error while getting events');
