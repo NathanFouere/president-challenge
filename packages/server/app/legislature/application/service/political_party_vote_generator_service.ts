@@ -42,6 +42,8 @@ export default class PoliticalPartyVoteGeneratorService {
     const politicalParty = await this.getPoliticalPartyPerAffiliationInGameQueryHandler.handleForVote(
       new GetPoliticalPartyPerAffiliationInGameQuery(gameId, lawVotesPercentagePerPoliticalParty.politicalAffiliation),
     );
+
+    // TODO => should be moved to a factory
     return aPoliticalPartyVoteForLaw()
       .withPoliticalPartyId(politicalParty.id)
       .withLawVoteResultsId(lawVoteResults.id)

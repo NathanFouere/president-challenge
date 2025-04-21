@@ -20,9 +20,9 @@ export default class PoliticalPartyHappinessService {
   }
 
   public updatePoliticalPartiesHappiness(politicalParties: PoliticalParty[], socialClassesPerType: SocialClassesPerType): void {
-    for (const politicalParty of politicalParties) {
+    politicalParties.forEach((politicalParty: PoliticalParty) => {
       this.changePoliticalPartiesHappinessThroughtSocialClassesHappiness(politicalParty, socialClassesPerType);
-    }
+    });
   }
 
   private changePoliticalPartiesHappinessThroughtSocialClassesHappiness(politicalParty: PoliticalParty, socialClassesPerType: SocialClassesPerType): void {
