@@ -44,7 +44,7 @@ I am unsure of finalizing this project, but I have set the following learning ob
 ## Roadmap
 You can track the progress and upcoming features of this project on the [Trello Board](https://trello.com/b/yeDvZUYI/allende-challenge-v2) (In French)
 
-## Issues Of the project
+## Possible improvements to the project
 
 - Some aspect of the Domain Driven Design separation are not respected, especially the separation between the domain and the application layer
 - The project is not tested
