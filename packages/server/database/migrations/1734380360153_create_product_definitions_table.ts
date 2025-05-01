@@ -29,12 +29,6 @@ export default class extends BaseSchema {
 
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();
-      table
-        .integer('game_id')
-        .unsigned()
-        .references('id')
-        .inTable('games')
-        .onDelete('CASCADE');
     });
   }
 

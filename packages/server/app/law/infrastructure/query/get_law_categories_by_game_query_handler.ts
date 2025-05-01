@@ -8,7 +8,7 @@ export default class GetLawCategoriesByGameQueryHandler extends IGetLawCategorie
     return await LawCategory
       .query()
       .preload('lawGroups', (lawGroupQuery) => {
-        lawGroupQuery.preload('definitions', (definitionQuery) => {
+        lawGroupQuery.preload('lawDefinitions', (definitionQuery) => {
           definitionQuery.preload('laws', (lawQuery) => {
             lawQuery.where('game_id', query.gameId).preload('definition');
           });

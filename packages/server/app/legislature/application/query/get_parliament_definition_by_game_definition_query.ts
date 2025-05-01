@@ -1,4 +1,4 @@
-export default class GetParliamentDefinitionQuery {
+export default class GetParliamentDefinitionByGameDefinitionQuery {
   constructor(
     public readonly gameDefinitionIdentifier: string,
   ) {}

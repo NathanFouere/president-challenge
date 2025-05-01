@@ -4,6 +4,7 @@ import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import SectorDefinition from '#sector/domain/model/sector_definition';
 import Product from '#product/domain/models/product';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class ProductDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -40,4 +41,10 @@ export default class ProductDefinition extends TimeStampedModel {
 
   @column()
   declare defaultCostOfProduction: number;
+
+  @column()
+  declare gameDefinitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition)
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }

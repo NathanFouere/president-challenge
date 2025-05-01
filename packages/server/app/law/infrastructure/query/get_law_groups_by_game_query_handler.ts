@@ -7,7 +7,7 @@ export default class GetLawGroupsByGameQueryHandler implements IGetLawGroupsByGa
     return await LawGroup
       .query()
       .where('game_id', query.gameId)
-      .preload('definitions', (definitionQuery) => {
+      .preload('lawDefinitions', (definitionQuery) => {
         definitionQuery.orderBy('order', 'asc');
       })
       .exec();

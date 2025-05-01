@@ -3,8 +3,6 @@ import type { StartupProcessorStep } from '#common/startup/startup_processor_ste
 
 import { aLaw } from '#law/application/builder/game_law_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import ILawDefinitionRepository from '#law/domain/repository/i_law_definition_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import SocialClassHappinessLawEffectService
   from '#law/application/service/law-effect/social_class_happiness_law_effect_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -15,22 +13,29 @@ import { IGetLawByGameQueryHandler } from '#law/application/query/i_get_law_by_g
 import GetLawByGameQuery from '#law/application/query/get_law_by_game_and_type_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import ILawRepository from '#law/domain/repository/i_law_repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetLawDefinitionsByGameDefinitionQueryHandler
+  from '#law/application/query/i_get_law_definitions_by_game_definition_query_handler';
+import GetLawDefinitionsByGameDefinitionQuery from '#law/application/query/get_law_definitions_by_game_definition_query';
 
 @inject()
 export default class LawStartupService implements StartupProcessorStep {
   constructor(
-    private readonly lawDefinitionRepository: ILawDefinitionRepository,
     private readonly applySocialClassesHappinessEffects: SocialClassHappinessLawEffectService,
     private readonly applyPoliticalPartiesHappinessEffects: ApplyPoliticalPartiesHappinessLawEffectService,
     private readonly getLawByGameQueryHandler: IGetLawByGameQueryHandler,
     private readonly lawRepository: ILawRepository,
+    private readonly getLawDefinitionsByGameDefinitionQueryHandler: IGetLawDefinitionsByGameDefinitionQueryHandler,
   ) {
   }
 
-  public async execute(gameId: number): Promise<void> {
-    const lawDefinitions = await this.lawDefinitionRepository.getAll();
+  public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
+    const lawDefinitions = await this.getLawDefinitionsByGameDefinitionQueryHandler.handle(
+      new GetLawDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
+    );
     const laws = [];
     for (const lawDefinition of lawDefinitions) {
+      // Todo => ajouter factory
       const law
       = aLaw()
         .withGameId(gameId)

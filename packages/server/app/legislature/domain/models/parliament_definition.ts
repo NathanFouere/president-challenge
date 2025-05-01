@@ -17,8 +17,6 @@ export default class ParliamentDefinition extends TimeStampedModel {
   @column()
   declare gameDefinitionIdentifier: string;
 
-  @belongsTo(() => GameDefinition, {
-    foreignKey: 'gameDefinitionIdentifier',
-  })
+  @belongsTo(() => GameDefinition)
   declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }
