@@ -5,20 +5,25 @@ import { aProduct } from '#product/application/builder/product_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IProductRepository from '#product/domain/repository/i_product_repository';
 import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IProductDefinitionRepository from '#product/domain/repository/i_product_definition_repository';
 import Sector from '#sector/domain/model/sector';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetProductDefinitionsByGameDefinitionQueryHandler
+  from '#product/application/query/i_get_product_definitions_by_game_definition_query_handler';
+import GetProductDefinitionsByGameDefinitionQuery
+  from '#product/application/query/get_product_definitions_by_game_definition_query';
 
 @inject()
 export class ProductStartupService implements StartupProcessorStep {
   constructor(
     private readonly productRepository: IProductRepository,
-    private readonly productDefinitionRepository: IProductDefinitionRepository,
+    private readonly getProductDefinitionsByGameDefinitionQueryHandler: IGetProductDefinitionsByGameDefinitionQueryHandler,
   ) {
   }
 
-  public async execute(gameId: number): Promise<void> {
-    const productDefinitions = await this.productDefinitionRepository.findAll();
+  public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
+    const productDefinitions = await this.getProductDefinitionsByGameDefinitionQueryHandler.handle(
+      new GetProductDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
+    );
     const products: Product[] = [];
 
     for (const productDefinition of productDefinitions) {

@@ -15,6 +15,7 @@ import Law from '#law/domain/model/law';
 import LawVotesPercentagePerPoliticalAffiliation
   from '#law/domain/model/law_votes_percentage_per_political_affiliation';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class LawDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -82,4 +83,10 @@ export default class LawDefinition extends TimeStampedModel {
     foreignKey: 'definitionId',
   })
   declare laws: HasMany<typeof Law>;
+
+  @column()
+  declare gameDefinitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition)
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }

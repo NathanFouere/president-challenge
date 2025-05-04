@@ -5,6 +5,7 @@ import EventDefinition from '#event/domain/models/event_definition';
 import Choice from '#event/domain/models/choice';
 import { TimeStampedModel } from '#common/model/timestamped_model';
 import Election from '#election/domain/model/election';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class Event extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -44,6 +45,9 @@ export default class Event extends TimeStampedModel {
 
   @belongsTo(() => Election)
   declare election: BelongsTo<typeof Election>;
+
+  @belongsTo(() => GameDefinition)
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 
   public makeAvailable(): void {
     this.isAvailable = true;

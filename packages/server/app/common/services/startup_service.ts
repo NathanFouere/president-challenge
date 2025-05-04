@@ -9,9 +9,9 @@ export class StartupService {
   ) {
   }
 
-  public async initialize(gameId: number): Promise<void> {
+  public async initialize(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
     try {
-      const pipeline = this.startupPipelineFactory.create(gameId);
+      const pipeline = this.startupPipelineFactory.create(gameId, gameDefinitionIdentifier);
       await pipeline.execute();
     }
     catch (error) {

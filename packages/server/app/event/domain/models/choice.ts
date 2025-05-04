@@ -27,7 +27,7 @@ export default class Choice extends TimeStampedModel {
   @belongsTo(() => Event)
   declare event: BelongsTo<typeof Event>;
 
-  @column({ serializeAs: null })
+  @column()
   declare gameId: number;
 
   @belongsTo(() => Game)

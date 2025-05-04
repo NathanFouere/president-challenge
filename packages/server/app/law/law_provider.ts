@@ -13,6 +13,8 @@ import {
 import { ILawVoteResultsRepository } from '#law/domain/repository/i_law_vote_results_repository';
 import IGetIncompatibleLawsQueryHandler from '#law/application/query/i_get_incompatible_laws_query_handler';
 import ILawDefinitionRepository from '#law/domain/repository/i_law_definition_repository';
+import IGetLawDefinitionsByGameDefinitionQueryHandler
+  from '#law/application/query/i_get_law_definitions_by_game_definition_query_handler';
 
 export default class LawProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -49,6 +51,13 @@ export default class LawProvider extends AppProvider {
     const { default: LawDefinitionRepository } = await import(
       '#law/infrastructure/repositories/law_definition_repository'
     );
+    const { default: GetLawDefinitionsByGameQueryHandler } = await import(
+      '#law/infrastructure/query/get_law_definitions_by_game_definition_query_handler'
+    );
+
+    this.app.container.bind(IGetLawDefinitionsByGameDefinitionQueryHandler, () => {
+      return new GetLawDefinitionsByGameQueryHandler();
+    });
 
     this.app.container.bind(ILawDefinitionRepository, () => {
       return new LawDefinitionRepository();

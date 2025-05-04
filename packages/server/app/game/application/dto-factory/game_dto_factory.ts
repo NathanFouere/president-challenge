@@ -7,7 +7,7 @@ export default class GameDtoFactory {
       id: game.id,
       turn: game.turn,
       politicalWeight: game.politicalWeight,
-      maxTurns: game.maxTurns,
+      maxTurns: game.definition.maxTurns,
       status: game.status,
     };
   }

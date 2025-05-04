@@ -4,13 +4,16 @@ import type GameModule from '../../server/repository/modules/game.module';
 import { useGameStore } from '~/store/game/game.store';
 import { useCustomToast } from '~/composables/useCustomToast';
 import { useClearStore } from '~/composables/useClearStore';
+import { useGameDefinitionStore } from '~/store/game-definition/game-definition.store';
 
 @injectable()
 export class GamePresenter {
   private readonly gameModule: GameModule = useNuxtApp().$api.game;
   public readonly gameStore = useGameStore();
+  public readonly gameDefinitionStore = useGameDefinitionStore();
   private readonly toast = useCustomToast();
 
+  // TODO => ici une règle du back est présente dans le front, elle devrait être récupérer différement
   public hasMaxGames(): boolean {
     return this.gameStore.userGames.length >= 3;
   }
@@ -26,16 +29,18 @@ export class GamePresenter {
     }
   }
 
-  public async createGame(): Promise<void> {
+  public async createGame(gameDefinitionIdentifier: string): Promise<void> {
     this.gameStore.setCreatingGame();
+    this.gameDefinitionStore.setCreatingGameDefinitionIdentifier(gameDefinitionIdentifier);
     try {
-      await this.gameModule.createGame();
+      await this.gameModule.createGame(gameDefinitionIdentifier);
       await this.fetchUserGames();
       this.toast.showSuccess('Game created successfully');
     }
     catch {
       this.toast.showError('Failed to create game.');
     }
+    this.gameDefinitionStore.unsetCreatingGameDefinitionIdentifier();
     this.gameStore.unsetCreatingGame();
   }
 
@@ -80,5 +85,18 @@ export class GamePresenter {
     finally {
       this.gameStore.unsetGettingGames();
     }
+  }
+
+  public async getGameDefinitions(): Promise<void> {
+    this.gameDefinitionStore.setGettingGameDefinitions();
+
+    try {
+      const gameDefinitions = await this.gameModule.getGameDefinitions();
+      this.gameDefinitionStore.setGameDefinitions(gameDefinitions);
+    }
+    catch {
+      this.toast.showError('Failed to fetch game definitions.');
+    }
+    this.gameDefinitionStore.unsetGettingGameDefinitions();
   }
 }

@@ -1,6 +1,7 @@
-import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import type { TurnInformationsDto } from '@president-challenge/shared/dist/turn-informations/turn-informations-dto';
 import type { GameDto } from '@president-challenge/shared/dist/game/game-dto';
+import type { GameDefinitionDto } from '@president-challenge/shared/dist/game/game-definition-dto';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import FetchFactory from '../factory';
 import Routes from '../routes.client';
 
@@ -16,6 +17,15 @@ class GameModule extends FetchFactory {
     );
   };
 
+  public async getGameDefinitions(): Promise<GameDefinitionDto[]> {
+    return this.call<GameDefinitionDto[]>(
+      {
+        method: 'GET',
+        url: `${this.RESOURCE.GetGameDefinitions()}`,
+      },
+    );
+  };
+
   public async getGame(gameId: number): Promise<GameDto> {
     return this.call<GameDto>(
       {
@@ -25,11 +35,11 @@ class GameModule extends FetchFactory {
     );
   }
 
-  public async createGame(): Promise<void> {
+  public async createGame(gameDefinitionIdentifier: string): Promise<void> {
     return this.call(
       {
         method: 'POST',
-        url: `${this.RESOURCE.CreateGame()}`,
+        url: `${this.RESOURCE.CreateGame(gameDefinitionIdentifier)}`,
       },
     );
   };

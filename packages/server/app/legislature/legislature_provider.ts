@@ -20,9 +20,13 @@ import IPoliticalPartySeatsParliamentDefinitionRepository
   from '#legislature/domain/repository/i_political_party_seats_parliament_definition_repository';
 import IPoliticalPartySeatsSenateDefinitionRepository
   from '#legislature/domain/repository/i_politcal_party_seats_senate_definition_repository';
-import IGetSenateDefinitionQueryHandler from '#legislature/application/query/i_get_senate_definition_query_handler';
-import IGetParliamentDefinitionQueryHandler
-  from '#legislature/application/query/i_get_parliament_definition_query_handler';
+import IGetSenateDefinitionByGameDefinitionQueryHandler from '#legislature/application/query/i_get_senate_definition_by_game_definition_query_handler';
+import IGetParliamentDefinitionByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_parliament_definition_by_game_definition_query_handler';
+import IGetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_political_party_seats_senate_definitions_by_game_definition_query_handler';
+import IGetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_political_party_seats_parliament_definitions_by_game_definition_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -61,20 +65,36 @@ export default class LegislatureProvider extends AppProvider {
       '#legislature/infrastructure/repositories/political_party_seats_senate_definition_repository'
     );
 
-    const { default: GetSenateDefinitionQueryHandler } = await import(
-      '#legislature/infrastructure/query/get_senate_definition_query_handler'
+    const { default: GetSenateDefinitionByGameDefinitionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_senate_definition_by_game_definition_query_handler'
     );
 
-    const { default: GetParliamentDefinitionQueryHandler } = await import(
-      '#legislature/infrastructure/query/get_parliament_definition_query_handler'
+    const { default: GetParliamentDefinitionByGameDefinitionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_parliament_definition_by_game_definition_query_handler'
     );
 
-    this.app.container.bind(IGetSenateDefinitionQueryHandler, () => {
-      return new GetSenateDefinitionQueryHandler();
+    const { default: GetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_political_party_seats_parliament_definitions_by_game_definition_query_handler'
+    );
+
+    const { default: GetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_political_party_seats_senate_definitions_by_game_definition_query_handler'
+    );
+
+    this.app.container.bind(IGetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler, () => {
+      return new GetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler();
     });
 
-    this.app.container.bind(IGetParliamentDefinitionQueryHandler, () => {
-      return new GetParliamentDefinitionQueryHandler();
+    this.app.container.bind(IGetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler, () => {
+      return new GetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler();
+    });
+
+    this.app.container.bind(IGetSenateDefinitionByGameDefinitionQueryHandler, () => {
+      return new GetSenateDefinitionByGameDefinitionQueryHandler();
+    });
+
+    this.app.container.bind(IGetParliamentDefinitionByGameDefinitionQueryHandler, () => {
+      return new GetParliamentDefinitionByGameDefinitionQueryHandler();
     });
 
     this.app.container.bind(IPoliticalPartySeatsSenateDefinitionRepository, () => {

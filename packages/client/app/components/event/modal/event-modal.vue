@@ -69,20 +69,22 @@ const getChoiceIcon = (choice: ChoiceDto) => {
         </div>
       </template>
 
-      <template v-if="eventPresenter.eventStore.isGettingEvent">
-        <USkeleton class="h-64 w-full mb-4" />
-        <USkeleton class="h-64 w-full mb-4" />
-        <USkeleton class="h-24 w-full mb-4" />
-      </template>
-      <template v-else>
-        <licensed-files-component :licensed-files="eventPresenter.eventStore.requireCurrentEvent.licensedFiles" />
-        <br>
-        <p>{{ eventPresenter.eventStore.requireCurrentEvent.text }}</p>
-        <br>
-        <election-results-component
-          v-if="eventPresenter.eventStore.requireCurrentEvent.electionResults"
-          :election-results="eventPresenter.eventStore.requireCurrentEvent.electionResults"
-        />
+      <template #default>
+        <div v-if="eventPresenter.eventStore.isGettingEvent">
+          <USkeleton class="h-64 w-full mb-4" />
+          <USkeleton class="h-64 w-full mb-4" />
+          <USkeleton class="h-24 w-full mb-4" />
+        </div>
+        <div v-else>
+          <licensed-files-component :licensed-files="eventPresenter.eventStore.requireCurrentEvent.licensedFiles" />
+          <br>
+          <p>{{ eventPresenter.eventStore.requireCurrentEvent.text }}</p>
+          <br>
+          <election-results-component
+            v-if="eventPresenter.eventStore.requireCurrentEvent.electionResults"
+            :election-results="eventPresenter.eventStore.requireCurrentEvent.electionResults"
+          />
+        </div>
       </template>
 
       <template

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import { getDateFromTurnNumber } from '@president-challenge/shared/dist/utils/date-converter';
 import { GameStatus } from '@president-challenge/shared/dist/game/game_status';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import ConfirmDeletionModal from '../common/modal/confirm-deletion-modal.vue';
 
 const props = defineProps<{

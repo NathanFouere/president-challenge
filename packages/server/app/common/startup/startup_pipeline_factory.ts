@@ -43,7 +43,7 @@ export default class StartupPipelineFactory {
   ) {
   }
 
-  public create(gameId: number): StartupPipeline {
+  public create(gameId: number, gameDefinitionIdentifier: string): StartupPipeline {
     return new StartupPipeline(
       [
         this.parliamentStartupService,
@@ -60,6 +60,7 @@ export default class StartupPipelineFactory {
         this.lawStartupService,
       ],
       gameId,
+      gameDefinitionIdentifier,
     );
   }
 }

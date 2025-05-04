@@ -6,6 +6,8 @@ import { StartupService } from '#common/services/startup_service';
 import IGameRepository from '#game/domain/repository/i_game_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import GameFactory from '#game/application/factory/game_factory';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGameDefinitionRepository from '#game/domain/repository/i_game_definition_repository';
 
 @inject()
 export default class CreateGameService {
@@ -15,6 +17,7 @@ export default class CreateGameService {
     private readonly gameRepository: IGameRepository,
     private readonly startupService: StartupService,
     private readonly gameFactory: GameFactory,
+    private readonly gameDefinitionRepository: IGameDefinitionRepository,
   ) {
   }
 
@@ -24,7 +27,7 @@ export default class CreateGameService {
     return Number((numberOfGames)) < this.MAX_GAMES;
   }
 
-  public async createGame(user: User): Promise<void> {
+  public async createGame(user: User, gameDefinitionIdentifier: string): Promise<void> {
     const canCreateGame = await this.canCreateGame(user);
     if (!canCreateGame) {
       throw new Error(
@@ -32,11 +35,12 @@ export default class CreateGameService {
       );
     }
 
-    const game = this.gameFactory.createForUser(user.id);
+    const gameDefinition = await this.gameDefinitionRepository.get(gameDefinitionIdentifier);
+    const game = this.gameFactory.createForUser(user.id, gameDefinition);
 
     try {
-      await this.gameRepository.save(game);
-      await this.startupService.initialize(game.id);
+      await this.gameRepository.save(game); // TODO => voir si je peux virer ça
+      await this.startupService.initialize(game.id, gameDefinitionIdentifier);
       await this.gameRepository.save(game);
     }
     catch (error) {

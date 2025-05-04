@@ -30,7 +30,7 @@ const handleDelete = () => {
   <UModal v-model="isOpen">
     <UCard>
       <template #header>
-        <p>Confirm Deletion</p>
+        Confirm Deletion
       </template>
 
       <p>Are you sure you want to delete</p>

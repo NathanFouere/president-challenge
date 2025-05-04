@@ -1,10 +1,11 @@
-import { column, hasMany, manyToMany } from '@adonisjs/lucid/orm';
-import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
+import { column, hasMany, manyToMany, belongsTo } from '@adonisjs/lucid/orm';
+import type { HasMany, ManyToMany, BelongsTo } from '@adonisjs/lucid/types/relations';
 import type { EventType } from '#event/domain/models/event_type';
 import Choice from '#event/domain/models/choice';
 import Event from '#event/domain/models/event';
 import LicensedFile from '#licensed-file/domain/models/licensed_file';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class EventDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -50,4 +51,10 @@ export default class EventDefinition extends TimeStampedModel {
 
   @hasMany(() => Choice)
   declare choices: HasMany<typeof Choice>;
+
+  @column()
+  declare gameDefinitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition)
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }

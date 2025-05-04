@@ -4,10 +4,10 @@ export class GameBuilder {
   private turn: number | null = null;
   private userId: number | null = null;
   private politicalWeight: number | null = null;
-  private maxTurns: number | null = null;
+  private definitionIdentifier: string | null = null;
 
-  public withMaxTurns(maxTurns: number): this {
-    this.maxTurns = maxTurns;
+  public withDefinitionIdentifier(definitionIdentifier: string): this {
+    this.definitionIdentifier = definitionIdentifier;
     return this;
   }
 
@@ -46,11 +46,11 @@ export class GameBuilder {
     else {
       throw new Error('politicalWeight is required');
     }
-    if (this.maxTurns !== null) {
-      game.maxTurns = this.maxTurns;
+    if (this.definitionIdentifier !== null) {
+      game.definitionIdentifier = this.definitionIdentifier;
     }
     else {
-      throw new Error('maxTurns is required');
+      throw new Error('definitionIdentifier is required');
     }
 
     return game;

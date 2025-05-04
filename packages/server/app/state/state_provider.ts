@@ -5,6 +5,8 @@ import IStateFinancialFlowRepository from '#state/domain/repository/i_state_fina
 import ISocialClassFinancialFlowRepository
   from '#social-class/domain/repository/i_social_class_financial_flow_repository';
 import IStateDefinitionRepository from '#state/domain/repository/i_state_definition_repository';
+import IGetStateDefinitionByGameDefinitionQueryHandler
+  from '#state/application/query/i_get_state_definition_by_game_definition_query_handler';
 
 export default class StateProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -26,6 +28,14 @@ export default class StateProvider extends AppProvider {
     const { default: StateDefinitionRepository } = await import(
       '#state/infrastructure/repository/state_definition_repository'
     );
+
+    const { default: GetStateDefinitionByGameDefinitionQueryHandler } = await import(
+      '#state/infrastructure/query/get_state_definition_by_game_definition_query_handler'
+    );
+
+    this.app.container.bind(IGetStateDefinitionByGameDefinitionQueryHandler, () => {
+      return new GetStateDefinitionByGameDefinitionQueryHandler();
+    });
 
     this.app.container.bind(IStateDefinitionRepository, () => {
       return new StateDefinitionRepository();

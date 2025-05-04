@@ -8,49 +8,51 @@ import type { SocialClassesPerType } from '#game/application/service/turn-servic
 import SocialClassesAverageHappinessCalculatorService
   from '#social-class/domain/service/social_classes_average_happiness_calculator_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetEventDefinitionByIdentifierQueryHandler
-  from '#event/application/queries/i_get_event_definition_by_identifier_query_handler';
-import { GetEventDefinitionByIdentifierQuery } from '#event/application/queries/get_event_definition_by_identifier_query';
+import IGetEventDefinitionByIdentifierAndGameDefinitionQueryHandler
+  from '#event/application/queries/i_get_event_definition_by_identifier_and_game_definition_query_handler';
+import { GetEventDefinitionByIdentifierAndGameDefinitionQuery } from '#event/application/queries/get_event_definition_by_identifier_and_game_definition_query';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import EventFactory from '#event/application/factory/event_factory';
 import { EventDefinitionsConstants } from '#event/application/queries/event_definitions_constants';
 import type EventDefinition from '#event/domain/models/event_definition';
 import { HappinessLevel } from '#social-class/domain/models/happiness_level';
+import type Game from '#game/domain/models/game';
 
 @inject()
 export default class EventGenerationFromSocialClassHappinessService {
   constructor(
     private readonly eventRepository: IEventRepository,
     private readonly socialClassesAverageHappinessCalculatorService: SocialClassesAverageHappinessCalculatorService,
-    private readonly getEventByIdentifierAndGameQueryHandler: IGetEventDefinitionByIdentifierQueryHandler,
+    private readonly getEventByIdentifierAndGameQueryHandler: IGetEventDefinitionByIdentifierAndGameDefinitionQueryHandler,
     private readonly eventFactory: EventFactory,
   ) {
   }
 
-  public async generateEventsFromSocialClassHappiness(socialClassesPerType: SocialClassesPerType, gameId: number, turn: number): Promise<void> {
+  public async generateEventsFromSocialClassHappiness(socialClassesPerType: SocialClassesPerType, game: Game): Promise<void> {
     const businessOwnerAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.businessOwner);
     const workingClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.workingClass);
     const middleClassAverageHappiness = this.socialClassesAverageHappinessCalculatorService.calculateAverageHappiness(socialClassesPerType.middleClass);
 
     if (businessOwnerAverageHappiness <= HappinessLevel.UNHAPPY) {
-      await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.BUSINESS_OWNER, gameId, turn);
+      await this.generateSocialClassTypeEventFromunHappiness(SocialClassTypes.BUSINESS_OWNER, game);
     }
 
     if (workingClassAverageHappiness <= HappinessLevel.UNHAPPY) {
-      await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.MIDDLE_CLASS, gameId, turn);
+      await this.generateSocialClassTypeEventFromunHappiness(SocialClassTypes.MIDDLE_CLASS, game);
     }
 
     if (middleClassAverageHappiness <= HappinessLevel.UNHAPPY) {
-      await this.generateSocialClassTypeEventFromHappiness(SocialClassTypes.WORKING_CLASS, gameId, turn);
+      await this.generateSocialClassTypeEventFromunHappiness(SocialClassTypes.WORKING_CLASS, game);
     }
   }
 
-  private async generateSocialClassTypeEventFromHappiness(socialClassType: SocialClassTypes, gameId: number, turn: number): Promise<void> {
+  private async generateSocialClassTypeEventFromunHappiness(socialClassType: SocialClassTypes, game: Game): Promise<void> {
     const eventDefinitionIdentifier: EventDefinitionsConstants = this.getEventDefinitionIdentifierFromSocialClassType(socialClassType);
-    const eventDefinition: EventDefinition = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventDefinitionByIdentifierQuery(
+    const eventDefinition: EventDefinition = await this.getEventByIdentifierAndGameQueryHandler.handle(new GetEventDefinitionByIdentifierAndGameDefinitionQuery(
       eventDefinitionIdentifier,
+      game.definition.identifier,
     ));
-    const event = this.eventFactory.createEventForGameAtTurn(eventDefinition.id, gameId, turn);
+    const event = this.eventFactory.createEventForGameAtTurn(eventDefinition.id, game.id, game.turn);
 
     await this.eventRepository.save(event);
   }

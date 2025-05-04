@@ -12,10 +12,11 @@ export default class CreateGameController {
   ) {
   }
 
-  public async createGame({ auth, response }: HttpContext) {
+  public async createGame({ auth, params, response }: HttpContext) {
     try {
       const user: User = auth.getUserOrFail();
-      await this.createGameService.createGame(user);
+      const gameDefinitionIdentifier: string = params.identifier;
+      await this.createGameService.createGame(user, gameDefinitionIdentifier);
     }
     catch (error) {
       console.error(error);

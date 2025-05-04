@@ -1,3 +1,3 @@
 export interface StartupProcessorStep {
-  execute(gameId: number): Promise<void>;
+  execute(gameId: number, gameDefinitionIdentifier: string): Promise<void>;
 }

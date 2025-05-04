@@ -15,7 +15,7 @@ export default class LawGroup extends TimeStampedModel {
   declare description: string;
 
   @hasMany(() => LawDefinition)
-  declare definitions: HasMany<typeof LawDefinition>;
+  declare lawDefinitions: HasMany<typeof LawDefinition>;
 
   @column()
   declare lawCategoryId: number;

@@ -1,5 +1,5 @@
-import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 import type { GameDto } from '@president-challenge/shared/dist/game/game-dto';
+import type { MinimalGameDto } from '@president-challenge/shared/dist/game/minimal-game-dto';
 
 export const useGameStore = defineStore('gameStore', {
   state: () => ({
