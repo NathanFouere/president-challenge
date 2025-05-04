@@ -44,6 +44,7 @@ watch(
       <template #default>
         <game-definition-component
           v-for="(gameDefinition) in gamePresenter.gameDefinitionStore.getGameDefinitions"
+          :key="gameDefinition.identifier"
           :game-definition="gameDefinition"
         />
       </template>
