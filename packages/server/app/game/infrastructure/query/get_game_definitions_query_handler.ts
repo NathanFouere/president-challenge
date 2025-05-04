@@ -3,14 +3,11 @@ import type GetGameDefinitionsQuery from '#game/application/queries/get_game_def
 import GameDefinition from '#game/domain/models/game_definition';
 
 export default class GetGameDefinitionsQueryHandler implements IGetGameDefinitionsQueryHandler {
-  public async handle(query: GetGameDefinitionsQuery): Promise<GameDefinition[]> {
+  public async handle(_query: GetGameDefinitionsQuery): Promise<GameDefinition[]> {
     return await GameDefinition.all();
   }
 
-  public async handleForDisplay(query: GetGameDefinitionsQuery): Promise<GameDefinition[]> {
-    return await GameDefinition
-      .query()
-      .preload('logo')
-      .exec();
+  public async handleForDisplay(_query: GetGameDefinitionsQuery): Promise<GameDefinition[]> {
+    return await GameDefinition.query().preload('logo').exec();
   }
 }
