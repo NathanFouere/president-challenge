@@ -21,25 +21,22 @@ export default class CreateGameService {
   ) {
   }
 
-  public async canCreateGame(user: User): Promise<boolean> {
-    await user.load('games');
-    const numberOfGames = user.games.length;
-    return Number((numberOfGames)) < this.MAX_GAMES;
-  }
-
   public async createGame(user: User, gameDefinitionIdentifier: string): Promise<void> {
-    const canCreateGame = await this.canCreateGame(user);
-    if (!canCreateGame) {
+    const userHasMaximumGames = await user.hasMaximumGames();
+    if (userHasMaximumGames) {
       throw new Error(
         `User already has the maximum allowed number of games (${this.MAX_GAMES})`,
       );
     }
 
     const gameDefinition = await this.gameDefinitionRepository.get(gameDefinitionIdentifier);
-    const game = this.gameFactory.createForUser(user.id, gameDefinition);
 
+    if (gameDefinition.inDevelopment) {
+      throw new Error('Game is still in development');
+    }
+    const game = this.gameFactory.createForUser(user.id, gameDefinition);
+    await this.gameRepository.save(game);
     try {
-      await this.gameRepository.save(game); // TODO => voir si je peux virer ça
       await this.startupService.initialize(game.id, gameDefinitionIdentifier);
       await this.gameRepository.save(game);
     }

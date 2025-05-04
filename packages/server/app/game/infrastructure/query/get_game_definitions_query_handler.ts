@@ -8,6 +8,6 @@ export default class GetGameDefinitionsQueryHandler implements IGetGameDefinitio
   }
 
   public async handleForDisplay(_query: GetGameDefinitionsQuery): Promise<GameDefinition[]> {
-    return await GameDefinition.query().preload('logo').exec();
+    return await GameDefinition.query().preload('logo').orderBy('in_development', 'asc').exec();
   }
 }
