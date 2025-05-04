@@ -46,9 +46,6 @@ export default class PoliticalPartyDefinition extends TimeStampedModel {
   @column()
   declare gameDefinitionIdentifier: string;
 
-  @column()
-  declare gameDefinitionIdentifier: string;
-
   @belongsTo(() => GameDefinition)
   declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }

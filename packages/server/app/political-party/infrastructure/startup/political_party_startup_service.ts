@@ -5,22 +5,22 @@ import IPoliticalPartyRepository from '#political-party/domain/repository/i_poli
 import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 import { aPoliticalParty } from '#political-party/application/builders/political_party_builder';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IGetPoliticalPartyDefinitionsOfGameDefinitionQueryHandler
-  from '#political-party/application/queries/i_get_political_party_definitions_of_game_definition_query_handler';
-import GetPoliticalPartyDefinitionsOfGameDefinitionQuery
-  from '#political-party/application/queries/get_political_party_definitions_of_game_definition_query';
+import IGetPoliticalPartyDefinitionsByGameDefinitionQueryHandler
+  from '#political-party/application/queries/i_get_political_party_definitions_by_game_definition_query_handler';
+import GetPoliticalPartyDefinitionsByGameDefinitionQuery
+  from '#political-party/application/queries/get_political_party_definitions_by_game_definition_query';
 
 @inject()
 export class PoliticalPartyStartupService implements StartupProcessorStep {
   constructor(
     private readonly politicalPartyRepository: IPoliticalPartyRepository,
-    private readonly politicalPartyDefinitionsOfGameDefinitionQueryHandler: IGetPoliticalPartyDefinitionsOfGameDefinitionQueryHandler,
+    private readonly politicalPartyDefinitionsOfGameDefinitionQueryHandler: IGetPoliticalPartyDefinitionsByGameDefinitionQueryHandler,
   ) {
   }
 
   public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
     const politicalPartyDefinitions = await this.politicalPartyDefinitionsOfGameDefinitionQueryHandler.handle(
-      new GetPoliticalPartyDefinitionsOfGameDefinitionQuery(gameDefinitionIdentifier),
+      new GetPoliticalPartyDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
     );
     const politicalParties: PoliticalParty[] = [];
 

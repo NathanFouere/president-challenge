@@ -23,6 +23,10 @@ import IPoliticalPartySeatsSenateDefinitionRepository
 import IGetSenateDefinitionByGameDefinitionQueryHandler from '#legislature/application/query/i_get_senate_definition_by_game_definition_query_handler';
 import IGetParliamentDefinitionByGameDefinitionQueryHandler
   from '#legislature/application/query/i_get_parliament_definition_by_game_definition_query_handler';
+import IGetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_political_party_seats_senate_definitions_by_game_definition_query_handler';
+import IGetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_political_party_seats_parliament_definitions_by_game_definition_query_handler';
 
 export default class LegislatureProvider extends AppProvider {
   public async boot(): Promise<void> {
@@ -68,6 +72,22 @@ export default class LegislatureProvider extends AppProvider {
     const { default: GetParliamentDefinitionByGameDefinitionQueryHandler } = await import(
       '#legislature/infrastructure/query/get_parliament_definition_by_game_definition_query_handler'
     );
+
+    const { default: GetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_political_party_seats_parliament_definitions_by_game_definition_query_handler'
+    );
+
+    const { default: GetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler } = await import(
+      '#legislature/infrastructure/query/get_political_party_seats_senate_definitions_by_game_definition_query_handler'
+    );
+
+    this.app.container.bind(IGetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler, () => {
+      return new GetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler();
+    });
+
+    this.app.container.bind(IGetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler, () => {
+      return new GetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler();
+    });
 
     this.app.container.bind(IGetSenateDefinitionByGameDefinitionQueryHandler, () => {
       return new GetSenateDefinitionByGameDefinitionQueryHandler();

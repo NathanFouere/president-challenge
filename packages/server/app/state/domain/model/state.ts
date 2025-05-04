@@ -9,6 +9,7 @@ import StateFinancialFlow from '#state/domain/model/state_financial_flow';
 import type Sector from '#sector/domain/model/sector';
 import StateDefinition from '#state/domain/model/state_definition';
 import { TimeStampedModel } from '#common/model/timestamped_model';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class State extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -42,6 +43,12 @@ export default class State extends TimeStampedModel {
 
   @hasMany(() => Tax)
   declare taxes: HasMany<typeof Tax>;
+
+  @column()
+  declare gameDefinitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition)
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 
   public addToEconomicalSituation(addedEconomicalSituation: number) {
     let newEconomicalSituation = this.economicalSituation + addedEconomicalSituation;

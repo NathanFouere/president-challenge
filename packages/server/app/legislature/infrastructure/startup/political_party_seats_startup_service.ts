@@ -24,14 +24,18 @@ import {
 } from '#political-party/application/queries/i_get_political_party_per_affiliation_in_game_query_handler';
 import GetPoliticalPartyPerAffiliationInGameQuery
   from '#political-party/application/queries/get_political_party_per_affiliation_in_game_query';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IPoliticalPartySeatsSenateDefinitionRepository
-  from '#legislature/domain/repository/i_politcal_party_seats_senate_definition_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IPoliticalPartySeatsParliamentDefinitionRepository
-  from '#legislature/domain/repository/i_political_party_seats_parliament_definition_repository';
 import { Parliament } from '#legislature/domain/models/parliament';
 import Senate from '#legislature/domain/models/senate';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_political_party_seats_senate_definitions_by_game_definition_query_handler';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler
+  from '#legislature/application/query/i_get_political_party_seats_parliament_definitions_by_game_definition_query_handler';
+import GetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQuery
+  from '#legislature/application/query/get_political_party_seats_senate_definitions_by_game_definition_query';
+import GetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQuery
+  from '#legislature/application/query/get_political_party_seats_parliament_definitions_by_game_definition_query';
 
 @inject()
 export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
@@ -41,24 +45,26 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
     private readonly getSenateByGameQueryHandler: IGetSenateByGameQueryHandler,
     private readonly getParliamentByGameQueryHandler: IGetParliamentByGameQueryHandler,
     private readonly getPoliticalPartyPerAffiliationInGameQueryHandler: IGetPoliticalPartyPerAffiliationInGameQueryHandler,
-    private readonly politicalPartySeatsSenateDefinitionRepository: IPoliticalPartySeatsSenateDefinitionRepository,
-    private readonly politicalPartySeatsParliamentDefinitionRepository: IPoliticalPartySeatsParliamentDefinitionRepository,
+    private readonly getPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler: IGetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler,
+    private readonly getPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler: IGetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler,
   ) {
   }
 
-  public async execute(gameId: number): Promise<void> {
+  public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
     await Promise.all([
-      this.createPoliticalPartySeatsSenate(gameId),
-      this.createPoliticalPartySeatsParliament(gameId),
+      this.createPoliticalPartySeatsSenate(gameId, gameDefinitionIdentifier),
+      this.createPoliticalPartySeatsParliament(gameId, gameDefinitionIdentifier),
     ]);
   }
 
   private async createPoliticalPartySeatsSenate(
-    gameId: number,
+    gameId: number, gameDefinitionIdentifier: string,
   ): Promise<void> {
     const seatsInSenates = [];
     const senate = await this.getSenateByGameQueryHandler.handle(new GetSenateByGameQuery(gameId));
-    const politicalPartySeatsSenateDefinitions = await this.politicalPartySeatsSenateDefinitionRepository.findAll();
+    const politicalPartySeatsSenateDefinitions = await this.getPoliticalPartySeatsSenateDefinitionsByGameDefinitionQueryHandler.handle(
+      new GetPoliticalPartySeatsSenateDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
+    );
 
     for (const politicalPartySeatsSenateDefinition of politicalPartySeatsSenateDefinitions) {
       const politicalParty = await this.getPoliticalPartyPerAffiliationInGameQueryHandler.handle(
@@ -82,11 +88,13 @@ export class PoliticalPartySeatsStartupService implements StartupProcessorStep {
   }
 
   private async createPoliticalPartySeatsParliament(
-    gameId: number,
+    gameId: number, gameDefinitionIdentifier: string,
   ): Promise<void> {
     const seatsInParliaments = [];
     const parliament = await this.getParliamentByGameQueryHandler.handle(new GetParliamentByGameQuery(gameId));
-    const politicalPartySeatsParliamentDefinitions = await this.politicalPartySeatsParliamentDefinitionRepository.findAll();
+    const politicalPartySeatsParliamentDefinitions = await this.getPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQueryHandler.handle(
+      new GetPoliticalPartySeatsParliamentDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
+    );
 
     for (const politicalPartySeatsParliamentDefinition of politicalPartySeatsParliamentDefinitions) {
       const politicalParty = await this.getPoliticalPartyPerAffiliationInGameQueryHandler.handle(

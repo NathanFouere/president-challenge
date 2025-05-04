@@ -1,30 +1,40 @@
 import { inject } from '@adonisjs/core';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IEventDefinitionRepository from '#event/domain/repository/i_event_definition_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IChoiceRepository from '#event/domain/repository/i_choice_repository';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import IChoiceDefinitionRepository from '#event/domain/repository/i_choice_definition_repository';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import IEventRepository from '#event/domain/repository/i_event_repository';
 import type { StartupProcessorStep } from '#common/startup/startup_processor_step';
 import { anEvent } from '#event/application/builders/event_builder';
 import { aChoice } from '#event/application/builders/choice_builder';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetEventDefinitionsByGameDefinitionQueryHandler
+  from '#event/application/queries/i_get_event_definitions_by_game_definition_query_handler';
+import GetEventDefinitionsByGameDefinitionQuery
+  from '#event/application/queries/get_event_definitions_by_game_definition_query';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import IGetChoiceDefinitionsByGameDefinitionQueryHandler
+  from '#event/application/queries/i_get_choice_definitions_by_game_definition_query_handler';
+import GetChoiceDefinitionsByGameDefinitionQuery
+  from '#event/application/queries/get_choice_definitions_by_game_definition_query';
 
 @inject()
 export class EventStartupService implements StartupProcessorStep {
   constructor(
-    private readonly eventDefinitionRepository: IEventDefinitionRepository,
     private readonly choiceRepository: IChoiceRepository,
-    private readonly choiceDefinitionRepository: IChoiceDefinitionRepository,
     private readonly eventRepository: IEventRepository,
+    private readonly getEventDefinitionsByGameDefinitionQueryHandler: IGetEventDefinitionsByGameDefinitionQueryHandler,
+    private readonly getChoiceDefinitionsByGameDefinitionQueryHandler: IGetChoiceDefinitionsByGameDefinitionQueryHandler,
   ) {
   }
 
-  public async execute(gameId: number): Promise<void> {
-    const eventDefinitions = await this.eventDefinitionRepository.getAll();
-    const choiceDefinitions = await this.choiceDefinitionRepository.getAll();
+  public async execute(gameId: number, gameDefinitionIdentifier: string): Promise<void> {
+    const eventDefinitions = await this.getEventDefinitionsByGameDefinitionQueryHandler.handle(
+      new GetEventDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
+    );
+    const choiceDefinitions = await this.getChoiceDefinitionsByGameDefinitionQueryHandler.handle(
+      new GetChoiceDefinitionsByGameDefinitionQuery(gameDefinitionIdentifier),
+    );
 
     const events = [];
     for (const eventDefinition of eventDefinitions) {
@@ -43,6 +53,7 @@ export class EventStartupService implements StartupProcessorStep {
     }
     await this.eventRepository.createMany(events);
 
+    // TODO => could be improved
     const choices = [];
     for (const choiceDefinition of choiceDefinitions) {
       const choiceEventId = events.find(event => event.definitionId === choiceDefinition.eventDefinitionId)!.id;

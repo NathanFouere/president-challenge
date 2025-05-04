@@ -12,6 +12,10 @@ import IEventRepository from '#event/domain/repository/i_event_repository';
 import IChoiceRepository from '#event/domain/repository/i_choice_repository';
 import IEventDefinitionRepository from '#event/domain/repository/i_event_definition_repository';
 import IChoiceDefinitionRepository from '#event/domain/repository/i_choice_definition_repository';
+import IGetEventDefinitionsByGameDefinitionQueryHandler
+  from '#event/application/queries/i_get_event_definitions_by_game_definition_query_handler';
+import IGetChoiceDefinitionsByGameDefinitionQueryHandler
+  from '#event/application/queries/i_get_choice_definitions_by_game_definition_query_handler';
 
 export default class EventProvider extends AppProvider {
   public async boot() {
@@ -39,6 +43,21 @@ export default class EventProvider extends AppProvider {
     const { default: ChoiceDefinitionRepository } = await import(
       '#event/infrastructure/repositories/choice_definition_repository'
     );
+    const { default: EventDefinitionQueryHandler } = await import(
+      '#event/infrastructure/queries/get_event_definitions_by_game_definition_query_handler'
+    );
+
+    const { default: GetChoiceDefinitionsByGameDefinitionQueryHandler } = await import(
+      '#event/infrastructure/queries/get_choice_definitions_by_game_definition_query_handler'
+    );
+
+    this.app.container.bind(IGetChoiceDefinitionsByGameDefinitionQueryHandler, () => {
+      return new GetChoiceDefinitionsByGameDefinitionQueryHandler();
+    });
+
+    this.app.container.bind(IGetEventDefinitionsByGameDefinitionQueryHandler, () => {
+      return new EventDefinitionQueryHandler();
+    });
 
     this.app.container.bind(IChoiceDefinitionRepository, () => {
       return new ChoiceDefinitionRepository();
@@ -51,18 +70,23 @@ export default class EventProvider extends AppProvider {
     this.app.container.bind(IGetChoiceByIdAndEventQueryHandler, () => {
       return new GetChoiceByIdAndEventQueryHandler();
     });
+
     this.app.container.bind(IGetEventByIdAndGameQueryHandler, () => {
       return new GetEventByIdAndGameQueryHandler();
     });
+
     this.app.container.bind(IGetEventDefinitionByIdentifierQueryHandler, () => {
       return new GetEventDefinitionByGameQueryHandler();
     });
+
     this.app.container.bind(IGetDisplayableEventsOfTurnQueryHandler, () => {
       return new GetDisplayableEventsOfTurnQueryHandler();
     });
+
     this.app.container.bind(IEventRepository, () => {
       return new EventRepository();
     });
+
     this.app.container.bind(IChoiceRepository, () => {
       return new ChoiceRepository();
     });

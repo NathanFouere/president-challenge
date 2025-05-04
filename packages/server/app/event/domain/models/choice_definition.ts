@@ -6,6 +6,7 @@ import { TimeStampedModel } from '#common/model/timestamped_model';
 import PoliticalAffiliationChoiceHappinessEffect
   from '#political-party/domain/models/political_affiliation_choice_happiness_effect';
 import SocialClassTypeChoiceHappinessEffect from '#social-class/domain/models/social_class_type_choice_happiness_effect';
+import GameDefinition from '#game/domain/models/game_definition';
 
 export default class ChoiceDefinition extends TimeStampedModel {
   @column({ isPrimary: true })
@@ -39,4 +40,10 @@ export default class ChoiceDefinition extends TimeStampedModel {
 
   @hasMany(() => PoliticalAffiliationChoiceHappinessEffect)
   declare politicalAffiliationHappinessEffects: HasMany<typeof PoliticalAffiliationChoiceHappinessEffect>;
+
+  @column()
+  declare gameDefinitionIdentifier: string;
+
+  @belongsTo(() => GameDefinition)
+  declare gameDefinition: BelongsTo<typeof GameDefinition>;
 }

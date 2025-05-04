@@ -1,4 +1,4 @@
-export default class GetPoliticalPartyDefinitionsOfGameDefinitionQuery {
+export default class GetChoiceDefinitionsByGameDefinitionQuery {
   constructor(
     public readonly gameDefinitionIdentifier: string,
   ) {
