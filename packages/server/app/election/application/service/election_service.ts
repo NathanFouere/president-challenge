@@ -27,8 +27,6 @@ import { GetSenateByGameQuery } from '#legislature/application/query/get_senate_
 import EventGenerationService from '#event/application/service/event_generation_service';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { ElectionVotesService } from '#election/domain/service/election_votes_service';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import ElectionTurnService from '#election/domain/service/election_turn_service';
 
 @inject()
 export class ElectionService {
@@ -42,12 +40,10 @@ export class ElectionService {
     private readonly politicalPartySeatsParliamentRepository: IPoliticalPartySeatsParliamentRepository,
     private readonly politicalPartySeatsSenateRepository: IPoliticalPartySeatsSenateRepository,
     private readonly electionVotesService: ElectionVotesService,
-    private readonly electionTurnService: ElectionTurnService,
   ) {
   }
 
-  public async processElection(game: Game, politicalParties: PoliticalParty[], socialClasses: SocialClass[]): Promise<void> {
-    const electionType = this.electionTurnService.getElectionTypeForTurn(game.turn);
+  public async processElection(game: Game, politicalParties: PoliticalParty[], socialClasses: SocialClass[], electionType: ElectionType): Promise<void> {
     const election = this.electionFactory.createElectionForGame(game, electionType);
     await this.electionRepository.save(election);
 
