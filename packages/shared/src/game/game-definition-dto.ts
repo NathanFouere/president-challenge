@@ -5,4 +5,5 @@ export interface GameDefinitionDto {
   name: string;
   description: string;
   logo: LicensedFileDTO;
+  inDevelopment: boolean;
 }

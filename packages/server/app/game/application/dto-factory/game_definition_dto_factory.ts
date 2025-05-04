@@ -17,6 +17,7 @@ export default class GameDefinitionDtoFactory {
       name: gameDefinition.name,
       description: gameDefinition.description,
       logo: await this.licensedFileDTOFactory.createFromLicensedFile(gameDefinition.logo),
+      inDevelopment: gameDefinition.inDevelopment,
     };
   }
 

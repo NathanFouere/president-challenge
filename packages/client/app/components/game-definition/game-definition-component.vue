@@ -16,12 +16,24 @@ const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GameP
   <UCard>
     <template #header>
       {{ gameDefinition.name }}
+      <UBadge
+        v-if="gameDefinition.inDevelopment"
+        size="sm"
+        icon="i-heroicons-x-mark"
+        color="yellow"
+        class="float-end"
+        label="In Development"
+      />
     </template>
 
-    <p>{{ gameDefinition.description }}</p>
     <LicensedFileComponent :licensed-file="gameDefinition.logo" />
+    <UDivider class="sticky pt-5 pb-5" />
+
+    <p>Description : {{ gameDefinition.description }}</p>
     <UButton
+      class="mt-4"
       :loading="gamePresenter.gameDefinitionStore?.getCreatingGameDefinitionIdentifier === gameDefinition.identifier"
+      :disabled="gameDefinition.inDevelopment"
       @click="gamePresenter.createGame(gameDefinition.identifier)"
     >
       Create Game

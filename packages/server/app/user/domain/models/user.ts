@@ -40,4 +40,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
   public isAdmin(): boolean {
     return this.type === UserType.ADMIN;
   }
+
+  public async hasMaximumGames(): Promise<boolean> {
+    await this.load('games');
+    return this.games.length >= 3;
+  }
 }

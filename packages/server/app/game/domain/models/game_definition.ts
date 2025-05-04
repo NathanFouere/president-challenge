@@ -53,6 +53,9 @@ export default class GameDefinition extends TimeStampedModel {
   })
   declare presidentialElectionTurns: number[];
 
+  @column()
+  declare inDevelopment: boolean;
+
   public getElectionTypeForTurn(turn: number): ElectionType | null {
     if (this.parliamentaryElectionTurns.includes(turn)) {
       return ElectionType.PARLIAMENTARY;
