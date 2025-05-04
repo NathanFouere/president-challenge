@@ -37,8 +37,7 @@ export default class TurnHappinessService extends TurnProcessorStep {
     this.socialClassHappinessService.updateSocialClassesHappiness(turnDataContext.socialClasses);
     await this.eventGenerationFromSocialClassHappinessService.generateEventsFromSocialClassHappiness(
       turnDataContext.socialClassesPerType,
-      turnDataContext.game.id,
-      turnDataContext.game.turn,
+      turnDataContext.game,
     );
   }
 
@@ -46,8 +45,7 @@ export default class TurnHappinessService extends TurnProcessorStep {
     this.politicalPartyHappinessService.updatePoliticalPartiesHappiness(turnDataContext.politicalParties, turnDataContext.socialClassesPerType);
     await this.eventGenerationFromPoliticalPartyHappinessService.generateEventsFromPoliticalPartyHappiness(
       turnDataContext.politicalParties,
-      turnDataContext.game.id,
-      turnDataContext.game.turn,
+      turnDataContext.game,
     );
   }
 }
