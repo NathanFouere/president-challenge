@@ -28,7 +28,3 @@ const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GameP
     </UButton>
   </UCard>
 </template>
-
-<style scoped>
-
-</style>

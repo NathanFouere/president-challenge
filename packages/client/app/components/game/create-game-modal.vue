@@ -51,7 +51,3 @@ watch(
     </UCard>
   </UModal>
 </template>
-
-<style scoped>
-
-</style>
