@@ -3,6 +3,7 @@ import { inject } from '@adonisjs/core';
 import type PoliticalParty from '#political-party/domain/models/political_party';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LicensedFileDTOFactory } from '#licensed-file/application/factory/licensed_file_dto_factory';
+import { AffiliationOrder } from '#political-party/domain/models/political_party_affiliation_order';
 
 @inject()
 export class PoliticalPartyMinimalDTOFactory {
@@ -10,15 +11,6 @@ export class PoliticalPartyMinimalDTOFactory {
     private readonly licensedFileDTOFactory: LicensedFileDTOFactory,
   ) {
   }
-
-  readonly AffiliationOrder = {
-    'Far Left': 0,
-    'Left': 1,
-    'Center Left': 2,
-    'Center Right': 3,
-    'Right': 4,
-    'Far Right': 5,
-  };
 
   public async createPoliticalPartyMinimalDTO(politicalParty: PoliticalParty): Promise<PoliticalPartyMinimalDto> {
     return {
@@ -31,7 +23,7 @@ export class PoliticalPartyMinimalDTOFactory {
   }
 
   public async createPoliticalPartyMinimalDTOList(politicalParties: PoliticalParty[]): Promise<PoliticalPartyMinimalDto[]> {
-    politicalParties.sort((a, b) => this.AffiliationOrder[a.definition.affiliation] - this.AffiliationOrder[b.definition.affiliation]);
+    politicalParties.sort((a, b) => AffiliationOrder[a.definition.affiliation] - AffiliationOrder[b.definition.affiliation]);
     return Promise.all(politicalParties.map(async politicalParty => this.createPoliticalPartyMinimalDTO(politicalParty)));
   }
 }

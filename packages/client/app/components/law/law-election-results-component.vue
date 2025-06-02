@@ -14,7 +14,10 @@ const voteResultsSelected = computed(() => props.voteResultsDatas[voteResultInde
     v-if="voteResultsSelected"
     :vote-result-datas="voteResultsSelected"
   />
-  <div class="flex justify-between p-10 ">
+  <div
+    v-if="voteResultsDatas.length > 1"
+    class="flex justify-between p-10 "
+  >
     <UButton
       label="Previous"
       :disabled="voteResultIndex === 0"

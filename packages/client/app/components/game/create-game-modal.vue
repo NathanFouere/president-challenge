@@ -34,7 +34,7 @@ watch(
     <UCard>
       <template #header>
         <div class="flex justify-between items-center">
-          header
+          Choose a scenario
           <UIcon
             name="i-heroicons-x-mark"
             @click="isOpen = false"
@@ -47,6 +47,7 @@ watch(
           :key="gameDefinition.identifier"
           class="mb-5"
           :game-definition="gameDefinition"
+          @create-game="isOpen = false"
         />
       </template>
     </UCard>

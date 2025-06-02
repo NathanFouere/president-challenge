@@ -13,10 +13,7 @@ defineProps<{
     <template #header>
       {{ event.title }}
       <br>
-      <br>
-      <i>{{ event.beenRead ? 'Has been read' : 'Needs to be read' }}</i>
-      <br>
-      <i>{{ event.needsAction ? 'Needs action' : 'Doesnt need action' }}</i>
+      <i v-if="event.needsAction">Needs action</i>
     </template>
     <licensed-file-component
       class="text-center"
