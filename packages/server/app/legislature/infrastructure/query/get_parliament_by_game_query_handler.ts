@@ -10,7 +10,7 @@ export default class GetParliamentByGameQueryHandler implements IGetParliamentBy
       .preload('partySeats', (query) => {
         query.preload('politicalParty', (query) => {
           query.preload('definition');
-        }).orderBy('id', 'desc');
+        });
       })
       .preload('definition')
       .firstOrFail();

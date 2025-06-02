@@ -52,6 +52,7 @@ export class GamePresenter {
         this.gameStore.unsetSelectedGame();
       }
       await this.fetchUserGames();
+      this.toast.showSuccess('Game deleted successfully');
     }
     catch {
       this.toast.showError('Failed to delete game.');

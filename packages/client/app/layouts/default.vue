@@ -81,9 +81,11 @@ const links = computed(() => [
           <template #left>
             {{ pageTitle.title.value }}
           </template>
-          <template #right>
+          <template
+            v-if="gameStore.hasSelectedGame && router.currentRoute.value.name !== 'games'"
+            #right
+          >
             <selected-game-information-component
-              v-if="gameStore.hasSelectedGame"
               :game="gameStore.requireSelectedGame"
             />
             <p>|</p>

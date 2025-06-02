@@ -5,9 +5,18 @@ import container from '~~/config/container';
 import type { GamePresenter } from '~/presenters/game.presenter';
 import { COMMON_DEPENDANCY_TYPES } from '~~/config/common.types';
 
-defineProps<{
+const props = defineProps<{
   gameDefinition: GameDefinitionDto;
 }>();
+
+const emit = defineEmits<{
+  (event: 'createGame'): void;
+}>();
+
+const createGame = () => {
+  emit('createGame');
+  gamePresenter.createGame(props.gameDefinition.identifier);
+};
 
 const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GamePresenter);
 </script>
@@ -34,7 +43,7 @@ const gamePresenter = container.get<GamePresenter>(COMMON_DEPENDANCY_TYPES.GameP
       class="mt-4"
       :loading="gamePresenter.gameDefinitionStore?.getCreatingGameDefinitionIdentifier === gameDefinition.identifier"
       :disabled="gameDefinition.inDevelopment"
-      @click="gamePresenter.createGame(gameDefinition.identifier)"
+      @click="createGame"
     >
       Create Game
     </UButton>

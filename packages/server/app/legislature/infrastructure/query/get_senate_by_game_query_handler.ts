@@ -10,7 +10,7 @@ export default class GetSenateByGameQueryHandler implements IGetSenateByGameQuer
       .preload('partySeats', (query) => {
         query.preload('politicalParty', (query) => {
           query.preload('definition');
-        }).orderBy('id', 'desc');
+        });
       })
       .preload('definition')
       .firstOrFail();
