@@ -5,8 +5,7 @@ tmp
 
 # Secrets
 .env.local
-.env.production.local
-.env.development.local
+.env
 
 # Frontend assets compiled code
 public/assets
