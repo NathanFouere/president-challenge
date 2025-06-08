@@ -1,0 +1,4 @@
+- name: Deploy the application
+  hosts: server
+  roles:
+    - deploy-app

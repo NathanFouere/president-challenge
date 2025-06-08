@@ -1,0 +1,5 @@
+- name: Install required dependencies
+  hosts: all
+  roles:
+    - install-docker
+    - install-git
