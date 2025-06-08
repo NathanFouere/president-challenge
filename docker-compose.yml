@@ -11,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_database:/var/lib/postgresql/data
+    restart: always
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "${DB_USER}", "-d", "${DB_DATABASE}"]
       interval: 5s
@@ -25,6 +26,7 @@ services:
     container_name: server
     ports:
       - "3333:3333"
+    restart: always
     depends_on:
       postgres:
         condition: service_healthy
@@ -35,6 +37,7 @@ services:
       dockerfile: Dockerfile
       target: client
     container_name: client
+    restart: always
     ports:
       - "3000:3000"
 
@@ -45,6 +48,7 @@ services:
       - '9001:9001'
     volumes:
       - 'minio_data:/data'
+    restart: always
     environment:
       - MINIO_ROOT_USER=${MINIO_ROOT_USER}
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}

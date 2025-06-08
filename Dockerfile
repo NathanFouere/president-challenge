@@ -17,13 +17,15 @@ RUN pnpm deploy --filter=@president-challenge/server --prod /prod/server
 RUN pnpm deploy --filter=@president-challenge/client --prod /prod/client
 
 FROM base AS server
-COPY --from=build /prod/server /prod/server
 WORKDIR /prod/server
+COPY --from=build /prod/server /prod/server
+COPY packages/server/.env /prod/server/build/.env
 EXPOSE 3333
 CMD [ "pnpm", "startup-start" ]
 
 FROM base AS client
-COPY --from=build /prod/client /prod/client
 WORKDIR /prod/client
+COPY --from=build /prod/client /prod/client
+COPY packages/client/.env /prod/client/.env
 EXPOSE 3000
 CMD [ "pnpm", "start" ]
