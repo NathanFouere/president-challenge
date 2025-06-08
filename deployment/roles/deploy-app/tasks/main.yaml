@@ -1,0 +1,26 @@
+- name: Clone the repository
+  ansible.builtin.git:
+    repo: 'https://github.com/NathanFouere/president-challenge'
+    dest: '/root/president-challenge'
+    version: main
+    force: yes
+
+- name: Générer .env racine
+  ansible.builtin.template:
+    src: templates/.env.j2
+    dest: /root/president-challenge/.env
+
+- name: Générer .env server
+  ansible.builtin.template:
+    src: templates/.env.server.j2
+    dest: /root/president-challenge/packages/server/.env
+
+- name: Générer .env client
+  ansible.builtin.template:
+    src: templates/.env.client.j2
+    dest: /root/president-challenge/packages/client/.env
+
+- name: Start the application
+  community.docker.docker_compose_v2:
+    project_src: '/root/president-challenge'
+    state: present

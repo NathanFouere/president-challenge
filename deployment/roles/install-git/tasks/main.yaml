@@ -1,0 +1,9 @@
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install git
+  ansible.builtin.apt:
+    name: git
+    state: present
