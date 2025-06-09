@@ -1,7 +1,3 @@
 all:
   hosts:
     server:
-      ansible_host: 31.97.68.158
-      ansible_user: root
-      ansible_port: 22
-      ansible_password: mL37O97uwTqx#
