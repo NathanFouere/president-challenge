@@ -33,12 +33,14 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 - **Docker**
 - **Docker Compose**
 - **GitHub Actions**
+- **Ansible**
 
 ## Learning Objectives
 I am unsure of finalizing this project, but I have set the following learning objectives:
 - **Adonis.js**: Learning AdonisJs to get into the NodeJs ecosystem
 - **Domain-Driven Design**: Learning how to structure applications with a focus on the domain logic.
 - **Docker**: Learning how to create portable and reproducible development environments.
+- **Ansible**: Learning gow to work with infrastructure as code tool
 - **Deployment**: Learning how to set-up production-ready systems and pipelines.
 
 ## Roadmap
