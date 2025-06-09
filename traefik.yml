@@ -1,15 +1,10 @@
 api:
-    dashboard: true
+    dashboard: false
     insecure: false
     debug: false
 entryPoints:
     web:
         address: ":80"
-        http:
-            redirections:
-                entryPoint:
-                    to: websecure
-                    scheme: https
     websecure:
         address: ":443"
 serversTransport:
@@ -23,7 +18,6 @@ certificatesResolvers:
         acme:
             email: nathanfouere@tutanota.com
             storage: /certs/acme.json
-            # caServer: https://acme-v02.api.letsencrypt.org/directory a remettre
-            caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+            caServer: https://acme-v02.api.letsencrypt.org/directory
             httpChallenge:
                 entryPoint: web
