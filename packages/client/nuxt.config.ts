@@ -20,7 +20,6 @@ export default defineNuxtConfig({
     '~/plugins/inversify.ts',
     '~/plugins/chartjs.ts',
     '~/plugins/sse-client.ts',
-    '~/plugins/polyfill-crypto.ts',
   ],
   ssr: false,
   devtools: { enabled: true },

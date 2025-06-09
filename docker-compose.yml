@@ -1,5 +1,26 @@
 services:
 
+  reverse-proxy:
+    restart: always
+    image: "traefik:v3.4"
+    ports:
+      - "443:443"
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - traefik-certs:/certs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`traefik.dashboard.president-challenge.com`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls=true"
+      - "traefik.http.routers.api.tls.certresolver=letencrypt"
+      - "traefik.http.routers.api.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=president-challenge:$$apr1$$Iseo97Yb$$CFofF8g6Yv6t3.Gj5vkOs0"
+
   postgres:
     image: postgres:latest
     container_name: database
@@ -24,12 +45,17 @@ services:
       dockerfile: Dockerfile
       target: server
     container_name: server
-    ports:
-      - "3333:3333"
     restart: always
     depends_on:
       postgres:
         condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.server.rule=Host(`president-challenge.com`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.server.entrypoints=websecure"
+      - "traefik.http.services.server.loadbalancer.server.port=3333"
+      - "traefik.http.routers.api.tls.certresolver=letencrypt"
+      - "traefik.http.routers.server.tls=true"
 
   client:
     build:
@@ -38,8 +64,13 @@ services:
       target: client
     container_name: client
     restart: always
-    ports:
-      - "3000:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.client.rule=Host(`president-challenge.com`)"
+      - "traefik.http.routers.client.entrypoints=websecure"
+      - "traefik.http.routers.client.tls=true"
+      - "traefik.http.routers.client.tls.certresolver=letencrypt"
+      - "traefik.http.services.client.loadbalancer.server.port=3000"
 
   minio:
     image: docker.io/bitnami/minio:2022
@@ -58,3 +89,4 @@ volumes:
   postgres_database:
   minio_data:
     driver: local
+  traefik-certs:
