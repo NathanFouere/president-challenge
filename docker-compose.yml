@@ -56,6 +56,8 @@ services:
       - "traefik.http.services.server.loadbalancer.server.port=3333"
       - "traefik.http.routers.api.tls.certresolver=letencrypt"
       - "traefik.http.routers.server.tls=true"
+    env_file:
+      - ./packages/server/.env
 
   client:
     build:
@@ -71,6 +73,9 @@ services:
       - "traefik.http.routers.client.tls=true"
       - "traefik.http.routers.client.tls.certresolver=letencrypt"
       - "traefik.http.services.client.loadbalancer.server.port=3000"
+    env_file:
+      - ./packages/client/.env
+
 
   minio:
     image: docker.io/bitnami/minio:2022
