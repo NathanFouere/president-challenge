@@ -3,3 +3,5 @@
   roles:
     - install-docker
     - install-git
+  vars_files:
+    - vault.yml

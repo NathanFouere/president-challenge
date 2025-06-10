@@ -6,7 +6,6 @@ services:
     ports:
       - "443:443"
       - "80:80"
-      - "8080:8080"
     volumes:
       - ./traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
@@ -14,6 +13,12 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.auth.basicauth.users=president-challenge:$$apr1$$Iseo97Yb$$CFofF8g6Yv6t3.Gj5vkOs0"
+      - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.dashboard.president-challenge.com`)"
+      - "traefik.http.routers.traefik-dashboard.service=api@internal"
+      - "traefik.http.routers.traefik-dashboard.middlewares=auth"
+      - "traefik.http.routers.traefik-dashboard.tls=true"
+      - "traefik.http.routers.traefik-dashboard.tls.certresolver=letencrypt"
 
   postgres:
     image: postgres:latest
@@ -68,9 +73,6 @@ services:
 
   minio:
     image: docker.io/bitnami/minio:2022
-    ports:
-      - '9000:9000'
-      - '9001:9001'
     volumes:
       - 'minio_data:/data'
     restart: always
@@ -78,6 +80,19 @@ services:
       - MINIO_ROOT_USER=${MINIO_ROOT_USER}
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
       - MINIO_DEFAULT_BUCKETS=${MINIO_DEFAULT_BUCKETS}
+    labels:
+      # API
+      - "traefik.http.routers.minio-api.rule=Host(`minio.president-challenge.com`)"
+      - "traefik.http.routers.minio-api.entrypoints=websecure"
+      - "traefik.http.routers.minio-api.tls=true"
+      - "traefik.http.routers.minio-api.tls.certresolver=letencrypt"
+      - "traefik.http.services.minio-api.loadbalancer.server.port=9000"
+      # DASHBOARD
+      - "traefik.http.routers.minio-console.rule=Host(`minio.president-challenge.com`) && PathPrefix(`/console`)"
+      - "traefik.http.routers.minio-console.entrypoints=websecure"
+      - "traefik.http.routers.minio-console.tls=true"
+      - "traefik.http.routers.minio-console.tls.certresolver=letencrypt"
+      - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
 
 volumes:
   postgres_database:
