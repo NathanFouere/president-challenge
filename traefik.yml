@@ -1,5 +1,5 @@
 api:
-    dashboard: false
+    dashboard: true
     insecure: false
     debug: false
 entryPoints:
