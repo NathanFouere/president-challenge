@@ -83,11 +83,16 @@ services:
       - MINIO_CONSOLE_ADDRESS=${MINIO_CONSOLE_ADDRESS}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.minio.rule=Host(`minio.president-challenge.com`)"
-      - "traefik.http.routers.minio.entrypoints=websecure"
-      - "traefik.http.routers.minio.tls=true"
-      - "traefik.http.routers.minio.tls.certresolver=letencrypt"
-      - "traefik.http.services.minio.loadbalancer.server.port=9001"
+      - "traefik.http.routers.console.rule=Host(`minio.president-challenge.com`)"
+      - "traefik.http.routers.console.entrypoints=websecure"
+      - "traefik.http.routers.console.tls=true"
+      - "traefik.http.routers.console.tls.certresolver=letencrypt"
+      - "traefik.http.services.console.loadbalancer.server.port=9001"
+      - "traefik.http.routers.api.rule=Host(`minio.president-challenge.com`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls=true"
+      - "traefik.http.routers.api.tls.certresolver=letencrypt"
+      - "traefik.http.services.api.loadbalancer.server.port=9000"
 
 volumes:
   postgres_database:
