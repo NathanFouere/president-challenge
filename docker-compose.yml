@@ -89,12 +89,14 @@ services:
       - "traefik.http.routers.console.tls=true"
       - "traefik.http.routers.console.tls.certresolver=letencrypt"
       - "traefik.http.services.console.loadbalancer.server.port=9001"
+      - "traefik.http.routers.console.service=console"
 
       - "traefik.http.routers.api.rule=Host(`minio.president-challenge.com`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.api.tls.certresolver=letencrypt"
       - "traefik.http.services.api.loadbalancer.server.port=9000"
+      - "traefik.http.routers.api.service=api"
 
 volumes:
   postgres_database:
