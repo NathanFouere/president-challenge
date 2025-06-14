@@ -94,6 +94,8 @@ services:
       - "traefik.http.routers.minio-console.tls=true"
       - "traefik.http.routers.minio-console.tls.certresolver=letencrypt"
       - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
+      - "traefik.http.middlewares.minio-console-stripprefix.stripprefix.prefixes=/console"
+      - "traefik.http.routers.minio-console.middlewares=minio-console-stripprefix@docker"
 
 volumes:
   postgres_database:
