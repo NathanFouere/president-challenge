@@ -1,13 +1,12 @@
-const prefix: string = 'api';
-const authPrefix: string = `${prefix}/auth`;
-const gamePrefix: string = `${prefix}/games`;
-const politicalPartyPrefix: string = `${prefix}/political-party`;
-const eventPrefix: string = `${prefix}/events`;
-const legislaturePrefix: string = `${prefix}/legislature`;
-const socialClassPrefix: string = `${prefix}/social-class`;
-const productPrefix: string = `${prefix}/products`;
-const sectorPrefix: string = `${prefix}/sectors`;
-const statePrefix: string = `${prefix}/state`;
+const authPrefix: string = `/auth`;
+const gamePrefix: string = `/games`;
+const politicalPartyPrefix: string = `/political-party`;
+const eventPrefix: string = `/events`;
+const legislaturePrefix: string = `/legislature`;
+const socialClassPrefix: string = `/social-class`;
+const productPrefix: string = `/products`;
+const sectorPrefix: string = `/sectors`;
+const statePrefix: string = `/state`;
 
 const Routes = {
   User: {
