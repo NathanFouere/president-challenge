@@ -53,11 +53,15 @@ export class AuthPresenter {
     try {
       const user = await this.authModule.login(email, password);
       this.userStore.setUser(user);
+
+      await this.router.push(NUXT_ROUTES.games);
+    }
+    catch {
+      this.toast.showError('Error while logging in');
     }
     finally {
       this.loginStore.unsetLogging();
     }
-    this.router.push(NUXT_ROUTES.games);
   }
 
   private async handleLogout(): Promise<void> {
