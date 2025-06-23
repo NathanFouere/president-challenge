@@ -26,6 +26,8 @@
     "@eslint/js": "^9.15.0",
     "@nuxt/eslint-config": "^0.7.1",
     "@stylistic/eslint-plugin-ts": "^2.11.0",
+    "@tiptap/core": "^2.22.3",
+    "@tiptap/extension-horizontal-rule": "^2.22.3",
     "@typescript-eslint/eslint-plugin": "8.14.1-alpha.6",
     "@typescript-eslint/parser": "8.14.1-alpha.6",
     "eslint": "^9.15.0",
