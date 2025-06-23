@@ -14,7 +14,9 @@ export default class CreateGameController {
 
   public async createGame({ auth, params, response }: HttpContext) {
     try {
-      const user: User = auth.getUserOrFail();
+      const user: User = await auth.getUserOrFail();
+      // TODO => should be loaded here, should be done in a repository
+      await user.load('games');
       const gameDefinitionIdentifier: string = params.identifier;
       await this.createGameService.createGame(user, gameDefinitionIdentifier);
     }
