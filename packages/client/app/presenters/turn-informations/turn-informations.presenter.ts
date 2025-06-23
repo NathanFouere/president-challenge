@@ -62,6 +62,8 @@ export class TurnInformationsPresenter {
     if (!this.sseSubscription) {
       return;
     }
+
+    this.turnInformationsStore.unsetTurnProcessDatas();
     await this.sseSubscription.delete();
   }
 }
