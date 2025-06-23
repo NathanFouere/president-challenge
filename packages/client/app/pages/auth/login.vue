@@ -46,7 +46,8 @@ async function signOut() {
 <template>
   <div class="flex items-center justify-center">
     <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
-      <UCard v-if="authPresenter.userStore.connectedUser">
+      <!-- Check connectedUser.id because of a bug only present in production where displays a null -->
+      <UCard v-if="authPresenter.userStore.connectedUser && authPresenter.userStore.connectedUser.id">
         <p>
           Already logged in as {{ authPresenter.userStore.connectedUser.email }} <UButton @click="signOut">
             Sign out
