@@ -21,4 +21,5 @@ export const useUserStore = defineStore('userStore', {
       this.user = null;
     },
   },
+  persist: true,
 });

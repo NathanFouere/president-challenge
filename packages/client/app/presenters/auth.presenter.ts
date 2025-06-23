@@ -54,7 +54,7 @@ export class AuthPresenter {
       const user = await this.authModule.login(email, password);
       this.userStore.setUser(user);
 
-      await navigateTo(NUXT_ROUTES.games, { external: true });
+      await this.router.push(NUXT_ROUTES.games);
     }
     catch {
       this.toast.showError('Error while logging in');
