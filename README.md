@@ -20,16 +20,20 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 ## Technologies
 
 ### Frameworks
+
 - **AdonisJS**: For the backend
 - **Nuxt**: For the frontend
 
 ### Libraries
+
 - **AdminJS**: For the administration interface
 
 ### Database
+
 - **PostgreSQL**
 
 ### DevOps
+
 - **Docker**
 - **Docker Compose**
 - **GitHub Actions**
@@ -37,6 +41,7 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 - **Traefik**
 
 ## Learning Objectives
+
 I am unsure of finalizing this project, but I have set the following learning objectives:
 - **Adonis.js**: Learning AdonisJs to get into the NodeJs ecosystem
 - **Domain-Driven Design**: Learning how to structure applications with a focus on the domain logic.
@@ -46,6 +51,7 @@ I am unsure of finalizing this project, but I have set the following learning ob
 - **Deployment**: Learning how to set-up production-ready systems and pipelines.
 
 ## Roadmap
+
 You can track the progress and upcoming features of this project on the [Trello Board](https://trello.com/b/yeDvZUYI/allende-challenge-v2) (In French)
 
 ## Possible improvements to the project
