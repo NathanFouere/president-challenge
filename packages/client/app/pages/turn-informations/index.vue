@@ -67,7 +67,12 @@ onMounted(async () => {
           :disabled="turnInformationsPresenter.turnInformationsStore.getTurnInformations!.canChangeTurn"
           @click="turnInformationsPresenter.changeTurn()"
         >
-          {{ turnInformationsPresenter.turnInformationsStore.getTurnProcessDatas?.message ?? 'Change turn' }}
+          <span v-if="turnInformationsPresenter.gameStore.isChangingTurn && turnInformationsPresenter.turnInformationsStore.getTurnProcessDatas?.message">
+            {{ turnInformationsPresenter.turnInformationsStore.getTurnProcessDatas?.message }}
+          </span>
+          <span v-else>
+            Change turn
+          </span>
         </UButton>
       </UTooltip>
     </div>

@@ -60,6 +60,7 @@ export class TurnInformationsPresenter {
 
   public async unsubscribeGameTurnProcessStream(): Promise<void> {
     if (!this.sseSubscription) {
+      this.turnInformationsStore.unsetTurnProcessDatas();
       return;
     }
 
