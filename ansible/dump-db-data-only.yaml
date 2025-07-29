@@ -1,0 +1,9 @@
+- name: Dump prod db locally (data only)
+  hosts: all
+  roles:
+    - dump-db-data-only
+  vars:
+    time: "{{ ansible_date_time.iso8601 }}"
+    backup_folder: "backups-data-only"
+  vars_files:
+    - vault.yml
