@@ -1,2 +1,2 @@
-./backups/*
-./backups-data-only/*
+backups/*
+backups-data-only/*
