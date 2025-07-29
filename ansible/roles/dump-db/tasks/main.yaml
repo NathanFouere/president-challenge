@@ -1,0 +1,14 @@
+- name: "Create a backup directory"
+  file:
+    path: "{{backup_folder}}/{{ time }}/"
+    state: directory
+    mode: "0755"
+- name: "Back up the database (Data Only)"
+  shell: |
+    docker exec database pg_dump -U {{ DB_USER }} -d {{ DB_DATABASE }} | gzip > {{backup_folder}}/{{ time }}/{{ DB_DATABASE }}.dump.gz
+  become: yes
+- name: "Fetch backup from the server"
+  fetch:
+    src: "{{backup_folder}}/{{ time }}/{{ DB_DATABASE }}.dump.gz"
+    dest: "{{backup_folder}}/{{ time }}.dump.gz"
+    flat: yes
