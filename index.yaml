@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  president-challenge:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-04-17T21:58:03.058626316Z"
+    description: A Helm chart for President Challenge server and client
+    digest: ee3c844ebe8cd533960832023a024cb523cbe6a2d91e95250022e50971b55b18
+    name: president-challenge
+    type: application
+    urls:
+    - https://github.com/NathanFouere/president-challenge/releases/download/president-challenge-0.0.1/president-challenge-0.0.1.tgz
+    version: 0.0.1
+generated: "2026-04-17T21:58:03.058631496Z"
