@@ -16,8 +16,8 @@ RUN pnpm run build:shared
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build:backend
 RUN pnpm run build:client
-RUN pnpm deploy --filter=@president-challenge/server --prod /prod/server
-RUN pnpm deploy --filter=@president-challenge/client --prod /prod/client
+RUN pnpm deploy --no-lockfile --filter=@president-challenge/server --prod /prod/server
+RUN pnpm deploy --no-lockfile --filter=@president-challenge/client --prod /prod/client
 
 FROM base AS server
 WORKDIR /prod/server
