@@ -80,6 +80,8 @@ jobs:
           push: true
           tags: ${{ steps.meta-server.outputs.tags }}
           labels: ${{ steps.meta-server.outputs.labels }}
+          build-args: |
+            NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}
 
       - name: Extract metadata (tags, labels) for Docker (Client)
         id: meta-client
@@ -97,6 +99,8 @@ jobs:
           push: true
           tags: ${{ steps.meta-client.outputs.tags }}
           labels: ${{ steps.meta-client.outputs.labels }}
+          build-args: |
+            NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}
 
       - name: Generate artifact attestation (Server)
         uses: actions/attest@v4
