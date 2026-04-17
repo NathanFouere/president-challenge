@@ -10,6 +10,12 @@ server:
     port: 3333
     targetPort: 3333
 
+  config:
+    nodeEnv: "production"
+    host: "0.0.0.0"
+    logLevel: "info"
+    sessionDriver: "cookie"
+
   httpRoute:
     gateway:
       name: traefik-gateway
@@ -28,6 +34,9 @@ client:
     type: ClusterIP
     port: 3000
     targetPort: 3000
+
+  config:
+    baseURLProxyServer: ""
 
   httpRoute:
     gateway:

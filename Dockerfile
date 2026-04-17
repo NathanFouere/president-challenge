@@ -6,6 +6,9 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g pnpm@9.12.2
 
 FROM base AS build
+ARG NUXT_UI_PRO_LICENSE
+ENV NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
+
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --filter=@president-challenge/shared --frozen-lockfile
@@ -19,13 +22,11 @@ RUN pnpm deploy --filter=@president-challenge/client --prod /prod/client
 FROM base AS server
 WORKDIR /prod/server
 COPY --from=build /prod/server /prod/server
-COPY packages/server/.env /prod/server/build/.env
 EXPOSE 3333
 CMD [ "pnpm", "startup-start" ]
 
 FROM base AS client
 WORKDIR /prod/client
 COPY --from=build /prod/client /prod/client
-COPY packages/client/.env /prod/client/.env
 EXPOSE 3000
 CMD [ "pnpm", "start" ]

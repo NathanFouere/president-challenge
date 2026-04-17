@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: president-challenge-server-config
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: server
+data:
+  NODE_ENV: "production"
+  PORT: {{ .Values.server.service.targetPort | quote }}
+  HOST: "0.0.0.0"
+  LOG_LEVEL: "info"
+  SESSION_DRIVER: "cookie"
+  DB_HOST: "president-challenge-postgres"
+  DB_PORT: {{ .Values.postgres.service.port | quote }}
+  DB_USER: {{ .Values.postgres.config.user | quote }}
+  MINIO_REGION: "us-east-1"
+  MINIO_ENDPOINT: "president-challenge-minio:{{ .Values.minio.service.apiPort }}"

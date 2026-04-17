@@ -24,3 +24,6 @@ spec:
             - name: http
               containerPort: {{ .Values.client.service.targetPort }}
               protocol: TCP
+          env:
+            - name: NUXT_PUBLIC_BASE_URL_PROXY_SERVER
+              value: {{ .Values.client.config.baseURLProxyServer | quote }}

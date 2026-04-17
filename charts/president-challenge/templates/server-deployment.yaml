@@ -24,13 +24,15 @@ spec:
             - name: http
               containerPort: {{ .Values.server.service.targetPort }}
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: president-challenge-server-config
           env:
-            - name: DB_HOST
-              value: president-challenge-postgres
-            - name: DB_PORT
-              value: {{ .Values.postgres.service.port | quote }}
-            - name: DB_USER
-              value: {{ .Values.postgres.config.user | quote }}
+            - name: APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: app-key
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -56,5 +58,3 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
                   key: minio-default-buckets
-            - name: MINIO_ENDPOINT
-              value: president-challenge-minio:{{ .Values.minio.service.apiPort }}
