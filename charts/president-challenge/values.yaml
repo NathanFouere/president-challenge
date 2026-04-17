@@ -1,0 +1,87 @@
+# Server configuration
+server:
+  image:
+    repository: president-challenge-server
+    pullPolicy: Always
+    tag: "latest"
+
+  service:
+    type: ClusterIP
+    port: 3333
+    targetPort: 3333
+
+  httpRoute:
+    gateway:
+      name: traefik-gateway
+      namespace: kube-system
+    hostnames:
+    - president-challenge.nathan-fouere.com
+
+# Client configuration
+client:
+  image:
+    repository: president-challenge-client
+    pullPolicy: Always
+    tag: "latest"
+
+  service:
+    type: ClusterIP
+    port: 3000
+    targetPort: 3000
+
+  httpRoute:
+    gateway:
+      name: traefik-gateway
+      namespace: kube-system
+    hostnames:
+    - president-challenge.nathan-fouere.com
+
+# PostgreSQL configuration
+postgres:
+  image:
+    repository: postgres
+    tag: "latest"
+    pullPolicy: Always
+
+  service:
+    type: ClusterIP
+    port: 5432
+    targetPort: 5432
+
+  config:
+    user: "postgres"
+
+  storage:
+    size: 10Gi
+    # storageClassName: standard
+
+# MinIO configuration
+minio:
+  image:
+    repository: bitnami/minio
+    tag: "2022"
+    pullPolicy: Always
+
+  service:
+    type: ClusterIP
+    apiPort: 9000
+    consolePort: 9001
+
+  config:
+    consoleAddress: ":9001"
+
+  storage:
+    size: 10Gi
+    # storageClassName: standard
+
+  httpRoute:
+    gateway:
+      name: traefik-gateway
+      namespace: kube-system
+    apiHostnames:
+    - minio-president-challenge.nathan-fouere.com
+    consoleHostnames:
+    - minio-console-president-challenge.nathan-fouere.com
+
+secrets:
+  name: "president-challenge-secrets"

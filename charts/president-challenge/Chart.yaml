@@ -1,0 +1,9 @@
+apiVersion: v2
+name: president-challenge
+description: A Helm chart for President Challenge server and client
+
+type: application
+
+version: 0.0.1
+
+appVersion: "1.0.0"

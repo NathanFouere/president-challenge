@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: president-challenge-client
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: client
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: president-challenge
+      app.kubernetes.io/component: client
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: president-challenge
+        app.kubernetes.io/component: client
+    spec:
+      containers:
+        - name: president-challenge-client
+          image: "{{ .Values.client.image.repository }}:{{ .Values.client.image.tag }}"
+          imagePullPolicy: {{ .Values.client.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.client.service.targetPort }}
+              protocol: TCP

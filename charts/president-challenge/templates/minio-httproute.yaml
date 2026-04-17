@@ -1,0 +1,39 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: president-challenge-minio-api
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: minio
+spec:
+  parentRefs:
+    - name: {{ .Values.minio.httpRoute.gateway.name }}
+      namespace: {{ .Values.minio.httpRoute.gateway.namespace }}
+  hostnames:
+  {{- range .Values.minio.httpRoute.apiHostnames }}
+    - {{ . }}
+  {{- end }}
+  rules:
+    - backendRefs:
+        - name: president-challenge-minio
+          port: {{ .Values.minio.service.apiPort }}
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: president-challenge-minio-console
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: minio
+spec:
+  parentRefs:
+    - name: {{ .Values.minio.httpRoute.gateway.name }}
+      namespace: {{ .Values.minio.httpRoute.gateway.namespace }}
+  hostnames:
+  {{- range .Values.minio.httpRoute.consoleHostnames }}
+    - {{ . }}
+  {{- end }}
+  rules:
+    - backendRefs:
+        - name: president-challenge-minio
+          port: {{ .Values.minio.service.consolePort }}

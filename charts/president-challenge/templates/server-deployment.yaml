@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: president-challenge-server
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: server
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: president-challenge
+      app.kubernetes.io/component: server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: president-challenge
+        app.kubernetes.io/component: server
+    spec:
+      containers:
+        - name: president-challenge-server
+          image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag }}"
+          imagePullPolicy: {{ .Values.server.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.server.service.targetPort }}
+              protocol: TCP
+          env:
+            - name: DB_HOST
+              value: president-challenge-postgres
+            - name: DB_PORT
+              value: {{ .Values.postgres.service.port | quote }}
+            - name: DB_USER
+              value: {{ .Values.postgres.config.user | quote }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: postgres-password
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: postgres-database
+            - name: MINIO_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: minio-root-user
+            - name: MINIO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: minio-root-password
+            - name: MINIO_DEFAULT_BUCKETS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: minio-default-buckets
+            - name: MINIO_ENDPOINT
+              value: president-challenge-minio:{{ .Values.minio.service.apiPort }}
