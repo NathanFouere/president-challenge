@@ -3,7 +3,7 @@
 FROM node:20.16.0-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN npm install -g pnpm@9.12.2
+RUN npm install -g pnpm@10.4.1
 
 FROM base AS build
 ARG NUXT_UI_PRO_LICENSE
@@ -16,8 +16,8 @@ RUN pnpm run build:shared
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build:backend
 RUN pnpm run build:client
-RUN pnpm deploy --no-lockfile --filter=@president-challenge/server --prod /prod/server
-RUN pnpm deploy --no-lockfile --filter=@president-challenge/client --prod /prod/client
+RUN pnpm deploy --filter=@president-challenge/server --prod /prod/server
+RUN pnpm deploy --filter=@president-challenge/client --prod /prod/client
 
 FROM base AS server
 WORKDIR /prod/server
