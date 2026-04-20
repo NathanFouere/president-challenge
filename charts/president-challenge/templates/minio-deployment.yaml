@@ -32,17 +32,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: minio-root-user
+                  key: {{ .Values.secrets.keys.minioRootUser }}
             - name: MINIO_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: minio-root-password
+                  key: {{ .Values.secrets.keys.minioRootPassword }}
             - name: MINIO_DEFAULT_BUCKETS
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: minio-default-buckets
+                  key: {{ .Values.secrets.keys.minioDefaultBuckets }}
             - name: MINIO_CONSOLE_ADDRESS
               value: {{ .Values.minio.config.consoleAddress | quote }}
           volumeMounts:

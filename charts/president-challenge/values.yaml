@@ -94,3 +94,10 @@ minio:
 
 secrets:
   name: "president-challenge-secrets"
+  keys:
+    appKey: "app-key"
+    postgresPassword: "postgres-password"
+    postgresDatabase: "postgres-database"
+    minioRootUser: "minio-root-user"
+    minioRootPassword: "minio-root-password"
+    minioDefaultBuckets: "minio-default-buckets"

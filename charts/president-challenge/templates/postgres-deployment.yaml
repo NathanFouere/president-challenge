@@ -31,12 +31,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: postgres-password
+                  key: {{ .Values.secrets.keys.postgresPassword }}
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: postgres-database
+                  key: {{ .Values.secrets.keys.postgresDatabase }}
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
