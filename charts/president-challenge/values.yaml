@@ -78,6 +78,7 @@ minio:
 
   config:
     consoleAddress: ":9001"
+    defaultBuckets: "president-challenge"
 
   storage:
     size: 10Gi
@@ -100,4 +101,3 @@ secrets:
     postgresDatabase: "postgres-database"
     minioRootUser: "minio-root-user"
     minioRootPassword: "minio-root-password"
-    minioDefaultBuckets: "minio-default-buckets"

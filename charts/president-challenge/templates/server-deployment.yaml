@@ -54,7 +54,4 @@ spec:
                   name: {{ .Values.secrets.name }}
                   key: {{ .Values.secrets.keys.minioRootPassword }}
             - name: MINIO_DEFAULT_BUCKETS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secrets.name }}
-                  key: {{ .Values.secrets.keys.minioDefaultBuckets }}
+              value: {{ .Values.minio.config.defaultBuckets | quote }}
