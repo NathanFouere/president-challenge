@@ -49,7 +49,7 @@ client:
 postgres:
   image:
     repository: postgres
-    tag: "latest"
+    tag: "17"
     pullPolicy: Always
 
   service:
@@ -62,13 +62,12 @@ postgres:
 
   storage:
     size: 10Gi
-    # storageClassName: standard
 
 # MinIO configuration
 minio:
   image:
-    repository: bitnami/minio
-    tag: "2022"
+    repository: minio/minio
+    tag: "latest"
     pullPolicy: Always
 
   service:
