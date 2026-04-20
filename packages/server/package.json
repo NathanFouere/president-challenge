@@ -90,17 +90,18 @@
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/transmit": "^2.0.2",
+    "@aws-sdk/client-s3": "^3.577.0",
+    "@aws-sdk/s3-request-presigner": "^3.577.0",
+    "@google-cloud/storage": "^7.10.2",
     "@president-challenge/shared": "workspace:*",
+    "@tiptap/extension-horizontal-rule": "2.1.13",
     "@vinejs/vine": "^2.1.0",
     "adminjs": "^7.8.15",
     "edge.js": "^6.2.0",
     "luxon": "^3.5.0",
     "pg": "^8.13.1",
     "pino-pretty": "^11.2.2",
-    "reflect-metadata": "^0.2.2",
-    "@aws-sdk/client-s3": "^3.577.0",
-    "@aws-sdk/s3-request-presigner": "^3.577.0",
-    "@google-cloud/storage": "^7.10.2"
+    "reflect-metadata": "^0.2.2"
   },
   "hotHook": {
     "boundaries": [

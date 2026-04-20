@@ -15,18 +15,10 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --filter=@preside
 RUN pnpm run build:shared
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build:backend
-RUN pnpm run build:client
 RUN pnpm deploy --filter=@president-challenge/server --prod /prod/server
-RUN pnpm deploy --filter=@president-challenge/client --prod /prod/client
 
 FROM base AS server
 WORKDIR /prod/server
 COPY --from=build /prod/server /prod/server
 EXPOSE 3333
 CMD [ "pnpm", "startup-start" ]
-
-FROM base AS client
-WORKDIR /prod/client
-COPY --from=build /prod/client /prod/client
-EXPOSE 3000
-CMD [ "pnpm", "start" ]

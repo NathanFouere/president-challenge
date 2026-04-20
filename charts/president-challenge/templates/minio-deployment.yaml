@@ -20,6 +20,7 @@ spec:
         - name: minio
           image: "{{ .Values.minio.image.repository }}:{{ .Values.minio.image.tag }}"
           imagePullPolicy: {{ .Values.minio.image.pullPolicy }}
+          command: ["minio", "server", "/data"]
           ports:
             - name: api
               containerPort: {{ .Values.minio.service.apiPort }}
@@ -38,10 +39,35 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
                   key: {{ .Values.secrets.keys.minioRootPassword }}
-            - name: MINIO_DEFAULT_BUCKETS
-              value: {{ .Values.minio.config.defaultBuckets | quote }}
-            - name: MINIO_CONSOLE_ADDRESS
-              value: {{ .Values.minio.config.consoleAddress | quote }}
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    until mc alias set local http://localhost:{{ .Values.minio.service.apiPort }} ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}; do
+                      sleep 1
+                    done
+                    mc mb --ignore-existing local/{{ .Values.minio.config.defaultBuckets }}
+          startupProbe:
+            httpGet:
+              path: /minio/health/live
+              port: api
+            failureThreshold: 30
+            periodSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /minio/health/ready
+              port: api
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /minio/health/live
+              port: api
+            initialDelaySeconds: 30
+            periodSeconds: 30
           volumeMounts:
             - name: minio-data
               mountPath: /data
