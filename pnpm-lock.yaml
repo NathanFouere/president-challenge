@@ -69,6 +69,9 @@ importers:
       '@president-challenge/shared':
         specifier: workspace:*
         version: link:../shared
+      '@tiptap/extension-horizontal-rule':
+        specifier: 2.1.13
+        version: 2.1.13(@tiptap/core@2.22.3(@tiptap/pm@2.1.13))(@tiptap/pm@2.1.13)
       inversify:
         specifier: ^6.1.4
         version: 6.2.2(reflect-metadata@0.2.2)
@@ -3216,6 +3219,12 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.7.0
       '@tiptap/pm': ^2.7.0
+
+  '@tiptap/extension-horizontal-rule@2.1.13':
+    resolution: {integrity: sha512-7OgjgNqZXvBejgULNdMSma2M1nzv4bbZG+FT5XMFZmEOxR9IB1x/RzChjPdeicff2ZK2sfhMBc4Y9femF5XkUg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
 
   '@tiptap/extension-horizontal-rule@2.22.3':
     resolution: {integrity: sha512-3GvY798p9pCXUBbCebIdSmi1q80l7VZz/B6NN4uUMQ9iwxWopd8yaZ0O7xx2hM2UBzPEtY3M4FAhhpYUTXNFgQ==}
@@ -13630,6 +13639,11 @@ snapshots:
   '@tiptap/extension-history@2.22.3(@tiptap/core@2.1.13(@tiptap/pm@2.1.13))(@tiptap/pm@2.1.13)':
     dependencies:
       '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
+      '@tiptap/pm': 2.1.13
+
+  '@tiptap/extension-horizontal-rule@2.1.13(@tiptap/core@2.22.3(@tiptap/pm@2.1.13))(@tiptap/pm@2.1.13)':
+    dependencies:
+      '@tiptap/core': 2.22.3(@tiptap/pm@2.1.13)
       '@tiptap/pm': 2.1.13
 
   '@tiptap/extension-horizontal-rule@2.22.3(@tiptap/core@2.1.13(@tiptap/pm@2.1.13))(@tiptap/pm@2.1.13)':
