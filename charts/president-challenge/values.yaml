@@ -15,6 +15,7 @@ server:
     host: "0.0.0.0"
     logLevel: "info"
     sessionDriver: "cookie"
+    clientUrl: "https://president-challenge.nathan-fouere.com"
 
   httpRoute:
     gateway:
