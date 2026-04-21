@@ -99,6 +99,7 @@ jobs:
           labels: ${{ steps.meta-client.outputs.labels }}
           build-args: |
             NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}
+            NUXT_PUBLIC_BASE_URL_PROXY_SERVER=${{ secrets.URL_BACKEND }}
 
       - name: Generate artifact attestation (Server)
         uses: actions/attest@v4

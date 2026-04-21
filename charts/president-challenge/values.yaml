@@ -21,7 +21,7 @@ server:
       name: traefik-gateway
       namespace: kube-system
     hostnames:
-    - president-challenge.nathan-fouere.com
+    - api-president-challenge.nathan-fouere.com
 
 # Client configuration
 client:
