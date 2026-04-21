@@ -41,8 +41,6 @@ jobs:
 
       - name: Run tests and coverage
         run: pnpm run coverage
-        env:
-          ADMINJS_RELATIONS_LICENSE: ${{ secrets.ADMINJS_RELATIONS_LICENSE }}
 
   docker:
     name: Build and Push Docker Images

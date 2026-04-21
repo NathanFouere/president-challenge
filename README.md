@@ -26,8 +26,6 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 
 ### Libraries
 
-- **AdminJS**: For the administration interface
-
 ### Database
 
 - **PostgreSQL**

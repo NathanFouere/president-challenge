@@ -51,10 +51,6 @@ export default defineConfig({
     () => import('#budget/budget_provider'),
     () => import('#user/user_provider'),
     () => import('#happiness-modifier/happiness_modifier_provider'),
-    {
-      file: () => import('@adminjs/adonis/adminjs_provider'),
-      environment: ['web'],
-    },
     () => import('@adonisjs/drive/drive_provider'),
     () => import('@adonisjs/transmit/transmit_provider'),
   ],
