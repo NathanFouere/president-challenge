@@ -24,8 +24,6 @@ The project is designed following **Domain-Driven Design (DDD)** principles.
 - **AdonisJS**: For the backend
 - **Nuxt**: For the frontend
 
-### Libraries
-
 ### Database
 
 - **PostgreSQL**
