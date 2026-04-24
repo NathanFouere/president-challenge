@@ -17,3 +17,4 @@ data:
   MINIO_REGION: "us-east-1"
   MINIO_ENDPOINT: "president-challenge-minio:{{ .Values.minio.service.apiPort }}"
   CLIENT_URL: {{ .Values.server.config.clientUrl | quote }}
+  DB_DATABASE: {{ .Values.postgres.config.database | quote }}

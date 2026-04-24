@@ -38,11 +38,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
                   key: {{ .Values.secrets.keys.postgresPassword }}
-            - name: DB_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secrets.name }}
-                  key: {{ .Values.secrets.keys.postgresDatabase }}
+
             - name: MINIO_ROOT_USER
               valueFrom:
                 secretKeyRef:

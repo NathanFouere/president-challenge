@@ -60,6 +60,7 @@ postgres:
 
   config:
     user: "postgres"
+    database: "president_challenge"
 
   storage:
     size: 10Gi
@@ -98,6 +99,5 @@ secrets:
   keys:
     appKey: "app-key"
     postgresPassword: "postgres-password"
-    postgresDatabase: "postgres-database"
     minioRootUser: "minio-root-user"
     minioRootPassword: "minio-root-password"
