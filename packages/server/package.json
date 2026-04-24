@@ -14,7 +14,7 @@
     "lint:check": "eslint . --fix --quiet",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "startup-start": "node build/ace migration:run && node build/bin/server.js"
+    "startup-start": "node build/ace migration:run --force && node build/bin/server.js"
   },
   "files": [
     "build",
