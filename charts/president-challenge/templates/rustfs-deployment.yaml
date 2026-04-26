@@ -20,7 +20,7 @@ spec:
         - name: rustfs
           image: "{{ .Values.rustfs.image.repository }}:{{ .Values.rustfs.image.tag }}"
           imagePullPolicy: {{ .Values.rustfs.image.pullPolicy }}
-          command: ["rustfs", "server", "/data", "--console-address", "{{ .Values.rustfs.config.consoleAddress }}"]
+          command: ["rustfs", "server", "/data"]
           ports:
             - name: api
               containerPort: {{ .Values.rustfs.service.apiPort }}
