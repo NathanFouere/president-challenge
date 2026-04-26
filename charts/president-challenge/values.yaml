@@ -80,6 +80,7 @@ minio:
   config:
     consoleAddress: ":9001"
     defaultBuckets: "president-challenge"
+    region: "us-east-1"
 
   storage:
     size: 10Gi

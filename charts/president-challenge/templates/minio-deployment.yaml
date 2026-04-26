@@ -50,6 +50,7 @@ spec:
                       sleep 1
                     done
                     mc mb --ignore-existing local/{{ .Values.minio.config.defaultBuckets }}
+                    mc anonymous set readonly local/{{ .Values.minio.config.defaultBuckets }}
           startupProbe:
             httpGet:
               path: /minio/health/live

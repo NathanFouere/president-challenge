@@ -51,3 +51,7 @@ spec:
                   key: {{ .Values.secrets.keys.minioRootPassword }}
             - name: MINIO_DEFAULT_BUCKETS
               value: {{ .Values.minio.config.defaultBuckets | quote }}
+            - name: MINIO_ENDPOINT
+              value: "http://minio-president-challenge:{{ .Values.minio.service.apiPort }}"
+            - name: MINIO_REGION
+              value: {{ .Values.minio.config.region | quote }}
