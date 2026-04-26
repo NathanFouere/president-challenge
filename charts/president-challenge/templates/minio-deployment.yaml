@@ -49,8 +49,12 @@ spec:
                     until mc alias set local http://localhost:{{ .Values.minio.service.apiPort }} ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}; do
                       sleep 1
                     done
-                    mc mb --ignore-existing local/{{ .Values.minio.config.defaultBuckets }}
-                    mc anonymous set readonly local/{{ .Values.minio.config.defaultBuckets }}
+                    until mc mb --ignore-existing local/{{ .Values.minio.config.defaultBuckets }}; do
+                      sleep 1
+                    done
+                    until mc anonymous set readonly local/{{ .Values.minio.config.defaultBuckets }}; do
+                      sleep 1
+                    done
           startupProbe:
             httpGet:
               path: /minio/health/live
