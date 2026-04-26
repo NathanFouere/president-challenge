@@ -11,10 +11,17 @@
         "x86_64-linux"
       ];
       perSystem = { config, self', inputs', pkgs, system, ... }: {
+        devShells.ci = pkgs.mkShell {
+          packages = with pkgs; [
+            nodejs_20
+            pnpm
+          ];
+        };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             nodejs_20
             pnpm
+            ansible
           ];
         };
       };
