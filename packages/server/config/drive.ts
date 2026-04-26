@@ -11,13 +11,13 @@ const driveConfig = defineConfig({
   services: {
     s3: services.s3({
       forcePathStyle: true,
-      endpoint: env.get('MINIO_ENDPOINT'),
+      endpoint: env.get('RUSTFS_ENDPOINT'),
       credentials: {
-        accessKeyId: env.get('MINIO_ROOT_USER'),
-        secretAccessKey: env.get('MINIO_ROOT_PASSWORD'),
+        accessKeyId: env.get('RUSTFS_ROOT_USER'),
+        secretAccessKey: env.get('RUSTFS_ROOT_PASSWORD'),
       },
-      region: env.get('MINIO_REGION'),
-      bucket: env.get('MINIO_DEFAULT_BUCKETS'),
+      region: env.get('RUSTFS_REGION'),
+      bucket: env.get('RUSTFS_DEFAULT_BUCKETS'),
       visibility: 'public',
     }),
   },

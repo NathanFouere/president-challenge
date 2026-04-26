@@ -11,7 +11,7 @@ export default class S3Service {
       throw new FileDoesntExistError(key);
     }
 
-    const url = `${env.get('MINIO_ENDPOINT')}/${env.get('MINIO_DEFAULT_BUCKETS')}/${key}`;
+    const url = `${env.get('RUSTFS_ENDPOINT')}/${env.get('RUSTFS_DEFAULT_BUCKETS')}/${key}`;
     return url;
   }
 

@@ -1,0 +1,39 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: president-challenge-rustfs-api
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: rustfs
+spec:
+  parentRefs:
+    - name: {{ .Values.rustfs.httpRoute.gateway.name }}
+      namespace: {{ .Values.rustfs.httpRoute.gateway.namespace }}
+  hostnames:
+  {{- range .Values.rustfs.httpRoute.apiHostnames }}
+    - {{ . }}
+  {{- end }}
+  rules:
+    - backendRefs:
+        - name: president-challenge-rustfs
+          port: {{ .Values.rustfs.service.apiPort }}
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: president-challenge-rustfs-console
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: rustfs
+spec:
+  parentRefs:
+    - name: {{ .Values.rustfs.httpRoute.gateway.name }}
+      namespace: {{ .Values.rustfs.httpRoute.gateway.namespace }}
+  hostnames:
+  {{- range .Values.rustfs.httpRoute.consoleHostnames }}
+    - {{ . }}
+  {{- end }}
+  rules:
+    - backendRefs:
+        - name: president-challenge-rustfs
+          port: {{ .Values.rustfs.service.consolePort }}

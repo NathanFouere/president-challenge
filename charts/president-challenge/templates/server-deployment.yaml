@@ -39,19 +39,19 @@ spec:
                   name: {{ .Values.secrets.name }}
                   key: {{ .Values.secrets.keys.postgresPassword }}
 
-            - name: MINIO_ROOT_USER
+            - name: RUSTFS_ROOT_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: {{ .Values.secrets.keys.minioRootUser }}
-            - name: MINIO_ROOT_PASSWORD
+                  key: {{ .Values.secrets.keys.rustfsRootUser }}
+            - name: RUSTFS_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
-                  key: {{ .Values.secrets.keys.minioRootPassword }}
-            - name: MINIO_DEFAULT_BUCKETS
-              value: {{ .Values.minio.config.defaultBuckets | quote }}
-            - name: MINIO_ENDPOINT
-              value: "http://minio-president-challenge:{{ .Values.minio.service.apiPort }}"
-            - name: MINIO_REGION
-              value: {{ .Values.minio.config.region | quote }}
+                  key: {{ .Values.secrets.keys.rustfsRootPassword }}
+            - name: RUSTFS_DEFAULT_BUCKETS
+              value: {{ .Values.rustfs.config.defaultBuckets | quote }}
+            - name: RUSTFS_ENDPOINT
+              value: "http://president-challenge-rustfs:{{ .Values.rustfs.service.apiPort }}"
+            - name: RUSTFS_REGION
+              value: {{ .Values.rustfs.config.region | quote }}

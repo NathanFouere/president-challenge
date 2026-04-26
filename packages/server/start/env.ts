@@ -41,9 +41,9 @@ export default await Env.create(new URL('../', import.meta.url), {
   | Variables for configuring the drive package
   |----------------------------------------------------------
   */
-  MINIO_ROOT_USER: Env.schema.string(),
-  MINIO_ROOT_PASSWORD: Env.schema.string(),
-  MINIO_DEFAULT_BUCKETS: Env.schema.string(),
-  MINIO_REGION: Env.schema.string(),
-  MINIO_ENDPOINT: Env.schema.string(),
+  RUSTFS_ROOT_USER: Env.schema.string(),
+  RUSTFS_ROOT_PASSWORD: Env.schema.string(),
+  RUSTFS_DEFAULT_BUCKETS: Env.schema.string(),
+  RUSTFS_REGION: Env.schema.string(),
+  RUSTFS_ENDPOINT: Env.schema.string(),
 });

@@ -65,10 +65,10 @@ postgres:
   storage:
     size: 10Gi
 
-# MinIO configuration
-minio:
+# RustFS configuration
+rustfs:
   image:
-    repository: minio/minio
+    repository: rustfs/rustfs
     tag: "latest"
     pullPolicy: Always
 
@@ -91,14 +91,14 @@ minio:
       name: traefik-gateway
       namespace: kube-system
     apiHostnames:
-    - minio-president-challenge.nathan-fouere.com
+    - rustfs-president-challenge.nathan-fouere.com
     consoleHostnames:
-    - minio-console-president-challenge.nathan-fouere.com
+    - rustfs-console-president-challenge.nathan-fouere.com
 
 secrets:
   name: "president-challenge-secrets"
   keys:
     appKey: "app-key"
     postgresPassword: "postgres-password"
-    minioRootUser: "minio-root-user"
-    minioRootPassword: "minio-root-password"
+    rustfsRootUser: "rustfs-root-user"
+    rustfsRootPassword: "rustfs-root-password"

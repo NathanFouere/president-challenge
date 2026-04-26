@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: president-challenge-rustfs
+  labels:
+    app.kubernetes.io/name: president-challenge
+    app.kubernetes.io/component: rustfs
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: president-challenge
+      app.kubernetes.io/component: rustfs
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: president-challenge
+        app.kubernetes.io/component: rustfs
+    spec:
+      securityContext:
+        fsGroup: 10001
+        runAsUser: 10001
+        runAsGroup: 10001
+      containers:
+        - name: rustfs
+          image: "{{ .Values.rustfs.image.repository }}:{{ .Values.rustfs.image.tag }}"
+          imagePullPolicy: {{ .Values.rustfs.image.pullPolicy }}
+          command: ["rustfs", "server", "/data", "--console-address", "{{ .Values.rustfs.config.consoleAddress }}"]
+          ports:
+            - name: api
+              containerPort: {{ .Values.rustfs.service.apiPort }}
+              protocol: TCP
+            - name: console
+              containerPort: {{ .Values.rustfs.service.consolePort }}
+              protocol: TCP
+          env:
+            - name: RUSTFS_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: {{ .Values.secrets.keys.rustfsRootUser }}
+            - name: RUSTFS_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name }}
+                  key: {{ .Values.secrets.keys.rustfsRootPassword }}
+          startupProbe:
+            httpGet:
+              path: /minio/health/live
+              port: api
+            failureThreshold: 30
+            periodSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /minio/health/ready
+              port: api
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /minio/health/live
+              port: api
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          volumeMounts:
+            - name: rustfs-data
+              mountPath: /data
+      volumes:
+        - name: rustfs-data
+          persistentVolumeClaim:
+            claimName: president-challenge-rustfs
