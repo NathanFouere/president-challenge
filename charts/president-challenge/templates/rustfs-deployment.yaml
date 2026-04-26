@@ -16,10 +16,6 @@ spec:
         app.kubernetes.io/name: president-challenge
         app.kubernetes.io/component: rustfs
     spec:
-      securityContext:
-        fsGroup: 10001
-        runAsUser: 10001
-        runAsGroup: 10001
       containers:
         - name: rustfs
           image: "{{ .Values.rustfs.image.repository }}:{{ .Values.rustfs.image.tag }}"
@@ -43,24 +39,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
                   key: {{ .Values.secrets.keys.rustfsRootPassword }}
-          startupProbe:
-            httpGet:
-              path: /minio/health/live
-              port: api
-            failureThreshold: 30
-            periodSeconds: 2
-          readinessProbe:
-            httpGet:
-              path: /minio/health/ready
-              port: api
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /minio/health/live
-              port: api
-            initialDelaySeconds: 30
-            periodSeconds: 30
+
           volumeMounts:
             - name: rustfs-data
               mountPath: /data
