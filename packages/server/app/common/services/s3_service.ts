@@ -11,7 +11,7 @@ export default class S3Service {
       throw new FileDoesntExistError(key);
     }
 
-    const url = `${env.get('RUSTFS_ENDPOINT')}/${env.get('RUSTFS_DEFAULT_BUCKETS')}/${key}`;
+    const url = `${env.get('RUSTFS_ENDPOINT')}/${env.get('BUCKET_NAME')}/${key}`;
     return url;
   }
 

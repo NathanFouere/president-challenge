@@ -14,7 +14,8 @@ data:
   DB_HOST: "president-challenge-postgres"
   DB_PORT: {{ .Values.postgres.service.port | quote }}
   DB_USER: {{ .Values.postgres.config.user | quote }}
-  RUSTFS_REGION: "us-east-1"
-  RUSTFS_ENDPOINT: "president-challenge-rustfs:{{ .Values.rustfs.service.apiPort }}"
+  BUCKET_REGION: {{ .Values.rustfs.config.region | quote }}
+  RUSTFS_ENDPOINT: "https://{{ index .Values.rustfs.httpRoute.apiHostnames 0 }}"
+  BUCKET_NAME: {{ .Values.rustfs.config.defaultBuckets | quote }}
   CLIENT_URL: {{ .Values.server.config.clientUrl | quote }}
   DB_DATABASE: {{ .Values.postgres.config.database | quote }}

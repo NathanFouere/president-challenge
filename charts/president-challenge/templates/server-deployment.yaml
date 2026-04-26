@@ -49,9 +49,4 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
                   key: {{ .Values.secrets.keys.rustfsRootPassword }}
-            - name: RUSTFS_DEFAULT_BUCKETS
-              value: {{ .Values.rustfs.config.defaultBuckets | quote }}
-            - name: RUSTFS_ENDPOINT
-              value: "http://president-challenge-rustfs:{{ .Values.rustfs.service.apiPort }}"
-            - name: RUSTFS_REGION
-              value: {{ .Values.rustfs.config.region | quote }}
+

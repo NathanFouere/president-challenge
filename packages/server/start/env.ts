@@ -43,7 +43,7 @@ export default await Env.create(new URL('../', import.meta.url), {
   */
   RUSTFS_ROOT_USER: Env.schema.string(),
   RUSTFS_ROOT_PASSWORD: Env.schema.string(),
-  RUSTFS_DEFAULT_BUCKETS: Env.schema.string(),
-  RUSTFS_REGION: Env.schema.string(),
+  BUCKET_NAME: Env.schema.string(),
+  BUCKET_REGION: Env.schema.string(),
   RUSTFS_ENDPOINT: Env.schema.string(),
 });
