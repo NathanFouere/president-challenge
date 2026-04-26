@@ -16,6 +16,6 @@ data:
   DB_USER: {{ .Values.postgres.config.user | quote }}
   BUCKET_REGION: {{ .Values.rustfs.config.region | quote }}
   RUSTFS_ENDPOINT: "https://{{ index .Values.rustfs.httpRoute.apiHostnames 0 }}"
-  BUCKET_NAME: {{ .Values.rustfs.config.defaultBuckets | quote }}
+  BUCKET_NAME: "president-challenge"
   CLIENT_URL: {{ .Values.server.config.clientUrl | quote }}
   DB_DATABASE: {{ .Values.postgres.config.database | quote }}
